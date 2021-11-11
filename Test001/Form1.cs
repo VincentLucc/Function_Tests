@@ -66,7 +66,14 @@ namespace Test001
             int iColumn = e.Column.AbsoluteIndex;
 
             //Value verification
-            if (e.Value)
+            if (iColumn==1)  //Start point
+            {
+                if (e.Value)
+                {
+
+                }
+            }
+            else if (iColumn==2) //End column
             {
 
             }

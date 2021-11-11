@@ -9,8 +9,21 @@ namespace Test001
     class ClassPublic
     {
 
-        public GeneralResult IntVerification(object )
+        public GeneralResult IntVerification(object oData,int Min=0,int Max=100)
         {
+            //Init result
+            var result = new GeneralResult();
+
+            if (!int.TryParse(oData.ToString(),out int iresult))
+            {
+                result.IsSuccess = false;
+                result.Message = "Input is not a integral value.";
+                return result;
+            }
+
+
+            //Pass all steps
+            return result;
 
         }
     }
