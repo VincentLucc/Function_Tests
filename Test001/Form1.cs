@@ -20,6 +20,9 @@ namespace Test001
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Load text
+
+
             InitCustomizedFixedWidthControl();
         }
 
@@ -65,36 +68,124 @@ namespace Test001
             int iRow = e.RowHandle;
             int iColumn = e.Column.AbsoluteIndex;
 
-            //Value verification
-            if (iColumn==1)  //Start point
+            //Verify current input
+            var result = ClassPublic.IntVerification(e.Value, 0, 10000);
+            if (!result.IsSuccess)
             {
-                if (e.Value)
-                {
-
-                }
-            }
-            else if (iColumn==2) //End column
-            {
-
+                MessageBox.Show($"Invalid input in row {iRow+1}, column {iColumn+1}.\r\n"+result.Message);
+                return;
             }
 
+            //Get selected value
+            var verifyResult=VerifyFixedWidthDefinition();
+            if (!verifyResult.IsSuccess)
+            {
+                MessageBox.Show("Verification Fail.\r\n"+verifyResult.Message);
+                return;
+            }
+
+
+            //Get value
+            int[] rowValue = verifyResult.Selection[iRow];
+            Debug.WriteLine($"Start {rowValue[0]}, End {rowValue[1]}");//Show selection
+
+
+            var selection = GetSelectedWidthDefinition(iRow);
+            if (!selection.IsSuccess)
+            {
+                return;
+            }
+            
+            //Apply selection
+
+        }
+
+        /// <summary>
+        /// Get selected row int value
+        /// </summary>
+        private SelectionResult GetSelectedWidthDefinition(int SelectedRow)
+        { 
+            //Init result
+            var result = new SelectionResult();
+
+            //Error avoid
+            if (SelectedRow < 0)
+            {
+                result.Message = "Invalid row index.";
+                return result;
+            }
+                
+             
+            //Get updated data
+            DataTable dtData = ((DataView)gridControl1.DataSource).ToTable();
+
+            //Read current start value
+            if (!int.TryParse(dtData.Rows[SelectedRow][1].ToString(), out int iStart))
+            {
+                result.Message = "Invalid start value.";
+                return result;
+            }
+            //Read current end value
+            if (!int.TryParse(dtData.Rows[SelectedRow][2].ToString(), out int iEnd))
+            {
+                MessageBox.Show($"Invalid end value.");
+                return result;
+            }
+
+            //Generate result
+            result.Selection = new List<int[]> { new int[] { iStart,iEnd} };
+            result.IsSuccess = true;
+            Debug.WriteLine($"Start {iStart}, End {iEnd}");//Show selection
+            return result;
+        }
+
+        private SelectionResult VerifyFixedWidthDefinition()
+        {
+            //Init result
+            var mainResult = new SelectionResult();
 
             //Get updated data
             DataTable dtData = ((DataView)gridControl1.DataSource).ToTable();
 
-            //Init selected value
-            List<int[]> selectionResult = new List<int[]> { 
-            new int[]{dtData.Rows[iRow][1], dtData.Rows[iRow][2]}
-            };
+            for (int i = 0; i < dtData.Rows.Count; i++)
+            {
+                //Get row
+                var row = dtData.Rows[i];
+
+                //Read current start value
+                var startResult = ClassPublic.IntVerification(row[1].ToString(),0,10000);
+                if (!startResult.IsSuccess)
+                {
+                    mainResult.IsSuccess = false;
+                    mainResult.Message = "Invalid start value.\r\n"+startResult.Message;
+                    return mainResult;
+                }
+
+                //Read current end value
+                var endResult = ClassPublic.IntVerification(row[2].ToString(), 0, 10000);
+                if (!endResult.IsSuccess)
+                {
+                    mainResult.IsSuccess = false;
+                    mainResult.Message = "Invalid start value.\r\n" + startResult.Message;
+                    return mainResult;
+                }
+
+                //Verify size
+                if (startResult.IntResult>endResult.IntResult)
+                {
+                    mainResult.IsSuccess = false;
+                    mainResult.Message = $"Start index must be smaller than end index.\r\n Row:{i+1}";
+                    return mainResult;
+                }
+
+                //Finish verification, add to result
+                mainResult.Selection.Add(new int[] { startResult.IntResult,endResult.IntResult});
+            }
 
 
-
-
-            Debug.WriteLine($"Cell Value change,row({iRow}),column({iColumn})");
-
-            //Try to display data source value
-
-            Debug.WriteLine("Table value:" + dtData.Rows[iRow][iColumn].ToString());
+            //Pass all step
+            mainResult.IsSuccess = true;
+            return mainResult;
         }
 
         private void GridView1_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
