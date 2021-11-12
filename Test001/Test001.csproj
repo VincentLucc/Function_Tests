@@ -54,6 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassPublic.cs" />
+    <Compile Include="ColumnSelectorControlSingle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColumnSelectorControlSingle.Designer.cs">
+      <DependentUpon>ColumnSelectorControlSingle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

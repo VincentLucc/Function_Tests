@@ -70,7 +70,7 @@ namespace TestProject
             this.barButtonItem4,
             this.barButtonItem5,
             this.bSetting});
-            this.ribbonControl1.Location = new System.Drawing.Point(260, 0);
+            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 7;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -79,7 +79,7 @@ namespace TestProject
             this.ribbonPage3,
             this.ribbonPage4});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019;
-            this.ribbonControl1.Size = new System.Drawing.Size(574, 143);
+            this.ribbonControl1.Size = new System.Drawing.Size(834, 143);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
             // barButtonItem1
@@ -230,10 +230,10 @@ namespace TestProject
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 0);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 143);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(260, 544);
+            this.accordionControl1.Size = new System.Drawing.Size(260, 401);
             this.accordionControl1.TabIndex = 6;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -250,8 +250,8 @@ namespace TestProject
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.fluentDesignFormContainer1);
-            this.Controls.Add(this.ribbonControl1);
             this.Controls.Add(this.accordionControl1);
+            this.Controls.Add(this.ribbonControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.Name = "FormMain";
             this.Ribbon = this.ribbonControl1;

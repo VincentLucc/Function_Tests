@@ -334,6 +334,12 @@ namespace Test001
             return myContent.DrawnPoints;
         }
 
+
+        public void SetColumnCoords(List<Tuple<SolidBrush, int, int>> ColumnSelection)
+        {
+            myContent.SetDrawPoint(ColumnSelection);
+        }
+
         #endregion
 
     }
@@ -377,6 +383,26 @@ namespace Test001
                 }
                 return list;
             }
+        }
+
+        /// <summary>
+        /// Apply draw points to interface
+        /// This affects application performace
+        /// </summary>
+        public void SetDrawPoint(List<Tuple<SolidBrush, int, int>> DrawPoints)
+        {
+            //Value to readout
+            drawPoints = DrawPoints;
+
+            //Set index (value for UI draw)
+            myParentControl.myIndexes.Clear();
+            for (int i = 0; i < drawPoints.Count; i++)
+            {
+                myParentControl.myIndexes.Add(drawPoints[i].Item2); //Start point
+                myParentControl.myIndexes.Add(drawPoints[i].Item3); //End point
+            }
+
+            this.Refresh();
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -743,6 +769,9 @@ namespace Test001
 
     }
 
+    /// <summary>
+    /// This affects application performace
+    /// </summary>
     internal class MyMessageFilter : IMessageFilter
     {
         myRulerControl myRuler;
@@ -752,6 +781,7 @@ namespace Test001
             this.myRuler = ruler;
         }
 
+        //Get and process mouse operation
         public bool PreFilterMessage(ref Message m)
         {
             try
