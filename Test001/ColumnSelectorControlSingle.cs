@@ -22,6 +22,7 @@ namespace Test001
 
         private myRulerControl myRuler;
         private myContentControl myContent;
+        
         const string strMarkerChar = "▼";
 
         /// <summary>
@@ -34,6 +35,8 @@ namespace Test001
         /// Longest row in the sample file, which is used to set the size of the content viewer
         /// </summary>
         private int iRecordMaxLength = 1;
+
+        public EventHandler SelectionReady;
 
         /// <summary>
         /// Calculates the character size for current (fixed size) font of this control.
@@ -50,69 +53,34 @@ namespace Test001
             }
         }
 
+      
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
             ControlPaint.DrawBorder3D(e.Graphics, this.ClientRectangle, Border3DStyle.Etched);
         }
 
-        private void IndexCollectionChanged(object sender, IndexCollectionChangedEventArgs e)
+        private void IndexCollectionChanged(object sender,IndexCollectionChangeEventArgs e)
         {
-            //Error Check index value
-            //if (e.oldIndex<0 || e.newIndex<0)
-            //{
-            //    return;
-            //}
-
-            //if (e.oldIndex > -1)
-            //{
-            //    //Same index check
-            //    if (this.myIndexes.Contains(e.oldIndex)) this.myIndexes.Remove(e.oldIndex);
-            //}
-            //if (e.newIndex != e.oldIndex && e.newIndex < iRecordMaxLength && myIndexes.Count < m_MaxColumns)
-            //{
-            //    if (!this.myIndexes.Contains(e.newIndex))
-            //    {
-            //        this.myIndexes.Add(e.newIndex);
-            //        this.myIndexes.Sort();
-            //    }
-            //}
+            //Check if selection ready
+            var updateResult=getSingleColumnCoords();
+            if (updateResult.IsSuccess)
+            {//Trigger selection ready event
+                if (SelectionReady!=null)
+                {
+                    SelectionReady(this, e);
+                }              
+            }
 
 
-
+            //Update view
             myIndexes.RemoveAll(i => i >= iRecordMaxLength); // safety;
             myContent.Invalidate();
             myRuler.Refresh();
         }
 
-        private void IndexCollectionAdd(object sender, IndexCollectionAddEventArgs e)
-        {
-            //if (e.index < iRecordMaxLength && myIndexes.Count < m_MaxColumns)
-            //{
-            //    if (!this.myIndexes.Contains(e.index))
-            //    {
-            //        this.myIndexes.Add(e.index);
-            //        this.myIndexes.Sort();
-            //    }
-            //}
-            //myIndexes.RemoveAll(i => i >= iRecordMaxLength);
-            //myContent.Invalidate();
-            //myRuler.Refresh();
-        }
-        private void IndexCollectionRemove(object sender, IndexCollectionRemoveEventArgs e)
-        {
-            //if (e.index > -1)
-            //{
-            //    if (this.myIndexes.Contains(e.index))
-            //    {
-            //        this.myIndexes.Remove(e.index);
-            //        this.myIndexes.Sort();
-            //    }
-            //}
-            //myIndexes.RemoveAll(i => i >= iRecordMaxLength);
-            //myContent.Invalidate();
-            //myRuler.Refresh();
-        }
+
+
 
         private string[] mylines;
 
@@ -127,8 +95,6 @@ namespace Test001
             myContent = new myContentControl(this);
             myRuler = new myRulerControl(this);
             myRuler.IndexCollectionChanged += IndexCollectionChanged;
-            myRuler.IndexCollectionAdd += IndexCollectionAdd;
-            myRuler.IndexCollectionRemove += IndexCollectionRemove;
             this.panelMain.Controls.Add(myContent);
             this.panelMain.Controls.Add(myRuler);
             this.panelMain.ResumeLayout(false);
@@ -355,14 +321,15 @@ namespace Test001
             var result = new SelectionResult();
 
             //Check size
-            if (myContent.DrawnPoints.Count ==0|| myContent.DrawnPoints.Count!=1)
+            if (myContent.DrawnPoints.Count == 0 || myContent.DrawnPoints.Count != 1)
             {
                 result.IsSuccess = false;
-                result.Message = "Invalid result count.";
+                result.Message = "Invalid selection.";
+                return result;
             }
 
             //Check start/end point
-            if (myContent.DrawnPoints[0][0]>-1&& myContent.DrawnPoints[0][1] > -1)
+            if (myContent.DrawnPoints[0][0] > -1 && myContent.DrawnPoints[0][1] > -1)
             {
                 result.IsSuccess = true;
                 result.Selection = myContent.DrawnPoints;
@@ -370,6 +337,9 @@ namespace Test001
             }
 
 
+
+            //Operation fail
+            result.IsSuccess = false;
             return result;
         }
 
@@ -380,6 +350,7 @@ namespace Test001
         public void SetColumnCoords(List<Tuple<SolidBrush, int, int>> ColumnSelection)
         {
             myContent.SetDrawPoint(ColumnSelection);
+            myRuler.Refresh(); //Reload ruler marker
         }
 
         /// <summary>
@@ -404,7 +375,7 @@ namespace Test001
 
             public myContentControl(ColumnSelectorControlSingle p)
             {
-              
+
                 if (p != null) myParentControl = p;
                 SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
                 //this.AutoScrollOffset = ScrollableControl.
@@ -558,30 +529,19 @@ namespace Test001
             public int _iDroppedIndex = -1;
 
             #region Events and Delegates
-            public delegate void IndexCollectionChangedEvent(object sender, IndexCollectionChangedEventArgs e);
+            public delegate void IndexCollectionChangedEvent(object sender,IndexCollectionChangeEventArgs e);
             public event IndexCollectionChangedEvent IndexCollectionChanged;
-            public delegate void IndexCollectionAddEvent(object sender, IndexCollectionAddEventArgs e);
-            public event IndexCollectionAddEvent IndexCollectionAdd;
-            public delegate void IndexCollectionRemoveEvent(object sender, IndexCollectionRemoveEventArgs e);
-            public event IndexCollectionRemoveEvent IndexCollectionRemove;
 
-            protected void OnIndexCollectionChanged(IndexCollectionChangedEventArgs e)
+            protected void OnIndexCollectionChanged(IndexCollectionChangeEventArgs e)
             {
-                IndexCollectionChanged?.Invoke(this, e);
+                IndexCollectionChanged?.Invoke(this,e);
             }
-            protected void OnIndexCollectionAdd(IndexCollectionAddEventArgs e)
-            {
-                IndexCollectionAdd?.Invoke(this, e);
-            }
-            protected void OnIndexCollectionRemove(IndexCollectionRemoveEventArgs e)
-            {
-                IndexCollectionRemove?.Invoke(this, e);
-            }
+
             #endregion
 
             public myRulerControl(ColumnSelectorControlSingle p)
             {
-   
+
                 if (p != null) myParentControl = p;
 
                 msgFilter = new MyMessageFilter(this);
@@ -632,56 +592,51 @@ namespace Test001
                 catch { }
             }
 
-            public void UpdateIndexes(int NewIndex = -1)
+            public void UpdateIndexes(MouseButtons OperationButton,int NewIndex = -1)
             {
                 //Alias for current index
                 var indexlist = myParentControl.myIndexes;
-                //Operate by index size
-                IndexCollectionChangedEventArgs e = new IndexCollectionChangedEventArgs(_iDraggedIndex, _iDroppedIndex);//predefine event
+
+                //Get event arg
+                var e = new IndexCollectionChangeEventArgs(OperationButton);
 
                 //avoid null error
                 if (NewIndex == -1) return;
-                //If a clear requested
-                else if (NewIndex==-2)
-                {
-                    if (indexlist.Count>0)
-                    {
-                        indexlist.Clear();
-                    }
 
+                //Check if same index exist
+                if (indexlist.Contains(NewIndex)) return;
+
+                //Handle right mouse operation
+                if (e.Button==MouseButtons.Right)
+                {
                     //trigger event
                     this.OnIndexCollectionChanged(e);
                     return;
                 }
 
-
-                //Check if same index exist
-                if (indexlist.Contains(NewIndex)) return;
-
                 //Handle drag and drop operation
                 if (_bDragged)
-                {  
-                    HandleDragAndDropOperation();
-                    Debug.WriteLine($"Handle drag and drop drag{_iDraggedIndex},{_iDroppedIndex}");
+                {
+                    Debug.WriteLine($"Handle drag and drop drag:{_iDraggedIndex},drop:{_iDroppedIndex}");
+                    HandleDragAndDropOperation(e);
                     return;
                 }
 
-                //Modify index selection based on mouse left click
-                HandleNormalIndexClickOperation(NewIndex);
+                //Handle mouse left button selection (Normal selection)
+                HandleNormalIndexClickOperation(NewIndex,e);
             }
 
 
             /// <summary>
             /// Update selection when drag and drop happened
             /// </summary>
-            private void HandleDragAndDropOperation()
+            private void HandleDragAndDropOperation(IndexCollectionChangeEventArgs e)
             {
                 //Get index
                 var indexlist = myParentControl.myIndexes;
 
-
                 //Check drag and drop value
-                if (_iDraggedIndex <0|| _iDroppedIndex<0 || _iDraggedIndex==_iDroppedIndex)
+                if (_iDraggedIndex < 0 || _iDroppedIndex < 0 || _iDraggedIndex == _iDroppedIndex)
                 {
                     return;
                 }
@@ -695,9 +650,13 @@ namespace Test001
                 //If clicked existing index, modify selected index
                 indexlist[indexlist.IndexOf(_iDraggedIndex)] = _iDroppedIndex;
 
-                //Init events
-                IndexCollectionChangedEventArgs e = new IndexCollectionChangedEventArgs(_iDraggedIndex, _iDroppedIndex);//predefine event
-
+                //Update draw points, so value can be read out right away
+                if (indexlist.Count==2)
+                {
+                    Tuple<SolidBrush, int, int> t1 = new Tuple<SolidBrush,int,int>(new SolidBrush(Color.Red),indexlist[0], indexlist[1]);
+                    myParentControl.SetColumnCoords(new List<Tuple<SolidBrush, int, int>>() {t1});
+                }
+            
                 //trigger event
                 this.OnIndexCollectionChanged(e);
             }
@@ -706,14 +665,13 @@ namespace Test001
             /// Modify index selection based on mouse left click
             /// </summary>
             /// <param name="NewIndex"></param>
-            private void HandleNormalIndexClickOperation(int NewIndex)
+            private void HandleNormalIndexClickOperation(int NewIndex,IndexCollectionChangeEventArgs e)
             {
+    
+
                 //Get index size
                 var indexlist = myParentControl.myIndexes;
                 int iSize = indexlist.Count;
-
-                //Init events
-                IndexCollectionChangedEventArgs e = new IndexCollectionChangedEventArgs(_iDraggedIndex, _iDroppedIndex);//predefine event
 
                 //Empty indexlist simply add
                 if (iSize == 0)
@@ -931,7 +889,7 @@ namespace Test001
             #endregion
 
         }
-        #endregion
+        #endregion myRulerControl
 
         #region MyMessageFilter
         /// <summary>
@@ -986,7 +944,7 @@ namespace Test001
                         {
                             e = new PaintEventArgs(myRuler.CreateGraphics(), myRuler.ClientRectangle);
                             myRuler.onPaint(e);
-                         
+
                         }
                         finally
                         {
@@ -1043,7 +1001,7 @@ namespace Test001
                             {
                                 myRuler._bDragged = false;
                             }
-                            myRuler.UpdateIndexes(index);
+                            myRuler.UpdateIndexes(MouseButtons.Left,index);
                         }
                     }
 
@@ -1069,7 +1027,7 @@ namespace Test001
                             {
                                 myRuler._bDragged = false;
                             }
-                            myRuler.UpdateIndexes(myRuler._iDroppedIndex);
+                            myRuler.UpdateIndexes(MouseButtons.Left,myRuler._iDroppedIndex);
                         }
 
                         myRuler._bDragged = false;
@@ -1079,11 +1037,11 @@ namespace Test001
                         myRuler._iDroppedIndex = -1;
                     }
 
-                    //If right mouse down, clear input
-                    if (m.Msg==(int)Msg.WM_RBUTTONDOWN||m.Msg==(int)Msg.WM_NCRBUTTONDOWN)
+                    //If right mouse down
+                    if (m.Msg == (int)Msg.WM_RBUTTONDOWN || m.Msg == (int)Msg.WM_NCRBUTTONDOWN)
                     {
-                        //Clear input
-                        myRuler.UpdateIndexes(-2); //Clear input
+                        //Right mouse click operation
+                        myRuler.UpdateIndexes(MouseButtons.Right,-2); 
                     }
 
 
@@ -1102,7 +1060,7 @@ namespace Test001
                 return false;  // Whether or not the message is filtered
             }
         }
-        #endregion
+        #endregion MyMessageFilter
 
         #region Msg
         /// <summary>
@@ -1118,41 +1076,22 @@ namespace Test001
             WM_NCMOUSELEAVE = 0x02A2, //None-client area (Titlebar, menue bar, frame) mouse leave
             WM_NCLBUTTONUP = 0xA2, //None-client area button up
             WM_NCLBUTTONDOWN = 0xA1, //none client area button down
-            WM_RBUTTONDOWN= 0x0204, //Right mouse down
-            WM_NCRBUTTONDOWN= 0x00A4 //Right mouse down in none-client area
+            WM_RBUTTONDOWN = 0x0204, //Right mouse down
+            WM_NCRBUTTONDOWN = 0x00A4 //Right mouse down in none-client area
         }
-        #endregion
+        #endregion Msg
 
-        #region Events
-        internal class IndexCollectionChangedEventArgs : EventArgs
+        /// <summary>
+        /// Button type of the event
+        /// </summary>
+        public class IndexCollectionChangeEventArgs : EventArgs
         {
-            public int oldIndex;
-            public int newIndex;
-            public IndexCollectionChangedEventArgs(int old_index, int new_index) : base()
+            public MouseButtons Button;
+            public IndexCollectionChangeEventArgs(MouseButtons _button) : base()
             {
-                this.oldIndex = old_index;
-                this.newIndex = new_index;
+                this.Button = _button;
             }
         }
-
-        internal class IndexCollectionAddEventArgs : EventArgs
-        {
-            public int index;
-            public IndexCollectionAddEventArgs(int _index) : base()
-            {
-                this.index = _index;
-            }
-        }
-
-        internal class IndexCollectionRemoveEventArgs : EventArgs
-        {
-            public int index;
-            public IndexCollectionRemoveEventArgs(int _index) : base()
-            {
-                this.index = _index;
-            }
-        }
-        #endregion
     }
 
 
@@ -1163,5 +1102,5 @@ namespace Test001
 
 
 
-   
+
 }

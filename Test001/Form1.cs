@@ -14,6 +14,9 @@ namespace Test001
 {
     public partial class Form1 : Form
     {
+
+        List<InputField> ColumnDefinition { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -35,13 +38,32 @@ namespace Test001
 
             CreateRowData();
 
-            gridControl1.DataSourceChanged += GridControl1_DataSourceChanged;
-            gridControl1.ProcessGridKey += GridControl1_ProcessGridKey;
-
-            gridView1.SelectionChanged += GridView1_SelectionChanged;
+            columnSelectorControl1.SelectionReady += SelectionReadyMethod;
             gridView1.FocusedRowChanged += GridView1_FocusedRowChanged;
             gridView1.CellValueChanged += GridView1_CellValueChanged;
+        }
 
+        private void SelectionReadyMethod(object sender, EventArgs e)
+        {
+            //Get event button
+            var eButton = (ColumnSelectorControlSingle.IndexCollectionChangeEventArgs)e;
+            //Get current selected index
+            int iIndex = gridView1.FocusedRowHandle;
+
+            //Selection when left button used
+            if (eButton.Button == MouseButtons.Left)
+            {
+                if (iIndex >= 0)
+                {
+                    ModifyIndexRows();
+                }
+            }
+            //Selection when right button used
+            else if (eButton.Button == MouseButtons.Right)
+            {
+                //Always add a new record
+                AddIndexRows();
+            }
         }
 
         private void GridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -58,6 +80,9 @@ namespace Test001
 
             //Get current selection
             int iRow = e.FocusedRowHandle;
+
+            //None verification
+            if (iRow < 0) return;
             int[] Selection = verifyResult.Selection[iRow];
 
             //Apply color and convert format
@@ -66,33 +91,23 @@ namespace Test001
 
             //Appy selection 
             columnSelectorControl1.SetColumnCoords(selection);
-
-
-
-
         }
 
         private void CreateRowData()
         {
             //Init row
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Column ID",typeof(int));
-            dt.Columns.Add("Start Index",typeof(int));
-            dt.Columns.Add("End Index",typeof(int));
-
-
-            for (int i = 0; i < 10; i++)
+            ColumnDefinition = new List<InputField>();
+            for (int i = 0; i < 5; i++)
             {
-                var row = dt.NewRow();
-                row["Column ID"] = i + 1; //ID
-                row["Start Index"] = i + 2; //Start Index
-                row["End Index"] = i + 3; //End index
-                dt.Rows.Add(row);
+                InputField column = new InputField()
+                { Name = "Test", Description = "Test", Position = i, Length = i + 1 };
+                ColumnDefinition.Add(column);
             }
 
+            gridControl1.DataSource = ColumnDefinition;
+            gridView1.Columns[nameof(InputField.ColumnNumber)].Visible = false;
 
 
-            gridControl1.DataSource = dt.DefaultView;
         }
 
 
@@ -100,13 +115,24 @@ namespace Test001
         {
             //Get current row and column
             int iRow = e.RowHandle;
-            int iColumn = e.Column.AbsoluteIndex;
+            string sColumn = e.Column.FieldName;
+            string sLocatin = $"Input in row {iRow + 1}, column {sColumn}.";
+            Debug.WriteLine(sLocatin);
 
-            //Verify current input
+            //Ignore one new row creation process
+            if (iRow<-1) return; //Sample:RowID=2147483647
+
+            //Ignore verification when position and length not selected
+            if (sColumn != nameof(InputField.Position) && sColumn != nameof(InputField.Length))
+            {
+                return;
+            }
+
+            //Verify input
             var result = ClassPublic.IntVerification(e.Value, 0, 10000);
             if (!result.IsSuccess)
             {
-                MessageBox.Show($"Invalid input in row {iRow + 1}, column {iColumn + 1}.\r\n" + result.Message);
+                MessageBox.Show($"Invalid input in row {iRow + 1}, column {sColumn}.\r\n" + result.Message);
                 return;
             }
 
@@ -128,9 +154,10 @@ namespace Test001
             //Appy selection 
             columnSelectorControl1.SetColumnCoords(selection);
 
+            //Display first row value
+            Debug.WriteLine($"Value changed:{ColumnDefinition[0].Length}");
+
         }
-
-
 
         private SelectionResult VerifyFixedWidthDefinition()
         {
@@ -138,41 +165,41 @@ namespace Test001
             var mainResult = new SelectionResult();
 
             //Get updated data
-            DataTable dtData = ((DataView)gridControl1.DataSource).ToTable();
+            var fieldData = ((List<InputField>)gridControl1.DataSource);
 
-            for (int i = 0; i < dtData.Rows.Count; i++)
+            //Null verification
+            if (fieldData == null)
+            {
+                mainResult.IsSuccess = false;
+                mainResult.Message = "Invalid field data.\r\n";
+                return mainResult;
+            }
+
+            for (int i = 0; i < fieldData.Count; i++)
             {
                 //Get row
-                var row = dtData.Rows[i];
+                var fieldRow = fieldData[i];
 
-                //Read current start value
-                var startResult = ClassPublic.IntVerification(row[1].ToString(), 0, 10000);
-                if (!startResult.IsSuccess)
+                //Check Position value rangle
+                if (fieldRow.Position < 0)
                 {
                     mainResult.IsSuccess = false;
-                    mainResult.Message = "Invalid start value.\r\n" + startResult.Message;
+                    mainResult.Message = "Invalid position value.\r\n";
                     return mainResult;
                 }
 
-                //Read current end value
-                var endResult = ClassPublic.IntVerification(row[2].ToString(), 0, 10000);
-                if (!endResult.IsSuccess)
+                //Check length value range
+                if (fieldRow.Length < 1)
                 {
                     mainResult.IsSuccess = false;
-                    mainResult.Message = "Invalid start value.\r\n" + startResult.Message;
+                    mainResult.Message = "Invalid length value.\r\n";
                     return mainResult;
                 }
 
-                //Verify size
-                if (startResult.IntResult > endResult.IntResult)
-                {
-                    mainResult.IsSuccess = false;
-                    mainResult.Message = $"Start index must be smaller than end index.\r\n Row:{i + 1}";
-                    return mainResult;
-                }
 
                 //Finish verification, add to result
-                mainResult.Selection.Add(new int[] { startResult.IntResult, endResult.IntResult });
+                int iEnd = fieldRow.Position + fieldRow.Length;
+                mainResult.Selection.Add(new int[] { fieldRow.Position, iEnd });
             }
 
 
@@ -181,20 +208,10 @@ namespace Test001
             return mainResult;
         }
 
-        private void GridView1_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
-        {
-            Debug.WriteLine("Selection");
-        }
 
-        private void GridControl1_ProcessGridKey(object sender, KeyEventArgs e)
-        {
-            // Debug.WriteLine("Key");
-        }
 
-        private void GridControl1_DataSourceChanged(object sender, EventArgs e)
-        {
-            Debug.WriteLine("chnaged");
-        }
+
+
 
         private void gridControl1_Click(object sender, EventArgs e)
         {
@@ -204,9 +221,9 @@ namespace Test001
         private void bClear_Click(object sender, EventArgs e)
         {
             //Get updated data
-            DataTable dtData = ((DataView)gridControl1.DataSource).ToTable();
-            dtData.Rows.Clear();
-            gridControl1.DataSource = dtData.DefaultView;
+            var dataSource = (List<InputField>)gridControl1.DataSource;
+            dataSource.Clear();
+            gridControl1.DataSource = dataSource;
         }
 
         private void bReload_Click(object sender, EventArgs e)
@@ -223,16 +240,8 @@ namespace Test001
         /// <param name="e"></param>
         private void bAdd_Click(object sender, EventArgs e)
         {
-            //Get selected
-            var result = columnSelectorControl1.getSingleColumnCoords();
-            if (!result.IsSuccess)
-            {
-                MessageBox.Show(result.Message);
-                return;
-            }
-
             //Directly add
-            AddIndexRows(result.Selection);
+            AddIndexRows();
         }
 
 
@@ -240,30 +249,42 @@ namespace Test001
         /// 
         /// </summary>
         /// <param name="IndexList"></param>
-        private void AddIndexRows(List<int[]> IndexList)
+        private void AddIndexRows()
         {
-            //Get datatable
-            DataTable dtData = ((DataView)gridControl1.DataSource).ToTable();
-            int iRowStart = dtData.Rows.Count+1; //Row start
-            for (int i = 0; i < IndexList.Count; i++)
+            //Get selection
+            var result = columnSelectorControl1.getSingleColumnCoords();
+            if (!result.IsSuccess)
             {
-                //Current index
-                int[] indexCurrent = IndexList[i];
-
-                //Create row
-                var row = dtData.NewRow();
-                row["Column ID"] = iRowStart+i; //ID
-                row["Start Index"] = indexCurrent[0]; //Start Index
-                row["End Index"] = indexCurrent[1];  //End index
-
-                //Add row
-                dtData.Rows.Add(row);
+                MessageBox.Show(result.Message);
+                return;
             }
 
-            //Re-new value
-            gridControl1.DataSource = dtData.DefaultView;
+            //Selected index
+            var IndexList = result.Selection;
 
-            //Clear column selection
+
+            //Get data
+            var dataSource = (List<InputField>)gridControl1.DataSource;
+
+            //Add data row
+            for (int i = 0; i < IndexList.Count; i++)
+            {
+                //Get value
+                int[] indexCurrent = IndexList[i];   //Current index
+                int iPosition = indexCurrent[0]; //Start point
+                int iLength = indexCurrent[1] - indexCurrent[0]; //Get length
+
+                //Add value
+                var rowData = new InputField();
+                rowData.Position = iPosition;
+                rowData.Length = iLength;
+                dataSource.Add(rowData);
+            }
+
+            //Refresh data display
+            gridView1.RefreshData();
+
+            //Clear selection
             columnSelectorControl1.ClearColumnCoords();
         }
 
@@ -272,46 +293,197 @@ namespace Test001
         /// Modify selected index row
         /// </summary>
         /// <param name="IndexList"></param>
-        private GeneralResult ModifyIndexRows(int SelectedIndex,List<int[]> IndexList)
+        private GeneralResult ModifyIndexRows()
         {
             //Init result
-            var result =new GeneralResult();
+            var result = new GeneralResult();
 
-            //Verify
-            if (IndexList.Count ==0||IndexList.Count!=1)
+            //Check data table selection
+            if (!gridView1.IsValidRowHandle(gridView1.FocusedRowHandle))
+            {
+                result.Message = "Please select a valid row first.";
+                return result;
+            }
+
+            //Verify UI selection
+            var selection = columnSelectorControl1.getSingleColumnCoords();
+            if (!selection.IsSuccess)
+            {
+                result.Message = "Please select valid column range first.";
+                return result;
+            }
+
+            //Get selected result
+            var IndexList = selection.Selection; //Get column selection tool selected index
+            var SelectedIndex = gridView1.GetDataSourceRowIndex(gridView1.FocusedRowHandle);   //Get data table selection index
+
+            //Verify UI column selection index counts
+            if (IndexList.Count == 0 || IndexList.Count != 1)
             {
                 result.Message = "Invalid data count.";
                 return result;
             }
 
-            //Verify data
-            if (IndexList[0][0]<0 || IndexList[0][1]<0 || IndexList[0][0]== IndexList[0][1])
+            //Verify UI column selection value
+            if (IndexList[0][0] < 0 || IndexList[0][1] < 0 || IndexList[0][0] == IndexList[0][1])
             {
                 result.Message = "Invalid selection.";
                 return result;
             }
 
-            //Get datatable
-            DataTable dtData = ((DataView)gridControl1.DataSource).ToTable();
-            var selectedRow = dtData.Rows[SelectedIndex]; //Get selected row
+            //Get datasource
+            var dataSource = (List<InputField>)gridControl1.DataSource;
+            var selectedRow = dataSource[SelectedIndex]; //Get selected row
 
             //Set row value
-            selectedRow["Start Index"] = IndexList[0][0]; //Start Index
-            selectedRow["End Index"] = IndexList[0][1];  //End index
+            selectedRow.Position = IndexList[0][0]; //Start Index
+            int iLength = IndexList[0][1] - IndexList[0][0]; //end index - start index
+            selectedRow.Length = iLength;  //length
 
-            
-     
+
             //Re-new value
-            gridControl1.DataSource = dtData.DefaultView;
-            gridView1.FocusedRowHandle = SelectedIndex;//Set selection back
+            gridControl1.RefreshDataSource();
 
-            //Clear column selection
+            //Pass all steps
+            result.IsSuccess = true;
+
+            return result;
+        }
+
+        /// <summary>
+        /// Modify selected index row
+        /// </summary>
+        /// <param name="IndexList"></param>
+        private GeneralResult DeleteIndexRow()
+        {
+            //Init result
+            var result = new GeneralResult();
+
+            //Check data table selection
+            if (!gridView1.IsValidRowHandle(gridView1.FocusedRowHandle))
+            {
+                result.Message = $"Please select a valid row first.";
+                result.IsSuccess = false;
+                return result;
+            }
+
+
+            //Get source data
+            var dataSource = (List<InputField>)gridControl1.DataSource;
+            //Get selected datasource index
+            int SelectedIndex = gridView1.GetDataSourceRowIndex(gridView1.FocusedRowHandle);
+
+            //Try remove selected row
+            try
+            {
+                dataSource.RemoveAt(SelectedIndex);
+            }
+            catch (Exception ex)
+            {
+                result.Message = $"Error in removeing row {SelectedIndex + 1}.\r\n" + ex.Message;
+                result.IsSuccess = false;
+                return result;
+            }
+
+            //Re-new value
+            gridControl1.DataSource = dataSource;
+
+            //Clear UI column selection
             columnSelectorControl1.ClearColumnCoords();
 
             //Pass all steps
             result.IsSuccess = true;
 
             return result;
+        }
+
+
+        /// <summary>
+        /// Re-sort the data table column ID based on value changes
+        /// </summary>
+        private void SortDataTable()
+        {
+            //Get source data
+            DataTable dtData = ((DataView)gridControl1.DataSource).ToTable();
+
+            var Rows = dtData.Select(null, "[Start Index] ASC,[End Index] ASC"); //Sort row
+
+            //Add rows to new table
+            var dtNew = dtData.Clone();
+            for (int i = 0; i < Rows.Length; i++)
+            {
+                //Change ID
+                var newRow = dtNew.NewRow();
+                newRow["Column ID"] = i + 1; ; //Column ID
+                newRow["Start Index"] = Rows[i]["Start Index"]; //Start Index
+                newRow["End Index"] = Rows[i]["End Index"]; //End Index            
+                dtNew.Rows.Add(newRow);
+            }
+
+            //Re-new value
+            gridControl1.DataSource = dtNew.DefaultView;
+        }
+
+
+        /// <summary>
+        /// Move field row up
+        /// </summary>
+        private void DataFieldMoveUp()
+        {
+            //Get current selection
+            int iSelection = gridView1.FocusedRowHandle;
+
+            //Ignore when row selection reach limit
+            //When first row or nothing selected
+            if (iSelection==0 || iSelection<0) return;
+
+            //Get source data
+            var dataSource = (List<InputField>)gridControl1.DataSource;
+
+            //Get row data
+            var selectedRow = dataSource[iSelection];
+
+            //Switch data
+            dataSource.RemoveAt(iSelection);
+            dataSource.Insert(iSelection-1,selectedRow);
+
+            //Re-new value
+            gridView1.RefreshData();
+
+            //Reset selection
+            gridView1.FocusedRowHandle = iSelection - 1;
+        }
+
+        /// <summary>
+        /// Move field row up
+        /// </summary>
+        private void DataFieldMoveDown()
+        {
+            //Get current selection
+            int iSelection = gridView1.FocusedRowHandle;
+
+            //Get source data
+            var dataSource = (List<InputField>)gridControl1.DataSource;
+
+            //Get max index value
+            int iMax= dataSource.Count-1;
+            
+            //Ignore when row selection reach limit
+            //When last row or nothing selected
+            if (iSelection == iMax || iSelection < 0) return;
+
+            //Get row data
+            var selectedRow = dataSource[iSelection];
+
+            //Switch data
+            dataSource.RemoveAt(iSelection);
+            dataSource.Insert(iSelection + 1, selectedRow);
+
+            //Re-new value
+            gridView1.RefreshData();
+
+            //Reset selection
+            gridView1.FocusedRowHandle = iSelection + 1;
         }
 
         /// <summary>
@@ -321,24 +493,57 @@ namespace Test001
         /// <param name="e"></param>
         private void bModify_Click(object sender, EventArgs e)
         {
-            //Check data table selection
-            if (!gridView1.IsValidRowHandle(gridView1.FocusedRowHandle))
-            {
-                MessageBox.Show("Please select a valid row first.");
-                return;
-            }
-
-            //Verify UI selection
-            var selection = columnSelectorControl1.getSingleColumnCoords();
-            if (!selection.IsSuccess)
-            {
-                MessageBox.Show("Please select valid column rrange first.");
-                return;
-            }
-
             //Modify row
-            ModifyIndexRows(gridView1.FocusedRowHandle, selection.Selection);
+            var result = ModifyIndexRows();
+            if (!result.IsSuccess)
+            {
+                MessageBox.Show(result.Message);
+                return;
+            }
+        }
 
+        private void bShow_Click(object sender, EventArgs e)
+        {
+            pBottom.Visible = !pBottom.Visible;
+        }
+
+        private void bDel_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine(ColumnDefinition.Count);
+            gridView1.DeleteSelectedRows();
+            Debug.WriteLine(ColumnDefinition.Count);
+        }
+
+        private void bSort_Click(object sender, EventArgs e)
+        {
+            SortDataTable();
+        }
+
+        private void bTest_Click(object sender, EventArgs e)
+        {
+            gridControl1.Visible = !gridControl1.Visible;
+        }
+
+        private void columnSelectorControl1_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void columnSelectorControl1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right) return;
+
+            Debug.WriteLine("Right Click");
+        }
+
+        private void bMoveUp_Click(object sender, EventArgs e)
+        {
+            DataFieldMoveUp();
+        }
+
+        private void bMoveDown_Click(object sender, EventArgs e)
+        {
+            DataFieldMoveDown();
         }
     }
 }

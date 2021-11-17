@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Test001
 {
@@ -21,6 +22,14 @@ namespace Test001
         {
             //Init result
             var result = new GeneralResult();
+
+            //Null verification
+            if (oData==null)
+            {
+                result.IsSuccess = false;
+                result.Message = "Empty input.";
+                return result;
+            }
 
             //Check if value is int value
             if (!int.TryParse(oData.ToString(),out int iData))
@@ -66,6 +75,35 @@ namespace Test001
         {
             Selection = new List<int[]>();
         }
+    }
+
+
+    [Serializable]
+    public class InputField
+    {
+        public InputField(string _Name)
+        {
+            Name = _Name;
+            Description = "";
+            ColumnNumber = 0;
+            Position = 0;
+            Length = 0;
+        }
+
+        public InputField()
+        {
+        }
+
+        [XmlAttribute]
+        public string Name { get; set; }
+        [XmlAttribute]
+        public string Description { get; set; }
+        [XmlAttribute]
+        public int ColumnNumber { get; set; }
+        [XmlAttribute]
+        public int Position { get; set; }
+        [XmlAttribute]
+        public int Length { get; set; }
     }
 
 
