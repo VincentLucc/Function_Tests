@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Test001
+namespace ColumnSelectionNew
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace Test001
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Application.Run(new Form1());
         }
     }
 }

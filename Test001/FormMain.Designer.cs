@@ -1,7 +1,7 @@
 ﻿
 namespace Test001
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,9 @@ namespace Test001
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.columnSelectorControl1 = new Test001.ColumnSelectorControlSingle();
+            this.DataFileFieldGridControl = new DevExpress.XtraGrid.GridControl();
+            this.DataFileFieldGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.FileColumnSelector = new Test001.ColumnSelectorControlSingle();
             this.bShow = new DevExpress.XtraEditors.SimpleButton();
             this.pTable = new System.Windows.Forms.Panel();
             this.pControls = new System.Windows.Forms.Panel();
@@ -43,14 +42,16 @@ namespace Test001
             this.bReload = new DevExpress.XtraEditors.SimpleButton();
             this.bAdd = new DevExpress.XtraEditors.SimpleButton();
             this.bModify = new DevExpress.XtraEditors.SimpleButton();
+            this.bMoveUp = new DevExpress.XtraEditors.SimpleButton();
+            this.bMoveDown = new DevExpress.XtraEditors.SimpleButton();
             this.pShow = new System.Windows.Forms.Panel();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.bTest2 = new DevExpress.XtraEditors.SimpleButton();
             this.bTest = new DevExpress.XtraEditors.SimpleButton();
             this.pSelection = new System.Windows.Forms.Panel();
             this.pBottom = new System.Windows.Forms.Panel();
-            this.bMoveUp = new DevExpress.XtraEditors.SimpleButton();
-            this.bMoveDown = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataFileFieldGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataFileFieldGridView)).BeginInit();
             this.pTable.SuspendLayout();
             this.pControls.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -59,57 +60,57 @@ namespace Test001
             this.pBottom.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gridControl1
+            // DataFileFieldGridControl
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode2.RelationName = "Level1";
-            this.gridControl1.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(408, 250);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
+            this.DataFileFieldGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DataFileFieldGridControl.Location = new System.Drawing.Point(0, 0);
+            this.DataFileFieldGridControl.MainView = this.DataFileFieldGridView;
+            this.DataFileFieldGridControl.Name = "DataFileFieldGridControl";
+            this.DataFileFieldGridControl.Size = new System.Drawing.Size(408, 250);
+            this.DataFileFieldGridControl.TabIndex = 0;
+            this.DataFileFieldGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.DataFileFieldGridView});
+            this.DataFileFieldGridControl.Click += new System.EventHandler(this.gridControl1_Click);
             // 
-            // gridView1
+            // DataFileFieldGridView
             // 
-            this.gridView1.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.gridView1.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridView1.Appearance.Row.Options.UseTextOptions = true;
-            this.gridView1.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.NewItemRowText = "123";
-            this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
-            this.gridView1.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow;
-            this.gridView1.OptionsCustomization.AllowFilter = false;
-            this.gridView1.OptionsCustomization.AllowSort = false;
-            this.gridView1.OptionsFilter.AllowFilterEditor = false;
-            this.gridView1.OptionsLayout.Columns.AddNewColumns = false;
-            this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.DataFileFieldGridView.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.DataFileFieldGridView.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.DataFileFieldGridView.Appearance.Row.Options.UseTextOptions = true;
+            this.DataFileFieldGridView.Appearance.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.DataFileFieldGridView.GridControl = this.DataFileFieldGridControl;
+            this.DataFileFieldGridView.Name = "DataFileFieldGridView";
+            this.DataFileFieldGridView.NewItemRowText = "123";
+            this.DataFileFieldGridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            this.DataFileFieldGridView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow;
+            this.DataFileFieldGridView.OptionsCustomization.AllowFilter = false;
+            this.DataFileFieldGridView.OptionsCustomization.AllowSort = false;
+            this.DataFileFieldGridView.OptionsDetail.EnableMasterViewMode = false;
+            this.DataFileFieldGridView.OptionsFilter.AllowFilterEditor = false;
+            this.DataFileFieldGridView.OptionsLayout.Columns.AddNewColumns = false;
+            this.DataFileFieldGridView.OptionsSelection.EnableAppearanceHideSelection = false;
+            this.DataFileFieldGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+            this.DataFileFieldGridView.OptionsView.ShowGroupExpandCollapseButtons = false;
+            this.DataFileFieldGridView.OptionsView.ShowGroupPanel = false;
             // 
-            // columnSelectorControl1
+            // FileColumnSelector
             // 
-            this.columnSelectorControl1.Appearance.BorderColor = System.Drawing.Color.Gray;
-            this.columnSelectorControl1.Appearance.Font = new System.Drawing.Font("Consolas", 12F);
-            this.columnSelectorControl1.Appearance.Options.UseBorderColor = true;
-            this.columnSelectorControl1.Appearance.Options.UseFont = true;
-            this.columnSelectorControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.columnSelectorControl1.FontSize = 12F;
-            this.columnSelectorControl1.Location = new System.Drawing.Point(0, 0);
-            this.columnSelectorControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.columnSelectorControl1.MarkerColor = System.Drawing.Color.Gray;
-            this.columnSelectorControl1.MaxAllowedColumns = 32;
-            this.columnSelectorControl1.Name = "columnSelectorControl1";
-            this.columnSelectorControl1.Padding = new System.Windows.Forms.Padding(4);
-            this.columnSelectorControl1.Size = new System.Drawing.Size(611, 223);
-            this.columnSelectorControl1.TabIndex = 1;
-            this.columnSelectorControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.columnSelectorControl1_MouseDown);
-            this.columnSelectorControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.columnSelectorControl1_MouseUp);
+            this.FileColumnSelector.Appearance.BorderColor = System.Drawing.Color.Gray;
+            this.FileColumnSelector.Appearance.Font = new System.Drawing.Font("Consolas", 12F);
+            this.FileColumnSelector.Appearance.Options.UseBorderColor = true;
+            this.FileColumnSelector.Appearance.Options.UseFont = true;
+            this.FileColumnSelector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FileColumnSelector.FontSize = 12F;
+            this.FileColumnSelector.Location = new System.Drawing.Point(0, 0);
+            this.FileColumnSelector.Margin = new System.Windows.Forms.Padding(4);
+            this.FileColumnSelector.MarkerColor = System.Drawing.Color.Gray;
+            this.FileColumnSelector.MaxAllowedColumns = 32;
+            this.FileColumnSelector.Name = "FileColumnSelector";
+            this.FileColumnSelector.Padding = new System.Windows.Forms.Padding(4);
+            this.FileColumnSelector.Size = new System.Drawing.Size(611, 223);
+            this.FileColumnSelector.TabIndex = 1;
+            this.FileColumnSelector.MouseDown += new System.Windows.Forms.MouseEventHandler(this.columnSelectorControl1_MouseDown);
+            this.FileColumnSelector.MouseUp += new System.Windows.Forms.MouseEventHandler(this.columnSelectorControl1_MouseUp);
             // 
             // bShow
             // 
@@ -122,7 +123,7 @@ namespace Test001
             // 
             // pTable
             // 
-            this.pTable.Controls.Add(this.gridControl1);
+            this.pTable.Controls.Add(this.DataFileFieldGridControl);
             this.pTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pTable.Location = new System.Drawing.Point(203, 0);
             this.pTable.Name = "pTable";
@@ -224,45 +225,6 @@ namespace Test001
             this.bModify.Text = "Modify";
             this.bModify.Click += new System.EventHandler(this.bModify_Click);
             // 
-            // pShow
-            // 
-            this.pShow.Controls.Add(this.bTest);
-            this.pShow.Controls.Add(this.bShow);
-            this.pShow.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pShow.Location = new System.Drawing.Point(0, 223);
-            this.pShow.Name = "pShow";
-            this.pShow.Size = new System.Drawing.Size(611, 36);
-            this.pShow.TabIndex = 6;
-            // 
-            // bTest
-            // 
-            this.bTest.Location = new System.Drawing.Point(149, 7);
-            this.bTest.Name = "bTest";
-            this.bTest.Size = new System.Drawing.Size(54, 23);
-            this.bTest.TabIndex = 7;
-            this.bTest.Text = "Test";
-            this.bTest.Click += new System.EventHandler(this.bTest_Click);
-            // 
-            // pSelection
-            // 
-            this.pSelection.Controls.Add(this.columnSelectorControl1);
-            this.pSelection.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pSelection.Location = new System.Drawing.Point(0, 0);
-            this.pSelection.Name = "pSelection";
-            this.pSelection.Size = new System.Drawing.Size(611, 223);
-            this.pSelection.TabIndex = 7;
-            // 
-            // pBottom
-            // 
-            this.pBottom.Controls.Add(this.pTable);
-            this.pBottom.Controls.Add(this.pControls);
-            this.pBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pBottom.Location = new System.Drawing.Point(0, 259);
-            this.pBottom.Name = "pBottom";
-            this.pBottom.Size = new System.Drawing.Size(611, 250);
-            this.pBottom.TabIndex = 2;
-            this.pBottom.Visible = false;
-            // 
             // bMoveUp
             // 
             this.bMoveUp.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -283,7 +245,66 @@ namespace Test001
             this.bMoveDown.Text = "MoveDown";
             this.bMoveDown.Click += new System.EventHandler(this.bMoveDown_Click);
             // 
-            // Form1
+            // pShow
+            // 
+            this.pShow.Controls.Add(this.simpleButton1);
+            this.pShow.Controls.Add(this.bTest2);
+            this.pShow.Controls.Add(this.bTest);
+            this.pShow.Controls.Add(this.bShow);
+            this.pShow.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pShow.Location = new System.Drawing.Point(0, 223);
+            this.pShow.Name = "pShow";
+            this.pShow.Size = new System.Drawing.Size(611, 36);
+            this.pShow.TabIndex = 6;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(465, 6);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(124, 23);
+            this.simpleButton1.TabIndex = 9;
+            this.simpleButton1.Text = "TestDataMapping";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // bTest2
+            // 
+            this.bTest2.Location = new System.Drawing.Point(278, 7);
+            this.bTest2.Name = "bTest2";
+            this.bTest2.Size = new System.Drawing.Size(54, 23);
+            this.bTest2.TabIndex = 8;
+            this.bTest2.Text = "Test2";
+            this.bTest2.Click += new System.EventHandler(this.bTest2_Click);
+            // 
+            // bTest
+            // 
+            this.bTest.Location = new System.Drawing.Point(149, 7);
+            this.bTest.Name = "bTest";
+            this.bTest.Size = new System.Drawing.Size(54, 23);
+            this.bTest.TabIndex = 7;
+            this.bTest.Text = "Test";
+            this.bTest.Click += new System.EventHandler(this.bTest_Click);
+            // 
+            // pSelection
+            // 
+            this.pSelection.Controls.Add(this.FileColumnSelector);
+            this.pSelection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pSelection.Location = new System.Drawing.Point(0, 0);
+            this.pSelection.Name = "pSelection";
+            this.pSelection.Size = new System.Drawing.Size(611, 223);
+            this.pSelection.TabIndex = 7;
+            // 
+            // pBottom
+            // 
+            this.pBottom.Controls.Add(this.pTable);
+            this.pBottom.Controls.Add(this.pControls);
+            this.pBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pBottom.Location = new System.Drawing.Point(0, 259);
+            this.pBottom.Name = "pBottom";
+            this.pBottom.Size = new System.Drawing.Size(611, 250);
+            this.pBottom.TabIndex = 2;
+            this.pBottom.Visible = false;
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -291,11 +312,11 @@ namespace Test001
             this.Controls.Add(this.pSelection);
             this.Controls.Add(this.pShow);
             this.Controls.Add(this.pBottom);
-            this.Name = "Form1";
+            this.Name = "FormMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataFileFieldGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataFileFieldGridView)).EndInit();
             this.pTable.ResumeLayout(false);
             this.pControls.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -308,9 +329,9 @@ namespace Test001
 
         #endregion
 
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private ColumnSelectorControlSingle columnSelectorControl1;
+        private DevExpress.XtraGrid.GridControl DataFileFieldGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView DataFileFieldGridView;
+        private ColumnSelectorControlSingle FileColumnSelector;
         private System.Windows.Forms.Panel pTable;
         private DevExpress.XtraEditors.SimpleButton bClear;
         private DevExpress.XtraEditors.SimpleButton bReload;
@@ -327,6 +348,8 @@ namespace Test001
         private DevExpress.XtraEditors.SimpleButton bTest;
         private DevExpress.XtraEditors.SimpleButton bMoveUp;
         private DevExpress.XtraEditors.SimpleButton bMoveDown;
+        private DevExpress.XtraEditors.SimpleButton bTest2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
 

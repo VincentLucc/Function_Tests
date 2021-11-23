@@ -12,35 +12,44 @@ using System.IO;
 
 namespace Test001
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
 
-        List<InputField> ColumnDefinition { get; set; }
+       public List<InputField> ColumnDefinition { get; set; }
+        public bool IgnoreDataFileFieldGridViewRowSelectionChange { get; set; }
 
-        public Form1()
+        UIOperation UserOperation=new UIOperation();
+
+        public FormMain()
         {
             InitializeComponent();
+
+            //string s = "abc";
+            //string s3 = s.Substring(1, 5);
+            ClassPublic.winMain = this;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             //Load text
             string sPath = Directory.GetCurrentDirectory() + "/output 10-12.txt";
-            columnSelectorControl1.LoadFile(sPath, 10, true);
+            FileColumnSelector.LoadFile(sPath, 10, true);
 
             InitCustomizedFixedWidthControl();
+            //ShowMapForm();
+            ShowTreeListForm();
         }
 
         private void InitCustomizedFixedWidthControl()
         {
-            gridControl1.Enabled = true;
+            DataFileFieldGridControl.Enabled = true;
 
 
             CreateRowData();
 
-            columnSelectorControl1.SelectionReady += SelectionReadyMethod;
-            gridView1.FocusedRowChanged += GridView1_FocusedRowChanged;
-            gridView1.CellValueChanged += GridView1_CellValueChanged;
+            FileColumnSelector.SelectionReady += SelectionReadyMethod;
+            DataFileFieldGridView.FocusedRowChanged += GridView1_FocusedRowChanged;
+            DataFileFieldGridView.CellValueChanged += GridView1_CellValueChanged;
         }
 
         private void SelectionReadyMethod(object sender, EventArgs e)
@@ -48,7 +57,7 @@ namespace Test001
             //Get event button
             var eButton = (ColumnSelectorControlSingle.IndexCollectionChangeEventArgs)e;
             //Get current selected index
-            int iIndex = gridView1.FocusedRowHandle;
+            int iIndex = DataFileFieldGridView.FocusedRowHandle;
 
             //Selection when left button used
             if (eButton.Button == MouseButtons.Left)
@@ -62,13 +71,20 @@ namespace Test001
             else if (eButton.Button == MouseButtons.Right)
             {
                 //Always add a new record
-                AddIndexRows();
+                DataFieldAddIndexRows();
             }
         }
 
         private void GridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             Debug.WriteLine("Current row:" + e.FocusedRowHandle);
+
+            //Check ignore, ignore once
+            //if (IgnoreDataFileFieldGridViewRowSelectionChange)
+            //{
+            //    IgnoreDataFileFieldGridViewRowSelectionChange = false;
+            //    return;
+            //}
 
             //Get selected value
             var verifyResult = VerifyFixedWidthDefinition();
@@ -90,24 +106,32 @@ namespace Test001
             {new Tuple<SolidBrush,int,int>(new SolidBrush(Color.Red),Selection[0],Selection[1]) };
 
             //Appy selection 
-            columnSelectorControl1.SetColumnCoords(selection);
+            FileColumnSelector.SetColumnCoords(selection);
         }
 
         private void CreateRowData()
         {
             //Init row
             ColumnDefinition = new List<InputField>();
+
             for (int i = 0; i < 5; i++)
             {
-                InputField column = new InputField()
-                { Name = "Test", Description = "Test", Position = i, Length = i + 1 };
-                ColumnDefinition.Add(column);
+                InputField field = new InputField()
+                { Name = $"Test{i}", Description = "Test", Position = i, Length = i + 1 };
+
+
+                for (int j = 0; j < 3; j++)
+                {
+                    InputField customFiled = new InputField()
+                    { Name = $"Test{i}_{j}", Description = "Test", Position = i, Length = i + 1 };
+                    field.CustomFields.Add(customFiled);
+                }
+
+                ColumnDefinition.Add(field);
             }
 
-            gridControl1.DataSource = ColumnDefinition;
-            gridView1.Columns[nameof(InputField.ColumnNumber)].Visible = false;
-
-
+            DataFileFieldGridControl.DataSource = ColumnDefinition;
+            DataFileFieldGridView.Columns[nameof(InputField.ColumnNumber)].Visible = false;
         }
 
 
@@ -120,7 +144,7 @@ namespace Test001
             Debug.WriteLine(sLocatin);
 
             //Ignore one new row creation process
-            if (iRow<-1) return; //Sample:RowID=2147483647
+            if (iRow < -1) return; //Sample:RowID=2147483647
 
             //Ignore verification when position and length not selected
             if (sColumn != nameof(InputField.Position) && sColumn != nameof(InputField.Length))
@@ -152,7 +176,7 @@ namespace Test001
             {new Tuple<SolidBrush,int,int>(new SolidBrush(Color.Red),Selection[0],Selection[1]) };
 
             //Appy selection 
-            columnSelectorControl1.SetColumnCoords(selection);
+            FileColumnSelector.SetColumnCoords(selection);
 
             //Display first row value
             Debug.WriteLine($"Value changed:{ColumnDefinition[0].Length}");
@@ -165,7 +189,7 @@ namespace Test001
             var mainResult = new SelectionResult();
 
             //Get updated data
-            var fieldData = ((List<InputField>)gridControl1.DataSource);
+            var fieldData = ((List<InputField>)DataFileFieldGridControl.DataSource);
 
             //Null verification
             if (fieldData == null)
@@ -221,9 +245,9 @@ namespace Test001
         private void bClear_Click(object sender, EventArgs e)
         {
             //Get updated data
-            var dataSource = (List<InputField>)gridControl1.DataSource;
+            var dataSource = (List<InputField>)DataFileFieldGridControl.DataSource;
             dataSource.Clear();
-            gridControl1.DataSource = dataSource;
+            DataFileFieldGridControl.DataSource = dataSource;
         }
 
         private void bReload_Click(object sender, EventArgs e)
@@ -241,30 +265,50 @@ namespace Test001
         private void bAdd_Click(object sender, EventArgs e)
         {
             //Directly add
-            AddIndexRows();
+            DataFieldAddIndexRows();
+
+            IgnoreDataFileFieldGridViewRowSelectionChange = true;    //Set row change ignore flag
+            DataFileFieldGridView.FocusedRowHandle = DataFileFieldGridView.RowCount - 1;
+
+
+            //Get new row handle
+        
         }
 
+
+
+
+        public enum UIOperation
+        {
+           Added
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="IndexList"></param>
-        private void AddIndexRows()
+        private void DataFieldAddIndexRows()
         {
-            //Get selection
-            var result = columnSelectorControl1.getSingleColumnCoords();
+            //Init variables
+            var IndexList = new List<int[]>();
+
+            //Try get selection
+            var result = FileColumnSelector.getSingleColumnCoords();
             if (!result.IsSuccess)
             {
-                MessageBox.Show(result.Message);
-                return;
+                //Create a default selection
+                var indexRow = new Tuple<SolidBrush, int, int>(new SolidBrush(Color.Red), 0, 1);
+                FileColumnSelector.SetColumnCoords(new List<Tuple<SolidBrush, int, int>>() { indexRow });
+                IndexList.Add(new int[] { 0, 1 }); //Use default value
+            }
+            else
+            {
+                //Get Selected index
+                IndexList = result.Selection;
             }
 
-            //Selected index
-            var IndexList = result.Selection;
-
-
-            //Get data
-            var dataSource = (List<InputField>)gridControl1.DataSource;
+            //Get current data source
+            var dataSource = (List<InputField>)DataFileFieldGridControl.DataSource;
 
             //Add data row
             for (int i = 0; i < IndexList.Count; i++)
@@ -282,10 +326,10 @@ namespace Test001
             }
 
             //Refresh data display
-            gridView1.RefreshData();
+            DataFileFieldGridView.RefreshData();
 
             //Clear selection
-            columnSelectorControl1.ClearColumnCoords();
+            FileColumnSelector.ClearColumnCoords();
         }
 
 
@@ -299,14 +343,14 @@ namespace Test001
             var result = new GeneralResult();
 
             //Check data table selection
-            if (!gridView1.IsValidRowHandle(gridView1.FocusedRowHandle))
+            if (!DataFileFieldGridView.IsValidRowHandle(DataFileFieldGridView.FocusedRowHandle))
             {
                 result.Message = "Please select a valid row first.";
                 return result;
             }
 
             //Verify UI selection
-            var selection = columnSelectorControl1.getSingleColumnCoords();
+            var selection = FileColumnSelector.getSingleColumnCoords();
             if (!selection.IsSuccess)
             {
                 result.Message = "Please select valid column range first.";
@@ -315,7 +359,7 @@ namespace Test001
 
             //Get selected result
             var IndexList = selection.Selection; //Get column selection tool selected index
-            var SelectedIndex = gridView1.GetDataSourceRowIndex(gridView1.FocusedRowHandle);   //Get data table selection index
+            var SelectedIndex = DataFileFieldGridView.GetDataSourceRowIndex(DataFileFieldGridView.FocusedRowHandle);   //Get data table selection index
 
             //Verify UI column selection index counts
             if (IndexList.Count == 0 || IndexList.Count != 1)
@@ -332,7 +376,7 @@ namespace Test001
             }
 
             //Get datasource
-            var dataSource = (List<InputField>)gridControl1.DataSource;
+            var dataSource = (List<InputField>)DataFileFieldGridControl.DataSource;
             var selectedRow = dataSource[SelectedIndex]; //Get selected row
 
             //Set row value
@@ -342,7 +386,7 @@ namespace Test001
 
 
             //Re-new value
-            gridControl1.RefreshDataSource();
+            DataFileFieldGridControl.RefreshDataSource();
 
             //Pass all steps
             result.IsSuccess = true;
@@ -360,7 +404,7 @@ namespace Test001
             var result = new GeneralResult();
 
             //Check data table selection
-            if (!gridView1.IsValidRowHandle(gridView1.FocusedRowHandle))
+            if (!DataFileFieldGridView.IsValidRowHandle(DataFileFieldGridView.FocusedRowHandle))
             {
                 result.Message = $"Please select a valid row first.";
                 result.IsSuccess = false;
@@ -369,9 +413,9 @@ namespace Test001
 
 
             //Get source data
-            var dataSource = (List<InputField>)gridControl1.DataSource;
+            var dataSource = (List<InputField>)DataFileFieldGridControl.DataSource;
             //Get selected datasource index
-            int SelectedIndex = gridView1.GetDataSourceRowIndex(gridView1.FocusedRowHandle);
+            int SelectedIndex = DataFileFieldGridView.GetDataSourceRowIndex(DataFileFieldGridView.FocusedRowHandle);
 
             //Try remove selected row
             try
@@ -386,10 +430,10 @@ namespace Test001
             }
 
             //Re-new value
-            gridControl1.DataSource = dataSource;
+            DataFileFieldGridControl.DataSource = dataSource;
 
             //Clear UI column selection
-            columnSelectorControl1.ClearColumnCoords();
+            FileColumnSelector.ClearColumnCoords();
 
             //Pass all steps
             result.IsSuccess = true;
@@ -404,7 +448,7 @@ namespace Test001
         private void SortDataTable()
         {
             //Get source data
-            DataTable dtData = ((DataView)gridControl1.DataSource).ToTable();
+            DataTable dtData = ((DataView)DataFileFieldGridControl.DataSource).ToTable();
 
             var Rows = dtData.Select(null, "[Start Index] ASC,[End Index] ASC"); //Sort row
 
@@ -421,7 +465,7 @@ namespace Test001
             }
 
             //Re-new value
-            gridControl1.DataSource = dtNew.DefaultView;
+            DataFileFieldGridControl.DataSource = dtNew.DefaultView;
         }
 
 
@@ -431,27 +475,27 @@ namespace Test001
         private void DataFieldMoveUp()
         {
             //Get current selection
-            int iSelection = gridView1.FocusedRowHandle;
+            int iSelection = DataFileFieldGridView.FocusedRowHandle;
 
             //Ignore when row selection reach limit
             //When first row or nothing selected
-            if (iSelection==0 || iSelection<0) return;
+            if (iSelection == 0 || iSelection < 0) return;
 
             //Get source data
-            var dataSource = (List<InputField>)gridControl1.DataSource;
+            var dataSource = (List<InputField>)DataFileFieldGridControl.DataSource;
 
             //Get row data
             var selectedRow = dataSource[iSelection];
 
             //Switch data
             dataSource.RemoveAt(iSelection);
-            dataSource.Insert(iSelection-1,selectedRow);
+            dataSource.Insert(iSelection - 1, selectedRow);
 
             //Re-new value
-            gridView1.RefreshData();
+            DataFileFieldGridView.RefreshData();
 
             //Reset selection
-            gridView1.FocusedRowHandle = iSelection - 1;
+            DataFileFieldGridView.FocusedRowHandle = iSelection - 1;
         }
 
         /// <summary>
@@ -460,14 +504,14 @@ namespace Test001
         private void DataFieldMoveDown()
         {
             //Get current selection
-            int iSelection = gridView1.FocusedRowHandle;
+            int iSelection = DataFileFieldGridView.FocusedRowHandle;
 
             //Get source data
-            var dataSource = (List<InputField>)gridControl1.DataSource;
+            var dataSource = (List<InputField>)DataFileFieldGridControl.DataSource;
 
             //Get max index value
-            int iMax= dataSource.Count-1;
-            
+            int iMax = dataSource.Count - 1;
+
             //Ignore when row selection reach limit
             //When last row or nothing selected
             if (iSelection == iMax || iSelection < 0) return;
@@ -480,10 +524,10 @@ namespace Test001
             dataSource.Insert(iSelection + 1, selectedRow);
 
             //Re-new value
-            gridView1.RefreshData();
+            DataFileFieldGridView.RefreshData();
 
             //Reset selection
-            gridView1.FocusedRowHandle = iSelection + 1;
+            DataFileFieldGridView.FocusedRowHandle = iSelection + 1;
         }
 
         /// <summary>
@@ -510,7 +554,7 @@ namespace Test001
         private void bDel_Click(object sender, EventArgs e)
         {
             Debug.WriteLine(ColumnDefinition.Count);
-            gridView1.DeleteSelectedRows();
+            DataFileFieldGridView.DeleteSelectedRows();
             Debug.WriteLine(ColumnDefinition.Count);
         }
 
@@ -521,7 +565,7 @@ namespace Test001
 
         private void bTest_Click(object sender, EventArgs e)
         {
-            gridControl1.Visible = !gridControl1.Visible;
+            DataFileFieldGridControl.Visible = !DataFileFieldGridControl.Visible;
         }
 
         private void columnSelectorControl1_MouseDown(object sender, MouseEventArgs e)
@@ -543,7 +587,37 @@ namespace Test001
 
         private void bMoveDown_Click(object sender, EventArgs e)
         {
-            DataFieldMoveDown();
+            DataFieldMoveUp();
+        }
+
+        private void bTest2_Click(object sender, EventArgs e)
+        {
+            DataFileFieldGridView.FocusInvalidRow();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            ShowMapForm();
+        }
+
+        private void ShowMapForm()
+        {
+            if (ClassPublic.winMapping == null)
+            {
+                ClassPublic.winMapping = new FormMapping();
+                ClassPublic.winMapping.Show();
+            }
+        }
+
+        private async void ShowTreeListForm()
+        {
+            await Task.Delay(100);
+            if (ClassPublic.winTree == null)
+            {
+                ClassPublic.winTree = new FormTree();
+                ClassPublic.winTree.Show();
+                ClassPublic.winTree.BringToFront();
+            }
         }
     }
 }

@@ -6,14 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Test001
+namespace ColumnSelectionNew
 {
     class ClassPublic
     {
-        public static FormMapping winMapping;
-        public static FormTree winTree;
-        public static FormMain winMain;
-
 
         /// <summary>
         /// Verify if object is a int value and if in range
@@ -82,7 +78,6 @@ namespace Test001
     }
 
 
-
     [Serializable]
     public class InputField
     {
@@ -93,16 +88,10 @@ namespace Test001
             ColumnNumber = 0;
             Position = 0;
             Length = 0;
-            CustomFields = new List<InputField>();
         }
 
         public InputField()
         {
-            CustomFields = new List<InputField>();
-            Description = "";
-            ColumnNumber = 0;
-            Position = 0;
-            Length = 0;
         }
 
         [XmlAttribute]
@@ -115,34 +104,7 @@ namespace Test001
         public int Position { get; set; }
         [XmlAttribute]
         public int Length { get; set; }
-        public List<InputField> CustomFields { get; set; }
     }
 
-
-    /// <summary>
-    /// Custmized Fields with fixed width file format
-    /// </summary>
-    [Serializable]
-    public class CustomField
-    {
-        /// <summary>
-        /// Custom column index
-        /// </summary>
-        public int ColumnIndex { get; set; }
-        /// <summary>
-        /// Read from DataFileSetting.InputFields.Name
-        /// </summary>
-        [XmlIgnore]
-        public string ColumnName { get; set; }
-        /// <summary>
-        /// // Sub column fixed width config 
-        /// </summary>
-        public List<InputField> FieldConfig { get; set; }
-
-        public CustomField()
-        {
-            FieldConfig = new List<InputField>();
-        }
-    }
 
 }

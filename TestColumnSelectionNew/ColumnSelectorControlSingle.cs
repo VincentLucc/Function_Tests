@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Test001
+namespace ColumnSelectionNew
 {
 
     /// <summary>
@@ -232,9 +232,9 @@ namespace Test001
                 }
             }
             myIndexes.RemoveAll(x => x >= iRecordMaxLength);
-            myContent.Width = (iRecordMaxLength + 1) * Convert.ToInt32(iCharWidth); //Max=65535
-            myContent.Height = 1000;
-            myContent.MinimumSize = new Size(myContent.Width, 1000);
+            //myContent.Width = (iRecordMaxLength + 1) * Convert.ToInt32(iCharWidth); //Max=65535
+            //myContent.Height = 1000;
+            //myContent.MinimumSize = new Size(myContent.Width, 1000);
             myContent.Invalidate();
             myRuler.Refresh();
 
@@ -404,7 +404,7 @@ namespace Test001
         /// <summary>
         /// This is the child control class that displays the content of sample text/csv file
         /// </summary>
-        internal class myContentControl : Label
+        internal class myContentControl : RichTextBox
         {
             private ColumnSelectorControlSingle myParentControl;
 
@@ -417,14 +417,16 @@ namespace Test001
                 SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
                 SetStyle(ControlStyles.CacheText, true); //Increase performance
                 //this.AutoScrollOffset = ScrollableControl.
-                base.BackColor = System.Drawing.SystemColors.Control;
-                base.ForeColor = System.Drawing.Color.Black;
-                this.Dock = System.Windows.Forms.DockStyle.Left;
-                base.Font = new System.Drawing.Font("Consolas", myParentControl.FontSize, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.Location = new System.Drawing.Point(0, 26);
-                this.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+                base.BackColor = SystemColors.Control;
+                base.ForeColor = Color.Black;
+                this.Dock = DockStyle.Fill;
+                base.Font = new Font("Consolas", myParentControl.FontSize,FontStyle.Regular,GraphicsUnit.Point, ((byte)(0)));
+                this.Location = new Point(0, 26);
+                this.Padding = new Padding(0, 0, 0, 0);
                 this.Name = "myContent";
-                this.Size = new System.Drawing.Size(1, 1);
+                this.Size = new Size(1, 1);
+                this.ScrollBars = RichTextBoxScrollBars.Horizontal;
+                this.WordWrap = false;
             }
 
             /// <summary>
@@ -436,6 +438,10 @@ namespace Test001
                 get
                 {
                     List<int[]> list = new List<int[]>();
+                    //Null check
+                    if (drawPoints==null) return list;
+
+                    //Get value
                     foreach (var drawPoint in drawPoints)
                     {
                         list.Add(new int[2] { drawPoint.Item2, drawPoint.Item3 });
