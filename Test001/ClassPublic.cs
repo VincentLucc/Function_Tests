@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -83,6 +84,113 @@ namespace Test001
 
 
 
+    public class DataFileSetting
+    {
+
+        public DataFileSetting()
+        {
+            InputFields = new BindingList<InputField>();
+            KeyColumn = "";
+            Key2 = "";
+            Key3 = "";
+
+            //Create sample column data
+            CreateSampleData();
+        }
+
+        public bool Delimited { get; set; }
+
+        public int DelimiterIndex { get; set; }
+
+        public string SpecialCharacter { get; set; }
+
+        public string DelimiterCharacter
+        {
+            get
+            {
+                string str = "";
+
+                switch (DelimiterIndex)
+                {
+                    case 0:
+                        str = ",";
+                        break;
+                    case 1:
+                        str = ";";
+                        break;
+                    case 2:
+                        str = "\t";
+                        break;
+                    case 3:
+                        str = " ";
+                        break;
+                    case 4:
+                        str = SpecialCharacter;
+                        break;
+                }
+
+                return str;
+            }
+        }
+
+        public bool ContainsJobInfo { get; set; }
+
+        public bool FirstLineIsHeader { get; set; }
+
+        /// <summary>
+        /// Main fixed width delimiter config
+        /// </summary>
+        public BindingList<InputField> InputFields { get; set; }
+
+        public string KeyColumn { get; set; }
+
+        public string Key2 { get; set; }
+
+        public string Key3 { get; set; }
+
+        public string SampleDataFile { get; set; }
+
+        public bool FieldExists(string fieldName)
+        {
+            if (InputFields.Any(p => p.Name == fieldName))
+                return true;
+            else
+                return false;
+        }
+
+        public bool DeviceNameExists(string fieldName)
+        {
+            if (InputFields.Any(p => p.Name == fieldName))
+                return true;
+            else
+                return false;
+        }
+
+      
+        /// <summary>
+        /// Sample data for testing
+        /// </summary>
+        public void CreateSampleData()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                InputField field = new InputField()
+                { Name = $"Test{i}", Description = "Test", Position = i, Length = i + 10 };
+
+
+                for (int j = 0; j < 3; j++)
+                {
+                    InputField customFiled = new InputField()
+                    { Name = $"Test{i}_{j}", Description = "Test", Position = j, Length = j + 2 };
+                    field.CustomFields.Add(customFiled);
+                }
+
+                InputFields.Add(field);
+            }
+        }
+    }
+
+
     [Serializable]
     public class InputField
     {
@@ -115,6 +223,11 @@ namespace Test001
         public int Position { get; set; }
         [XmlAttribute]
         public int Length { get; set; }
+        /// <summary>
+        /// Indidate wether this field is hidden from operator or preview
+        /// </summary>
+        [XmlIgnore]
+        public bool IsHidden { get; set; }
         public List<InputField> CustomFields { get; set; }
     }
 

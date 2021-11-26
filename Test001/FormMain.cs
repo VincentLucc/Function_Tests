@@ -15,7 +15,7 @@ namespace Test001
     public partial class FormMain : Form
     {
 
-       public List<InputField> ColumnDefinition { get; set; }
+       public BindingList<InputField> ColumnDefinition { get; set; }
         public bool IgnoreDataFileFieldGridViewRowSelectionChange { get; set; }
 
         UIOperation UserOperation=new UIOperation();
@@ -112,7 +112,7 @@ namespace Test001
         private void CreateRowData()
         {
             //Init row
-            ColumnDefinition = new List<InputField>();
+            ColumnDefinition = new BindingList<InputField>();
 
             for (int i = 0; i < 5; i++)
             {
@@ -189,7 +189,7 @@ namespace Test001
             var mainResult = new SelectionResult();
 
             //Get updated data
-            var fieldData = ((List<InputField>)DataFileFieldGridControl.DataSource);
+            var fieldData = ((BindingList<InputField>)DataFileFieldGridControl.DataSource);
 
             //Null verification
             if (fieldData == null)
