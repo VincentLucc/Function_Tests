@@ -152,45 +152,14 @@ namespace Test001
             }
 
             //Try to load file
-            bool hasTab = false, doTab = false;  // debugging: set doTab to true to switch tab characters to spaces
             int[] maxTabAreas = new int[0];
             int counter = 0;
             iRecordMaxLength = 1;
             mylines = new string[rows];
 
-
-            //???
-            if (doTab)
-            {
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    while (counter < rows)
-                    {
-                        sLine = reader.ReadLine();
-                        if (sLine == null) break;
-
-                        if (sLine.Contains("\t"))
-                        {
-                            hasTab = true;
-                            string[] sArr = sLine.Split('\t');
-                            if (maxTabAreas.Length < sArr.Length) maxTabAreas = new int[sArr.Length];
-                            int iTabSpaces = 6;
-                            for (int i = 0; i < sArr.Length; i++)
-                            {
-                                int max = (int)Math.Ceiling((double)sArr[i].Length / iTabSpaces) * iTabSpaces;
-                                if (max > maxTabAreas[i]) maxTabAreas[i] = max;
-                            }
-                        }
-                        counter++;
-                    }
-                }
-            }
-
             counter = 0;
             using (StreamReader reader = new StreamReader(filePath))
             {
-
-
                 if (hasJH)
                 {
                     reader.ReadLine();
@@ -202,30 +171,12 @@ namespace Test001
                     sLine = reader.ReadLine();
                     if (sLine == null) break;
 
-                    if (hasTab)
-                    {
-                        string[] sArr = sLine.Split('\t');
-                        string s0 = string.Empty;
-                        for (int i = 0; i < sArr.Length; i++)
-                        {
-                            string s1 = sArr[i];
-                            if (s1.Length < maxTabAreas[i]) s1 += new string(' ', maxTabAreas[i] - s1.Length);
-                            s0 += s1;
 
-                        }
-                        s0 = s0.TrimEnd();
-                        if (s0.Length > iRecordMaxLength) iRecordMaxLength = s0.Length + 1;
-                        mylines[counter] = s0;
-                        sBuilder.Append(s0);
-                        sBuilder.Append(System.Environment.NewLine);
-                    }
-                    else
-                    {
-                        if (sLine.Length > iRecordMaxLength) iRecordMaxLength = sLine.Length + 1;
-                        mylines[counter] = sLine;
-                        sBuilder.Append(sLine);
-                        sBuilder.Append(System.Environment.NewLine);
-                    }
+                    if (sLine.Length > iRecordMaxLength) iRecordMaxLength = sLine.Length + 1;
+                    mylines[counter] = sLine;
+                    sBuilder.Append(sLine);
+                    sBuilder.Append(System.Environment.NewLine);
+
 
                     counter++;
                     Debug.WriteLine("Fullstring:" + sBuilder.Length);
