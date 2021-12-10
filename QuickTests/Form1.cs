@@ -33,5 +33,16 @@ namespace QuickTests
             watch.Stop();
             Debug.WriteLine($"Elipsed:{watch.ElapsedMilliseconds}");
         }
+
+        private async void Form1_Load(object sender, EventArgs e)
+        {
+            await Task.Delay(5000);
+            this.Visible = true;
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
     }
 }
