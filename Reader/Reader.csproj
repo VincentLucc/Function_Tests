@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <!--Project was exported from assembly: C:\Users\Administrator\Desktop\C#RFID\UHFSDK\Reader.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{26B6AAEE-3512-42D9-835E-EA9B4A699CB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Reader</AssemblyName>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <RootNamespace>Reader</RootNamespace>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ITalker.cs" />
+    <Compile Include="Talker.cs" />
+    <Compile Include="CMD.cs" />
+    <Compile Include="RXOperationTag.cs" />
+    <Compile Include="RXFastSwitchAntInventoryTagEnd.cs" />
+    <Compile Include="RXInventoryTag.cs" />
+    <Compile Include="ReciveDataCallback.cs" />
+    <Compile Include="SendDataCallback.cs" />
+    <Compile Include="AnalyDataCallback.cs" />
+    <Compile Include="OnExeCMDStatus.cs" />
+    <Compile Include="RefreshSetting.cs" />
+    <Compile Include="OnInventoryTag.cs" />
+    <Compile Include="OnInventoryTagEnd.cs" />
+    <Compile Include="OnFastSwitchAntInventoryTagEnd.cs" />
+    <Compile Include="OnGetInventoryBufferTagCount.cs" />
+    <Compile Include="OnOperationTag.cs" />
+    <Compile Include="OnOperationTagEnd.cs" />
+    <Compile Include="OnInventory6BTag.cs" />
+    <Compile Include="OnInventory6BTagEnd.cs" />
+    <Compile Include="OnRead6BTag.cs" />
+    <Compile Include="OnWrite6BTag.cs" />
+    <Compile Include="OnLock6BTag.cs" />
+    <Compile Include="OnLockQuery6BTag.cs" />
+    <Compile Include="ReaderMethod.cs" />
+    <Compile Include="ERROR.cs" />
+    <Compile Include="MessageTran.cs" />
+    <Compile Include="ReaderProcessor.cs" />
+    <Compile Include="CCommondMethod.cs" />
+    <Compile Include="RXInventory6BTag.cs" />
+    <Compile Include="MessageReceivedEventHandler.cs" />
+    <Compile Include="RXInventoryTagEnd.cs" />
+    <Compile Include="ReaderSetting.cs" />
+    <Compile Include="MaskMap.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

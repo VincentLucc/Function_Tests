@@ -50,9 +50,28 @@
             this.cbPower = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabConfig = new System.Windows.Forms.TabPage();
+            this.button8 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bPassWrite = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.bRead = new System.Windows.Forms.Button();
+            this.bWriteUser = new System.Windows.Forms.Button();
+            this.tbInput = new System.Windows.Forms.TextBox();
+            this.bSwetCurrentTag = new System.Windows.Forms.Button();
+            this.bShowCurrentTags = new System.Windows.Forms.Button();
+            this.bGetAndResetBuffer = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbRetry = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.bBufferReset = new System.Windows.Forms.Button();
+            this.bPowerRead = new System.Windows.Forms.Button();
             this.tabTest = new System.Windows.Forms.TabPage();
+            this.bWriteEPC = new System.Windows.Forms.Button();
+            this.bReadReserve = new System.Windows.Forms.Button();
+            this.bGetCurrentTag = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabConfig.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnConnectRs232
@@ -84,9 +103,9 @@
             this.btInventoryRealStart.Name = "btInventoryRealStart";
             this.btInventoryRealStart.Size = new System.Drawing.Size(161, 25);
             this.btInventoryRealStart.TabIndex = 5;
-            this.btInventoryRealStart.Text = "Inventory start";
+            this.btInventoryRealStart.Text = "Inventory real start";
             this.btInventoryRealStart.UseVisualStyleBackColor = true;
-            this.btInventoryRealStart.Click += new System.EventHandler(this.button2_Click);
+            this.btInventoryRealStart.Click += new System.EventHandler(this.btInventoryRealStart_Click);
             // 
             // button4
             // 
@@ -102,7 +121,7 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(228, 152);
+            this.button5.Location = new System.Drawing.Point(228, 190);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(166, 25);
             this.button5.TabIndex = 8;
@@ -124,7 +143,7 @@
             // bVersion
             // 
             this.bVersion.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bVersion.Location = new System.Drawing.Point(535, 19);
+            this.bVersion.Location = new System.Drawing.Point(539, 48);
             this.bVersion.Name = "bVersion";
             this.bVersion.Size = new System.Drawing.Size(121, 25);
             this.bVersion.TabIndex = 11;
@@ -135,7 +154,7 @@
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(441, 112);
+            this.button9.Location = new System.Drawing.Point(32, 335);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(158, 25);
             this.button9.TabIndex = 12;
@@ -146,7 +165,7 @@
             // button11
             // 
             this.button11.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(441, 152);
+            this.button11.Location = new System.Drawing.Point(32, 366);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(145, 25);
             this.button11.TabIndex = 14;
@@ -214,7 +233,7 @@
             // button13
             // 
             this.button13.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(228, 190);
+            this.button13.Location = new System.Drawing.Point(228, 230);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(191, 25);
             this.button13.TabIndex = 24;
@@ -225,7 +244,7 @@
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(535, 51);
+            this.button7.Location = new System.Drawing.Point(666, 48);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(121, 25);
             this.button7.TabIndex = 25;
@@ -235,15 +254,14 @@
             // 
             // btInventoryRealStop
             // 
-            this.btInventoryRealStop.Enabled = false;
             this.btInventoryRealStop.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btInventoryRealStop.Location = new System.Drawing.Point(32, 152);
             this.btInventoryRealStop.Name = "btInventoryRealStop";
             this.btInventoryRealStop.Size = new System.Drawing.Size(161, 25);
             this.btInventoryRealStop.TabIndex = 26;
-            this.btInventoryRealStop.Text = "Inventory stop";
+            this.btInventoryRealStop.Text = "Inventory real stop";
             this.btInventoryRealStop.UseVisualStyleBackColor = true;
-            this.btInventoryRealStop.Click += new System.EventHandler(this.button2_Click_1);
+            this.btInventoryRealStop.Click += new System.EventHandler(this.btInventoryRealStop_Click);
             // 
             // bBeepOn
             // 
@@ -307,6 +325,14 @@
             // 
             // tabConfig
             // 
+            this.tabConfig.Controls.Add(this.button8);
+            this.tabConfig.Controls.Add(this.groupBox1);
+            this.tabConfig.Controls.Add(this.bGetAndResetBuffer);
+            this.tabConfig.Controls.Add(this.label1);
+            this.tabConfig.Controls.Add(this.tbRetry);
+            this.tabConfig.Controls.Add(this.button2);
+            this.tabConfig.Controls.Add(this.bBufferReset);
+            this.tabConfig.Controls.Add(this.bPowerRead);
             this.tabConfig.Controls.Add(this.lSerialPort);
             this.tabConfig.Controls.Add(this.button11);
             this.tabConfig.Controls.Add(this.button7);
@@ -335,15 +361,203 @@
             this.tabConfig.Text = "tabPage1";
             this.tabConfig.UseVisualStyleBackColor = true;
             // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(32, 274);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(161, 25);
+            this.button8.TabIndex = 38;
+            this.button8.Text = "Inventory real 3";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.bGetCurrentTag);
+            this.groupBox1.Controls.Add(this.bReadReserve);
+            this.groupBox1.Controls.Add(this.bWriteEPC);
+            this.groupBox1.Controls.Add(this.bPassWrite);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.bRead);
+            this.groupBox1.Controls.Add(this.bWriteUser);
+            this.groupBox1.Controls.Add(this.tbInput);
+            this.groupBox1.Controls.Add(this.bSwetCurrentTag);
+            this.groupBox1.Controls.Add(this.bShowCurrentTags);
+            this.groupBox1.Location = new System.Drawing.Point(539, 112);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(325, 370);
+            this.groupBox1.TabIndex = 37;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Operation";
+            // 
+            // bPassWrite
+            // 
+            this.bPassWrite.Location = new System.Drawing.Point(8, 107);
+            this.bPassWrite.Name = "bPassWrite";
+            this.bPassWrite.Size = new System.Drawing.Size(125, 23);
+            this.bPassWrite.TabIndex = 6;
+            this.bPassWrite.Text = "WritePassword";
+            this.bPassWrite.UseVisualStyleBackColor = true;
+            this.bPassWrite.Click += new System.EventHandler(this.bPassWrite_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(139, 49);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(125, 23);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "Read Tag ID";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // bRead
+            // 
+            this.bRead.Location = new System.Drawing.Point(139, 80);
+            this.bRead.Name = "bRead";
+            this.bRead.Size = new System.Drawing.Size(125, 23);
+            this.bRead.TabIndex = 4;
+            this.bRead.Text = "Read User Data";
+            this.bRead.UseVisualStyleBackColor = true;
+            this.bRead.Click += new System.EventHandler(this.bRead_Click);
+            // 
+            // bWriteUser
+            // 
+            this.bWriteUser.Location = new System.Drawing.Point(8, 49);
+            this.bWriteUser.Name = "bWriteUser";
+            this.bWriteUser.Size = new System.Drawing.Size(125, 23);
+            this.bWriteUser.TabIndex = 3;
+            this.bWriteUser.Text = "Write User Data";
+            this.bWriteUser.UseVisualStyleBackColor = true;
+            this.bWriteUser.Click += new System.EventHandler(this.bWriteUser_Click);
+            // 
+            // tbInput
+            // 
+            this.tbInput.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tbInput.Location = new System.Drawing.Point(3, 269);
+            this.tbInput.Multiline = true;
+            this.tbInput.Name = "tbInput";
+            this.tbInput.Size = new System.Drawing.Size(319, 98);
+            this.tbInput.TabIndex = 2;
+            // 
+            // bSwetCurrentTag
+            // 
+            this.bSwetCurrentTag.Location = new System.Drawing.Point(8, 19);
+            this.bSwetCurrentTag.Name = "bSwetCurrentTag";
+            this.bSwetCurrentTag.Size = new System.Drawing.Size(125, 23);
+            this.bSwetCurrentTag.TabIndex = 1;
+            this.bSwetCurrentTag.Text = "Set Current Tag";
+            this.bSwetCurrentTag.UseVisualStyleBackColor = true;
+            this.bSwetCurrentTag.Click += new System.EventHandler(this.bSwetCurrentTag_Click);
+            // 
+            // bShowCurrentTags
+            // 
+            this.bShowCurrentTags.Location = new System.Drawing.Point(139, 19);
+            this.bShowCurrentTags.Name = "bShowCurrentTags";
+            this.bShowCurrentTags.Size = new System.Drawing.Size(125, 23);
+            this.bShowCurrentTags.TabIndex = 0;
+            this.bShowCurrentTags.Text = "Show Tag List";
+            this.bShowCurrentTags.UseVisualStyleBackColor = true;
+            this.bShowCurrentTags.Click += new System.EventHandler(this.bShowCurrentTags_Click);
+            // 
+            // bGetAndResetBuffer
+            // 
+            this.bGetAndResetBuffer.Location = new System.Drawing.Point(228, 274);
+            this.bGetAndResetBuffer.Name = "bGetAndResetBuffer";
+            this.bGetAndResetBuffer.Size = new System.Drawing.Size(166, 23);
+            this.bGetAndResetBuffer.TabIndex = 36;
+            this.bGetAndResetBuffer.Text = "Get and Reset Inventory Buffer";
+            this.bGetAndResetBuffer.UseVisualStyleBackColor = true;
+            this.bGetAndResetBuffer.Click += new System.EventHandler(this.bGetAndResetBuffer_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(438, 100);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Re-try";
+            // 
+            // tbRetry
+            // 
+            this.tbRetry.Location = new System.Drawing.Point(413, 116);
+            this.tbRetry.Name = "tbRetry";
+            this.tbRetry.Size = new System.Drawing.Size(100, 20);
+            this.tbRetry.TabIndex = 34;
+            this.tbRetry.Text = "9";
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(32, 230);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(161, 25);
+            this.button2.TabIndex = 33;
+            this.button2.Text = "Inventory real 2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_2);
+            // 
+            // bBufferReset
+            // 
+            this.bBufferReset.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bBufferReset.Location = new System.Drawing.Point(228, 152);
+            this.bBufferReset.Name = "bBufferReset";
+            this.bBufferReset.Size = new System.Drawing.Size(166, 25);
+            this.bBufferReset.TabIndex = 32;
+            this.bBufferReset.Text = "Buffer Reset";
+            this.bBufferReset.UseVisualStyleBackColor = true;
+            this.bBufferReset.Click += new System.EventHandler(this.bBufferReset_Click);
+            // 
+            // bPowerRead
+            // 
+            this.bPowerRead.Location = new System.Drawing.Point(539, 21);
+            this.bPowerRead.Name = "bPowerRead";
+            this.bPowerRead.Size = new System.Drawing.Size(75, 23);
+            this.bPowerRead.TabIndex = 31;
+            this.bPowerRead.Text = "Get Power";
+            this.bPowerRead.UseVisualStyleBackColor = true;
+            this.bPowerRead.Click += new System.EventHandler(this.bPowerRead_Click);
+            // 
             // tabTest
             // 
             this.tabTest.Location = new System.Drawing.Point(4, 22);
             this.tabTest.Name = "tabTest";
             this.tabTest.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTest.Size = new System.Drawing.Size(344, 272);
+            this.tabTest.Size = new System.Drawing.Size(881, 485);
             this.tabTest.TabIndex = 1;
             this.tabTest.Text = "tabPage2";
             this.tabTest.UseVisualStyleBackColor = true;
+            // 
+            // bWriteEPC
+            // 
+            this.bWriteEPC.Location = new System.Drawing.Point(8, 78);
+            this.bWriteEPC.Name = "bWriteEPC";
+            this.bWriteEPC.Size = new System.Drawing.Size(125, 23);
+            this.bWriteEPC.TabIndex = 7;
+            this.bWriteEPC.Text = "Write EPC Data";
+            this.bWriteEPC.UseVisualStyleBackColor = true;
+            this.bWriteEPC.Click += new System.EventHandler(this.bWriteEPC_Click);
+            // 
+            // bReadReserve
+            // 
+            this.bReadReserve.Location = new System.Drawing.Point(139, 107);
+            this.bReadReserve.Name = "bReadReserve";
+            this.bReadReserve.Size = new System.Drawing.Size(125, 23);
+            this.bReadReserve.TabIndex = 8;
+            this.bReadReserve.Text = "Read Reserve";
+            this.bReadReserve.UseVisualStyleBackColor = true;
+            this.bReadReserve.Click += new System.EventHandler(this.bReadReserve_Click);
+            // 
+            // bGetCurrentTag
+            // 
+            this.bGetCurrentTag.Location = new System.Drawing.Point(8, 225);
+            this.bGetCurrentTag.Name = "bGetCurrentTag";
+            this.bGetCurrentTag.Size = new System.Drawing.Size(125, 23);
+            this.bGetCurrentTag.TabIndex = 9;
+            this.bGetCurrentTag.Text = "Get Current Tag";
+            this.bGetCurrentTag.UseVisualStyleBackColor = true;
+            this.bGetCurrentTag.Click += new System.EventHandler(this.bGetCurrentTag_Click);
             // 
             // Form1
             // 
@@ -352,11 +566,13 @@
             this.ClientSize = new System.Drawing.Size(889, 511);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "SDK Tests 1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabConfig.ResumeLayout(false);
             this.tabConfig.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -386,6 +602,24 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabConfig;
         private System.Windows.Forms.TabPage tabTest;
+        private System.Windows.Forms.Button bPowerRead;
+        private System.Windows.Forms.Button bBufferReset;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbRetry;
+        private System.Windows.Forms.Button bGetAndResetBuffer;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button bShowCurrentTags;
+        private System.Windows.Forms.Button bSwetCurrentTag;
+        private System.Windows.Forms.TextBox tbInput;
+        private System.Windows.Forms.Button bWriteUser;
+        private System.Windows.Forms.Button bRead;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bPassWrite;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button bWriteEPC;
+        private System.Windows.Forms.Button bReadReserve;
+        private System.Windows.Forms.Button bGetCurrentTag;
     }
 }
 

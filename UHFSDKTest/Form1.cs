@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,26 +13,26 @@ namespace UHFSDKTest
 {
     public partial class Form1 : Form
     {
-        public ReaderMethod reader = new ReaderMethod();
-        volatile bool isLoop = false;
+
+
+        csReader RFIDReader;
+
         public Form1()
         {
             InitializeComponent();
-            reader.m_OnInventoryTag = onInventoryTag;
-            reader.m_OnInventoryTagEnd = onInventoryTagEnd;
-            reader.m_OnExeCMDStatus = onExeCMDStatus;
-            reader.m_RefreshSetting = refreshSetting;
-            reader.m_OnOperationTag = onOperationTag;
-            reader.m_OnOperationTagEnd = onOperationTagEnd;
-            reader.m_OnFastSwitchAntInventoryTagEnd = onFastSwitchAntInventoryTagEnd;
-            reader.m_OnGetInventoryBufferTagCount = onGetInventoryBufferTagCount;
-            reader.m_OnInventory6BTag = onInventory6BTag;
-            reader.m_OnInventory6BTagEnd = onInventory6BTagEnd;
-            reader.m_OnRead6BTag = onRead6BTag;
-            reader.m_OnWrite6BTag = onWrite6BTag;
-            reader.m_OnLock6BTag = onLock6BTag;
-            reader.m_OnLockQuery6BTag = onLockQuery6BTag;
-     
+            csStatic.RFIDReader.m_RefreshSetting = refreshSetting;
+            csStatic.RFIDReader.m_OnFastSwitchAntInventoryTagEnd = onFastSwitchAntInventoryTagEnd;
+            csStatic.RFIDReader.m_OnGetInventoryBufferTagCount = onGetInventoryBufferTagCount;
+            csStatic.RFIDReader.m_OnInventory6BTag = onInventory6BTag;
+            csStatic.RFIDReader.m_OnInventory6BTagEnd = onInventory6BTagEnd;
+            csStatic.RFIDReader.m_OnRead6BTag = onRead6BTag;
+            csStatic.RFIDReader.m_OnWrite6BTag = onWrite6BTag;
+            csStatic.RFIDReader.m_OnLock6BTag = onLock6BTag;
+            csStatic.RFIDReader.m_OnLockQuery6BTag = onLockQuery6BTag;
+
+            RFIDReader = csStatic.RFIDReader; //Short Alias
+
+
         }
 
         private void btnConnectRs232_Click(object sender, EventArgs e)
@@ -41,7 +42,7 @@ namespace UHFSDKTest
             string strComPort = cbComPort.Text;
             int nBaudrate = Convert.ToInt32(cbBaudrate.Text);
 
-            int nRet = reader.OpenCom(strComPort, nBaudrate, out strException);
+            int nRet = csStatic.RFIDReader.OpenCom(strComPort, nBaudrate, out strException);
             if (nRet != 0)
             {
                 string strLog = "Connection failed, failure cause: " + strException;
@@ -53,59 +54,44 @@ namespace UHFSDKTest
             {
                 string strLog = "Connect" + strComPort + "@" + nBaudrate.ToString();
                 Console.WriteLine(strLog);
-            } 
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            reader.CloseCom();
+            csStatic.RFIDReader.CloseCom();
             Console.WriteLine("close Serial port!");
         }
 
-       
+
         void refreshSetting(ReaderSetting readerSetting)
         {
             Console.WriteLine("Version:" + readerSetting.btMajor + "." + readerSetting.btMinor);
         }
 
-         void onExeCMDStatus(byte cmd, byte status)
-        {
-            if (isLoop && (cmd == CMD.REAL_TIME_INVENTORY))
-            {
-                reader.InventoryReal((byte)0xFF, (byte)0x01);
-            }
-            Console.WriteLine("CMD execute CMD:"+ CMD.format(cmd) + "++Status code:" + ERROR.format(status));
-        }
 
-         void onInventoryTag(RXInventoryTag tag)
-        {
-            Console.WriteLine("Inventory EPC:" + tag.strEPC);
-        }
 
-         void onInventoryTagEnd(RXInventoryTagEnd tagEnd)
-        {
-            if (isLoop)
-            {
-                reader.InventoryReal((byte)0xFF, (byte)0x01);
-            }
-        }
 
-         void onFastSwitchAntInventoryTagEnd(RXFastSwitchAntInventoryTagEnd tagEnd)
+
+
+
+
+        void onFastSwitchAntInventoryTagEnd(RXFastSwitchAntInventoryTagEnd tagEnd)
         {
             Console.WriteLine("Fast Inventory end:" + tagEnd.mTotalRead);
         }
 
-         void onInventory6BTag(byte nAntID, String strUID)
+        void onInventory6BTag(byte nAntID, String strUID)
         {
             Console.WriteLine("Inventory 6B Tag:" + strUID);
         }
 
-         void onInventory6BTagEnd(int nTagCount)
+        void onInventory6BTagEnd(int nTagCount)
         {
             Console.WriteLine("Inventory 6B Tag:" + nTagCount);
         }
 
-         void onRead6BTag(byte antID, String strData)
+        void onRead6BTag(byte antID, String strData)
         {
             Console.WriteLine("Read 6B Tag:" + strData);
         }
@@ -130,15 +116,9 @@ namespace UHFSDKTest
             Console.WriteLine("Get Inventory Buffer Tag Count" + nTagCount);
         }
 
-        void onOperationTag(RXOperationTag tag)
-        {
-            Console.WriteLine("Operation Tag:" + tag.strData);
-        }
 
-        void onOperationTagEnd(int operationTagCount)
-        {
-            Console.WriteLine("Operation Tag End:" + operationTagCount);
-        }
+
+
 
 
 
@@ -146,62 +126,81 @@ namespace UHFSDKTest
 
         private void button2_Click(object sender, EventArgs e)
         {
-            reader.InventoryReal((byte)0xFF, (byte)0x01);
-            isLoop = true;
-            btInventoryRealStop.Enabled = true;
-            btInventoryRealStart.Enabled = false;
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            reader.ReadTag((byte)0xFF,(byte)0x02,(byte)0x00,(byte)0x06,new byte[]{(byte)0x00,(byte)0x00,(byte)0x00});
+            
+            //csStatic.RFIDReader.ReadTag((byte)0xFF, (byte)0x02, (byte)0x00, (byte)0x06, new byte[] { (byte)0x00, (byte)0x00, (byte)0x00 });
+            csStatic.RFIDReader.ReadTag(csReader.DeviceID, (byte)0x01, (byte)0x00, (byte)0x08,csReader.AccessCode);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            reader.Inventory((byte)0xFF, (byte)0x01);
+            byte bRetry = GetRetry();
+            RFIDReader.CurrentCommand.Init(CMD.INVENTORY);
+            csStatic.RFIDReader.Inventory((byte)0xFF, bRetry);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            reader.GetInventoryBufferTagCount((byte)0xFF);
+            csStatic.RFIDReader.GetInventoryBufferTagCount((byte)0xFF);
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            reader.GetFirmwareVersion((byte)0xFF);
+            csStatic.RFIDReader.GetFirmwareVersion((byte)0xFF);
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            reader.InventoryISO18000((byte)0xFF);
+            csStatic.RFIDReader.InventoryISO18000((byte)0xFF);
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            reader.ReadTagISO18000((byte)0xff, new byte[]{(byte)0xE0,(byte)0x04,(byte)0x00,(byte)0x00,(byte)0xF6,(byte)0x78,(byte)0x41,(byte)0x06},(byte)0x00,(byte)0x06);
+            csStatic.RFIDReader.ReadTagISO18000((byte)0xff, new byte[] { (byte)0xE0, (byte)0x04, (byte)0x00, (byte)0x00, (byte)0xF6, (byte)0x78, (byte)0x41, (byte)0x06 }, (byte)0x00, (byte)0x06);
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            reader.GetInventoryBuffer((byte)0xff);
+            csStatic.RFIDReader.GetInventoryBuffer((byte)0xff);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            reader.Reset((byte)0xFF);
+            csStatic.RFIDReader.Reset((byte)0xFF);
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            btInventoryRealStart.Enabled = true;
-            btInventoryRealStop.Enabled = false;
-            isLoop = false;
+               
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             cbBaudrate.SelectedIndex = 1;
+
+            //Init events
+        }
+
+
+
+        private byte GetRetry()
+        {
+            if (int.TryParse(tbRetry.Text,out int iResult))
+            {
+                //Cehck range
+                if (iResult>0 && iResult<256)
+                {
+                    return (byte)iResult;
+                }
+            }
+
+
+            MessageBox.Show("Invalid input 0x10 will be used.");
+            return 0x10;
         }
 
         private void bReadUser_Click(object sender, EventArgs e)
@@ -211,25 +210,30 @@ namespace UHFSDKTest
 
         private void bBeepOn_Click(object sender, EventArgs e)
         {
-            reader.SetBeeperMode((byte)0xFF, (byte)0x01);
+            csStatic.RFIDReader.SetBeeperMode((byte)0xFF, (byte)0x01);
         }
 
         private void bBeepOff_Click(object sender, EventArgs e)
         {
-            reader.SetBeeperMode((byte)0xFF, (byte)0x00);
+            csStatic.RFIDReader.SetBeeperMode((byte)0xFF, (byte)0x00);
         }
 
         private void bPower_Click(object sender, EventArgs e)
         {
-            if (cbPower.SelectedIndex<0)
+            if (cbPower.SelectedIndex < 0)
             {
                 return;
             }
 
             //Get power
-            byte bPower = CalPowerLevel(cbPower.SelectedIndex+1);
+            byte bPower = CalPowerLevel(cbPower.SelectedIndex + 1);
 
-            reader.SetOutputPower((byte)0xFF,bPower);
+            if (!csStatic.RFIDReader.TrySetPower(bPower))
+            {
+                MessageBox.Show("error");
+            }
+
+            Debug.WriteLine($"Power Set:{bPower}");
         }
 
         /// <summary>
@@ -238,8 +242,8 @@ namespace UHFSDKTest
         /// <param name="Power"></param>
         private byte CalPowerLevel(int iPower)
         {
-            //Device power range  20-33 (0x14-0x21)
-            byte bPower = (byte)25; //Gave a default value
+            //Device power range  0 to 33(0x00 – 0x21), the unit is dBm.
+            byte bPower = (byte)10; //Gave a default value
 
             //Check range
             if (iPower > 10 || iPower < 1)
@@ -248,8 +252,144 @@ namespace UHFSDKTest
             }
 
             //Get power
-            bPower = (byte)(iPower + 19);
+            bPower = (byte)(iPower * 2);
             return bPower;
+        }
+
+        private void bPowerRead_Click(object sender, EventArgs e)
+        {
+            csStatic.RFIDReader.CurrentCommand.Init(CMD.GET_OUTPUT_POWER);
+            csStatic.RFIDReader.GetOutputPower(0xff);
+        }
+
+        private void bBufferReset_Click(object sender, EventArgs e)
+        {
+            RFIDReader.ResetInventoryBuffer(csReader.DeviceID);
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            csStatic.RFIDReader.TryInventoryReal();
+        }
+
+        private void bGetAndResetBuffer_Click(object sender, EventArgs e)
+        {
+            RFIDReader.GetAndResetInventoryBuffer(csReader.DeviceID);
+        }
+
+        private void bShowCurrentTags_Click(object sender, EventArgs e)
+        {
+            //Copy list
+            RFIDReader.DetectedTags = RFIDReader.CurrentCommand.Tags.ToList();
+            Debug.WriteLine("Current list:");
+            foreach (var item in RFIDReader.DetectedTags)
+            {
+                Debug.WriteLine(item.strEPC);
+            }
+        }
+
+        private void bSwetCurrentTag_Click(object sender, EventArgs e)
+        {
+            RFIDReader.TrySetOperationTag();
+        }
+
+        private void bWriteUser_Click(object sender, EventArgs e)
+        {
+            //Get data
+            var data=csCRC.StringToHexByte(tbInput.Text);
+
+            if (!RFIDReader.TryWriteTag(TagDataType.User,data))
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
+        private void bRead_Click(object sender, EventArgs e)
+        {
+            string sResult=null;
+            if (!RFIDReader.TryReadTag(TagDataType.User, ref sResult))
+            {
+                MessageBox.Show("Error");
+                return;
+            }
+
+            MessageBox.Show(sResult);
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string sResult = null;
+            if (!RFIDReader.TryReadTag(TagDataType.EPC, ref sResult))
+            {
+                MessageBox.Show("Error");
+                return;
+            }
+
+            MessageBox.Show(sResult);
+        }
+
+        private void bPassWrite_Click(object sender, EventArgs e)
+        {
+            //Get data
+            var data = csCRC.StringToHexByte(tbInput.Text);
+
+            if (!RFIDReader.TryWriteTag(TagDataType.Reserved, data))
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            var iCount = RFIDReader.TryInventoryReal2();
+
+            Debug.WriteLine($"InventoryCount:{iCount}");
+
+            if (iCount==-1)
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
+        private void btInventoryRealStart_Click(object sender, EventArgs e)
+        {
+            RFIDReader.InitCommand(CMD.REAL_TIME_INVENTORY, true);
+            RFIDReader.InventoryReal((byte)0xFF, (byte)0x01);
+        }
+
+        private void btInventoryRealStop_Click(object sender, EventArgs e)
+        {
+            RFIDReader.CurrentCommand.IsLoop = false;
+            RFIDReader.DetectedTags = RFIDReader.CurrentCommand.Tags;
+        }
+
+        private void bWriteEPC_Click(object sender, EventArgs e)
+        {
+            //Get data
+            var data = csCRC.StringToHexByte(tbInput.Text);
+
+            if (!RFIDReader.TryWriteTag(TagDataType.EPC, data))
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
+        private void bReadReserve_Click(object sender, EventArgs e)
+        {
+            string sResult = null;
+            if (!RFIDReader.TryReadTag(TagDataType.Reserved, ref sResult))
+            {
+                MessageBox.Show("Error");
+                return;
+            }
+
+            MessageBox.Show(sResult);
+        }
+
+        private void bGetCurrentTag_Click(object sender, EventArgs e)
+        {
+            RFIDReader.TryGetOperationTag();
         }
     }
 }
