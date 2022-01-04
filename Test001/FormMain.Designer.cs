@@ -29,6 +29,7 @@ namespace Test001
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.DataFileFieldGridControl = new DevExpress.XtraGrid.GridControl();
             this.DataFileFieldGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.FileColumnSelector = new Test001.ColumnSelectorControlSingle();
@@ -50,6 +51,13 @@ namespace Test001
             this.bTest = new DevExpress.XtraEditors.SimpleButton();
             this.pSelection = new System.Windows.Forms.Panel();
             this.pBottom = new System.Windows.Forms.Panel();
+            this.FieldContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.NewFieldDefaultSelectionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.NewCurrentSelectionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.NewFieldAfterCurrentMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.DataFileFieldGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataFileFieldGridView)).BeginInit();
             this.pTable.SuspendLayout();
@@ -58,6 +66,7 @@ namespace Test001
             this.pShow.SuspendLayout();
             this.pSelection.SuspendLayout();
             this.pBottom.SuspendLayout();
+            this.FieldContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // DataFileFieldGridControl
@@ -304,6 +313,54 @@ namespace Test001
             this.pBottom.TabIndex = 2;
             this.pBottom.Visible = false;
             // 
+            // FieldContextMenuStrip
+            // 
+            this.FieldContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator2,
+            this.NewFieldAfterCurrentMenuItem,
+            this.toolStripSeparator1,
+            this.NewCurrentSelectionMenuItem,
+            this.toolStripSeparator3,
+            this.NewFieldDefaultSelectionMenuItem});
+            this.FieldContextMenuStrip.Name = "FieldContextMenuStrip";
+            this.FieldContextMenuStrip.Size = new System.Drawing.Size(215, 110);
+            // 
+            // NewFieldDefaultSelectionMenuItem
+            // 
+            this.NewFieldDefaultSelectionMenuItem.Name = "NewFieldDefaultSelectionMenuItem";
+            this.NewFieldDefaultSelectionMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.NewFieldDefaultSelectionMenuItem.Text = "Add with default selection";
+            this.NewFieldDefaultSelectionMenuItem.Click += new System.EventHandler(this.NewFieldDefaultSelectionMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(211, 6);
+            // 
+            // NewCurrentSelectionMenuItem
+            // 
+            this.NewCurrentSelectionMenuItem.Name = "NewCurrentSelectionMenuItem";
+            this.NewCurrentSelectionMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.NewCurrentSelectionMenuItem.Text = "Add with current selection";
+            this.NewCurrentSelectionMenuItem.Click += new System.EventHandler(this.NewCurrentSelectionMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(211, 6);
+            // 
+            // NewFieldAfterCurrentMenuItem
+            // 
+            this.NewFieldAfterCurrentMenuItem.Name = "NewFieldAfterCurrentMenuItem";
+            this.NewFieldAfterCurrentMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.NewFieldAfterCurrentMenuItem.Text = "Add after current selection";
+            this.NewFieldAfterCurrentMenuItem.Click += new System.EventHandler(this.NewFieldAfterCurrentMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(211, 6);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,6 +380,7 @@ namespace Test001
             this.pShow.ResumeLayout(false);
             this.pSelection.ResumeLayout(false);
             this.pBottom.ResumeLayout(false);
+            this.FieldContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -350,6 +408,13 @@ namespace Test001
         private DevExpress.XtraEditors.SimpleButton bMoveDown;
         private DevExpress.XtraEditors.SimpleButton bTest2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private System.Windows.Forms.ContextMenuStrip FieldContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem NewFieldDefaultSelectionMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem NewCurrentSelectionMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem NewFieldAfterCurrentMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 

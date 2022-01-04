@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UHFSDKTest", "UHFSDKTest\UH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reader", "Reader\Reader.csproj", "{26B6AAEE-3512-42D9-835E-EA9B4A699CB4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComboBox", "ComboBox\ComboBox.csproj", "{F43AE983-EFF0-4679-B2B0-E7840A1AC497}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,6 +121,14 @@ Global
 		{26B6AAEE-3512-42D9-835E-EA9B4A699CB4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{26B6AAEE-3512-42D9-835E-EA9B4A699CB4}.Release|x86.ActiveCfg = Release|Any CPU
 		{26B6AAEE-3512-42D9-835E-EA9B4A699CB4}.Release|x86.Build.0 = Release|Any CPU
+		{F43AE983-EFF0-4679-B2B0-E7840A1AC497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F43AE983-EFF0-4679-B2B0-E7840A1AC497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F43AE983-EFF0-4679-B2B0-E7840A1AC497}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F43AE983-EFF0-4679-B2B0-E7840A1AC497}.Debug|x86.Build.0 = Debug|Any CPU
+		{F43AE983-EFF0-4679-B2B0-E7840A1AC497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F43AE983-EFF0-4679-B2B0-E7840A1AC497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F43AE983-EFF0-4679-B2B0-E7840A1AC497}.Release|x86.ActiveCfg = Release|Any CPU
+		{F43AE983-EFF0-4679-B2B0-E7840A1AC497}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

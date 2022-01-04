@@ -258,4 +258,11 @@ namespace Test001
         }
     }
 
+    public enum FieldAddType
+    {
+        DefaultSelection, //Add new filed with default selection(0,1)
+        CurrentSelection,//Add a new field with current selection
+        AfterCurrentSelection, //Add new filed after current selection
+    }
+
 }

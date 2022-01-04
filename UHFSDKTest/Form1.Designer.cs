@@ -52,7 +52,16 @@
             this.tabConfig = new System.Windows.Forms.TabPage();
             this.button8 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bPassWrite = new System.Windows.Forms.Button();
+            this.bLockTag = new System.Windows.Forms.Button();
+            this.bReadTID = new System.Windows.Forms.Button();
+            this.bWriteOdoo = new System.Windows.Forms.Button();
+            this.bWriteAccessCode = new System.Windows.Forms.Button();
+            this.bReadOdooData = new System.Windows.Forms.Button();
+            this.bReadAccess = new System.Windows.Forms.Button();
+            this.bGetCurrentTag = new System.Windows.Forms.Button();
+            this.bReadReserve = new System.Windows.Forms.Button();
+            this.bWriteEPC = new System.Windows.Forms.Button();
+            this.bWriteReserve = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.bRead = new System.Windows.Forms.Button();
             this.bWriteUser = new System.Windows.Forms.Button();
@@ -66,9 +75,7 @@
             this.bBufferReset = new System.Windows.Forms.Button();
             this.bPowerRead = new System.Windows.Forms.Button();
             this.tabTest = new System.Windows.Forms.TabPage();
-            this.bWriteEPC = new System.Windows.Forms.Button();
-            this.bReadReserve = new System.Windows.Forms.Button();
-            this.bGetCurrentTag = new System.Windows.Forms.Button();
+            this.bUnLock = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabConfig.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -374,10 +381,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.bUnLock);
+            this.groupBox1.Controls.Add(this.bLockTag);
+            this.groupBox1.Controls.Add(this.bReadTID);
+            this.groupBox1.Controls.Add(this.bWriteOdoo);
+            this.groupBox1.Controls.Add(this.bWriteAccessCode);
+            this.groupBox1.Controls.Add(this.bReadOdooData);
+            this.groupBox1.Controls.Add(this.bReadAccess);
             this.groupBox1.Controls.Add(this.bGetCurrentTag);
             this.groupBox1.Controls.Add(this.bReadReserve);
             this.groupBox1.Controls.Add(this.bWriteEPC);
-            this.groupBox1.Controls.Add(this.bPassWrite);
+            this.groupBox1.Controls.Add(this.bWriteReserve);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.bRead);
             this.groupBox1.Controls.Add(this.bWriteUser);
@@ -391,15 +405,105 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operation";
             // 
-            // bPassWrite
+            // bLockTag
             // 
-            this.bPassWrite.Location = new System.Drawing.Point(8, 107);
-            this.bPassWrite.Name = "bPassWrite";
-            this.bPassWrite.Size = new System.Drawing.Size(125, 23);
-            this.bPassWrite.TabIndex = 6;
-            this.bPassWrite.Text = "WritePassword";
-            this.bPassWrite.UseVisualStyleBackColor = true;
-            this.bPassWrite.Click += new System.EventHandler(this.bPassWrite_Click);
+            this.bLockTag.Location = new System.Drawing.Point(8, 194);
+            this.bLockTag.Name = "bLockTag";
+            this.bLockTag.Size = new System.Drawing.Size(125, 23);
+            this.bLockTag.TabIndex = 15;
+            this.bLockTag.Text = "Lock Tag";
+            this.bLockTag.UseVisualStyleBackColor = true;
+            this.bLockTag.Click += new System.EventHandler(this.bLockTag_Click);
+            // 
+            // bReadTID
+            // 
+            this.bReadTID.Location = new System.Drawing.Point(139, 225);
+            this.bReadTID.Name = "bReadTID";
+            this.bReadTID.Size = new System.Drawing.Size(125, 23);
+            this.bReadTID.TabIndex = 14;
+            this.bReadTID.Text = "Read TID";
+            this.bReadTID.UseVisualStyleBackColor = true;
+            this.bReadTID.Click += new System.EventHandler(this.bReadTID_Click);
+            // 
+            // bWriteOdoo
+            // 
+            this.bWriteOdoo.Location = new System.Drawing.Point(8, 165);
+            this.bWriteOdoo.Name = "bWriteOdoo";
+            this.bWriteOdoo.Size = new System.Drawing.Size(125, 23);
+            this.bWriteOdoo.TabIndex = 13;
+            this.bWriteOdoo.Text = "Write Odoo Data";
+            this.bWriteOdoo.UseVisualStyleBackColor = true;
+            this.bWriteOdoo.Click += new System.EventHandler(this.bWriteOdoo_Click);
+            // 
+            // bWriteAccessCode
+            // 
+            this.bWriteAccessCode.Location = new System.Drawing.Point(8, 136);
+            this.bWriteAccessCode.Name = "bWriteAccessCode";
+            this.bWriteAccessCode.Size = new System.Drawing.Size(125, 23);
+            this.bWriteAccessCode.TabIndex = 12;
+            this.bWriteAccessCode.Text = "Write Access Code";
+            this.bWriteAccessCode.UseVisualStyleBackColor = true;
+            this.bWriteAccessCode.Click += new System.EventHandler(this.bWriteAccessCode_Click);
+            // 
+            // bReadOdooData
+            // 
+            this.bReadOdooData.Location = new System.Drawing.Point(139, 165);
+            this.bReadOdooData.Name = "bReadOdooData";
+            this.bReadOdooData.Size = new System.Drawing.Size(125, 23);
+            this.bReadOdooData.TabIndex = 11;
+            this.bReadOdooData.Text = "Read Odoo Data";
+            this.bReadOdooData.UseVisualStyleBackColor = true;
+            this.bReadOdooData.Click += new System.EventHandler(this.bReadOdooData_Click);
+            // 
+            // bReadAccess
+            // 
+            this.bReadAccess.Location = new System.Drawing.Point(139, 136);
+            this.bReadAccess.Name = "bReadAccess";
+            this.bReadAccess.Size = new System.Drawing.Size(125, 23);
+            this.bReadAccess.TabIndex = 10;
+            this.bReadAccess.Text = "Read Access Code";
+            this.bReadAccess.UseVisualStyleBackColor = true;
+            this.bReadAccess.Click += new System.EventHandler(this.bReadAccess_Click);
+            // 
+            // bGetCurrentTag
+            // 
+            this.bGetCurrentTag.Location = new System.Drawing.Point(139, 19);
+            this.bGetCurrentTag.Name = "bGetCurrentTag";
+            this.bGetCurrentTag.Size = new System.Drawing.Size(125, 23);
+            this.bGetCurrentTag.TabIndex = 9;
+            this.bGetCurrentTag.Text = "Get Current Tag";
+            this.bGetCurrentTag.UseVisualStyleBackColor = true;
+            this.bGetCurrentTag.Click += new System.EventHandler(this.bGetCurrentTag_Click);
+            // 
+            // bReadReserve
+            // 
+            this.bReadReserve.Location = new System.Drawing.Point(139, 107);
+            this.bReadReserve.Name = "bReadReserve";
+            this.bReadReserve.Size = new System.Drawing.Size(125, 23);
+            this.bReadReserve.TabIndex = 8;
+            this.bReadReserve.Text = "Read Reserve";
+            this.bReadReserve.UseVisualStyleBackColor = true;
+            this.bReadReserve.Click += new System.EventHandler(this.bReadReserve_Click);
+            // 
+            // bWriteEPC
+            // 
+            this.bWriteEPC.Location = new System.Drawing.Point(6, 49);
+            this.bWriteEPC.Name = "bWriteEPC";
+            this.bWriteEPC.Size = new System.Drawing.Size(125, 23);
+            this.bWriteEPC.TabIndex = 7;
+            this.bWriteEPC.Text = "Write EPC Data";
+            this.bWriteEPC.UseVisualStyleBackColor = true;
+            this.bWriteEPC.Click += new System.EventHandler(this.bWriteEPC_Click);
+            // 
+            // bWriteReserve
+            // 
+            this.bWriteReserve.Location = new System.Drawing.Point(8, 107);
+            this.bWriteReserve.Name = "bWriteReserve";
+            this.bWriteReserve.Size = new System.Drawing.Size(125, 23);
+            this.bWriteReserve.TabIndex = 6;
+            this.bWriteReserve.Text = "Write Reserve";
+            this.bWriteReserve.UseVisualStyleBackColor = true;
+            this.bWriteReserve.Click += new System.EventHandler(this.bPassWrite_Click);
             // 
             // button3
             // 
@@ -407,7 +511,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(125, 23);
             this.button3.TabIndex = 5;
-            this.button3.Text = "Read Tag ID";
+            this.button3.Text = "Read Tag EPC";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -423,7 +527,7 @@
             // 
             // bWriteUser
             // 
-            this.bWriteUser.Location = new System.Drawing.Point(8, 49);
+            this.bWriteUser.Location = new System.Drawing.Point(8, 80);
             this.bWriteUser.Name = "bWriteUser";
             this.bWriteUser.Size = new System.Drawing.Size(125, 23);
             this.bWriteUser.TabIndex = 3;
@@ -452,7 +556,7 @@
             // 
             // bShowCurrentTags
             // 
-            this.bShowCurrentTags.Location = new System.Drawing.Point(139, 19);
+            this.bShowCurrentTags.Location = new System.Drawing.Point(8, 225);
             this.bShowCurrentTags.Name = "bShowCurrentTags";
             this.bShowCurrentTags.Size = new System.Drawing.Size(125, 23);
             this.bShowCurrentTags.TabIndex = 0;
@@ -529,35 +633,15 @@
             this.tabTest.Text = "tabPage2";
             this.tabTest.UseVisualStyleBackColor = true;
             // 
-            // bWriteEPC
+            // bUnLock
             // 
-            this.bWriteEPC.Location = new System.Drawing.Point(8, 78);
-            this.bWriteEPC.Name = "bWriteEPC";
-            this.bWriteEPC.Size = new System.Drawing.Size(125, 23);
-            this.bWriteEPC.TabIndex = 7;
-            this.bWriteEPC.Text = "Write EPC Data";
-            this.bWriteEPC.UseVisualStyleBackColor = true;
-            this.bWriteEPC.Click += new System.EventHandler(this.bWriteEPC_Click);
-            // 
-            // bReadReserve
-            // 
-            this.bReadReserve.Location = new System.Drawing.Point(139, 107);
-            this.bReadReserve.Name = "bReadReserve";
-            this.bReadReserve.Size = new System.Drawing.Size(125, 23);
-            this.bReadReserve.TabIndex = 8;
-            this.bReadReserve.Text = "Read Reserve";
-            this.bReadReserve.UseVisualStyleBackColor = true;
-            this.bReadReserve.Click += new System.EventHandler(this.bReadReserve_Click);
-            // 
-            // bGetCurrentTag
-            // 
-            this.bGetCurrentTag.Location = new System.Drawing.Point(8, 225);
-            this.bGetCurrentTag.Name = "bGetCurrentTag";
-            this.bGetCurrentTag.Size = new System.Drawing.Size(125, 23);
-            this.bGetCurrentTag.TabIndex = 9;
-            this.bGetCurrentTag.Text = "Get Current Tag";
-            this.bGetCurrentTag.UseVisualStyleBackColor = true;
-            this.bGetCurrentTag.Click += new System.EventHandler(this.bGetCurrentTag_Click);
+            this.bUnLock.Location = new System.Drawing.Point(139, 194);
+            this.bUnLock.Name = "bUnLock";
+            this.bUnLock.Size = new System.Drawing.Size(125, 23);
+            this.bUnLock.TabIndex = 16;
+            this.bUnLock.Text = "Unlock Tag";
+            this.bUnLock.UseVisualStyleBackColor = true;
+            this.bUnLock.Click += new System.EventHandler(this.bUnLock_Click);
             // 
             // Form1
             // 
@@ -615,11 +699,18 @@
         private System.Windows.Forms.Button bWriteUser;
         private System.Windows.Forms.Button bRead;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button bPassWrite;
+        private System.Windows.Forms.Button bWriteReserve;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button bWriteEPC;
         private System.Windows.Forms.Button bReadReserve;
         private System.Windows.Forms.Button bGetCurrentTag;
+        private System.Windows.Forms.Button bReadAccess;
+        private System.Windows.Forms.Button bReadOdooData;
+        private System.Windows.Forms.Button bWriteAccessCode;
+        private System.Windows.Forms.Button bWriteOdoo;
+        private System.Windows.Forms.Button bReadTID;
+        private System.Windows.Forms.Button bLockTag;
+        private System.Windows.Forms.Button bUnLock;
     }
 }
 

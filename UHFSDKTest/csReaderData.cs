@@ -61,7 +61,7 @@ namespace UHFSDKTest
             Tags = new List<RXInventoryTag>();
         }
 
-        public void Init(byte Command,bool IsCommandLoop=false)
+        public void Init(byte Command, bool IsCommandLoop = false)
         {
             IsReplied = false;
             Type = Command;
@@ -70,7 +70,7 @@ namespace UHFSDKTest
             IsLoop = IsCommandLoop;
             ExecACC = 0;
             Tags = new List<RXInventoryTag>();
-           
+
             CMDTime.Restart();
         }
 
@@ -117,13 +117,31 @@ namespace UHFSDKTest
     }
 
 
-    //Write command type
+    /// <summary>
+    /// Data type when write
+    /// </summary>
     public enum TagDataType
     {
-        Reserved=0, //Password
-        EPC=1,//custmized Tag ID
-        TID=2, //manufacture ID
-        User=3 //User data
+        //Tag default types
+        Reserved = 0, //Password
+        EPC = 1,//custmized Tag ID
+        TID = 2, //manufacture ID
+        User = 3, //User data
+        //Customized types
+        OdooEncryptedData = 4, //Combined data, write in both reserve and user data area (4 bytes+40 bytes)
+        AccessCode = 5 //write in reserved area, but only from addresses 4-7 (4 bytes) of data
+    }
+
+
+    public class GeneralResult
+    {
+        public bool IsSuccess { get; set; } //Method is succes or not
+        public int IntResult { get; set; } //Return int result if value needed
+        /// <summary>
+        /// String value of the result
+        /// </summary>
+        public string StrValue { get; set; }
+        public String Message { get; set; }
     }
 
 }

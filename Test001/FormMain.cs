@@ -15,10 +15,10 @@ namespace Test001
     public partial class FormMain : Form
     {
 
-       public BindingList<InputField> ColumnDefinition { get; set; }
+        public BindingList<InputField> ColumnDefinition { get; set; }
         public bool IgnoreDataFileFieldGridViewRowSelectionChange { get; set; }
 
-        UIOperation UserOperation=new UIOperation();
+        UIOperation UserOperation = new UIOperation();
 
         public FormMain()
         {
@@ -62,16 +62,7 @@ namespace Test001
             //Selection when left button used
             if (eButton.Button == MouseButtons.Left)
             {
-                if (iIndex >= 0)
-                {
-                    ModifyIndexRows();
-                }
-            }
-            //Selection when right button used
-            else if (eButton.Button == MouseButtons.Right)
-            {
-                //Always add a new record
-                DataFieldAddIndexRows();
+                if (iIndex >= 0) ModifyIndexRows();
             }
         }
 
@@ -79,13 +70,14 @@ namespace Test001
         {
             Debug.WriteLine("Current row:" + e.FocusedRowHandle);
 
-            //Check ignore, ignore once
-            //if (IgnoreDataFileFieldGridViewRowSelectionChange)
-            //{
-            //    IgnoreDataFileFieldGridViewRowSelectionChange = false;
-            //    return;
-            //}
+            ShowCurrentFieldOnSelector();
+        }
 
+        /// <summary>
+        /// Show current selected field on column selector
+        /// </summary>
+        private void ShowCurrentFieldOnSelector()
+        {
             //Get selected value
             var verifyResult = VerifyFixedWidthDefinition();
             if (!verifyResult.IsSuccess)
@@ -95,7 +87,7 @@ namespace Test001
             }
 
             //Get current selection
-            int iRow = e.FocusedRowHandle;
+            int iRow = DataFileFieldGridView.FocusedRowHandle;
 
             //None verification
             if (iRow < 0) return;
@@ -114,21 +106,22 @@ namespace Test001
             //Init row
             ColumnDefinition = new BindingList<InputField>();
 
-            for (int i = 0; i < 5; i++)
-            {
-                InputField field = new InputField()
-                { Name = $"Test{i}", Description = "Test", Position = i, Length = i + 1 };
+            //Use empty source
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    InputField field = new InputField()
+            //    { Name = $"Test{i}", Description = "Test", Position = i, Length = i + 1 };
 
 
-                for (int j = 0; j < 3; j++)
-                {
-                    InputField customFiled = new InputField()
-                    { Name = $"Test{i}_{j}", Description = "Test", Position = i, Length = i + 1 };
-                    field.CustomFields.Add(customFiled);
-                }
+            //    for (int j = 0; j < 3; j++)
+            //    {
+            //        InputField customFiled = new InputField()
+            //        { Name = $"Test{i}_{j}", Description = "Test", Position = i, Length = i + 1 };
+            //        field.CustomFields.Add(customFiled);
+            //    }
 
-                ColumnDefinition.Add(field);
-            }
+            //    ColumnDefinition.Add(field);
+            //}
 
             DataFileFieldGridControl.DataSource = ColumnDefinition;
             DataFileFieldGridView.Columns[nameof(InputField.ColumnNumber)].Visible = false;
@@ -264,15 +257,20 @@ namespace Test001
         /// <param name="e"></param>
         private void bAdd_Click(object sender, EventArgs e)
         {
-            //Directly add
-            DataFieldAddIndexRows();
+            //Set UI
+            bAdd.ContextMenuStrip = FieldContextMenuStrip;
+            FieldContextMenuStrip.Show(bAdd,
+                new Point(bAdd.Width, 0));
 
-            IgnoreDataFileFieldGridViewRowSelectionChange = true;    //Set row change ignore flag
-            DataFileFieldGridView.FocusedRowHandle = DataFileFieldGridView.RowCount - 1;
+            ////Directly add
+            //DataFieldAddIndexRows();
+
+            //IgnoreDataFileFieldGridViewRowSelectionChange = true;    //Set row change ignore flag
+            //DataFileFieldGridView.FocusedRowHandle = DataFileFieldGridView.RowCount - 1;
 
 
             //Get new row handle
-        
+
         }
 
 
@@ -280,57 +278,123 @@ namespace Test001
 
         public enum UIOperation
         {
-           Added
+            Added
         }
+
 
         /// <summary>
-        /// 
+        /// Add index row based on field add type
         /// </summary>
-        /// <param name="IndexList"></param>
-        private void DataFieldAddIndexRows()
+        private void DataFieldAddIndexRow(FieldAddType addType)
         {
             //Init variables
-            var IndexList = new List<int[]>();
+            var ColumnSelection = new List<int[]>();
 
-            //Try get selection
+            //Get field selection
             var result = FileColumnSelector.getSingleColumnCoords();
-            if (!result.IsSuccess)
+            if (result.IsSuccess) ColumnSelection = result.Selection;
+
+            //Get current field index
+            var selectedIndex = DataFileFieldGridView.GetDataSourceRowIndex(DataFileFieldGridView.FocusedRowHandle);   //Get data table selection index
+
+
+            //Get datasource
+            var dataSource = (BindingList<InputField>)DataFileFieldGridControl.DataSource;
+            var selectedField = selectedIndex > -1 ? dataSource[selectedIndex] : null;
+
+            //Operate based on add type
+            InputField newField = new InputField();  //New field to be added
+            switch (addType)
             {
-                //Create a default selection
-                var indexRow = new Tuple<SolidBrush, int, int>(new SolidBrush(Color.Red), 0, 1);
-                FileColumnSelector.SetColumnCoords(new List<Tuple<SolidBrush, int, int>>() { indexRow });
-                IndexList.Add(new int[] { 0, 1 }); //Use default value
+                case FieldAddType.DefaultSelection:
+                    //Use default setting
+                    newField.Position = 0;
+                    newField.Length = 1;
+                    break;
+
+                case FieldAddType.CurrentSelection:
+                    //If selection on UI exist, use UI value
+                    if (ColumnSelection.Count == 1)
+                    {
+                        newField.Position = ColumnSelection[0][0];
+                        newField.Length = ColumnSelection[0][1] - ColumnSelection[0][0];
+                    }
+                    //Try to use current row value if selected
+                    else if (selectedField != null)
+                    {
+                        newField.Position = selectedField.Position;
+                        newField.Length = selectedField.Length;
+                    }
+                    //Use default value instead
+                    else
+                    {
+                        newField.Position = 0;
+                        newField.Length = 1;
+                    }
+                    break;
+                case FieldAddType.AfterCurrentSelection:
+                    //If selection on UI exist, cal based on UI value
+                    if (ColumnSelection.Count == 1)
+                    {
+                        newField.Position = ColumnSelection[0][1];
+                        newField.Length = 1;
+                    }
+                    //Try to cal location based on current row value if selected
+                    else if (selectedField != null)
+                    {
+                        newField.Position = selectedField.Position + selectedField.Length;
+                        newField.Length =1;
+                    }
+                    //Use default value instead
+                    else
+                    {
+                        newField.Position = 0;
+                        newField.Length = 1;
+                    }
+                    break;
+            }
+
+
+            //Add field to designated index
+            int NewIndex = -1;
+            if (selectedIndex>-1)
+            {//current selection is valid, add after current selection
+                if (selectedIndex== dataSource.Count-1)
+                {//Index in bottom, just add
+                    dataSource.Add(newField);
+                    NewIndex = dataSource.Count - 1;
+                }
+                else
+                {//Index in middle, insert
+                    dataSource.Insert(selectedIndex+1,newField);
+                    NewIndex = selectedIndex + 1;
+                }
             }
             else
-            {
-                //Get Selected index
-                IndexList = result.Selection;
+            {//Selection invalid, just add to bottom
+                dataSource.Add(newField);
+                NewIndex = dataSource.Count - 1;
             }
 
-            //Get current data source
-            var dataSource = (List<InputField>)DataFileFieldGridControl.DataSource;
+            //Re-new value
+            DataFileFieldGridControl.RefreshDataSource();
 
-            //Add data row
-            for (int i = 0; i < IndexList.Count; i++)
-            {
-                //Get value
-                int[] indexCurrent = IndexList[i];   //Current index
-                int iPosition = indexCurrent[0]; //Start point
-                int iLength = indexCurrent[1] - indexCurrent[0]; //Get length
-
-                //Add value
-                var rowData = new InputField();
-                rowData.Position = iPosition;
-                rowData.Length = iLength;
-                dataSource.Add(rowData);
-            }
-
-            //Refresh data display
-            DataFileFieldGridView.RefreshData();
-
-            //Clear selection
-            FileColumnSelector.ClearColumnCoords();
+            //Move selection
+            DataFileFieldGridView.FocusedRowHandle = NewIndex;
         }
+
+
+        private void AutoNameField(List<InputField> inputFields)
+        {
+            for (int i = 0; i < inputFields.Count; i++)
+            {
+                if (string.IsNullOrWhiteSpace(inputFields[i].Name))
+                {
+                    inputFields[i].Name = $"Field_{i}";
+                }
+            }
+        }
+
 
 
         /// <summary>
@@ -376,7 +440,7 @@ namespace Test001
             }
 
             //Get datasource
-            var dataSource = (List<InputField>)DataFileFieldGridControl.DataSource;
+            var dataSource = (BindingList<InputField>)DataFileFieldGridControl.DataSource;
             var selectedRow = dataSource[SelectedIndex]; //Get selected row
 
             //Set row value
@@ -556,6 +620,7 @@ namespace Test001
             Debug.WriteLine(ColumnDefinition.Count);
             DataFileFieldGridView.DeleteSelectedRows();
             Debug.WriteLine(ColumnDefinition.Count);
+            ShowCurrentFieldOnSelector(); //Update view
         }
 
         private void bSort_Click(object sender, EventArgs e)
@@ -587,7 +652,7 @@ namespace Test001
 
         private void bMoveDown_Click(object sender, EventArgs e)
         {
-            DataFieldMoveUp();
+            DataFieldMoveDown();
         }
 
         private void bTest2_Click(object sender, EventArgs e)
@@ -619,5 +684,22 @@ namespace Test001
                 ClassPublic.winTree.BringToFront();
             }
         }
+
+        private void NewFieldDefaultSelectionMenuItem_Click(object sender, EventArgs e)
+        {
+            DataFieldAddIndexRow(FieldAddType.DefaultSelection);
+        }
+
+        private void NewCurrentSelectionMenuItem_Click(object sender, EventArgs e)
+        {
+            DataFieldAddIndexRow(FieldAddType.CurrentSelection);
+        }
+
+        private void NewFieldAfterCurrentMenuItem_Click(object sender, EventArgs e)
+        {
+            DataFieldAddIndexRow(FieldAddType.AfterCurrentSelection);
+        }
+
+   
     }
 }

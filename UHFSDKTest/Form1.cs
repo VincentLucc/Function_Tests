@@ -306,27 +306,26 @@ namespace UHFSDKTest
 
         private void bRead_Click(object sender, EventArgs e)
         {
-            string sResult=null;
-            if (!RFIDReader.TryReadTag(TagDataType.User, ref sResult))
+            var result = RFIDReader.TryReadTag(TagDataType.User);
+            if (!result.IsSuccess)
             {
                 MessageBox.Show("Error");
                 return;
             }
 
-            MessageBox.Show(sResult);
-            
+            MessageBox.Show(result.StrValue);         
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string sResult = null;
-            if (!RFIDReader.TryReadTag(TagDataType.EPC, ref sResult))
+            var result = RFIDReader.TryReadTag(TagDataType.EPC);
+            if (!result.IsSuccess)
             {
                 MessageBox.Show("Error");
                 return;
             }
 
-            MessageBox.Show(sResult);
+            MessageBox.Show(result.StrValue);
         }
 
         private void bPassWrite_Click(object sender, EventArgs e)
@@ -377,19 +376,99 @@ namespace UHFSDKTest
 
         private void bReadReserve_Click(object sender, EventArgs e)
         {
-            string sResult = null;
-            if (!RFIDReader.TryReadTag(TagDataType.Reserved, ref sResult))
+            var result = RFIDReader.TryReadTag(TagDataType.Reserved,3);
+            if (!result.IsSuccess)
             {
                 MessageBox.Show("Error");
                 return;
             }
 
-            MessageBox.Show(sResult);
+            MessageBox.Show(result.StrValue);
         }
 
         private void bGetCurrentTag_Click(object sender, EventArgs e)
         {
             RFIDReader.TryGetOperationTag();
+        }
+
+        private void bReadAccess_Click(object sender, EventArgs e)
+        {
+            var result = RFIDReader.TryReadTag(TagDataType.AccessCode,3);
+            if (!result.IsSuccess)
+            {
+                MessageBox.Show("Error");
+                return;
+            }
+
+            MessageBox.Show(result.StrValue);
+        }
+
+        private void bReadOdooData_Click(object sender, EventArgs e)
+        {
+            var result = RFIDReader.TryReadTag(TagDataType.OdooEncryptedData);
+            if (!result.IsSuccess)
+            {
+                MessageBox.Show("Error");
+                return;
+            }
+
+            MessageBox.Show(result.StrValue);
+        }
+
+        private void bWriteAccessCode_Click(object sender, EventArgs e)
+        {
+
+            if (!RFIDReader.TryWriteTag(TagDataType.AccessCode, null))
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
+        private void bWriteOdoo_Click(object sender, EventArgs e)
+        {
+            //Get data
+            var data = csCRC.StringToHexByte(tbInput.Text);
+
+            if (!RFIDReader.TryWriteTag(TagDataType.OdooEncryptedData, data))
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
+        private void bReadTID_Click(object sender, EventArgs e)
+        {
+            var result = RFIDReader.TryReadTag(TagDataType.TID);
+            if (!result.IsSuccess)
+            {
+                MessageBox.Show("Error");
+                return;
+            }
+
+            MessageBox.Show(result.StrValue);
+        }
+
+        private void bLockTag_Click(object sender, EventArgs e)
+        {
+            //Write password to tag
+            if (!RFIDReader.TryWriteTag(TagDataType.AccessCode, null, 3))
+            {
+                MessageBox.Show("TryWriteTag Error");
+                return;
+            }
+
+
+            if (!RFIDReader.TryLockTag(3))
+            {
+                MessageBox.Show("TryLockTag Error");
+            }
+        }
+
+        private void bUnLock_Click(object sender, EventArgs e)
+        {
+            if (!RFIDReader.TryUnLockTag(3))
+            {
+                MessageBox.Show("TryUnLockTag Error");
+            }
         }
     }
 }

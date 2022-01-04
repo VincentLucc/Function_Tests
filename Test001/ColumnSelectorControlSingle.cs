@@ -1042,7 +1042,11 @@ namespace Test001
                         myRuler._iDroppedIndex = -1;
                     }
                 }
-                catch { }
+                
+                catch (Exception e)
+                {
+                    Debug.WriteLine("ColumnSelectorControlSingle.PreFilterMessage:\r\n" + e.Message);
+                }
 
                 return false;  // Whether or not the message is filtered
             }
