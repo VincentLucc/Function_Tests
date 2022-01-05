@@ -258,9 +258,7 @@ namespace Test001
         private void bAdd_Click(object sender, EventArgs e)
         {
             //Set UI
-            bAdd.ContextMenuStrip = FieldContextMenuStrip;
-            FieldContextMenuStrip.Show(bAdd,
-                new Point(bAdd.Width, 0));
+            FieldContextMenuStrip.Show(bAdd,new Point(bAdd.Width, 0));
 
             ////Directly add
             //DataFieldAddIndexRows();

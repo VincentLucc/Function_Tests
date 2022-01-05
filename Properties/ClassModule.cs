@@ -10,6 +10,9 @@ using System.Drawing.Design;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
+using DevExpress.ExpressApp.Win.Editors;
+using DevExpress.ExpressApp.Editors;
+using DevExpress.ExpressApp.Model;
 
 namespace Properties
 {
@@ -47,7 +50,7 @@ namespace Properties
         public int CertificateID { get; set; }
         public string Name { get; set; }
 
-        [Editor(typeof(RepositoryItemToggleSwitch), typeof(RepositoryItem))]
+       [Editor(typeof(ToggleSwitch), typeof(BaseEdit))]
         public bool IsOK { get; set; }
     }
 
@@ -80,18 +83,16 @@ namespace Properties
 
     }
 
+ 
+
     public class FilteredFileNameEditor : UITypeEditor
     {
         private OpenFileDialog ofd = new OpenFileDialog();
-        public override UITypeEditorEditStyle GetEditStyle(
-         ITypeDescriptorContext context)
+        public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
         {
             return UITypeEditorEditStyle.Modal;
         }
-        public override object EditValue(
-         ITypeDescriptorContext context,
-         IServiceProvider provider,
-         object value)
+        public override object EditValue(ITypeDescriptorContext context,IServiceProvider provider,object value)
         {
             ofd.FileName = value.ToString();
             ofd.Filter = "Text File|*.txt|All Files|*.*";

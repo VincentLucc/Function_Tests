@@ -41,7 +41,7 @@ namespace Properties
             // 
             // pg1
             // 
-            this.pg1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pg1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pg1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pg1.Location = new System.Drawing.Point(0, 0);
             this.pg1.Name = "pg1";

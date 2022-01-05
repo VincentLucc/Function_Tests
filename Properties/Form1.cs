@@ -139,20 +139,6 @@ namespace Properties
         }
 
 
-        private CustomEditorAttribute GetEditorType(AttributeCollection attributes)
-        {
-            //find the editor
-            foreach (var attr in attributes)
-            {
-                if (attr is CustomEditorAttribute)
-                {
-                    return attr as CustomEditorAttribute;
-                }
-            }
-
-            //No matches
-            return null;
-        }
 
 
         /// <summary>
@@ -244,11 +230,45 @@ namespace Properties
             {
                 VerifyRange(e, 2, 10);
             }
+            else if (sFieldName== $"{nameof(Student.Cert)}.{nameof(Certificate.IsOK)}")
+            {
+                NotifyUserAndUpdate(e);
+                
+            }
 
 
 
 
 
+        }
+
+
+        private void NotifyUserAndUpdate(BaseContainerValidateEditorEventArgs e)
+        {
+            if (!(e.Value is bool)) return;
+
+            //Get value
+            if (!(bool)e.Value)
+            {
+
+                //Dev message box
+                XtraMessageBox.Show("Dev info","Dev title",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Information);
+
+
+                //Show confirmmation
+                var result =MessageBox.Show("This is confirmation","Test title",MessageBoxButtons.OKCancel);
+
+                if (result==DialogResult.OK)
+                {
+                    //Change value and redraw
+                    Debug.WriteLine("Change value and redraw");
+                }
+                else
+                {
+                    e.Value = true;//Change value back, this will avoid validation error notice
+                    return;
+                }
+            }
         }
 
 
