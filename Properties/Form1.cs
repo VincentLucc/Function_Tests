@@ -21,6 +21,7 @@ namespace Properties
     public partial class Form1 : Form
     {
         List<Student> sList;
+        public csPropertyHelper propertyHelper { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -33,6 +34,8 @@ namespace Properties
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Init helper
+            propertyHelper = new csPropertyHelper(pg1);
 
             //Init property grid settings
             pg1.ActiveViewType = DevExpress.XtraVerticalGrid.PropertyGridView.Office;
@@ -41,6 +44,8 @@ namespace Properties
             pg1.SelectedChanged += Pg1_SelectedChanged;
             pg1.CustomPropertyDescriptors += Pg1_CustomPropertyDescriptors;
             pg1.CellValueChanged += Pg1_CellValueChanged;
+
+
 
 
             sList = new List<Student>();
@@ -62,7 +67,7 @@ namespace Properties
 
         private void Pg1_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
-
+            propertyHelper.ReloadAll();
         }
 
         private void pg1_DataSourceChanged(object sender, EventArgs e)
@@ -71,39 +76,14 @@ namespace Properties
 
             //recreate all rows
             //pg1.RetrieveFields(true);
+            propertyHelper.ReloadAll();
 
-            //Get all rows
-            var rows = GetAllPropertyRows(pg1);
 
-            //Set editor
-            foreach (var row in rows)
-            {
-                var editor = GetEditorType(row, pg1.SelectedObject, out bool IsSub);
-                if (editor == null) continue;
-                SetRowEditor(row, editor);
-            }
+
+
         }
 
-        /// <summary>
-        /// Set row editor based on edit type
-        /// </summary>
-        /// <param name="row"></param>
-        /// <param name="editor"></param>
-        private void SetRowEditor(BaseRow row, CustomEditorAttribute editor)
-        {
-            switch (editor.Editor)
-            {
-                case EditorType.Number:
-                    RepositoryItemCalcEdit repositoryCalcEdit = new RepositoryItemCalcEdit();
-                    repositoryCalcEdit.EditValueChangedFiringMode = EditValueChangedFiringMode.Buffered;
-                    //repositoryCalcEdit.EditValueChangedDelay = int.MaxValue;
-                    row.Properties.RowEdit = repositoryCalcEdit;
 
-                    break;
-                default:
-                    break;
-            }
-        }
 
         /// <summary>
         /// Trigger once when property created
@@ -141,75 +121,7 @@ namespace Properties
 
 
 
-        /// <summary>
-        /// Get attribute type of a property row
-        /// </summary>
-        /// <param name="propertyRow"></param>
-        /// <param name="PropertyObject">property grid selected object</param>
-        /// <returns></returns>
-        private CustomEditorAttribute GetEditorType(BaseRow propertyRow, object PropertyObject, out bool IsSubProperty)
-        {
-            //Init variables
-            PropertyInfo propertyInfo = null;
-            CustomEditorAttribute editor = null;
-            IsSubProperty = false;
 
-            string sName = propertyRow.Properties.FieldName;
-
-            //Check selection
-            if (PropertyObject == null) return null;
-
-            //Check name
-            if (string.IsNullOrEmpty(sName)) return null;
-
-            try
-            {
-
-                if (sName.Contains("."))
-                {
-                    var sProperties = sName.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries);
-                    if (sProperties.Length != 2) return null;
-
-                    //Get parent info
-                    PropertyInfo pParent = PropertyObject.GetType().GetProperty(sProperties[0]);
-
-                    //Get property instance to retrive actual type such as inherit class
-                    var pInstance = pParent.GetValue(PropertyObject);
-
-                    //Get 2nd property info
-                    propertyInfo = pInstance.GetType().GetProperty(sProperties[1]);
-
-                    IsSubProperty = true;
-
-                }
-                else
-                {
-                    propertyInfo = PropertyObject.GetType().GetProperty(sName);
-                    IsSubProperty = false;
-                }
-
-                //No property set
-                if (propertyInfo == null) return null;
-
-                //Get all attributes
-                var attributes = propertyInfo.GetCustomAttributes(false).Where(a => a is CustomEditorAttribute);
-
-                if (attributes.Count() == 1)
-                {
-                    editor = attributes.First() as CustomEditorAttribute;
-                    return editor;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("GetEditorType" + ex.Message);
-            }
-
-
-            //Nothing found
-            return null;
-        }
 
         private void Pg1_SelectedChanged(object sender, SelectedChangedEventArgs e)
         {
@@ -230,10 +142,10 @@ namespace Properties
             {
                 VerifyRange(e, 2, 10);
             }
-            else if (sFieldName== $"{nameof(Student.Cert)}.{nameof(Certificate.IsOK)}")
+            else if (sFieldName == $"{nameof(Student.Cert)}.{nameof(Certificate.IsOK)}")
             {
                 NotifyUserAndUpdate(e);
-                
+
             }
 
 
@@ -252,13 +164,13 @@ namespace Properties
             {
 
                 //Dev message box
-                XtraMessageBox.Show("Dev info","Dev title",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Information);
+                XtraMessageBox.Show("Dev info", "Dev title", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
 
 
                 //Show confirmmation
-                var result =MessageBox.Show("This is confirmation","Test title",MessageBoxButtons.OKCancel);
+                var result = MessageBox.Show("This is confirmation", "Test title", MessageBoxButtons.OKCancel);
 
-                if (result==DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
                     //Change value and redraw
                     Debug.WriteLine("Change value and redraw");
@@ -304,7 +216,7 @@ namespace Properties
         {
             if (e.Value == null)
             {
-                if (iMin!=0)
+                if (iMin != 0)
                 {
                     e.Valid = false;
                     e.ErrorText = $"Invalid input.";
@@ -318,7 +230,7 @@ namespace Properties
             }
 
             //Check length
-            if (e.Value.ToString().Length< iMin)
+            if (e.Value.ToString().Length < iMin)
             {
                 e.Valid = false;
                 e.ErrorText = $"Length must be no less than {iMin}";
@@ -418,47 +330,6 @@ namespace Properties
             Debug.WriteLine(pg1.Rows.Count);
         }
 
-
-        /// <summary>
-        /// Get all relavent rows from property grid
-        /// </summary>
-        /// <returns></returns>
-        private List<BaseRow> GetAllPropertyRows(PropertyGridControl propertyGrid)
-        {
-            //Init variables
-            List<BaseRow> rowsPre = new List<BaseRow>(); //Get all rows
-            List<BaseRow> rowsPost = new List<BaseRow>(); //Required rows
-
-            foreach (var rowLevel1 in propertyGrid.Rows)
-            {
-                rowsPre.Add(rowLevel1);
-
-                foreach (var rowLevel2 in rowLevel1.ChildRows)
-                {
-                    rowsPre.Add(rowLevel2);
-
-                    foreach (var rowLevel3 in rowLevel2.ChildRows)
-                    {
-                        rowsPre.Add(rowLevel3);
-                    }
-                }
-            }
-
-            //Remove null relavent row       
-            foreach (var BaseRow in rowsPre)
-            {
-                if (BaseRow is CategoryRow || BaseRow is PGridEmptyRow)
-                {
-                    continue;
-                }
-
-                rowsPost.Add(BaseRow);
-            }
-
-            //Show rows count
-            Debug.WriteLine("GetAllPropertyRows:" + rowsPost.Count);
-            return rowsPost;
-        }
 
 
 

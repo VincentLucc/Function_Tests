@@ -19,27 +19,44 @@ namespace Properties
     class Student
     {
         [Category("Test")]
-        [DisplayName("sName"), Description("Name of this student.")]
+        [DisplayName("s Name"), Description("Description Method 1 Name of this student.")]
         //Directly use custom editor, Type and base type
         [Editor(typeof(FilteredFileNameEditor),typeof(UITypeEditor))]
         public string Name { get; set; }
+
         //User to address editor manually
         [CustomEditor(EditorType.Number)]
         [Category("Test")]
-        [DisplayName("sAge"), Description("Student Age")]
+        [DisplayName("S Age"), Description("Description Method 2, manual address")]
         public int Age { get; set; }
 
         [TypeConverter(typeof(ExpandableObjectConverter))] //Show sub class properties
         [ExpandableRowSettings(false)] //Hide class root editor
         public Certificate Cert { get; set; }
+
         [TypeConverter(typeof(ExpandableObjectConverter))] //Show sub class properties
         [ExpandableRowSettings(false)] //Hide class root editor
         public CertificateBase Cert2 { get; set; }
+
+        [CustomEditor(EditorType.ToggleSwitch)]
+        [Category("Test")]
+        [DisplayName("Toggle Switch"), Description("Description Method 2, manual address")]
+        public bool ToggleSwitch { get; set; }
+
+        /// <summary>
+        /// Must be public to be able to display on property
+        /// </summary>
+        [CustomEditor(EditorType.ToggleSwitchList)]
+        [DisplayName("List"), Description("List Test")]
+        [ExpandableRowSettings(false)] //Hide class root editor
+    
+        public bool[] List { get; set; }
 
         public Student()
         {
             Cert = new Certificate();
             Cert2 = new Certificate();
+            List = new bool[3];
         }
     }
 
@@ -50,7 +67,6 @@ namespace Properties
         public int CertificateID { get; set; }
         public string Name { get; set; }
 
-       [Editor(typeof(ToggleSwitch), typeof(BaseEdit))]
         public bool IsOK { get; set; }
     }
 
@@ -59,29 +75,7 @@ namespace Properties
 
     }
 
-    /// <summary>
-    /// Define a attribute
-    /// Name+Attribute, simply use name when apply
-    /// </summary>
-    public class CustomEditorAttribute : Attribute
-    {
-        public EditorType Editor;
-
-        public float? Min;
-
-        public float? Max;
-        public CustomEditorAttribute(EditorType editorType)
-        {
-            Editor = editorType;
-        }
-        public CustomEditorAttribute(EditorType editorType, int iMin, int iMax)
-        {
-            Editor = editorType;
-            Min = iMin;
-
-        }
-
-    }
+    
 
  
 
@@ -104,10 +98,7 @@ namespace Properties
         }
     }
 
-    public enum EditorType
-    {
-        Number
-    }
+
 
 
 }
