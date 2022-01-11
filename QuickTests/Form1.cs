@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,7 +37,7 @@ namespace QuickTests
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            await Task.Delay(5000);
+            await Task.Delay(1000);
             this.Visible = true;
         }
 
@@ -44,5 +45,26 @@ namespace QuickTests
         {
             this.Visible = false;
         }
+
+
+        bool[] bitData = new bool[32];
+                
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //Prepare data
+            bitData[0] = true;
+            bitData[1] = true;
+            bitData[31] = true;
+
+
+            string s = BoolArrayToHexString(bitData);
+
+            bitData=HexStringToBoolArray(s);
+        }
+
+
+      
+
+
     }
 }

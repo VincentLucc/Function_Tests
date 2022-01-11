@@ -214,12 +214,20 @@ namespace Properties
         {
             switch (editor.Editor)
             {
-                case EditorType.Number:
+                case EditorType.Cal:
                     RepositoryItemCalcEdit repositoryCalcEdit = new RepositoryItemCalcEdit();
                     repositoryCalcEdit.EditValueChangedFiringMode = EditValueChangedFiringMode.Buffered;
                     //repositoryCalcEdit.EditValueChangedDelay = int.MaxValue;
                     row.Properties.RowEdit = repositoryCalcEdit;
-                    
+                    break;
+
+                case EditorType.Number:
+                    RepositoryItemTextEdit repositoryNumberEdit = new RepositoryItemTextEdit();
+                    repositoryNumberEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+                    repositoryNumberEdit.Mask.UseMaskAsDisplayFormat = true;
+                    repositoryNumberEdit.Mask.EditMask= "#####0";
+                    //repositoryCalcEdit.EditValueChangedDelay = int.MaxValue;
+                    row.Properties.RowEdit = repositoryNumberEdit;                 
                     break;
 
                 case EditorType.ToggleSwitch:
@@ -242,6 +250,7 @@ namespace Properties
 
     public enum EditorType
     {
+        Cal,
         Number,
         ToggleSwitch,
         ToggleSwitchList,

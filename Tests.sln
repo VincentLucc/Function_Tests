@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileLoading", "FileLoading\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemorySharing", "MemorySharing\MemorySharing.csproj", "{DD5724C3-70CE-4A57-976F-06B02769A66A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemDraw", "SystemDraw\SystemDraw.csproj", "{0531BDF6-D8F0-441B-AC3E-B216C3ABBC8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -205,6 +207,18 @@ Global
 		{DD5724C3-70CE-4A57-976F-06B02769A66A}.Release|x64.Build.0 = Release|Any CPU
 		{DD5724C3-70CE-4A57-976F-06B02769A66A}.Release|x86.ActiveCfg = Release|Any CPU
 		{DD5724C3-70CE-4A57-976F-06B02769A66A}.Release|x86.Build.0 = Release|Any CPU
+		{0531BDF6-D8F0-441B-AC3E-B216C3ABBC8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0531BDF6-D8F0-441B-AC3E-B216C3ABBC8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0531BDF6-D8F0-441B-AC3E-B216C3ABBC8B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0531BDF6-D8F0-441B-AC3E-B216C3ABBC8B}.Debug|x64.Build.0 = Debug|Any CPU
+		{0531BDF6-D8F0-441B-AC3E-B216C3ABBC8B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0531BDF6-D8F0-441B-AC3E-B216C3ABBC8B}.Debug|x86.Build.0 = Debug|Any CPU
+		{0531BDF6-D8F0-441B-AC3E-B216C3ABBC8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0531BDF6-D8F0-441B-AC3E-B216C3ABBC8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0531BDF6-D8F0-441B-AC3E-B216C3ABBC8B}.Release|x64.ActiveCfg = Release|Any CPU
+		{0531BDF6-D8F0-441B-AC3E-B216C3ABBC8B}.Release|x64.Build.0 = Release|Any CPU
+		{0531BDF6-D8F0-441B-AC3E-B216C3ABBC8B}.Release|x86.ActiveCfg = Release|Any CPU
+		{0531BDF6-D8F0-441B-AC3E-B216C3ABBC8B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -136,11 +136,11 @@ namespace Properties
 
             if (sFieldName == nameof(Student.Age))
             {
-                VerifyRange(e, 1, 10);
+                VerifyRange(e, 1, 50);
             }
             else if (sFieldName == "Cert.CertificateID")
             {
-                VerifyRange(e, 2, 10);
+                VerifyRange(e, 2, 50);
             }
             else if (sFieldName == $"{nameof(Student.Cert)}.{nameof(Certificate.IsOK)}")
             {
