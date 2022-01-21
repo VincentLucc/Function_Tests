@@ -34,9 +34,11 @@ namespace Properties
             this.pd1 = new DevExpress.XtraVerticalGrid.PropertyDescriptionControl();
             this.lb1 = new System.Windows.Forms.ListBox();
             this.te1 = new DevExpress.XtraEditors.TextEdit();
+            this.pDescription = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pg1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.te1.Properties)).BeginInit();
+            this.pDescription.SuspendLayout();
             this.SuspendLayout();
             // 
             // pg1
@@ -54,7 +56,7 @@ namespace Properties
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pd1);
+            this.panel1.Controls.Add(this.pDescription);
             this.panel1.Controls.Add(this.pg1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(503, 0);
@@ -64,11 +66,13 @@ namespace Properties
             // 
             // pd1
             // 
-            this.pd1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.pd1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pd1.Location = new System.Drawing.Point(0, 415);
+            this.pd1.Appearance.Panel.BorderColor = System.Drawing.Color.Blue;
+            this.pd1.Appearance.Panel.Options.UseBorderColor = true;
+            this.pd1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
+            this.pd1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pd1.Location = new System.Drawing.Point(0, 0);
             this.pd1.Name = "pd1";
-            this.pd1.Size = new System.Drawing.Size(295, 100);
+            this.pd1.Size = new System.Drawing.Size(293, 80);
             this.pd1.TabIndex = 1;
             this.pd1.TabStop = false;
             // 
@@ -90,6 +94,16 @@ namespace Properties
             this.te1.TabIndex = 3;
             this.te1.EditValueChanged += new System.EventHandler(this.textEdit1_EditValueChanged);
             // 
+            // pDescription
+            // 
+            this.pDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pDescription.Controls.Add(this.pd1);
+            this.pDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pDescription.Location = new System.Drawing.Point(0, 433);
+            this.pDescription.Name = "pDescription";
+            this.pDescription.Size = new System.Drawing.Size(295, 82);
+            this.pDescription.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,6 +118,7 @@ namespace Properties
             ((System.ComponentModel.ISupportInitialize)(this.pg1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.te1.Properties)).EndInit();
+            this.pDescription.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -115,6 +130,7 @@ namespace Properties
         private DevExpress.XtraVerticalGrid.PropertyDescriptionControl pd1;
         private System.Windows.Forms.ListBox lb1;
         private DevExpress.XtraEditors.TextEdit te1;
+        private System.Windows.Forms.Panel pDescription;
     }
 }
 

@@ -2,9 +2,11 @@
 using DevExpress.XtraDiagram;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,7 +21,7 @@ namespace Diagram
         /// <summary>
         /// Constructor
         /// </summary>
-        public Container()
+        public Container(bool StartThread=true)
         {
             //Container Basic settings
             ShowHeader = false;
@@ -39,9 +41,21 @@ namespace Diagram
             Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
 
-           
-            
+            if (!StartThread) return;
 
+            Thread t1 = new Thread(ProcessDoSomething);
+            t1.IsBackground = false;
+            t1.Start();
+
+        }
+
+        private void ProcessDoSomething()
+        {
+            while (!this.IsDisposed)
+            {
+                Thread.Sleep(1000);
+                Debug.WriteLine("ProcessDoSomething: I am alive");
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraEditors.Mask;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraVerticalGrid;
 using DevExpress.XtraVerticalGrid.Rows;
@@ -19,6 +20,8 @@ namespace Properties
     public class csPropertyHelper
     {
         public PropertyGridControl PropertyGrid { get; set; }
+
+       
 
         /// <summary>
         /// Trigger when setting row editor for custom editor set outside the class if needed
@@ -104,7 +107,20 @@ namespace Properties
             return rowsPost;
         }
 
+        public void DoValidate()
+        {
+            //Get current selected row
+            var row = PropertyGrid.FocusedRow;
 
+            if (row!=null)
+            {
+                Debug.WriteLine("DoValidate:" + row.Properties.FieldName);
+               
+            }
+           
+            
+            
+        }
 
 
         /// <summary>
@@ -225,20 +241,35 @@ namespace Properties
                     RepositoryItemTextEdit repositoryNumberEdit = new RepositoryItemTextEdit();
                     repositoryNumberEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
                     repositoryNumberEdit.Mask.UseMaskAsDisplayFormat = true;
-                    repositoryNumberEdit.Mask.EditMask= "#####0";
-                    //repositoryCalcEdit.EditValueChangedDelay = int.MaxValue;
-                    row.Properties.RowEdit = repositoryNumberEdit;                 
+                    repositoryNumberEdit.Mask.EditMask = "#####0";
+                    repositoryNumberEdit.EditValueChangedFiringMode = EditValueChangedFiringMode.Buffered;
+                    repositoryNumberEdit.EditValueChangedDelay = int.MaxValue;
+                    repositoryNumberEdit.ValidateOnEnterKey = true;
+                    break;
+
+                case EditorType.Text:
+                    RepositoryItemTextEdit textEdit_Text = new RepositoryItemTextEdit();
+                    if (editor.IsCustomMaskEnable)
+                    {
+                        textEdit_Text.Mask.UseMaskAsDisplayFormat = true;
+                        textEdit_Text.Mask.MaskType = editor.MaskType;
+                        textEdit_Text.Mask.EditMask = editor.MaskString;
+                        textEdit_Text.EditValueChangedFiringMode = EditValueChangedFiringMode.Buffered;
+                        textEdit_Text.EditValueChangedDelay = 2000;
+                    }
+                   
                     break;
 
                 case EditorType.ToggleSwitch:
                     row.Properties.RowEdit = new RepositoryItemToggleSwitch();
                     break;
 
+
                 case EditorType.ToggleSwitchList:
                     RepositoryItemToggleSwitch toggleSwitch = new RepositoryItemToggleSwitch();
-                    row.Properties.Caption = $"Device {editor.IntValue+1}";
+                    row.Properties.Caption = $"Device {editor.IntValue + 1}";
                     row.Properties.RowEdit = new RepositoryItemToggleSwitch();
-                    Debug.WriteLine(row.Appearance.Name);                 
+                    Debug.Write("ToggleSwitchList:"+row.Properties.FieldName+":");
                     break;
 
                 default:
@@ -246,14 +277,19 @@ namespace Properties
             }
         }
 
+   
+
     }
+
+    
 
     public enum EditorType
     {
         Cal,
         Number,
+        Text,
         ToggleSwitch,
-        ToggleSwitchList,
+        ToggleSwitchList
     }
 
 
@@ -264,7 +300,12 @@ namespace Properties
     public class CustomEditorAttribute : Attribute
     {
         public EditorType Editor;
-
+        public bool IsCustomMaskEnable;
+        public DevExpress.XtraEditors.Mask.MaskType MaskType;
+        /// <summary>
+        /// Define input masks for auto input validation
+        /// </summary>
+        public string MaskString;
         public float Min;
 
         public float Max;
@@ -281,10 +322,15 @@ namespace Properties
         /// Store any editor related value for customization usage
         /// </summary>
         public int IntValue { get; set; }
-        public CustomEditorAttribute(EditorType editorType)
+        public CustomEditorAttribute(EditorType editorType, bool enableCustomMask = false,
+             MaskType maskType = MaskType.Custom, string maskString = "")
         {
             Editor = editorType;
+            IsCustomMaskEnable = enableCustomMask;
+            MaskType = maskType;
+            MaskString = maskString;
         }
+
         public CustomEditorAttribute(EditorType editorType, int iMin, int iMax)
         {
             Editor = editorType;

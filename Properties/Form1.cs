@@ -22,6 +22,12 @@ namespace Properties
     {
         List<Student> sList;
         public csPropertyHelper propertyHelper { get; set; }
+
+        public bool EnablePropertyValidate { get; set; }
+        public string ErrorMessage { get; set; }
+
+
+
         public Form1()
         {
             InitializeComponent();
@@ -38,14 +44,26 @@ namespace Properties
             propertyHelper = new csPropertyHelper(pg1);
 
             //Init property grid settings
-            pg1.ActiveViewType = DevExpress.XtraVerticalGrid.PropertyGridView.Office;
+            pg1.ActiveViewType = PropertyGridView.Office;
             pg1.ValidatingEditor += Pg1_ValidatingEditor;
             pg1.CustomRecordCellEdit += PropertyGridControl1_CustomRecordCellEdit; //Constantly trigger!!!!, avoid
             pg1.SelectedChanged += Pg1_SelectedChanged;
             pg1.CustomPropertyDescriptors += Pg1_CustomPropertyDescriptors;
-            pg1.CellValueChanged += Pg1_CellValueChanged;
+            pg1.CellValueChanged += Pg1_CellValueChanged; //Happen before Pg1_ValidatingEditor!!!
+            //pg1.FocusedRowChanged += Pg1_FocusedRowChanged;
+            //pg1.FocusedRecordChanged += Pg1_FocusedRecordChanged;
+            //pg1.FocusedRecordCellChanged += Pg1_FocusedRecordCellChanged;
+            //pg1.MouseCaptureChanged += Pg1_MouseCaptureChanged;// This will trigger properly when editor lose focus
+            pg1.EditorKeyDown += Pg1_EditorKeyDown;
+            //pg1.EditorKeyPress += Pg1_EditorKeyPress;
+            //pg1.CustomRecordCellEdit += Pg1_CustomRecordCellEdit;
 
-
+            pg1.KeyDown += Pg1_KeyDown;
+            // pg1.Validated += Pg1_Validated;
+            pg1.InvalidValueException += Pg1_InvalidValueException;
+            pg1.CausesValidation = true; //Default not to validate only when required
+            pg1.MouseClick += Pg1_MouseClick;
+            //pg1.KeyPress += Pg1_KeyPress;
 
 
             sList = new List<Student>();
@@ -62,12 +80,153 @@ namespace Properties
 
 
             //Tests
-            te1.Validating += TextEdit1_Validating;
+            //te1.Validating += TextEdit1_Validating;
+        }
+
+        private void Pg1_CustomRecordCellEdit(object sender, GetCustomRowCellEditEventArgs e)
+        {
+            Debug.WriteLine("Pg1_CustomRecordCellEdit");
+
+        }
+
+        /// <summary>
+        /// Use key down instead, key press trigger when press and realse combined
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Pg1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Debug.WriteLine("Pg1_KeyPress:" + (Keys)e.KeyChar);
+        }
+
+        /// <summary>
+        ///Notice, return(enter) key happens after validation and value change.
+        ///Rest of the key inputs happen before validation.
+        ///So a manual validate required when enter pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Pg1_EditorKeyPress(object sender, KeyPressEventArgs e)
+        {
+            Debug.WriteLine("Pg1_EditorKeyPress:" + (Keys)e.KeyChar);
+
+            //Press enter when inside the editor
+            //TriggerPropertyValidate(e.KeyChar == (char)Keys.Return);
+
+
+        }
+
+
+        /// <summary>
+        /// Trigger validation process on condition
+        /// </summary>
+        /// <param name="IsTrigger"></param>
+        private void TriggerPropertyValidate()
+        {
+            try
+            {
+                EnablePropertyValidate = true;
+                //Manual trigger validation
+                ValidateChildren();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("DeterminePropertyValidate:\r\n" + e.Message);
+            }
+        }
+
+        private void Pg1_MouseClick(object sender, MouseEventArgs e)
+        {
+            Debug.WriteLine("Pg1_MouseClick");
+            TriggerPropertyValidate();
+        }
+
+
+
+
+        private void Pg1_InvalidValueException(object sender, InvalidValueExceptionEventArgs e)
+        {
+
+            if (!EnablePropertyValidate)
+            {
+                e.ExceptionMode = ExceptionMode.NoAction;
+            }
+
+
+
+            Debug.WriteLine("Invalid Exception:EnableValidate:" + EnablePropertyValidate);
+        }
+
+        private void Pg1_Validated(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Pg1_KeyDown(object sender, KeyEventArgs e)
+        {
+            Debug.WriteLine("Pg1_KeyDown:" + e.KeyCode.ToString());
+
+            //When "enter" pressed outside the property editor
+            if (e.KeyCode == Keys.Return)
+            {
+                TriggerPropertyValidate();
+            }
+          
+        }
+
+
+        /// <summary>
+        /// Input trigger before validation, but 
+        /// Enter event trigger after validation!!!! 
+        /// Do not use
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Pg1_EditorKeyDown(object sender, KeyEventArgs e)
+        {
+            Debug.WriteLine("Pg1_EditorKeyDown:" + e.KeyCode);
+
+            //Press enter when inside the editor
+            //Must disable when any other keys pressed after this to disable validation
+            EnablePropertyValidate = (e.KeyCode == Keys.Return) ? true : false;
+        }
+
+
+        /// <summary>
+        /// This will trigger properly when editor lose focus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Pg1_MouseCaptureChanged(object sender, EventArgs e)
+        {
+
+            Debug.WriteLine("Pg1_MouseCaptureChanged");
+
+
+        }
+
+        private void Pg1_FocusedRecordCellChanged(object sender, IndexChangedEventArgs e)
+        {
+            Debug.WriteLine("Pg1_FocusedRecordCellChanged");
+        }
+
+        private void Pg1_FocusedRecordChanged(object sender, IndexChangedEventArgs e)
+        {
+            Debug.WriteLine("Pg1_FocusedRecordChanged");
+        }
+
+
+        //Only work when on different row
+        private void Pg1_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        {
+            Debug.WriteLine("Pg1_FocusedRowChanged");
         }
 
         private void Pg1_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
-            propertyHelper.ReloadAll();
+            Debug.WriteLine($"Cell Value changed.{e.Value}");
+
+            //propertyHelper.ReloadAll();
         }
 
         private void pg1_DataSourceChanged(object sender, EventArgs e)
@@ -77,9 +236,6 @@ namespace Properties
             //recreate all rows
             //pg1.RetrieveFields(true);
             propertyHelper.ReloadAll();
-
-
-
 
         }
 
@@ -114,11 +270,7 @@ namespace Properties
             //            break;
             //    }
             //}
-
-
         }
-
-
 
 
 
@@ -130,7 +282,17 @@ namespace Properties
 
         private void Pg1_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
         {
-            Debug.WriteLine("Validating Edit");
+            Debug.WriteLine("Validating Edit Trigger");
+
+            //Skip validation when input not ready
+            if (!EnablePropertyValidate)
+            {
+                e.Valid = false;
+                return;
+            }
+
+
+            Debug.WriteLine("Validating Edit Start");
             //Init variables
             string sFieldName = pg1.FocusedRow.Properties.FieldName;
 
@@ -147,10 +309,6 @@ namespace Properties
                 NotifyUserAndUpdate(e);
 
             }
-
-
-
-
 
         }
 
@@ -321,12 +479,6 @@ namespace Properties
             //            break;
             //    }
             //}
-
-
-
-
-
-
             Debug.WriteLine(pg1.Rows.Count);
         }
 

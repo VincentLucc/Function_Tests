@@ -8,6 +8,7 @@ namespace SystemDraw
 {
     class csCommon
     {
+
     }
 
     public enum DrawCommand

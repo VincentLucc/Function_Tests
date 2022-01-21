@@ -13,6 +13,7 @@ using DevExpress.XtraEditors.Repository;
 using DevExpress.ExpressApp.Win.Editors;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.Model;
+using DevExpress.XtraEditors.Mask;
 
 namespace Properties
 {
@@ -29,6 +30,24 @@ namespace Properties
         [Category("Test")]
         [DisplayName("S Age"), Description("Description Method 2, manual address")]
         public int Age { get; set; }
+
+        //Test text editor regex
+        [CustomEditor(EditorType.Text, true, MaskType.RegEx, @"^[a-zA-Z]{1,2}[0-9]*$")]
+        [Category("Test")]
+        [DisplayName("Text1 No Mask"), Description("Text editor no mask ")]
+        public string TextNormal { get; set; }
+
+        //Test text editor regex
+        [CustomEditor(EditorType.Text,true,MaskType.RegEx, @"^[a-zA-Z]{1,2}[0-9]*$")]
+        [Category("Test")]
+        [DisplayName("Text2 Reg Mask"), Description("Text editor with regex mask")]
+        public string TextReg { get; set; }
+
+        //Test text editor regex
+        [CustomEditor(EditorType.Text, true, MaskType.Numeric, "#####0")]
+        [Category("Test")]
+        [DisplayName("Text3 Numeric Mask"), Description("Text editor with Numeric Mask")]
+        public string TextNum { get; set; }
 
         [TypeConverter(typeof(ExpandableObjectConverter))] //Show sub class properties
         [ExpandableRowSettings(false)] //Hide class root editor
@@ -57,6 +76,7 @@ namespace Properties
             Cert = new Certificate();
             Cert2 = new Certificate();
             List = new bool[3];
+            TextReg = "CE1";
         }
     }
 

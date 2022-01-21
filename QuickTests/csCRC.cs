@@ -274,5 +274,34 @@ namespace QuickTests
             return bitData;
         }
 
+        public static uint BoolArrayToUInt32(bool[] bList)
+        {
+            //Get length
+            StringBuilder sBuilder = new StringBuilder();
+            for (int i = 0; i < 32; i++)
+            {
+                string s = bList[31-i] ? "1" : "0";
+                sBuilder.Append(s);
+            }
+
+            return Convert.ToUInt32(sBuilder.ToString(), 2);
+        }
+
+        public static bool[] Uint32ToBoolArray(uint iValue)
+        {
+            string str = Convert.ToString(iValue, 2);
+            bool[] bitArray = new bool[32];
+
+            //Get value one by one
+            for (int i = 0; i < str.Length; i++)
+            {
+                //Put value in from last position
+                bool bitResult = (str.Substring(str.Length-1 - i, 1)=="1")?true:false;
+                bitArray[i] = bitResult;
+            }
+
+            return bitArray;
+        }
+
     }
 }

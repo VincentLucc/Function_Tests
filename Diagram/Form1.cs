@@ -87,6 +87,8 @@ namespace Diagram
         }
 
 
+
+
         private void DiagramControl1_CustomItemDrag(object sender, DiagramCustomItemDragEventArgs e)
         {
 

@@ -136,5 +136,11 @@ namespace SystemDraw
             drawType = DrawCommand.Ellipse;
             pPaint.Refresh(); //Redraw
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormNoFlickPanel form = new FormNoFlickPanel();
+            form.ShowDialog();
+        }
     }
 }

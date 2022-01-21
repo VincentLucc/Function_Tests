@@ -57,14 +57,21 @@ namespace QuickTests
             bitData[31] = true;
 
 
-            string s = BoolArrayToHexString(bitData);
+            string s =csCRC.BoolArrayToHexString(bitData);
 
-            bitData=HexStringToBoolArray(s);
+            bitData=csCRC.HexStringToBoolArray(s);
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //Prepare data
+            bitData[0] = true;
+            bitData[1] = true;
+            //bitData[31] = true;
 
-      
+            uint iSignal = csCRC.BoolArrayToUInt32(bitData);
 
-
+            bitData = csCRC.Uint32ToBoolArray(iSignal);
+        }
     }
 }
