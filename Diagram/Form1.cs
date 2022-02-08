@@ -17,6 +17,9 @@ namespace Diagram
 {
     public partial class Form1 : XtraForm
     {
+
+        DiagramHelper diagramHelper { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -25,48 +28,8 @@ namespace Diagram
         private void Form1_Load(object sender, EventArgs e)
         {
             //Set diagram items
-
-            diagramControl1.OptionsBehavior.ShowQuickShapes = false; // Quick shape group won't be shown in this shape tool box
-            diagramControl1.OptionsView.MinZoomFactor = 0.3f;
-            diagramControl1.OptionsView.MaxZoomFactor = 4;
-            diagramControl1.OptionsView.ShowGrid = false;  //Hide grid
-            diagramControl1.OptionsView.ShowRulers = false; //hide ruler
-            diagramControl1.OptionsBehavior.SnapToGrid = false;  //Snap mode
-            diagramControl1.OptionsView.CanvasSizeMode = CanvasSizeMode.Fill; //Hide paper like canvas in center
-            diagramControl1.OptionsView.ShowPageBreaks = false; //Hide page division lines
-            diagramControl1.OptionsView.ScrollMargin = new Padding(int.MaxValue);//Will hide scroll bar in maximum mode
-            diagramControl1.OptionsBehavior.SelectionMode = DevExpress.Diagram.Core.SelectionMode.Single; //Single selection only
-
-            diagramControl1.FitToDrawing(); //No scroll bar
-
-            //Set diagram items
-            //diagramControl1.SelectedStencils = new StencilCollection(new string[] { "Machine", "Auxiliary", "Sequence" });
-            //default items
-            //diagramControl1.OptionsBehavior.SelectedStencils = new StencilCollection(new string[] {
-            //"BasicShapes",
-            //"BasicFlowchartShapes",
-            //"SDLDiagramShapes",
-            //"ArrowShapes",
-            //"SoftwareIcons",
-            //"DecorativeShapes"});
-
-            //Container group
-            var stencil = new DiagramStencil("Group1", "Group Containers");
-            stencil.RegisterTool(new FactoryItemTool("Tool1", () => "Tool1 Device Name", tool1 => new Container(), new System.Windows.Size(36, 36)));
-            stencil.RegisterTool(new FactoryItemTool("Tool2", () => "Tool2 Device Name", tool2 => new Container(), new System.Windows.Size(36, 36)));
-
-            DiagramControl.ItemTypeRegistrator.Register(typeof(Container));
-            DiagramToolboxRegistrator.RegisterStencil(stencil);
-
-            diagramControl1.SelectedStencils = new StencilCollection() { "Group1" };
-
-            //Items test
-            DiagramShape diagramItem = new DiagramShape(BasicShapes.Can, 100, 100, 200, 100);
-            diagramItem.CanResize = false;
-            diagramControl1.Items.Add(diagramItem);
-
-
-
+            diagramHelper = new DiagramHelper(diagramControl1);
+            //Add diagram events
             diagramControl1.SelectionChanged += DiagramControl1_SelectionChanged;
             diagramControl1.MouseMove += DiagramControl1_MouseMove;
             diagramControl1.DragDrop += DiagramControl1_DragDrop; //not trigger
@@ -74,6 +37,19 @@ namespace Diagram
             diagramControl1.CustomItemDrag += DiagramControl1_CustomItemDrag;
             diagramControl1.ItemsMoving += DiagramControl1_ItemsMoving;
             diagramControl1.MouseClick += DiagramControl1_MouseClick;
+            diagramControl1.CustomDrawItem += DiagramControl1_CustomDrawItem;
+        }
+
+        private void DiagramControl1_CustomDrawItem(object sender, CustomDrawItemEventArgs e)
+        {
+            if (e.Item is ContainerMain)
+            {
+                ((ContainerMain)e.Item).Draw(e);
+            }
+            else if (e.Item is Container1)
+            {
+               (e.Item as Container1).Draw(e);
+            }
         }
 
         private void DiagramControl1_MouseClick(object sender, MouseEventArgs e)

@@ -96,7 +96,7 @@ namespace OperationBlock
         private async void button1_Click(object sender, EventArgs e)
         {
             Blocker.StartBlock();
-            await Blocker.WaitForBlock();
+            await Blocker.WaitForBlockAsync();
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -37,7 +37,18 @@ namespace OperationBlock
             IsBlocked = false;
         }
 
-        public async Task WaitForBlock()
+        public void StopBlock()
+        {
+            Enable = false;
+        }
+
+        public async Task BlockAndWaitAsync()
+        {
+            StartBlock();
+            await WaitForBlockAsync();
+        }
+
+        public async Task WaitForBlockAsync()
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();

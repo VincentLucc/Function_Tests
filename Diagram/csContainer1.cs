@@ -9,19 +9,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Diagram
 {
-    public class ClassDiagram
-    {
-    }
-
-    public class Container : DiagramContainer
+    public class Container1 : DiagramContainer
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public Container(bool StartThread=true)
+        public Container1()
         {
             //Container Basic settings
             ShowHeader = false;
@@ -31,30 +26,31 @@ namespace Diagram
             CanEdit = false;
             CanChangeParent = false;
             AdjustBoundsBehavior = AdjustBoundaryBehavior.DisableOutOfBounds;
-            MinWidth = 200;
-            MinHeight = 200;
+            MinWidth = 64;
+            MinHeight = 64;
 
             Appearance.Font = new Font("Calibri", 14);
             Appearance.ForeColor = Color.DarkRed;
             Appearance.BackColor = Color.Transparent;
+            Appearance.BorderSize = 0; //Hide border
 
             Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
 
-            if (!StartThread) return;
-
-            Thread t1 = new Thread(ProcessDoSomething);
-            t1.IsBackground = false;
-            t1.Start();
-
+            CanResize = false;
         }
 
-        private void ProcessDoSomething()
+        public void Draw(CustomDrawItemEventArgs e)
         {
-            while (!this.IsDisposed)
+            //Draw item in tool box
+            if (e.Context == DiagramDrawingContext.Toolbox)
             {
-                Thread.Sleep(1000);
-                Debug.WriteLine("ProcessDoSomething: I am alive");
+                e.Graphics.DrawImage(Properties.Resources.objects_color_globe, 0, 0, 32, 32);
+            }
+            //Draw item in back diagram area
+            else if (e.Context == DiagramDrawingContext.Canvas)
+            {
+                e.Graphics.DrawImage(Properties.Resources.objects_color_globe, 0, 0, 64, 64);
             }
         }
     }
