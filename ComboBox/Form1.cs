@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,6 +31,22 @@ namespace ComboBox
 
             cbTest01.DataSource = sList;
             cbTest01.SelectedIndex = 3;
+
+
+            icbTest.Properties.Items.Clear();
+            
+            for (int i = 0; i < 3; i++)
+            {
+                ImageComboBoxItem item = new ImageComboBoxItem();
+                item.Description = "Description"+i;
+            }
+            icbTest.ShowToolTips = true;
+            icbTest.MouseMove += IcbTest_MouseMove;
+        }
+
+        private void IcbTest_MouseMove(object sender, MouseEventArgs e)
+        {
+            icbTest.ToolTip = e.Y.ToString();
         }
 
         private void bUpdate_Click(object sender, EventArgs e)

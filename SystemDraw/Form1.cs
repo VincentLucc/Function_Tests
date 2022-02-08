@@ -70,7 +70,7 @@ namespace SystemDraw
                     case DrawCommand.Arc:
                         //Will be reset next time event triggers, make sure to maintain same transformation when in same event
                         e.Graphics.TranslateTransform(100, 100); 
-                        var rect = new Rectangle(0, 0, 100, 20);
+                        var rect = new Rectangle(0, 0, 5, 5);
                         e.Graphics.DrawArc(pen,rect,0,165);
                         break;
 

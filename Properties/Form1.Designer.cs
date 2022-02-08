@@ -31,14 +31,15 @@ namespace Properties
         {
             this.pg1 = new DevExpress.XtraVerticalGrid.PropertyGridControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pDescription = new System.Windows.Forms.Panel();
             this.pd1 = new DevExpress.XtraVerticalGrid.PropertyDescriptionControl();
             this.lb1 = new System.Windows.Forms.ListBox();
             this.te1 = new DevExpress.XtraEditors.TextEdit();
-            this.pDescription = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pg1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.te1.Properties)).BeginInit();
             this.pDescription.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.te1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pg1
@@ -63,6 +64,16 @@ namespace Properties
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(295, 515);
             this.panel1.TabIndex = 1;
+            // 
+            // pDescription
+            // 
+            this.pDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pDescription.Controls.Add(this.pd1);
+            this.pDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pDescription.Location = new System.Drawing.Point(0, 433);
+            this.pDescription.Name = "pDescription";
+            this.pDescription.Size = new System.Drawing.Size(295, 82);
+            this.pDescription.TabIndex = 4;
             // 
             // pd1
             // 
@@ -94,21 +105,21 @@ namespace Properties
             this.te1.TabIndex = 3;
             this.te1.EditValueChanged += new System.EventHandler(this.textEdit1_EditValueChanged);
             // 
-            // pDescription
+            // groupBox1
             // 
-            this.pDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pDescription.Controls.Add(this.pd1);
-            this.pDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pDescription.Location = new System.Drawing.Point(0, 433);
-            this.pDescription.Name = "pDescription";
-            this.pDescription.Size = new System.Drawing.Size(295, 82);
-            this.pDescription.TabIndex = 4;
+            this.groupBox1.Location = new System.Drawing.Point(220, 176);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 260);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 515);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.te1);
             this.Controls.Add(this.lb1);
             this.Controls.Add(this.panel1);
@@ -117,8 +128,8 @@ namespace Properties
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pg1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.te1.Properties)).EndInit();
             this.pDescription.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.te1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -131,6 +142,7 @@ namespace Properties
         private System.Windows.Forms.ListBox lb1;
         private DevExpress.XtraEditors.TextEdit te1;
         private System.Windows.Forms.Panel pDescription;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

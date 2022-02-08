@@ -31,6 +31,8 @@ namespace ComboBox
         {
             this.cbTest01 = new System.Windows.Forms.ComboBox();
             this.bUpdate = new System.Windows.Forms.Button();
+            this.icbTest = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.icbTest.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // cbTest01
@@ -51,16 +53,27 @@ namespace ComboBox
             this.bUpdate.UseVisualStyleBackColor = true;
             this.bUpdate.Click += new System.EventHandler(this.bUpdate_Click);
             // 
+            // icbTest
+            // 
+            this.icbTest.Location = new System.Drawing.Point(229, 52);
+            this.icbTest.Name = "icbTest";
+            this.icbTest.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.icbTest.Size = new System.Drawing.Size(106, 20);
+            this.icbTest.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.icbTest);
             this.Controls.Add(this.bUpdate);
             this.Controls.Add(this.cbTest01);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.icbTest.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -69,6 +82,7 @@ namespace ComboBox
 
         private System.Windows.Forms.ComboBox cbTest01;
         private System.Windows.Forms.Button bUpdate;
+        private DevExpress.XtraEditors.ImageComboBoxEdit icbTest;
     }
 }
 

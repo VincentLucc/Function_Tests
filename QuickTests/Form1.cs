@@ -20,6 +20,18 @@ namespace QuickTests
         public Form1()
         {
             InitializeComponent();
+            this.KeyPreview = true; //Must set to receive key down events
+            this.PreviewKeyDown += Form1_PreviewKeyDown;
+        }
+
+        private void Form1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            Debug.WriteLine("Form1_PreviewKeyDown");
+
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                Debug.WriteLine("Control+S");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -72,6 +84,137 @@ namespace QuickTests
             uint iSignal = csCRC.BoolArrayToUInt32(bitData);
 
             bitData = csCRC.Uint32ToBoolArray(iSignal);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            List<Student> students = new List<Student>();
+            for (int i = 0; i < 3; i++)
+            {
+                Student s = new Student() { Age=i+1,Name=(i+1).ToString()};
+                students.Add(s);
+            }
+
+            DoSth(students);
+
+            foreach (var item in students)
+            {
+                Debug.WriteLine($"Name:{item.Name},Age:{item.Age}");
+            }
+        }
+
+        private void DoSth(List<Student> students)
+        {
+            foreach (var student in students)
+            {
+                student.Age += 10;
+            }
+
+            Student s = new Student() { Age = 999, Name = "Last" };
+            students.Add(s);
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            Debug.WriteLine("Form1_KeyDown");
+
+            if (e.Control&&e.KeyCode==Keys.S)
+            {
+                Debug.WriteLine("Control+S");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //Same both not accurent, but good enough
+
+            float fValue = 101.23f;
+            fValue = fValue % 100;
+
+            double dValue= -101.23f;
+            dValue = fValue % 100;
+
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            List<Student> slist = new List<Student>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                Student s = new Student();
+                s.Name = $"s{i}";
+                s.Age = i;
+                slist.Add(s);
+            }
+
+            slist.RemoveAt(0);
+
+            foreach (var s in slist)
+            {
+                Debug.WriteLine(s.Name);
+            }
+
+            Debug.WriteLine("----");
+            var a = slist[0];
+
+            slist.Remove(a);
+
+            foreach (var s in slist)
+            {
+                Debug.WriteLine(s.Name);
+            }
+
+          
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            //Overwrite, base class object call will use new property instead of the base property.
+            //New, base class object call will use base property.
+            //Both overwrite/new will use the newly defined method if call from child class intead of the base class.
+
+
+            A objectA;
+            B objectB = new B();
+            C objectC = new C();
+
+            Console.WriteLine(objectB.Hello(null)); // 2
+            Console.WriteLine(objectC.Hello()); // 3
+
+            objectA = objectB;
+
+            Console.WriteLine(objectA.Hello()); // 1
+
+            objectA = objectC;
+
+            Console.WriteLine(objectA.Hello()); // 3
+        }
+
+
+        class A
+        {
+            public virtual int Hello()
+            {
+                return 1;
+            }
+        }
+
+        class B : A
+        {
+            new public int Hello(object newParam)
+            {
+                return 2;
+            }
+        }
+
+        class C : A
+        {
+            public override int Hello()
+            {
+                return 3;
+            }
         }
     }
 }
