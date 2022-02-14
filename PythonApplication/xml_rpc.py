@@ -1,8 +1,19 @@
 #import xmlrpclib
 import sys
-import xmlrpc.client
+import os
+
+# In c# this part need to be coded in ironpython
+sys.path
+path = sys.argv[0]
+path=os.path.dirname(path)+"\\Lib\\"
+sys.path.append(path)
+
+
+#import xmlrpc.client
+import xmlrpclib
 import ssl
 import logging
+
 
 RFIDConnected = False
 RFIDTagReady = False
@@ -15,11 +26,11 @@ product_id = ""
 production_id = ""
 manufacture_order_list = ""
 
-class XmlRpc:
+class XmlRpc1:
 
-    def __init__(self):
-        path = sys.argv[0]
-        sys.path.append(path)
+    #def __init__(self):
+    #    path = sys.argv[0]
+    #    sys.path.append(path)
       
      # Query list of open Manufacture Orders from Odoo. 
     def fetchManufactureOrders(self):
@@ -164,7 +175,8 @@ class XmlRpc:
         return 0 # External User (Cannot Serialize)
 
 
-call=XmlRpc()
+
+call=XmlRpc1()
 sName="smuroyan@packsmartinc.com"
 sPass="Qwerty123"
 sUrl="https://packsmart-staging-4142084.dev.odoo.com"
@@ -172,5 +184,4 @@ sDB="packsmart-staging-4142084"
 loginResult=call.login(sUrl,sDB,sName,sPass);
 print(loginResult)
 
-path = sys.argv[0]
-sys.path.append(path)
+

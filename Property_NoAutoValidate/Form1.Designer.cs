@@ -40,6 +40,7 @@ namespace Property_NoAutoValidate
             this.panel1.SuspendLayout();
             this.pDescription.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.te1.Properties)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pg1
@@ -50,7 +51,7 @@ namespace Property_NoAutoValidate
             this.pg1.Name = "pg1";
             this.pg1.OptionsBehavior.AutoPostEditorDelay = 1000;
             this.pg1.OptionsCollectionEditor.AllowMultiSelect = false;
-            this.pg1.Size = new System.Drawing.Size(295, 515);
+            this.pg1.Size = new System.Drawing.Size(372, 515);
             this.pg1.TabIndex = 0;
             this.pg1.DataSourceChanged += new System.EventHandler(this.pg1_DataSourceChanged);
             this.pg1.Click += new System.EventHandler(this.propertyGridControl1_Click);
@@ -60,9 +61,9 @@ namespace Property_NoAutoValidate
             this.panel1.Controls.Add(this.pDescription);
             this.panel1.Controls.Add(this.pg1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(503, 0);
+            this.panel1.Location = new System.Drawing.Point(426, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(295, 515);
+            this.panel1.Size = new System.Drawing.Size(372, 515);
             this.panel1.TabIndex = 1;
             // 
             // pDescription
@@ -72,7 +73,7 @@ namespace Property_NoAutoValidate
             this.pDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pDescription.Location = new System.Drawing.Point(0, 433);
             this.pDescription.Name = "pDescription";
-            this.pDescription.Size = new System.Drawing.Size(295, 82);
+            this.pDescription.Size = new System.Drawing.Size(372, 82);
             this.pDescription.TabIndex = 4;
             // 
             // pd1
@@ -83,7 +84,7 @@ namespace Property_NoAutoValidate
             this.pd1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pd1.Location = new System.Drawing.Point(0, 0);
             this.pd1.Name = "pd1";
-            this.pd1.Size = new System.Drawing.Size(293, 80);
+            this.pd1.Size = new System.Drawing.Size(370, 80);
             this.pd1.TabIndex = 1;
             this.pd1.TabStop = false;
             // 
@@ -99,7 +100,7 @@ namespace Property_NoAutoValidate
             // 
             // te1
             // 
-            this.te1.Location = new System.Drawing.Point(183, 33);
+            this.te1.Location = new System.Drawing.Point(30, 32);
             this.te1.Name = "te1";
             this.te1.Size = new System.Drawing.Size(100, 20);
             this.te1.TabIndex = 3;
@@ -107,12 +108,14 @@ namespace Property_NoAutoValidate
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(220, 176);
+            this.groupBox1.Controls.Add(this.te1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(149, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 260);
+            this.groupBox1.Size = new System.Drawing.Size(277, 515);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "GroupBox";
             // 
             // Form1
             // 
@@ -120,7 +123,6 @@ namespace Property_NoAutoValidate
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 515);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.te1);
             this.Controls.Add(this.lb1);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
@@ -130,6 +132,7 @@ namespace Property_NoAutoValidate
             this.panel1.ResumeLayout(false);
             this.pDescription.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.te1.Properties)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

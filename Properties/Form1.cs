@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
@@ -22,8 +23,6 @@ namespace Properties
     {
         List<Student> sList;
         public csPropertyHelper propertyHelper { get; set; }
-
-        public bool EnablePropertyValidate { get; set; }
         public string ErrorMessage { get; set; }
 
 
@@ -42,14 +41,15 @@ namespace Properties
         {
             //Init helper
             propertyHelper = new csPropertyHelper(pg1);
+            pg1.RowHeaderWidth = 30; //Manual set captain row width
 
-            //Init property grid settings
-            pg1.ActiveViewType = PropertyGridView.Office;
+            //Init property grid events
             pg1.ValidatingEditor += Pg1_ValidatingEditor;
             pg1.CustomRecordCellEdit += PropertyGridControl1_CustomRecordCellEdit; //Constantly trigger!!!!, avoid
             pg1.SelectedChanged += Pg1_SelectedChanged;
             pg1.CustomPropertyDescriptors += Pg1_CustomPropertyDescriptors;
             pg1.CellValueChanged += Pg1_CellValueChanged; //Happen before Pg1_ValidatingEditor!!!
+            
             //pg1.FocusedRowChanged += Pg1_FocusedRowChanged;
             //pg1.FocusedRecordChanged += Pg1_FocusedRecordChanged;
             //pg1.FocusedRecordCellChanged += Pg1_FocusedRecordCellChanged;
@@ -63,9 +63,9 @@ namespace Properties
             pg1.InvalidValueException += Pg1_InvalidValueException;
             pg1.CausesValidation = true; //Default not to validate only when required
             pg1.MouseClick += Pg1_MouseClick;
+            pg1.CustomDrawRowHeaderCell += Pg1_CustomDrawRowHeaderCell;
+           
             //pg1.KeyPress += Pg1_KeyPress;
-
-
             sList = new List<Student>();
             for (int i = 0; i < 5; i++)
             {
@@ -83,10 +83,14 @@ namespace Properties
             //te1.Validating += TextEdit1_Validating;
         }
 
+        private void Pg1_CustomDrawRowHeaderCell(object sender, CustomDrawRowHeaderCellEventArgs e)
+        {
+            e.Appearance.TextOptions.HAlignment = HorzAlignment.Near; //Set captain alignment
+        }
+
         private void Pg1_CustomRecordCellEdit(object sender, GetCustomRowCellEditEventArgs e)
         {
             Debug.WriteLine("Pg1_CustomRecordCellEdit");
-
         }
 
         /// <summary>
@@ -125,7 +129,7 @@ namespace Properties
         {
             try
             {
-                EnablePropertyValidate = true;
+                propertyHelper.EnablePropertyValidate = true;
                 //Manual trigger validation
                 ValidateChildren();
             }
@@ -146,15 +150,14 @@ namespace Properties
 
         private void Pg1_InvalidValueException(object sender, InvalidValueExceptionEventArgs e)
         {
-
-            if (!EnablePropertyValidate)
+            if (!propertyHelper.EnablePropertyValidate)
             {
                 e.ExceptionMode = ExceptionMode.NoAction;
             }
 
 
 
-            Debug.WriteLine("Invalid Exception:EnableValidate:" + EnablePropertyValidate);
+            Debug.WriteLine("Invalid Exception:EnableValidate:" + propertyHelper.EnablePropertyValidate);
         }
 
         private void Pg1_Validated(object sender, EventArgs e)
@@ -188,7 +191,7 @@ namespace Properties
 
             //Press enter when inside the editor
             //Must disable when any other keys pressed after this to disable validation
-            EnablePropertyValidate = (e.KeyCode == Keys.Return) ? true : false;
+            propertyHelper.EnablePropertyValidate = (e.KeyCode == Keys.Return) ? true : false;
         }
 
 
@@ -285,7 +288,7 @@ namespace Properties
             Debug.WriteLine("Validating Edit Trigger");
 
             //Skip validation when input not ready
-            if (!EnablePropertyValidate)
+            if (!propertyHelper.EnablePropertyValidate)
             {
                 e.Valid = false;
                 return;
@@ -412,7 +415,9 @@ namespace Properties
             //Debug.WriteLine($"CustomRecordCellEdit Trigger:{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}");
             //Properties.FieldName=Actual Code name
             //Properties.Caption=Property Name (Defined name,description)
+            
 
+            //e.RepositoryItem.Appearance.TextOptions.HAlignment = HorzAlignment.Near;
 
             //Default editors:
             //https://docs.devexpress.com/WindowsForms/DevExpress.XtraEditors.Repository
@@ -492,6 +497,19 @@ namespace Properties
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DisplayValue();
+        }
 
+
+        private void DisplayValue()
+        {
+            if (pg1.SelectedObject is Student)
+            {
+                Student s1 = (Student)pg1.SelectedObject;
+                Debug.WriteLine("DisplayValue:\r\n" + s1.TextFolder);
+            }
+        }
     }
 }

@@ -22,8 +22,6 @@ namespace Property_NoAutoValidate
     {
         List<Student> sList;
         public csPropertyHelper propertyHelper { get; set; }
-
-        public bool EnablePropertyValidate { get; set; }
         public string ErrorMessage { get; set; }
 
 
@@ -44,7 +42,7 @@ namespace Property_NoAutoValidate
 
             //Init helper
             propertyHelper = new csPropertyHelper(pg1);
-
+            propertyHelper.PropertyGrid.RowHeaderWidth=40;
 
             //Init property grid settings
             pg1.ActiveViewType = PropertyGridView.Office;
@@ -58,9 +56,10 @@ namespace Property_NoAutoValidate
             // pg1.Validated += Pg1_Validated;
             pg1.InvalidValueException += Pg1_InvalidValueException;
             pg1.CausesValidation = true; //Default not to validate only when required
-            pg1.MouseDown += Pg1_MouseDown;
-            
-           
+            pg1.LostFocus += Pg1_LostFocus;
+            pg1.OptionsBehavior.UseTabKey = false;
+
+
 
             sList = new List<Student>();
             for (int i = 0; i < 5; i++)
@@ -77,6 +76,29 @@ namespace Property_NoAutoValidate
 
             //Tests
             //te1.Validating += TextEdit1_Validating;
+        }
+
+        /// <summary>
+        /// Trigger validation process on condition
+        /// </summary>
+        /// <param name="IsTrigger"></param>
+        public void TriggerPropertyValidate()
+        {
+            try
+            {
+                propertyHelper.EnablePropertyValidate = true;
+                //Manual trigger validation
+                ValidateChildren();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("TriggerPropertyValidate:\r\n" + e.Message);
+            }
+        }
+
+        private void Pg1_LostFocus(object sender, EventArgs e)
+        {
+              //run twice, may cause problem
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -124,40 +146,17 @@ namespace Property_NoAutoValidate
         }
 
 
-        /// <summary>
-        /// Trigger validation process on condition
-        /// </summary>
-        /// <param name="IsTrigger"></param>
-        private void TriggerPropertyValidate()
-        {
-            try
-            {
-                EnablePropertyValidate = true;
-                //Manual trigger validation
-                ValidateChildren();
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("DeterminePropertyValidate:\r\n" + e.Message);
-            }
-        }
-
-
-
-
-
-
         private void Pg1_InvalidValueException(object sender, InvalidValueExceptionEventArgs e)
         {
 
-            if (!EnablePropertyValidate)
+            if (!propertyHelper.EnablePropertyValidate)
             {
                 e.ExceptionMode = ExceptionMode.Ignore;
             }
 
 
 
-            Debug.WriteLine("Invalid Exception:EnableValidate:" + EnablePropertyValidate);
+            Debug.WriteLine("Invalid Exception:EnableValidate:" + propertyHelper.EnablePropertyValidate);
         }
 
         private void Pg1_Validated(object sender, EventArgs e)
@@ -189,9 +188,15 @@ namespace Property_NoAutoValidate
         {
             Debug.WriteLine("Pg1_EditorKeyDown:" + e.KeyCode);
 
+            //No need for this, just disable tab key in property control
+            //if (e.KeyCode == Keys.Tab)
+            //{
+            //    e.SuppressKeyPress = true;
+            //}
+
             //Press enter when inside the editor
             //Must disable when any other keys pressed after this to disable validation
-            EnablePropertyValidate = (e.KeyCode == Keys.Return) ? true : false;
+            propertyHelper.EnablePropertyValidate = (e.KeyCode == Keys.Return) ? true : false;
         }
 
 
@@ -288,7 +293,7 @@ namespace Property_NoAutoValidate
             Debug.WriteLine("Validating Edit Trigger");
 
             //Skip validation when input not ready
-            if (!EnablePropertyValidate)
+            if (!propertyHelper.EnablePropertyValidate)
             {
                 e.Valid = false;
                 return;

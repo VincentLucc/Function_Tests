@@ -49,6 +49,8 @@ namespace Properties
         [DisplayName("Text3 Numeric Mask"), Description("Text editor with Numeric Mask")]
         public string TextNum { get; set; }
 
+
+
         [TypeConverter(typeof(ExpandableObjectConverter))] //Show sub class properties
         [ExpandableRowSettings(false)] //Hide class root editor
         public Certificate Cert { get; set; }
@@ -70,6 +72,12 @@ namespace Properties
         [ExpandableRowSettings(false)] //Hide class root editor
     
         public bool[] List { get; set; }
+
+        //Test text editor regex
+        [CustomEditor(EditorType.FolderEditor, true, MaskType.Numeric, "#####0")]
+        [Category("Test")]
+        [DisplayName("Folder Mask"), Description("Folder find.")]
+        public string TextFolder { get; set; }
 
         public Student()
         {

@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors.Controls;
+﻿using DevExpress.Utils;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Mask;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraVerticalGrid;
@@ -11,6 +12,8 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using DevExpress.XtraEditors;
+using System.Windows.Forms;
 
 namespace Properties
 {
@@ -20,8 +23,7 @@ namespace Properties
     public class csPropertyHelper
     {
         public PropertyGridControl PropertyGrid { get; set; }
-
-       
+        public bool EnablePropertyValidate { get; set; }
 
         /// <summary>
         /// Trigger when setting row editor for custom editor set outside the class if needed
@@ -30,6 +32,12 @@ namespace Properties
         public csPropertyHelper(PropertyGridControl propertyGridControl)
         {
             PropertyGrid = propertyGridControl;
+            InitProperty();
+        }
+
+        public void InitProperty()
+        {
+            PropertyGrid.ActiveViewType = PropertyGridView.Office;
         }
 
         public void ReloadAll()
@@ -256,14 +264,23 @@ namespace Properties
                         textEdit_Text.Mask.EditMask = editor.MaskString;
                         textEdit_Text.EditValueChangedFiringMode = EditValueChangedFiringMode.Buffered;
                         textEdit_Text.EditValueChangedDelay = 2000;
-                    }
-                   
+                    }                 
+                    break;
+
+                case EditorType.FolderEditor:
+                    RepositoryItemButtonEdit folderButtonEditor = new RepositoryItemButtonEdit();
+                    folderButtonEditor.ButtonClick += FolderButtonEditor_ButtonClick;
+                    row.Properties.RowEdit = folderButtonEditor;
                     break;
 
                 case EditorType.ToggleSwitch:
-                    row.Properties.RowEdit = new RepositoryItemToggleSwitch();
+                    var ToggleSwitchEditor= new RepositoryItemToggleSwitch();
+                    //ToggleSwitchEditor.Appearance.TextOptions.HAlignment = HorzAlignment.Near; //No effect
+                    //ToggleSwitchEditor.GlyphAlignment = HorzAlignment.Near; //No effect
+                    //ToggleSwitchEditor.Appearance.ParentAppearance.TextOptions.HAlignment= HorzAlignment.Near; //No effect
+                    
+                    row.Properties.RowEdit = ToggleSwitchEditor;
                     break;
-
 
                 case EditorType.ToggleSwitchList:
                     RepositoryItemToggleSwitch toggleSwitch = new RepositoryItemToggleSwitch();
@@ -277,8 +294,20 @@ namespace Properties
             }
         }
 
-   
+        private void FolderButtonEditor_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            //XtraOpenFileDialog dialog = new XtraOpenFileDialog();
+            XtraFolderBrowserDialog dialog = new XtraFolderBrowserDialog();
+            
+            if (dialog.ShowDialog()==DialogResult.OK)
+            {
+                EnablePropertyValidate = true;
+                ButtonEdit bEditor = (ButtonEdit)sender;
+                bEditor.EditValue = dialog.SelectedPath; //Get value               
+            }
+        }
 
+      
     }
 
     
@@ -288,6 +317,7 @@ namespace Properties
         Cal,
         Number,
         Text,
+        FolderEditor,
         ToggleSwitch,
         ToggleSwitchList
     }

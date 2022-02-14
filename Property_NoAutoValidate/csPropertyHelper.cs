@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -20,8 +21,7 @@ namespace Property_NoAutoValidate
     public class csPropertyHelper
     {
         public PropertyGridControl PropertyGrid { get; set; }
-
-       
+        public bool EnablePropertyValidate { get; set; }
 
         /// <summary>
         /// Trigger when setting row editor for custom editor set outside the class if needed
@@ -112,14 +112,14 @@ namespace Property_NoAutoValidate
             //Get current selected row
             var row = PropertyGrid.FocusedRow;
 
-            if (row!=null)
+            if (row != null)
             {
                 Debug.WriteLine("DoValidate:" + row.Properties.FieldName);
-               
+
             }
-           
-            
-            
+
+
+
         }
 
 
@@ -242,14 +242,36 @@ namespace Property_NoAutoValidate
                     row.Properties.RowEdit = repositoryCalcEdit;
                     break;
 
+                case EditorType.MacLookUpList:
+                    RepositoryItemLookUpEdit repositoryMacList = new RepositoryItemLookUpEdit();
+                    repositoryMacList.DataSource = GetMacAddress().Values.ToList(); 
+                    
+                    row.Properties.RowEdit = repositoryMacList;
+                    break;
+
+                case EditorType.MacComboList:
+                    RepositoryItemComboBox MacComboList = new RepositoryItemComboBox();
+                    MacComboList.Items.Add(new Object());
+                    var dictData = GetMacAddress();
+                    foreach (var item in dictData)
+                    {
+                      var x=  MacComboList.Items[0];
+                        ComboBoxItem item1 = new ComboBoxItem();
+                        item1.Value = "";
+                        MacComboList.Items.Add("");
+                    }
+                    //row.Properties.RowEdit = repositoryComboList;
+                    break;
+
                 case EditorType.Number:
                     RepositoryItemTextEdit repositoryNumberEdit = new RepositoryItemTextEdit();
-                    repositoryNumberEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+                    repositoryNumberEdit.Mask.MaskType = MaskType.Numeric;
                     repositoryNumberEdit.Mask.UseMaskAsDisplayFormat = true;
                     repositoryNumberEdit.Mask.EditMask = "#####0";
                     repositoryNumberEdit.EditValueChangedFiringMode = EditValueChangedFiringMode.Buffered;
                     repositoryNumberEdit.EditValueChangedDelay = int.MaxValue;
                     repositoryNumberEdit.ValidateOnEnterKey = true;
+                    row.Properties.RowEdit = repositoryNumberEdit;
                     break;
 
                 case EditorType.Text:
@@ -262,19 +284,17 @@ namespace Property_NoAutoValidate
                         textEdit_Text.EditValueChangedFiringMode = EditValueChangedFiringMode.Buffered;
                         textEdit_Text.EditValueChangedDelay = 2000;
                     }
-                   
                     break;
 
                 case EditorType.ToggleSwitch:
                     row.Properties.RowEdit = new RepositoryItemToggleSwitch();
                     break;
 
-
                 case EditorType.ToggleSwitchList:
                     RepositoryItemToggleSwitch toggleSwitch = new RepositoryItemToggleSwitch();
                     row.Properties.Caption = $"Device {editor.IntValue + 1}";
                     row.Properties.RowEdit = new RepositoryItemToggleSwitch();
-                    Debug.Write("ToggleSwitchList:"+row.Properties.FieldName+":");
+                    Debug.Write("ToggleSwitchList:" + row.Properties.FieldName + ":");
                     break;
 
                 default:
@@ -282,11 +302,32 @@ namespace Property_NoAutoValidate
             }
         }
 
-   
+        /// <summary>
+        /// Get mac address info
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, string> GetMacAddress()
+        {
+            Dictionary<string, string> sList = new Dictionary<string, string>();
+
+            foreach (NetworkInterface netInterface in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                // Only consider Ethernet network interfaces
+                if (netInterface.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
+                {
+                    string sName = netInterface.Name;
+                    byte[] bData = netInterface.GetPhysicalAddress().GetAddressBytes();
+                    string sMac = BitConverter.ToString(bData);
+                    sList.Add(sName, sMac);
+                }
+            }
+
+            return sList;
+        }
 
     }
 
-    
+
 
     public enum EditorType
     {
@@ -294,7 +335,9 @@ namespace Property_NoAutoValidate
         Number,
         Text,
         ToggleSwitch,
-        ToggleSwitchList
+        ToggleSwitchList,
+        MacLookUpList,
+        MacComboList
     }
 
 
@@ -306,7 +349,7 @@ namespace Property_NoAutoValidate
     {
         public EditorType Editor;
         public bool IsCustomMaskEnable;
-        public DevExpress.XtraEditors.Mask.MaskType MaskType;
+        public MaskType MaskType;
         /// <summary>
         /// Define input masks for auto input validation
         /// </summary>

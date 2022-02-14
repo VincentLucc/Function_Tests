@@ -22,7 +22,7 @@ namespace Property_NoAutoValidate
         [CustomEditor(EditorType.Text)]
         [DisplayName("s Name"), Category("Test"), Description("Description Method 1 Name of this student.")]
         //Directly use custom editor, Type and base type
-        [Editor(typeof(FilteredFileNameEditor),typeof(UITypeEditor))]
+        [Editor(typeof(FilteredFileNameEditor), typeof(UITypeEditor))]
         public string Name { get; set; }
 
         //User to address editor manually
@@ -38,7 +38,7 @@ namespace Property_NoAutoValidate
         public string TextNormal { get; set; }
 
         //Test text editor regex
-        [CustomEditor(EditorType.Text,true,MaskType.RegEx, @"^[a-zA-Z]{1,2}[0-9]*$")]
+        [CustomEditor(EditorType.Text, true, MaskType.RegEx, @"^[a-zA-Z]{1,2}[0-9]*$")]
         [Category("Test")]
         [DisplayName("Text2 Reg Mask"), Description("Text editor with regex mask")]
         public string TextReg { get; set; }
@@ -74,8 +74,12 @@ namespace Property_NoAutoValidate
         [CustomEditor(EditorType.ToggleSwitchList)]
         [DisplayName("List"), Description("List Test")]
         [ExpandableRowSettings(false)] //Hide class root editor
-    
+
         public bool[] List { get; set; }
+
+        [CustomEditor(EditorType.MacLookUpList)]
+        [DisplayName("Mac Address")]
+        public string MacAddress { get; set; }
 
         public Student()
         {
@@ -86,7 +90,7 @@ namespace Property_NoAutoValidate
         }
     }
 
-    public class Certificate: CertificateBase
+    public class Certificate : CertificateBase
     {
         [DisplayName("certID"), Description("Student Age1")]
         [CustomEditor(EditorType.Number)]
@@ -101,9 +105,9 @@ namespace Property_NoAutoValidate
 
     }
 
-    
 
- 
+
+
 
     public class FilteredFileNameEditor : UITypeEditor
     {
@@ -112,7 +116,7 @@ namespace Property_NoAutoValidate
         {
             return UITypeEditorEditStyle.Modal;
         }
-        public override object EditValue(ITypeDescriptorContext context,IServiceProvider provider,object value)
+        public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
             ofd.FileName = value.ToString();
             ofd.Filter = "Text File|*.txt|All Files|*.*";
