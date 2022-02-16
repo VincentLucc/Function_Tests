@@ -17,10 +17,26 @@ namespace Dev_GridControl
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             GroupView view = new GroupView();
             view.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CustomEditor customEditor = new CustomEditor();
+            customEditor.StartPosition = FormStartPosition.CenterParent;
+            customEditor.ShowDialog();
+
+            
+        }
+
+
     }
 }

@@ -50,6 +50,7 @@ namespace Dev_GridControl
             gridView1.GroupRowHeight = 50;
             gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.True;//Display the summary in column lane
             gridView1.Appearance.GroupFooter.TextOptions.HAlignment = HorzAlignment.Center;//Center the display
+           
 
             //Create group summary
             GridGroupSummaryItem summaryItem=new GridGroupSummaryItem()

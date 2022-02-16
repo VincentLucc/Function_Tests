@@ -36,6 +36,7 @@ namespace Property_NoAutoValidate
             this.lb1 = new System.Windows.Forms.ListBox();
             this.te1 = new DevExpress.XtraEditors.TextEdit();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.pg1)).BeginInit();
             this.panel1.SuspendLayout();
             this.pDescription.SuspendLayout();
@@ -108,6 +109,7 @@ namespace Property_NoAutoValidate
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.simpleButton1);
             this.groupBox1.Controls.Add(this.te1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(149, 0);
@@ -116,6 +118,14 @@ namespace Property_NoAutoValidate
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "GroupBox";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(30, 58);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 4;
+            this.simpleButton1.Text = "Do Sth";
             // 
             // Form1
             // 
@@ -146,6 +156,7 @@ namespace Property_NoAutoValidate
         private DevExpress.XtraEditors.TextEdit te1;
         private System.Windows.Forms.Panel pDescription;
         private System.Windows.Forms.GroupBox groupBox1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
 

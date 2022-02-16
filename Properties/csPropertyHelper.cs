@@ -175,7 +175,6 @@ namespace Properties
                     propertyInfo = PropertyObject.GetType().GetProperty(sArray);
                     IsSubProperty = true;
 
-
                 }
                 //Sub class
                 else if (sName.Contains("."))

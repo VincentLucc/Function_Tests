@@ -69,7 +69,6 @@ namespace Test001
         private void GridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             Debug.WriteLine("Current row:" + e.FocusedRowHandle);
-
             ShowCurrentFieldOnSelector();
         }
 

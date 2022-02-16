@@ -14,6 +14,8 @@ namespace Lock
 {
     public partial class Form1 : Form
     {
+        System.Windows.Forms.Timer tTest1;
+
         public Form1()
         {
             InitializeComponent();
@@ -21,10 +23,9 @@ namespace Lock
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            System.Windows.Forms.Timer t1 = new System.Windows.Forms.Timer();
-            t1.Interval = 200;
-            t1.Enabled = true;
-            t1.Tick += T1_Tick;
+            tTest1 = new System.Windows.Forms.Timer();
+            tTest1.Interval = 200;
+            tTest1.Tick += T1_Tick;
         }
 
         private void T1_Tick(object sender, EventArgs e)
@@ -64,7 +65,13 @@ namespace Lock
 
         private void simpleButton1_Click_1(object sender, EventArgs e)
         {
+            tTest1.Enabled = true;
             DoSth();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

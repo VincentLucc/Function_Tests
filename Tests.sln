@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lock", "Lock\Lock.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hardware", "Hardware\Hardware.csproj", "{E0558469-4ED1-4525-88CA-1EF4D8A85BFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplitContainer", "SplitContainer\SplitContainer.csproj", "{D707AA47-65FD-45FA-9BB4-79CD65030B75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -367,6 +369,18 @@ Global
 		{E0558469-4ED1-4525-88CA-1EF4D8A85BFE}.Release|x64.Build.0 = Release|Any CPU
 		{E0558469-4ED1-4525-88CA-1EF4D8A85BFE}.Release|x86.ActiveCfg = Release|Any CPU
 		{E0558469-4ED1-4525-88CA-1EF4D8A85BFE}.Release|x86.Build.0 = Release|Any CPU
+		{D707AA47-65FD-45FA-9BB4-79CD65030B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D707AA47-65FD-45FA-9BB4-79CD65030B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D707AA47-65FD-45FA-9BB4-79CD65030B75}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D707AA47-65FD-45FA-9BB4-79CD65030B75}.Debug|x64.Build.0 = Debug|Any CPU
+		{D707AA47-65FD-45FA-9BB4-79CD65030B75}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D707AA47-65FD-45FA-9BB4-79CD65030B75}.Debug|x86.Build.0 = Debug|Any CPU
+		{D707AA47-65FD-45FA-9BB4-79CD65030B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D707AA47-65FD-45FA-9BB4-79CD65030B75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D707AA47-65FD-45FA-9BB4-79CD65030B75}.Release|x64.ActiveCfg = Release|Any CPU
+		{D707AA47-65FD-45FA-9BB4-79CD65030B75}.Release|x64.Build.0 = Release|Any CPU
+		{D707AA47-65FD-45FA-9BB4-79CD65030B75}.Release|x86.ActiveCfg = Release|Any CPU
+		{D707AA47-65FD-45FA-9BB4-79CD65030B75}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
