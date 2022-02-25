@@ -13,6 +13,7 @@ namespace Test001
 {
 
     /// <summary>
+    /// Select only one pair of data one time
     /// Usage summary:
     /// 1. Call LoadFile method:            myControl.LoadFile(".\\demo.txt");
     /// 2. Set SelectedIndexes property:    myControl.SelectedIndexes = "0,5,10,20";
@@ -23,6 +24,23 @@ namespace Test001
 
         private myRulerControl myRuler;
         private myContentControl myContent;
+        private string[] mylines;
+
+        /// <summary>
+        /// Returns all the lines of the file.
+        /// </summary>
+        public string[] MyLines
+        {
+            get
+            {
+                return mylines;
+            }
+        }
+        /// <summary>
+        /// List of selected indexes in sample data, to build "SelectedIndexes" property.
+        /// this list can be empty
+        /// </summary>
+        public List<int> myIndexes = new List<int> { };
 
         const string strMarkerChar = "▼";
 
@@ -31,6 +49,70 @@ namespace Test001
         /// </summary>
         internal int iCharWidth = 7;
         private float fCharWidth = 7f; // no use; just for debug
+        /// <summary>
+        /// Hides the Font property
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public override Font Font
+        {
+            get { return base.Font; }
+            set { }
+        }
+
+        private float m_FontSize = 12f;
+
+
+        /// <summary>
+        /// Set Font size, Font Family will be always Consolas
+        /// </summary>
+        public float FontSize
+        {
+            get
+            {
+                return m_FontSize;
+            }
+            set
+            {
+                if (m_FontSize != value)
+                {
+                    m_FontSize = value;
+                    base.Font = new System.Drawing.Font("Consolas", m_FontSize, System.Drawing.FontStyle.Regular);
+                    MeasureFontSize();
+                    myContent.Font = base.Font;
+                    myContent.Width = 8 + (iRecordMaxLength + 1) * Convert.ToInt32(iCharWidth);
+                    myRuler.Refresh();
+                }
+            }
+        }
+
+        private int m_MaxColumns = 32;
+        /// <summary>
+        /// Max indexes. Each data column is 2 indexes.
+        /// </summary>
+        public int MaxAllowedColumns
+        {
+            get
+            {
+                return m_MaxColumns;
+            }
+            set
+            {
+                m_MaxColumns = value;
+            }
+        }
+
+        /// <summary>
+        /// Option to set the color of vertical marker lines
+        /// </summary>
+        public Color MarkerColor
+        {
+            get { return myContent.penMyMarker.Color; }
+            set
+            {
+                myContent.penMyMarker = new Pen(value);
+                myContent.Invalidate();
+            }
+        }
 
         /// <summary>
         /// Longest row in the sample file, which is used to set the size of the content viewer
@@ -38,6 +120,22 @@ namespace Test001
         private int iRecordMaxLength = 1;
 
         public EventHandler SelectionReady;
+
+        #endregion ColumnSelectorControlSingle_Properties
+        public ColumnSelectorControlSingle()
+        {
+            InitializeComponent();
+            base.Font = new System.Drawing.Font("Consolas", m_FontSize, System.Drawing.FontStyle.Regular);
+            this.panelMain.SuspendLayout();
+            myContent = new myContentControl(this);
+            myRuler = new myRulerControl(this);
+            myRuler.IndexCollectionChanged += IndexCollectionChanged;
+            this.panelMain.Controls.Add(myContent);
+            this.panelMain.Controls.Add(myRuler);
+            this.panelMain.ResumeLayout(false);
+            this.panelMain.PerformLayout();
+            MeasureFontSize();
+        }
 
         /// <summary>
         /// Calculates the character size for current (fixed size) font of this control.
@@ -93,44 +191,9 @@ namespace Test001
             myRuler.Refresh();
         }
 
+ 
 
 
-        private string[] mylines;
-
-        #endregion
-
-        #region Constructor and Public Methods/Properties
-        public ColumnSelectorControlSingle()
-        {
-            InitializeComponent();
-            base.Font = new System.Drawing.Font("Consolas", m_FontSize, System.Drawing.FontStyle.Regular);
-            this.panelMain.SuspendLayout();
-            myContent = new myContentControl(this);
-            myRuler = new myRulerControl(this);
-            myRuler.IndexCollectionChanged += IndexCollectionChanged;
-            this.panelMain.Controls.Add(myContent);
-            this.panelMain.Controls.Add(myRuler);
-            this.panelMain.ResumeLayout(false);
-            this.panelMain.PerformLayout();
-            MeasureFontSize();
-        }
-
-        /// <summary>
-        /// List of selected indexes in sample data, to build "SelectedIndexes" property.
-        /// this list can be empty
-        /// </summary>
-        public List<int> myIndexes = new List<int> { };
-
-        /// <summary>
-        /// Returns all the lines of the file.
-        /// </summary>
-        public string[] myLines
-        {
-            get
-            {
-                return mylines;
-            }
-        }
 
         /// <summary>
         /// To load the content of a sample text file
@@ -198,68 +261,6 @@ namespace Test001
             Debug.WriteLine("File Load time:" + watch.ElapsedMilliseconds);
         }
 
-        /// <summary>
-        /// Hides the Font property
-        /// </summary>
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public override Font Font
-        {
-            get { return base.Font; }
-            set { }
-        }
-
-        private float m_FontSize = 12f;
-        /// <summary>
-        /// Set Font size, Font Family will be always Consolas
-        /// </summary>
-        public float FontSize
-        {
-            get
-            {
-                return m_FontSize;
-            }
-            set
-            {
-                if (m_FontSize != value)
-                {
-                    m_FontSize = value;
-                    base.Font = new System.Drawing.Font("Consolas", m_FontSize, System.Drawing.FontStyle.Regular);
-                    MeasureFontSize();
-                    myContent.Font = base.Font;
-                    myContent.Width = 8 + (iRecordMaxLength + 1) * Convert.ToInt32(iCharWidth);
-                    myRuler.Refresh();
-                }
-            }
-        }
-
-        private int m_MaxColumns = 32;
-        /// <summary>
-        /// Max indexes. Each data column is 2 indexes.
-        /// </summary>
-        public int MaxAllowedColumns
-        {
-            get
-            {
-                return m_MaxColumns;
-            }
-            set
-            {
-                m_MaxColumns = value;
-            }
-        }
-
-        /// <summary>
-        /// Option to set the color of vertical marker lines
-        /// </summary>
-        public Color MarkerColor
-        {
-            get { return myContent.penMyMarker.Color; }
-            set
-            {
-                myContent.penMyMarker = new Pen(value);
-                myContent.Invalidate();
-            }
-        }
 
         /// <summary>
         /// Returns two dimensional array that is the data collection of selected columns. First column is between minimum two indexes, and columns are between consecutive indexes.
@@ -272,12 +273,12 @@ namespace Test001
                 for (int i = 0; i < myIndexes.Count; i += 2)
                 {
                     int p1 = myIndexes[i], p2 = myIndexes[i + 1];
-                    arr[i / 2] = new string[myLines.Length];
-                    for (int j = 0; j < myLines.Length; j++)
+                    arr[i / 2] = new string[MyLines.Length];
+                    for (int j = 0; j < MyLines.Length; j++)
                     {
                         p2 = myIndexes[i + 1];
-                        if (p2 > myLines[j].Length) { p2 = myLines[j].Length; }
-                        string workString = myLines[j];
+                        if (p2 > MyLines[j].Length) { p2 = MyLines[j].Length; }
+                        string workString = MyLines[j];
                         if (p2 > p1)
                             arr[i / 2][j] = workString.Substring(p1, p2 - p1);
                     }
@@ -349,13 +350,34 @@ namespace Test001
             myContent.ClearDrawPoint();
         }
 
-        #endregion
+        /// <summary>
+        /// Manual set scroll bar location and update the view 
+        /// </summary>
+        /// <param name="iValue"></param>
+        public void SetScrollLocation(List<Tuple<SolidBrush, int, int>> ColumnSelection)
+        {
+            //Empty check
+            if (ColumnSelection==null||ColumnSelection.Count != 1) return;
+
+            //Get text pixel locaton
+            int iStart = ColumnSelection[0].Item2 * iCharWidth;
+            int iEnd= ColumnSelection[0].Item3 * iCharWidth;
+            int iScroll = 0;
+            //Set based on range
+            //Leave a gap
+            if ((iStart - 50) > 0) iScroll = iStart - 50;
+
+            //Apply scroll location
+            panelMain.HorizontalScroll.Value = iScroll;
+            panelMain.PerformLayout(); //Force scroll location to be redraw
+        }
+
 
         #region myContentControl
         /// <summary>
         /// This is the child control class that displays the content of sample text/csv file
         /// </summary>
-        internal class myContentControl : Label
+        public class myContentControl : Label
         {
             private ColumnSelectorControlSingle myParentControl;
 
@@ -1084,14 +1106,5 @@ namespace Test001
             }
         }
     }
-
-
-
-
-
-
-
-
-
 
 }

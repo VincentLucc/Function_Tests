@@ -8,6 +8,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace Hardware
 {
@@ -46,6 +47,12 @@ namespace Hardware
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void AssemblyInfo_Click(object sender, EventArgs e)
+        {
+           var assembly= Assembly.GetExecutingAssembly();
+            string sVersion = assembly.GetName().Version.ToString();
         }
     }
 }

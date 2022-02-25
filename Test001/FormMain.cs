@@ -96,8 +96,10 @@ namespace Test001
             List<Tuple<SolidBrush, int, int>> selection = new List<Tuple<SolidBrush, int, int>>()
             {new Tuple<SolidBrush,int,int>(new SolidBrush(Color.Red),Selection[0],Selection[1]) };
 
-            //Appy selection 
+            //Appy selection           
             FileColumnSelector.SetColumnCoords(selection);
+            FileColumnSelector.SetScrollLocation(selection);
+
         }
 
         private void CreateRowData()

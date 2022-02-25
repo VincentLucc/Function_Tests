@@ -1,6 +1,7 @@
 ﻿using DevExpress.Data;
 using DevExpress.Utils;
 using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ namespace Dev_GridControl
                 for (int j = 0; j < 10; j++)
                 {
                     Student s = new Student() { Age = j + 1, Name = $"Class_{i}_ID_{j+1}",Class = $"Class{i}"};
+                    s.DescriptionInfo = "TestAbc";
                     students.Add(s);
                 }
             }
@@ -43,6 +45,12 @@ namespace Dev_GridControl
         {
             ViewData = GenerateData();
             gridControl1.DataSource = ViewData;
+
+            //Avoid auto spacing for column captains
+            foreach (GridColumn column in gridView1.Columns)
+            {
+                column.Caption = column.FieldName;
+            }
 
             gridView1.Columns[nameof(Student.Class)].Group();
             gridView1.OptionsView.ShowGroupPanel = false; //User don't see group panel

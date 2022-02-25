@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Resources;
 using System.IO;
 using System.Reflection;
+using DevExpress.Utils.Svg;
 
 namespace Resources
 {
@@ -29,13 +30,15 @@ namespace Resources
             var stream = assembly.GetManifestResourceStream(sReourceName); //Get stream
             ResourceReader rReader = new ResourceReader(stream); //Create reader
 
-            
-
-
-
-
         }
 
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            //SvgImage svg = SvgImage.FromResources(Properties.Resources.edit11,(this.GetType()).Assembly);
 
+            //SvgImage svg = svgImageCollection["edit11"];
+            simpleButton1.ImageOptions.SvgImage = Properties.Resources.edit11;
+
+        }
     }
 }

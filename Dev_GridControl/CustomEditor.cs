@@ -2,6 +2,7 @@
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
@@ -52,7 +53,7 @@ namespace Dev_GridControl
             //Set grid properties
             TemplateGridControl.DataSource = TemplateListBuffer;
             TemplateGridView.OptionsView.ShowGroupPanel = false; //User don't see group panel
-            TemplateGridView.OptionsView.ShowIndicator = false; //Hide row header
+            TemplateGridView.OptionsView.ShowIndicator = true; //show row header
             TemplateGridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom; //New row can be added
             TemplateGridView.OptionsView.ShowButtonMode = ShowButtonModeEnum.ShowAlways; //Always show button
             TemplateGridView.OptionsBehavior.Editable = true; //Enable input
@@ -63,21 +64,18 @@ namespace Dev_GridControl
          
             TemplateGridView.Appearance.HeaderPanel.TextOptions.HAlignment = HorzAlignment.Center;//Center header text
             TemplateGridView.Appearance.Row.TextOptions.HAlignment = HorzAlignment.Near;//Center header text
+            TemplateGridView.RowHeight = 32;
             TemplateGridView.OptionsCustomization.AllowFilter = false;
             TemplateGridView.OptionsCustomization.AllowSort = false;
-            //TemplateGridView.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplace;
 
             //Set custom editor
             RepositoryItemButtonEdit buttonEditor = new RepositoryItemButtonEdit();
             buttonEditor.Buttons.Clear();
-            //buttonEditor.Buttons.AddRange(new EditorButton[] {
-            //new EditorButton(ButtonPredefines.Plus, "Edit", -1, true, true, false, ImageLocation.MiddleLeft, DemoHelper.GetEditImage()),
-            //new EditorButton(ButtonPredefines.Delete, "Delete", -1, true, true, false, ImageLocation.MiddleLeft, DemoHelper.GetDeleteImage())});
-
             buttonEditor.Buttons.Add(new EditorButton(ButtonPredefines.Plus, "Add the cell"));
-            buttonEditor.Buttons.Add(new EditorButton(ButtonPredefines.Delete, "Delete the cell"));
+            buttonEditor.Buttons.Add(new EditorButton(ButtonPredefines.Glyph, "Delete the cell"));
             buttonEditor.Buttons[0].Caption = "Text1";
             buttonEditor.Buttons[1].Caption = "Text2";
+            buttonEditor.Buttons[1].ImageOptions.SvgImage = Properties.Resources.open;
             buttonEditor.Buttons[0].Appearance.ForeColor = Color.Green;
             buttonEditor.Buttons[1].Appearance.ForeColor = Color.Red;
             buttonEditor.Buttons[0].ImageOptions.Location = ImageLocation.MiddleRight;
@@ -105,7 +103,8 @@ namespace Dev_GridControl
 
         private void CustomEditorButton2_Click(object sender, EventArgs e)
         {
-
+            //Select new item row
+            TemplateGridView.FocusedRowHandle = GridControl.NewItemRowHandle;
         }
 
 

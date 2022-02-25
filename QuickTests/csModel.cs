@@ -29,6 +29,17 @@ namespace QuickTests
         {
             Debug.WriteLine("Dosth in Base.");
         }
+
+        public Student Copy()
+        {
+            Student sNew = new Student();
+            sNew.Age = Age;
+            sNew.Name = Name;
+            sNew.Description = Description;
+            sNew.Class = Class;
+
+            return sNew;
+        }
     }
 
     public class StudentOverWrite : Student

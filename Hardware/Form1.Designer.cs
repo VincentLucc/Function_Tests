@@ -31,6 +31,7 @@ namespace Hardware
         {
             this.button1 = new System.Windows.Forms.Button();
             this.cbMac = new System.Windows.Forms.ComboBox();
+            this.bAssemblyInfo = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
             // button1
@@ -51,11 +52,21 @@ namespace Hardware
             this.cbMac.Size = new System.Drawing.Size(186, 21);
             this.cbMac.TabIndex = 1;
             // 
+            // bAssemblyInfo
+            // 
+            this.bAssemblyInfo.Location = new System.Drawing.Point(28, 77);
+            this.bAssemblyInfo.Name = "bAssemblyInfo";
+            this.bAssemblyInfo.Size = new System.Drawing.Size(75, 23);
+            this.bAssemblyInfo.TabIndex = 2;
+            this.bAssemblyInfo.Text = "Assembly Info";
+            this.bAssemblyInfo.Click += new System.EventHandler(this.AssemblyInfo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bAssemblyInfo);
             this.Controls.Add(this.cbMac);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
@@ -69,6 +80,7 @@ namespace Hardware
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cbMac;
+        private DevExpress.XtraEditors.SimpleButton bAssemblyInfo;
     }
 }
 

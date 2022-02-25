@@ -1,7 +1,7 @@
 ﻿
 namespace Dev_GridControl
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -38,9 +38,10 @@ namespace Dev_GridControl
             // 
             this.simpleButton1.Location = new System.Drawing.Point(55, 34);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(158, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(109, 23);
             this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "Web Style Row Display";
+            this.simpleButton1.Text = "GroupView";
+            this.simpleButton1.ToolTip = "Web Style Row Display";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // button1
@@ -58,7 +59,7 @@ namespace Dev_GridControl
             this.simpleButton2.ImageOptions.SvgImage = global::Dev_GridControl.Properties.Resources.open2;
             this.simpleButton2.Location = new System.Drawing.Point(55, 93);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(158, 57);
+            this.simpleButton2.Size = new System.Drawing.Size(109, 57);
             this.simpleButton2.TabIndex = 2;
             this.simpleButton2.Text = "Image";
             // 

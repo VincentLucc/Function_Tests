@@ -16,7 +16,6 @@ namespace QuickTests
     public partial class Form1 : Form
     {
 
-
         public Form1()
         {
             InitializeComponent();
@@ -215,6 +214,26 @@ namespace QuickTests
             {
                 return 3;
             }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            List<Student> slist = new List<Student>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                Student s = new Student();
+                s.Name = $"s{i}";
+                s.Age = i;
+                slist.Add(s);
+            }
+
+            Student sTemp = slist[0].Copy();
+            slist[0].Description = "Updated";
+            Debug.WriteLine(sTemp.Description);
+
+            sTemp.Copy();
+
         }
     }
 }
