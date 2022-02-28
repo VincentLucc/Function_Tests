@@ -23,57 +23,66 @@ namespace SerialPort_Ink
         public Form1()
         {
             InitializeComponent();
+            csPublic.winMain = this; //Name the form
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SetupLayout(); //add pre set values
+            InitControls(); //add pre set values
             ReadXMLConfig();//read xml to load previous config
         }
 
-        private void SetupLayout()
+        private void InitControls()
         {
-            LoadSerialPorts(); //Get local serial ports
+            RefreshSerialPorts(); //Get local serial ports
 
             //baud rate
             cbPortRate.Properties.Items.Clear();
-            cbPortRate.Properties.Items.Add(2400);
-            cbPortRate.Properties.Items.Add(4800);
-            cbPortRate.Properties.Items.Add(9600);
-            cbPortRate.Properties.Items.Add(11520);
-            cbPortRate.Properties.Items.Add(19200);
-            cbPortRate.Properties.Items.Add(38400);
-            cbPortRate.SelectedIndex = 2;
+            foreach (var item in PortConfig.BaudRateCollection)
+            {
+                cbPortRate.Properties.Items.Add(item);
+            }
+            cbPortRate.SelectedIndex = 4; //19200
+            cbPortRate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+
 
             //data bits 
             cb_Bits.Properties.Items.Clear();
-            cb_Bits.Properties.Items.Add(6);
-            cb_Bits.Properties.Items.Add(7);
-            cb_Bits.Properties.Items.Add(8);
+            foreach (var item in PortConfig.DataBitsCollection)
+            {
+                cb_Bits.Properties.Items.Add(item);
+            }
+            cb_Bits.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+
             //stop bits
             cbStopBits.Properties.Items.Clear();
-            //cbStopBits.Items.Add("None");//Stop bits none should never be used, will cause error
-            cbStopBits.Properties.Items.Add("1");
-            cbStopBits.Properties.Items.Add("1.5");
-            cbStopBits.Properties.Items.Add("2");
+            foreach (var item in PortConfig.StopBitsCollection)
+            {
+                cbStopBits.Properties.Items.Add(item);
+            }
+            cbStopBits.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+
             //verification
             cbVerify.Properties.Items.Clear();
-            cbVerify.Properties.Items.Add("None");
-            cbVerify.Properties.Items.Add("Odd");
-            cbVerify.Properties.Items.Add("Even");
+            foreach (var item in PortConfig.ParityCollection)
+            {
+                cbVerify.Properties.Items.Add(item);
+            }
+            cbVerify.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+
             //Data format
-            var serialTypeList=Enum.GetNames(typeof(SerialDataType));
+            var serialTypeList = Enum.GetNames(typeof(SerialDataType));
             lueSendFormat.Properties.DataSource = serialTypeList;
-            lueSendFormat.EditValue = config.SendFormat;
             lueSendFormat.Properties.ShowFooter = false;//remove the X button in bottom
-            lueReceiveFormat.Properties.DataSource = serialTypeList;         
-            lueReceiveFormat.EditValue = config.ReceiveFormat;
-            
-
-
+            lueReceiveFormat.Properties.DataSource = serialTypeList;
+            lueReceiveFormat.Properties.ShowFooter = false;//remove the X button in bottom
+            lueSendSuffix.Properties.DataSource = csConfig.EndSuffixCollection;
+            lueSendSuffix.Properties.ShowFooter = false;//remove the X button in bottom
         }
 
-        private void LoadSerialPorts()
+
+
+        private void RefreshSerialPorts()
         {
             //Get local serial ports
             string[] sPorts = SerialPort.GetPortNames();
@@ -97,33 +106,34 @@ namespace SerialPort_Ink
             cbPortNumber.SelectedIndex = 0;
         }
 
+        private void SetSerialPort()
+        {
+            port1.PortName = config.Port.PortName;
+        }
+
         private void ReadXMLConfig()
         {
             var xmlconfig = new object();
 
-            if (csXML.ReadXML(typeof(csConfig),csConfig.DefaultPath,out xmlconfig))
+            if (csXML.ReadXML(typeof(csConfig), csConfig.DefaultPath, out xmlconfig))
             {
-                //Get config
-                config =(csConfig) xmlconfig;
-
-                //Apply settings
                 try
                 {
-                    //read port nums
-                    if (config.Port.PortName < (cbPortNumber.Properties.Items.Count - 1))
-                    {//make sure previous selected port not bigger than current computer's com status
-                        cbPortNumber.SelectedIndex = config.Port.PortName;
-                    }
-                    cbPortRate.SelectedIndex = config.Port.BaudRate;
-                    cbStopBits.SelectedIndex = config.Port.StopBits;
-                    cb_Bits.SelectedIndex = config.Port.DataBits;
-                    cbVerify.SelectedIndex = config.Port.Parity;
-                    lueSendFormat.EditValue = config.SendFormat;
-                    lueReceiveFormat.EditValue = config.ReceiveFormat;
+                    //Get config
+                    config = (csConfig)xmlconfig;
+
+                    //Apply settings
+                    cbPortRate.SelectedIndex = config.Port.BaudRateIndex;
+                    cbStopBits.SelectedIndex = config.Port.StopBitsIndex;
+                    cb_Bits.SelectedIndex = config.Port.DataBitsIndex;
+                    cbVerify.SelectedIndex = config.Port.ParityIndex;
+                    lueSendFormat.EditValue = config.SendFormat.ToString();
+                    lueReceiveFormat.EditValue = config.ReceiveFormat.ToString();
+                    lueSendSuffix.EditValue = config.EndSuffix;
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Error in apply settings!\r\n"+e.Message);
+                    MessageBox.Show("Error in apply settings!\r\n" + e.Message);
                 }
 
             }
@@ -132,34 +142,78 @@ namespace SerialPort_Ink
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            csXML.WriteXML(config,typeof(csConfig),csConfig.DefaultPath);
+            csXML.WriteXML(config, typeof(csConfig), csConfig.DefaultPath);
         }
 
         private void cbPortNumber_SelectedIndexChanged(object sender, EventArgs e)
         {
-            config.Port.PortName = cbPortNumber.SelectedIndex;
+            config.Port.PortName = cbPortNumber.Text;
         }
 
         private void cbPortRate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            config.Port.BaudRate = cbPortRate.SelectedIndex;
+            config.Port.BaudRateIndex = cbPortRate.SelectedIndex;
         }
 
         private void cb_Bits_SelectedIndexChanged(object sender, EventArgs e)
         {
-            config.Port.DataBits = cb_Bits.SelectedIndex;
+            config.Port.DataBitsIndex = cb_Bits.SelectedIndex;
         }
 
         private void cbStopBits_SelectedIndexChanged(object sender, EventArgs e)
         {
-            config.Port.StopBits = cb_Bits.SelectedIndex;
+            config.Port.StopBitsIndex = cbStopBits.SelectedIndex;
         }
 
         private void bUpdate_Click(object sender, EventArgs e)
         {
-            LoadSerialPorts();
+            RefreshSerialPorts();
         }
 
+        private void bOpen_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void lueSendFormat_EditValueChanged(object sender, EventArgs e)
+        {
+            //Get setting
+            string sValue = lueSendFormat.EditValue.ToString();
+            if (Enum.TryParse(sValue, out SerialDataType serialDataType))
+            {
+                config.SendFormat = serialDataType;
+            }
+            else
+            {
+                config.SendFormat = SerialDataType.ASCII;
+            }
+
+
+        }
+
+        private void lueReceiveFormat_EditValueChanged(object sender, EventArgs e)
+        {
+            //Get setting
+            string sValue = lueReceiveFormat.EditValue.ToString();
+            if (Enum.TryParse(sValue, out SerialDataType serialDataType))
+            {
+                config.ReceiveFormat = serialDataType;
+            }
+            else
+            {
+                config.ReceiveFormat = SerialDataType.ASCII;
+            }
+        }
+
+        private void xtraTabControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lueSendSuffix_EditValueChanged(object sender, EventArgs e)
+        {
+            //Get setting
+            config.EndSuffix = lueSendSuffix.EditValue.ToString();
+        }
     }
 }
