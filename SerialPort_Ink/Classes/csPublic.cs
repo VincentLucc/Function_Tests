@@ -14,5 +14,7 @@ namespace SerialPort_Ink
         public static Form1 winMain { get; set; }
 
         public static csInkSystem InkSystem { get; set; }
+
+        public static string TimeString => DateTime.Now.ToString("HH:mm:ss:fff");
     }
 }

@@ -88,8 +88,6 @@ namespace UHFSDKTest
             IsLoop = false;
             CMDTime.Reset();
         }
-
-
     }
     /// <summary>
     /// Device data

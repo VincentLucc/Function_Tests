@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -234,6 +235,17 @@ namespace QuickTests
 
             sTemp.Copy();
 
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string s = "\\r";
+            string s1 = s.Replace(@"\\",@"\");
+            string sA = s + '\r';
+            //Below works perfect
+            string sReg = Regex.Unescape(s);
+            string sReg1 = Regex.Unescape("");
+            string sReg2 = Regex.Unescape("\\r\\n");
         }
     }
 }

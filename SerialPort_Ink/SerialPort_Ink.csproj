@@ -59,17 +59,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="csByteConvert.cs" />
-    <Compile Include="csConfig.cs" />
-    <Compile Include="csInkSystem.cs" />
-    <Compile Include="csPublic.cs" />
-    <Compile Include="csXML.cs" />
+    <Compile Include="Classes\csByteConvert.cs" />
+    <Compile Include="Classes\csConfig.cs" />
+    <Compile Include="Classes\csInkSystem.cs" />
+    <Compile Include="Classes\csPublic.cs" />
+    <Compile Include="Classes\csXML.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\InkSystemModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -97,6 +98,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Timer\OperationBlock.csproj">
+      <Project>{d061f609-2042-4806-9674-900e8f45a974}</Project>
+      <Name>OperationBlock</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
