@@ -290,7 +290,7 @@ namespace SerialPort_Ink
         private void InspectData(string[] DataList)
         {
             //Check length
-            if (DataList.Length<1)
+            if (DataList.Length < 1)
             {
                 return;
             }
@@ -303,9 +303,18 @@ namespace SerialPort_Ink
                     break;
                 case InkSystemCommandType.SetNetworkID:
                     break;
+                case InkSystemCommandType.GetDeviceStatus:
+                    ResponseProcess_GetDeviceStatus(DataList);
+                    break;
                 case InkSystemCommandType.GetMeniscusPressure:
+                    if (ResponseProcess_ReadData(DataList))
+                    {
+                        DataBuffer.MeniscusPressureSetPoint = CurrentCommand.DoubleValue;
+                        CurrentCommand.IsSuccess = true;
+                    }
                     break;
                 case InkSystemCommandType.SetMeniscusPressure:
+                    ResponseProcess_SetParameter(DataList);
                     break;
                 case InkSystemCommandType.GetMeniscusPumpLoad:
                     break;
@@ -360,17 +369,147 @@ namespace SerialPort_Ink
             }
         }
 
+
+        private void ResponseProcess_SetParameter(string[] dataList)
+        {
+            if (dataList.Length == 0)
+            {
+                return;
+            }
+            else if (dataList.Length == 2)
+            {
+                if (dataList[0] == ResponseString.Processed &&
+                    dataList[1] == ResponseString.Success)
+                {
+                    CurrentCommand.IsReplied = true;
+                    CurrentCommand.IsSuccess = true;
+                }
+            }
+            else
+            {
+                CurrentCommand.IsReplied = true;
+                CurrentCommand.IsSuccess = false;
+                return;
+            }
+        }
+
+        private bool ResponseProcess_ReadData(string[] dataList)
+        {
+            if (dataList.Length == 0)
+            {
+                return false;
+            }
+            else if (dataList.Length == 2)
+            {
+                if (dataList[0] == ResponseString.Processed)                  
+                {
+                    if (ParsingNumberValue(dataList[1],"C",out double dValue))
+                    {
+                        CurrentCommand.DoubleValue = dValue;
+                        CurrentCommand.IsReplied = true;
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                CurrentCommand.IsReplied = true;
+                return false;
+            }
+
+            //No match
+            return false;
+        }
+
+
+        private void ResponseProcess_GetDeviceStatus(string[] dataList)
+        {
+            //Check length
+            if (dataList.Length != 8) return;
+
+            CurrentCommand.IsReplied = true;
+
+            if (dataList[0] == ResponseString.Processed &&
+                dataList[7] == ResponseString.Success)
+            {
+                //Fetch data to buffer
+                if (ParsingNumberValue(dataList[1], "B", out double dBackPressure))
+                    DataBuffer.BackPressure = dBackPressure;
+                if (ParsingNumberValue(dataList[2], "R", out double dRecirculationPressure))
+                    DataBuffer.RecirculationPressure = dRecirculationPressure;
+                if (ParsingNumberValue(dataList[3], "T", out double dHeaterTemp))
+                    DataBuffer.HeaterTemp = dHeaterTemp;
+                if (ParsingNumberValue(dataList[4], "E", out double dInkTempreture))
+                    DataBuffer.InkTempreture = dInkTempreture;
+                if (ParsingNumberValue(dataList[5], "S", out double dStatusBits))
+                    DataBuffer.StatusBits = dStatusBits;
+                if (ParsingNumberValue(dataList[6], "W", out double dAlarm))
+                    DataBuffer.Alarm = dAlarm;
+
+                CurrentCommand.IsSuccess = true;
+            }
+        }
+
+        /// <summary>
+        /// Attempt to read value out from response string
+        /// 120,B  backpressure
+        /// 16,R
+        /// 40,T
+        /// 40,E
+        /// 0,S
+        /// 0,W
+        /// </summary>
+        /// <param name="sData">Input string</param>
+        /// <param name="ValueMark">mark, sample "B"</param>
+        /// <param name="iValue"></param>
+        /// <returns></returns>
+        private bool ParsingNumberValue(string sData, string ValueMark, out double dValue)
+        {
+            dValue = -1;
+            sData = sData.Replace(" ", "");
+            string sPattern = @"^-?[0-9]+.?[0-9]*," + ValueMark + "$";
+            //Check matches
+            if (Regex.IsMatch(sData, sPattern))
+            {
+                string sValue = sData.Substring(0, sData.IndexOf(","));
+                dValue = double.Parse(sValue);
+                return true;
+            }
+            else
+            {//No matches
+                return false;
+            }
+        }
+
+        private bool ParsingResponseValue(string sData, string ValueMark, out double dValue)
+        {
+            dValue = -1;
+            sData = sData.Replace(" ", "");
+            string sPattern = @"^-?[0-9]+.?[0-9]*," + ValueMark + "$";
+            //Check matches
+            if (Regex.IsMatch(sData, sPattern))
+            {
+                string sValue = sData.Substring(0, sData.IndexOf(","));
+                dValue = double.Parse(sValue);
+                return true;
+            }
+            else
+            {//No matches
+                return false;
+            }
+        }
+
         private void ResponseProcess_GetNetworkDevices(string[] dataList)
         {
-            if (dataList.Length<1) return;
+            if (dataList.Length < 1) return;
 
             for (int i = 0; i < dataList.Length; i++)
             {
                 string sData = dataList[i];
-                if (Regex.IsMatch(sData,InkSystemModel.RegDeviceList))
+                if (Regex.IsMatch(sData, InkSystemModel.RegDeviceList))
                 {
                     //Try to add to list
-                    string sID=sData.Substring(0, sData.IndexOf(","));
+                    string sID = sData.Substring(0, sData.IndexOf(","));
                     int iID = int.Parse(sID);
                     if (!DataBuffer.Devices.Contains(iID))
                     {
@@ -381,6 +520,8 @@ namespace SerialPort_Ink
                 }
             }
         }
+
+
 
         /// <summary>
         /// Thread to send message
@@ -464,15 +605,16 @@ namespace SerialPort_Ink
             }
         }
 
+
         /// <summary>
         /// Attempt to request device list
         /// </summary>
         /// <returns></returns>
         public async Task<bool> TryGetDeviceList()
         {
-            //try to read data
+            //Prepare variables
             CurrentCommand.Init(InkSystemCommandType.GetNetworkDevices); //init command
-            DataBuffer.Init(InkSystemCommandType.GetNetworkDevices); //Clear all devices
+            DataBuffer = new InkSystemDataBuffer();//Clear all devices
 
             //send command
             SendCommand(CurrentCommand.CommandString);
@@ -489,9 +631,46 @@ namespace SerialPort_Ink
             {
                 CurrentCommand.IsSuccess = false;
                 Debug.WriteLine("TryGetDeviceList:WaitForNextDevice");
-                await WaitForSuccess(1000);           
+                await WaitForSuccess(1000);
             }
 
+            return true;
+        }
+
+        public async Task<bool> TryReadData(InkSystemCommandType commandType, int iNetworkID = 0)
+        {
+            //Prepare variables
+            CurrentCommand.Init(commandType, iNetworkID); //init command
+            DataBuffer = new InkSystemDataBuffer();//prepare data buffer
+
+            //send command
+            SendCommand(CurrentCommand.CommandString);
+
+            //Wait for success
+            if (!await WaitForSuccess(TimeoutMS))
+            {
+                return false;
+            }
+
+            //pass all steps
+            return true;
+        }
+
+        public async Task<bool> TrySetParameter(InkSystemCommandType commandType, int iNetworkID = 0)
+        {
+            //Prepare variables
+            CurrentCommand.Init(commandType, iNetworkID); //init command
+
+            //send command
+            SendCommand(CurrentCommand.CommandString);
+
+            //Wait for success
+            if (!await WaitForSuccess(TimeoutMS))
+            {
+                return false;
+            }
+
+            //pass all steps
             return true;
         }
 
@@ -591,7 +770,8 @@ namespace SerialPort_Ink
         /// </summary>
         /// <param name="param"></param>
         /// <param name="iNetworkID"></param>
-        public static string GetCommandString(InkSystemCommandType command, int iNetworkID = 0)
+        /// <param name="iValue">Values that need to be set, only use when send set request</param>
+        public static string GetCommandString(InkSystemCommandType command, int iNetworkID = 0, int iValue = 0)
         {
             //Stand alone devie
             string sNetwork = NetworkName[iNetworkID];
@@ -601,11 +781,13 @@ namespace SerialPort_Ink
                 case InkSystemCommandType.GetNetworkDevices:
                     return "@SNI#"; //Get all device in the network, format ID,I, sample 1,I
                 case InkSystemCommandType.SetNetworkID:
-                    return "@SNI#"; //Get all device in the network, format ID,I, sample 1,I
-                case InkSystemCommandType.GetMeniscusPressure:
                     return $"@SNI,{iNetworkID.ToString("D2")}"; //Keep 2 digits, sample: @SNI,01
-                case InkSystemCommandType.SetMeniscusPressure:
-                    break;
+                case InkSystemCommandType.GetDeviceStatus:
+                    return iNetworkID == 0 ? "STA?0" : $"{sNetwork}STA?";
+                case InkSystemCommandType.GetMeniscusPressure:
+                    return iNetworkID == 0 ? "SVP?0" : $"{sNetwork}SVP?";
+                case InkSystemCommandType.SetMeniscusPressure: //current target vacuum pressure
+                    return iNetworkID == 0 ? $"SVP,{iValue}" : $"{sNetwork}SVP,{iValue}";
                 case InkSystemCommandType.GetMeniscusPumpLoad:
                     return iNetworkID == 0 ? "SVM?0" : $"{sNetwork}SVM?";
                 case InkSystemCommandType.SetMeniscusPumpLoad:

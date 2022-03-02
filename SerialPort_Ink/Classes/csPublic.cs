@@ -17,4 +17,19 @@ namespace SerialPort_Ink
 
         public static string TimeString => DateTime.Now.ToString("HH:mm:ss:fff");
     }
+
+
+    public class GeneralResult
+    {
+        public bool IsSuccess { get; set; } //Method is succes or not
+        /// <summary>
+        /// Return int result if value needed
+        /// </summary>
+        public int IntResult { get; set; }
+        /// <summary>
+        /// Return string result if value needed
+        /// </summary>
+        public string StrResult { get; set; }
+        public String Message { get; set; }
+    }
 }

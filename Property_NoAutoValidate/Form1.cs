@@ -53,13 +53,12 @@ namespace Property_NoAutoValidate
             pg1.CellValueChanged += Pg1_CellValueChanged; //Happen before Pg1_ValidatingEditor!!!
             pg1.EditorKeyDown += Pg1_EditorKeyDown;
             pg1.KeyDown += Pg1_KeyDown;
+            pg1.MouseDown += Pg1_MouseDown1;
             // pg1.Validated += Pg1_Validated;
             pg1.InvalidValueException += Pg1_InvalidValueException;
             pg1.CausesValidation = true; //Default not to validate only when required
             pg1.LostFocus += Pg1_LostFocus;
             pg1.OptionsBehavior.UseTabKey = false;
-
-
 
             sList = new List<Student>();
             for (int i = 0; i < 5; i++)
@@ -73,9 +72,15 @@ namespace Property_NoAutoValidate
 
             lb1.DataSource = sList.Select(x => x.Name).ToList();
 
-
             //Tests
             //te1.Validating += TextEdit1_Validating;
+        }
+
+        private void Pg1_MouseDown1(object sender, MouseEventArgs e)
+        {
+            //Force validate
+            Debug.WriteLine("Pg1_MouseDown1");
+            TriggerPropertyValidate();
         }
 
         /// <summary>
@@ -98,7 +103,9 @@ namespace Property_NoAutoValidate
 
         private void Pg1_LostFocus(object sender, EventArgs e)
         {
-              //run twice, may cause problem
+            //run twice, may cause problem
+            //May not trigger
+            
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -106,11 +113,7 @@ namespace Property_NoAutoValidate
             Debug.WriteLine("Form1_MouseDown");
         }
 
-        private void Pg1_MouseDown(object sender, MouseEventArgs e)
-        {
-            Debug.WriteLine("Pg1_MouseDown");
-            TriggerPropertyValidate();
-        }
+ 
 
         private void Pg1_CustomRecordCellEdit(object sender, GetCustomRowCellEditEventArgs e)
         {

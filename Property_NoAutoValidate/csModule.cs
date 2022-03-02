@@ -26,6 +26,7 @@ namespace Property_NoAutoValidate
         public string Name { get; set; }
 
         //User to address editor manually
+        //Ref:https://docs.devexpress.com/WindowsForms/1498/controls-and-libraries/editors-and-simple-controls/common-editor-features-and-concepts/masks/mask-type-numeric
         [CustomEditor(EditorType.Number)]
         [Category("Test")]
         [DisplayName("S Age"), Description("Description Method 2, manual address")]
@@ -35,25 +36,31 @@ namespace Property_NoAutoValidate
         [CustomEditor(EditorType.Text, true, MaskType.RegEx, @"^[a-zA-Z]{1,2}[0-9]*$")]
         [Category("Test")]
         [DisplayName("Text1 No Mask"), Description("Text editor no mask ")]
-        public string TextNormal { get; set; }
+        public string Text1NoMask { get; set; }
 
         //Test text editor regex
         [CustomEditor(EditorType.Text, true, MaskType.RegEx, @"^[a-zA-Z]{1,2}[0-9]*$")]
         [Category("Test")]
         [DisplayName("Text2 Reg Mask"), Description("Text editor with regex mask")]
-        public string TextReg { get; set; }
+        public string Text2Reg { get; set; }
 
-        //Test text editor regex
-        [CustomEditor(EditorType.Text, true, MaskType.Numeric, "#####0")]
+        //Test text editor numeric
+        [CustomEditor(EditorType.Text, true, MaskType.Numeric, "n0")]
         [Category("Test")]
         [DisplayName("Text3 Numeric Mask"), Description("Text editor with Numeric Mask")]
-        public string TextNum { get; set; }
+        public string Text3Num { get; set; }
 
-        //Test text editor regex
+        //Test text editor
         [CustomEditor(EditorType.Cal, true, MaskType.Numeric, "####0.00\\ \\m\\m")]
         [Category("Test")]
         [DisplayName("Numeric Cal Edit"), Description("Text editor with Numeric \r\nMask Metric_Distance5 = ####0.00\\ \\m\\m")]
         public string NumCal { get; set; }
+
+        //Test text editor regex
+        [CustomEditor(EditorType.Cal, true, MaskType.Numeric, EditMasks.Metric_RPM)]
+        [Category("Test")]
+        [DisplayName("Numeric Positive"), Description("Positive only")]
+        public string NumPositive { get; set; }
 
         [TypeConverter(typeof(ExpandableObjectConverter))] //Show sub class properties
         [ExpandableRowSettings(false)] //Hide class root editor
@@ -86,7 +93,7 @@ namespace Property_NoAutoValidate
             Cert = new Certificate();
             Cert2 = new Certificate();
             List = new bool[3];
-            TextReg = "CE1";
+            Text2Reg = "CE1";
         }
     }
 
@@ -106,9 +113,6 @@ namespace Property_NoAutoValidate
     }
 
 
-
-
-
     public class FilteredFileNameEditor : UITypeEditor
     {
         private OpenFileDialog ofd = new OpenFileDialog();
@@ -126,6 +130,35 @@ namespace Property_NoAutoValidate
             }
             return base.EditValue(context, provider, value);
         }
+    }
+
+    /// <summary>
+    /// Masks
+    /// # any digital or nothing if empty
+    /// 0 any digital or zero if empty
+    /// . decimal point
+    /// , thousand separator
+    /// "##0.##" allow to input 000.00 format
+    /// Ref:https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.Editors.PropertyEditor.EditMask
+    /// </summary>
+    static class EditMasks
+    {
+        public const string Metric_Distance2 = "#0.00\\ \\m\\m";
+        public const string Metric_Distance3 = "##0.00\\ \\m\\m";
+        public const string Metric_Distance4 = "###0.00\\ \\m\\m";
+        public const string Metric_Distance5 = "####0.00\\ \\m\\m";
+
+        public const string Metric_Speed = "###0.00\\ \\m\\/\\m";
+        public const string Metric_RPM = "###0.00\\ \\R\\P\\M";
+
+        public const string Imperial_Distance2 = "#0.000\\ \\I\\n\\c\\h\\e\\s";
+        public const string Imperial_Distance3 = "##0.000\\ \\I\\n\\c\\h\\e\\s";
+        public const string Imperial_Distance4 = "###0.000\\ \\I\\n\\c\\h\\e\\s";
+        public const string Imperial_Distance5 = "####0.000\\ \\I\\n\\c\\h\\e\\s";
+
+        public const string Imperial_Speed = "###0.00\\ \\F\\P\\M";
+
+        public const string DigitalValue = "#####0";
     }
 
 

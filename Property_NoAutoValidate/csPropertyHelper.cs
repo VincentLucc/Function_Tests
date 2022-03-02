@@ -107,20 +107,6 @@ namespace Property_NoAutoValidate
             return rowsPost;
         }
 
-        public void DoValidate()
-        {
-            //Get current selected row
-            var row = PropertyGrid.FocusedRow;
-
-            if (row != null)
-            {
-                Debug.WriteLine("DoValidate:" + row.Properties.FieldName);
-
-            }
-
-
-
-        }
 
 
         /// <summary>
@@ -233,9 +219,13 @@ namespace Property_NoAutoValidate
                 case EditorType.Cal:
                     RepositoryItemCalcEdit repositoryCalcEdit = new RepositoryItemCalcEdit();
                     //repositoryCalcEdit.EditValueChangedDelay = int.MaxValue;
-
                     if (editor.IsCustomMaskEnable)
                     {
+                        repositoryCalcEdit.Mask.MaskType = editor.MaskType;
+                        if (repositoryCalcEdit.Mask.MaskType== MaskType.Numeric)
+                        {
+                            repositoryCalcEdit.Mask.UseMaskAsDisplayFormat = true;
+                        }
                         repositoryCalcEdit.Mask.UseMaskAsDisplayFormat = true;
                         repositoryCalcEdit.Mask.EditMask = editor.MaskString;
                     }
@@ -267,22 +257,19 @@ namespace Property_NoAutoValidate
                     RepositoryItemTextEdit repositoryNumberEdit = new RepositoryItemTextEdit();
                     repositoryNumberEdit.Mask.MaskType = MaskType.Numeric;
                     repositoryNumberEdit.Mask.UseMaskAsDisplayFormat = true;
-                    repositoryNumberEdit.Mask.EditMask = "#####0";
-                    repositoryNumberEdit.EditValueChangedFiringMode = EditValueChangedFiringMode.Buffered;
-                    repositoryNumberEdit.EditValueChangedDelay = int.MaxValue;
+                    repositoryNumberEdit.Mask.EditMask = EditMasks.DigitalValue;
                     repositoryNumberEdit.ValidateOnEnterKey = true;
                     row.Properties.RowEdit = repositoryNumberEdit;
                     break;
 
                 case EditorType.Text:
+                    string sText = row.Properties.FieldName;
                     RepositoryItemTextEdit textEdit_Text = new RepositoryItemTextEdit();
                     if (editor.IsCustomMaskEnable)
                     {
                         textEdit_Text.Mask.UseMaskAsDisplayFormat = true;
                         textEdit_Text.Mask.MaskType = editor.MaskType;
                         textEdit_Text.Mask.EditMask = editor.MaskString;
-                        textEdit_Text.EditValueChangedFiringMode = EditValueChangedFiringMode.Buffered;
-                        textEdit_Text.EditValueChangedDelay = 2000;
                     }
                     break;
 

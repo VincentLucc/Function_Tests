@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using OperationBlock;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,9 @@ namespace SerialPort_Ink
         //变量
         SerialPort port1 = new SerialPort();//实例化串口类
         csConfig config = new csConfig();
+        List<int> DeviceList = new List<int>(); //Current device 
+        TimerBlock OperationBlock = new TimerBlock(); //Block process operation only
+        List<InkDeviceData> Devices { get; set; }
 
         public Form1()
         {
@@ -29,7 +33,7 @@ namespace SerialPort_Ink
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            InitVariables(); 
+            InitVariables();
             InitControls(); //add pre set values
             ReadXMLConfig();//read xml to load previous config
             InitOperations();
@@ -38,7 +42,18 @@ namespace SerialPort_Ink
         private void InitVariables()
         {
             csPublic.InkSystem = new csInkSystem(config);
+            Devices = new List<InkDeviceData>();
+            for (int i = 0; i < 8; i++)
+            {
+                InkDeviceData inkDevice = new InkDeviceData();
+                Devices.Add(inkDevice);
+            }
+
+            //Disable auto updating data by default
+            OperationBlock.StartBlock();
         }
+
+
 
         private void InitControls()
         {
@@ -84,6 +99,9 @@ namespace SerialPort_Ink
                 cbCommands.Properties.Items.Add(item);
             }
 
+            //Parameter settings
+            teMeniscusPressure.ReadOnly = true;
+
             //Data format
             var serialTypeList = Enum.GetNames(typeof(SerialDataType));
             lueSendFormat.Properties.DataSource = serialTypeList;
@@ -99,10 +117,10 @@ namespace SerialPort_Ink
         {
             tbReceive1.TextChanged += TbReceive1_TextChanged;
 
-            //Enable multi thread timer
+            //Start UI update timer
             System.Timers.Timer tUpdate = new System.Timers.Timer();
             tUpdate.Interval = 100;
-            tUpdate.Elapsed += TUpdate_Elapsed;
+            tUpdate.Elapsed += TUIUpdate_Elapsed;
             tUpdate.Start();
         }
 
@@ -112,7 +130,7 @@ namespace SerialPort_Ink
 
         }
 
-        private void TUpdate_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private async void TUIUpdate_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             var tUpdate = (System.Timers.Timer)sender;
             tUpdate.Enabled = false; //Avoid overflow
@@ -125,13 +143,30 @@ namespace SerialPort_Ink
                 return;
             }
 
-            //Do work
-            //Update UI
+            //Refresh data to UI
+            UpdateUI();
+
+            //Check operation pause flag
+            if (OperationBlock.Enable)
+            {
+                OperationBlock.IsBlocked = true;
+                tUpdate.Enabled = true;
+                return;
+            }
+
+            //Attempt to fetch data from ink devices
+            await UpdateDeviceInfo();
+
+            tUpdate.Enabled = true; //Avoid overflow
+        }
+
+        private void UpdateUI()
+        {
             tbReceive1.Invoke(new Action(() =>
             {
-                if (csPublic.InkSystem.IsConnected&& !tbReceive1.Focused)
-                {         
-                    if (tbReceive1.Text != csPublic.InkSystem.MessagesReceivedCollection.Replace("\r",""))
+                if (csPublic.InkSystem.IsConnected && !tbReceive1.Focused)
+                {
+                    if (tbReceive1.Text != csPublic.InkSystem.MessagesReceivedCollection.Replace("\r", ""))
                     {
                         tbReceive1.SuspendLayout();
                         tbReceive1.Clear();
@@ -139,11 +174,49 @@ namespace SerialPort_Ink
                         tbReceive1.ScrollToCaret();
                         tbReceive1.ResumeLayout();
                     }
-                   
+
                 }
             }));
 
-            tUpdate.Enabled = true; //Avoid overflow
+            //Show device info
+            this.Invoke(new Action(() =>
+            {
+                if (lbDevices.SelectedIndex > -1)
+                {
+                    //Get selected device
+                    var device = Devices[lbDevices.SelectedIndex + 1];
+                    lBackPressure.Text = device.BackPressure.ToString("F2");
+                    lRecirculation.Text = device.RecirculationPressure.ToString("F2");
+                    lHeaterTemp.Text = device.HeaterTemp.ToString("F2");
+                    lInkTemp.Text = device.InkTempreture.ToString("F2");
+                    lStatusBits.Text = device.StatusBits.ToString("F2");
+                    lAlarm.Text = device.Alarm.ToString("F2");
+
+                    //Display parameters
+                    teMeniscusPressure.Text = device.MeniscusPressureSetPoint.ToString("F2");
+                }
+
+            }));
+        }
+
+        private async Task UpdateDeviceInfo()
+        {
+            //Start from 1, 0 is default device when there is no network
+            for (int i = 1; i < lbDevices.Items.Count+1; i++)
+            {
+                var currentDevice = Devices[i + 1];
+
+                if (await csPublic.InkSystem.TryReadData(InkSystemCommandType.GetDeviceStatus,i))
+                {                  
+                    csPublic.InkSystem.DataBuffer.CopyDeviceData(ref currentDevice);
+                }
+
+                if (await csPublic.InkSystem.TryReadData(InkSystemCommandType.GetMeniscusPressure, i))
+                {
+                    currentDevice.MeniscusPressureSetPoint = csPublic.InkSystem.DataBuffer.MeniscusPressureSetPoint;
+                }
+
+            }
         }
 
         /// <summary>
@@ -152,7 +225,7 @@ namespace SerialPort_Ink
         private void FinishUpClosing()
         {
             //Make sure fully exit
-            if (csPublic.InkSystem!=null|| !csPublic.InkSystem.EnableDispose)
+            if (csPublic.InkSystem != null || !csPublic.InkSystem.EnableDispose)
             {
                 csPublic.InkSystem.Dispose();
             }
@@ -253,7 +326,7 @@ namespace SerialPort_Ink
             {
                 MessageBox.Show("Fail to connect.");
             }
-            
+
         }
 
         /// <summary>
@@ -335,10 +408,60 @@ namespace SerialPort_Ink
             {
                 for (int i = 0; i < csPublic.InkSystem.DataBuffer.Devices.Count; i++)
                 {
-                    string sDevice= $"Device:{csPublic.InkSystem.DataBuffer.Devices[i]}";
+                    string sDevice = $"Device:{csPublic.InkSystem.DataBuffer.Devices[i]}";
                     lbDevices.Items.Add(sDevice);
                 }
+
+                //Set current device list
+                DeviceList = csPublic.InkSystem.DataBuffer.Devices.ToList();
             }
+        }
+
+        private async void tsEnableUpdate_Toggled(object sender, EventArgs e)
+        {
+            if (tsEnableUpdate.IsOn)
+            {
+                OperationBlock.StopBlock();
+            }
+            else
+            {
+                await OperationBlock.BlockAndWaitAsync();
+            }
+        }
+
+        private async void bFetch_Click(object sender, EventArgs e)
+        {
+            if (tsEnableUpdate.IsOn)
+                await OperationBlock.BlockAndWaitAsync();
+
+            //Get id
+            int iDevice = lbDevices.SelectedIndex + 1;
+            if (iDevice < 1) iDevice = 1;
+
+            if (await csPublic.InkSystem.TryReadData(InkSystemCommandType.GetDeviceStatus,iDevice))
+            {
+                var currentDevice = Devices[iDevice];
+                csPublic.InkSystem.DataBuffer.CopyDeviceData(ref currentDevice);
+            }
+            else
+            {
+                MessageBox.Show("error");
+            }
+
+            if (tsEnableUpdate.IsOn)
+                OperationBlock.StopBlock();
+        }
+
+        private void tsEnableEdit_Toggled(object sender, EventArgs e)
+        {
+            teMeniscusPressure.ReadOnly = !tsEnableEdit.IsOn;
+        }
+
+        private void bApplyMeniscusPressure_Click(object sender, EventArgs e)
+        {
+            if (teMeniscusPressure.ReadOnly) return;
+
+
         }
     }
 }

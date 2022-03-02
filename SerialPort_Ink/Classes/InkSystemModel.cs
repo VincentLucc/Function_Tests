@@ -12,7 +12,11 @@ namespace SerialPort_Ink
         public static string RegDeviceList = "^[0-9]{1,2},I$";
     }
 
-
+    public class ResponseString
+    {
+        public static string Processed = ",A";
+        public static string Success = ",C";
+    }
 
     public enum InkSystemCommandType
     {
@@ -43,14 +47,15 @@ namespace SerialPort_Ink
         GetStartupDelay,
         SetStartupDelay,
         GetBypassTime,
-        SetBypassTime
+        SetBypassTime,
+        GetDeviceStatus
     }
 
 
     /// <summary>
     /// Buffer settings of the ink system
     /// </summary>
-    public class InkSystemDataBuffer
+    public class InkSystemDataBuffer: InkDeviceData
     {
         public List<int> Devices { get; set; }
         public InkSystemDataBuffer()
@@ -58,70 +63,29 @@ namespace SerialPort_Ink
             Devices = new List<int>();
         }
 
-        public void Init(InkSystemCommandType commandType)
+
+    }
+
+    public class InkDeviceData
+    {
+        public double BackPressure { get; set; }
+        
+        public double RecirculationPressure { get; set; }
+        public double HeaterTemp { get; set; }
+        public double InkTempreture { get; set; }
+        public double StatusBits { get; set; }
+        public double Alarm { get; set; }
+        public double MeniscusPressureSetPoint { get; set; }
+
+
+        public void CopyDeviceData(ref InkDeviceData deviceData)
         {
-            switch (commandType)
-            {
-                case InkSystemCommandType.GetNetworkDevices:
-                    Devices = new List<int>();
-                    break;
-                case InkSystemCommandType.SetNetworkID:
-                    break;
-                case InkSystemCommandType.GetMeniscusPressure:
-                    break;
-                case InkSystemCommandType.SetMeniscusPressure:
-                    break;
-                case InkSystemCommandType.GetMeniscusPumpLoad:
-                    break;
-                case InkSystemCommandType.SetMeniscusPumpLoad:
-                    break;
-                case InkSystemCommandType.GetRecircMeniscusPressure:
-                    break;
-                case InkSystemCommandType.SetRecircMeniscusPressure:
-                    break;
-                case InkSystemCommandType.GetNonRecircMeniscusPressure:
-                    break;
-                case InkSystemCommandType.SetNonRecircMeniscusPressure:
-                    break;
-                case InkSystemCommandType.GetReturnPressure:
-                    break;
-                case InkSystemCommandType.SetReturnPressure:
-                    break;
-                case InkSystemCommandType.GetReturnPumpLoad:
-                    break;
-                case InkSystemCommandType.SetReturnPumpLoad:
-                    break;
-                case InkSystemCommandType.GetHeater:
-                    break;
-                case InkSystemCommandType.SetHeater:
-                    break;
-                case InkSystemCommandType.GetFillPumpSpeed:
-                    break;
-                case InkSystemCommandType.SetFillPumpSpeed:
-                    break;
-                case InkSystemCommandType.GetFillPumpTimeout:
-                    break;
-                case InkSystemCommandType.SetFillPumpTimeout:
-                    break;
-                case InkSystemCommandType.GetPurgeTime:
-                    break;
-                case InkSystemCommandType.SetPurgeTime:
-                    break;
-                case InkSystemCommandType.GetPurgePressure:
-                    break;
-                case InkSystemCommandType.SetPurgePressure:
-                    break;
-                case InkSystemCommandType.GetStartupDelay:
-                    break;
-                case InkSystemCommandType.SetStartupDelay:
-                    break;
-                case InkSystemCommandType.GetBypassTime:
-                    break;
-                case InkSystemCommandType.SetBypassTime:
-                    break;
-                default:
-                    break;
-            }
+            deviceData.BackPressure = BackPressure;
+            deviceData.RecirculationPressure = RecirculationPressure;
+            deviceData.HeaterTemp = HeaterTemp;
+            deviceData.InkTempreture = InkTempreture;
+            deviceData.StatusBits = StatusBits;
+            deviceData.Alarm = Alarm;
         }
     }
 
@@ -152,6 +116,7 @@ namespace SerialPort_Ink
         /// </summary>
         public string CommandString { get; set; }
         public int IntValue { get; set; }
+        public double DoubleValue { get; set; }
         /// <summary>
         /// String result of current command
         /// </summary>
@@ -174,6 +139,7 @@ namespace SerialPort_Ink
         public void Init(InkSystemCommandType Command, int iNetwork = 0)
         {
             IsReplied = false;
+            IsSuccess = false;
             Type = Command;
             IntValue = -1;
             StrValue = null;
