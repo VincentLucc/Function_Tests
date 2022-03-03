@@ -11,7 +11,7 @@ namespace SerialPort_Ink
         /// <summary>
         /// Main form alias
         /// </summary>
-        public static Form1 winMain { get; set; }
+        public static FormMain winMain { get; set; }
 
         public static csInkSystem InkSystem { get; set; }
 

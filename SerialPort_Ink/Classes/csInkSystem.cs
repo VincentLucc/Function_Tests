@@ -243,7 +243,6 @@ namespace SerialPort_Ink
             //Process Data
             InspectData(sDataGroup);
 
-
             //Receiving status
             IsReceiving = false;
         }
@@ -286,7 +285,10 @@ namespace SerialPort_Ink
             }
         }
 
-        //Process Data
+       /// <summary>
+       /// Process received data
+       /// </summary>
+       /// <param name="DataList"></param>
         private void InspectData(string[] DataList)
         {
             //Check length
@@ -298,72 +300,96 @@ namespace SerialPort_Ink
             //Check based on command
             switch (CurrentCommand.Type)
             {
+                case InkSystemCommandType.SetHeaterSetpoint:
+                case InkSystemCommandType.SetMeniscusPressure:
+                case InkSystemCommandType.SetMeniscusPumpLoad:
+                case InkSystemCommandType.SetReturnPumpLoad:
+                case InkSystemCommandType.SetNonRecircMeniscusPressure:
+                case InkSystemCommandType.SetRecircMeniscusPressure:
+                case InkSystemCommandType.SetReturnPressure:
+                case InkSystemCommandType.SetFillPumpSpeed:
+                case InkSystemCommandType.SetFillPumpTimeout:
+                case InkSystemCommandType.SetPurgeTime:
+                case InkSystemCommandType.SetPurgePressure:
+                case InkSystemCommandType.SetBypassTime:
+                case InkSystemCommandType.SetStartupDelay:
+                case InkSystemCommandType.SetNetworkID:
+                case InkSystemCommandType.ResetAlarms:
+                case InkSystemCommandType.SetDrainSystem:
+                    ResponseProcess_SetParameter(DataList);
+                    break;
+
                 case InkSystemCommandType.GetNetworkDevices:
                     ResponseProcess_GetNetworkDevices(DataList);
                     break;
-                case InkSystemCommandType.SetNetworkID:
-                    break;
+
                 case InkSystemCommandType.GetDeviceStatus:
                     ResponseProcess_GetDeviceStatus(DataList);
                     break;
+
                 case InkSystemCommandType.GetMeniscusPressure:
                     if (ResponseProcess_ReadData(DataList))
-                    {
                         DataBuffer.MeniscusPressureSetPoint = CurrentCommand.DoubleValue;
                         CurrentCommand.IsSuccess = true;
-                    }
                     break;
-                case InkSystemCommandType.SetMeniscusPressure:
-                    ResponseProcess_SetParameter(DataList);
+
+                case InkSystemCommandType.GetHeaterSetpoint:
+                    if (ResponseProcess_ReadData(DataList))
+                        DataBuffer.HeaterSetPoint = CurrentCommand.DoubleValue;
+                        CurrentCommand.IsSuccess = true;
                     break;
+
+                case InkSystemCommandType.GetFillPumpSpeed:
+                    if (ResponseProcess_ReadData(DataList))
+                        DataBuffer.FillPumpSpeedSetPoint = CurrentCommand.DoubleValue;
+                        CurrentCommand.IsSuccess = true;
+                    break;
+
+                case InkSystemCommandType.GetFillPumpTimeout:
+                    if (ResponseProcess_ReadData(DataList))
+                        DataBuffer.FillPumpTimeout = CurrentCommand.DoubleValue;
+                        CurrentCommand.IsSuccess = true;
+                    break;
+
+                case InkSystemCommandType.GetPurgeTime:
+                    if (ResponseProcess_ReadData(DataList))
+                        DataBuffer.PurgeTimeSetPoint = CurrentCommand.DoubleValue;
+                        CurrentCommand.IsSuccess = true;
+                    break;
+
+                case InkSystemCommandType.GetPurgePressure:
+                    if (ResponseProcess_ReadData(DataList))
+                        DataBuffer.PurgePressureSetpoint = CurrentCommand.DoubleValue;
+                        CurrentCommand.IsSuccess = true;
+                    break;
+
+                case InkSystemCommandType.GetStartupDelay:
+                    if (ResponseProcess_ReadData(DataList))
+                        DataBuffer.StartUpDelay = CurrentCommand.DoubleValue;
+                        CurrentCommand.IsSuccess = true;
+                    break;
+
+                case InkSystemCommandType.GetBypassTime:
+                    if (ResponseProcess_ReadData(DataList)) 
+                        DataBuffer.ByPassTime = CurrentCommand.DoubleValue;
+                        CurrentCommand.IsSuccess = true;        
+                    break;
+
                 case InkSystemCommandType.GetMeniscusPumpLoad:
                     break;
-                case InkSystemCommandType.SetMeniscusPumpLoad:
-                    break;
+
                 case InkSystemCommandType.GetRecircMeniscusPressure:
                     break;
-                case InkSystemCommandType.SetRecircMeniscusPressure:
-                    break;
+
                 case InkSystemCommandType.GetNonRecircMeniscusPressure:
                     break;
-                case InkSystemCommandType.SetNonRecircMeniscusPressure:
-                    break;
-                case InkSystemCommandType.GetReturnPressure:
-                    break;
-                case InkSystemCommandType.SetReturnPressure:
-                    break;
+
                 case InkSystemCommandType.GetReturnPumpLoad:
                     break;
-                case InkSystemCommandType.SetReturnPumpLoad:
+
+                case InkSystemCommandType.GetReturnPressure:
                     break;
-                case InkSystemCommandType.GetHeater:
-                    break;
-                case InkSystemCommandType.SetHeater:
-                    break;
-                case InkSystemCommandType.GetFillPumpSpeed:
-                    break;
-                case InkSystemCommandType.SetFillPumpSpeed:
-                    break;
-                case InkSystemCommandType.GetFillPumpTimeout:
-                    break;
-                case InkSystemCommandType.SetFillPumpTimeout:
-                    break;
-                case InkSystemCommandType.GetPurgeTime:
-                    break;
-                case InkSystemCommandType.SetPurgeTime:
-                    break;
-                case InkSystemCommandType.GetPurgePressure:
-                    break;
-                case InkSystemCommandType.SetPurgePressure:
-                    break;
-                case InkSystemCommandType.GetStartupDelay:
-                    break;
-                case InkSystemCommandType.SetStartupDelay:
-                    break;
-                case InkSystemCommandType.GetBypassTime:
-                    break;
-                case InkSystemCommandType.SetBypassTime:
-                    break;
+
                 default:
                     break;
             }
@@ -464,24 +490,6 @@ namespace SerialPort_Ink
         /// <param name="iValue"></param>
         /// <returns></returns>
         private bool ParsingNumberValue(string sData, string ValueMark, out double dValue)
-        {
-            dValue = -1;
-            sData = sData.Replace(" ", "");
-            string sPattern = @"^-?[0-9]+.?[0-9]*," + ValueMark + "$";
-            //Check matches
-            if (Regex.IsMatch(sData, sPattern))
-            {
-                string sValue = sData.Substring(0, sData.IndexOf(","));
-                dValue = double.Parse(sValue);
-                return true;
-            }
-            else
-            {//No matches
-                return false;
-            }
-        }
-
-        private bool ParsingResponseValue(string sData, string ValueMark, out double dValue)
         {
             dValue = -1;
             sData = sData.Replace(" ", "");
@@ -656,19 +664,16 @@ namespace SerialPort_Ink
             return true;
         }
 
-        public async Task<bool> TrySetParameter(InkSystemCommandType commandType, int iNetworkID = 0)
+        public async Task<bool> TrySetParameter(InkSystemCommandType commandType, int iNetworkID = 0, double dValue=0)
         {
             //Prepare variables
-            CurrentCommand.Init(commandType, iNetworkID); //init command
+            CurrentCommand.Init(commandType, iNetworkID, dValue); //init command
 
             //send command
             SendCommand(CurrentCommand.CommandString);
 
             //Wait for success
-            if (!await WaitForSuccess(TimeoutMS))
-            {
-                return false;
-            }
+            if (!await WaitForSuccess(TimeoutMS)) return false;
 
             //pass all steps
             return true;
@@ -679,7 +684,6 @@ namespace SerialPort_Ink
             //Init variables
             Stopwatch watch = new Stopwatch();
             watch.Start();
-
 
             //Wait for flag
             while (!CurrentCommand.IsReplied)
@@ -771,7 +775,7 @@ namespace SerialPort_Ink
         /// <param name="param"></param>
         /// <param name="iNetworkID"></param>
         /// <param name="iValue">Values that need to be set, only use when send set request</param>
-        public static string GetCommandString(InkSystemCommandType command, int iNetworkID = 0, int iValue = 0)
+        public static string GetCommandString(InkSystemCommandType command, int iNetworkID = 0, double dValue = 0)
         {
             //Stand alone devie
             string sNetwork = NetworkName[iNetworkID];
@@ -780,62 +784,102 @@ namespace SerialPort_Ink
             {
                 case InkSystemCommandType.GetNetworkDevices:
                     return "@SNI#"; //Get all device in the network, format ID,I, sample 1,I
+
                 case InkSystemCommandType.SetNetworkID:
                     return $"@SNI,{iNetworkID.ToString("D2")}"; //Keep 2 digits, sample: @SNI,01
+
                 case InkSystemCommandType.GetDeviceStatus:
                     return iNetworkID == 0 ? "STA?0" : $"{sNetwork}STA?";
+
                 case InkSystemCommandType.GetMeniscusPressure:
-                    return iNetworkID == 0 ? "SVP?0" : $"{sNetwork}SVP?";
-                case InkSystemCommandType.SetMeniscusPressure: //current target vacuum pressure
-                    return iNetworkID == 0 ? $"SVP,{iValue}" : $"{sNetwork}SVP,{iValue}";
-                case InkSystemCommandType.GetMeniscusPumpLoad:
-                    return iNetworkID == 0 ? "SVM?0" : $"{sNetwork}SVM?";
-                case InkSystemCommandType.SetMeniscusPumpLoad:
-                    break;
                 case InkSystemCommandType.GetRecircMeniscusPressure:
                     return iNetworkID == 0 ? "SVP?0" : $"{sNetwork}SVP?";
+
+                case InkSystemCommandType.SetMeniscusPressure: //current target vacuum pressure
                 case InkSystemCommandType.SetRecircMeniscusPressure:
+                    return iNetworkID == 0 ? $"SVP,{dValue}" : $"{sNetwork}SVP,{dValue}";
+
+                case InkSystemCommandType.GetMeniscusPumpLoad:
+                    return iNetworkID == 0 ? "SVM?0" : $"{sNetwork}SVM?";
+
+                case InkSystemCommandType.SetMeniscusPumpLoad:
                     break;
+
                 case InkSystemCommandType.GetNonRecircMeniscusPressure:
                     return iNetworkID == 0 ? "SVP?0" : $"{sNetwork}SVP?";
+
                 case InkSystemCommandType.SetNonRecircMeniscusPressure:
                     break;
+
                 case InkSystemCommandType.GetReturnPressure:
                     return iNetworkID == 0 ? "SRS?0" : $"{sNetwork}SRS?";
+
                 case InkSystemCommandType.SetReturnPressure:
                     break;
+
                 case InkSystemCommandType.GetReturnPumpLoad:
                     return iNetworkID == 0 ? "SVR?0" : $"{sNetwork}SVR?";
+
                 case InkSystemCommandType.SetReturnPumpLoad:
                     break;
-                case InkSystemCommandType.GetHeater:
+
+                case InkSystemCommandType.GetHeaterSetpoint:
                     return iNetworkID == 0 ? "SHT?0" : $"{sNetwork}SHT?";
-                case InkSystemCommandType.SetHeater:
-                    break;
+
+                case InkSystemCommandType.SetHeaterSetpoint:
+                    return iNetworkID == 0 ? $"SHT?,{dValue}" : $"{sNetwork}SHT,{dValue}";
+
                 case InkSystemCommandType.GetFillPumpSpeed:
                     return iNetworkID == 0 ? "SFS?0" : $"{sNetwork}SFS?";
+
                 case InkSystemCommandType.SetFillPumpSpeed:
-                    break;
+                    return iNetworkID == 0 ? $"SFS?,{dValue}" : $"{sNetwork}SFS,{dValue}";
+
                 case InkSystemCommandType.GetFillPumpTimeout:
                     return iNetworkID == 0 ? "STO?0" : $"{sNetwork}STO?";
+
                 case InkSystemCommandType.SetFillPumpTimeout:
-                    break;
+                    return iNetworkID == 0 ? $"STO?,{dValue}" : $"{sNetwork}STO,{dValue}";
+
                 case InkSystemCommandType.GetPurgeTime:
                     return iNetworkID == 0 ? "SPT?0" : $"{sNetwork}SPT?";
+
                 case InkSystemCommandType.SetPurgeTime:
-                    break;
+                    return iNetworkID == 0 ? $"SPT?,{dValue}" : $"{sNetwork}SPT,{dValue}";
+
                 case InkSystemCommandType.GetPurgePressure:
                     return iNetworkID == 0 ? "SPP?0" : $"{sNetwork}SPP?";
+
                 case InkSystemCommandType.SetPurgePressure:
-                    break;
+                    return iNetworkID == 0 ? $"SPP?,{dValue}" : $"{sNetwork}SPP,{dValue}";
+
                 case InkSystemCommandType.GetStartupDelay:
                     return iNetworkID == 0 ? "SPH?0" : $"{sNetwork}SPH?";
+
                 case InkSystemCommandType.SetStartupDelay:
-                    break;
+                    return iNetworkID == 0 ? $"SPH?,{dValue}" : $"{sNetwork}SPH,{dValue}";
+
                 case InkSystemCommandType.GetBypassTime:
                     return iNetworkID == 0 ? "SBT?0" : $"{sNetwork}SBT?";
+
                 case InkSystemCommandType.SetBypassTime:
-                    break;
+                    return iNetworkID == 0 ? $"SBT?,{dValue}" : $"{sNetwork}SBT,{dValue}";
+
+                case InkSystemCommandType.ResetAlarms:
+                    return iNetworkID == 0 ? @"SA1?,0" : $"{sNetwork}SA1,0";
+
+                case InkSystemCommandType.PurgeInk:
+                    //1, soft purge
+                    //2, hard purge
+                    //3, cancel purge
+                    //4, head de-airing purge
+                    //5, release pressure
+                    return iNetworkID == 0 ? $"STP,{dValue}" : $"{sNetwork}STP,{dValue}";
+
+                case InkSystemCommandType.SetDrainSystem:
+                    //1 active, 0 inactive
+                    return iNetworkID == 0 ? $"SDS,{dValue}" : $"{sNetwork}STP,{dValue}";
+
                 default:
                     break;
             }

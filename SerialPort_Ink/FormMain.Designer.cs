@@ -1,7 +1,7 @@
 ﻿
 namespace SerialPort_Ink
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace SerialPort_Ink
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
@@ -94,31 +94,31 @@ namespace SerialPort_Ink
             this.DeviceParametersLayoutControl = new DevExpress.XtraLayout.LayoutControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.toggleSwitch8 = new DevExpress.XtraEditors.ToggleSwitch();
-            this.toggleSwitch7 = new DevExpress.XtraEditors.ToggleSwitch();
-            this.toggleSwitch6 = new DevExpress.XtraEditors.ToggleSwitch();
-            this.toggleSwitch5 = new DevExpress.XtraEditors.ToggleSwitch();
-            this.toggleSwitch4 = new DevExpress.XtraEditors.ToggleSwitch();
-            this.toggleSwitch3 = new DevExpress.XtraEditors.ToggleSwitch();
-            this.toggleSwitch2 = new DevExpress.XtraEditors.ToggleSwitch();
-            this.toggleSwitch1 = new DevExpress.XtraEditors.ToggleSwitch();
+            this.tsBypassTime = new DevExpress.XtraEditors.ToggleSwitch();
+            this.tsStartupDelay = new DevExpress.XtraEditors.ToggleSwitch();
+            this.tsPurgePressure = new DevExpress.XtraEditors.ToggleSwitch();
+            this.tsPurgeTime = new DevExpress.XtraEditors.ToggleSwitch();
+            this.tsFillPumpTimeout = new DevExpress.XtraEditors.ToggleSwitch();
+            this.tsFillPumpSpeed = new DevExpress.XtraEditors.ToggleSwitch();
+            this.tsHeaterSetPoint = new DevExpress.XtraEditors.ToggleSwitch();
             this.textEdit8 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit7 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit6 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.teBypassTime = new DevExpress.XtraEditors.TextEdit();
+            this.teStartupDelay = new DevExpress.XtraEditors.TextEdit();
+            this.tePurgePressure = new DevExpress.XtraEditors.TextEdit();
+            this.tePurgeTime = new DevExpress.XtraEditors.TextEdit();
+            this.teFillPumpTimeout = new DevExpress.XtraEditors.TextEdit();
+            this.teFillPumpSpeed = new DevExpress.XtraEditors.TextEdit();
+            this.teHeaterSetPoint = new DevExpress.XtraEditors.TextEdit();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.bApply2 = new DevExpress.XtraEditors.SimpleButton();
+            this.bBypassTime = new DevExpress.XtraEditors.SimpleButton();
+            this.bStartupDelay = new DevExpress.XtraEditors.SimpleButton();
+            this.bPurgePressure = new DevExpress.XtraEditors.SimpleButton();
+            this.bPurgeTime = new DevExpress.XtraEditors.SimpleButton();
+            this.bFillPumpTimeout = new DevExpress.XtraEditors.SimpleButton();
+            this.bFillPumpSpeed = new DevExpress.XtraEditors.SimpleButton();
+            this.bHeaterSetPoint = new DevExpress.XtraEditors.SimpleButton();
             this.teMeniscusPressure = new DevExpress.XtraEditors.TextEdit();
-            this.tsEnableEdit = new DevExpress.XtraEditors.ToggleSwitch();
+            this.tsMeniscusPressure = new DevExpress.XtraEditors.ToggleSwitch();
             this.bApplyMeniscusPressure = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup8 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem32 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -185,6 +185,16 @@ namespace SerialPort_Ink
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bResetAlarm = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem62 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bPurge = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem63 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bActivateDrainSystem = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem64 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.tsPurge = new DevExpress.XtraEditors.ToggleSwitch();
+            this.layoutControlItem65 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bDisableDrainSystem = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem66 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -255,23 +265,23 @@ namespace SerialPort_Ink
             ((System.ComponentModel.ISupportInitialize)(this.DeviceParametersLayoutControl)).BeginInit();
             this.DeviceParametersLayoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch8.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch7.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch6.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch5.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsBypassTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsStartupDelay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsPurgePressure.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsPurgeTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsFillPumpTimeout.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsFillPumpSpeed.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsHeaterSetPoint.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBypassTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teStartupDelay.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePurgePressure.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePurgeTime.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teFillPumpTimeout.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teFillPumpSpeed.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teHeaterSetPoint.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teMeniscusPressure.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsEnableEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsMeniscusPressure.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).BeginInit();
@@ -334,6 +344,12 @@ namespace SerialPort_Ink
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem62)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem63)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem64)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsPurge.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem65)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem66)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -344,16 +360,16 @@ namespace SerialPort_Ink
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(896, 526);
+            this.layoutControl1.Size = new System.Drawing.Size(916, 526);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.layoutControl3);
-            this.groupControl2.Location = new System.Drawing.Point(286, 12);
+            this.groupControl2.Location = new System.Drawing.Point(292, 12);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(598, 502);
+            this.groupControl2.Size = new System.Drawing.Size(612, 502);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Data";
             // 
@@ -368,7 +384,7 @@ namespace SerialPort_Ink
             this.layoutControl3.Location = new System.Drawing.Point(2, 23);
             this.layoutControl3.Name = "layoutControl3";
             this.layoutControl3.Root = this.layoutControlGroup2;
-            this.layoutControl3.Size = new System.Drawing.Size(594, 477);
+            this.layoutControl3.Size = new System.Drawing.Size(608, 477);
             this.layoutControl3.TabIndex = 0;
             this.layoutControl3.Text = "layoutControl3";
             // 
@@ -376,36 +392,36 @@ namespace SerialPort_Ink
             // 
             this.tbReceive1.Location = new System.Drawing.Point(12, 152);
             this.tbReceive1.Name = "tbReceive1";
-            this.tbReceive1.Size = new System.Drawing.Size(570, 313);
+            this.tbReceive1.Size = new System.Drawing.Size(584, 313);
             this.tbReceive1.TabIndex = 14;
             this.tbReceive1.Text = "";
             // 
             // cbCommands
             // 
-            this.cbCommands.Location = new System.Drawing.Point(250, 110);
+            this.cbCommands.Location = new System.Drawing.Point(255, 110);
             this.cbCommands.Name = "cbCommands";
             this.cbCommands.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbCommands.Size = new System.Drawing.Size(154, 20);
+            this.cbCommands.Size = new System.Drawing.Size(159, 20);
             this.cbCommands.StyleController = this.layoutControl3;
             this.cbCommands.TabIndex = 12;
             // 
             // tsCommandEnable
             // 
-            this.tsCommandEnable.Location = new System.Drawing.Point(129, 110);
+            this.tsCommandEnable.Location = new System.Drawing.Point(132, 110);
             this.tsCommandEnable.Name = "tsCommandEnable";
             this.tsCommandEnable.Properties.OffText = "Off";
             this.tsCommandEnable.Properties.OnText = "On";
             this.tsCommandEnable.Properties.ShowText = false;
-            this.tsCommandEnable.Size = new System.Drawing.Size(54, 19);
+            this.tsCommandEnable.Size = new System.Drawing.Size(56, 19);
             this.tsCommandEnable.StyleController = this.layoutControl3;
             this.tsCommandEnable.TabIndex = 11;
             // 
             // bSend
             // 
-            this.bSend.Location = new System.Drawing.Point(509, 110);
+            this.bSend.Location = new System.Drawing.Point(521, 110);
             this.bSend.Name = "bSend";
-            this.bSend.Size = new System.Drawing.Size(73, 22);
+            this.bSend.Size = new System.Drawing.Size(75, 22);
             this.bSend.StyleController = this.layoutControl3;
             this.bSend.TabIndex = 8;
             this.bSend.Text = "Send";
@@ -415,7 +431,7 @@ namespace SerialPort_Ink
             // 
             this.meSend.Location = new System.Drawing.Point(12, 28);
             this.meSend.Name = "meSend";
-            this.meSend.Size = new System.Drawing.Size(570, 78);
+            this.meSend.Size = new System.Drawing.Size(584, 78);
             this.meSend.StyleController = this.layoutControl3;
             this.meSend.TabIndex = 6;
             // 
@@ -432,7 +448,7 @@ namespace SerialPort_Ink
             this.layoutControlItem17,
             this.sdfsdfsdfsdf});
             this.layoutControlGroup2.Name = "Root";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(594, 477);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(608, 477);
             this.layoutControlGroup2.TextVisible = false;
             // 
             // layoutControlItem13
@@ -440,7 +456,7 @@ namespace SerialPort_Ink
             this.layoutControlItem13.Control = this.meSend;
             this.layoutControlItem13.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(574, 98);
+            this.layoutControlItem13.Size = new System.Drawing.Size(588, 98);
             this.layoutControlItem13.Text = "Send:";
             this.layoutControlItem13.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem13.TextSize = new System.Drawing.Size(60, 13);
@@ -448,18 +464,18 @@ namespace SerialPort_Ink
             // layoutControlItem12
             // 
             this.layoutControlItem12.Control = this.bSend;
-            this.layoutControlItem12.Location = new System.Drawing.Point(497, 98);
+            this.layoutControlItem12.Location = new System.Drawing.Point(509, 98);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(77, 26);
+            this.layoutControlItem12.Size = new System.Drawing.Size(79, 26);
             this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem12.TextVisible = false;
             // 
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(396, 98);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(406, 98);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(101, 26);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(103, 26);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem4
@@ -467,24 +483,24 @@ namespace SerialPort_Ink
             this.emptySpaceItem4.AllowHotTrack = false;
             this.emptySpaceItem4.Location = new System.Drawing.Point(0, 98);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(117, 26);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(120, 26);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem20
             // 
             this.layoutControlItem20.Control = this.tsCommandEnable;
-            this.layoutControlItem20.Location = new System.Drawing.Point(117, 98);
+            this.layoutControlItem20.Location = new System.Drawing.Point(120, 98);
             this.layoutControlItem20.Name = "layoutControlItem20";
-            this.layoutControlItem20.Size = new System.Drawing.Size(58, 26);
+            this.layoutControlItem20.Size = new System.Drawing.Size(60, 26);
             this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem20.TextVisible = false;
             // 
             // layoutControlItem17
             // 
             this.layoutControlItem17.Control = this.cbCommands;
-            this.layoutControlItem17.Location = new System.Drawing.Point(175, 98);
+            this.layoutControlItem17.Location = new System.Drawing.Point(180, 98);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(221, 26);
+            this.layoutControlItem17.Size = new System.Drawing.Size(226, 26);
             this.layoutControlItem17.Text = "Commands:";
             this.layoutControlItem17.TextSize = new System.Drawing.Size(60, 13);
             // 
@@ -493,7 +509,7 @@ namespace SerialPort_Ink
             this.sdfsdfsdfsdf.Control = this.tbReceive1;
             this.sdfsdfsdfsdf.Location = new System.Drawing.Point(0, 124);
             this.sdfsdfsdfsdf.Name = "sdfsdfsdfsdf";
-            this.sdfsdfsdfsdf.Size = new System.Drawing.Size(574, 333);
+            this.sdfsdfsdfsdf.Size = new System.Drawing.Size(588, 333);
             this.sdfsdfsdfsdf.Text = "Receive:";
             this.sdfsdfsdfsdf.TextLocation = DevExpress.Utils.Locations.Top;
             this.sdfsdfsdfsdf.TextSize = new System.Drawing.Size(60, 13);
@@ -503,7 +519,7 @@ namespace SerialPort_Ink
             this.groupControl1.Controls.Add(this.layoutControl2);
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(270, 502);
+            this.groupControl1.Size = new System.Drawing.Size(276, 502);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Config";
             // 
@@ -525,7 +541,7 @@ namespace SerialPort_Ink
             this.layoutControl2.Location = new System.Drawing.Point(2, 23);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup1;
-            this.layoutControl2.Size = new System.Drawing.Size(266, 477);
+            this.layoutControl2.Size = new System.Drawing.Size(272, 477);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
@@ -535,7 +551,7 @@ namespace SerialPort_Ink
             this.lueSendSuffix.Name = "lueSendSuffix";
             this.lueSendSuffix.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueSendSuffix.Size = new System.Drawing.Size(159, 20);
+            this.lueSendSuffix.Size = new System.Drawing.Size(165, 20);
             this.lueSendSuffix.StyleController = this.layoutControl2;
             this.lueSendSuffix.TabIndex = 17;
             this.lueSendSuffix.EditValueChanged += new System.EventHandler(this.lueSendSuffix_EditValueChanged);
@@ -546,7 +562,7 @@ namespace SerialPort_Ink
             this.lueReceiveFormat.Name = "lueReceiveFormat";
             this.lueReceiveFormat.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueReceiveFormat.Size = new System.Drawing.Size(159, 20);
+            this.lueReceiveFormat.Size = new System.Drawing.Size(165, 20);
             this.lueReceiveFormat.StyleController = this.layoutControl2;
             this.lueReceiveFormat.TabIndex = 16;
             this.lueReceiveFormat.EditValueChanged += new System.EventHandler(this.lueReceiveFormat_EditValueChanged);
@@ -557,7 +573,7 @@ namespace SerialPort_Ink
             this.lueSendFormat.Name = "lueSendFormat";
             this.lueSendFormat.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueSendFormat.Size = new System.Drawing.Size(159, 20);
+            this.lueSendFormat.Size = new System.Drawing.Size(165, 20);
             this.lueSendFormat.StyleController = this.layoutControl2;
             this.lueSendFormat.TabIndex = 15;
             this.lueSendFormat.EditValueChanged += new System.EventHandler(this.lueSendFormat_EditValueChanged);
@@ -567,14 +583,14 @@ namespace SerialPort_Ink
             this.separatorControl1.Location = new System.Drawing.Point(12, 134);
             this.separatorControl1.MaximumSize = new System.Drawing.Size(0, 20);
             this.separatorControl1.Name = "separatorControl1";
-            this.separatorControl1.Size = new System.Drawing.Size(242, 20);
+            this.separatorControl1.Size = new System.Drawing.Size(248, 20);
             this.separatorControl1.TabIndex = 12;
             // 
             // bUpdate
             // 
-            this.bUpdate.Location = new System.Drawing.Point(202, 12);
+            this.bUpdate.Location = new System.Drawing.Point(207, 12);
             this.bUpdate.Name = "bUpdate";
-            this.bUpdate.Size = new System.Drawing.Size(52, 22);
+            this.bUpdate.Size = new System.Drawing.Size(53, 22);
             this.bUpdate.StyleController = this.layoutControl2;
             this.bUpdate.TabIndex = 11;
             this.bUpdate.Text = "Update";
@@ -582,9 +598,9 @@ namespace SerialPort_Ink
             // 
             // bDisconnect
             // 
-            this.bDisconnect.Location = new System.Drawing.Point(135, 443);
+            this.bDisconnect.Location = new System.Drawing.Point(138, 443);
             this.bDisconnect.Name = "bDisconnect";
-            this.bDisconnect.Size = new System.Drawing.Size(119, 22);
+            this.bDisconnect.Size = new System.Drawing.Size(122, 22);
             this.bDisconnect.StyleController = this.layoutControl2;
             this.bDisconnect.TabIndex = 10;
             this.bDisconnect.Text = "Disconnect";
@@ -594,7 +610,7 @@ namespace SerialPort_Ink
             // 
             this.bOpen.Location = new System.Drawing.Point(12, 443);
             this.bOpen.Name = "bOpen";
-            this.bOpen.Size = new System.Drawing.Size(119, 22);
+            this.bOpen.Size = new System.Drawing.Size(122, 22);
             this.bOpen.StyleController = this.layoutControl2;
             this.bOpen.TabIndex = 9;
             this.bOpen.Text = "Connect";
@@ -607,7 +623,7 @@ namespace SerialPort_Ink
             this.cbVerify.Name = "cbVerify";
             this.cbVerify.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbVerify.Size = new System.Drawing.Size(159, 20);
+            this.cbVerify.Size = new System.Drawing.Size(165, 20);
             this.cbVerify.StyleController = this.layoutControl2;
             this.cbVerify.TabIndex = 8;
             // 
@@ -617,7 +633,7 @@ namespace SerialPort_Ink
             this.cbStopBits.Name = "cbStopBits";
             this.cbStopBits.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbStopBits.Size = new System.Drawing.Size(159, 20);
+            this.cbStopBits.Size = new System.Drawing.Size(165, 20);
             this.cbStopBits.StyleController = this.layoutControl2;
             this.cbStopBits.TabIndex = 7;
             this.cbStopBits.SelectedIndexChanged += new System.EventHandler(this.cbStopBits_SelectedIndexChanged);
@@ -628,7 +644,7 @@ namespace SerialPort_Ink
             this.cb_Bits.Name = "cb_Bits";
             this.cb_Bits.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cb_Bits.Size = new System.Drawing.Size(159, 20);
+            this.cb_Bits.Size = new System.Drawing.Size(165, 20);
             this.cb_Bits.StyleController = this.layoutControl2;
             this.cb_Bits.TabIndex = 6;
             this.cb_Bits.SelectedIndexChanged += new System.EventHandler(this.cb_Bits_SelectedIndexChanged);
@@ -639,7 +655,7 @@ namespace SerialPort_Ink
             this.cbPortRate.Name = "cbPortRate";
             this.cbPortRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbPortRate.Size = new System.Drawing.Size(159, 20);
+            this.cbPortRate.Size = new System.Drawing.Size(165, 20);
             this.cbPortRate.StyleController = this.layoutControl2;
             this.cbPortRate.TabIndex = 5;
             this.cbPortRate.SelectedIndexChanged += new System.EventHandler(this.cbPortRate_SelectedIndexChanged);
@@ -650,7 +666,7 @@ namespace SerialPort_Ink
             this.cbPortNumber.Name = "cbPortNumber";
             this.cbPortNumber.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbPortNumber.Size = new System.Drawing.Size(103, 20);
+            this.cbPortNumber.Size = new System.Drawing.Size(108, 20);
             this.cbPortNumber.StyleController = this.layoutControl2;
             this.cbPortNumber.TabIndex = 4;
             this.cbPortNumber.SelectedIndexChanged += new System.EventHandler(this.cbPortNumber_SelectedIndexChanged);
@@ -675,7 +691,7 @@ namespace SerialPort_Ink
             this.emptySpaceItem1,
             this.emptySpaceItem2});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(266, 477);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(272, 477);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem3
@@ -685,7 +701,7 @@ namespace SerialPort_Ink
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.OptionsPrint.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.layoutControlItem3.OptionsPrint.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem3.Size = new System.Drawing.Size(190, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(195, 26);
             this.layoutControlItem3.Text = "Port No.:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(80, 13);
             // 
@@ -694,7 +710,7 @@ namespace SerialPort_Ink
             this.layoutControlItem4.Control = this.cbPortRate;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(246, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(252, 24);
             this.layoutControlItem4.Text = "Baud Rate:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(80, 13);
             // 
@@ -703,7 +719,7 @@ namespace SerialPort_Ink
             this.layoutControlItem5.Control = this.cb_Bits;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 50);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(246, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(252, 24);
             this.layoutControlItem5.Text = "Data Bits:";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(80, 13);
             // 
@@ -712,7 +728,7 @@ namespace SerialPort_Ink
             this.layoutControlItem6.Control = this.cbStopBits;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 74);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(246, 24);
+            this.layoutControlItem6.Size = new System.Drawing.Size(252, 24);
             this.layoutControlItem6.Text = "Stop Bits:";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(80, 13);
             // 
@@ -721,7 +737,7 @@ namespace SerialPort_Ink
             this.layoutControlItem7.Control = this.cbVerify;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 98);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(246, 24);
+            this.layoutControlItem7.Size = new System.Drawing.Size(252, 24);
             this.layoutControlItem7.Text = "Verification:";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(80, 13);
             // 
@@ -730,25 +746,25 @@ namespace SerialPort_Ink
             this.layoutControlItem8.Control = this.bOpen;
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 431);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(123, 26);
+            this.layoutControlItem8.Size = new System.Drawing.Size(126, 26);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.bDisconnect;
-            this.layoutControlItem9.Location = new System.Drawing.Point(123, 431);
+            this.layoutControlItem9.Location = new System.Drawing.Point(126, 431);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(123, 26);
+            this.layoutControlItem9.Size = new System.Drawing.Size(126, 26);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.bUpdate;
-            this.layoutControlItem10.Location = new System.Drawing.Point(190, 0);
+            this.layoutControlItem10.Location = new System.Drawing.Point(195, 0);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(56, 26);
+            this.layoutControlItem10.Size = new System.Drawing.Size(57, 26);
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
@@ -762,7 +778,7 @@ namespace SerialPort_Ink
             this.layoutControlItem15.OptionsPrint.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
             this.layoutControlItem15.OptionsPrint.AppearanceItemCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.layoutControlItem15.OptionsPrint.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem15.Size = new System.Drawing.Size(246, 40);
+            this.layoutControlItem15.Size = new System.Drawing.Size(252, 40);
             this.layoutControlItem15.Text = "Data Settings:";
             this.layoutControlItem15.TextLocation = DevExpress.Utils.Locations.Bottom;
             this.layoutControlItem15.TextSize = new System.Drawing.Size(80, 13);
@@ -772,7 +788,7 @@ namespace SerialPort_Ink
             this.layoutControlItem14.Control = this.lueSendFormat;
             this.layoutControlItem14.Location = new System.Drawing.Point(0, 172);
             this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(246, 24);
+            this.layoutControlItem14.Size = new System.Drawing.Size(252, 24);
             this.layoutControlItem14.Text = "Send Format:";
             this.layoutControlItem14.TextSize = new System.Drawing.Size(80, 13);
             // 
@@ -781,7 +797,7 @@ namespace SerialPort_Ink
             this.layoutControlItem18.Control = this.lueReceiveFormat;
             this.layoutControlItem18.Location = new System.Drawing.Point(0, 220);
             this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(246, 24);
+            this.layoutControlItem18.Size = new System.Drawing.Size(252, 24);
             this.layoutControlItem18.Text = "Receive Format:";
             this.layoutControlItem18.TextSize = new System.Drawing.Size(80, 13);
             // 
@@ -791,7 +807,7 @@ namespace SerialPort_Ink
             this.layoutControlItem16.Location = new System.Drawing.Point(0, 196);
             this.layoutControlItem16.Name = "layoutControlItem16";
             this.layoutControlItem16.OptionsToolTip.ToolTip = "For ASCII Mode only";
-            this.layoutControlItem16.Size = new System.Drawing.Size(246, 24);
+            this.layoutControlItem16.Size = new System.Drawing.Size(252, 24);
             this.layoutControlItem16.Text = "Send Suffix:";
             this.layoutControlItem16.TextSize = new System.Drawing.Size(80, 13);
             // 
@@ -800,7 +816,7 @@ namespace SerialPort_Ink
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 244);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(246, 187);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(252, 187);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem2
@@ -808,7 +824,7 @@ namespace SerialPort_Ink
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(0, 162);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(246, 10);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(252, 10);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // Root
@@ -819,7 +835,7 @@ namespace SerialPort_Ink
             this.layoutControlItem1,
             this.layoutControlItem2});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(896, 526);
+            this.Root.Size = new System.Drawing.Size(916, 526);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -827,16 +843,16 @@ namespace SerialPort_Ink
             this.layoutControlItem1.Control = this.groupControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(274, 506);
+            this.layoutControlItem1.Size = new System.Drawing.Size(280, 506);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.groupControl2;
-            this.layoutControlItem2.Location = new System.Drawing.Point(274, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(280, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(602, 506);
+            this.layoutControlItem2.Size = new System.Drawing.Size(616, 506);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -846,7 +862,7 @@ namespace SerialPort_Ink
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(898, 568);
+            this.xtraTabControl1.Size = new System.Drawing.Size(918, 568);
             this.xtraTabControl1.TabIndex = 5;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -858,7 +874,7 @@ namespace SerialPort_Ink
             this.xtraTabPage1.Controls.Add(this.layoutControl1);
             this.xtraTabPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage1.ImageOptions.Image")));
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(896, 526);
+            this.xtraTabPage1.Size = new System.Drawing.Size(916, 526);
             this.xtraTabPage1.Text = "Debug Tools";
             // 
             // xtraTabPage2
@@ -866,7 +882,7 @@ namespace SerialPort_Ink
             this.xtraTabPage2.Controls.Add(this.LayoutControlPageInkControls);
             this.xtraTabPage2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage2.ImageOptions.Image")));
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(896, 526);
+            this.xtraTabPage2.Size = new System.Drawing.Size(916, 526);
             this.xtraTabPage2.Text = "Ink Controls";
             // 
             // LayoutControlPageInkControls
@@ -877,16 +893,16 @@ namespace SerialPort_Ink
             this.LayoutControlPageInkControls.Location = new System.Drawing.Point(0, 0);
             this.LayoutControlPageInkControls.Name = "LayoutControlPageInkControls";
             this.LayoutControlPageInkControls.Root = this.layoutControlGroup3;
-            this.LayoutControlPageInkControls.Size = new System.Drawing.Size(896, 526);
+            this.LayoutControlPageInkControls.Size = new System.Drawing.Size(916, 526);
             this.LayoutControlPageInkControls.TabIndex = 0;
             this.LayoutControlPageInkControls.Text = "layoutControl4";
             // 
             // groupControl4
             // 
             this.groupControl4.Controls.Add(this.layoutControl4);
-            this.groupControl4.Location = new System.Drawing.Point(267, 12);
+            this.groupControl4.Location = new System.Drawing.Point(273, 12);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(617, 502);
+            this.groupControl4.Size = new System.Drawing.Size(631, 502);
             this.groupControl4.TabIndex = 5;
             this.groupControl4.Text = "Device Controls";
             // 
@@ -898,27 +914,32 @@ namespace SerialPort_Ink
             this.layoutControl4.Location = new System.Drawing.Point(2, 23);
             this.layoutControl4.Name = "layoutControl4";
             this.layoutControl4.Root = this.layoutControlGroup5;
-            this.layoutControl4.Size = new System.Drawing.Size(613, 477);
+            this.layoutControl4.Size = new System.Drawing.Size(627, 477);
             this.layoutControl4.TabIndex = 0;
             this.layoutControl4.Text = "layoutControl4";
             // 
             // groupControl6
             // 
             this.groupControl6.Controls.Add(this.layoutControl6);
-            this.groupControl6.Location = new System.Drawing.Point(392, 12);
+            this.groupControl6.Location = new System.Drawing.Point(401, 12);
             this.groupControl6.Name = "groupControl6";
-            this.groupControl6.Size = new System.Drawing.Size(209, 453);
+            this.groupControl6.Size = new System.Drawing.Size(214, 453);
             this.groupControl6.TabIndex = 12;
             this.groupControl6.Text = "Device Commands";
             // 
             // layoutControl6
             // 
+            this.layoutControl6.Controls.Add(this.bDisableDrainSystem);
+            this.layoutControl6.Controls.Add(this.tsPurge);
+            this.layoutControl6.Controls.Add(this.bActivateDrainSystem);
+            this.layoutControl6.Controls.Add(this.bPurge);
+            this.layoutControl6.Controls.Add(this.bResetAlarm);
             this.layoutControl6.Controls.Add(this.bFetch);
             this.layoutControl6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl6.Location = new System.Drawing.Point(2, 23);
             this.layoutControl6.Name = "layoutControl6";
             this.layoutControl6.Root = this.layoutControlGroup7;
-            this.layoutControl6.Size = new System.Drawing.Size(205, 428);
+            this.layoutControl6.Size = new System.Drawing.Size(210, 428);
             this.layoutControl6.TabIndex = 0;
             this.layoutControl6.Text = "layoutControl6";
             // 
@@ -926,7 +947,7 @@ namespace SerialPort_Ink
             // 
             this.bFetch.Location = new System.Drawing.Point(12, 12);
             this.bFetch.Name = "bFetch";
-            this.bFetch.Size = new System.Drawing.Size(181, 22);
+            this.bFetch.Size = new System.Drawing.Size(186, 22);
             this.bFetch.StyleController = this.layoutControl6;
             this.bFetch.TabIndex = 1;
             this.bFetch.Text = "Get Status";
@@ -938,9 +959,14 @@ namespace SerialPort_Ink
             this.layoutControlGroup7.GroupBordersVisible = false;
             this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem24,
-            this.emptySpaceItem6});
+            this.emptySpaceItem6,
+            this.layoutControlItem62,
+            this.layoutControlItem63,
+            this.layoutControlItem64,
+            this.layoutControlItem65,
+            this.layoutControlItem66});
             this.layoutControlGroup7.Name = "layoutControlGroup7";
-            this.layoutControlGroup7.Size = new System.Drawing.Size(205, 428);
+            this.layoutControlGroup7.Size = new System.Drawing.Size(210, 428);
             this.layoutControlGroup7.TextVisible = false;
             // 
             // layoutControlItem24
@@ -948,16 +974,16 @@ namespace SerialPort_Ink
             this.layoutControlItem24.Control = this.bFetch;
             this.layoutControlItem24.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem24.Name = "layoutControlItem24";
-            this.layoutControlItem24.Size = new System.Drawing.Size(185, 26);
+            this.layoutControlItem24.Size = new System.Drawing.Size(190, 26);
             this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem24.TextVisible = false;
             // 
             // emptySpaceItem6
             // 
             this.emptySpaceItem6.AllowHotTrack = false;
-            this.emptySpaceItem6.Location = new System.Drawing.Point(0, 26);
+            this.emptySpaceItem6.Location = new System.Drawing.Point(0, 104);
             this.emptySpaceItem6.Name = "emptySpaceItem6";
-            this.emptySpaceItem6.Size = new System.Drawing.Size(185, 382);
+            this.emptySpaceItem6.Size = new System.Drawing.Size(190, 304);
             this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
             // 
             // groupControl5
@@ -965,7 +991,7 @@ namespace SerialPort_Ink
             this.groupControl5.Controls.Add(this.DeviceParametersLayoutControl);
             this.groupControl5.Location = new System.Drawing.Point(12, 12);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(376, 453);
+            this.groupControl5.Size = new System.Drawing.Size(385, 453);
             this.groupControl5.TabIndex = 11;
             this.groupControl5.Text = "Device Parameters";
             // 
@@ -973,43 +999,43 @@ namespace SerialPort_Ink
             // 
             this.DeviceParametersLayoutControl.Controls.Add(this.labelControl1);
             this.DeviceParametersLayoutControl.Controls.Add(this.toggleSwitch8);
-            this.DeviceParametersLayoutControl.Controls.Add(this.toggleSwitch7);
-            this.DeviceParametersLayoutControl.Controls.Add(this.toggleSwitch6);
-            this.DeviceParametersLayoutControl.Controls.Add(this.toggleSwitch5);
-            this.DeviceParametersLayoutControl.Controls.Add(this.toggleSwitch4);
-            this.DeviceParametersLayoutControl.Controls.Add(this.toggleSwitch3);
-            this.DeviceParametersLayoutControl.Controls.Add(this.toggleSwitch2);
-            this.DeviceParametersLayoutControl.Controls.Add(this.toggleSwitch1);
+            this.DeviceParametersLayoutControl.Controls.Add(this.tsBypassTime);
+            this.DeviceParametersLayoutControl.Controls.Add(this.tsStartupDelay);
+            this.DeviceParametersLayoutControl.Controls.Add(this.tsPurgePressure);
+            this.DeviceParametersLayoutControl.Controls.Add(this.tsPurgeTime);
+            this.DeviceParametersLayoutControl.Controls.Add(this.tsFillPumpTimeout);
+            this.DeviceParametersLayoutControl.Controls.Add(this.tsFillPumpSpeed);
+            this.DeviceParametersLayoutControl.Controls.Add(this.tsHeaterSetPoint);
             this.DeviceParametersLayoutControl.Controls.Add(this.textEdit8);
-            this.DeviceParametersLayoutControl.Controls.Add(this.textEdit7);
-            this.DeviceParametersLayoutControl.Controls.Add(this.textEdit6);
-            this.DeviceParametersLayoutControl.Controls.Add(this.textEdit5);
-            this.DeviceParametersLayoutControl.Controls.Add(this.textEdit4);
-            this.DeviceParametersLayoutControl.Controls.Add(this.textEdit3);
-            this.DeviceParametersLayoutControl.Controls.Add(this.textEdit2);
-            this.DeviceParametersLayoutControl.Controls.Add(this.textEdit1);
+            this.DeviceParametersLayoutControl.Controls.Add(this.teBypassTime);
+            this.DeviceParametersLayoutControl.Controls.Add(this.teStartupDelay);
+            this.DeviceParametersLayoutControl.Controls.Add(this.tePurgePressure);
+            this.DeviceParametersLayoutControl.Controls.Add(this.tePurgeTime);
+            this.DeviceParametersLayoutControl.Controls.Add(this.teFillPumpTimeout);
+            this.DeviceParametersLayoutControl.Controls.Add(this.teFillPumpSpeed);
+            this.DeviceParametersLayoutControl.Controls.Add(this.teHeaterSetPoint);
             this.DeviceParametersLayoutControl.Controls.Add(this.simpleButton8);
-            this.DeviceParametersLayoutControl.Controls.Add(this.simpleButton7);
-            this.DeviceParametersLayoutControl.Controls.Add(this.simpleButton6);
-            this.DeviceParametersLayoutControl.Controls.Add(this.simpleButton5);
-            this.DeviceParametersLayoutControl.Controls.Add(this.simpleButton4);
-            this.DeviceParametersLayoutControl.Controls.Add(this.simpleButton3);
-            this.DeviceParametersLayoutControl.Controls.Add(this.simpleButton2);
-            this.DeviceParametersLayoutControl.Controls.Add(this.bApply2);
+            this.DeviceParametersLayoutControl.Controls.Add(this.bBypassTime);
+            this.DeviceParametersLayoutControl.Controls.Add(this.bStartupDelay);
+            this.DeviceParametersLayoutControl.Controls.Add(this.bPurgePressure);
+            this.DeviceParametersLayoutControl.Controls.Add(this.bPurgeTime);
+            this.DeviceParametersLayoutControl.Controls.Add(this.bFillPumpTimeout);
+            this.DeviceParametersLayoutControl.Controls.Add(this.bFillPumpSpeed);
+            this.DeviceParametersLayoutControl.Controls.Add(this.bHeaterSetPoint);
             this.DeviceParametersLayoutControl.Controls.Add(this.teMeniscusPressure);
-            this.DeviceParametersLayoutControl.Controls.Add(this.tsEnableEdit);
+            this.DeviceParametersLayoutControl.Controls.Add(this.tsMeniscusPressure);
             this.DeviceParametersLayoutControl.Controls.Add(this.bApplyMeniscusPressure);
             this.DeviceParametersLayoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DeviceParametersLayoutControl.Location = new System.Drawing.Point(2, 23);
             this.DeviceParametersLayoutControl.Name = "DeviceParametersLayoutControl";
             this.DeviceParametersLayoutControl.Root = this.layoutControlGroup8;
-            this.DeviceParametersLayoutControl.Size = new System.Drawing.Size(372, 428);
+            this.DeviceParametersLayoutControl.Size = new System.Drawing.Size(381, 428);
             this.DeviceParametersLayoutControl.TabIndex = 0;
             this.DeviceParametersLayoutControl.Text = "layoutControl7";
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(235, 12);
+            this.labelControl1.Location = new System.Drawing.Point(240, 12);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(58, 13);
             this.labelControl1.StyleController = this.DeviceParametersLayoutControl;
@@ -1018,253 +1044,276 @@ namespace SerialPort_Ink
             // 
             // toggleSwitch8
             // 
-            this.toggleSwitch8.Location = new System.Drawing.Point(235, 237);
+            this.toggleSwitch8.Location = new System.Drawing.Point(240, 237);
             this.toggleSwitch8.Name = "toggleSwitch8";
             this.toggleSwitch8.Properties.OffText = "Off";
             this.toggleSwitch8.Properties.OnText = "On";
             this.toggleSwitch8.Properties.ShowText = false;
-            this.toggleSwitch8.Size = new System.Drawing.Size(73, 19);
+            this.toggleSwitch8.Size = new System.Drawing.Size(76, 19);
             this.toggleSwitch8.StyleController = this.DeviceParametersLayoutControl;
             this.toggleSwitch8.TabIndex = 30;
             // 
-            // toggleSwitch7
+            // tsBypassTime
             // 
-            this.toggleSwitch7.Location = new System.Drawing.Point(235, 211);
-            this.toggleSwitch7.Name = "toggleSwitch7";
-            this.toggleSwitch7.Properties.OffText = "Off";
-            this.toggleSwitch7.Properties.OnText = "On";
-            this.toggleSwitch7.Properties.ShowText = false;
-            this.toggleSwitch7.Size = new System.Drawing.Size(73, 19);
-            this.toggleSwitch7.StyleController = this.DeviceParametersLayoutControl;
-            this.toggleSwitch7.TabIndex = 29;
+            this.tsBypassTime.Location = new System.Drawing.Point(240, 211);
+            this.tsBypassTime.Name = "tsBypassTime";
+            this.tsBypassTime.Properties.OffText = "Off";
+            this.tsBypassTime.Properties.OnText = "On";
+            this.tsBypassTime.Properties.ShowText = false;
+            this.tsBypassTime.Size = new System.Drawing.Size(76, 19);
+            this.tsBypassTime.StyleController = this.DeviceParametersLayoutControl;
+            this.tsBypassTime.TabIndex = 29;
+            this.tsBypassTime.Toggled += new System.EventHandler(this.tsBypassTime_Toggled);
             // 
-            // toggleSwitch6
+            // tsStartupDelay
             // 
-            this.toggleSwitch6.Location = new System.Drawing.Point(235, 185);
-            this.toggleSwitch6.Name = "toggleSwitch6";
-            this.toggleSwitch6.Properties.OffText = "Off";
-            this.toggleSwitch6.Properties.OnText = "On";
-            this.toggleSwitch6.Properties.ShowText = false;
-            this.toggleSwitch6.Size = new System.Drawing.Size(73, 19);
-            this.toggleSwitch6.StyleController = this.DeviceParametersLayoutControl;
-            this.toggleSwitch6.TabIndex = 28;
+            this.tsStartupDelay.Location = new System.Drawing.Point(240, 185);
+            this.tsStartupDelay.Name = "tsStartupDelay";
+            this.tsStartupDelay.Properties.OffText = "Off";
+            this.tsStartupDelay.Properties.OnText = "On";
+            this.tsStartupDelay.Properties.ShowText = false;
+            this.tsStartupDelay.Size = new System.Drawing.Size(76, 19);
+            this.tsStartupDelay.StyleController = this.DeviceParametersLayoutControl;
+            this.tsStartupDelay.TabIndex = 28;
+            this.tsStartupDelay.Toggled += new System.EventHandler(this.tsStartupDelay_Toggled);
             // 
-            // toggleSwitch5
+            // tsPurgePressure
             // 
-            this.toggleSwitch5.Location = new System.Drawing.Point(235, 159);
-            this.toggleSwitch5.Name = "toggleSwitch5";
-            this.toggleSwitch5.Properties.OffText = "Off";
-            this.toggleSwitch5.Properties.OnText = "On";
-            this.toggleSwitch5.Properties.ShowText = false;
-            this.toggleSwitch5.Size = new System.Drawing.Size(73, 19);
-            this.toggleSwitch5.StyleController = this.DeviceParametersLayoutControl;
-            this.toggleSwitch5.TabIndex = 27;
+            this.tsPurgePressure.Location = new System.Drawing.Point(240, 159);
+            this.tsPurgePressure.Name = "tsPurgePressure";
+            this.tsPurgePressure.Properties.OffText = "Off";
+            this.tsPurgePressure.Properties.OnText = "On";
+            this.tsPurgePressure.Properties.ShowText = false;
+            this.tsPurgePressure.Size = new System.Drawing.Size(76, 19);
+            this.tsPurgePressure.StyleController = this.DeviceParametersLayoutControl;
+            this.tsPurgePressure.TabIndex = 27;
+            this.tsPurgePressure.Toggled += new System.EventHandler(this.tsPurgePressure_Toggled);
             // 
-            // toggleSwitch4
+            // tsPurgeTime
             // 
-            this.toggleSwitch4.Location = new System.Drawing.Point(235, 133);
-            this.toggleSwitch4.Name = "toggleSwitch4";
-            this.toggleSwitch4.Properties.OffText = "Off";
-            this.toggleSwitch4.Properties.OnText = "On";
-            this.toggleSwitch4.Properties.ShowText = false;
-            this.toggleSwitch4.Size = new System.Drawing.Size(73, 19);
-            this.toggleSwitch4.StyleController = this.DeviceParametersLayoutControl;
-            this.toggleSwitch4.TabIndex = 26;
+            this.tsPurgeTime.Location = new System.Drawing.Point(240, 133);
+            this.tsPurgeTime.Name = "tsPurgeTime";
+            this.tsPurgeTime.Properties.OffText = "Off";
+            this.tsPurgeTime.Properties.OnText = "On";
+            this.tsPurgeTime.Properties.ShowText = false;
+            this.tsPurgeTime.Size = new System.Drawing.Size(76, 19);
+            this.tsPurgeTime.StyleController = this.DeviceParametersLayoutControl;
+            this.tsPurgeTime.TabIndex = 26;
+            this.tsPurgeTime.Toggled += new System.EventHandler(this.tsPurgeTime_Toggled);
             // 
-            // toggleSwitch3
+            // tsFillPumpTimeout
             // 
-            this.toggleSwitch3.Location = new System.Drawing.Point(235, 107);
-            this.toggleSwitch3.Name = "toggleSwitch3";
-            this.toggleSwitch3.Properties.OffText = "Off";
-            this.toggleSwitch3.Properties.OnText = "On";
-            this.toggleSwitch3.Properties.ShowText = false;
-            this.toggleSwitch3.Size = new System.Drawing.Size(73, 19);
-            this.toggleSwitch3.StyleController = this.DeviceParametersLayoutControl;
-            this.toggleSwitch3.TabIndex = 25;
+            this.tsFillPumpTimeout.Location = new System.Drawing.Point(240, 107);
+            this.tsFillPumpTimeout.Name = "tsFillPumpTimeout";
+            this.tsFillPumpTimeout.Properties.OffText = "Off";
+            this.tsFillPumpTimeout.Properties.OnText = "On";
+            this.tsFillPumpTimeout.Properties.ShowText = false;
+            this.tsFillPumpTimeout.Size = new System.Drawing.Size(76, 19);
+            this.tsFillPumpTimeout.StyleController = this.DeviceParametersLayoutControl;
+            this.tsFillPumpTimeout.TabIndex = 25;
+            this.tsFillPumpTimeout.Toggled += new System.EventHandler(this.tsFillPumpTimeout_Toggled);
             // 
-            // toggleSwitch2
+            // tsFillPumpSpeed
             // 
-            this.toggleSwitch2.Location = new System.Drawing.Point(235, 81);
-            this.toggleSwitch2.Name = "toggleSwitch2";
-            this.toggleSwitch2.Properties.OffText = "Off";
-            this.toggleSwitch2.Properties.OnText = "On";
-            this.toggleSwitch2.Properties.ShowText = false;
-            this.toggleSwitch2.Size = new System.Drawing.Size(73, 19);
-            this.toggleSwitch2.StyleController = this.DeviceParametersLayoutControl;
-            this.toggleSwitch2.TabIndex = 24;
+            this.tsFillPumpSpeed.Location = new System.Drawing.Point(240, 81);
+            this.tsFillPumpSpeed.Name = "tsFillPumpSpeed";
+            this.tsFillPumpSpeed.Properties.OffText = "Off";
+            this.tsFillPumpSpeed.Properties.OnText = "On";
+            this.tsFillPumpSpeed.Properties.ShowText = false;
+            this.tsFillPumpSpeed.Size = new System.Drawing.Size(76, 19);
+            this.tsFillPumpSpeed.StyleController = this.DeviceParametersLayoutControl;
+            this.tsFillPumpSpeed.TabIndex = 24;
+            this.tsFillPumpSpeed.Toggled += new System.EventHandler(this.tsFillPumpSpeed_Toggled);
             // 
-            // toggleSwitch1
+            // tsHeaterSetPoint
             // 
-            this.toggleSwitch1.Location = new System.Drawing.Point(235, 55);
-            this.toggleSwitch1.Name = "toggleSwitch1";
-            this.toggleSwitch1.Properties.OffText = "Off";
-            this.toggleSwitch1.Properties.OnText = "On";
-            this.toggleSwitch1.Properties.ShowText = false;
-            this.toggleSwitch1.Size = new System.Drawing.Size(73, 19);
-            this.toggleSwitch1.StyleController = this.DeviceParametersLayoutControl;
-            this.toggleSwitch1.TabIndex = 23;
+            this.tsHeaterSetPoint.Location = new System.Drawing.Point(240, 55);
+            this.tsHeaterSetPoint.Name = "tsHeaterSetPoint";
+            this.tsHeaterSetPoint.Properties.OffText = "Off";
+            this.tsHeaterSetPoint.Properties.OnText = "On";
+            this.tsHeaterSetPoint.Properties.ShowText = false;
+            this.tsHeaterSetPoint.Size = new System.Drawing.Size(76, 19);
+            this.tsHeaterSetPoint.StyleController = this.DeviceParametersLayoutControl;
+            this.tsHeaterSetPoint.TabIndex = 23;
+            this.tsHeaterSetPoint.Toggled += new System.EventHandler(this.tsHeaterSetPoint_Toggled);
             // 
             // textEdit8
             // 
-            this.textEdit8.Location = new System.Drawing.Point(120, 237);
+            this.textEdit8.Location = new System.Drawing.Point(112, 237);
             this.textEdit8.Name = "textEdit8";
-            this.textEdit8.Size = new System.Drawing.Size(111, 20);
+            this.textEdit8.Properties.ReadOnly = true;
+            this.textEdit8.Size = new System.Drawing.Size(124, 20);
             this.textEdit8.StyleController = this.DeviceParametersLayoutControl;
             this.textEdit8.TabIndex = 22;
             // 
-            // textEdit7
+            // teBypassTime
             // 
-            this.textEdit7.Location = new System.Drawing.Point(120, 211);
-            this.textEdit7.Name = "textEdit7";
-            this.textEdit7.Size = new System.Drawing.Size(111, 20);
-            this.textEdit7.StyleController = this.DeviceParametersLayoutControl;
-            this.textEdit7.TabIndex = 21;
+            this.teBypassTime.Location = new System.Drawing.Point(112, 211);
+            this.teBypassTime.Name = "teBypassTime";
+            this.teBypassTime.Properties.ReadOnly = true;
+            this.teBypassTime.Size = new System.Drawing.Size(124, 20);
+            this.teBypassTime.StyleController = this.DeviceParametersLayoutControl;
+            this.teBypassTime.TabIndex = 21;
             // 
-            // textEdit6
+            // teStartupDelay
             // 
-            this.textEdit6.Location = new System.Drawing.Point(120, 185);
-            this.textEdit6.Name = "textEdit6";
-            this.textEdit6.Size = new System.Drawing.Size(111, 20);
-            this.textEdit6.StyleController = this.DeviceParametersLayoutControl;
-            this.textEdit6.TabIndex = 20;
+            this.teStartupDelay.Location = new System.Drawing.Point(112, 185);
+            this.teStartupDelay.Name = "teStartupDelay";
+            this.teStartupDelay.Properties.ReadOnly = true;
+            this.teStartupDelay.Size = new System.Drawing.Size(124, 20);
+            this.teStartupDelay.StyleController = this.DeviceParametersLayoutControl;
+            this.teStartupDelay.TabIndex = 20;
             // 
-            // textEdit5
+            // tePurgePressure
             // 
-            this.textEdit5.Location = new System.Drawing.Point(120, 159);
-            this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Size = new System.Drawing.Size(111, 20);
-            this.textEdit5.StyleController = this.DeviceParametersLayoutControl;
-            this.textEdit5.TabIndex = 19;
+            this.tePurgePressure.Location = new System.Drawing.Point(112, 159);
+            this.tePurgePressure.Name = "tePurgePressure";
+            this.tePurgePressure.Properties.ReadOnly = true;
+            this.tePurgePressure.Size = new System.Drawing.Size(124, 20);
+            this.tePurgePressure.StyleController = this.DeviceParametersLayoutControl;
+            this.tePurgePressure.TabIndex = 19;
             // 
-            // textEdit4
+            // tePurgeTime
             // 
-            this.textEdit4.Location = new System.Drawing.Point(120, 133);
-            this.textEdit4.Name = "textEdit4";
-            this.textEdit4.Size = new System.Drawing.Size(111, 20);
-            this.textEdit4.StyleController = this.DeviceParametersLayoutControl;
-            this.textEdit4.TabIndex = 18;
+            this.tePurgeTime.Location = new System.Drawing.Point(112, 133);
+            this.tePurgeTime.Name = "tePurgeTime";
+            this.tePurgeTime.Properties.ReadOnly = true;
+            this.tePurgeTime.Size = new System.Drawing.Size(124, 20);
+            this.tePurgeTime.StyleController = this.DeviceParametersLayoutControl;
+            this.tePurgeTime.TabIndex = 18;
             // 
-            // textEdit3
+            // teFillPumpTimeout
             // 
-            this.textEdit3.Location = new System.Drawing.Point(120, 107);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(111, 20);
-            this.textEdit3.StyleController = this.DeviceParametersLayoutControl;
-            this.textEdit3.TabIndex = 17;
+            this.teFillPumpTimeout.Location = new System.Drawing.Point(112, 107);
+            this.teFillPumpTimeout.Name = "teFillPumpTimeout";
+            this.teFillPumpTimeout.Properties.ReadOnly = true;
+            this.teFillPumpTimeout.Size = new System.Drawing.Size(124, 20);
+            this.teFillPumpTimeout.StyleController = this.DeviceParametersLayoutControl;
+            this.teFillPumpTimeout.TabIndex = 17;
             // 
-            // textEdit2
+            // teFillPumpSpeed
             // 
-            this.textEdit2.Location = new System.Drawing.Point(120, 81);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(111, 20);
-            this.textEdit2.StyleController = this.DeviceParametersLayoutControl;
-            this.textEdit2.TabIndex = 16;
+            this.teFillPumpSpeed.Location = new System.Drawing.Point(112, 81);
+            this.teFillPumpSpeed.Name = "teFillPumpSpeed";
+            this.teFillPumpSpeed.Properties.ReadOnly = true;
+            this.teFillPumpSpeed.Size = new System.Drawing.Size(124, 20);
+            this.teFillPumpSpeed.StyleController = this.DeviceParametersLayoutControl;
+            this.teFillPumpSpeed.TabIndex = 16;
             // 
-            // textEdit1
+            // teHeaterSetPoint
             // 
-            this.textEdit1.Location = new System.Drawing.Point(120, 55);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(111, 20);
-            this.textEdit1.StyleController = this.DeviceParametersLayoutControl;
-            this.textEdit1.TabIndex = 15;
+            this.teHeaterSetPoint.Location = new System.Drawing.Point(112, 55);
+            this.teHeaterSetPoint.Name = "teHeaterSetPoint";
+            this.teHeaterSetPoint.Properties.ReadOnly = true;
+            this.teHeaterSetPoint.Size = new System.Drawing.Size(124, 20);
+            this.teHeaterSetPoint.StyleController = this.DeviceParametersLayoutControl;
+            this.teHeaterSetPoint.TabIndex = 15;
             // 
             // simpleButton8
             // 
-            this.simpleButton8.Location = new System.Drawing.Point(312, 237);
+            this.simpleButton8.Location = new System.Drawing.Point(320, 237);
             this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(48, 22);
+            this.simpleButton8.Size = new System.Drawing.Size(49, 22);
             this.simpleButton8.StyleController = this.DeviceParametersLayoutControl;
             this.simpleButton8.TabIndex = 14;
             this.simpleButton8.Text = "Apply";
             // 
-            // simpleButton7
+            // bBypassTime
             // 
-            this.simpleButton7.Location = new System.Drawing.Point(312, 211);
-            this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(48, 22);
-            this.simpleButton7.StyleController = this.DeviceParametersLayoutControl;
-            this.simpleButton7.TabIndex = 13;
-            this.simpleButton7.Text = "Apply";
+            this.bBypassTime.Location = new System.Drawing.Point(320, 211);
+            this.bBypassTime.Name = "bBypassTime";
+            this.bBypassTime.Size = new System.Drawing.Size(49, 22);
+            this.bBypassTime.StyleController = this.DeviceParametersLayoutControl;
+            this.bBypassTime.TabIndex = 13;
+            this.bBypassTime.Text = "Apply";
+            this.bBypassTime.Click += new System.EventHandler(this.bBypassTime_Click);
             // 
-            // simpleButton6
+            // bStartupDelay
             // 
-            this.simpleButton6.Location = new System.Drawing.Point(312, 185);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(48, 22);
-            this.simpleButton6.StyleController = this.DeviceParametersLayoutControl;
-            this.simpleButton6.TabIndex = 12;
-            this.simpleButton6.Text = "Apply";
+            this.bStartupDelay.Location = new System.Drawing.Point(320, 185);
+            this.bStartupDelay.Name = "bStartupDelay";
+            this.bStartupDelay.Size = new System.Drawing.Size(49, 22);
+            this.bStartupDelay.StyleController = this.DeviceParametersLayoutControl;
+            this.bStartupDelay.TabIndex = 12;
+            this.bStartupDelay.Text = "Apply";
+            this.bStartupDelay.Click += new System.EventHandler(this.bStartupDelay_Click);
             // 
-            // simpleButton5
+            // bPurgePressure
             // 
-            this.simpleButton5.Location = new System.Drawing.Point(312, 159);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(48, 22);
-            this.simpleButton5.StyleController = this.DeviceParametersLayoutControl;
-            this.simpleButton5.TabIndex = 11;
-            this.simpleButton5.Text = "Apply";
+            this.bPurgePressure.Location = new System.Drawing.Point(320, 159);
+            this.bPurgePressure.Name = "bPurgePressure";
+            this.bPurgePressure.Size = new System.Drawing.Size(49, 22);
+            this.bPurgePressure.StyleController = this.DeviceParametersLayoutControl;
+            this.bPurgePressure.TabIndex = 11;
+            this.bPurgePressure.Text = "Apply";
+            this.bPurgePressure.Click += new System.EventHandler(this.bPurgePressure_Click);
             // 
-            // simpleButton4
+            // bPurgeTime
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(312, 133);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(48, 22);
-            this.simpleButton4.StyleController = this.DeviceParametersLayoutControl;
-            this.simpleButton4.TabIndex = 10;
-            this.simpleButton4.Text = "Apply";
+            this.bPurgeTime.Location = new System.Drawing.Point(320, 133);
+            this.bPurgeTime.Name = "bPurgeTime";
+            this.bPurgeTime.Size = new System.Drawing.Size(49, 22);
+            this.bPurgeTime.StyleController = this.DeviceParametersLayoutControl;
+            this.bPurgeTime.TabIndex = 10;
+            this.bPurgeTime.Text = "Apply";
+            this.bPurgeTime.Click += new System.EventHandler(this.bPurgeTime_Click);
             // 
-            // simpleButton3
+            // bFillPumpTimeout
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(312, 107);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(48, 22);
-            this.simpleButton3.StyleController = this.DeviceParametersLayoutControl;
-            this.simpleButton3.TabIndex = 9;
-            this.simpleButton3.Text = "Apply";
+            this.bFillPumpTimeout.Location = new System.Drawing.Point(320, 107);
+            this.bFillPumpTimeout.Name = "bFillPumpTimeout";
+            this.bFillPumpTimeout.Size = new System.Drawing.Size(49, 22);
+            this.bFillPumpTimeout.StyleController = this.DeviceParametersLayoutControl;
+            this.bFillPumpTimeout.TabIndex = 9;
+            this.bFillPumpTimeout.Text = "Apply";
+            this.bFillPumpTimeout.Click += new System.EventHandler(this.bFillPumpTimeout_Click);
             // 
-            // simpleButton2
+            // bFillPumpSpeed
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(312, 81);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(48, 22);
-            this.simpleButton2.StyleController = this.DeviceParametersLayoutControl;
-            this.simpleButton2.TabIndex = 8;
-            this.simpleButton2.Text = "Apply";
+            this.bFillPumpSpeed.Location = new System.Drawing.Point(320, 81);
+            this.bFillPumpSpeed.Name = "bFillPumpSpeed";
+            this.bFillPumpSpeed.Size = new System.Drawing.Size(49, 22);
+            this.bFillPumpSpeed.StyleController = this.DeviceParametersLayoutControl;
+            this.bFillPumpSpeed.TabIndex = 8;
+            this.bFillPumpSpeed.Text = "Apply";
+            this.bFillPumpSpeed.Click += new System.EventHandler(this.bFillPumpSpeed_Click);
             // 
-            // bApply2
+            // bHeaterSetPoint
             // 
-            this.bApply2.Location = new System.Drawing.Point(312, 55);
-            this.bApply2.Name = "bApply2";
-            this.bApply2.Size = new System.Drawing.Size(48, 22);
-            this.bApply2.StyleController = this.DeviceParametersLayoutControl;
-            this.bApply2.TabIndex = 7;
-            this.bApply2.Text = "Apply";
+            this.bHeaterSetPoint.Location = new System.Drawing.Point(320, 55);
+            this.bHeaterSetPoint.Name = "bHeaterSetPoint";
+            this.bHeaterSetPoint.Size = new System.Drawing.Size(49, 22);
+            this.bHeaterSetPoint.StyleController = this.DeviceParametersLayoutControl;
+            this.bHeaterSetPoint.TabIndex = 7;
+            this.bHeaterSetPoint.Text = "Apply";
+            this.bHeaterSetPoint.Click += new System.EventHandler(this.bHeaterSetPoint_Click);
             // 
             // teMeniscusPressure
             // 
-            this.teMeniscusPressure.Location = new System.Drawing.Point(120, 29);
+            this.teMeniscusPressure.Location = new System.Drawing.Point(112, 29);
             this.teMeniscusPressure.Name = "teMeniscusPressure";
-            this.teMeniscusPressure.Size = new System.Drawing.Size(111, 20);
+            this.teMeniscusPressure.Properties.ReadOnly = true;
+            this.teMeniscusPressure.Size = new System.Drawing.Size(124, 20);
             this.teMeniscusPressure.StyleController = this.DeviceParametersLayoutControl;
             this.teMeniscusPressure.TabIndex = 5;
             // 
-            // tsEnableEdit
+            // tsMeniscusPressure
             // 
-            this.tsEnableEdit.Location = new System.Drawing.Point(235, 29);
-            this.tsEnableEdit.Name = "tsEnableEdit";
-            this.tsEnableEdit.Properties.OffText = "Off";
-            this.tsEnableEdit.Properties.OnText = "On";
-            this.tsEnableEdit.Properties.ShowText = false;
-            this.tsEnableEdit.Size = new System.Drawing.Size(73, 19);
-            this.tsEnableEdit.StyleController = this.DeviceParametersLayoutControl;
-            this.tsEnableEdit.TabIndex = 6;
-            this.tsEnableEdit.Toggled += new System.EventHandler(this.tsEnableEdit_Toggled);
+            this.tsMeniscusPressure.Location = new System.Drawing.Point(240, 29);
+            this.tsMeniscusPressure.Name = "tsMeniscusPressure";
+            this.tsMeniscusPressure.Properties.OffText = "Off";
+            this.tsMeniscusPressure.Properties.OnText = "On";
+            this.tsMeniscusPressure.Properties.ShowText = false;
+            this.tsMeniscusPressure.Size = new System.Drawing.Size(76, 19);
+            this.tsMeniscusPressure.StyleController = this.DeviceParametersLayoutControl;
+            this.tsMeniscusPressure.TabIndex = 6;
+            this.tsMeniscusPressure.Toggled += new System.EventHandler(this.tsEnableEdit_Toggled);
             // 
             // bApplyMeniscusPressure
             // 
-            this.bApplyMeniscusPressure.Location = new System.Drawing.Point(312, 29);
+            this.bApplyMeniscusPressure.Location = new System.Drawing.Point(320, 29);
             this.bApplyMeniscusPressure.Name = "bApplyMeniscusPressure";
-            this.bApplyMeniscusPressure.Size = new System.Drawing.Size(48, 22);
+            this.bApplyMeniscusPressure.Size = new System.Drawing.Size(49, 22);
             this.bApplyMeniscusPressure.StyleController = this.DeviceParametersLayoutControl;
             this.bApplyMeniscusPressure.TabIndex = 4;
             this.bApplyMeniscusPressure.Text = "Apply";
@@ -1307,15 +1356,15 @@ namespace SerialPort_Ink
             this.emptySpaceItem9,
             this.emptySpaceItem10});
             this.layoutControlGroup8.Name = "layoutControlGroup8";
-            this.layoutControlGroup8.Size = new System.Drawing.Size(372, 428);
+            this.layoutControlGroup8.Size = new System.Drawing.Size(381, 428);
             this.layoutControlGroup8.TextVisible = false;
             // 
             // layoutControlItem32
             // 
             this.layoutControlItem32.Control = this.bApplyMeniscusPressure;
-            this.layoutControlItem32.Location = new System.Drawing.Point(300, 17);
+            this.layoutControlItem32.Location = new System.Drawing.Point(308, 17);
             this.layoutControlItem32.Name = "layoutControlItem32";
-            this.layoutControlItem32.Size = new System.Drawing.Size(52, 26);
+            this.layoutControlItem32.Size = new System.Drawing.Size(53, 26);
             this.layoutControlItem32.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem32.TextVisible = false;
             // 
@@ -1324,15 +1373,15 @@ namespace SerialPort_Ink
             this.emptySpaceItem8.AllowHotTrack = false;
             this.emptySpaceItem8.Location = new System.Drawing.Point(0, 251);
             this.emptySpaceItem8.Name = "emptySpaceItem8";
-            this.emptySpaceItem8.Size = new System.Drawing.Size(352, 157);
+            this.emptySpaceItem8.Size = new System.Drawing.Size(361, 157);
             this.emptySpaceItem8.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem34
             // 
-            this.layoutControlItem34.Control = this.tsEnableEdit;
-            this.layoutControlItem34.Location = new System.Drawing.Point(223, 17);
+            this.layoutControlItem34.Control = this.tsMeniscusPressure;
+            this.layoutControlItem34.Location = new System.Drawing.Point(228, 17);
             this.layoutControlItem34.Name = "layoutControlItem34";
-            this.layoutControlItem34.Size = new System.Drawing.Size(77, 26);
+            this.layoutControlItem34.Size = new System.Drawing.Size(80, 26);
             this.layoutControlItem34.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem34.TextVisible = false;
             // 
@@ -1341,222 +1390,230 @@ namespace SerialPort_Ink
             this.layoutControlItem33.Control = this.teMeniscusPressure;
             this.layoutControlItem33.Location = new System.Drawing.Point(0, 17);
             this.layoutControlItem33.Name = "layoutControlItem33";
-            this.layoutControlItem33.Size = new System.Drawing.Size(223, 26);
+            this.layoutControlItem33.Size = new System.Drawing.Size(228, 26);
             this.layoutControlItem33.Text = "Meniscus Pressure:";
-            this.layoutControlItem33.TextSize = new System.Drawing.Size(105, 13);
+            this.layoutControlItem33.TextSize = new System.Drawing.Size(97, 13);
             // 
             // layoutControlItem35
             // 
-            this.layoutControlItem35.Control = this.bApply2;
-            this.layoutControlItem35.Location = new System.Drawing.Point(300, 43);
+            this.layoutControlItem35.Control = this.bHeaterSetPoint;
+            this.layoutControlItem35.Location = new System.Drawing.Point(308, 43);
             this.layoutControlItem35.Name = "layoutControlItem35";
-            this.layoutControlItem35.Size = new System.Drawing.Size(52, 26);
+            this.layoutControlItem35.Size = new System.Drawing.Size(53, 26);
             this.layoutControlItem35.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem35.TextVisible = false;
             // 
             // layoutControlItem36
             // 
-            this.layoutControlItem36.Control = this.simpleButton2;
-            this.layoutControlItem36.Location = new System.Drawing.Point(300, 69);
+            this.layoutControlItem36.Control = this.bFillPumpSpeed;
+            this.layoutControlItem36.Location = new System.Drawing.Point(308, 69);
             this.layoutControlItem36.Name = "layoutControlItem36";
-            this.layoutControlItem36.Size = new System.Drawing.Size(52, 26);
+            this.layoutControlItem36.Size = new System.Drawing.Size(53, 26);
             this.layoutControlItem36.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem36.TextVisible = false;
             // 
             // layoutControlItem37
             // 
-            this.layoutControlItem37.Control = this.simpleButton3;
-            this.layoutControlItem37.Location = new System.Drawing.Point(300, 95);
+            this.layoutControlItem37.Control = this.bFillPumpTimeout;
+            this.layoutControlItem37.Location = new System.Drawing.Point(308, 95);
             this.layoutControlItem37.Name = "layoutControlItem37";
-            this.layoutControlItem37.Size = new System.Drawing.Size(52, 26);
+            this.layoutControlItem37.Size = new System.Drawing.Size(53, 26);
             this.layoutControlItem37.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem37.TextVisible = false;
             // 
             // layoutControlItem38
             // 
-            this.layoutControlItem38.Control = this.simpleButton4;
-            this.layoutControlItem38.Location = new System.Drawing.Point(300, 121);
+            this.layoutControlItem38.Control = this.bPurgeTime;
+            this.layoutControlItem38.Location = new System.Drawing.Point(308, 121);
             this.layoutControlItem38.Name = "layoutControlItem38";
-            this.layoutControlItem38.Size = new System.Drawing.Size(52, 26);
+            this.layoutControlItem38.Size = new System.Drawing.Size(53, 26);
             this.layoutControlItem38.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem38.TextVisible = false;
             // 
             // layoutControlItem39
             // 
-            this.layoutControlItem39.Control = this.simpleButton5;
-            this.layoutControlItem39.Location = new System.Drawing.Point(300, 147);
+            this.layoutControlItem39.Control = this.bPurgePressure;
+            this.layoutControlItem39.Location = new System.Drawing.Point(308, 147);
             this.layoutControlItem39.Name = "layoutControlItem39";
-            this.layoutControlItem39.Size = new System.Drawing.Size(52, 26);
+            this.layoutControlItem39.Size = new System.Drawing.Size(53, 26);
             this.layoutControlItem39.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem39.TextVisible = false;
             // 
             // layoutControlItem42
             // 
-            this.layoutControlItem42.Control = this.simpleButton6;
-            this.layoutControlItem42.Location = new System.Drawing.Point(300, 173);
+            this.layoutControlItem42.Control = this.bStartupDelay;
+            this.layoutControlItem42.Location = new System.Drawing.Point(308, 173);
             this.layoutControlItem42.Name = "layoutControlItem42";
-            this.layoutControlItem42.Size = new System.Drawing.Size(52, 26);
+            this.layoutControlItem42.Size = new System.Drawing.Size(53, 26);
             this.layoutControlItem42.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem42.TextVisible = false;
             // 
             // layoutControlItem43
             // 
-            this.layoutControlItem43.Control = this.simpleButton7;
-            this.layoutControlItem43.Location = new System.Drawing.Point(300, 199);
+            this.layoutControlItem43.Control = this.bBypassTime;
+            this.layoutControlItem43.Location = new System.Drawing.Point(308, 199);
             this.layoutControlItem43.Name = "layoutControlItem43";
-            this.layoutControlItem43.Size = new System.Drawing.Size(52, 26);
+            this.layoutControlItem43.Size = new System.Drawing.Size(53, 26);
             this.layoutControlItem43.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem43.TextVisible = false;
             // 
             // layoutControlItem44
             // 
             this.layoutControlItem44.Control = this.simpleButton8;
-            this.layoutControlItem44.Location = new System.Drawing.Point(300, 225);
+            this.layoutControlItem44.Location = new System.Drawing.Point(308, 225);
             this.layoutControlItem44.Name = "layoutControlItem44";
-            this.layoutControlItem44.Size = new System.Drawing.Size(52, 26);
+            this.layoutControlItem44.Size = new System.Drawing.Size(53, 26);
             this.layoutControlItem44.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem44.TextVisible = false;
             // 
             // layoutControlItem45
             // 
-            this.layoutControlItem45.Control = this.textEdit1;
+            this.layoutControlItem45.Control = this.teHeaterSetPoint;
             this.layoutControlItem45.Location = new System.Drawing.Point(0, 43);
             this.layoutControlItem45.Name = "layoutControlItem45";
-            this.layoutControlItem45.Size = new System.Drawing.Size(223, 26);
-            this.layoutControlItem45.TextSize = new System.Drawing.Size(105, 13);
+            this.layoutControlItem45.Size = new System.Drawing.Size(228, 26);
+            this.layoutControlItem45.Text = "Heater Setpoint:";
+            this.layoutControlItem45.TextSize = new System.Drawing.Size(97, 13);
             // 
             // layoutControlItem46
             // 
-            this.layoutControlItem46.Control = this.textEdit2;
+            this.layoutControlItem46.Control = this.teFillPumpSpeed;
             this.layoutControlItem46.Location = new System.Drawing.Point(0, 69);
             this.layoutControlItem46.Name = "layoutControlItem46";
-            this.layoutControlItem46.Size = new System.Drawing.Size(223, 26);
-            this.layoutControlItem46.TextSize = new System.Drawing.Size(105, 13);
+            this.layoutControlItem46.Size = new System.Drawing.Size(228, 26);
+            this.layoutControlItem46.Text = "Fill Pump Speed:";
+            this.layoutControlItem46.TextSize = new System.Drawing.Size(97, 13);
             // 
             // layoutControlItem47
             // 
-            this.layoutControlItem47.Control = this.textEdit3;
+            this.layoutControlItem47.Control = this.teFillPumpTimeout;
             this.layoutControlItem47.Location = new System.Drawing.Point(0, 95);
             this.layoutControlItem47.Name = "layoutControlItem47";
-            this.layoutControlItem47.Size = new System.Drawing.Size(223, 26);
-            this.layoutControlItem47.TextSize = new System.Drawing.Size(105, 13);
+            this.layoutControlItem47.Size = new System.Drawing.Size(228, 26);
+            this.layoutControlItem47.Text = "Fill Pump Timeout:";
+            this.layoutControlItem47.TextSize = new System.Drawing.Size(97, 13);
             // 
             // layoutControlItem48
             // 
-            this.layoutControlItem48.Control = this.textEdit4;
+            this.layoutControlItem48.Control = this.tePurgeTime;
             this.layoutControlItem48.Location = new System.Drawing.Point(0, 121);
             this.layoutControlItem48.Name = "layoutControlItem48";
-            this.layoutControlItem48.Size = new System.Drawing.Size(223, 26);
-            this.layoutControlItem48.TextSize = new System.Drawing.Size(105, 13);
+            this.layoutControlItem48.Size = new System.Drawing.Size(228, 26);
+            this.layoutControlItem48.Text = "Purge Time:";
+            this.layoutControlItem48.TextSize = new System.Drawing.Size(97, 13);
             // 
             // layoutControlItem49
             // 
-            this.layoutControlItem49.Control = this.textEdit5;
+            this.layoutControlItem49.Control = this.tePurgePressure;
             this.layoutControlItem49.Location = new System.Drawing.Point(0, 147);
             this.layoutControlItem49.Name = "layoutControlItem49";
-            this.layoutControlItem49.Size = new System.Drawing.Size(223, 26);
-            this.layoutControlItem49.TextSize = new System.Drawing.Size(105, 13);
+            this.layoutControlItem49.Size = new System.Drawing.Size(228, 26);
+            this.layoutControlItem49.Text = "Purge Pressure:";
+            this.layoutControlItem49.TextSize = new System.Drawing.Size(97, 13);
             // 
             // layoutControlItem50
             // 
-            this.layoutControlItem50.Control = this.textEdit6;
+            this.layoutControlItem50.Control = this.teStartupDelay;
             this.layoutControlItem50.Location = new System.Drawing.Point(0, 173);
             this.layoutControlItem50.Name = "layoutControlItem50";
-            this.layoutControlItem50.Size = new System.Drawing.Size(223, 26);
-            this.layoutControlItem50.TextSize = new System.Drawing.Size(105, 13);
+            this.layoutControlItem50.Size = new System.Drawing.Size(228, 26);
+            this.layoutControlItem50.Text = "Startup Delay:";
+            this.layoutControlItem50.TextSize = new System.Drawing.Size(97, 13);
             // 
             // layoutControlItem51
             // 
-            this.layoutControlItem51.Control = this.textEdit7;
+            this.layoutControlItem51.Control = this.teBypassTime;
             this.layoutControlItem51.Location = new System.Drawing.Point(0, 199);
             this.layoutControlItem51.Name = "layoutControlItem51";
-            this.layoutControlItem51.Size = new System.Drawing.Size(223, 26);
-            this.layoutControlItem51.TextSize = new System.Drawing.Size(105, 13);
+            this.layoutControlItem51.Size = new System.Drawing.Size(228, 26);
+            this.layoutControlItem51.Text = "Bypass Time:";
+            this.layoutControlItem51.TextSize = new System.Drawing.Size(97, 13);
             // 
             // layoutControlItem52
             // 
             this.layoutControlItem52.Control = this.textEdit8;
             this.layoutControlItem52.Location = new System.Drawing.Point(0, 225);
             this.layoutControlItem52.Name = "layoutControlItem52";
-            this.layoutControlItem52.Size = new System.Drawing.Size(223, 26);
-            this.layoutControlItem52.TextSize = new System.Drawing.Size(105, 13);
+            this.layoutControlItem52.Size = new System.Drawing.Size(228, 26);
+            this.layoutControlItem52.Text = "Test";
+            this.layoutControlItem52.TextSize = new System.Drawing.Size(97, 13);
             // 
             // layoutControlItem53
             // 
-            this.layoutControlItem53.Control = this.toggleSwitch1;
-            this.layoutControlItem53.Location = new System.Drawing.Point(223, 43);
+            this.layoutControlItem53.Control = this.tsHeaterSetPoint;
+            this.layoutControlItem53.Location = new System.Drawing.Point(228, 43);
             this.layoutControlItem53.Name = "layoutControlItem53";
-            this.layoutControlItem53.Size = new System.Drawing.Size(77, 26);
+            this.layoutControlItem53.Size = new System.Drawing.Size(80, 26);
             this.layoutControlItem53.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem53.TextVisible = false;
             // 
             // layoutControlItem54
             // 
-            this.layoutControlItem54.Control = this.toggleSwitch2;
-            this.layoutControlItem54.Location = new System.Drawing.Point(223, 69);
+            this.layoutControlItem54.Control = this.tsFillPumpSpeed;
+            this.layoutControlItem54.Location = new System.Drawing.Point(228, 69);
             this.layoutControlItem54.Name = "layoutControlItem54";
-            this.layoutControlItem54.Size = new System.Drawing.Size(77, 26);
+            this.layoutControlItem54.Size = new System.Drawing.Size(80, 26);
             this.layoutControlItem54.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem54.TextVisible = false;
             // 
             // layoutControlItem55
             // 
-            this.layoutControlItem55.Control = this.toggleSwitch3;
-            this.layoutControlItem55.Location = new System.Drawing.Point(223, 95);
+            this.layoutControlItem55.Control = this.tsFillPumpTimeout;
+            this.layoutControlItem55.Location = new System.Drawing.Point(228, 95);
             this.layoutControlItem55.Name = "layoutControlItem55";
-            this.layoutControlItem55.Size = new System.Drawing.Size(77, 26);
+            this.layoutControlItem55.Size = new System.Drawing.Size(80, 26);
             this.layoutControlItem55.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem55.TextVisible = false;
             // 
             // layoutControlItem56
             // 
-            this.layoutControlItem56.Control = this.toggleSwitch4;
-            this.layoutControlItem56.Location = new System.Drawing.Point(223, 121);
+            this.layoutControlItem56.Control = this.tsPurgeTime;
+            this.layoutControlItem56.Location = new System.Drawing.Point(228, 121);
             this.layoutControlItem56.Name = "layoutControlItem56";
-            this.layoutControlItem56.Size = new System.Drawing.Size(77, 26);
+            this.layoutControlItem56.Size = new System.Drawing.Size(80, 26);
             this.layoutControlItem56.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem56.TextVisible = false;
             // 
             // layoutControlItem57
             // 
-            this.layoutControlItem57.Control = this.toggleSwitch5;
-            this.layoutControlItem57.Location = new System.Drawing.Point(223, 147);
+            this.layoutControlItem57.Control = this.tsPurgePressure;
+            this.layoutControlItem57.Location = new System.Drawing.Point(228, 147);
             this.layoutControlItem57.Name = "layoutControlItem57";
-            this.layoutControlItem57.Size = new System.Drawing.Size(77, 26);
+            this.layoutControlItem57.Size = new System.Drawing.Size(80, 26);
             this.layoutControlItem57.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem57.TextVisible = false;
             // 
             // layoutControlItem58
             // 
-            this.layoutControlItem58.Control = this.toggleSwitch6;
-            this.layoutControlItem58.Location = new System.Drawing.Point(223, 173);
+            this.layoutControlItem58.Control = this.tsStartupDelay;
+            this.layoutControlItem58.Location = new System.Drawing.Point(228, 173);
             this.layoutControlItem58.Name = "layoutControlItem58";
-            this.layoutControlItem58.Size = new System.Drawing.Size(77, 26);
+            this.layoutControlItem58.Size = new System.Drawing.Size(80, 26);
             this.layoutControlItem58.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem58.TextVisible = false;
             // 
             // layoutControlItem59
             // 
-            this.layoutControlItem59.Control = this.toggleSwitch7;
-            this.layoutControlItem59.Location = new System.Drawing.Point(223, 199);
+            this.layoutControlItem59.Control = this.tsBypassTime;
+            this.layoutControlItem59.Location = new System.Drawing.Point(228, 199);
             this.layoutControlItem59.Name = "layoutControlItem59";
-            this.layoutControlItem59.Size = new System.Drawing.Size(77, 26);
+            this.layoutControlItem59.Size = new System.Drawing.Size(80, 26);
             this.layoutControlItem59.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem59.TextVisible = false;
             // 
             // layoutControlItem60
             // 
             this.layoutControlItem60.Control = this.toggleSwitch8;
-            this.layoutControlItem60.Location = new System.Drawing.Point(223, 225);
+            this.layoutControlItem60.Location = new System.Drawing.Point(228, 225);
             this.layoutControlItem60.Name = "layoutControlItem60";
-            this.layoutControlItem60.Size = new System.Drawing.Size(77, 26);
+            this.layoutControlItem60.Size = new System.Drawing.Size(80, 26);
             this.layoutControlItem60.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem60.TextVisible = false;
             // 
             // layoutControlItem61
             // 
             this.layoutControlItem61.Control = this.labelControl1;
-            this.layoutControlItem61.Location = new System.Drawing.Point(223, 0);
+            this.layoutControlItem61.Location = new System.Drawing.Point(228, 0);
             this.layoutControlItem61.Name = "layoutControlItem61";
             this.layoutControlItem61.Size = new System.Drawing.Size(62, 17);
             this.layoutControlItem61.TextSize = new System.Drawing.Size(0, 0);
@@ -1567,15 +1624,15 @@ namespace SerialPort_Ink
             this.emptySpaceItem9.AllowHotTrack = false;
             this.emptySpaceItem9.Location = new System.Drawing.Point(0, 0);
             this.emptySpaceItem9.Name = "emptySpaceItem9";
-            this.emptySpaceItem9.Size = new System.Drawing.Size(223, 17);
+            this.emptySpaceItem9.Size = new System.Drawing.Size(228, 17);
             this.emptySpaceItem9.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem10
             // 
             this.emptySpaceItem10.AllowHotTrack = false;
-            this.emptySpaceItem10.Location = new System.Drawing.Point(285, 0);
+            this.emptySpaceItem10.Location = new System.Drawing.Point(290, 0);
             this.emptySpaceItem10.Name = "emptySpaceItem10";
-            this.emptySpaceItem10.Size = new System.Drawing.Size(67, 17);
+            this.emptySpaceItem10.Size = new System.Drawing.Size(71, 17);
             this.emptySpaceItem10.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlGroup5
@@ -1586,7 +1643,7 @@ namespace SerialPort_Ink
             this.layoutControlItem40,
             this.layoutControlItem41});
             this.layoutControlGroup5.Name = "Root";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(613, 477);
+            this.layoutControlGroup5.Size = new System.Drawing.Size(627, 477);
             this.layoutControlGroup5.TextVisible = false;
             // 
             // layoutControlItem40
@@ -1594,16 +1651,16 @@ namespace SerialPort_Ink
             this.layoutControlItem40.Control = this.groupControl5;
             this.layoutControlItem40.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem40.Name = "layoutControlItem40";
-            this.layoutControlItem40.Size = new System.Drawing.Size(380, 457);
+            this.layoutControlItem40.Size = new System.Drawing.Size(389, 457);
             this.layoutControlItem40.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem40.TextVisible = false;
             // 
             // layoutControlItem41
             // 
             this.layoutControlItem41.Control = this.groupControl6;
-            this.layoutControlItem41.Location = new System.Drawing.Point(380, 0);
+            this.layoutControlItem41.Location = new System.Drawing.Point(389, 0);
             this.layoutControlItem41.Name = "layoutControlItem41";
-            this.layoutControlItem41.Size = new System.Drawing.Size(213, 457);
+            this.layoutControlItem41.Size = new System.Drawing.Size(218, 457);
             this.layoutControlItem41.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem41.TextVisible = false;
             // 
@@ -1612,7 +1669,7 @@ namespace SerialPort_Ink
             this.groupControl3.Controls.Add(this.layoutControlDeviceInfo);
             this.groupControl3.Location = new System.Drawing.Point(12, 12);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(251, 502);
+            this.groupControl3.Size = new System.Drawing.Size(257, 502);
             this.groupControl3.TabIndex = 4;
             this.groupControl3.Text = "Device Info";
             // 
@@ -1626,7 +1683,7 @@ namespace SerialPort_Ink
             this.layoutControlDeviceInfo.Location = new System.Drawing.Point(2, 23);
             this.layoutControlDeviceInfo.Name = "layoutControlDeviceInfo";
             this.layoutControlDeviceInfo.Root = this.layoutControlGroup4;
-            this.layoutControlDeviceInfo.Size = new System.Drawing.Size(247, 477);
+            this.layoutControlDeviceInfo.Size = new System.Drawing.Size(253, 477);
             this.layoutControlDeviceInfo.TabIndex = 0;
             this.layoutControlDeviceInfo.Text = "layoutControl4";
             // 
@@ -1635,7 +1692,7 @@ namespace SerialPort_Ink
             this.gList.Controls.Add(this.layoutControl5);
             this.gList.Location = new System.Drawing.Point(12, 253);
             this.gList.Name = "gList";
-            this.gList.Size = new System.Drawing.Size(223, 212);
+            this.gList.Size = new System.Drawing.Size(229, 212);
             this.gList.TabIndex = 6;
             this.gList.Text = "Status";
             // 
@@ -1651,7 +1708,7 @@ namespace SerialPort_Ink
             this.layoutControl5.Location = new System.Drawing.Point(2, 23);
             this.layoutControl5.Name = "layoutControl5";
             this.layoutControl5.Root = this.layoutControlGroup6;
-            this.layoutControl5.Size = new System.Drawing.Size(219, 187);
+            this.layoutControl5.Size = new System.Drawing.Size(225, 187);
             this.layoutControl5.TabIndex = 0;
             this.layoutControl5.Text = "layoutControl5";
             // 
@@ -1722,7 +1779,7 @@ namespace SerialPort_Ink
             this.layoutControlItem30,
             this.layoutControlItem31});
             this.layoutControlGroup6.Name = "layoutControlGroup6";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(219, 187);
+            this.layoutControlGroup6.Size = new System.Drawing.Size(225, 187);
             this.layoutControlGroup6.TextVisible = false;
             // 
             // layoutControlItem26
@@ -1730,7 +1787,7 @@ namespace SerialPort_Ink
             this.layoutControlItem26.Control = this.lBackPressure;
             this.layoutControlItem26.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem26.Name = "layoutControlItem26";
-            this.layoutControlItem26.Size = new System.Drawing.Size(199, 17);
+            this.layoutControlItem26.Size = new System.Drawing.Size(205, 17);
             this.layoutControlItem26.Text = "Back Pressure:";
             this.layoutControlItem26.TextSize = new System.Drawing.Size(116, 13);
             // 
@@ -1739,7 +1796,7 @@ namespace SerialPort_Ink
             this.emptySpaceItem7.AllowHotTrack = false;
             this.emptySpaceItem7.Location = new System.Drawing.Point(0, 102);
             this.emptySpaceItem7.Name = "emptySpaceItem7";
-            this.emptySpaceItem7.Size = new System.Drawing.Size(199, 65);
+            this.emptySpaceItem7.Size = new System.Drawing.Size(205, 65);
             this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem27
@@ -1747,7 +1804,7 @@ namespace SerialPort_Ink
             this.layoutControlItem27.Control = this.lRecirculation;
             this.layoutControlItem27.Location = new System.Drawing.Point(0, 17);
             this.layoutControlItem27.Name = "layoutControlItem27";
-            this.layoutControlItem27.Size = new System.Drawing.Size(199, 17);
+            this.layoutControlItem27.Size = new System.Drawing.Size(205, 17);
             this.layoutControlItem27.Text = "Recirculation Pressure:";
             this.layoutControlItem27.TextSize = new System.Drawing.Size(116, 13);
             // 
@@ -1756,7 +1813,7 @@ namespace SerialPort_Ink
             this.layoutControlItem28.Control = this.lHeaterTemp;
             this.layoutControlItem28.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem28.Name = "layoutControlItem28";
-            this.layoutControlItem28.Size = new System.Drawing.Size(199, 17);
+            this.layoutControlItem28.Size = new System.Drawing.Size(205, 17);
             this.layoutControlItem28.Text = "Heater Temp";
             this.layoutControlItem28.TextSize = new System.Drawing.Size(116, 13);
             // 
@@ -1765,7 +1822,7 @@ namespace SerialPort_Ink
             this.layoutControlItem29.Control = this.lInkTemp;
             this.layoutControlItem29.Location = new System.Drawing.Point(0, 51);
             this.layoutControlItem29.Name = "layoutControlItem29";
-            this.layoutControlItem29.Size = new System.Drawing.Size(199, 17);
+            this.layoutControlItem29.Size = new System.Drawing.Size(205, 17);
             this.layoutControlItem29.Text = "Ink Tempreture:";
             this.layoutControlItem29.TextSize = new System.Drawing.Size(116, 13);
             // 
@@ -1774,7 +1831,7 @@ namespace SerialPort_Ink
             this.layoutControlItem30.Control = this.lStatusBits;
             this.layoutControlItem30.Location = new System.Drawing.Point(0, 68);
             this.layoutControlItem30.Name = "layoutControlItem30";
-            this.layoutControlItem30.Size = new System.Drawing.Size(199, 17);
+            this.layoutControlItem30.Size = new System.Drawing.Size(205, 17);
             this.layoutControlItem30.Text = "Status bits:";
             this.layoutControlItem30.TextSize = new System.Drawing.Size(116, 13);
             // 
@@ -1783,18 +1840,18 @@ namespace SerialPort_Ink
             this.layoutControlItem31.Control = this.lAlarm;
             this.layoutControlItem31.Location = new System.Drawing.Point(0, 85);
             this.layoutControlItem31.Name = "layoutControlItem31";
-            this.layoutControlItem31.Size = new System.Drawing.Size(199, 17);
+            this.layoutControlItem31.Size = new System.Drawing.Size(205, 17);
             this.layoutControlItem31.Text = "Alarm status:";
             this.layoutControlItem31.TextSize = new System.Drawing.Size(116, 13);
             // 
             // tsEnableUpdate
             // 
-            this.tsEnableUpdate.Location = new System.Drawing.Point(181, 12);
+            this.tsEnableUpdate.Location = new System.Drawing.Point(184, 12);
             this.tsEnableUpdate.Name = "tsEnableUpdate";
             this.tsEnableUpdate.Properties.OffText = "Off";
             this.tsEnableUpdate.Properties.OnText = "On";
             this.tsEnableUpdate.Properties.ShowText = false;
-            this.tsEnableUpdate.Size = new System.Drawing.Size(54, 19);
+            this.tsEnableUpdate.Size = new System.Drawing.Size(57, 19);
             this.tsEnableUpdate.StyleController = this.layoutControlDeviceInfo;
             this.tsEnableUpdate.TabIndex = 5;
             this.tsEnableUpdate.Toggled += new System.EventHandler(this.tsEnableUpdate_Toggled);
@@ -1803,7 +1860,7 @@ namespace SerialPort_Ink
             // 
             this.bSearch.Location = new System.Drawing.Point(12, 12);
             this.bSearch.Name = "bSearch";
-            this.bSearch.Size = new System.Drawing.Size(72, 22);
+            this.bSearch.Size = new System.Drawing.Size(74, 22);
             this.bSearch.StyleController = this.layoutControlDeviceInfo;
             this.bSearch.TabIndex = 4;
             this.bSearch.Text = "Search";
@@ -1813,7 +1870,7 @@ namespace SerialPort_Ink
             // 
             this.lbDevices.Location = new System.Drawing.Point(12, 38);
             this.lbDevices.Name = "lbDevices";
-            this.lbDevices.Size = new System.Drawing.Size(223, 211);
+            this.lbDevices.Size = new System.Drawing.Size(229, 211);
             this.lbDevices.StyleController = this.layoutControlDeviceInfo;
             this.lbDevices.TabIndex = 0;
             // 
@@ -1828,7 +1885,7 @@ namespace SerialPort_Ink
             this.emptySpaceItem5,
             this.layoutControlItem25});
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(247, 477);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(253, 477);
             this.layoutControlGroup4.TextVisible = false;
             // 
             // layoutControlItem21
@@ -1836,7 +1893,7 @@ namespace SerialPort_Ink
             this.layoutControlItem21.Control = this.lbDevices;
             this.layoutControlItem21.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem21.Name = "layoutControlItem21";
-            this.layoutControlItem21.Size = new System.Drawing.Size(227, 215);
+            this.layoutControlItem21.Size = new System.Drawing.Size(233, 215);
             this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem21.TextVisible = false;
             // 
@@ -1845,25 +1902,25 @@ namespace SerialPort_Ink
             this.layoutControlItem22.Control = this.bSearch;
             this.layoutControlItem22.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem22.Name = "layoutControlItem22";
-            this.layoutControlItem22.Size = new System.Drawing.Size(76, 26);
+            this.layoutControlItem22.Size = new System.Drawing.Size(78, 26);
             this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem22.TextVisible = false;
             // 
             // layoutControlItem23
             // 
             this.layoutControlItem23.Control = this.tsEnableUpdate;
-            this.layoutControlItem23.Location = new System.Drawing.Point(128, 0);
+            this.layoutControlItem23.Location = new System.Drawing.Point(131, 0);
             this.layoutControlItem23.Name = "layoutControlItem23";
-            this.layoutControlItem23.Size = new System.Drawing.Size(99, 26);
+            this.layoutControlItem23.Size = new System.Drawing.Size(102, 26);
             this.layoutControlItem23.Text = "Update";
             this.layoutControlItem23.TextSize = new System.Drawing.Size(38, 13);
             // 
             // emptySpaceItem5
             // 
             this.emptySpaceItem5.AllowHotTrack = false;
-            this.emptySpaceItem5.Location = new System.Drawing.Point(76, 0);
+            this.emptySpaceItem5.Location = new System.Drawing.Point(78, 0);
             this.emptySpaceItem5.Name = "emptySpaceItem5";
-            this.emptySpaceItem5.Size = new System.Drawing.Size(52, 26);
+            this.emptySpaceItem5.Size = new System.Drawing.Size(53, 26);
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem25
@@ -1871,7 +1928,7 @@ namespace SerialPort_Ink
             this.layoutControlItem25.Control = this.gList;
             this.layoutControlItem25.Location = new System.Drawing.Point(0, 241);
             this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Size = new System.Drawing.Size(227, 216);
+            this.layoutControlItem25.Size = new System.Drawing.Size(233, 216);
             this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem25.TextVisible = false;
             // 
@@ -1883,7 +1940,7 @@ namespace SerialPort_Ink
             this.layoutControlItem11,
             this.layoutControlItem19});
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(896, 526);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(916, 526);
             this.layoutControlGroup3.TextVisible = false;
             // 
             // layoutControlItem11
@@ -1891,26 +1948,121 @@ namespace SerialPort_Ink
             this.layoutControlItem11.Control = this.groupControl3;
             this.layoutControlItem11.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(255, 506);
+            this.layoutControlItem11.Size = new System.Drawing.Size(261, 506);
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
             // 
             // layoutControlItem19
             // 
             this.layoutControlItem19.Control = this.groupControl4;
-            this.layoutControlItem19.Location = new System.Drawing.Point(255, 0);
+            this.layoutControlItem19.Location = new System.Drawing.Point(261, 0);
             this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(621, 506);
+            this.layoutControlItem19.Size = new System.Drawing.Size(635, 506);
             this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem19.TextVisible = false;
             // 
-            // Form1
+            // bResetAlarm
+            // 
+            this.bResetAlarm.Location = new System.Drawing.Point(12, 38);
+            this.bResetAlarm.Name = "bResetAlarm";
+            this.bResetAlarm.Size = new System.Drawing.Size(186, 22);
+            this.bResetAlarm.StyleController = this.layoutControl6;
+            this.bResetAlarm.TabIndex = 4;
+            this.bResetAlarm.Text = "Reset Alarm";
+            this.bResetAlarm.Click += new System.EventHandler(this.bResetAlarm_Click);
+            // 
+            // layoutControlItem62
+            // 
+            this.layoutControlItem62.Control = this.bResetAlarm;
+            this.layoutControlItem62.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem62.Name = "layoutControlItem62";
+            this.layoutControlItem62.Size = new System.Drawing.Size(190, 26);
+            this.layoutControlItem62.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem62.TextVisible = false;
+            // 
+            // bPurge
+            // 
+            this.bPurge.Location = new System.Drawing.Point(12, 64);
+            this.bPurge.Name = "bPurge";
+            this.bPurge.Size = new System.Drawing.Size(91, 22);
+            this.bPurge.StyleController = this.layoutControl6;
+            this.bPurge.TabIndex = 5;
+            this.bPurge.Text = "Purge";
+            this.bPurge.Click += new System.EventHandler(this.bPurge_Click);
+            // 
+            // layoutControlItem63
+            // 
+            this.layoutControlItem63.Control = this.bPurge;
+            this.layoutControlItem63.Location = new System.Drawing.Point(0, 52);
+            this.layoutControlItem63.Name = "layoutControlItem63";
+            this.layoutControlItem63.Size = new System.Drawing.Size(95, 26);
+            this.layoutControlItem63.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem63.TextVisible = false;
+            // 
+            // bActivateDrainSystem
+            // 
+            this.bActivateDrainSystem.Location = new System.Drawing.Point(12, 90);
+            this.bActivateDrainSystem.Name = "bActivateDrainSystem";
+            this.bActivateDrainSystem.Size = new System.Drawing.Size(91, 22);
+            this.bActivateDrainSystem.StyleController = this.layoutControl6;
+            this.bActivateDrainSystem.TabIndex = 6;
+            this.bActivateDrainSystem.Text = "Enable Drain";
+            this.bActivateDrainSystem.Click += new System.EventHandler(this.bActivateDrainSystem_Click);
+            // 
+            // layoutControlItem64
+            // 
+            this.layoutControlItem64.Control = this.bActivateDrainSystem;
+            this.layoutControlItem64.Location = new System.Drawing.Point(0, 78);
+            this.layoutControlItem64.Name = "layoutControlItem64";
+            this.layoutControlItem64.Size = new System.Drawing.Size(95, 26);
+            this.layoutControlItem64.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem64.TextVisible = false;
+            // 
+            // tsPurge
+            // 
+            this.tsPurge.Location = new System.Drawing.Point(107, 64);
+            this.tsPurge.Name = "tsPurge";
+            this.tsPurge.Properties.OffText = "Off";
+            this.tsPurge.Properties.OnText = "On";
+            this.tsPurge.Size = new System.Drawing.Size(91, 19);
+            this.tsPurge.StyleController = this.layoutControl6;
+            this.tsPurge.TabIndex = 7;
+            // 
+            // layoutControlItem65
+            // 
+            this.layoutControlItem65.Control = this.tsPurge;
+            this.layoutControlItem65.Location = new System.Drawing.Point(95, 52);
+            this.layoutControlItem65.Name = "layoutControlItem65";
+            this.layoutControlItem65.Size = new System.Drawing.Size(95, 26);
+            this.layoutControlItem65.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem65.TextVisible = false;
+            // 
+            // bDisableDrainSystem
+            // 
+            this.bDisableDrainSystem.Location = new System.Drawing.Point(107, 90);
+            this.bDisableDrainSystem.Name = "bDisableDrainSystem";
+            this.bDisableDrainSystem.Size = new System.Drawing.Size(91, 22);
+            this.bDisableDrainSystem.StyleController = this.layoutControl6;
+            this.bDisableDrainSystem.TabIndex = 8;
+            this.bDisableDrainSystem.Text = "Disable Drain";
+            this.bDisableDrainSystem.Click += new System.EventHandler(this.bDisableDrainSystem_Click);
+            // 
+            // layoutControlItem66
+            // 
+            this.layoutControlItem66.Control = this.bDisableDrainSystem;
+            this.layoutControlItem66.Location = new System.Drawing.Point(95, 78);
+            this.layoutControlItem66.Name = "layoutControlItem66";
+            this.layoutControlItem66.Size = new System.Drawing.Size(95, 26);
+            this.layoutControlItem66.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem66.TextVisible = false;
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 568);
+            this.ClientSize = new System.Drawing.Size(918, 568);
             this.Controls.Add(this.xtraTabControl1);
-            this.Name = "Form1";
+            this.Name = "FormMain";
             this.Text = "Serial Port (Ink)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1984,23 +2136,23 @@ namespace SerialPort_Ink
             ((System.ComponentModel.ISupportInitialize)(this.DeviceParametersLayoutControl)).EndInit();
             this.DeviceParametersLayoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch8.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch7.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch6.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch5.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsBypassTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsStartupDelay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsPurgePressure.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsPurgeTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsFillPumpTimeout.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsFillPumpSpeed.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsHeaterSetPoint.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teBypassTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teStartupDelay.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePurgePressure.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePurgeTime.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teFillPumpTimeout.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teFillPumpSpeed.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teHeaterSetPoint.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teMeniscusPressure.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsEnableEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsMeniscusPressure.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).EndInit();
@@ -2063,6 +2215,12 @@ namespace SerialPort_Ink
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem62)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem63)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem64)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tsPurge.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem65)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem66)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2156,7 +2314,7 @@ namespace SerialPort_Ink
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem30;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem31;
         private DevExpress.XtraEditors.SimpleButton bApplyMeniscusPressure;
-        private DevExpress.XtraEditors.ToggleSwitch tsEnableEdit;
+        private DevExpress.XtraEditors.ToggleSwitch tsMeniscusPressure;
         private DevExpress.XtraEditors.TextEdit teMeniscusPressure;
         private DevExpress.XtraEditors.GroupControl groupControl6;
         private DevExpress.XtraLayout.LayoutControl layoutControl6;
@@ -2174,29 +2332,29 @@ namespace SerialPort_Ink
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem33;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.ToggleSwitch toggleSwitch8;
-        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch7;
-        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch6;
-        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch5;
-        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch4;
-        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch3;
-        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch2;
-        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch1;
+        private DevExpress.XtraEditors.ToggleSwitch tsBypassTime;
+        private DevExpress.XtraEditors.ToggleSwitch tsStartupDelay;
+        private DevExpress.XtraEditors.ToggleSwitch tsPurgePressure;
+        private DevExpress.XtraEditors.ToggleSwitch tsPurgeTime;
+        private DevExpress.XtraEditors.ToggleSwitch tsFillPumpTimeout;
+        private DevExpress.XtraEditors.ToggleSwitch tsFillPumpSpeed;
+        private DevExpress.XtraEditors.ToggleSwitch tsHeaterSetPoint;
         private DevExpress.XtraEditors.TextEdit textEdit8;
-        private DevExpress.XtraEditors.TextEdit textEdit7;
-        private DevExpress.XtraEditors.TextEdit textEdit6;
-        private DevExpress.XtraEditors.TextEdit textEdit5;
-        private DevExpress.XtraEditors.TextEdit textEdit4;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit teBypassTime;
+        private DevExpress.XtraEditors.TextEdit teStartupDelay;
+        private DevExpress.XtraEditors.TextEdit tePurgePressure;
+        private DevExpress.XtraEditors.TextEdit tePurgeTime;
+        private DevExpress.XtraEditors.TextEdit teFillPumpTimeout;
+        private DevExpress.XtraEditors.TextEdit teFillPumpSpeed;
+        private DevExpress.XtraEditors.TextEdit teHeaterSetPoint;
         private DevExpress.XtraEditors.SimpleButton simpleButton8;
-        private DevExpress.XtraEditors.SimpleButton simpleButton7;
-        private DevExpress.XtraEditors.SimpleButton simpleButton6;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton bApply2;
+        private DevExpress.XtraEditors.SimpleButton bBypassTime;
+        private DevExpress.XtraEditors.SimpleButton bStartupDelay;
+        private DevExpress.XtraEditors.SimpleButton bPurgePressure;
+        private DevExpress.XtraEditors.SimpleButton bPurgeTime;
+        private DevExpress.XtraEditors.SimpleButton bFillPumpTimeout;
+        private DevExpress.XtraEditors.SimpleButton bFillPumpSpeed;
+        private DevExpress.XtraEditors.SimpleButton bHeaterSetPoint;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem35;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem36;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem37;
@@ -2224,6 +2382,16 @@ namespace SerialPort_Ink
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem61;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem9;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem10;
+        private DevExpress.XtraEditors.SimpleButton bActivateDrainSystem;
+        private DevExpress.XtraEditors.SimpleButton bPurge;
+        private DevExpress.XtraEditors.SimpleButton bResetAlarm;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem62;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem63;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem64;
+        private DevExpress.XtraEditors.ToggleSwitch tsPurge;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem65;
+        private DevExpress.XtraEditors.SimpleButton bDisableDrainSystem;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem66;
     }
 }
 

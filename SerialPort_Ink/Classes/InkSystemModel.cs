@@ -34,8 +34,8 @@ namespace SerialPort_Ink
         SetReturnPressure,
         GetReturnPumpLoad,
         SetReturnPumpLoad,
-        GetHeater,
-        SetHeater,
+        GetHeaterSetpoint,
+        SetHeaterSetpoint,
         GetFillPumpSpeed,
         SetFillPumpSpeed,
         GetFillPumpTimeout,
@@ -48,37 +48,43 @@ namespace SerialPort_Ink
         SetStartupDelay,
         GetBypassTime,
         SetBypassTime,
-        GetDeviceStatus
+        GetDeviceStatus,
+        ResetAlarms,
+        PurgeInk,
+        SetDrainSystem
     }
 
 
     /// <summary>
     /// Buffer settings of the ink system
     /// </summary>
-    public class InkSystemDataBuffer: InkDeviceData
+    public class InkSystemDataBuffer : InkDeviceData
     {
         public List<int> Devices { get; set; }
         public InkSystemDataBuffer()
         {
             Devices = new List<int>();
         }
-
-
     }
 
     public class InkDeviceData
     {
         public double BackPressure { get; set; }
-        
         public double RecirculationPressure { get; set; }
         public double HeaterTemp { get; set; }
         public double InkTempreture { get; set; }
         public double StatusBits { get; set; }
         public double Alarm { get; set; }
         public double MeniscusPressureSetPoint { get; set; }
+        public double HeaterSetPoint { get; set; }
+        public double FillPumpSpeedSetPoint { get; set; }
+        public double FillPumpTimeout { get; set; }
+        public double PurgeTimeSetPoint { get; set; }
+        public double PurgePressureSetpoint { get; set; }
+        public double StartUpDelay { get; set; }
+        public double ByPassTime { get; set; }
 
-
-        public void CopyDeviceData(ref InkDeviceData deviceData)
+        public void CopyDeviceStatus(ref InkDeviceData deviceData)
         {
             deviceData.BackPressure = BackPressure;
             deviceData.RecirculationPressure = RecirculationPressure;
@@ -116,6 +122,9 @@ namespace SerialPort_Ink
         /// </summary>
         public string CommandString { get; set; }
         public int IntValue { get; set; }
+        /// <summary>
+        /// Store value
+        /// </summary>
         public double DoubleValue { get; set; }
         /// <summary>
         /// String result of current command
@@ -136,15 +145,22 @@ namespace SerialPort_Ink
             CMDTime = new Stopwatch();
         }
 
-        public void Init(InkSystemCommandType Command, int iNetwork = 0)
+        /// <summary>
+        /// Prepare command
+        /// </summary>
+        /// <param name="commandType"></param>
+        /// <param name="iNetwork">Device network ID</param>
+        /// <param name="iValue">Set value if it's a set comand</param>
+        public void Init(InkSystemCommandType commandType, int iNetwork = 0, double dValue = -1)
         {
             IsReplied = false;
             IsSuccess = false;
-            Type = Command;
+            Type = commandType;
             IntValue = -1;
-            StrValue = null;
+            DoubleValue = dValue;
+            StrValue = "";
             NetworkID = iNetwork;
-            CommandString = csInkSystem.GetCommandString(Command, iNetwork);
+            CommandString = csInkSystem.GetCommandString(commandType, iNetwork, DoubleValue);
             CMDTime.Restart();
         }
 
