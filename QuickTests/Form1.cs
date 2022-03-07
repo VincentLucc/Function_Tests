@@ -16,7 +16,7 @@ namespace QuickTests
 {
     public partial class Form1 : Form
     {
-
+        bool IsDebug { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -51,6 +51,11 @@ namespace QuickTests
         {
             await Task.Delay(1000);
             this.Visible = true;
+
+#if DEBUG
+            //Not working in custom controls, only in forms
+            IsDebug = true;
+#endif
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -69,9 +74,9 @@ namespace QuickTests
             bitData[31] = true;
 
 
-            string s =csCRC.BoolArrayToHexString(bitData);
+            string s =csByteConvert.BoolArrayToHexString(bitData);
 
-            bitData=csCRC.HexStringToBoolArray(s);
+            bitData=csByteConvert.HexStringToBoolArray(s);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -81,9 +86,9 @@ namespace QuickTests
             bitData[1] = true;
             //bitData[31] = true;
 
-            uint iSignal = csCRC.BoolArrayToUInt32(bitData);
+            uint iSignal = csByteConvert.BoolArrayToUInt32(bitData);
 
-            bitData = csCRC.Uint32ToBoolArray(iSignal);
+            bitData = csByteConvert.Uint32ToBoolArray(iSignal);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -246,6 +251,19 @@ namespace QuickTests
             string sReg = Regex.Unescape(s);
             string sReg1 = Regex.Unescape("");
             string sReg2 = Regex.Unescape("\\r\\n");
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            //Prepare data
+            bool[] bitData1 = new bool[16];
+            bitData1[0] = true;
+            bitData1[1] = true;
+            //bitData[31] = true;
+
+            UInt16 iSignal = csByteConvert.BoolArrayToUInt16(bitData1);
+
+            bitData = csByteConvert.UInt16ToBoolArray(iSignal);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuickTests
 {
-    class csCRC
+    class csByteConvert
     {
         #region  CRC16
         public static byte[] CRC16(byte[] data)
@@ -248,7 +248,7 @@ namespace QuickTests
             //Prepare value
             bool[] bitData = new bool[32];
 
-            byte[] bData = csCRC.StringToHexByte(sHex);
+            byte[] bData = csByteConvert.StringToHexByte(sHex);
 
             //reverse order
             bData = bData.Reverse().ToArray();
@@ -297,6 +297,35 @@ namespace QuickTests
             {
                 //Put value in from last position
                 bool bitResult = (str.Substring(str.Length-1 - i, 1)=="1")?true:false;
+                bitArray[i] = bitResult;
+            }
+
+            return bitArray;
+        }
+
+        public static UInt16 BoolArrayToUInt16(bool[] bList)
+        {
+            //Get length
+            StringBuilder sBuilder = new StringBuilder();
+            for (int i = 0; i < 16; i++)
+            {
+                string s = bList[15 - i] ? "1" : "0";
+                sBuilder.Append(s);
+            }
+
+            return Convert.ToUInt16(sBuilder.ToString(), 2);
+        }
+
+        public static bool[] UInt16ToBoolArray(UInt16 uiValue)
+        {
+            string str = Convert.ToString(uiValue, 2);
+            bool[] bitArray = new bool[16];
+
+            //Get value one by one
+            for (int i = 0; i < str.Length; i++)
+            {
+                //Put value in from last position
+                bool bitResult = (str.Substring(str.Length - 1 - i, 1) == "1") ? true : false;
                 bitArray[i] = bitResult;
             }
 

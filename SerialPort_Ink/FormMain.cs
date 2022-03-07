@@ -195,10 +195,10 @@ namespace SerialPort_Ink
             //Show device info
             this.Invoke(new Action(() =>
             {
-                if (lbDevices.SelectedIndex > -1)
+                if (TargetDeviceID > -1&& TargetDeviceID< Devices.Count)
                 {
                     //Get selected device
-                    var device = Devices[lbDevices.SelectedIndex + 1];
+                    var device = Devices[TargetDeviceID];
                     lBackPressure.Text = device.BackPressure.ToString("F2");
                     lRecirculation.Text = device.RecirculationPressure.ToString("F2");
                     lHeaterTemp.Text = device.HeaterTemp.ToString("F2");

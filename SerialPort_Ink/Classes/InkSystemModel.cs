@@ -10,6 +10,31 @@ namespace SerialPort_Ink
     class InkSystemModel
     {
         public static string RegDeviceList = "^[0-9]{1,2},I$";
+        public static string[] Alarms = new string[] {"Tank filling","purging","tank heater output on","ext heater output on",
+                                                      "cure lamp output on","internal recirc","head lockoff valve open","System Enabled",
+                                                      "preheat active","bypass active","drain system active","flush system active",
+                                                      "","","",""};
+        public static List<string> GetAlarmList(UInt16 iValue)
+        {
+            var sList = new List<string>();
+            bool[] bList = csByteConvert.UInt16ToBoolArray(iValue);
+            for (int i = 0; i < 16; i++)
+            {
+                if (bList[i]) sList.Add(Alarms[i]);
+            }
+            return sList;
+        }
+
+        /// <summary>
+        /// Get enable degass commandvalue
+        /// </summary>
+        /// <returns></returns>
+        public static uint EnableDegassValue()
+        {
+            bool[] bData = new bool[16];
+            bData[13] = true;
+            return csByteConvert.BoolArrayToUInt16(bData);
+        }
     }
 
     public class ResponseString
@@ -49,6 +74,8 @@ namespace SerialPort_Ink
         GetBypassTime,
         SetBypassTime,
         GetDeviceStatus,
+        GetSystemFunction,
+        SetSystemFunction,
         ResetAlarms,
         PurgeInk,
         SetDrainSystem
@@ -67,6 +94,8 @@ namespace SerialPort_Ink
         }
     }
 
+   
+
     public class InkDeviceData
     {
         public double BackPressure { get; set; }
@@ -83,6 +112,7 @@ namespace SerialPort_Ink
         public double PurgePressureSetpoint { get; set; }
         public double StartUpDelay { get; set; }
         public double ByPassTime { get; set; }
+        public UInt16 SystemFunction { get; set; }
 
         public void CopyDeviceStatus(ref InkDeviceData deviceData)
         {
@@ -92,6 +122,7 @@ namespace SerialPort_Ink
             deviceData.InkTempreture = InkTempreture;
             deviceData.StatusBits = StatusBits;
             deviceData.Alarm = Alarm;
+            deviceData.SystemFunction = SystemFunction;
         }
     }
 

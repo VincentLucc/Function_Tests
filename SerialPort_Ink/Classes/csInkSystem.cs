@@ -230,18 +230,26 @@ namespace SerialPort_Ink
                 return; //Do not proceed while error occurs
             }
 
+            //Data processing
+            try
+            {
+                //Get all received data result
+                byte[] byteData = ResultList.ToArray();
 
-            //Get all received data result
-            byte[] byteData = ResultList.ToArray();
+                //Fetch data and store to buffer
+                GetDataString(byteData, ref sData);
 
-            //Fetch data and store to buffer
-            GetDataString(byteData, ref sData);
+                //Seperate to command list
+                string[] sDataGroup = sData.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-            //Seperate to command list
-            string[] sDataGroup = sData.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-            //Process Data
-            InspectData(sDataGroup);
+                //Process Data
+                InspectData(sDataGroup);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Port_DataReceived.DataProcessing:\r\n"+ex.Message);
+            }
+        
 
             //Receiving status
             IsReceiving = false;
@@ -373,6 +381,12 @@ namespace SerialPort_Ink
                     if (ResponseProcess_ReadData(DataList)) 
                         DataBuffer.ByPassTime = CurrentCommand.DoubleValue;
                         CurrentCommand.IsSuccess = true;        
+                    break;
+
+                case InkSystemCommandType.GetSystemFunction:
+                    if (ResponseProcess_ReadData(DataList))
+                        DataBuffer.SystemFunction = Convert.ToUInt16(CurrentCommand.DoubleValue);
+                    CurrentCommand.IsSuccess = true;
                     break;
 
                 case InkSystemCommandType.GetMeniscusPumpLoad:
@@ -614,36 +628,6 @@ namespace SerialPort_Ink
         }
 
 
-        /// <summary>
-        /// Attempt to request device list
-        /// </summary>
-        /// <returns></returns>
-        public async Task<bool> TryGetDeviceList()
-        {
-            //Prepare variables
-            CurrentCommand.Init(InkSystemCommandType.GetNetworkDevices); //init command
-            DataBuffer = new InkSystemDataBuffer();//Clear all devices
-
-            //send command
-            SendCommand(CurrentCommand.CommandString);
-
-            //Wait for success
-            if (!await WaitForSuccess(TimeoutMS))
-            {
-                return false;
-            }
-
-            //Wait for more devices
-            //Check success, default gap is about 500ms, set 1000ms to make sure receive all devices
-            while (CurrentCommand.IsSuccess)
-            {
-                CurrentCommand.IsSuccess = false;
-                Debug.WriteLine("TryGetDeviceList:WaitForNextDevice");
-                await WaitForSuccess(1000);
-            }
-
-            return true;
-        }
 
         public async Task<bool> TryReadData(InkSystemCommandType commandType, int iNetworkID = 0)
         {
@@ -677,6 +661,51 @@ namespace SerialPort_Ink
 
             //pass all steps
             return true;
+        }
+
+
+        /// <summary>
+        /// Attempt to request device list
+        /// </summary>
+        /// <returns></returns>
+        public async Task<bool> TryGetDeviceList()
+        {
+            //Prepare variables
+            CurrentCommand.Init(InkSystemCommandType.GetNetworkDevices); //init command
+            DataBuffer = new InkSystemDataBuffer();//Clear all devices
+
+            //send command
+            SendCommand(CurrentCommand.CommandString);
+
+            //Wait for success
+            if (!await WaitForSuccess(TimeoutMS))
+            {
+                return false;
+            }
+
+            //Wait for more devices
+            //Check success, default gap is about 500ms, set 1000ms to make sure receive all devices
+            while (CurrentCommand.IsSuccess)
+            {
+                CurrentCommand.IsSuccess = false;
+                Debug.WriteLine("TryGetDeviceList:WaitForNextDevice");
+                await WaitForSuccess(1000);
+            }
+
+            return true;
+        }
+
+
+        public async Task<bool> TrySetSystemFunction(int FunctionIndex, bool Enable,int iNetworkID=0)
+        {
+            UInt16 currentFunctions = 0;
+
+            //Read current state first 
+            if (await TryReadData(InkSystemCommandType.GetSystemFunction, iNetworkID))
+            {
+
+            }
+
         }
 
         public async Task<bool> WaitForReply(int iTimeout = 0)
@@ -867,6 +896,12 @@ namespace SerialPort_Ink
 
                 case InkSystemCommandType.ResetAlarms:
                     return iNetworkID == 0 ? @"SA1?,0" : $"{sNetwork}SA1,0";
+
+                case InkSystemCommandType.GetSystemFunction:
+                    return iNetworkID == 0 ? "SEB?0" : $"{sNetwork}SEB?";
+
+                case InkSystemCommandType.SetSystemFunction:
+                    return iNetworkID == 0 ? $"SEB?,{dValue}" : $"{sNetwork}SEB,{dValue}";
 
                 case InkSystemCommandType.PurgeInk:
                     //1, soft purge
