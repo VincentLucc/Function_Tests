@@ -86,10 +86,20 @@ namespace SerialPort_Ink
             this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
             this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl6 = new DevExpress.XtraLayout.LayoutControl();
+            this.bDisableDrainSystem = new DevExpress.XtraEditors.SimpleButton();
+            this.tsPurge = new DevExpress.XtraEditors.ToggleSwitch();
+            this.bActivateDrainSystem = new DevExpress.XtraEditors.SimpleButton();
+            this.bPurge = new DevExpress.XtraEditors.SimpleButton();
+            this.bResetAlarm = new DevExpress.XtraEditors.SimpleButton();
             this.bFetch = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem6 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem62 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem63 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem64 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem65 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem66 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.DeviceParametersLayoutControl = new DevExpress.XtraLayout.LayoutControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -185,16 +195,12 @@ namespace SerialPort_Ink
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bResetAlarm = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem62 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bPurge = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem63 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bActivateDrainSystem = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem64 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.tsPurge = new DevExpress.XtraEditors.ToggleSwitch();
-            this.layoutControlItem65 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bDisableDrainSystem = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem66 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bDegassEnable = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem67 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bDegassDisable = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem68 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bSystemFunctionRead = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem69 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -257,9 +263,15 @@ namespace SerialPort_Ink
             this.groupControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).BeginInit();
             this.layoutControl6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tsPurge.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem62)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem63)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem64)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem65)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem66)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DeviceParametersLayoutControl)).BeginInit();
@@ -344,12 +356,9 @@ namespace SerialPort_Ink
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem62)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem63)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem64)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsPurge.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem65)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem66)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem67)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem68)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem69)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -929,6 +938,9 @@ namespace SerialPort_Ink
             // 
             // layoutControl6
             // 
+            this.layoutControl6.Controls.Add(this.bSystemFunctionRead);
+            this.layoutControl6.Controls.Add(this.bDegassDisable);
+            this.layoutControl6.Controls.Add(this.bDegassEnable);
             this.layoutControl6.Controls.Add(this.bDisableDrainSystem);
             this.layoutControl6.Controls.Add(this.tsPurge);
             this.layoutControl6.Controls.Add(this.bActivateDrainSystem);
@@ -942,6 +954,56 @@ namespace SerialPort_Ink
             this.layoutControl6.Size = new System.Drawing.Size(210, 428);
             this.layoutControl6.TabIndex = 0;
             this.layoutControl6.Text = "layoutControl6";
+            // 
+            // bDisableDrainSystem
+            // 
+            this.bDisableDrainSystem.Location = new System.Drawing.Point(107, 90);
+            this.bDisableDrainSystem.Name = "bDisableDrainSystem";
+            this.bDisableDrainSystem.Size = new System.Drawing.Size(91, 22);
+            this.bDisableDrainSystem.StyleController = this.layoutControl6;
+            this.bDisableDrainSystem.TabIndex = 8;
+            this.bDisableDrainSystem.Text = "Disable Drain";
+            this.bDisableDrainSystem.Click += new System.EventHandler(this.bDisableDrainSystem_Click);
+            // 
+            // tsPurge
+            // 
+            this.tsPurge.Location = new System.Drawing.Point(107, 64);
+            this.tsPurge.Name = "tsPurge";
+            this.tsPurge.Properties.OffText = "Off";
+            this.tsPurge.Properties.OnText = "On";
+            this.tsPurge.Size = new System.Drawing.Size(91, 19);
+            this.tsPurge.StyleController = this.layoutControl6;
+            this.tsPurge.TabIndex = 7;
+            // 
+            // bActivateDrainSystem
+            // 
+            this.bActivateDrainSystem.Location = new System.Drawing.Point(12, 90);
+            this.bActivateDrainSystem.Name = "bActivateDrainSystem";
+            this.bActivateDrainSystem.Size = new System.Drawing.Size(91, 22);
+            this.bActivateDrainSystem.StyleController = this.layoutControl6;
+            this.bActivateDrainSystem.TabIndex = 6;
+            this.bActivateDrainSystem.Text = "Enable Drain";
+            this.bActivateDrainSystem.Click += new System.EventHandler(this.bActivateDrainSystem_Click);
+            // 
+            // bPurge
+            // 
+            this.bPurge.Location = new System.Drawing.Point(12, 64);
+            this.bPurge.Name = "bPurge";
+            this.bPurge.Size = new System.Drawing.Size(91, 22);
+            this.bPurge.StyleController = this.layoutControl6;
+            this.bPurge.TabIndex = 5;
+            this.bPurge.Text = "Purge";
+            this.bPurge.Click += new System.EventHandler(this.bPurge_Click);
+            // 
+            // bResetAlarm
+            // 
+            this.bResetAlarm.Location = new System.Drawing.Point(12, 38);
+            this.bResetAlarm.Name = "bResetAlarm";
+            this.bResetAlarm.Size = new System.Drawing.Size(186, 22);
+            this.bResetAlarm.StyleController = this.layoutControl6;
+            this.bResetAlarm.TabIndex = 4;
+            this.bResetAlarm.Text = "Reset Alarm";
+            this.bResetAlarm.Click += new System.EventHandler(this.bResetAlarm_Click);
             // 
             // bFetch
             // 
@@ -964,7 +1026,10 @@ namespace SerialPort_Ink
             this.layoutControlItem63,
             this.layoutControlItem64,
             this.layoutControlItem65,
-            this.layoutControlItem66});
+            this.layoutControlItem66,
+            this.layoutControlItem67,
+            this.layoutControlItem68,
+            this.layoutControlItem69});
             this.layoutControlGroup7.Name = "layoutControlGroup7";
             this.layoutControlGroup7.Size = new System.Drawing.Size(210, 428);
             this.layoutControlGroup7.TextVisible = false;
@@ -981,10 +1046,55 @@ namespace SerialPort_Ink
             // emptySpaceItem6
             // 
             this.emptySpaceItem6.AllowHotTrack = false;
-            this.emptySpaceItem6.Location = new System.Drawing.Point(0, 104);
+            this.emptySpaceItem6.Location = new System.Drawing.Point(0, 156);
             this.emptySpaceItem6.Name = "emptySpaceItem6";
-            this.emptySpaceItem6.Size = new System.Drawing.Size(190, 304);
+            this.emptySpaceItem6.Size = new System.Drawing.Size(190, 252);
             this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem62
+            // 
+            this.layoutControlItem62.Control = this.bResetAlarm;
+            this.layoutControlItem62.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem62.Name = "layoutControlItem62";
+            this.layoutControlItem62.Size = new System.Drawing.Size(190, 26);
+            this.layoutControlItem62.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem62.TextVisible = false;
+            // 
+            // layoutControlItem63
+            // 
+            this.layoutControlItem63.Control = this.bPurge;
+            this.layoutControlItem63.Location = new System.Drawing.Point(0, 52);
+            this.layoutControlItem63.Name = "layoutControlItem63";
+            this.layoutControlItem63.Size = new System.Drawing.Size(95, 26);
+            this.layoutControlItem63.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem63.TextVisible = false;
+            // 
+            // layoutControlItem64
+            // 
+            this.layoutControlItem64.Control = this.bActivateDrainSystem;
+            this.layoutControlItem64.Location = new System.Drawing.Point(0, 78);
+            this.layoutControlItem64.Name = "layoutControlItem64";
+            this.layoutControlItem64.Size = new System.Drawing.Size(95, 26);
+            this.layoutControlItem64.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem64.TextVisible = false;
+            // 
+            // layoutControlItem65
+            // 
+            this.layoutControlItem65.Control = this.tsPurge;
+            this.layoutControlItem65.Location = new System.Drawing.Point(95, 52);
+            this.layoutControlItem65.Name = "layoutControlItem65";
+            this.layoutControlItem65.Size = new System.Drawing.Size(95, 26);
+            this.layoutControlItem65.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem65.TextVisible = false;
+            // 
+            // layoutControlItem66
+            // 
+            this.layoutControlItem66.Control = this.bDisableDrainSystem;
+            this.layoutControlItem66.Location = new System.Drawing.Point(95, 78);
+            this.layoutControlItem66.Name = "layoutControlItem66";
+            this.layoutControlItem66.Size = new System.Drawing.Size(95, 26);
+            this.layoutControlItem66.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem66.TextVisible = false;
             // 
             // groupControl5
             // 
@@ -1961,100 +2071,62 @@ namespace SerialPort_Ink
             this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem19.TextVisible = false;
             // 
-            // bResetAlarm
+            // bDegassEnable
             // 
-            this.bResetAlarm.Location = new System.Drawing.Point(12, 38);
-            this.bResetAlarm.Name = "bResetAlarm";
-            this.bResetAlarm.Size = new System.Drawing.Size(186, 22);
-            this.bResetAlarm.StyleController = this.layoutControl6;
-            this.bResetAlarm.TabIndex = 4;
-            this.bResetAlarm.Text = "Reset Alarm";
-            this.bResetAlarm.Click += new System.EventHandler(this.bResetAlarm_Click);
+            this.bDegassEnable.Location = new System.Drawing.Point(12, 142);
+            this.bDegassEnable.Name = "bDegassEnable";
+            this.bDegassEnable.Size = new System.Drawing.Size(91, 22);
+            this.bDegassEnable.StyleController = this.layoutControl6;
+            this.bDegassEnable.TabIndex = 9;
+            this.bDegassEnable.Text = "Enable Degass";
+            this.bDegassEnable.Click += new System.EventHandler(this.bDegassEnable_Click);
             // 
-            // layoutControlItem62
+            // layoutControlItem67
             // 
-            this.layoutControlItem62.Control = this.bResetAlarm;
-            this.layoutControlItem62.Location = new System.Drawing.Point(0, 26);
-            this.layoutControlItem62.Name = "layoutControlItem62";
-            this.layoutControlItem62.Size = new System.Drawing.Size(190, 26);
-            this.layoutControlItem62.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem62.TextVisible = false;
+            this.layoutControlItem67.Control = this.bDegassEnable;
+            this.layoutControlItem67.Location = new System.Drawing.Point(0, 130);
+            this.layoutControlItem67.Name = "layoutControlItem67";
+            this.layoutControlItem67.Size = new System.Drawing.Size(95, 26);
+            this.layoutControlItem67.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem67.TextVisible = false;
             // 
-            // bPurge
+            // bDegassDisable
             // 
-            this.bPurge.Location = new System.Drawing.Point(12, 64);
-            this.bPurge.Name = "bPurge";
-            this.bPurge.Size = new System.Drawing.Size(91, 22);
-            this.bPurge.StyleController = this.layoutControl6;
-            this.bPurge.TabIndex = 5;
-            this.bPurge.Text = "Purge";
-            this.bPurge.Click += new System.EventHandler(this.bPurge_Click);
+            this.bDegassDisable.Location = new System.Drawing.Point(107, 142);
+            this.bDegassDisable.Name = "bDegassDisable";
+            this.bDegassDisable.Size = new System.Drawing.Size(91, 22);
+            this.bDegassDisable.StyleController = this.layoutControl6;
+            this.bDegassDisable.TabIndex = 10;
+            this.bDegassDisable.Text = "Disable Degass";
+            this.bDegassDisable.Click += new System.EventHandler(this.bDegassDisable_Click);
             // 
-            // layoutControlItem63
+            // layoutControlItem68
             // 
-            this.layoutControlItem63.Control = this.bPurge;
-            this.layoutControlItem63.Location = new System.Drawing.Point(0, 52);
-            this.layoutControlItem63.Name = "layoutControlItem63";
-            this.layoutControlItem63.Size = new System.Drawing.Size(95, 26);
-            this.layoutControlItem63.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem63.TextVisible = false;
+            this.layoutControlItem68.Control = this.bDegassDisable;
+            this.layoutControlItem68.Location = new System.Drawing.Point(95, 130);
+            this.layoutControlItem68.Name = "layoutControlItem68";
+            this.layoutControlItem68.Size = new System.Drawing.Size(95, 26);
+            this.layoutControlItem68.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem68.TextVisible = false;
             // 
-            // bActivateDrainSystem
+            // bSystemFunctionRead
             // 
-            this.bActivateDrainSystem.Location = new System.Drawing.Point(12, 90);
-            this.bActivateDrainSystem.Name = "bActivateDrainSystem";
-            this.bActivateDrainSystem.Size = new System.Drawing.Size(91, 22);
-            this.bActivateDrainSystem.StyleController = this.layoutControl6;
-            this.bActivateDrainSystem.TabIndex = 6;
-            this.bActivateDrainSystem.Text = "Enable Drain";
-            this.bActivateDrainSystem.Click += new System.EventHandler(this.bActivateDrainSystem_Click);
+            this.bSystemFunctionRead.Location = new System.Drawing.Point(12, 116);
+            this.bSystemFunctionRead.Name = "bSystemFunctionRead";
+            this.bSystemFunctionRead.Size = new System.Drawing.Size(186, 22);
+            this.bSystemFunctionRead.StyleController = this.layoutControl6;
+            this.bSystemFunctionRead.TabIndex = 11;
+            this.bSystemFunctionRead.Text = "Get System Funtions";
+            this.bSystemFunctionRead.Click += new System.EventHandler(this.bSystemFunctionRead_Click);
             // 
-            // layoutControlItem64
+            // layoutControlItem69
             // 
-            this.layoutControlItem64.Control = this.bActivateDrainSystem;
-            this.layoutControlItem64.Location = new System.Drawing.Point(0, 78);
-            this.layoutControlItem64.Name = "layoutControlItem64";
-            this.layoutControlItem64.Size = new System.Drawing.Size(95, 26);
-            this.layoutControlItem64.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem64.TextVisible = false;
-            // 
-            // tsPurge
-            // 
-            this.tsPurge.Location = new System.Drawing.Point(107, 64);
-            this.tsPurge.Name = "tsPurge";
-            this.tsPurge.Properties.OffText = "Off";
-            this.tsPurge.Properties.OnText = "On";
-            this.tsPurge.Size = new System.Drawing.Size(91, 19);
-            this.tsPurge.StyleController = this.layoutControl6;
-            this.tsPurge.TabIndex = 7;
-            // 
-            // layoutControlItem65
-            // 
-            this.layoutControlItem65.Control = this.tsPurge;
-            this.layoutControlItem65.Location = new System.Drawing.Point(95, 52);
-            this.layoutControlItem65.Name = "layoutControlItem65";
-            this.layoutControlItem65.Size = new System.Drawing.Size(95, 26);
-            this.layoutControlItem65.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem65.TextVisible = false;
-            // 
-            // bDisableDrainSystem
-            // 
-            this.bDisableDrainSystem.Location = new System.Drawing.Point(107, 90);
-            this.bDisableDrainSystem.Name = "bDisableDrainSystem";
-            this.bDisableDrainSystem.Size = new System.Drawing.Size(91, 22);
-            this.bDisableDrainSystem.StyleController = this.layoutControl6;
-            this.bDisableDrainSystem.TabIndex = 8;
-            this.bDisableDrainSystem.Text = "Disable Drain";
-            this.bDisableDrainSystem.Click += new System.EventHandler(this.bDisableDrainSystem_Click);
-            // 
-            // layoutControlItem66
-            // 
-            this.layoutControlItem66.Control = this.bDisableDrainSystem;
-            this.layoutControlItem66.Location = new System.Drawing.Point(95, 78);
-            this.layoutControlItem66.Name = "layoutControlItem66";
-            this.layoutControlItem66.Size = new System.Drawing.Size(95, 26);
-            this.layoutControlItem66.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem66.TextVisible = false;
+            this.layoutControlItem69.Control = this.bSystemFunctionRead;
+            this.layoutControlItem69.Location = new System.Drawing.Point(0, 104);
+            this.layoutControlItem69.Name = "layoutControlItem69";
+            this.layoutControlItem69.Size = new System.Drawing.Size(190, 26);
+            this.layoutControlItem69.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem69.TextVisible = false;
             // 
             // FormMain
             // 
@@ -2128,9 +2200,15 @@ namespace SerialPort_Ink
             this.groupControl6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).EndInit();
             this.layoutControl6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tsPurge.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem62)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem63)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem64)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem65)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem66)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DeviceParametersLayoutControl)).EndInit();
@@ -2215,12 +2293,9 @@ namespace SerialPort_Ink
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem62)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem63)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem64)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tsPurge.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem65)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem66)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem67)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem68)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem69)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2392,6 +2467,12 @@ namespace SerialPort_Ink
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem65;
         private DevExpress.XtraEditors.SimpleButton bDisableDrainSystem;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem66;
+        private DevExpress.XtraEditors.SimpleButton bDegassDisable;
+        private DevExpress.XtraEditors.SimpleButton bDegassEnable;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem67;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem68;
+        private DevExpress.XtraEditors.SimpleButton bSystemFunctionRead;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem69;
     }
 }
 

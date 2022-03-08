@@ -181,13 +181,16 @@ namespace SerialPort_Ink
             {
                 if (csPublic.InkSystem.IsConnected && !tbReceive1.Focused)
                 {
-                    if (tbReceive1.Text != csPublic.InkSystem.MessagesReceivedCollection.Replace("\r", ""))
+                    //Remove extra "\r,\n"
+                    string sCompareA= tbReceive1.Text.Replace('\r'.ToString(), "").Replace('\n'.ToString(), "").Replace(" ","");
+                    string sCompareB = csPublic.InkSystem.ComLogString.Replace('\r'.ToString(), "").Replace('\n'.ToString(),"").Replace(" ","");
+                    if (sCompareA != sCompareB)
                     {
                         tbReceive1.SuspendLayout();
-                        tbReceive1.Clear();
-                        tbReceive1.AppendText(csPublic.InkSystem.MessagesReceivedCollection);
-                        tbReceive1.ScrollToCaret();
+                        tbReceive1.Text = "";
+                        tbReceive1.AppendText(csPublic.InkSystem.ComLogString);                      
                         tbReceive1.ResumeLayout();
+                        tbReceive1.ScrollToCaret();
                     }
                 }
             }));
@@ -228,6 +231,8 @@ namespace SerialPort_Ink
             }));
         }
 
+
+
         private async Task UpdateDeviceInfo()
         {
             //Start from 1, 0 is default device when there is no network
@@ -237,32 +242,32 @@ namespace SerialPort_Ink
                 var currentDevice = Devices[iDeviceID];
 
                 //Read status
-                if (await csPublic.InkSystem.TryReadData(InkSystemCommandType.GetDeviceStatus, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetDeviceStatus, iDeviceID))
                     csPublic.InkSystem.DataBuffer.CopyDeviceStatus(ref currentDevice);
 
                 //Read parameters
-                if (await csPublic.InkSystem.TryReadData(InkSystemCommandType.GetMeniscusPressure, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetMeniscusPressure, iDeviceID))
                     currentDevice.MeniscusPressureSetPoint = csPublic.InkSystem.DataBuffer.MeniscusPressureSetPoint;
 
-                if (await csPublic.InkSystem.TryReadData(InkSystemCommandType.GetHeaterSetpoint, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetHeaterSetpoint, iDeviceID))
                     currentDevice.HeaterSetPoint = csPublic.InkSystem.DataBuffer.HeaterSetPoint;
 
-                if (await csPublic.InkSystem.TryReadData(InkSystemCommandType.GetFillPumpSpeed, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetFillPumpSpeed, iDeviceID))
                     currentDevice.FillPumpSpeedSetPoint = csPublic.InkSystem.DataBuffer.FillPumpSpeedSetPoint;
 
-                if (await csPublic.InkSystem.TryReadData(InkSystemCommandType.GetFillPumpTimeout, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetFillPumpTimeout, iDeviceID))
                     currentDevice.FillPumpTimeout = csPublic.InkSystem.DataBuffer.FillPumpTimeout;
 
-                if (await csPublic.InkSystem.TryReadData(InkSystemCommandType.GetPurgeTime, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetPurgeTime, iDeviceID))
                     currentDevice.PurgeTimeSetPoint = csPublic.InkSystem.DataBuffer.PurgeTimeSetPoint;
 
-                if (await csPublic.InkSystem.TryReadData(InkSystemCommandType.GetPurgePressure, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetPurgePressure, iDeviceID))
                     currentDevice.PurgePressureSetpoint = csPublic.InkSystem.DataBuffer.PurgePressureSetpoint;
 
-                if (await csPublic.InkSystem.TryReadData(InkSystemCommandType.GetStartupDelay, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetStartupDelay, iDeviceID))
                     currentDevice.StartUpDelay = csPublic.InkSystem.DataBuffer.StartUpDelay;
 
-                if (await csPublic.InkSystem.TryReadData(InkSystemCommandType.GetBypassTime, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetBypassTime, iDeviceID))
                     currentDevice.ByPassTime = csPublic.InkSystem.DataBuffer.ByPassTime;
 
             }
@@ -700,6 +705,38 @@ namespace SerialPort_Ink
             //Try set value
             if (!await csPublic.InkSystem.TrySetParameter(InkSystemCommandType.SetDrainSystem, TargetDeviceID, 0))
                 MessageBox.Show("Error");
+        }
+
+        private async void bDegassEnable_Click(object sender, EventArgs e)
+        {
+            //Try set value
+            if (!await csPublic.InkSystem.TrySetSystemFunction((int)InkSystemFunction.EnableDegass,true, TargetDeviceID))
+                MessageBox.Show("Error");
+
+            
+        }
+
+        private async void bDegassDisable_Click(object sender, EventArgs e)
+        {
+            //Try set value
+            if (!await csPublic.InkSystem.TrySetSystemFunction((int)InkSystemFunction.EnableDegass, false, TargetDeviceID))
+                MessageBox.Show("Error");
+        }
+
+        private async void bSystemFunctionRead_Click(object sender, EventArgs e)
+        {
+            //Try set value
+            if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetSystemFunction,TargetDeviceID))
+            {
+                UInt16 iValue = csPublic.InkSystem.DataBuffer.SystemFunction;
+                string sBinary = Convert.ToString(iValue, 2);
+                MessageBox.Show($"System:{iValue}\r\n{sBinary}");
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+               
         }
     }
 }

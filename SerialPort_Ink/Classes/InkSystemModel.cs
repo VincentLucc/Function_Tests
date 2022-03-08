@@ -9,6 +9,9 @@ namespace SerialPort_Ink
 {
     class InkSystemModel
     {
+        /// <summary>
+        /// Regex strings
+        /// </summary>
         public static string RegDeviceList = "^[0-9]{1,2},I$";
         public static string[] Alarms = new string[] {"Tank filling","purging","tank heater output on","ext heater output on",
                                                       "cure lamp output on","internal recirc","head lockoff valve open","System Enabled",
@@ -25,6 +28,7 @@ namespace SerialPort_Ink
             return sList;
         }
 
+
         /// <summary>
         /// Get enable degass commandvalue
         /// </summary>
@@ -35,6 +39,14 @@ namespace SerialPort_Ink
             bData[13] = true;
             return csByteConvert.BoolArrayToUInt16(bData);
         }
+    }
+
+    /// <summary>
+    /// System function and index
+    /// </summary>
+    public enum InkSystemFunction
+    {
+        EnableDegass=13
     }
 
     public class ResponseString
@@ -133,6 +145,7 @@ namespace SerialPort_Ink
     {
         /// <summary>
         /// Inidcate whether a response received from ink device
+        /// This trigger result check
         /// </summary>
         public bool IsReplied { get; set; }
 
