@@ -32,16 +32,27 @@ namespace ComboBox
             cbTest01.DataSource = sList;
             cbTest01.SelectedIndex = 3;
 
-
+            //Image combobox
             icbTest.Properties.Items.Clear();
-            
-            for (int i = 0; i < 3; i++)
+            icbTest.Properties.SmallImages = imageCollection1;
+            for (int i = 0; i < 2; i++)
             {
                 ImageComboBoxItem item = new ImageComboBoxItem();
-                item.Description = "Description"+i;
+                item.Description = "Desc_"+i;
+                item.ImageIndex = i;
+                item.Value = i; //This must have, otherwise value can't be selected
+                icbTest.Properties.Items.Add(item);
             }
             icbTest.ShowToolTips = true;
             icbTest.MouseMove += IcbTest_MouseMove;
+        }
+
+        private List<Image> GetImageList()
+        {
+            List<Image> images = new List<Image>();
+            images.Add(Properties.Resources.Heart_Monitor);
+            images.Add(Properties.Resources.RingDarkBlue);
+            return images;
         }
 
         private void IcbTest_MouseMove(object sender, MouseEventArgs e)

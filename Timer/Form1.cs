@@ -35,23 +35,18 @@ namespace OperationBlock
 
         private async void T1_Tick(object sender, EventArgs e)
         {
-            //Check pause flag
-            if (Blocker.Enable)
-            {
-                Blocker.IsBlocked = true;
-                return;
-            }
-
             //Add overflow protection
             var t1 = (System.Windows.Forms.Timer)sender;
             t1.Enabled = false;
 
-            //Operation trigger
+            //Check pause flag
             if (Blocker.Enable)
             {
+                Blocker.IsBlocked = true;
                 t1.Enabled = true;
                 return;
             }
+
             await Task.Delay(300);
             Debug.WriteLine("Did sth 1");
 
@@ -104,8 +99,6 @@ namespace OperationBlock
         {
             Blocker.Enable = false;
         }
-
-
 
     }
 }

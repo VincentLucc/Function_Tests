@@ -17,11 +17,13 @@ namespace DevLayout
         public Form1()
         {
             InitializeComponent();
+           
+
         }
 
         private void CancelButtonControl_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,6 +33,10 @@ namespace DevLayout
             {
                 button.Properties.ImageLocation = DevExpress.XtraEditors.ButtonPanel.ImageLocation.AboveText;
             }
+
+            //Focus function doesn't work inside of a layout control, use select intead
+            //Controls must be loaded before set focus
+            tbUserWinform.Select(); //Better put in load events
         }
     }
 }

@@ -30,7 +30,7 @@ namespace SerialPort_Ink
         /// 0 is default device without network
         /// 1-32 A-Z
         /// </summary>
-        List<InkDeviceData> Devices { get; set; }
+        List<InkDevice> Devices { get; set; }
         int TargetDeviceID => GetTargetDeviceID();
 
         public FormMain()
@@ -55,13 +55,13 @@ namespace SerialPort_Ink
 
         private void InitVariables()
         {
-            csPublic.InkSystem = new csInkSystem(config);
-            Devices = new List<InkDeviceData>();
+            csPublic.InkSystem = new csInkSystemColor(config);
+            Devices = new List<InkDevice>();
 
             //Prepare enough empty device
             for (int i = 0; i < 30; i++)
             {
-                InkDeviceData inkDevice = new InkDeviceData();
+                InkDevice inkDevice = new InkDevice();
                 Devices.Add(inkDevice);
             }
 
@@ -242,32 +242,32 @@ namespace SerialPort_Ink
                 var currentDevice = Devices[iDeviceID];
 
                 //Read status
-                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetDeviceStatus, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSysCommandType.GetDeviceStatus, iDeviceID))
                     csPublic.InkSystem.DataBuffer.CopyDeviceStatus(ref currentDevice);
 
                 //Read parameters
-                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetMeniscusPressure, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSysCommandType.GetMeniscusPressure, iDeviceID))
                     currentDevice.MeniscusPressureSetPoint = csPublic.InkSystem.DataBuffer.MeniscusPressureSetPoint;
 
-                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetHeaterSetpoint, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSysCommandType.GetHeaterSetpoint, iDeviceID))
                     currentDevice.HeaterSetPoint = csPublic.InkSystem.DataBuffer.HeaterSetPoint;
 
-                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetFillPumpSpeed, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSysCommandType.GetFillPumpSpeed, iDeviceID))
                     currentDevice.FillPumpSpeedSetPoint = csPublic.InkSystem.DataBuffer.FillPumpSpeedSetPoint;
 
-                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetFillPumpTimeout, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSysCommandType.GetFillPumpTimeout, iDeviceID))
                     currentDevice.FillPumpTimeout = csPublic.InkSystem.DataBuffer.FillPumpTimeout;
 
-                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetPurgeTime, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSysCommandType.GetPurgeTime, iDeviceID))
                     currentDevice.PurgeTimeSetPoint = csPublic.InkSystem.DataBuffer.PurgeTimeSetPoint;
 
-                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetPurgePressure, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSysCommandType.GetPurgePressure, iDeviceID))
                     currentDevice.PurgePressureSetpoint = csPublic.InkSystem.DataBuffer.PurgePressureSetpoint;
 
-                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetStartupDelay, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSysCommandType.GetStartupDelay, iDeviceID))
                     currentDevice.StartUpDelay = csPublic.InkSystem.DataBuffer.StartUpDelay;
 
-                if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetBypassTime, iDeviceID))
+                if (await csPublic.InkSystem.TryReadData2(InkSysCommandType.GetBypassTime, iDeviceID))
                     currentDevice.ByPassTime = csPublic.InkSystem.DataBuffer.ByPassTime;
 
             }
@@ -468,14 +468,14 @@ namespace SerialPort_Ink
 
             if (await csPublic.InkSystem.TryGetDeviceList())
             {
-                for (int i = 0; i < csPublic.InkSystem.DataBuffer.Devices.Count; i++)
+                for (int i = 0; i < csPublic.InkSystem.DataBuffer.DeviceList.Count; i++)
                 {
-                    string sDevice = $"Device:{csPublic.InkSystem.DataBuffer.Devices[i]}";
+                    string sDevice = $"Device:{csPublic.InkSystem.DataBuffer.DeviceList[i]}";
                     lbDevices.Items.Add(sDevice);
                 }
 
                 //Set current device list
-                DeviceNetwork = csPublic.InkSystem.DataBuffer.Devices.ToList();
+                DeviceNetwork = csPublic.InkSystem.DataBuffer.DeviceList.ToList();
             }
         }
 
@@ -515,7 +515,7 @@ namespace SerialPort_Ink
             //Get set value
             if (!double.TryParse(teMeniscusPressure.Text, out double dValue)) return;
             //Try set value
-            if (await csPublic.InkSystem.TrySetParameter(InkSystemCommandType.SetMeniscusPressure, TargetDeviceID, dValue))
+            if (await csPublic.InkSystem.TrySetParameter(InkSysCommandType.SetMeniscusPressure, TargetDeviceID, dValue))
             {
                 tsMeniscusPressure.IsOn = false;
             }
@@ -537,7 +537,7 @@ namespace SerialPort_Ink
             //Get set value
             if (!double.TryParse(teHeaterSetPoint.Text, out double dValue)) return;
             //Try set value
-            if (await csPublic.InkSystem.TrySetParameter(InkSystemCommandType.SetHeaterSetpoint, TargetDeviceID, dValue))
+            if (await csPublic.InkSystem.TrySetParameter(InkSysCommandType.SetHeaterSetpoint, TargetDeviceID, dValue))
             {
                 tsHeaterSetPoint.IsOn = false;
             }
@@ -584,7 +584,7 @@ namespace SerialPort_Ink
             //Get set value
             if (!double.TryParse(teFillPumpSpeed.Text, out double dValue)) return;
             //Try set value
-            if (await csPublic.InkSystem.TrySetParameter(InkSystemCommandType.SetFillPumpSpeed, TargetDeviceID, dValue))
+            if (await csPublic.InkSystem.TrySetParameter(InkSysCommandType.SetFillPumpSpeed, TargetDeviceID, dValue))
             {
                 tsFillPumpSpeed.IsOn = false;
             }
@@ -601,7 +601,7 @@ namespace SerialPort_Ink
             //Get set value
             if (!double.TryParse(teFillPumpTimeout.Text, out double dValue)) return;
             //Try set value
-            if (await csPublic.InkSystem.TrySetParameter(InkSystemCommandType.SetFillPumpTimeout, TargetDeviceID, dValue))
+            if (await csPublic.InkSystem.TrySetParameter(InkSysCommandType.SetFillPumpTimeout, TargetDeviceID, dValue))
             {
                 tsFillPumpTimeout.IsOn = false;
             }
@@ -618,7 +618,7 @@ namespace SerialPort_Ink
             //Get set value
             if (!double.TryParse(tePurgeTime.Text, out double dValue)) return;
             //Try set value
-            if (await csPublic.InkSystem.TrySetParameter(InkSystemCommandType.SetPurgeTime, TargetDeviceID, dValue))
+            if (await csPublic.InkSystem.TrySetParameter(InkSysCommandType.SetPurgeTime, TargetDeviceID, dValue))
             {
                 tsPurgeTime.IsOn = false;
             }
@@ -635,7 +635,7 @@ namespace SerialPort_Ink
             //Get set value
             if (!double.TryParse(tePurgePressure.Text, out double dValue)) return;
             //Try set value
-            if (await csPublic.InkSystem.TrySetParameter(InkSystemCommandType.SetPurgePressure, TargetDeviceID, dValue))
+            if (await csPublic.InkSystem.TrySetParameter(InkSysCommandType.SetPurgePressure, TargetDeviceID, dValue))
             {
                 tsPurgePressure.IsOn = false;
             }
@@ -652,7 +652,7 @@ namespace SerialPort_Ink
             //Get set value
             if (!double.TryParse(teStartupDelay.Text, out double dValue)) return;
             //Try set value
-            if (await csPublic.InkSystem.TrySetParameter(InkSystemCommandType.SetStartupDelay, TargetDeviceID, dValue))
+            if (await csPublic.InkSystem.TrySetParameter(InkSysCommandType.SetStartupDelay, TargetDeviceID, dValue))
             {
                 tsStartupDelay.IsOn = false;
             }
@@ -669,7 +669,7 @@ namespace SerialPort_Ink
             //Get set value
             if (!double.TryParse(teBypassTime.Text, out double dValue)) return;
             //Try set value
-            if (await csPublic.InkSystem.TrySetParameter(InkSystemCommandType.SetBypassTime, TargetDeviceID, dValue))
+            if (await csPublic.InkSystem.TrySetParameter(InkSysCommandType.SetBypassTime, TargetDeviceID, dValue))
             {
                 tsBypassTime.IsOn = false;
             }
@@ -682,28 +682,28 @@ namespace SerialPort_Ink
         private async void bResetAlarm_Click(object sender, EventArgs e)
         {
             //Try set value
-            if (!await csPublic.InkSystem.TrySetParameter(InkSystemCommandType.ResetAlarms, TargetDeviceID))
+            if (!await csPublic.InkSystem.TrySetParameter(InkSysCommandType.ResetAlarms, TargetDeviceID))
                 MessageBox.Show("Error");
         }
 
         private async void bPurge_Click(object sender, EventArgs e)
         {
             //Try set value
-            if (!await csPublic.InkSystem.TrySetParameter(InkSystemCommandType.SetBypassTime, TargetDeviceID))
+            if (!await csPublic.InkSystem.TrySetParameter(InkSysCommandType.SetBypassTime, TargetDeviceID))
                 MessageBox.Show("Error");
         }
 
         private async void bActivateDrainSystem_Click(object sender, EventArgs e)
         {
             //Try set value
-            if (!await csPublic.InkSystem.TrySetParameter(InkSystemCommandType.SetDrainSystem, TargetDeviceID, 1))
+            if (!await csPublic.InkSystem.TrySetParameter(InkSysCommandType.SetDrainSystem, TargetDeviceID, 1))
                 MessageBox.Show("Error");
         }
 
         private async void bDisableDrainSystem_Click(object sender, EventArgs e)
         {
             //Try set value
-            if (!await csPublic.InkSystem.TrySetParameter(InkSystemCommandType.SetDrainSystem, TargetDeviceID, 0))
+            if (!await csPublic.InkSystem.TrySetParameter(InkSysCommandType.SetDrainSystem, TargetDeviceID, 0))
                 MessageBox.Show("Error");
         }
 
@@ -726,7 +726,7 @@ namespace SerialPort_Ink
         private async void bSystemFunctionRead_Click(object sender, EventArgs e)
         {
             //Try set value
-            if (await csPublic.InkSystem.TryReadData2(InkSystemCommandType.GetSystemFunction,TargetDeviceID))
+            if (await csPublic.InkSystem.TryReadData2(InkSysCommandType.GetSystemFunction,TargetDeviceID))
             {
                 UInt16 iValue = csPublic.InkSystem.DataBuffer.SystemFunction;
                 string sBinary = Convert.ToString(iValue, 2);

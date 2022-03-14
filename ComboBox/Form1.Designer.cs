@@ -29,10 +29,14 @@ namespace ComboBox
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.cbTest01 = new System.Windows.Forms.ComboBox();
             this.bUpdate = new System.Windows.Forms.Button();
             this.icbTest = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.icbTest.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbTest01
@@ -62,6 +66,14 @@ namespace ComboBox
             this.icbTest.Size = new System.Drawing.Size(106, 20);
             this.icbTest.TabIndex = 2;
             // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.InsertImage(global::ComboBox.Properties.Resources.Heart_Monitor, "Heart_Monitor", typeof(global::ComboBox.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "Heart_Monitor");
+            this.imageCollection1.InsertImage(global::ComboBox.Properties.Resources.RingDarkBlue, "RingDarkBlue", typeof(global::ComboBox.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "RingDarkBlue");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -74,6 +86,7 @@ namespace ComboBox
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.icbTest.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -83,6 +96,7 @@ namespace ComboBox
         private System.Windows.Forms.ComboBox cbTest01;
         private System.Windows.Forms.Button bUpdate;
         private DevExpress.XtraEditors.ImageComboBoxEdit icbTest;
+        private DevExpress.Utils.ImageCollection imageCollection1;
     }
 }
 

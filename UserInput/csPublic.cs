@@ -4,20 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SerialPort_Ink
+namespace UserInput
 {
     class csPublic
     {
-        /// <summary>
-        /// Main form alias
-        /// </summary>
-        public static FormMain winMain { get; set; }
-
-        public static csInkSystemColor InkSystem { get; set; }
-
-        public static string TimeString => DateTime.Now.ToString("HH:mm:ss:fff");
     }
-
 
     public class GeneralResult
     {
@@ -30,6 +21,8 @@ namespace SerialPort_Ink
         /// Return string result if value needed
         /// </summary>
         public string StrResult { get; set; }
+
+        public object ObjResult { get; set; }
         public String Message { get; set; }
     }
 }

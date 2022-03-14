@@ -78,7 +78,7 @@
   <ItemGroup>
     <Compile Include="Classes\csByteConvert.cs" />
     <Compile Include="Classes\csConfig.cs" />
-    <Compile Include="Classes\csInkSystem.cs" />
+    <Compile Include="Classes\csInkSystemColor.cs" />
     <Compile Include="Classes\csPublic.cs" />
     <Compile Include="Classes\csXML.cs" />
     <Compile Include="FormMain.cs">

@@ -13,10 +13,16 @@ namespace SerialPort_Ink
         /// Regex strings
         /// </summary>
         public static string RegDeviceList = "^[0-9]{1,2},I$";
-        public static string[] Alarms = new string[] {"Tank filling","purging","tank heater output on","ext heater output on",
+        public static string[] SystemStatus = new string[] {"Tank filling","purging","tank heater output on","ext heater output on",
                                                       "cure lamp output on","internal recirc","head lockoff valve open","System Enabled",
                                                       "preheat active","bypass active","drain system active","flush system active",
-                                                      "","","",""};
+                                                      "N/A","N/A","N/A","N/A"};
+        public static string[] Alarms = new string[] {"vacuum/pressure alarm","pump timeout","ink level warning","ink bottle empty",
+                                                      "Tank thermocouple fault","degass fault (if fitted)","recirc fault (if recirc version)","Failsafe alarm (float switch in the air bottle)",
+                                                      "N/A","N/A","N/A","N/A",
+                                                      "N/A","N/A","N/A","N/A"};
+
+
         public static List<string> GetAlarmList(UInt16 iValue)
         {
             var sList = new List<string>();
@@ -46,16 +52,16 @@ namespace SerialPort_Ink
     /// </summary>
     public enum InkSystemFunction
     {
-        EnableDegass=13
+        EnableDegass = 13
     }
 
-    public class ResponseString
+    public class InkResponseString
     {
         public static string Processed = ",A";
         public static string Success = ",C";
     }
 
-    public enum InkSystemCommandType
+    public enum InkSysCommandType
     {
         GetNetworkDevices,
         SetNetworkID,
@@ -97,26 +103,39 @@ namespace SerialPort_Ink
     /// <summary>
     /// Buffer settings of the ink system
     /// </summary>
-    public class InkSystemDataBuffer : InkDeviceData
+    public class InkSystemDataBuffer : InkDevice
     {
-        public List<int> Devices { get; set; }
+        /// <summary>
+        /// Network info of found devices
+        /// </summary>
+        public List<int> DeviceList { get; set; }
         public InkSystemDataBuffer()
         {
-            Devices = new List<int>();
+            DeviceList = new List<int>();
         }
     }
 
-   
 
-    public class InkDeviceData
+
+    public class InkDevice
     {
+        /// <summary>
+        /// Device network ID, 0 not in network, 1-4 matches A-D
+        /// </summary>
+        public int NetworkID { get; set; }
+        /// <summary>
+        /// Description info
+        /// </summary>
+        public string Name { get; set; }
         public double BackPressure { get; set; }
+        public double MeniscusPressureSetPoint { get; set; }
+        public double NonRecirculatingMeniscusPressureSetPoint { get; set; }
         public double RecirculationPressure { get; set; }
         public double HeaterTemp { get; set; }
         public double InkTempreture { get; set; }
         public double StatusBits { get; set; }
         public double Alarm { get; set; }
-        public double MeniscusPressureSetPoint { get; set; }
+        public List<string> AlarmList => InkSystemModel.GetAlarmList(Convert.ToUInt16(Alarm));
         public double HeaterSetPoint { get; set; }
         public double FillPumpSpeedSetPoint { get; set; }
         public double FillPumpTimeout { get; set; }
@@ -126,7 +145,25 @@ namespace SerialPort_Ink
         public double ByPassTime { get; set; }
         public UInt16 SystemFunction { get; set; }
 
-        public void CopyDeviceStatus(ref InkDeviceData deviceData)
+        /// <summary>
+        /// System status from STA?
+        /// </summary>
+
+        public bool FillPumpEnable => GetSystemStatus(SystemFunction, 0);
+        public bool PressureValveEnable => GetSystemStatus(SystemFunction, 1);
+        public bool TankHeaterOutput => GetSystemStatus(SystemFunction, 2);
+        public bool ExternalHeaterOutput => GetSystemStatus(SystemFunction, 3);
+        public bool CureLampOutput => GetSystemStatus(SystemFunction, 4);
+        public bool RecirculationEnable => GetSystemStatus(SystemFunction, 5);
+        public bool HeadLockoffValveEnable => GetSystemStatus(SystemFunction, 6);
+        public bool InkSystemEnable => GetSystemStatus(SystemFunction, 7);
+        public bool PreHeatEnable => GetSystemStatus(SystemFunction, 8);
+        public bool ByPassEnable => GetSystemStatus(SystemFunction, 9);
+        public bool DrainSystemEnable => GetSystemStatus(SystemFunction, 10);
+
+
+
+        public void CopyDeviceStatus(ref InkDevice deviceData)
         {
             deviceData.BackPressure = BackPressure;
             deviceData.RecirculationPressure = RecirculationPressure;
@@ -135,6 +172,12 @@ namespace SerialPort_Ink
             deviceData.StatusBits = StatusBits;
             deviceData.Alarm = Alarm;
             deviceData.SystemFunction = SystemFunction;
+        }
+
+        private bool GetSystemStatus(UInt16 systemStatusValue, int iIndex)
+        {
+            bool[] bData = csByteConvert.UInt16ToBoolArray(systemStatusValue);
+            return bData[iIndex];
         }
     }
 
@@ -160,7 +203,7 @@ namespace SerialPort_Ink
         /// Command error code
         /// </summary>
         public byte ErrorCode { get; set; }
-        public InkSystemCommandType Type { get; set; }
+        public InkSysCommandType Type { get; set; }
         /// <summary>
         /// command to be sent
         /// </summary>
@@ -195,7 +238,7 @@ namespace SerialPort_Ink
         /// <param name="commandType"></param>
         /// <param name="iNetwork">Device network ID</param>
         /// <param name="iValue">Set value if it's a set comand</param>
-        public void Init(InkSystemCommandType commandType, int iNetwork = 0, double dValue = -1)
+        public void Init(InkSysCommandType commandType, int iNetwork = 0, double dValue = -1)
         {
             IsReplied = false;
             IsSuccess = false;
@@ -204,7 +247,7 @@ namespace SerialPort_Ink
             DoubleValue = dValue;
             StrValue = "";
             NetworkID = iNetwork;
-            CommandString = csInkSystem.GetCommandString(commandType, iNetwork, DoubleValue);
+            CommandString = csInkSystemColor.GetCommandString(commandType, iNetwork, DoubleValue);
             CMDTime.Restart();
         }
 
