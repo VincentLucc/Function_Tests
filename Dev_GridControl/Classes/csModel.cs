@@ -21,4 +21,10 @@ namespace Dev_GridControl
         [DisplayName("theClass")]
         public string Class { get; set; }
     }
+
+    public class AlarmInfo
+    {
+        public string DeviceName { get; set; }
+        public string Alarm { get; set; }
+    }
 }

@@ -979,7 +979,7 @@ namespace SerialPort_Ink
 
                 case InkSysCommandType.SetDrainSystem:
                     //1 active, 0 inactive
-                    return iNetworkID == 0 ? $"SDS,{dValue}" : $"{sNetwork}STP,{dValue}";
+                    return iNetworkID == 0 ? $"SDS,{dValue}" : $"{sNetwork}SDS,{dValue}";
 
                 default:
                     break;

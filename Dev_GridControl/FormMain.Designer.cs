@@ -32,6 +32,7 @@ namespace Dev_GridControl
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.button1 = new System.Windows.Forms.Button();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -63,15 +64,26 @@ namespace Dev_GridControl
             this.simpleButton2.TabIndex = 2;
             this.simpleButton2.Text = "Image";
             // 
-            // Form1
+            // simpleButton3
+            // 
+            this.simpleButton3.Location = new System.Drawing.Point(170, 63);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(109, 23);
+            this.simpleButton3.TabIndex = 3;
+            this.simpleButton3.Text = "Card View";
+            this.simpleButton3.ToolTip = "Web Style Row Display";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.simpleButton3);
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.simpleButton1);
-            this.Name = "Form1";
+            this.Name = "FormMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -83,6 +95,7 @@ namespace Dev_GridControl
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private System.Windows.Forms.Button button1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
     }
 }
 

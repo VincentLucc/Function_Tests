@@ -328,8 +328,13 @@ namespace SerialPort_Ink
                 bool bitResult = (str.Substring(str.Length - 1 - i, 1) == "1") ? true : false;
                 bitArray[i] = bitResult;
             }
-
             return bitArray;
+        }
+
+        public static bool GetBitFromUint16(UInt16 systemStatusValue, int iIndex)
+        {
+            bool[] bData = csByteConvert.UInt16ToBoolArray(systemStatusValue);
+            return bData[iIndex];
         }
 
     }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E2E8ED54-CC91-4BF7-8CD1-1F151E1B641D}</ProjectGuid>
+    <ProjectGuid>{86013B4E-5DF4-4880-9D14-E541ADC6AA29}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Dev_GridControl</RootNamespace>
-    <AssemblyName>Dev_GridControl</AssemblyName>
+    <RootNamespace>Dev_GaugeControl</RootNamespace>
+    <AssemblyName>Dev_GaugeControl</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,18 +33,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Sparkline.v19.1.Core, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v19.1.Core, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v19.1.Win, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,18 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\CardViews.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Cotrols\ucGauge1.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\CardViews.Designer.cs">
-      <DependentUpon>CardViews.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Classes\csModel.cs" />
-    <Compile Include="Forms\CustomEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CustomEditor.Designer.cs">
-      <DependentUpon>CustomEditor.cs</DependentUpon>
+    <Compile Include="Cotrols\ucGauge1.Designer.cs">
+      <DependentUpon>ucGauge1.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -75,25 +66,22 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GroupView.cs">
+    <Compile Include="GaugeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GroupView.Designer.cs">
-      <DependentUpon>GroupView.cs</DependentUpon>
+    <Compile Include="GaugeForm.Designer.cs">
+      <DependentUpon>GaugeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\CardViews.resx">
-      <DependentUpon>CardViews.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomEditor.resx">
-      <DependentUpon>CustomEditor.cs</DependentUpon>
+    <EmbeddedResource Include="Cotrols\ucGauge1.resx">
+      <DependentUpon>ucGauge1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GroupView.resx">
-      <DependentUpon>GroupView.cs</DependentUpon>
+    <EmbeddedResource Include="GaugeForm.resx">
+      <DependentUpon>GaugeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -104,7 +92,6 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -118,15 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\open.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\open1.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\open2.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

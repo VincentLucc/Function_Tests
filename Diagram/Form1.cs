@@ -35,9 +35,39 @@ namespace Diagram
             diagramControl1.DragDrop += DiagramControl1_DragDrop; //not trigger
             diagramControl1.CustomItemDragResult += DiagramControl1_CustomItemDragResult;
             diagramControl1.CustomItemDrag += DiagramControl1_CustomItemDrag;
-            diagramControl1.ItemsMoving += DiagramControl1_ItemsMoving;
+            diagramControl1.ItemsMoving += DiagramControl1_ItemsMoving;//Main method 1 do something
+            diagramControl1.AddingNewItem += DiagramControl1_AddingNewItem;//Main method 2 do something
             diagramControl1.MouseClick += DiagramControl1_MouseClick;
             diagramControl1.CustomDrawItem += DiagramControl1_CustomDrawItem;
+     
+        }
+
+        private void DiagramControl1_AddingNewItem(object sender, DiagramAddingNewItemEventArgs e)
+        {
+            if (e.Item is DiagramImage)
+            {
+                ImageAddOperation(e, (DiagramImage)e.Item);
+            }
+        }
+
+
+        private void ImageAddOperation(DiagramAddingNewItemEventArgs e, DiagramImage image)
+        {
+            //Ignore if put into empty space
+            if (e.Parent == null || e.Parent is DiagramRoot) return;
+
+            //Put inside other controls
+            e.Cancel = true;
+
+            //Create new image to add
+            DiagramImage imageNew = new DiagramImage();
+            imageNew.Image = image.Image;
+            imageNew.Size = image.Size;
+
+            //Get new location and add
+            imageNew.X = e.Parent.X;
+            imageNew.Y = e.Parent.Y + e.Parent.Height;
+            diagramControl1.Items.Add(imageNew);
         }
 
         private void DiagramControl1_CustomDrawItem(object sender, CustomDrawItemEventArgs e)
@@ -81,32 +111,35 @@ namespace Diagram
 
         private void DiagramControl1_ItemsMoving(object sender, DiagramItemsMovingEventArgs e)
         {
-            switch (e.Stage)
+
+            //Only process when drag and drop finished
+            if (e.Stage != DiagramActionStage.Finished) return;
+
+            //Only process mouse operation
+            if (e.ActionSource != ItemsActionSource.Mouse) return;
+
+            //Debug
+            Debug.WriteLine("CompositionDiagramControl_ItemsMoving.Finished");
+            Debug.WriteLine($"End From:{ e.Items[0].OldDiagramPosition} to {e.Items[0].NewDiagramPosition}");
+            float x = e.Items[0].NewDiagramPosition.X - e.Items[0].NewParent.X - 8;
+            float y = e.Items[0].NewDiagramPosition.Y - e.Items[0].NewParent.Y - 8;
+            Debug.WriteLine($"End Inner,X:{ (int)x} Y:{(int)y}");
+
+            //Handle movement based on device type
+            foreach (var movingItem in e.Items)
             {
-                case DiagramActionStage.Start:
-                    Debug.WriteLine("Start X:" + e.Items[0].Item.X);
-                    break;
-                case DiagramActionStage.Continue:
-                    //Do nothing
-                    break;
-                case DiagramActionStage.Finished:
-                    Debug.WriteLine($"Stage:{e.Stage}");
-                    Debug.WriteLine($"End From:{ e.Items[0].OldDiagramPosition} to {e.Items[0].NewDiagramPosition}");
-                    float x = e.Items[0].NewDiagramPosition.X - e.Items[0].NewParent.X - 8;
-                    float y = e.Items[0].NewDiagramPosition.Y - e.Items[0].NewParent.Y - 8;
-                    Debug.WriteLine($"End Inner,X:{ (int)x} Y:{(int)y}");
-                    //if (e.Items[0].NewDiagramPosition.X>300)
-                    //{
-                    //    e.Cancel = true;
-                    //}
+                if (movingItem.Item is DiagramImage)
+                {
+                    //Image can only sit in root
+                    if (!(movingItem.NewParent is DiagramRoot))
+                    {
+                        e.Cancel = true;
+                        return;
+                    }
+                }
 
-
-                    break;
-                case DiagramActionStage.Canceled:
-                    break;
-                default:
-                    break;
             }
+
 
             // Debug.WriteLine($"ItemsMoving.Action Source:{e.ActionSource}");
             e.Cancel = false;

@@ -16,7 +16,7 @@ namespace Diagram
         /// <summary>
         /// Constructor
         /// </summary>
-        public ContainerMain(bool StartThread = true)
+        public ContainerMain(bool StartThread = false)
         {
             //Container Basic settings
             ShowHeader = false;
@@ -38,6 +38,7 @@ namespace Diagram
             Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
 
             SizeChanged += ContainerMain_SizeChanged;
+            
 
             if (!StartThread) return;
 

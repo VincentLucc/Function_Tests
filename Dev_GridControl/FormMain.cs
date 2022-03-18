@@ -37,6 +37,11 @@ namespace Dev_GridControl
             
         }
 
-
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            CardViews winCard = new CardViews();
+            winCard.StartPosition = FormStartPosition.CenterParent;
+            winCard.ShowDialog();
+        }
     }
 }

@@ -33,6 +33,8 @@ namespace DevLayout
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.PageLayoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.tbUserWinform = new System.Windows.Forms.TextBox();
+            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
@@ -47,11 +49,13 @@ namespace DevLayout
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.tabNavigationPage1 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.MainLayoutControl = new DevExpress.XtraLayout.LayoutControl();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.bFluent = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -60,15 +64,12 @@ namespace DevLayout
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.tbUserWinform = new System.Windows.Forms.TextBox();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
             this.tabNavigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PageLayoutControl1)).BeginInit();
             this.PageLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
@@ -79,6 +80,8 @@ namespace DevLayout
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainLayoutControl)).BeginInit();
             this.MainLayoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
@@ -89,9 +92,6 @@ namespace DevLayout
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPane1
@@ -138,6 +138,21 @@ namespace DevLayout
             this.PageLayoutControl1.Size = new System.Drawing.Size(620, 317);
             this.PageLayoutControl1.TabIndex = 0;
             this.PageLayoutControl1.Text = "layoutControl1";
+            // 
+            // tbUserWinform
+            // 
+            this.tbUserWinform.Location = new System.Drawing.Point(114, 80);
+            this.tbUserWinform.Name = "tbUserWinform";
+            this.tbUserWinform.Size = new System.Drawing.Size(494, 20);
+            this.tbUserWinform.TabIndex = 10;
+            // 
+            // textEdit2
+            // 
+            this.textEdit2.Location = new System.Drawing.Point(114, 56);
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Size = new System.Drawing.Size(494, 20);
+            this.textEdit2.StyleController = this.PageLayoutControl1;
+            this.textEdit2.TabIndex = 9;
             // 
             // simpleButton7
             // 
@@ -275,6 +290,24 @@ namespace DevLayout
             this.layoutControlItem10.Size = new System.Drawing.Size(576, 26);
             this.layoutControlItem10.TextSize = new System.Drawing.Size(99, 13);
             // 
+            // layoutControlItem11
+            // 
+            this.layoutControlItem11.Control = this.textEdit2;
+            this.layoutControlItem11.Location = new System.Drawing.Point(0, 44);
+            this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Size = new System.Drawing.Size(600, 24);
+            this.layoutControlItem11.Text = "User Name Dev:";
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(99, 13);
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.Control = this.tbUserWinform;
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 68);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Size = new System.Drawing.Size(600, 24);
+            this.layoutControlItem12.Text = "User name winform";
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(99, 13);
+            // 
             // tabNavigationPage1
             // 
             this.tabNavigationPage1.Caption = "tabNavigationPage1";
@@ -287,7 +320,7 @@ namespace DevLayout
             // 
             this.MainLayoutControl.Controls.Add(this.separatorControl1);
             this.MainLayoutControl.Controls.Add(this.simpleButton3);
-            this.MainLayoutControl.Controls.Add(this.simpleButton2);
+            this.MainLayoutControl.Controls.Add(this.bFluent);
             this.MainLayoutControl.Controls.Add(this.simpleButton1);
             this.MainLayoutControl.Controls.Add(this.tabPane1);
             this.MainLayoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -318,17 +351,18 @@ namespace DevLayout
             this.simpleButton3.TabIndex = 6;
             this.simpleButton3.Text = "simpleButton3";
             // 
-            // simpleButton2
+            // bFluent
             // 
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Location = new System.Drawing.Point(233, 414);
-            this.simpleButton2.MinimumSize = new System.Drawing.Size(0, 32);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(99, 32);
-            this.simpleButton2.StyleController = this.MainLayoutControl;
-            this.simpleButton2.TabIndex = 5;
-            this.simpleButton2.Text = "simpleButton2";
+            this.bFluent.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.bFluent.Appearance.Options.UseFont = true;
+            this.bFluent.Location = new System.Drawing.Point(233, 414);
+            this.bFluent.MinimumSize = new System.Drawing.Size(0, 32);
+            this.bFluent.Name = "bFluent";
+            this.bFluent.Size = new System.Drawing.Size(99, 32);
+            this.bFluent.StyleController = this.MainLayoutControl;
+            this.bFluent.TabIndex = 5;
+            this.bFluent.Text = "Fluent Form";
+            this.bFluent.Click += new System.EventHandler(this.bFluent_Click);
             // 
             // simpleButton1
             // 
@@ -377,7 +411,7 @@ namespace DevLayout
             // 
             // layoutControlItem3
             // 
-            this.layoutControlItem3.Control = this.simpleButton2;
+            this.layoutControlItem3.Control = this.bFluent;
             this.layoutControlItem3.Location = new System.Drawing.Point(221, 402);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(103, 36);
@@ -411,39 +445,6 @@ namespace DevLayout
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
-            // textEdit2
-            // 
-            this.textEdit2.Location = new System.Drawing.Point(114, 56);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(494, 20);
-            this.textEdit2.StyleController = this.PageLayoutControl1;
-            this.textEdit2.TabIndex = 9;
-            // 
-            // layoutControlItem11
-            // 
-            this.layoutControlItem11.Control = this.textEdit2;
-            this.layoutControlItem11.Location = new System.Drawing.Point(0, 44);
-            this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(600, 24);
-            this.layoutControlItem11.Text = "User Name Dev:";
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(99, 13);
-            // 
-            // tbUserWinform
-            // 
-            this.tbUserWinform.Location = new System.Drawing.Point(114, 80);
-            this.tbUserWinform.Name = "tbUserWinform";
-            this.tbUserWinform.Size = new System.Drawing.Size(494, 20);
-            this.tbUserWinform.TabIndex = 10;
-            // 
-            // layoutControlItem12
-            // 
-            this.layoutControlItem12.Control = this.tbUserWinform;
-            this.layoutControlItem12.Location = new System.Drawing.Point(0, 68);
-            this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(600, 24);
-            this.layoutControlItem12.Text = "User name winform";
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(99, 13);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -458,6 +459,7 @@ namespace DevLayout
             this.tabNavigationPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PageLayoutControl1)).EndInit();
             this.PageLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
@@ -468,6 +470,8 @@ namespace DevLayout
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainLayoutControl)).EndInit();
             this.MainLayoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
@@ -478,9 +482,6 @@ namespace DevLayout
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -493,7 +494,7 @@ namespace DevLayout
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraEditors.SeparatorControl separatorControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton bFluent;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;

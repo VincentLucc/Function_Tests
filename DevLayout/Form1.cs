@@ -38,5 +38,11 @@ namespace DevLayout
             //Controls must be loaded before set focus
             tbUserWinform.Select(); //Better put in load events
         }
+
+        private void bFluent_Click(object sender, EventArgs e)
+        {
+            FluentDesignForm1 form1 = new FluentDesignForm1();
+            form1.Show();
+        }
     }
 }
