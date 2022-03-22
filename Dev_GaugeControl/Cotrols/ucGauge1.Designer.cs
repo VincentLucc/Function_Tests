@@ -36,12 +36,16 @@ namespace Dev_GaugeControl
             this.arcScaleComponent1 = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleComponent();
             this.labelComponent2 = new DevExpress.XtraGauges.Win.Base.LabelComponent();
             this.labelComponent3 = new DevExpress.XtraGauges.Win.Base.LabelComponent();
+            this.labelComponent4 = new DevExpress.XtraGauges.Win.Base.LabelComponent();
+            this.labelComponent5 = new DevExpress.XtraGauges.Win.Base.LabelComponent();
             ((System.ComponentModel.ISupportInitialize)(this.circularGauge1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelComponent1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleRangeBarComponent1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleComponent1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelComponent2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelComponent3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelComponent4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelComponent5)).BeginInit();
             this.SuspendLayout();
             // 
             // gaugeControl1
@@ -53,14 +57,16 @@ namespace Dev_GaugeControl
             this.circularGauge1});
             this.gaugeControl1.Location = new System.Drawing.Point(0, 0);
             this.gaugeControl1.Name = "gaugeControl1";
-            this.gaugeControl1.Size = new System.Drawing.Size(263, 267);
+            this.gaugeControl1.Size = new System.Drawing.Size(263, 273);
             this.gaugeControl1.TabIndex = 1;
             // 
             // circularGauge1
             // 
             this.circularGauge1.Bounds = new System.Drawing.Rectangle(8, 10, 251, 248);
             this.circularGauge1.Labels.AddRange(new DevExpress.XtraGauges.Win.Base.LabelComponent[] {
-            this.labelComponent1});
+            this.labelComponent1,
+            this.labelComponent4,
+            this.labelComponent5});
             this.circularGauge1.Name = "circularGauge1";
             this.circularGauge1.RangeBars.AddRange(new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleRangeBarComponent[] {
             this.arcScaleRangeBarComponent1});
@@ -71,7 +77,7 @@ namespace Dev_GaugeControl
             // 
             this.labelComponent1.AppearanceText.Font = new System.Drawing.Font("Segoe UI", 27.75F);
             this.labelComponent1.Name = "circularGauge1_Label1";
-            this.labelComponent1.Position = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 100F);
+            this.labelComponent1.Position = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 50F);
             this.labelComponent1.Size = new System.Drawing.SizeF(140F, 60F);
             this.labelComponent1.Text = "910";
             this.labelComponent1.ZOrder = -1001;
@@ -93,7 +99,7 @@ namespace Dev_GaugeControl
             this.arcScaleComponent1.AppearanceMinorTickmark.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:White");
             this.arcScaleComponent1.AppearanceTickmarkText.Font = new System.Drawing.Font("Tahoma", 8.5F);
             this.arcScaleComponent1.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#484E5A");
-            this.arcScaleComponent1.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 100F);
+            this.arcScaleComponent1.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 50F);
             this.arcScaleComponent1.EndAngle = 0F;
             this.arcScaleComponent1.MajorTickCount = 5;
             this.arcScaleComponent1.MajorTickmark.FormatString = "{0:F0}";
@@ -124,19 +130,41 @@ namespace Dev_GaugeControl
             this.labelComponent3.Text = "circularGauge1_Label3";
             this.labelComponent3.ZOrder = -1001;
             // 
+            // labelComponent4
+            // 
+            this.labelComponent4.AppearanceText.Format = new DevExpress.XtraGauges.Core.Drawing.StringFormatObject(System.Drawing.StringAlignment.Near, System.Drawing.StringAlignment.Center, System.Drawing.StringTrimming.Character, System.Drawing.StringFormatFlags.NoClip);
+            this.labelComponent4.AppearanceText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Black");
+            this.labelComponent4.Name = "circularGauge1_Label2";
+            this.labelComponent4.Position = new DevExpress.XtraGauges.Core.Base.PointF2D(110F, 100F);
+            this.labelComponent4.Size = new System.Drawing.SizeF(200F, 25F);
+            this.labelComponent4.Text = "circularGauge1_Label2";
+            this.labelComponent4.ZOrder = -1001;
+            // 
+            // labelComponent5
+            // 
+            this.labelComponent5.AppearanceText.Format = new DevExpress.XtraGauges.Core.Drawing.StringFormatObject(System.Drawing.StringAlignment.Near, System.Drawing.StringAlignment.Center, System.Drawing.StringTrimming.Character, System.Drawing.StringFormatFlags.NoClip);
+            this.labelComponent5.AppearanceText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Black");
+            this.labelComponent5.Name = "circularGauge1_Label3";
+            this.labelComponent5.Position = new DevExpress.XtraGauges.Core.Base.PointF2D(110F, 120F);
+            this.labelComponent5.Size = new System.Drawing.SizeF(200F, 25F);
+            this.labelComponent5.Text = "circularGauge1_Label3dfsdfsdfsdfd";
+            this.labelComponent5.ZOrder = -1001;
+            // 
             // ucGauge1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gaugeControl1);
             this.Name = "ucGauge1";
-            this.Size = new System.Drawing.Size(263, 267);
+            this.Size = new System.Drawing.Size(263, 273);
             ((System.ComponentModel.ISupportInitialize)(this.circularGauge1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelComponent1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleRangeBarComponent1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleComponent1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelComponent2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelComponent3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelComponent4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelComponent5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -150,5 +178,7 @@ namespace Dev_GaugeControl
         private DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleComponent arcScaleComponent1;
         private DevExpress.XtraGauges.Win.Base.LabelComponent labelComponent2;
         private DevExpress.XtraGauges.Win.Base.LabelComponent labelComponent3;
+        private DevExpress.XtraGauges.Win.Base.LabelComponent labelComponent4;
+        private DevExpress.XtraGauges.Win.Base.LabelComponent labelComponent5;
     }
 }

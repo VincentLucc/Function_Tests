@@ -51,7 +51,7 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonApplication", "Python
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevLayout", "DevLayout\DevLayout.csproj", "{2F936454-E894-457E-AFD5-0B298F50AFA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lock", "Lock\Lock.csproj", "{C8AC63CD-7E71-4707-A252-0D7BC28226C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadingLock", "Lock\ThreadingLock.csproj", "{C8AC63CD-7E71-4707-A252-0D7BC28226C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hardware", "Hardware\Hardware.csproj", "{E0558469-4ED1-4525-88CA-1EF4D8A85BFE}"
 EndProject

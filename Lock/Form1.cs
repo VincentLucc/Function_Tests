@@ -39,6 +39,10 @@ namespace Lock
         }
 
         public object operationLock = new object();
+
+        public static bool IsBusy { get; private set; }
+        public static string WorkingON { get; private set; }
+
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             DoSth();
@@ -72,6 +76,69 @@ namespace Lock
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private async void bAwaitTime_Click(object sender, EventArgs e)
+        {
+            Stopwatch watch = new Stopwatch();
+            long[] spans = new long[10];
+            watch.Start();
+            DoSthAsync();
+            spans[0] = watch.ElapsedMilliseconds;
+            
+            await WaitForBlockAsync();
+            DoSth();
+            spans[1] = watch.ElapsedMilliseconds;
+
+            //Get operation time
+            Debug.WriteLine($"Opeartion time s0:{spans[0]}:s1:{spans[1]}");
+        }
+
+        private async Task DoSthAsync()
+        {
+            IsBusy = true;
+
+            lock (operationLock)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j < 30; j++)
+                    {
+                      Task.Delay(10);
+                    }
+
+                    Debug.WriteLine(i + 1);
+                }
+            }
+
+            IsBusy = false;
+        }
+
+        public static async Task<bool> WaitForBlockAsync()
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            bool IsShown = false;
+
+            while (IsBusy)
+            {
+                //Display wait target once
+                while (!IsShown)
+                {
+                    Debug.WriteLine("WaitForBlockAsync:" + WorkingON);
+                    IsShown = true;
+                }
+                await Task.Delay(20);
+                if (stopwatch.ElapsedMilliseconds > 30000)
+                {
+                    Debug.WriteLine($"WaitForBlockAsync.Timeout:{stopwatch.ElapsedMilliseconds} ms");
+                    return false;
+                }
+            }
+
+            Debug.WriteLine("WaitForBlockAsync:" + stopwatch.ElapsedMilliseconds);
+            stopwatch.Stop();
+            return true;
         }
     }
 }

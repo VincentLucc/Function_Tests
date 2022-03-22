@@ -68,6 +68,9 @@ namespace Dev_GridControl
             TemplateGridView.OptionsCustomization.AllowFilter = false;
             TemplateGridView.OptionsCustomization.AllowSort = false;
 
+            //
+            
+
             //Set custom editor
             RepositoryItemButtonEdit buttonEditor = new RepositoryItemButtonEdit();
             buttonEditor.Buttons.Clear();
