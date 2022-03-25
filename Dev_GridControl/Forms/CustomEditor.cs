@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,7 @@ namespace Dev_GridControl
 {
     public partial class CustomEditor : Form
     {
-        public Dictionary<string,string> TemplateListBuffer { get; set; }
-        public string sTemplateCaptain { get; set; }
+        public List<DataRowView> TemplateListBuffer { get; set; }
         public string sCommandCaption { get; set; }
 
         public CustomEditor()
@@ -38,13 +38,14 @@ namespace Dev_GridControl
         private void InitVariables()
         {
             //Create sample data
-            TemplateListBuffer = new Dictionary<string,string>();
+            TemplateListBuffer = new List<DataRowView>();
             for (int i = 0; i < 3; i++)
             {
-                TemplateListBuffer.Add($"ABC_{0 + i}","");
+                var RowView = new DataRowView();
+                RowView.Name = $"ABC_{ 0 + i}";
+                TemplateListBuffer.Add(RowView);
             }
 
-            sTemplateCaptain = "Template";
             sCommandCaption = "Command";
         }
 
@@ -57,20 +58,152 @@ namespace Dev_GridControl
             TemplateGridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom; //New row can be added
             TemplateGridView.OptionsView.ShowButtonMode = ShowButtonModeEnum.ShowAlways; //Always show button
             TemplateGridView.OptionsBehavior.Editable = true; //Enable input
-            TemplateGridView.Columns[0].Caption = sTemplateCaptain;
-            TemplateGridView.Columns.Add(new GridColumn());
-            TemplateGridView.Columns[1].Caption = sCommandCaption;
-            TemplateGridView.Columns[1].MaxWidth = 160;
-         
+            int iCMDColumn = TemplateGridView.Columns.Add(new GridColumn());
+            TemplateGridView.Columns[iCMDColumn].Caption = sCommandCaption;
+            TemplateGridView.Columns[iCMDColumn].MaxWidth = 160;
+            TemplateGridView.Columns[iCMDColumn].Visible = true; //Must have to be seen
+            var descColumn = TemplateGridView.Columns[nameof(DataRowView.Description)];
+            descColumn.OptionsColumn.ReadOnly = true; //Diable edit
+
+
+
             TemplateGridView.Appearance.HeaderPanel.TextOptions.HAlignment = HorzAlignment.Center;//Center header text
             TemplateGridView.Appearance.Row.TextOptions.HAlignment = HorzAlignment.Near;//Center header text
             TemplateGridView.RowHeight = 32;
             TemplateGridView.OptionsCustomization.AllowFilter = false;
             TemplateGridView.OptionsCustomization.AllowSort = false;
 
-            //
-            
+            //preview keydown
+            TemplateGridControl.PreviewKeyDown += TemplateGridControl_PreviewKeyDown;
 
+            //Create ImageComboEdit
+            var comboBoxEdit = InitComboBoxEditor();
+
+            //Set custom editor
+            var buttonEditor = InitButtonEdit();
+
+            TemplateGridView.CustomRowCellEdit += (s, e) =>
+            {
+                if (e.Column.Caption == sCommandCaption)
+                {
+                    e.RepositoryItem = buttonEditor;
+                }
+                //ComboBox Edit
+                else if (e.Column.FieldName == nameof(DataRowView.Function))
+                {
+                    e.RepositoryItem = comboBoxEdit;
+                }
+            };
+        }
+
+        private void TemplateGridControl_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            Debug.WriteLine("TemplateGridControl_PreviewKeyDown:" + e.KeyCode);
+
+            if (e.KeyCode == Keys.Delete)
+            {
+                DeleteKeyDownOperation();
+            }
+        }
+
+        private void DeleteKeyDownOperation()
+        {
+            int iSelection = TemplateGridView.FocusedRowHandle;
+            if (iSelection >= 0)
+            {//Delete current row
+                TemplateListBuffer.RemoveAt(iSelection);
+            }
+            else
+            {//No selection
+                if (TemplateListBuffer.Count > 0)
+                {
+                    //Delate last row
+                    TemplateListBuffer.RemoveAt(TemplateListBuffer.Count - 1);
+                }
+                else
+                {
+                    //do nothing
+                }
+            }
+
+            TemplateGridControl.RefreshDataSource();
+        }
+
+        private RepositoryItemImageComboBox InitComboBoxEditor()
+        {
+            //Set combo box editor
+            RepositoryItemImageComboBox templateSelectionComboBox = new RepositoryItemImageComboBox();
+            templateSelectionComboBox.Items.Clear();
+            templateSelectionComboBox.SmallImages = imageCollection1;
+
+            for (int i = 0; i < 3; i++)
+            {
+                ImageComboBoxItem item = new ImageComboBoxItem();
+                item.Description = $"Function{i + 1}"; //Display Value
+                item.Value = item.Description; //Must have, actual value
+                item.ImageIndex = i;
+                templateSelectionComboBox.Items.Add(item);
+            }
+
+            //Set combobox event
+            templateSelectionComboBox.SelectedIndexChanged += TemplateSelectionComboBox_SelectedIndexChanged;
+
+            return templateSelectionComboBox;
+        }
+
+        private void TemplateSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //Get row value
+                int iRow = TemplateGridView.FocusedRowHandle;
+                var ComboBox = (ImageComboBoxEdit)sender;
+                var selectedItem = (ImageComboBoxItem)ComboBox.SelectedItem;
+
+                //Add or create row based on selection
+                if (iRow >= 0)
+                {
+                    //Get current row
+                    var selectedRow = TemplateListBuffer[iRow];
+
+                    //Edit current row
+                    UpdateSelectionRowView(selectedItem, ref selectedRow);
+                }
+                else
+                {
+                    //No selection, directly create layout
+                    var newRow = CreateSelectionRowView(selectedItem);
+                    TemplateListBuffer.Add(newRow);
+                }
+
+                //Refresh display
+                TemplateGridView.RefreshData();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("TemplateSelectionComboBox_SelectedIndexChanged:\r\n" + ex.Message);
+            }
+        }
+
+        private DataRowView CreateSelectionRowView(ImageComboBoxItem selectedItem)
+        {
+            DataRowView rowView = new DataRowView();
+            rowView.Name = $"Type{selectedItem.ImageIndex + 1}";
+            rowView.Function = selectedItem.Value.ToString();
+            return rowView;
+        }
+
+        private void UpdateSelectionRowView(ImageComboBoxItem selectedItem, ref DataRowView selectedRow)
+        {
+            //No related value change required
+
+        }
+
+ 
+
+
+        private RepositoryItemButtonEdit InitButtonEdit()
+        {
             //Set custom editor
             RepositoryItemButtonEdit buttonEditor = new RepositoryItemButtonEdit();
             buttonEditor.Buttons.Clear();
@@ -86,14 +219,7 @@ namespace Dev_GridControl
             buttonEditor.Buttons[0].Click += CustomEditorButton1_Click;
             buttonEditor.Buttons[1].Click += CustomEditorButton2_Click;
             buttonEditor.TextEditStyle = TextEditStyles.HideTextEditor; //Only display button
-
-            TemplateGridView.CustomRowCellEdit += (s, e) =>
-            {
-                if (e.Column.Caption == sCommandCaption)
-                {
-                    e.RepositoryItem = buttonEditor;
-                }
-            };
+            return buttonEditor;
         }
 
         private void CustomEditorButton1_Click(object sender, EventArgs e)
@@ -110,6 +236,14 @@ namespace Dev_GridControl
             TemplateGridView.FocusedRowHandle = GridControl.NewItemRowHandle;
         }
 
+        public class DataRowView
+        {
+            [DisplayName("Template Name")]
+            public string Name { get; set; }
+            public string Description { get; set; }
+            [DisplayName("Current Function")]
+            public string Function { get; set; }
 
+        }
     }
 }

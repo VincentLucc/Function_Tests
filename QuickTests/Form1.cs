@@ -265,5 +265,17 @@ namespace QuickTests
 
             bitData = csByteConvert.UInt16ToBoolArray(iSignal);
         }
+
+        private void bFolders_Click(object sender, EventArgs e)
+        {
+            string sPath = null;
+
+            if (csPublic.IsValidPath(sPath))
+            {
+                Debug.WriteLine("Valid Path.");
+            }
+        }
+
+
     }
 }

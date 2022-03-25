@@ -39,6 +39,7 @@ namespace QuickTests
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.bFolders = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -141,11 +142,22 @@ namespace QuickTests
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // bFolders
+            // 
+            this.bFolders.Location = new System.Drawing.Point(558, 70);
+            this.bFolders.Name = "bFolders";
+            this.bFolders.Size = new System.Drawing.Size(75, 23);
+            this.bFolders.TabIndex = 10;
+            this.bFolders.Text = "Folders";
+            this.bFolders.UseVisualStyleBackColor = true;
+            this.bFolders.Click += new System.EventHandler(this.bFolders_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bFolders);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -177,6 +189,7 @@ namespace QuickTests
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button bFolders;
     }
 }
 
