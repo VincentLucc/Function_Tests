@@ -67,22 +67,55 @@
     <Compile Include="Controls\uc2.Designer.cs">
       <DependentUpon>uc2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Controls\UC3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UC3.Designer.cs">
+      <DependentUpon>UC3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WidgetViewDynamic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WidgetViewDynamic.Designer.cs">
+      <DependentUpon>WidgetViewDynamic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WidgetView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WidgetView.Designer.cs">
+      <DependentUpon>WidgetView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabbedView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabbedView.Designer.cs">
+      <DependentUpon>TabbedView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinUIView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinUIView.Designer.cs">
+      <DependentUpon>WinUIView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Controls\uc1.resx">
       <DependentUpon>uc1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\uc2.resx">
       <DependentUpon>uc2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\UC3.resx">
+      <DependentUpon>UC3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -94,6 +127,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="WidgetViewDynamic.resx">
+      <DependentUpon>WidgetViewDynamic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WidgetView.resx">
+      <DependentUpon>WidgetView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabbedView.resx">
+      <DependentUpon>TabbedView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinUIView.resx">
+      <DependentUpon>WinUIView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
