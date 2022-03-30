@@ -24,7 +24,7 @@ namespace SerialPort_Ink
         /// device network status
         /// </summary>
         List<int> DeviceNetwork = new List<int>();
-        TimerBlock OperationBlock = new TimerBlock(); //Block process operation only
+        LoopBlocker OperationBlock = new LoopBlocker(); //Block process operation only
         /// <summary>
         /// Store device data
         /// 0 is default device without network

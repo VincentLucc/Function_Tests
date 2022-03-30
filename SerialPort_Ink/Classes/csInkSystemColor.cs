@@ -64,7 +64,7 @@ namespace SerialPort_Ink
         /// <summary>
         /// Temporarily block the thread
         /// </summary>
-        private TimerBlock SendBlocker { get; set; }
+        private LoopBlocker SendBlocker { get; set; }
 
         /// <summary>
         /// Network start from 1 which matches a-z
@@ -93,7 +93,7 @@ namespace SerialPort_Ink
         public csInkSystemColor(csConfig config)
         {
             //Init variables
-            SendBlocker = new TimerBlock();
+            SendBlocker = new LoopBlocker();
             Port = new SerialPort();
             ComLogMaxSize = 10000; //Max size of log info
             ApplyPortSettings(config);

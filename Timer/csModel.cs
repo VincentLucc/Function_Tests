@@ -14,7 +14,7 @@ namespace OperationBlock
     /// <summary>
     /// Used to fullly block operation for a timer with blocked trigger
     /// </summary>
-    public class TimerBlock
+    public class LoopBlocker
     {
         public bool Enable { get; set; }
         /// <summary>
@@ -26,7 +26,7 @@ namespace OperationBlock
         /// </summary>
         public int TimeOut { get; set; }
 
-        public TimerBlock()
+        public LoopBlocker()
         {
             TimeOut = 5000;
         }

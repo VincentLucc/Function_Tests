@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B38924AC-31F7-4217-BF8A-EB6B728E6565}</ProjectGuid>
+    <ProjectGuid>{28629751-1C8A-4670-8DA5-5EEA8F64535D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>UserInput</RootNamespace>
-    <AssemblyName>UserInput</AssemblyName>
+    <RootNamespace>DocumentManager</RootNamespace>
+    <AssemblyName>DocumentManager</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -37,6 +37,7 @@
     <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v19.1.Core, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -54,7 +55,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="csPublic.cs" />
+    <Compile Include="Controls\uc1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\uc1.Designer.cs">
+      <DependentUpon>uc1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\uc2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\uc2.Designer.cs">
+      <DependentUpon>uc2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +75,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\uc1.resx">
+      <DependentUpon>uc1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\uc2.resx">
+      <DependentUpon>uc2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

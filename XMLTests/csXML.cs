@@ -34,7 +34,7 @@ namespace XMLTests
             }
             catch (Exception e1)
             {
-                Debug.WriteLine("ClassXML.ReadXML" + e1.Message);
+                Debug.WriteLine("csXML.ReadXML" + e1.Message);
                 return false;
             }
 
@@ -53,6 +53,9 @@ namespace XMLTests
                 //Check file existance, make sure to close the file after creation
                 if (!File.Exists(FilePath)) File.Create(FilePath).Close();
 
+                //Check null
+                if (TargetObject == null) return false;
+
                 //Write to XML
                 using (TextWriter write = new StreamWriter(FilePath))
                 {
@@ -61,13 +64,12 @@ namespace XMLTests
             }
             catch (Exception e1)
             {
-                Debug.WriteLine("ClassXML.WriteXML" + e1.Message);
+                Debug.WriteLine("csXML.WriteXML" + e1.Message);
                 return false;
             }
 
             //Pass all steps
             return true;
-
         }
     }
 }

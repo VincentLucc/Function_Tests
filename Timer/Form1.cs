@@ -15,7 +15,7 @@ namespace OperationBlock
     public partial class Form1 : Form
     {
 
-        public TimerBlock Blocker { get; set; }
+        public LoopBlocker Blocker { get; set; }
 
         public Form1()
         {
@@ -30,7 +30,7 @@ namespace OperationBlock
             t1.Start();
 
 
-            Blocker = new TimerBlock();
+            Blocker = new LoopBlocker();
         }
 
         private async void T1_Tick(object sender, EventArgs e)

@@ -57,5 +57,10 @@ namespace XMLTests
 
             csXML.WriteXML(inkSys, typeof(InkSysConfig),csPublic.FilePath+@"\ink.xml");
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            csXML.WriteXML(null, typeof(InkSysConfig), csPublic.FilePath + @"\ink.xml");
+        }
     }
 }

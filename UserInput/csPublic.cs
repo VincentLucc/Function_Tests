@@ -25,4 +25,16 @@ namespace UserInput
         public object ObjResult { get; set; }
         public String Message { get; set; }
     }
+
+    public class EditMasks
+    {
+        /// <summary>
+        /// Number type editor
+        /// </summary>
+        public static string Type1Num = "";
+        /// <summary>
+        /// Regular express type
+        /// </summary>
+        public static string Type2Reg = ""; 
+    }
 }

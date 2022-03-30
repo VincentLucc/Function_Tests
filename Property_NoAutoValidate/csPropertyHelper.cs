@@ -262,6 +262,15 @@ namespace Property_NoAutoValidate
                     row.Properties.RowEdit = repositoryNumberEdit;
                     break;
 
+                case EditorType.NumberReg:
+                    RepositoryItemTextEdit numberReg = new RepositoryItemTextEdit();
+                    numberReg.Mask.MaskType = MaskType.RegEx;
+                    numberReg.Mask.UseMaskAsDisplayFormat = true;
+                    numberReg.Mask.EditMask = EditMasks.DigitalValue;
+                    numberReg.ValidateOnEnterKey = true;
+                    row.Properties.RowEdit = numberReg;
+                    break;
+
                 case EditorType.Text:
                     string sText = row.Properties.FieldName;
                     RepositoryItemTextEdit textEdit_Text = new RepositoryItemTextEdit();
@@ -320,6 +329,7 @@ namespace Property_NoAutoValidate
     {
         Cal,
         Number,
+        NumberReg,
         Text,
         ToggleSwitch,
         ToggleSwitchList,
