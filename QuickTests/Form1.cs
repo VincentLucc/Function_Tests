@@ -277,5 +277,34 @@ namespace QuickTests
         }
 
 
+        StudentEvent sEvent = new StudentEvent();
+        private void bEvents_Click(object sender, EventArgs e)
+        {
+            sEvent.NameChanged += SEvent_NameChanged;
+            sEvent.AgeChanged += SEvent_AgeChanged;
+           
+        }
+
+        private void SEvent_AgeChanged()
+        {
+            Debug.WriteLine($"Age changed to {sEvent.Age}");
+            sEvent.Name = (sEvent.Age + 1).ToString();
+        }
+
+        private void SEvent_NameChanged()
+        {
+            Debug.WriteLine($"Name changed to {sEvent.Name}");
+            sEvent.Age = 123;
+        }
+
+        private void bSetName_Click(object sender, EventArgs e)
+        {
+            sEvent.Name = tbName.Text;
+        }
+
+        private void bSetAge_Click(object sender, EventArgs e)
+        {
+            sEvent.Age = int.Parse(tbAge.Text);
+        }
     }
 }

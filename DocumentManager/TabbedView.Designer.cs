@@ -31,19 +31,50 @@ namespace DocumentManager
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
-            this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
-            this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
-            this.uc2Document = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
             this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
+            this.uc2Document = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.uC3Document = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
             this.uc1Document = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uc2Document)).BeginInit();
+            this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
+            this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            this.documentGroup2 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uc2Document)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uC3Document)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uc1Document)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentGroup2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // documentGroup1
+            // 
+            this.documentGroup1.Items.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document[] {
+            this.uc2Document,
+            this.uc1Document});
+            // 
+            // uc2Document
+            // 
+            this.uc2Document.Caption = "uc2";
+            this.uc2Document.ControlName = "uc2";
+            this.uc2Document.ControlTypeName = "DocumentManager.uc2";
+            // 
+            // uC3Document
+            // 
+            this.uC3Document.Caption = "UC3";
+            this.uC3Document.ControlName = "UC3";
+            this.uC3Document.ControlTypeName = "DocumentManager.UC3";
+            this.uC3Document.FloatLocation = new System.Drawing.Point(411, 369);
+            this.uC3Document.FloatSize = new System.Drawing.Size(689, 465);
+            // 
+            // uc1Document
+            // 
+            this.uc1Document.Caption = "uc1";
+            this.uc1Document.ControlName = "uc1";
+            this.uc1Document.ControlTypeName = "DocumentManager.uc1";
+            this.uc1Document.FloatLocation = new System.Drawing.Point(85, 182);
+            this.uc1Document.FloatSize = new System.Drawing.Size(341, 465);
             // 
             // documentManager1
             // 
@@ -55,39 +86,22 @@ namespace DocumentManager
             // tabbedView1
             // 
             this.tabbedView1.DocumentGroups.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup[] {
-            this.documentGroup1});
+            this.documentGroup1,
+            this.documentGroup2});
             this.tabbedView1.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
             this.uc2Document,
             this.uC3Document,
             this.uc1Document});
             dockingContainer1.Element = this.documentGroup1;
+            dockingContainer2.Element = this.documentGroup2;
             this.tabbedView1.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            dockingContainer1});
+            dockingContainer1,
+            dockingContainer2});
             // 
-            // uc2Document
+            // documentGroup2
             // 
-            this.uc2Document.Caption = "uc2";
-            this.uc2Document.ControlName = "uc2";
-            this.uc2Document.ControlTypeName = "DocumentManager.uc2";
-            // 
-            // documentGroup1
-            // 
-            this.documentGroup1.Items.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document[] {
-            this.uc2Document,
-            this.uC3Document,
-            this.uc1Document});
-            // 
-            // uC3Document
-            // 
-            this.uC3Document.Caption = "UC3";
-            this.uC3Document.ControlName = "UC3";
-            this.uC3Document.ControlTypeName = "DocumentManager.UC3";
-            // 
-            // uc1Document
-            // 
-            this.uc1Document.Caption = "uc1";
-            this.uc1Document.ControlName = "uc1";
-            this.uc1Document.ControlTypeName = "DocumentManager.uc1";
+            this.documentGroup2.Items.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document[] {
+            this.uC3Document});
             // 
             // TabbedView
             // 
@@ -96,12 +110,13 @@ namespace DocumentManager
             this.ClientSize = new System.Drawing.Size(697, 496);
             this.Name = "TabbedView";
             this.Text = "TestForm2";
-            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uc2Document)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uc2Document)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uC3Document)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uc1Document)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentGroup2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -119,5 +134,6 @@ namespace DocumentManager
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document uc2Document;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document uc1Document;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.Document uC3Document;
+        private DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup documentGroup2;
     }
 }

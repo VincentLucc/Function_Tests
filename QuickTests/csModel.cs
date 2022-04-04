@@ -62,4 +62,30 @@ namespace QuickTests
             Debug.WriteLine("Dosth in StudentNew.");
         }
     }
+
+    public class StudentEvent
+    {
+        private string _name;
+
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; NameChanged?.Invoke(); }
+        }
+
+        public delegate void NameChangedAction();
+        public event NameChangedAction NameChanged;
+
+        private int _age;
+
+        public int Age
+        {
+            get { return _age; }
+            set { _age = value; AgeChanged?.Invoke(); }
+        }
+
+        public delegate void AgeChangedAction();
+        public event AgeChangedAction AgeChanged;
+
+    }
 }

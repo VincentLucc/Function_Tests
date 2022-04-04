@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Docking
+namespace Docking.Controls
 {
-    public partial class Form1 : Form
+    public partial class ucCenter : UserControl
     {
-        public Form1()
+        public ucCenter()
         {
             InitializeComponent();
         }

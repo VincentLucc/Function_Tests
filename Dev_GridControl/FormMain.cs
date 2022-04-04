@@ -43,5 +43,11 @@ namespace Dev_GridControl
             winCard.StartPosition = FormStartPosition.CenterParent;
             winCard.ShowDialog();
         }
+
+        private void bRejectReasons_Click(object sender, EventArgs e)
+        {
+            var winReject = new RejectReasonsForm();
+            winReject.Show();
+        }
     }
 }
