@@ -18,7 +18,7 @@ using DevExpress.XtraVerticalGrid.Rows;
 
 namespace Property_NoAutoValidate
 {
-    public partial class Form1 : Form
+    public partial class Form1 : XtraForm
     {
         List<Student> sList;
         public csPropertyHelper propertyHelper { get; set; }
@@ -58,6 +58,9 @@ namespace Property_NoAutoValidate
             pg1.CausesValidation = true; //Default not to validate only when required
             pg1.LostFocus += Pg1_LostFocus;
             pg1.OptionsBehavior.UseTabKey = false;
+
+            //Set description
+            pd1.PropertyGrid = pg1;
 
             sList = new List<Student>();
             for (int i = 0; i < 5; i++)

@@ -19,7 +19,7 @@ using DevExpress.XtraVerticalGrid.Rows;
 
 namespace Properties
 {
-    public partial class Form1 : Form
+    public partial class Form1 : XtraForm
     {
         List<Student> sList;
         public csPropertyHelper propertyHelper { get; set; }
@@ -50,6 +50,9 @@ namespace Properties
             pg1.CellValueChanged += Pg1_CellValueChanged; //Happen before Pg1_ValidatingEditor!!!
             pg1.EditorKeyDown += Pg1_EditorKeyDown;
             pg1.CustomDrawRowHeaderCell += Pg1_CustomDrawRowHeaderCell;
+
+            //Set description display area
+            pd1.PropertyGrid = pg1;
            
             //pg1.KeyPress += Pg1_KeyPress;
             sList = new List<Student>();

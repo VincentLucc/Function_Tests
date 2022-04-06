@@ -46,13 +46,13 @@ namespace Properties
             // 
             // pg1
             // 
-            this.pg1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pg1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pg1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pg1.Location = new System.Drawing.Point(0, 0);
             this.pg1.Name = "pg1";
             this.pg1.OptionsBehavior.AutoPostEditorDelay = 1000;
             this.pg1.OptionsCollectionEditor.AllowMultiSelect = false;
-            this.pg1.Size = new System.Drawing.Size(450, 433);
+            this.pg1.Size = new System.Drawing.Size(450, 429);
             this.pg1.TabIndex = 0;
             this.pg1.DataSourceChanged += new System.EventHandler(this.pg1_DataSourceChanged);
             this.pg1.Click += new System.EventHandler(this.propertyGridControl1_Click);
@@ -62,9 +62,9 @@ namespace Properties
             this.panel1.Controls.Add(this.pg1);
             this.panel1.Controls.Add(this.pDescription);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(494, 0);
+            this.panel1.Location = new System.Drawing.Point(484, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 515);
+            this.panel1.Size = new System.Drawing.Size(450, 511);
             this.panel1.TabIndex = 1;
             // 
             // pDescription
@@ -72,7 +72,7 @@ namespace Properties
             this.pDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pDescription.Controls.Add(this.pd1);
             this.pDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pDescription.Location = new System.Drawing.Point(0, 433);
+            this.pDescription.Location = new System.Drawing.Point(0, 429);
             this.pDescription.Name = "pDescription";
             this.pDescription.Size = new System.Drawing.Size(450, 82);
             this.pDescription.TabIndex = 4;
@@ -95,7 +95,7 @@ namespace Properties
             this.lb1.FormattingEnabled = true;
             this.lb1.Location = new System.Drawing.Point(0, 0);
             this.lb1.Name = "lb1";
-            this.lb1.Size = new System.Drawing.Size(149, 515);
+            this.lb1.Size = new System.Drawing.Size(149, 511);
             this.lb1.TabIndex = 2;
             this.lb1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -114,7 +114,7 @@ namespace Properties
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(149, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(345, 515);
+            this.groupBox1.Size = new System.Drawing.Size(335, 511);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -133,7 +133,7 @@ namespace Properties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 515);
+            this.ClientSize = new System.Drawing.Size(934, 511);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lb1);
             this.Controls.Add(this.panel1);

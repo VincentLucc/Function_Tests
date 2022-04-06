@@ -52,23 +52,17 @@ namespace Dev_GridControl
                 column.Caption = column.FieldName;
             }
 
-            gridView1.Columns[nameof(Student.Class)].Group();
+           
             gridView1.OptionsView.ShowGroupPanel = false; //User don't see group panel
             gridView1.OptionsView.ShowIndicator = false; //Hide row header
             gridView1.GroupRowHeight = 50;
             gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.True;//Display the summary in column lane
             gridView1.Appearance.GroupFooter.TextOptions.HAlignment = HorzAlignment.Center;//Center the display
-           
 
             //Create group summary
-            GridGroupSummaryItem summaryItem=new GridGroupSummaryItem()
-            {
-                FieldName = nameof(Student.Age), //Value name
-                SummaryType = SummaryItemType.Sum,
-                ShowInGroupColumnFooter = gridView1.Columns[nameof(Student.Name)] //Display location
-            };
-            
+            gridView1.Columns[nameof(Student.Class)].Group();
 
+            //Set group extra column value
             gridView1.GroupSummary.Add(new GridGroupSummaryItem()
             {
                 FieldName = nameof(Student.Age), //Value name
@@ -76,6 +70,7 @@ namespace Dev_GridControl
                 ShowInGroupColumnFooter = gridView1.Columns[nameof(Student.Name)] //Display location
             }) ;
 
+            //Set group row value
             gridView1.CustomDrawGroupRow += GridView1_CustomDrawGroupRow;
 
             //Start a update timer

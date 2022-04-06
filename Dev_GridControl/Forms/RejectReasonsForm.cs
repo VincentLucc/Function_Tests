@@ -1,4 +1,8 @@
-﻿using System;
+﻿using DevExpress.Data;
+using DevExpress.Utils;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,8 +25,45 @@ namespace Dev_GridControl
         {
             var sampleData = CreateSampleData();
             gridControl1.DataSource = sampleData;
+
+
+            //Create group
+            var deviceColumn = gridView1.Columns[nameof(AuxInfoView.DeviceName)];
+      
+            deviceColumn.Group();
+            deviceColumn.Visible = false;
+            //gridView1.OptionsView.ShowGroupedColumns = false; //Hide groupped column
+            gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.Default;//Display the summary in column lane
+            gridView1.OptionsBehavior.AllowPartialGroups = DefaultBoolean.True;
+            gridView1.Appearance.GroupFooter.TextOptions.HAlignment = HorzAlignment.Center;//Center the display
+            
+
+            //Set group summaries
+            string sNumberColumn = nameof(AuxInfoView.NumberOfTaggedProducts);
+            GridGroupSummaryItem item = new GridGroupSummaryItem()
+            {
+                FieldName = sNumberColumn,
+                SummaryType = SummaryItemType.Sum,
+                ShowInGroupColumnFooter = gridView1.Columns[sNumberColumn]  //Display location
+            };
+            gridView1.GroupSummary.Add(item);
+
+            //Set group row value
+            gridView1.CustomDrawGroupRow += GridView1_CustomDrawGroupRow;
         }
 
+        private void GridView1_CustomDrawGroupRow(object sender, DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs e)
+        {
+            GridGroupRowInfo groupInfo = e.Info as GridGroupRowInfo;
+
+            //Get summary
+            string sDevice=groupInfo.EditValue.ToString();
+            List<AuxInfoView> sampleData=(List<AuxInfoView>)gridControl1.DataSource;
+            int iSummary= sampleData.Where(i=>i.DeviceName==sDevice).Sum(i=>i.NumberOfTaggedProducts);
+
+            //Set text
+            groupInfo.GroupText =$"{sDevice}:(count={iSummary})";
+        }
 
         private List<AuxInfoView> CreateSampleData()
         {
@@ -36,8 +77,7 @@ namespace Dev_GridControl
                     info.DeviceName = $"Device_{i}";
                     info.TagReason = $"Reason_{j}";
                     info.NumberOfTaggedProducts = i * j;
-                    //info.
-                    //infoList.Add(info);
+                    infoList.Add(info);
                 }
             }
 
