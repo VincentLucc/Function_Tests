@@ -120,14 +120,14 @@ namespace Properties
             //Get current selected row
             var row = PropertyGrid.FocusedRow;
 
-            if (row!=null)
+            if (row != null)
             {
                 Debug.WriteLine("DoValidate:" + row.Properties.FieldName);
-               
+
             }
-           
-            
-            
+
+
+
         }
 
 
@@ -246,12 +246,11 @@ namespace Properties
 
                 case EditorType.Number:
                     RepositoryItemTextEdit repositoryNumberEdit = new RepositoryItemTextEdit();
-                    repositoryNumberEdit.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
                     repositoryNumberEdit.Mask.UseMaskAsDisplayFormat = true;
-                    repositoryNumberEdit.Mask.EditMask = "#####0";
-                    repositoryNumberEdit.EditValueChangedFiringMode = EditValueChangedFiringMode.Buffered;
-                    repositoryNumberEdit.EditValueChangedDelay = int.MaxValue;
+                    repositoryNumberEdit.Mask.MaskType = MaskType.Numeric;
+                    repositoryNumberEdit.Mask.EditMask = string.IsNullOrWhiteSpace(editor.MaskString) ? EditMasks.DigitalValue5 : editor.MaskString;
                     repositoryNumberEdit.ValidateOnEnterKey = true;
+                    row.Properties.RowEdit = repositoryNumberEdit;
                     break;
 
                 case EditorType.Text:
@@ -263,7 +262,8 @@ namespace Properties
                         textEdit_Text.Mask.EditMask = editor.MaskString;
                         textEdit_Text.EditValueChangedFiringMode = EditValueChangedFiringMode.Buffered;
                         textEdit_Text.EditValueChangedDelay = 2000;
-                    }                 
+                    }
+                    row.Properties.RowEdit = textEdit_Text;
                     break;
 
                 case EditorType.FolderEditor:
@@ -273,11 +273,11 @@ namespace Properties
                     break;
 
                 case EditorType.ToggleSwitch:
-                    var ToggleSwitchEditor= new RepositoryItemToggleSwitch();
+                    var ToggleSwitchEditor = new RepositoryItemToggleSwitch();
                     //ToggleSwitchEditor.Appearance.TextOptions.HAlignment = HorzAlignment.Near; //No effect
                     //ToggleSwitchEditor.GlyphAlignment = HorzAlignment.Near; //No effect
                     //ToggleSwitchEditor.Appearance.ParentAppearance.TextOptions.HAlignment= HorzAlignment.Near; //No effect
-                    
+
                     row.Properties.RowEdit = ToggleSwitchEditor;
                     break;
 
@@ -285,7 +285,7 @@ namespace Properties
                     RepositoryItemToggleSwitch toggleSwitch = new RepositoryItemToggleSwitch();
                     row.Properties.Caption = $"Device {editor.IntValue + 1}";
                     row.Properties.RowEdit = new RepositoryItemToggleSwitch();
-                    Debug.Write("ToggleSwitchList:"+row.Properties.FieldName+":");
+                    Debug.Write("ToggleSwitchList:" + row.Properties.FieldName + ":");
                     break;
 
                 default:
@@ -297,8 +297,8 @@ namespace Properties
         {
             //XtraOpenFileDialog dialog = new XtraOpenFileDialog();
             XtraFolderBrowserDialog dialog = new XtraFolderBrowserDialog();
-            
-            if (dialog.ShowDialog()==DialogResult.OK)
+
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
                 EnablePropertyValidate = true;
                 ButtonEdit bEditor = (ButtonEdit)sender;
@@ -306,15 +306,16 @@ namespace Properties
             }
         }
 
-      
+
     }
 
-    
+
 
     public enum EditorType
     {
         Cal,
         Number,
+        NumberReg,
         Text,
         FolderEditor,
         ToggleSwitch,
@@ -351,12 +352,11 @@ namespace Properties
         /// Store any editor related value for customization usage
         /// </summary>
         public int IntValue { get; set; }
-        public CustomEditorAttribute(EditorType editorType, bool enableCustomMask = false,
-             MaskType maskType = MaskType.Custom, string maskString = "")
+
+
+        public CustomEditorAttribute(EditorType editorType, string maskString = "")
         {
             Editor = editorType;
-            IsCustomMaskEnable = enableCustomMask;
-            MaskType = maskType;
             MaskString = maskString;
         }
 
@@ -374,6 +374,15 @@ namespace Properties
             Min = fMin;
             Max = fMax;
             EnableRangeLimit = true;
+        }
+
+        public CustomEditorAttribute(EditorType editorType, bool enableCustomMask,
+     MaskType maskType = MaskType.Custom, string maskString = "")
+        {
+            Editor = editorType;
+            IsCustomMaskEnable = enableCustomMask;
+            MaskType = maskType;
+            MaskString = maskString;
         }
 
         /// <summary>

@@ -45,7 +45,6 @@ namespace Property_NoAutoValidate
             propertyHelper.PropertyGrid.RowHeaderWidth=40;
 
             //Init property grid settings
-            pg1.ActiveViewType = PropertyGridView.Office;
             pg1.ValidatingEditor += Pg1_ValidatingEditor;
             pg1.CustomRecordCellEdit += PropertyGridControl1_CustomRecordCellEdit; //Constantly trigger!!!!, avoid
             pg1.SelectedChanged += Pg1_SelectedChanged;

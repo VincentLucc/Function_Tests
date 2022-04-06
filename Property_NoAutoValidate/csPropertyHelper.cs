@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Property_NoAutoValidate
 {
@@ -30,6 +31,13 @@ namespace Property_NoAutoValidate
         public csPropertyHelper(PropertyGridControl propertyGridControl)
         {
             PropertyGrid = propertyGridControl;
+            PropertyGrid.ActiveViewType = PropertyGridView.Office;
+            PropertyGrid.MouseWheel += PropertyGrid_MouseWheel;//Make sure editor moves with wheel
+        }
+
+        private void PropertyGrid_MouseWheel(object sender, MouseEventArgs e)
+        {
+            PropertyGrid.CloseEditor(); //Make sure editor moves with wheel
         }
 
         public void ReloadAll()
@@ -218,24 +226,17 @@ namespace Property_NoAutoValidate
             {
                 case EditorType.Cal:
                     RepositoryItemCalcEdit repositoryCalcEdit = new RepositoryItemCalcEdit();
-                    //repositoryCalcEdit.EditValueChangedDelay = int.MaxValue;
-                    if (editor.IsCustomMaskEnable)
-                    {
-                        repositoryCalcEdit.Mask.MaskType = editor.MaskType;
-                        if (repositoryCalcEdit.Mask.MaskType== MaskType.Numeric)
-                        {
-                            repositoryCalcEdit.Mask.UseMaskAsDisplayFormat = true;
-                        }
-                        repositoryCalcEdit.Mask.UseMaskAsDisplayFormat = true;
-                        repositoryCalcEdit.Mask.EditMask = editor.MaskString;
-                    }
+                    //Load mask settings
+                    repositoryCalcEdit.Mask.UseMaskAsDisplayFormat = true;
+                    repositoryCalcEdit.Mask.MaskType = editor.MaskType;
+                    repositoryCalcEdit.Mask.EditMask = editor.MaskString;
+
                     row.Properties.RowEdit = repositoryCalcEdit;
                     break;
 
                 case EditorType.MacLookUpList:
                     RepositoryItemLookUpEdit repositoryMacList = new RepositoryItemLookUpEdit();
-                    repositoryMacList.DataSource = GetMacAddress().Values.ToList(); 
-                    
+                    repositoryMacList.DataSource = GetMacAddress().Values.ToList();
                     row.Properties.RowEdit = repositoryMacList;
                     break;
 
@@ -245,30 +246,24 @@ namespace Property_NoAutoValidate
                     var dictData = GetMacAddress();
                     foreach (var item in dictData)
                     {
-                      var x=  MacComboList.Items[0];
+                        var x = MacComboList.Items[0];
                         ComboBoxItem item1 = new ComboBoxItem();
                         item1.Value = "";
                         MacComboList.Items.Add("");
                     }
-                    //row.Properties.RowEdit = repositoryComboList;
+                    row.Properties.RowEdit = MacComboList;
                     break;
 
                 case EditorType.Number:
                     RepositoryItemTextEdit repositoryNumberEdit = new RepositoryItemTextEdit();
-                    repositoryNumberEdit.Mask.MaskType = MaskType.Numeric;
+
+                    //Load mask settings
+                    repositoryNumberEdit.Mask.MaskType = editor.MaskType;
                     repositoryNumberEdit.Mask.UseMaskAsDisplayFormat = true;
-                    repositoryNumberEdit.Mask.EditMask = EditMasks.DigitalValue;
+                    repositoryNumberEdit.Mask.EditMask = editor.MaskString;
+
                     repositoryNumberEdit.ValidateOnEnterKey = true;
                     row.Properties.RowEdit = repositoryNumberEdit;
-                    break;
-
-                case EditorType.NumberReg:
-                    RepositoryItemTextEdit numberReg = new RepositoryItemTextEdit();
-                    numberReg.Mask.MaskType = MaskType.RegEx;
-                    numberReg.Mask.UseMaskAsDisplayFormat = true;
-                    numberReg.Mask.EditMask = EditMasks.DigitalValue;
-                    numberReg.ValidateOnEnterKey = true;
-                    row.Properties.RowEdit = numberReg;
                     break;
 
                 case EditorType.Text:
@@ -280,6 +275,7 @@ namespace Property_NoAutoValidate
                         textEdit_Text.Mask.MaskType = editor.MaskType;
                         textEdit_Text.Mask.EditMask = editor.MaskString;
                     }
+                    row.Properties.RowEdit = textEdit_Text;
                     break;
 
                 case EditorType.ToggleSwitch:
@@ -329,7 +325,6 @@ namespace Property_NoAutoValidate
     {
         Cal,
         Number,
-        NumberReg,
         Text,
         ToggleSwitch,
         ToggleSwitchList,
@@ -345,15 +340,20 @@ namespace Property_NoAutoValidate
     public class CustomEditorAttribute : Attribute
     {
         public EditorType Editor;
-        public bool IsCustomMaskEnable;
         public MaskType MaskType;
         /// <summary>
         /// Define input masks for auto input validation
         /// </summary>
         public string MaskString;
+        /// <summary>
+        /// Whether custom editor is used
+        /// </summary>
+        public bool IsCustomMaskEnable => string.IsNullOrWhiteSpace(MaskString) ? false : true;
         public float Min;
 
         public float Max;
+
+
 
         /// <summary>
         /// Min/Max value enabled
@@ -367,11 +367,16 @@ namespace Property_NoAutoValidate
         /// Store any editor related value for customization usage
         /// </summary>
         public int IntValue { get; set; }
-        public CustomEditorAttribute(EditorType editorType, bool enableCustomMask = false,
-             MaskType maskType = MaskType.Custom, string maskString = "")
+
+        public CustomEditorAttribute(EditorType editorType)
         {
             Editor = editorType;
-            IsCustomMaskEnable = enableCustomMask;
+            SetDefaultMask(editorType);
+        }
+
+        public CustomEditorAttribute(EditorType editorType, string maskString, MaskType maskType)
+        {
+            Editor = editorType;
             MaskType = maskType;
             MaskString = maskString;
         }
@@ -401,6 +406,34 @@ namespace Property_NoAutoValidate
         {
             Editor = editorType;
             IntValue = iValue;
+        }
+
+        private void SetDefaultMask(EditorType editorType)
+        {
+            switch (editorType)
+            {
+                case EditorType.Cal:
+                    MaskType = MaskType.Numeric;
+                    MaskString = EditMasks.DigitalValue6;
+                    break;
+                case EditorType.Number:
+                    MaskType = MaskType.Numeric;
+                    MaskString = EditMasks.DigitalValue6;
+                    break;
+                case EditorType.Text:
+                    MaskType = MaskType.None;
+                    break;
+                case EditorType.ToggleSwitch:
+                    break;
+                case EditorType.ToggleSwitchList:
+                    break;
+                case EditorType.MacLookUpList:
+                    break;
+                case EditorType.MacComboList:
+                    break;
+                default:
+                    break;
+            }
         }
 
     }

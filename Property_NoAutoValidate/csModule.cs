@@ -33,31 +33,31 @@ namespace Property_NoAutoValidate
         public int Age { get; set; }
 
         //Test text editor regex
-        [CustomEditor(EditorType.Text, true, MaskType.RegEx, @"^[a-zA-Z]{1,2}[0-9]*$")]
+        [CustomEditor(EditorType.Text, @"^[a-zA-Z]{1,2}[0-9]*$", MaskType.RegEx)]
         [Category("Test")]
         [DisplayName("Text1 No Mask"), Description("Text editor no mask ")]
         public string Text1NoMask { get; set; }
 
         //Test text editor regex
-        [CustomEditor(EditorType.Text, true, MaskType.RegEx, @"^[a-zA-Z]{1,2}[0-9]*$")]
+        [CustomEditor(EditorType.Text, @"^[a-zA-Z]{1,2}[0-9]*$", MaskType.RegEx)]
         [Category("Test")]
         [DisplayName("Text2 Reg Mask"), Description("Text editor with regex mask")]
         public string Text2Reg { get; set; }
 
         //Test text editor numeric
-        [CustomEditor(EditorType.Text, true, MaskType.Numeric, "n0")]
+        [CustomEditor(EditorType.Text, "n0", MaskType.Numeric)]
         [Category("Test")]
         [DisplayName("Text3 Numeric Mask"), Description("Text editor with Numeric Mask")]
         public string Text3Num { get; set; }
 
         //Test text editor
-        [CustomEditor(EditorType.Cal, true, MaskType.Numeric, "####0.00\\ \\m\\m")]
+        [CustomEditor(EditorType.Cal, "####0.00\\ \\m\\m", MaskType.Numeric)]
         [Category("Test")]
         [DisplayName("Numeric Cal Edit"), Description("Text editor with Numeric \r\nMask Metric_Distance5 = ####0.00\\ \\m\\m")]
         public string NumCal { get; set; }
 
         //Test text editor regex
-        [CustomEditor(EditorType.Cal, true, MaskType.Numeric, EditMasks.Metric_RPM)]
+        [CustomEditor(EditorType.Cal, EditMasks.Metric_RPM, MaskType.Numeric)]
         [Category("Test")]
         [DisplayName("Numeric Positive"), Description("Positive only")]
         public string NumPositive { get; set; }
@@ -131,37 +131,6 @@ namespace Property_NoAutoValidate
             return base.EditValue(context, provider, value);
         }
     }
-
-    /// <summary>
-    /// Masks
-    /// # any digital or nothing if empty
-    /// 0 any digital or zero if empty
-    /// . decimal point
-    /// , thousand separator
-    /// "##0.##" allow to input 000.00 format
-    /// Ref:https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.Editors.PropertyEditor.EditMask
-    /// </summary>
-    static class EditMasks
-    {
-        public const string Metric_Distance2 = "#0.00\\ \\m\\m";
-        public const string Metric_Distance3 = "##0.00\\ \\m\\m";
-        public const string Metric_Distance4 = "###0.00\\ \\m\\m";
-        public const string Metric_Distance5 = "####0.00\\ \\m\\m";
-
-        public const string Metric_Speed = "###0.00\\ \\m\\/\\m";
-        public const string Metric_RPM = "###0.00\\ \\R\\P\\M";
-
-        public const string Imperial_Distance2 = "#0.000\\ \\I\\n\\c\\h\\e\\s";
-        public const string Imperial_Distance3 = "##0.000\\ \\I\\n\\c\\h\\e\\s";
-        public const string Imperial_Distance4 = "###0.000\\ \\I\\n\\c\\h\\e\\s";
-        public const string Imperial_Distance5 = "####0.000\\ \\I\\n\\c\\h\\e\\s";
-
-        public const string Imperial_Speed = "###0.00\\ \\F\\P\\M";
-
-        public const string DigitalValue = "#####0";
-    }
-
-
 
 
 }

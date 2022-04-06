@@ -44,11 +44,15 @@ namespace Properties
         public string TextReg { get; set; }
 
         //Test text editor regex
-        [CustomEditor(EditorType.Text, true, MaskType.Numeric, "#####0")]
+        [CustomEditor(EditorType.Number, "#####0")]
         [Category("Test")]
         [DisplayName("Text3 Numeric Mask"), Description("Text editor with Numeric Mask")]
         public string TextNum { get; set; }
 
+        [CustomEditor(EditorType.Number,EditMasks.DigitalValue5)]
+        [Category("Test")]
+        [DisplayName("Text4 Numeric Mask"), Description("Text editor with Numeric Mask")]
+        public string TextNum4 { get; set; }
 
 
         [TypeConverter(typeof(ExpandableObjectConverter))] //Show sub class properties

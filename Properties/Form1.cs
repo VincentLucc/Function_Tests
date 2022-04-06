@@ -77,10 +77,6 @@ namespace Properties
             }
 
             lb1.DataSource = sList.Select(x => x.Name).ToList();
-
-
-            //Tests
-            //te1.Validating += TextEdit1_Validating;
         }
 
         private void Pg1_CustomDrawRowHeaderCell(object sender, CustomDrawRowHeaderCellEventArgs e)
@@ -150,10 +146,10 @@ namespace Properties
 
         private void Pg1_InvalidValueException(object sender, InvalidValueExceptionEventArgs e)
         {
-            if (!propertyHelper.EnablePropertyValidate)
-            {
-                e.ExceptionMode = ExceptionMode.NoAction;
-            }
+            //if (!propertyHelper.EnablePropertyValidate)
+            //{
+            //    e.ExceptionMode = ExceptionMode.NoAction;
+            //}
 
 
 
@@ -288,11 +284,11 @@ namespace Properties
             Debug.WriteLine("Validating Edit Trigger");
 
             //Skip validation when input not ready
-            if (!propertyHelper.EnablePropertyValidate)
-            {
-                e.Valid = false;
-                return;
-            }
+            //if (!propertyHelper.EnablePropertyValidate)
+            //{
+            //    e.Valid = false;
+            //    return;
+            //}
 
 
             Debug.WriteLine("Validating Edit Start");

@@ -75,6 +75,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dev_GaugeControl", "Dev_Gau
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentManager", "DocumentManager\DocumentManager.csproj", "{28629751-1C8A-4670-8DA5-5EEA8F64535D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collection", "Collection\Collection.csproj", "{11548AEE-5942-4C9A-9409-AEA07E51E80C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -507,6 +509,18 @@ Global
 		{28629751-1C8A-4670-8DA5-5EEA8F64535D}.Release|x64.Build.0 = Release|Any CPU
 		{28629751-1C8A-4670-8DA5-5EEA8F64535D}.Release|x86.ActiveCfg = Release|Any CPU
 		{28629751-1C8A-4670-8DA5-5EEA8F64535D}.Release|x86.Build.0 = Release|Any CPU
+		{11548AEE-5942-4C9A-9409-AEA07E51E80C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11548AEE-5942-4C9A-9409-AEA07E51E80C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11548AEE-5942-4C9A-9409-AEA07E51E80C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{11548AEE-5942-4C9A-9409-AEA07E51E80C}.Debug|x64.Build.0 = Debug|Any CPU
+		{11548AEE-5942-4C9A-9409-AEA07E51E80C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{11548AEE-5942-4C9A-9409-AEA07E51E80C}.Debug|x86.Build.0 = Debug|Any CPU
+		{11548AEE-5942-4C9A-9409-AEA07E51E80C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11548AEE-5942-4C9A-9409-AEA07E51E80C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11548AEE-5942-4C9A-9409-AEA07E51E80C}.Release|x64.ActiveCfg = Release|Any CPU
+		{11548AEE-5942-4C9A-9409-AEA07E51E80C}.Release|x64.Build.0 = Release|Any CPU
+		{11548AEE-5942-4C9A-9409-AEA07E51E80C}.Release|x86.ActiveCfg = Release|Any CPU
+		{11548AEE-5942-4C9A-9409-AEA07E51E80C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

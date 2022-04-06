@@ -21,7 +21,6 @@ namespace Dev_GridControl
         {
             var sampleData = CreateSampleData();
             gridControl1.DataSource = sampleData;
-
         }
 
 
@@ -37,7 +36,8 @@ namespace Dev_GridControl
                     info.DeviceName = $"Device_{i}";
                     info.TagReason = $"Reason_{j}";
                     info.NumberOfTaggedProducts = i * j;
-                    infoList.Add(info);
+                    //info.
+                    //infoList.Add(info);
                 }
             }
 
