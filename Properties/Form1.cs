@@ -47,22 +47,8 @@ namespace Properties
             pg1.ValidatingEditor += Pg1_ValidatingEditor;
             pg1.CustomRecordCellEdit += PropertyGridControl1_CustomRecordCellEdit; //Constantly trigger!!!!, avoid
             pg1.SelectedChanged += Pg1_SelectedChanged;
-            pg1.CustomPropertyDescriptors += Pg1_CustomPropertyDescriptors;
             pg1.CellValueChanged += Pg1_CellValueChanged; //Happen before Pg1_ValidatingEditor!!!
-            
-            //pg1.FocusedRowChanged += Pg1_FocusedRowChanged;
-            //pg1.FocusedRecordChanged += Pg1_FocusedRecordChanged;
-            //pg1.FocusedRecordCellChanged += Pg1_FocusedRecordCellChanged;
-            //pg1.MouseCaptureChanged += Pg1_MouseCaptureChanged;// This will trigger properly when editor lose focus
             pg1.EditorKeyDown += Pg1_EditorKeyDown;
-            //pg1.EditorKeyPress += Pg1_EditorKeyPress;
-            //pg1.CustomRecordCellEdit += Pg1_CustomRecordCellEdit;
-
-            pg1.KeyDown += Pg1_KeyDown;
-            // pg1.Validated += Pg1_Validated;
-            pg1.InvalidValueException += Pg1_InvalidValueException;
-            pg1.CausesValidation = true; //Default not to validate only when required
-            pg1.MouseClick += Pg1_MouseClick;
             pg1.CustomDrawRowHeaderCell += Pg1_CustomDrawRowHeaderCell;
            
             //pg1.KeyPress += Pg1_KeyPress;
@@ -118,63 +104,6 @@ namespace Properties
 
 
         /// <summary>
-        /// Trigger validation process on condition
-        /// </summary>
-        /// <param name="IsTrigger"></param>
-        private void TriggerPropertyValidate()
-        {
-            try
-            {
-                propertyHelper.EnablePropertyValidate = true;
-                //Manual trigger validation
-                ValidateChildren();
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("DeterminePropertyValidate:\r\n" + e.Message);
-            }
-        }
-
-        private void Pg1_MouseClick(object sender, MouseEventArgs e)
-        {
-            Debug.WriteLine("Pg1_MouseClick");
-            TriggerPropertyValidate();
-        }
-
-
-
-
-        private void Pg1_InvalidValueException(object sender, InvalidValueExceptionEventArgs e)
-        {
-            //if (!propertyHelper.EnablePropertyValidate)
-            //{
-            //    e.ExceptionMode = ExceptionMode.NoAction;
-            //}
-
-
-
-            Debug.WriteLine("Invalid Exception:EnableValidate:" + propertyHelper.EnablePropertyValidate);
-        }
-
-        private void Pg1_Validated(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Pg1_KeyDown(object sender, KeyEventArgs e)
-        {
-            Debug.WriteLine("Pg1_KeyDown:" + e.KeyCode.ToString());
-
-            //When "enter" pressed outside the property editor
-            if (e.KeyCode == Keys.Return)
-            {
-                TriggerPropertyValidate();
-            }
-          
-        }
-
-
-        /// <summary>
         /// Input trigger before validation, but 
         /// Enter event trigger after validation!!!! 
         /// Do not use
@@ -184,48 +113,12 @@ namespace Properties
         private void Pg1_EditorKeyDown(object sender, KeyEventArgs e)
         {
             Debug.WriteLine("Pg1_EditorKeyDown:" + e.KeyCode);
-
-            //Press enter when inside the editor
-            //Must disable when any other keys pressed after this to disable validation
-            propertyHelper.EnablePropertyValidate = (e.KeyCode == Keys.Return) ? true : false;
         }
 
-
-        /// <summary>
-        /// This will trigger properly when editor lose focus
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Pg1_MouseCaptureChanged(object sender, EventArgs e)
-        {
-
-            Debug.WriteLine("Pg1_MouseCaptureChanged");
-
-
-        }
-
-        private void Pg1_FocusedRecordCellChanged(object sender, IndexChangedEventArgs e)
-        {
-            Debug.WriteLine("Pg1_FocusedRecordCellChanged");
-        }
-
-        private void Pg1_FocusedRecordChanged(object sender, IndexChangedEventArgs e)
-        {
-            Debug.WriteLine("Pg1_FocusedRecordChanged");
-        }
-
-
-        //Only work when on different row
-        private void Pg1_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
-        {
-            Debug.WriteLine("Pg1_FocusedRowChanged");
-        }
 
         private void Pg1_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             Debug.WriteLine($"Cell Value changed.{e.Value}");
-
-            //propertyHelper.ReloadAll();
         }
 
         private void pg1_DataSourceChanged(object sender, EventArgs e)
@@ -233,45 +126,8 @@ namespace Properties
             Debug.WriteLine("SourceChange:" + pg1.Rows.Count);
 
             //recreate all rows
-            //pg1.RetrieveFields(true);
             propertyHelper.ReloadAll();
-
         }
-
-
-
-        /// <summary>
-        /// Trigger once when property created
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Pg1_CustomPropertyDescriptors(object sender, CustomPropertyDescriptorsEventArgs e)
-        {
-            //Trigger too late
-
-            //Get rows
-            //Debug.WriteLine("Pg1_CustomPropertyDescriptors:"+pg1.Rows.Count);
-            //foreach (PropertyDescriptor propDesc in e.Properties)
-            //{
-            //    var row = pg1.GetRowByFieldName(propDesc.DisplayName);
-            //    if (row == null) continue;
-            //    var editor = GetEditorType(propDesc.Attributes);
-            //    if (editor == null) continue;
-
-
-            //    switch (editor.Editor)
-            //    {
-            //        case EditorType.Number:
-            //            RepositoryItemCalcEdit repositoryCalcEdit = new RepositoryItemCalcEdit();
-            //            row.Properties.RowEdit = repositoryCalcEdit;
-            //            break;
-            //        default:
-            //            break;
-            //    }
-            //}
-        }
-
-
 
 
         private void Pg1_SelectedChanged(object sender, SelectedChangedEventArgs e)
@@ -283,15 +139,6 @@ namespace Properties
         {
             Debug.WriteLine("Validating Edit Trigger");
 
-            //Skip validation when input not ready
-            //if (!propertyHelper.EnablePropertyValidate)
-            //{
-            //    e.Valid = false;
-            //    return;
-            //}
-
-
-            Debug.WriteLine("Validating Edit Start");
             //Init variables
             string sFieldName = pg1.FocusedRow.Properties.FieldName;
 
@@ -306,9 +153,11 @@ namespace Properties
             else if (sFieldName == $"{nameof(Student.Cert)}.{nameof(Certificate.IsOK)}")
             {
                 NotifyUserAndUpdate(e);
-
             }
-
+            else if (sFieldName==nameof(Student.Text1Normal))
+            {
+                VerifyLength(e,1,5);
+            }
         }
 
 
@@ -369,7 +218,7 @@ namespace Properties
             e.Valid = true;
         }
 
-        private void VerifyLength(BaseContainerValidateEditorEventArgs e, int iMin)
+        private void VerifyLength(BaseContainerValidateEditorEventArgs e, int iMin, int iMax=0)
         {
             if (e.Value == null)
             {
@@ -386,23 +235,26 @@ namespace Properties
                 }
             }
 
-            //Check length
-            if (e.Value.ToString().Length < iMin)
+            //Check min length
+            int iLength = e.Value.ToString().Length;
+            if (iLength < iMin)
             {
                 e.Valid = false;
                 e.ErrorText = $"Length must be no less than {iMin}";
                 return;
             }
 
+            //Check max length
+            if (iMax!=0 && iLength>iMax)
+            {
+                e.Valid = false;
+                e.ErrorText = $"Length must be no more than {iMax}";
+                return;
+            }
+
             //pass all steps
             e.Valid = true;
         }
-
-        private void TextEdit1_Validating(object sender, CancelEventArgs e)
-        {
-            Debug.WriteLine("Validating");
-        }
-
 
 
         private void PropertyGridControl1_CustomRecordCellEdit(object sender, GetCustomRowCellEditEventArgs e)
@@ -445,11 +297,6 @@ namespace Properties
 
             //pg1.CustomRecordCellEdit += PropertyGridControl1_CustomRecordCellEdit; //Constantly trigger!!!!, avoid
 
-        }
-
-        private void Edit_ButtonClick(object sender, ButtonPressedEventArgs e)
-        {
-            MessageBox.Show("Clicked");
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

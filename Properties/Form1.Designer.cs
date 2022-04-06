@@ -52,15 +52,15 @@ namespace Properties
             this.pg1.Name = "pg1";
             this.pg1.OptionsBehavior.AutoPostEditorDelay = 1000;
             this.pg1.OptionsCollectionEditor.AllowMultiSelect = false;
-            this.pg1.Size = new System.Drawing.Size(450, 515);
+            this.pg1.Size = new System.Drawing.Size(450, 433);
             this.pg1.TabIndex = 0;
             this.pg1.DataSourceChanged += new System.EventHandler(this.pg1_DataSourceChanged);
             this.pg1.Click += new System.EventHandler(this.propertyGridControl1_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pDescription);
             this.panel1.Controls.Add(this.pg1);
+            this.panel1.Controls.Add(this.pDescription);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(494, 0);
             this.panel1.Name = "panel1";

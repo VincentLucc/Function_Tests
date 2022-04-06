@@ -23,7 +23,6 @@ namespace Properties
     public class csPropertyHelper
     {
         public PropertyGridControl PropertyGrid { get; set; }
-        public bool EnablePropertyValidate { get; set; }
 
         /// <summary>
         /// Trigger when setting row editor for custom editor set outside the class if needed
@@ -300,7 +299,6 @@ namespace Properties
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                EnablePropertyValidate = true;
                 ButtonEdit bEditor = (ButtonEdit)sender;
                 bEditor.EditValue = dialog.SelectedPath; //Get value               
             }

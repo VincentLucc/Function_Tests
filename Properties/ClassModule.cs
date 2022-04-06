@@ -32,27 +32,27 @@ namespace Properties
         public int Age { get; set; }
 
         //Test text editor regex
-        [CustomEditor(EditorType.Text, true, MaskType.RegEx, @"^[a-zA-Z]{1,2}[0-9]*$")]
+        [CustomEditor(EditorType.Text, true, MaskType.RegEx, @"[a-zA-Z]{1,2}[0-9]*")]
         [Category("Test")]
         [DisplayName("Text1 No Mask"), Description("Text editor no mask ")]
-        public string TextNormal { get; set; }
+        public string Text1Normal { get; set; }
 
         //Test text editor regex
-        [CustomEditor(EditorType.Text,true,MaskType.RegEx, @"^[a-zA-Z]{1,2}[0-9]*$")]
+        [CustomEditor(EditorType.Text,true,MaskType.RegEx, @"[a-zA-Z]{1,2}[0-9]*")]
         [Category("Test")]
         [DisplayName("Text2 Reg Mask"), Description("Text editor with regex mask")]
-        public string TextReg { get; set; }
+        public string Text2Reg { get; set; }
 
         //Test text editor regex
         [CustomEditor(EditorType.Number, "#####0")]
         [Category("Test")]
         [DisplayName("Text3 Numeric Mask"), Description("Text editor with Numeric Mask")]
-        public string TextNum { get; set; }
+        public string Text3Num { get; set; }
 
         [CustomEditor(EditorType.Number,EditMasks.DigitalValue5)]
         [Category("Test")]
         [DisplayName("Text4 Numeric Mask"), Description("Text editor with Numeric Mask")]
-        public string TextNum4 { get; set; }
+        public string Text4Num { get; set; }
 
 
         [TypeConverter(typeof(ExpandableObjectConverter))] //Show sub class properties
@@ -88,7 +88,7 @@ namespace Properties
             Cert = new Certificate();
             Cert2 = new Certificate();
             List = new bool[3];
-            TextReg = "CE1";
+            Text2Reg = "CE1";
         }
     }
 

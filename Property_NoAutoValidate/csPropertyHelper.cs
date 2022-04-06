@@ -213,8 +213,6 @@ namespace Property_NoAutoValidate
         }
 
 
-
-
         /// <summary>
         /// Set row editor based on edit type
         /// </summary>
