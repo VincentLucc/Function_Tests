@@ -49,12 +49,6 @@ namespace SerialPort_Ink
 
         private Task tSend; //Sending thread
 
-        public SerialDataType SendEncoding { get; set; }
-        public SerialDataType ReceiveEncoding { get; set; }
-        /// <summary>
-        /// Auto ending string, used for ASCII mode only
-        /// </summary>
-        public string SendSuffix { get; set; }
         /// <summary>
         /// During receiving process
         /// </summary>
@@ -90,9 +84,15 @@ namespace SerialPort_Ink
         /// Store devices in the network
         /// </summary>
         public List<InkDevice> Devices { get; set; }
+
+        /// <summary>
+        /// Current config
+        /// </summary>
+        public csConfig SysConfig { get; set; }
         public csInkSystemColor(csConfig config)
         {
             //Init variables
+            SysConfig = config;
             SendBlocker = new LoopBlocker();
             Port = new SerialPort();
             ComLogMaxSize = 10000; //Max size of log info
@@ -115,6 +115,8 @@ namespace SerialPort_Ink
 
         public bool Connect(csConfig config)
         {
+            SysConfig = config;
+
             //Try to connect
             if (!IsConnected)
             {
@@ -183,10 +185,6 @@ namespace SerialPort_Ink
             Port.DataBits = config.Port.DataBits;
             Port.StopBits = config.Port.StopBits;
             Port.Parity = config.Port.Parity;
-            SendEncoding = config.SendFormat;
-            ReceiveEncoding = config.ReceiveFormat;
-            SendSuffix = config.EndSuffixValue;
-
         }
 
         private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -266,7 +264,7 @@ namespace SerialPort_Ink
         private void GetDataString(byte[] byteData, ref string sData)
         {
             //Get Data
-            if (ReceiveEncoding == SerialDataType.HEX)
+            if (SysConfig.ReceiveFormat == SerialDataType.HEX)
             {
                 sData = BitConverter.ToString(byteData).Replace("-", " ");
             }
@@ -839,21 +837,37 @@ namespace SerialPort_Ink
         {
             string sLogInfo = "";
 
-            switch (SendEncoding)
+            switch (SysConfig.SendFormat)
             {
                 case SerialDataType.ASCII:
-                    sMessage = sMessage + SendSuffix;
+                    sMessage = sMessage + SysConfig.EndSuffixValue;
                     byte[] bDataAscii = Encoding.ASCII.GetBytes(sMessage);
-                    //Port.Write(sMessage+SendSuffix); //Directly send
-                    SendWith2BytesGap(bDataAscii);
-                    //SendByteByByte(bDataAscii);
+
+                    if (SysConfig.SendMode==SerialSendMode.Normal)
+                    {
+                       Port.Write(sMessage+ SysConfig.EndSuffixValue); //Directly send
+                    }
+                    else
+                    {
+                        SendWith2BytesGap(bDataAscii);
+                    }
+
                     sLogInfo = $"{csPublic.TimeString}:Send ASCII Message:{sMessage}"; //Display message
                     break;
+
                 case SerialDataType.HEX:
                     byte[] bDataHex = csByteConvert.StringToHexByte(sMessage);
-                    //Port.Write(bDataHex, 0, bDataHex.Length); //Directly send
-                    SendWith2BytesGap(bDataHex);
+
+                    if (SysConfig.SendMode == SerialSendMode.Normal)
+                    {
+                        Port.Write(bDataHex, 0, bDataHex.Length); //Directly send
+                    }
+                    else
+                    {
+                        SendWith2BytesGap(bDataHex);
+                    }
                     sLogInfo = $"{csPublic.TimeString}:Send HEX Message:{sMessage}"; //Display message
+                    
                     break;
                 default:
                     break;

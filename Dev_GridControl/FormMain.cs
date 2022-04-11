@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -48,6 +49,13 @@ namespace Dev_GridControl
         {
             var winReject = new RejectReasonsForm();
             winReject.Show();
+        }
+
+        private void bBigDataUpdate_Click(object sender, EventArgs e)
+        {
+            BigDataUpdate winBigData = new BigDataUpdate();
+            winBigData.Show();
+
         }
     }
 }

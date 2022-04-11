@@ -32,11 +32,13 @@ namespace Lock
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.button1 = new System.Windows.Forms.Button();
             this.bAwaitTime = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(50, 37);
+            this.simpleButton1.Location = new System.Drawing.Point(15, 31);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 0;
@@ -63,17 +65,28 @@ namespace Lock
             this.bAwaitTime.UseVisualStyleBackColor = true;
             this.bAwaitTime.Click += new System.EventHandler(this.bAwaitTime_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.simpleButton1);
+            this.groupBox1.Location = new System.Drawing.Point(50, 101);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bAwaitTime);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.simpleButton1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -83,6 +96,7 @@ namespace Lock
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button bAwaitTime;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

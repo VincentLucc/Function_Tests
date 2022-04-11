@@ -117,14 +117,23 @@ namespace SerialPort_Ink
             //Parameter settings
             teMeniscusPressure.ReadOnly = true;
 
-            //Data format
+            //Data send format
             var serialTypeList = Enum.GetNames(typeof(SerialDataType));
             lueSendFormat.Properties.DataSource = serialTypeList;
             lueSendFormat.Properties.ShowFooter = false;//remove the X button in bottom
+
+            //Data receive format
             lueReceiveFormat.Properties.DataSource = serialTypeList;
             lueReceiveFormat.Properties.ShowFooter = false;//remove the X button in bottom
+
+            //Data send surfix
             lueSendSuffix.Properties.DataSource = csConfig.EndSuffixCollection;
             lueSendSuffix.Properties.ShowFooter = false;//remove the X button in bottom
+
+            //Serial port send mode normal or 2bytes by 2 bytes
+            var serialSendMode = Enum.GetNames(typeof(SerialSendMode));
+            lueSendMode.Properties.DataSource = serialSendMode;
+            lueSendMode.Properties.ShowFooter = false;//remove the X button in bottom
         }
 
 
@@ -328,6 +337,7 @@ namespace SerialPort_Ink
                     lueSendFormat.EditValue = config.SendFormat.ToString();
                     lueReceiveFormat.EditValue = config.ReceiveFormat.ToString();
                     lueSendSuffix.EditValue = config.EndSuffixView;
+                    lueSendMode.EditValue = config.SendMode.ToString();
                 }
                 catch (Exception e)
                 {
@@ -737,6 +747,20 @@ namespace SerialPort_Ink
                 MessageBox.Show("Error");
             }
                
+        }
+
+        private void lueSendMode_EditValueChanged(object sender, EventArgs e)
+        {
+            //Get setting
+            string sValue = lueSendMode.EditValue.ToString();
+            if (Enum.TryParse(sValue, out SerialSendMode serialSendMode))
+            {
+                config.SendMode = serialSendMode;
+            }
+            else
+            {//Set to default
+                config.SendMode = SerialSendMode.Normal;
+            }
         }
     }
 }

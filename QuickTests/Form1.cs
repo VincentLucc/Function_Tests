@@ -63,9 +63,14 @@ namespace QuickTests
             this.Visible = false;
         }
 
+        protected override void OnLoad(EventArgs eventArgs)
+        {
+            Debug.WriteLine("OnLoad Trigger");
+        }
+
 
         bool[] bitData = new bool[32];
-                
+
         private void button2_Click(object sender, EventArgs e)
         {
             //Prepare data
@@ -74,9 +79,9 @@ namespace QuickTests
             bitData[31] = true;
 
 
-            string s =csByteConvert.BoolArrayToHexString(bitData);
+            string s = csByteConvert.BoolArrayToHexString(bitData);
 
-            bitData=csByteConvert.HexStringToBoolArray(s);
+            bitData = csByteConvert.HexStringToBoolArray(s);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -96,7 +101,7 @@ namespace QuickTests
             List<Student> students = new List<Student>();
             for (int i = 0; i < 3; i++)
             {
-                Student s = new Student() { Age=i+1,Name=(i+1).ToString()};
+                Student s = new Student() { Age = i + 1, Name = (i + 1).ToString() };
                 students.Add(s);
             }
 
@@ -123,7 +128,7 @@ namespace QuickTests
         {
             Debug.WriteLine("Form1_KeyDown");
 
-            if (e.Control&&e.KeyCode==Keys.S)
+            if (e.Control && e.KeyCode == Keys.S)
             {
                 Debug.WriteLine("Control+S");
             }
@@ -136,7 +141,7 @@ namespace QuickTests
             float fValue = 101.23f;
             fValue = fValue % 100;
 
-            double dValue= -101.23f;
+            double dValue = -101.23f;
             dValue = fValue % 100;
 
 
@@ -171,7 +176,7 @@ namespace QuickTests
                 Debug.WriteLine(s.Name);
             }
 
-          
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -245,7 +250,7 @@ namespace QuickTests
         private void button9_Click(object sender, EventArgs e)
         {
             string s = "\\r";
-            string s1 = s.Replace(@"\\",@"\");
+            string s1 = s.Replace(@"\\", @"\");
             string sA = s + '\r';
             //Below works perfect
             string sReg = Regex.Unescape(s);
@@ -282,7 +287,7 @@ namespace QuickTests
         {
             sEvent.NameChanged += SEvent_NameChanged;
             sEvent.AgeChanged += SEvent_AgeChanged;
-           
+
         }
 
         private void SEvent_AgeChanged()

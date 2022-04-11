@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E2E8ED54-CC91-4BF7-8CD1-1F151E1B641D}</ProjectGuid>
+    <ProjectGuid>{25C3C79E-C1D1-4555-8FC4-F3862B6F7858}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Dev_GridControl</RootNamespace>
-    <AssemblyName>Dev_GridControl</AssemblyName>
+    <RootNamespace>Socket_TCP_UDP</RootNamespace>
+    <AssemblyName>Socket_TCP_UDP</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,18 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Sparkline.v19.1.Core, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraLayout.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,62 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\BigDataUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\BigDataUpdate.Designer.cs">
-      <DependentUpon>BigDataUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\CardViews.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CardViews.Designer.cs">
-      <DependentUpon>CardViews.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Classes\csModel.cs" />
-    <Compile Include="Forms\CustomEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CustomEditor.Designer.cs">
-      <DependentUpon>CustomEditor.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Classes\csComUDPServerBase.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GroupView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\GroupView.Designer.cs">
-      <DependentUpon>GroupView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\RejectReasonsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\RejectReasonsForm.Designer.cs">
-      <DependentUpon>RejectReasonsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\BigDataUpdate.resx">
-      <DependentUpon>BigDataUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CardViews.resx">
-      <DependentUpon>CardViews.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomEditor.resx">
-      <DependentUpon>CustomEditor.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="XtraForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XtraForm1.Designer.cs">
+      <DependentUpon>XtraForm1.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GroupView.resx">
-      <DependentUpon>GroupView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RejectReasonsForm.resx">
-      <DependentUpon>RejectReasonsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -122,7 +78,6 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -136,27 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\open.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\open1.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\open2.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\apply_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\apply_32x321.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cancel_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\clear_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

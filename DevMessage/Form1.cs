@@ -20,9 +20,27 @@ namespace DevMessage
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            UIHelper.ShowMainLoading("Loading!");
+            UIHelper.ShowMainLoading("Please wait.");
             await Task.Delay(2000);
             UIHelper.CloseLoadingForm();
+            UIHelper.ShowMainLoading();
+            await Task.Delay(1000);
+            UIHelper.CloseLoadingForm();
+        }
+
+        private void bShowInfo2_Click(object sender, EventArgs e)
+        {
+            UIHelper.ShowInfo2("Info2", "Info");
+        }
+
+        private void bShowInfo1_Click(object sender, EventArgs e)
+        {
+            UIHelper.ShowInfo("Info1","Info");
+        }
+
+        private void bShowInfoDefault_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Info default");
         }
     }
 }

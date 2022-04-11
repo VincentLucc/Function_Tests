@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<csConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Port>
+    <BaudRateIndex>4</BaudRateIndex>
+    <StopBitsIndex>0</StopBitsIndex>
+    <DataBitsIndex>2</DataBitsIndex>
+    <ParityIndex>0</ParityIndex>
+  </Port>
+  <SendFormat>ASCII</SendFormat>
+  <SendMode>Normal</SendMode>
+  <ReceiveFormat>ASCII</ReceiveFormat>
+  <EndSuffixView>\r</EndSuffixView>
+</csConfig>

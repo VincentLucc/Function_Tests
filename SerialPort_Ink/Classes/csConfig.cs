@@ -15,7 +15,10 @@ namespace SerialPort_Ink
     {
         public PortConfig Port { get; set; }
         public SerialDataType SendFormat { get; set; }
+        public SerialSendMode SendMode { get; set; }
         public SerialDataType ReceiveFormat { get; set; }
+
+        
         [XmlIgnore]
         public List<string> Commands { get; set; }
         [XmlIgnore]
@@ -121,5 +124,10 @@ namespace SerialPort_Ink
         HEX
     }
 
+    public enum SerialSendMode
+    {
+        Normal,
+        ByByte2
+    }
 
 }

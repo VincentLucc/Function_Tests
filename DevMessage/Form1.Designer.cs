@@ -30,6 +30,9 @@ namespace DevMessage
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
+            this.bShowInfo1 = new DevExpress.XtraEditors.SimpleButton();
+            this.bShowInfo2 = new DevExpress.XtraEditors.SimpleButton();
+            this.bShowInfoDefault = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
             // button1
@@ -42,11 +45,41 @@ namespace DevMessage
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // bShowInfo1
+            // 
+            this.bShowInfo1.Location = new System.Drawing.Point(43, 68);
+            this.bShowInfo1.Name = "bShowInfo1";
+            this.bShowInfo1.Size = new System.Drawing.Size(75, 23);
+            this.bShowInfo1.TabIndex = 1;
+            this.bShowInfo1.Text = "Show Info 1";
+            this.bShowInfo1.Click += new System.EventHandler(this.bShowInfo1_Click);
+            // 
+            // bShowInfo2
+            // 
+            this.bShowInfo2.Location = new System.Drawing.Point(124, 68);
+            this.bShowInfo2.Name = "bShowInfo2";
+            this.bShowInfo2.Size = new System.Drawing.Size(75, 23);
+            this.bShowInfo2.TabIndex = 2;
+            this.bShowInfo2.Text = "Show Info 2";
+            this.bShowInfo2.Click += new System.EventHandler(this.bShowInfo2_Click);
+            // 
+            // bShowInfoDefault
+            // 
+            this.bShowInfoDefault.Location = new System.Drawing.Point(205, 68);
+            this.bShowInfoDefault.Name = "bShowInfoDefault";
+            this.bShowInfoDefault.Size = new System.Drawing.Size(115, 23);
+            this.bShowInfoDefault.TabIndex = 3;
+            this.bShowInfoDefault.Text = "Show Info Default";
+            this.bShowInfoDefault.Click += new System.EventHandler(this.bShowInfoDefault_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bShowInfoDefault);
+            this.Controls.Add(this.bShowInfo2);
+            this.Controls.Add(this.bShowInfo1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -57,6 +90,9 @@ namespace DevMessage
         #endregion
 
         private System.Windows.Forms.Button button1;
+        private DevExpress.XtraEditors.SimpleButton bShowInfo1;
+        private DevExpress.XtraEditors.SimpleButton bShowInfo2;
+        private DevExpress.XtraEditors.SimpleButton bShowInfoDefault;
     }
 }
 

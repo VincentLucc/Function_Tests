@@ -45,11 +45,12 @@ namespace QuickTests
             this.tabGeneral = new System.Windows.Forms.TabPage();
             this.tabEvents = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tbAge = new System.Windows.Forms.TextBox();
             this.bSetAge = new System.Windows.Forms.Button();
             this.tbName = new System.Windows.Forms.TextBox();
             this.bSetName = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabEvents.SuspendLayout();
@@ -180,6 +181,7 @@ namespace QuickTests
             // 
             this.tabControl1.Controls.Add(this.tabGeneral);
             this.tabControl1.Controls.Add(this.tabEvents);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -234,6 +236,15 @@ namespace QuickTests
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dual Trigger Events";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(24, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(300, 15);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Will cause stack overflow. No internal protection in .Net";
+            // 
             // tbAge
             // 
             this.tbAge.Location = new System.Drawing.Point(132, 147);
@@ -268,14 +279,15 @@ namespace QuickTests
             this.bSetName.UseVisualStyleBackColor = true;
             this.bSetName.Click += new System.EventHandler(this.bSetName_Click);
             // 
-            // label1
+            // tabPage1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(300, 15);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Will cause stack overflow. No internal protection in .Net";
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(792, 422);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -320,6 +332,7 @@ namespace QuickTests
         private System.Windows.Forms.TextBox tbAge;
         private System.Windows.Forms.Button bSetAge;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }
 
