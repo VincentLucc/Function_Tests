@@ -23,7 +23,17 @@ namespace Docking
         private void DockManagerDocking_Load(object sender, EventArgs e)
         {
             tabbedView1.DocumentGroupProperties.ShowTabHeader = false; //Hide header
-            dockManager2.DockingOptions.ShowCaptionOnMouseHover = true; //hide captain, only display when mouse over
+            dockManager1.DockingOptions.ShowCaptionOnMouseHover = true; //hide captain, only display when mouse over
+            dockManager1.DockingOptions.ShowCaptionOnMouseHover = false; //Show header buttons
+            dpBottom.CustomButtonClick += DpBottom_CustomButtonClick;
+        }
+
+        private void DpBottom_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
+        {
+            if (e.Button==dpBottom.CustomHeaderButtons[0])
+            {
+
+            }
         }
 
         // Assigning a required content for each auto generated Document
@@ -34,6 +44,11 @@ namespace Docking
                 e.Control = new Docking.Controls.ucCenter();
             if (e.Control == null)
                 e.Control = new System.Windows.Forms.Control();
+        }
+
+        private void dockPanel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

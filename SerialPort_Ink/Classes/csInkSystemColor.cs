@@ -840,9 +840,7 @@ namespace SerialPort_Ink
             switch (SysConfig.SendFormat)
             {
                 case SerialDataType.ASCII:
-                    sMessage = sMessage + SysConfig.EndSuffixValue;
                     byte[] bDataAscii = Encoding.ASCII.GetBytes(sMessage);
-
                     if (SysConfig.SendMode==SerialSendMode.Normal)
                     {
                        Port.Write(sMessage+ SysConfig.EndSuffixValue); //Directly send

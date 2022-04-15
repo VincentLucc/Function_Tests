@@ -311,5 +311,55 @@ namespace QuickTests
         {
             sEvent.Age = int.Parse(tbAge.Text);
         }
+
+        private void bArray_Click(object sender, EventArgs e)
+        {
+            var data = CreateData(100);
+            //Get a new collection index from 10-99
+            var data1= data.Skip(10);
+            var data2 = data.Take(1000).ToList();
+        }
+
+        private List<Student> CreateData(int iCount)
+        {
+            List<Student> slist = new List<Student>();
+
+            for (int i = 0; i < iCount; i++)
+            {
+                Student s = new Student();
+                s.Name = $"s{i}";
+                s.Age = i;
+                slist.Add(s);
+            }
+
+            return slist;
+        }
+
+        private void bTake_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bTakeTest1_Click(object sender, EventArgs e)
+        {
+            var data = CreateData(130);
+            for (int i = 0; i < data.Count; i+=50)
+            {
+                var tempData = data.Skip(i).Take(50).ToList();
+
+                foreach (Student item in tempData)
+                {
+                    Debug.WriteLine(item.Age);
+                }
+            }
+        }
+
+        private void bUpdateOne_Click(object sender, EventArgs e)
+        {
+            var data = CreateData(100);
+            var s1 = data[0];
+            s1.Class = "faskdjhfkashdfksadhfkshdf";
+            Debug.WriteLine(data[0].Class);
+        }
     }
 }

@@ -12,6 +12,12 @@ namespace QuickTests
     {
         //App Strings
         public static string TimeString => DateTime.Now.ToString("HH:mm:ss:fff");
+        public static long TimeTick => DateTime.Now.Ticks;
+        /// <summary>
+        /// Nano second, 10(-9)
+        /// </summary>
+        public static long TimeNano=> DateTime.Now.Ticks * 100;
+        public static long TimeMs => DateTime.Now.Ticks / 10000;
         public static string AppPath => Path.GetDirectoryName(Application.ExecutablePath);
 
         public static bool IsValidPath(string path)

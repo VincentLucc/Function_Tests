@@ -51,10 +51,15 @@ namespace QuickTests
             this.tbName = new System.Windows.Forms.TextBox();
             this.bSetName = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.bTakeTest1 = new System.Windows.Forms.Button();
+            this.bTake = new System.Windows.Forms.Button();
+            this.bArray = new System.Windows.Forms.Button();
+            this.bUpdateOne = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabEvents.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -281,13 +286,57 @@ namespace QuickTests
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.bUpdateOne);
+            this.tabPage1.Controls.Add(this.bTakeTest1);
+            this.tabPage1.Controls.Add(this.bTake);
+            this.tabPage1.Controls.Add(this.bArray);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(792, 422);
             this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Collections";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // bTakeTest1
+            // 
+            this.bTakeTest1.Location = new System.Drawing.Point(184, 17);
+            this.bTakeTest1.Name = "bTakeTest1";
+            this.bTakeTest1.Size = new System.Drawing.Size(75, 23);
+            this.bTakeTest1.TabIndex = 2;
+            this.bTakeTest1.Text = "Take Test1";
+            this.bTakeTest1.UseVisualStyleBackColor = true;
+            this.bTakeTest1.Click += new System.EventHandler(this.bTakeTest1_Click);
+            // 
+            // bTake
+            // 
+            this.bTake.Location = new System.Drawing.Point(103, 17);
+            this.bTake.Name = "bTake";
+            this.bTake.Size = new System.Drawing.Size(75, 23);
+            this.bTake.TabIndex = 1;
+            this.bTake.Text = "Take";
+            this.bTake.UseVisualStyleBackColor = true;
+            this.bTake.Click += new System.EventHandler(this.bTake_Click);
+            // 
+            // bArray
+            // 
+            this.bArray.Location = new System.Drawing.Point(21, 18);
+            this.bArray.Name = "bArray";
+            this.bArray.Size = new System.Drawing.Size(75, 23);
+            this.bArray.TabIndex = 0;
+            this.bArray.Text = "Skip";
+            this.bArray.UseVisualStyleBackColor = true;
+            this.bArray.Click += new System.EventHandler(this.bArray_Click);
+            // 
+            // bUpdateOne
+            // 
+            this.bUpdateOne.Location = new System.Drawing.Point(21, 48);
+            this.bUpdateOne.Name = "bUpdateOne";
+            this.bUpdateOne.Size = new System.Drawing.Size(109, 23);
+            this.bUpdateOne.TabIndex = 3;
+            this.bUpdateOne.Text = "Update One";
+            this.bUpdateOne.UseVisualStyleBackColor = true;
+            this.bUpdateOne.Click += new System.EventHandler(this.bUpdateOne_Click);
             // 
             // Form1
             // 
@@ -305,6 +354,7 @@ namespace QuickTests
             this.tabEvents.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -333,6 +383,10 @@ namespace QuickTests
         private System.Windows.Forms.Button bSetAge;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button bArray;
+        private System.Windows.Forms.Button bTake;
+        private System.Windows.Forms.Button bTakeTest1;
+        private System.Windows.Forms.Button bUpdateOne;
     }
 }
 

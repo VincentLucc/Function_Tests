@@ -23,7 +23,6 @@ namespace Dev_GridControl
     {
         public List<DataRowView> TemplateListBuffer { get; set; }
         public string sCommandCaption { get; set; }
-
         public CustomEditor()
         {
             InitializeComponent();
@@ -244,6 +243,12 @@ namespace Dev_GridControl
             [DisplayName("Current Function")]
             public string Function { get; set; }
 
+        }
+
+        private void bMultiSelect_Click(object sender, EventArgs e)
+        {
+            bool bMultiSelection = TemplateGridView.OptionsSelection.MultiSelect;
+            TemplateGridView.OptionsSelection.MultiSelect = !bMultiSelection;
         }
     }
 }

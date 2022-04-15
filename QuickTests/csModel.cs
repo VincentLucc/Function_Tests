@@ -88,4 +88,11 @@ namespace QuickTests
         public event AgeChangedAction AgeChanged;
 
     }
+
+
+    public class Device
+    {
+        public int DeviceName { get; set; }
+        public bool Connected { get; set; }
+    }
 }

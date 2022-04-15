@@ -30,9 +30,13 @@ namespace Docking
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer3 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
-            this.dockManager2 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
+            DevExpress.XtraBars.Docking.CustomHeaderButtonImageOptions customHeaderButtonImageOptions1 = new DevExpress.XtraBars.Docking.CustomHeaderButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer dockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer();
+            this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
+            this.ucCenterDocument = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
+            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.dpBottom = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanel2 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -40,29 +44,37 @@ namespace Docking
             this.dockPanel3_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
-            this.ucCenterDocument = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(this.components);
-            this.documentGroup1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dockManager2)).BeginInit();
-            this.dockPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ucCenterDocument)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
+            this.dpBottom.SuspendLayout();
             this.dockPanel2.SuspendLayout();
             this.dockPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ucCenterDocument)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dockManager2
+            // documentGroup1
             // 
-            this.dockManager2.DockingOptions.ShowAutoHideButton = false;
-            this.dockManager2.DockingOptions.ShowCaptionOnMouseHover = true;
-            this.dockManager2.DockingOptions.ShowCloseButton = false;
-            this.dockManager2.Form = this;
-            this.dockManager2.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.dockPanel1,
+            this.documentGroup1.Items.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document[] {
+            this.ucCenterDocument});
+            // 
+            // ucCenterDocument
+            // 
+            this.ucCenterDocument.Caption = "ucCenter";
+            this.ucCenterDocument.ControlName = "ucCenter";
+            this.ucCenterDocument.ControlTypeName = "Docking.Controls.ucCenter";
+            // 
+            // dockManager1
+            // 
+            this.dockManager1.DockingOptions.ShowAutoHideButton = false;
+            this.dockManager1.DockingOptions.ShowCloseButton = false;
+            this.dockManager1.Form = this;
+            this.dockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
+            this.dpBottom,
             this.dockPanel2,
             this.dockPanel3});
-            this.dockManager2.TopZIndexControls.AddRange(new string[] {
+            this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
             "System.Windows.Forms.StatusBar",
@@ -76,22 +88,29 @@ namespace Docking
             "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl",
             "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl"});
             // 
-            // dockPanel1
+            // dpBottom
             // 
-            this.dockPanel1.Controls.Add(this.dockPanel1_Container);
-            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
-            this.dockPanel1.ID = new System.Guid("a92b2fd1-509d-4b77-9533-1091adcaf6bd");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 250);
-            this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(800, 200);
-            this.dockPanel1.Text = "dockPanel1";
+            this.dpBottom.Controls.Add(this.dockPanel1_Container);
+            this.dpBottom.CustomHeaderButtons.AddRange(new DevExpress.XtraBars.Docking2010.IButton[] {
+            new DevExpress.XtraBars.Docking.CustomHeaderButton(),
+            new DevExpress.XtraBars.Docking.CustomHeaderButton("Button1", true, customHeaderButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "This is a Test", 0, true, null, true, false, true, serializableAppearanceObject1, null, -1),
+            new DevExpress.XtraBars.Docking.CustomHeaderButton(),
+            new DevExpress.XtraBars.Docking.CustomHeaderButton(),
+            new DevExpress.XtraBars.Docking.CustomHeaderButton()});
+            this.dpBottom.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
+            this.dpBottom.ID = new System.Guid("a92b2fd1-509d-4b77-9533-1091adcaf6bd");
+            this.dpBottom.Location = new System.Drawing.Point(0, 250);
+            this.dpBottom.Name = "dpBottom";
+            this.dpBottom.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dpBottom.Size = new System.Drawing.Size(800, 200);
+            this.dpBottom.Text = "dockPanel1";
+            this.dpBottom.Click += new System.EventHandler(this.dockPanel1_Click);
             // 
             // dockPanel1_Container
             // 
-            this.dockPanel1_Container.Location = new System.Drawing.Point(7, 1);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(7, 34);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(786, 192);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(786, 159);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // dockPanel2
@@ -107,9 +126,9 @@ namespace Docking
             // 
             // dockPanel2_Container
             // 
-            this.dockPanel2_Container.Location = new System.Drawing.Point(8, 1);
+            this.dockPanel2_Container.Location = new System.Drawing.Point(8, 31);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(185, 242);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(185, 212);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // dockPanel3
@@ -125,9 +144,9 @@ namespace Docking
             // 
             // dockPanel3_Container
             // 
-            this.dockPanel3_Container.Location = new System.Drawing.Point(7, 1);
+            this.dockPanel3_Container.Location = new System.Drawing.Point(7, 31);
             this.dockPanel3_Container.Name = "dockPanel3_Container";
-            this.dockPanel3_Container.Size = new System.Drawing.Size(185, 242);
+            this.dockPanel3_Container.Size = new System.Drawing.Size(185, 212);
             this.dockPanel3_Container.TabIndex = 0;
             // 
             // documentManager1
@@ -143,20 +162,9 @@ namespace Docking
             this.documentGroup1});
             this.tabbedView1.Documents.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseDocument[] {
             this.ucCenterDocument});
-            dockingContainer3.Element = this.documentGroup1;
+            dockingContainer1.Element = this.documentGroup1;
             this.tabbedView1.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            dockingContainer3});
-            // 
-            // ucCenterDocument
-            // 
-            this.ucCenterDocument.Caption = "ucCenter";
-            this.ucCenterDocument.ControlName = "ucCenter";
-            this.ucCenterDocument.ControlTypeName = "Docking.Controls.ucCenter";
-            // 
-            // documentGroup1
-            // 
-            this.documentGroup1.Items.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document[] {
-            this.ucCenterDocument});
+            dockingContainer1});
             // 
             // DockManagerDocking
             // 
@@ -165,30 +173,30 @@ namespace Docking
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dockPanel3);
             this.Controls.Add(this.dockPanel2);
-            this.Controls.Add(this.dockPanel1);
+            this.Controls.Add(this.dpBottom);
             this.Name = "DockManagerDocking";
             this.Text = "DockManager1";
             this.Load += new System.EventHandler(this.DockManagerDocking_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dockManager2)).EndInit();
-            this.dockPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ucCenterDocument)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
+            this.dpBottom.ResumeLayout(false);
             this.dockPanel2.ResumeLayout(false);
             this.dockPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ucCenterDocument)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraBars.Docking.DockManager dockManager2;
+        private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel3;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel3_Container;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel2;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel2_Container;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
+        private DevExpress.XtraBars.Docking.DockPanel dpBottom;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;

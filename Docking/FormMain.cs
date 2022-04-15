@@ -27,5 +27,11 @@ namespace Docking
             DockManagerDocking winDoc = new DockManagerDocking();
             winDoc.Show();
         }
+
+        private void bDockPanel_Click(object sender, EventArgs e)
+        {
+            FormDockPanel winDoc = new FormDockPanel();
+            winDoc.Show();
+        }
     }
 }
