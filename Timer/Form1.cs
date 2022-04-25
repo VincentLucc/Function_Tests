@@ -17,6 +17,8 @@ namespace OperationBlock
 
         public LoopBlocker Blocker { get; set; }
 
+        public ButtonOperationGroup ButtonOperation { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +33,7 @@ namespace OperationBlock
 
 
             Blocker = new LoopBlocker();
+            ButtonOperation = new ButtonOperationGroup();
         }
 
         private async void T1_Tick(object sender, EventArgs e)
@@ -100,5 +103,15 @@ namespace OperationBlock
             Blocker.Enable = false;
         }
 
+        private async void bButtonBlock_Click(object sender, EventArgs e)
+        {
+            if (!ButtonOperation.CheckButtonBusy("bButtonBlock_Click")) return;
+
+
+            await Task.Delay(3000);
+
+            //Finish up
+            ButtonOperation.IsButtonBusy = false;
+        }
     }
 }

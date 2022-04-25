@@ -316,7 +316,7 @@ namespace QuickTests
         {
             var data = CreateData(100);
             //Get a new collection index from 10-99
-            var data1= data.Skip(10);
+            var data1 = data.Skip(10);
             var data2 = data.Take(1000).ToList();
         }
 
@@ -343,7 +343,7 @@ namespace QuickTests
         private void bTakeTest1_Click(object sender, EventArgs e)
         {
             var data = CreateData(130);
-            for (int i = 0; i < data.Count; i+=50)
+            for (int i = 0; i < data.Count; i += 50)
             {
                 var tempData = data.Skip(i).Take(50).ToList();
 
@@ -361,5 +361,83 @@ namespace QuickTests
             s1.Class = "faskdjhfkashdfksadhfkshdf";
             Debug.WriteLine(data[0].Class);
         }
+
+        private void bFloat_Click(object sender, EventArgs e)
+        {
+            float fA = 3.33f;
+            var x = 2 + fA / 3;
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        public int? abc1 { get; set; }
+        public Test1? abc { get; set; }
+        private void bEnumTest_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public enum Test1
+        {
+            do1,
+            do2
+        }
+
+        private void bList_Click(object sender, EventArgs e)
+        {
+            var students = CreateData(10);
+
+            //case 1, value changed
+            var s1 = students[0];
+            s1.Age = 111;
+
+            //Case 2 , value changed
+            object o1 = s1;
+            var s2 = (Student)o1;
+            s2.Age = 222;
+
+            //Case 3: value changed
+            DoChangeValue(s1);
+
+            DoChangeValue2(s1);
+        }
+
+        private void DoChangeValue(object o1)
+        {
+            var s2 = (Student)o1;
+            s2.Age = 333;
+        }
+
+        private void DoChangeValue2(object o1)
+        {
+            dynamic s2;
+            s2 = (Student)o1;
+            s2.Age = 555;
+        }
+
+        private void bSpeed_Click(object sender, EventArgs e)
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Restart();
+            var data = CreateData(10000000);
+            watch.Stop();
+            Debug.WriteLine($"CreateData {watch.ElapsedMilliseconds}");
+            watch.Restart();
+            var find = data.Where(a=>a.Age>10000).ToList(); //Make another copy (Time consuming, 200ms)
+            watch.Stop();
+            Debug.WriteLine($"Data find {watch.ElapsedMilliseconds}");
+            watch.Restart();
+            var find2 = data.Where(a => a.Age > 10000); //Directly get reference (Fast, 0ms)
+            watch.Stop();
+            Debug.WriteLine($"Data find2 {watch.ElapsedMilliseconds}");
+            Debug.WriteLine("Finish");
+        }
     }
+
+
 }

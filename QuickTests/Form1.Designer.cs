@@ -43,6 +43,7 @@ namespace QuickTests
             this.bEventsInit = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.bFloat = new System.Windows.Forms.Button();
             this.tabEvents = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,10 +52,13 @@ namespace QuickTests
             this.tbName = new System.Windows.Forms.TextBox();
             this.bSetName = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.bList = new System.Windows.Forms.Button();
+            this.bEnumTest = new System.Windows.Forms.Button();
+            this.bUpdateOne = new System.Windows.Forms.Button();
             this.bTakeTest1 = new System.Windows.Forms.Button();
             this.bTake = new System.Windows.Forms.Button();
             this.bArray = new System.Windows.Forms.Button();
-            this.bUpdateOne = new System.Windows.Forms.Button();
+            this.bSpeed = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabEvents.SuspendLayout();
@@ -196,6 +200,7 @@ namespace QuickTests
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.bFloat);
             this.tabGeneral.Controls.Add(this.button1);
             this.tabGeneral.Controls.Add(this.button2);
             this.tabGeneral.Controls.Add(this.bFolders);
@@ -214,6 +219,16 @@ namespace QuickTests
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // bFloat
+            // 
+            this.bFloat.Location = new System.Drawing.Point(598, 16);
+            this.bFloat.Name = "bFloat";
+            this.bFloat.Size = new System.Drawing.Size(75, 23);
+            this.bFloat.TabIndex = 11;
+            this.bFloat.Text = "float";
+            this.bFloat.UseVisualStyleBackColor = true;
+            this.bFloat.Click += new System.EventHandler(this.bFloat_Click);
             // 
             // tabEvents
             // 
@@ -286,6 +301,9 @@ namespace QuickTests
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.bSpeed);
+            this.tabPage1.Controls.Add(this.bList);
+            this.tabPage1.Controls.Add(this.bEnumTest);
             this.tabPage1.Controls.Add(this.bUpdateOne);
             this.tabPage1.Controls.Add(this.bTakeTest1);
             this.tabPage1.Controls.Add(this.bTake);
@@ -297,6 +315,37 @@ namespace QuickTests
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Collections";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // bList
+            // 
+            this.bList.Location = new System.Drawing.Point(21, 77);
+            this.bList.Name = "bList";
+            this.bList.Size = new System.Drawing.Size(75, 23);
+            this.bList.TabIndex = 5;
+            this.bList.Text = "List";
+            this.bList.UseVisualStyleBackColor = true;
+            this.bList.Click += new System.EventHandler(this.bList_Click);
+            // 
+            // bEnumTest
+            // 
+            this.bEnumTest.Location = new System.Drawing.Point(265, 17);
+            this.bEnumTest.Name = "bEnumTest";
+            this.bEnumTest.Size = new System.Drawing.Size(75, 23);
+            this.bEnumTest.TabIndex = 4;
+            this.bEnumTest.Text = "Enum Test";
+            this.bEnumTest.UseVisualStyleBackColor = true;
+            this.bEnumTest.Click += new System.EventHandler(this.bEnumTest_Click);
+            // 
+            // bUpdateOne
+            // 
+            this.bUpdateOne.Location = new System.Drawing.Point(21, 48);
+            this.bUpdateOne.Name = "bUpdateOne";
+            this.bUpdateOne.Size = new System.Drawing.Size(109, 23);
+            this.bUpdateOne.TabIndex = 3;
+            this.bUpdateOne.Text = "Update One";
+            this.bUpdateOne.UseVisualStyleBackColor = true;
+            this.bUpdateOne.Click += new System.EventHandler(this.bUpdateOne_Click);
             // 
             // bTakeTest1
             // 
@@ -328,15 +377,15 @@ namespace QuickTests
             this.bArray.UseVisualStyleBackColor = true;
             this.bArray.Click += new System.EventHandler(this.bArray_Click);
             // 
-            // bUpdateOne
+            // bSpeed
             // 
-            this.bUpdateOne.Location = new System.Drawing.Point(21, 48);
-            this.bUpdateOne.Name = "bUpdateOne";
-            this.bUpdateOne.Size = new System.Drawing.Size(109, 23);
-            this.bUpdateOne.TabIndex = 3;
-            this.bUpdateOne.Text = "Update One";
-            this.bUpdateOne.UseVisualStyleBackColor = true;
-            this.bUpdateOne.Click += new System.EventHandler(this.bUpdateOne_Click);
+            this.bSpeed.Location = new System.Drawing.Point(347, 18);
+            this.bSpeed.Name = "bSpeed";
+            this.bSpeed.Size = new System.Drawing.Size(75, 23);
+            this.bSpeed.TabIndex = 6;
+            this.bSpeed.Text = "SpeedTest";
+            this.bSpeed.UseVisualStyleBackColor = true;
+            this.bSpeed.Click += new System.EventHandler(this.bSpeed_Click);
             // 
             // Form1
             // 
@@ -387,6 +436,10 @@ namespace QuickTests
         private System.Windows.Forms.Button bTake;
         private System.Windows.Forms.Button bTakeTest1;
         private System.Windows.Forms.Button bUpdateOne;
+        private System.Windows.Forms.Button bFloat;
+        private System.Windows.Forms.Button bEnumTest;
+        private System.Windows.Forms.Button bList;
+        private System.Windows.Forms.Button bSpeed;
     }
 }
 

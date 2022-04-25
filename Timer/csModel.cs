@@ -4,11 +4,31 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OperationBlock
 {
     class csModel
     {
+    }
+
+    public class ButtonOperationGroup
+    {
+        public bool IsButtonBusy { get; set; }
+        public string WorkingOn { get; set; }
+        public bool CheckButtonBusy(string sCurrentOperation)
+        {
+            //Check button busy
+            if (IsButtonBusy)
+            {
+                MessageBox.Show($"Operating on {sCurrentOperation}, please wait.");
+                return false;
+            }
+
+            WorkingOn = sCurrentOperation;
+            IsButtonBusy = true;
+            return true;
+        }
     }
 
     /// <summary>

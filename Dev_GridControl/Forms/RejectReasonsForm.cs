@@ -27,29 +27,48 @@ namespace Dev_GridControl
             gridControl1.DataSource = sampleData;
 
 
+
+            //gridView1.OptionsView.ShowGroupedColumns = false; //Hide groupped column
+            gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.False;//Display the summary in column lane
+            gridView1.OptionsBehavior.AllowPartialGroups = DefaultBoolean.False; //Hide device name
+            gridView1.Appearance.GroupFooter.TextOptions.HAlignment = HorzAlignment.Center;//Center the display
+            gridView1.OptionsView.ShowFooter = false;
+
             //Create group
             var deviceColumn = gridView1.Columns[nameof(AuxInfoView.DeviceName)];
-      
             deviceColumn.Group();
             deviceColumn.Visible = false;
-            //gridView1.OptionsView.ShowGroupedColumns = false; //Hide groupped column
-            gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.Default;//Display the summary in column lane
-            gridView1.OptionsBehavior.AllowPartialGroups = DefaultBoolean.True;
-            gridView1.Appearance.GroupFooter.TextOptions.HAlignment = HorzAlignment.Center;//Center the display
-            
 
             //Set group summaries
-            string sNumberColumn = nameof(AuxInfoView.NumberOfTaggedProducts);
-            GridGroupSummaryItem item = new GridGroupSummaryItem()
-            {
-                FieldName = sNumberColumn,
-                SummaryType = SummaryItemType.Sum,
-                ShowInGroupColumnFooter = gridView1.Columns[sNumberColumn]  //Display location
-            };
-            gridView1.GroupSummary.Add(item);
+            //string sNumberColumn = nameof(AuxInfoView.NumberOfTaggedProducts);
+            //GridGroupSummaryItem item = new GridGroupSummaryItem()
+            //{
+            //    FieldName = sNumberColumn,
+            //    SummaryType = SummaryItemType.Sum,
+            //    ShowInGroupColumnFooter = gridView1.Columns[sNumberColumn]  //Display location
+            //};
+            //gridView1.GroupSummary.Add(item);
 
             //Set group row value
             gridView1.CustomDrawGroupRow += GridView1_CustomDrawGroupRow;
+            gridView1.CustomDrawFooterCell += GridView1_CustomDrawFooterCell;
+            gridView1.CustomDrawFooter += GridView1_CustomDrawFooter;
+            gridView1.SelectionChanged += GridView1_SelectionChanged;
+        }
+
+        private void GridView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            gridView1.ClearSelection();
+        }
+
+        private void GridView1_CustomDrawFooter(object sender, DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs e)
+        {
+           
+        }
+
+        private void GridView1_CustomDrawFooterCell(object sender, DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventArgs e)
+        {
+           
         }
 
         private void GridView1_CustomDrawGroupRow(object sender, DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs e)
