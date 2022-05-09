@@ -15,6 +15,10 @@ namespace Lock
     public partial class Form1 : Form
     {
         System.Windows.Forms.Timer tTest1;
+        OperationBlock.LoopBlocker timerBlocker;
+        public object operationLock;
+        public static bool IsBusy { get; private set; }
+        public static string WorkingON { get; private set; }
 
         public Form1()
         {
@@ -23,14 +27,34 @@ namespace Lock
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            InitVariables();
+
+        }
+
+        private void InitVariables()
+        {
+            csPublic.winMain = this;
+            operationLock = new object();
+            timerBlocker = new OperationBlock.LoopBlocker();
+            timerBlocker.StartBlock();
+
             tTest1 = new System.Windows.Forms.Timer();
             tTest1.Interval = 200;
             tTest1.Tick += T1_Tick;
+            tTest1.Start();
         }
 
         private void T1_Tick(object sender, EventArgs e)
         {
             var t1 = (System.Windows.Forms.Timer)sender;
+
+            if (timerBlocker.Enable)
+            {
+                t1.Enabled = true;
+                timerBlocker.IsBlocked = true;
+                return;
+            }
+
             t1.Enabled = false;
 
             DoSth();
@@ -38,22 +62,19 @@ namespace Lock
             t1.Enabled = true;
         }
 
-        public object operationLock = new object();
 
-        public static bool IsBusy { get; private set; }
-        public static string WorkingON { get; private set; }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             DoSth();
         }
 
-        private void DoSth()
+        public void DoSth()
         {
 
             lock (operationLock)
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     for (int j = 0; j < 30; j++)
                     {
@@ -64,12 +85,10 @@ namespace Lock
                     Debug.WriteLine(i + 1);
                 }
             }
-
         }
 
         private void simpleButton1_Click_1(object sender, EventArgs e)
         {
-            tTest1.Enabled = true;
             DoSth();
         }
 
@@ -139,6 +158,17 @@ namespace Lock
             Debug.WriteLine("WaitForBlockAsync:" + stopwatch.ElapsedMilliseconds);
             stopwatch.Stop();
             return true;
+        }
+
+        private void nNewForm_Click(object sender, EventArgs e)
+        {
+            var form = new FormNewTimer();
+            form.Show();
+        }
+
+        private void tsMainTimer_Toggled(object sender, EventArgs e)
+        {
+            timerBlocker.Enable = !tsMainTimer.IsOn;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+using Dev_GridControl.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,6 +57,12 @@ namespace Dev_GridControl
             BigDataUpdate winBigData = new BigDataUpdate();
             winBigData.Show();
 
+        }
+
+        private void bTileView_Click(object sender, EventArgs e)
+        {
+            TileView winTile = new TileView();
+            winTile.Show();
         }
     }
 }

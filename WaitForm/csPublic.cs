@@ -41,6 +41,14 @@ namespace WaitForm
             var handle = SplashScreenManager.ShowOverlayForm(csPublic.winMain, customPainter: new CustomOverlayPainter(sMessage));
             return handle;
         }
+
+
+        public static void CloseOverLayForm(IOverlaySplashScreenHandle overlayHandle)
+        {
+            SplashScreenManager.CloseOverlayForm(overlayHandle);
+        }
+
+
     }
 
 
@@ -61,6 +69,8 @@ namespace WaitForm
 
             //Specify the string that will be drawn on the Overlay Form instead of the wait indicator.
             String drawString = sMessage;
+            string sLongLine = LongestLine(drawString);   
+    
             //Get the system's black brush.
             Brush drawBrush = Brushes.Black;
 
@@ -71,15 +81,46 @@ namespace WaitForm
             GraphicsCache cache = context.DrawArgs.Cache;
 
             //Calculate the size of the message string.
-            SizeF textSize = cache.CalcTextSize(drawString, drawFont);
+            SizeF textSize = cache.CalcTextSize(sLongLine, drawFont);
 
             //A point that specifies the upper-left corner of the rectangle where the string will be drawn.
             PointF drawPoint = new PointF(
                 bounds.Left + bounds.Width / 2 - textSize.Width / 2,
-                bounds.Top + bounds.Height / 2 - textSize.Height / 2 + 60
+                bounds.Top + bounds.Height / 2 - textSize.Height / 2 + 80
                 );
             //Draw the string on the screen.
             cache.DrawString(drawString, drawFont, drawBrush, drawPoint);
+        }
+
+        private string LongestLine(string sInput)
+        {
+          
+            var sParts = sMessage.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            int iMaxIndex = 0;
+            int iMaxCount = 0;
+
+            for (int i = 0; i < sParts.Length; i++)
+            {
+                string sLine = sParts[i];
+
+                if (sLine.Length == 0) continue;
+                if (sLine.Length> iMaxCount)
+                {
+                    iMaxIndex = i;
+                }
+            }
+
+
+            //Get result
+            if (sParts != null && sParts.Length > 0)
+            {
+                return sParts[iMaxIndex];
+            }
+            else
+            {
+                return "";
+            }
+
         }
     }
 

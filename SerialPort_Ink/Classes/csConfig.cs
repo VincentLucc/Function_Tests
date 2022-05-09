@@ -18,7 +18,9 @@ namespace SerialPort_Ink
         public SerialSendMode SendMode { get; set; }
         public SerialDataType ReceiveFormat { get; set; }
 
-        
+
+
+
         [XmlIgnore]
         public List<string> Commands { get; set; }
         [XmlIgnore]
@@ -43,7 +45,7 @@ namespace SerialPort_Ink
             SendFormat = SerialDataType.ASCII;
             ReceiveFormat = SerialDataType.ASCII;
             EndSuffixView = "";
-            Commands = new List<string>() { 
+            Commands = new List<string>() {
             "STA?0","SEB?0"
             };
 
@@ -58,7 +60,7 @@ namespace SerialPort_Ink
 
     public class PortConfig
     {
-     
+
         [XmlIgnore]
         public string PortName { get; set; }
         [XmlIgnore]
@@ -69,32 +71,48 @@ namespace SerialPort_Ink
         /// Stop bit can't be set to none
         /// </summary>
         [XmlIgnore]
-        public StopBits StopBits => StopBitsIndex<0? StopBits.One: (StopBits)(StopBitsIndex+1);
+        public StopBits StopBits => StopBitsIndex < 0 ? StopBits.One : (StopBits)(StopBitsIndex + 1);
         public int StopBitsIndex { get; set; }
 
         [XmlIgnore]
         public int DataBits => (int)GetValueByIndex<int>(DataBitsCollection, DataBitsIndex);
         public int DataBitsIndex { get; set; }
         [XmlIgnore]
-        public Parity Parity => ParityIndex<0? Parity.None : (Parity)ParityIndex;
+        public Parity Parity => ParityIndex < 0 ? Parity.None : (Parity)ParityIndex;
         public int ParityIndex { get; set; }
+
+        /// <summary>
+        /// Index value of the flow control, type Handshake
+        /// </summary>
+        public int FlowControlIndex { get; set; }
+
+        public Handshake FlowControl => (FlowControlIndex < 0 || FlowControlIndex > 3) ? Handshake.None : (Handshake)FlowControlIndex;
+
+
+        public bool DTREnable { get; set; }
+        public bool RTSEnable { get; set; }
 
         //Statics
         [XmlIgnore]
-        public static int[] BaudRateCollection = new int[] { 2400, 4800, 9600, 11520, 19200, 38400 };
+        public static int[] BaudRateCollection = new int[] { 2400, 4800, 9600, 11520, 19200, 38400, 57600, 115200 };
         [XmlIgnore]
-        public static int[] DataBitsCollection = new int[] { 6, 7, 8};
+        public static int[] DataBitsCollection = new int[] { 6, 7, 8 };
         [XmlIgnore]
-        public static string[] StopBitsCollection = new string[] {"1", "2", "1.5"};
+        public static string[] StopBitsCollection = new string[] { "1", "2", "1.5" };
         [XmlIgnore]
-        public static string[] ParityCollection = new string[] { "None", "Odd", "Even"};
+        public static string[] ParityCollection = new string[] { "None", "Odd", "Even" };
+
+        [XmlIgnore]
+        public static string[] FlowControlCollection = new string[] { "None", "XOnXOff", "RequestToSend", "RequestToSendXOnXOff" };
+
+
 
         public PortConfig()
         {
             PortName = "";
         }
 
-        private object GetValueByIndex<T>(IList<T> DataSource,int iIndex)
+        private object GetValueByIndex<T>(IList<T> DataSource, int iIndex)
         {
             //Exist directly get value
             if (iIndex >= 0 && iIndex < DataSource.Count)
@@ -104,16 +122,16 @@ namespace SerialPort_Ink
             //Not exist get value based on situation
             else
             {
-                if (typeof(T).Name ==typeof(string).Name)
+                if (typeof(T).Name == typeof(string).Name)
                 {
                     return "";
                 }
-                else 
+                else
                 {
                     return -1;
                 }
 
-               
+
             }
         }
     }

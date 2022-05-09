@@ -30,10 +30,11 @@ namespace WizardControl
         private void InitializeComponent()
         {
             this.wizardControl1 = new DevExpress.XtraWizard.WizardControl();
-            this.welcomeWizardPage1 = new DevExpress.XtraWizard.WelcomeWizardPage();
+            this.WizardPage0 = new DevExpress.XtraWizard.WelcomeWizardPage();
             this.wizardPage1 = new DevExpress.XtraWizard.WizardPage();
-            this.completionWizardPage1 = new DevExpress.XtraWizard.CompletionWizardPage();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.WizardPage3 = new DevExpress.XtraWizard.CompletionWizardPage();
+            this.wizardPage2 = new DevExpress.XtraWizard.WizardPage();
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).BeginInit();
             this.wizardControl1.SuspendLayout();
             this.wizardPage1.SuspendLayout();
@@ -41,32 +42,33 @@ namespace WizardControl
             // 
             // wizardControl1
             // 
-            this.wizardControl1.Controls.Add(this.welcomeWizardPage1);
+            this.wizardControl1.Controls.Add(this.WizardPage0);
             this.wizardControl1.Controls.Add(this.wizardPage1);
-            this.wizardControl1.Controls.Add(this.completionWizardPage1);
+            this.wizardControl1.Controls.Add(this.WizardPage3);
+            this.wizardControl1.Controls.Add(this.wizardPage2);
             this.wizardControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wizardControl1.Name = "wizardControl1";
             this.wizardControl1.Pages.AddRange(new DevExpress.XtraWizard.BaseWizardPage[] {
-            this.welcomeWizardPage1,
+            this.WizardPage0,
             this.wizardPage1,
-            this.completionWizardPage1});
+            this.wizardPage2,
+            this.WizardPage3});
             this.wizardControl1.Size = new System.Drawing.Size(800, 450);
+            this.wizardControl1.Text = "Wizard Control";
+            this.wizardControl1.WizardStyle = DevExpress.XtraWizard.WizardStyle.WizardAero;
             // 
-            // welcomeWizardPage1
+            // WizardPage0
             // 
-            this.welcomeWizardPage1.Name = "welcomeWizardPage1";
-            this.welcomeWizardPage1.Size = new System.Drawing.Size(583, 317);
+            this.WizardPage0.Name = "WizardPage0";
+            this.WizardPage0.Size = new System.Drawing.Size(740, 282);
+            this.WizardPage0.Text = "Welcome to the wizard Page 0";
             // 
             // wizardPage1
             // 
             this.wizardPage1.Controls.Add(this.simpleButton1);
             this.wizardPage1.Name = "wizardPage1";
-            this.wizardPage1.Size = new System.Drawing.Size(768, 305);
-            // 
-            // completionWizardPage1
-            // 
-            this.completionWizardPage1.Name = "completionWizardPage1";
-            this.completionWizardPage1.Size = new System.Drawing.Size(583, 317);
+            this.wizardPage1.Size = new System.Drawing.Size(740, 282);
+            this.wizardPage1.Text = "Wizard Page 1";
             // 
             // simpleButton1
             // 
@@ -75,6 +77,18 @@ namespace WizardControl
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "simpleButton1";
+            // 
+            // WizardPage3
+            // 
+            this.WizardPage3.Name = "WizardPage3";
+            this.WizardPage3.Size = new System.Drawing.Size(740, 282);
+            this.WizardPage3.Text = "Completing the wizard page 3";
+            // 
+            // wizardPage2
+            // 
+            this.wizardPage2.Name = "wizardPage2";
+            this.wizardPage2.Size = new System.Drawing.Size(740, 282);
+            this.wizardPage2.Text = "Wizard Page 2";
             // 
             // Form1
             // 
@@ -95,10 +109,11 @@ namespace WizardControl
         #endregion
 
         private DevExpress.XtraWizard.WizardControl wizardControl1;
-        private DevExpress.XtraWizard.WelcomeWizardPage welcomeWizardPage1;
+        private DevExpress.XtraWizard.WelcomeWizardPage WizardPage0;
         private DevExpress.XtraWizard.WizardPage wizardPage1;
-        private DevExpress.XtraWizard.CompletionWizardPage completionWizardPage1;
+        private DevExpress.XtraWizard.CompletionWizardPage WizardPage3;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraWizard.WizardPage wizardPage2;
     }
 }
 

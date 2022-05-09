@@ -125,6 +125,8 @@ namespace SerialPort_Ink
                     ApplyPortSettings(config);//Make sure set values while port is not connected
                     SendBlocker.StopBlock();//Make sure sending thread is alive
                     Port.Open();
+                    if (config.Port.DTREnable) Port.DtrEnable = true;
+                    if (config.Port.RTSEnable) Port.RtsEnable = true;
                     Port.DataReceived += Port_DataReceived;
                 }
                 catch (Exception ex)
@@ -185,6 +187,7 @@ namespace SerialPort_Ink
             Port.DataBits = config.Port.DataBits;
             Port.StopBits = config.Port.StopBits;
             Port.Parity = config.Port.Parity;
+            Port.Handshake = config.Port.FlowControl;
         }
 
         private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)

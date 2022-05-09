@@ -24,8 +24,6 @@ namespace Property_NoAutoValidate
         public csPropertyHelper propertyHelper { get; set; }
         public string ErrorMessage { get; set; }
 
-
-
         public Form1()
         {
             InitializeComponent();
@@ -42,7 +40,7 @@ namespace Property_NoAutoValidate
 
             //Init helper
             propertyHelper = new csPropertyHelper(pg1);
-            propertyHelper.PropertyGrid.RowHeaderWidth=40;
+            propertyHelper.PropertyGrid.RowHeaderWidth = 40;
 
             //Init property grid settings
             pg1.ValidatingEditor += Pg1_ValidatingEditor;
@@ -107,7 +105,7 @@ namespace Property_NoAutoValidate
         {
             //run twice, may cause problem
             //May not trigger
-            
+
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -115,7 +113,7 @@ namespace Property_NoAutoValidate
             Debug.WriteLine("Form1_MouseDown");
         }
 
- 
+
 
         private void Pg1_CustomRecordCellEdit(object sender, GetCustomRowCellEditEventArgs e)
         {
@@ -178,7 +176,7 @@ namespace Property_NoAutoValidate
             {
                 TriggerPropertyValidate();
             }
-          
+
         }
 
 
@@ -304,11 +302,12 @@ namespace Property_NoAutoValidate
                 return;
             }
 
-
-            Debug.WriteLine("Validating Edit Start");
             //Init variables
+            Debug.WriteLine("Validating Edit Start");
             string sFieldName = pg1.FocusedRow.Properties.FieldName;
+            var editor = propertyHelper.GetEditorType(pg1.FocusedRow, pg1.SelectedObject);  //Get property 
 
+            //Validate special properties
             if (sFieldName == nameof(Student.Age))
             {
                 VerifyRange(e, 1, 50);
@@ -322,6 +321,11 @@ namespace Property_NoAutoValidate
                 NotifyUserAndUpdate(e);
             }
 
+            //Validate default range
+            if (editor != null && editor.EnableRangeLimit)
+            {
+                VerifyRange(e, editor.Min, editor.Max);
+            }
         }
 
 
@@ -335,7 +339,6 @@ namespace Property_NoAutoValidate
 
                 //Dev message box
                 XtraMessageBox.Show("Dev info", "Dev title", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
-
 
                 //Show confirmmation
                 var result = MessageBox.Show("This is confirmation", "Test title", MessageBoxButtons.OKCancel);
@@ -352,8 +355,6 @@ namespace Property_NoAutoValidate
                 }
             }
         }
-
-
 
 
         private void VerifyRange(BaseContainerValidateEditorEventArgs e, float fMin, float fMax)

@@ -43,9 +43,9 @@ namespace WaitForm
         private async void bOverLap_Click(object sender, EventArgs e)
         {
             //SplashScreenManager.ShowOverlayForm(this);
-            var handle = UIHelper.ShowCustomOverLay("Doing Sth");
+            var handle = UIHelper.ShowCustomOverLay("Doing Sth:\r\n"+"dfsdfsdfsd");
             await Task.Delay(5000);
-            SplashScreenManager.CloseOverlayForm(handle);
+            UIHelper.CloseOverLayForm(handle);
         }
     }
 

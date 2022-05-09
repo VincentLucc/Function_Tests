@@ -437,6 +437,17 @@ namespace QuickTests
             Debug.WriteLine($"Data find2 {watch.ElapsedMilliseconds}");
             Debug.WriteLine("Finish");
         }
+
+        private void bIntShift_Click(object sender, EventArgs e)
+        {
+            long x =123456789;
+            x >>= 3; //Value changed
+
+            //Only convert last 8 bits
+            int iTest1 = 257;
+            byte b1 = (byte)iTest1;
+
+        }
     }
 
 

@@ -123,7 +123,7 @@ namespace Property_NoAutoValidate
         /// <param name="propertyRow"></param>
         /// <param name="PropertyObject">property grid selected object</param>
         /// <returns></returns>
-        private CustomEditorAttribute GetEditorType(BaseRow propertyRow, object PropertyObject)
+        public CustomEditorAttribute GetEditorType(BaseRow propertyRow, object PropertyObject)
         {
             //Init variables
             PropertyInfo propertyInfo = null;
@@ -209,6 +209,22 @@ namespace Property_NoAutoValidate
 
 
             //Nothing found
+            return null;
+        }
+
+        public CustomEditorAttribute GetUserEditor(string sPropertyName, object Instance)
+        {
+            PropertyInfo propertyInfo = Instance.GetType().GetProperty(sPropertyName);
+
+            //Get all attributes
+            var attributes = propertyInfo.GetCustomAttributes(false).Where(a => a is CustomEditorAttribute);
+
+            if (attributes != null && attributes.Count() == 1)
+            {
+                var editor = attributes.First() as CustomEditorAttribute;
+                return editor;
+            }
+
             return null;
         }
 
@@ -377,6 +393,16 @@ namespace Property_NoAutoValidate
             Editor = editorType;
             MaskType = maskType;
             MaskString = maskString;
+        }
+
+        public CustomEditorAttribute(EditorType editorType, string maskString, MaskType maskType, float iMin, float iMax)
+        {
+            Editor = editorType;
+            MaskType = maskType;
+            MaskString = maskString;
+            EnableRangeLimit = true;
+            Min = iMin;
+            Max = iMax;
         }
 
         public CustomEditorAttribute(EditorType editorType, int iMin, int iMax)

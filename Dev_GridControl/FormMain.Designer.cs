@@ -35,6 +35,7 @@ namespace Dev_GridControl
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.bRejectReasons = new DevExpress.XtraEditors.SimpleButton();
             this.bBigDataUpdate = new DevExpress.XtraEditors.SimpleButton();
+            this.bTileView = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -96,11 +97,22 @@ namespace Dev_GridControl
             this.bBigDataUpdate.ToolTip = "Web Style Row Display";
             this.bBigDataUpdate.Click += new System.EventHandler(this.bBigDataUpdate_Click);
             // 
+            // bTileView
+            // 
+            this.bTileView.Location = new System.Drawing.Point(170, 34);
+            this.bTileView.Name = "bTileView";
+            this.bTileView.Size = new System.Drawing.Size(109, 23);
+            this.bTileView.TabIndex = 6;
+            this.bTileView.Text = "Tile View";
+            this.bTileView.ToolTip = "Web Style Row Display";
+            this.bTileView.Click += new System.EventHandler(this.bTileView_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bTileView);
             this.Controls.Add(this.bBigDataUpdate);
             this.Controls.Add(this.bRejectReasons);
             this.Controls.Add(this.simpleButton3);
@@ -122,6 +134,7 @@ namespace Dev_GridControl
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton bRejectReasons;
         private DevExpress.XtraEditors.SimpleButton bBigDataUpdate;
+        private DevExpress.XtraEditors.SimpleButton bTileView;
     }
 }
 

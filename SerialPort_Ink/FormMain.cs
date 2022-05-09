@@ -1,5 +1,4 @@
 ﻿using DevExpress.XtraEditors;
-using OperationBlock;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using OperationBlock;
 
 namespace SerialPort_Ink
 {
@@ -94,19 +94,28 @@ namespace SerialPort_Ink
 
             //stop bits
             cbStopBits.Properties.Items.Clear();
+            cbStopBits.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             foreach (var item in PortConfig.StopBitsCollection)
             {
                 cbStopBits.Properties.Items.Add(item);
             }
-            cbStopBits.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+           
 
             //verification
             cbVerify.Properties.Items.Clear();
+            cbVerify.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             foreach (var item in PortConfig.ParityCollection)
             {
                 cbVerify.Properties.Items.Add(item);
             }
-            cbVerify.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+        
+            //Flow control
+            cbFlowControl.Properties.Items.Clear();
+            cbFlowControl.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            foreach (var item in PortConfig.FlowControlCollection)
+            {
+                cbFlowControl.Properties.Items.Add(item);
+            }
 
             //Quick commands
             foreach (var item in config.Commands)
@@ -334,6 +343,7 @@ namespace SerialPort_Ink
                     cbStopBits.SelectedIndex = config.Port.StopBitsIndex;
                     cb_Bits.SelectedIndex = config.Port.DataBitsIndex;
                     cbVerify.SelectedIndex = config.Port.ParityIndex;
+                    cbFlowControl.SelectedIndex = config.Port.FlowControlIndex;
                     lueSendFormat.EditValue = config.SendFormat.ToString();
                     lueReceiveFormat.EditValue = config.ReceiveFormat.ToString();
                     lueSendSuffix.EditValue = config.EndSuffixView;
@@ -380,6 +390,16 @@ namespace SerialPort_Ink
         private void cbStopBits_SelectedIndexChanged(object sender, EventArgs e)
         {
             config.Port.StopBitsIndex = cbStopBits.SelectedIndex;
+        }
+
+        private void cbVerify_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            config.Port.ParityIndex = cbVerify.SelectedIndex;
+        }
+
+        private void cbFlowControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            config.Port.FlowControlIndex = cbFlowControl.SelectedIndex;
         }
 
         private void bUpdate_Click(object sender, EventArgs e)
@@ -762,5 +782,7 @@ namespace SerialPort_Ink
                 config.SendMode = SerialSendMode.Normal;
             }
         }
+
+
     }
 }

@@ -27,6 +27,8 @@ namespace Dev_GridControl
     {
         public string DeviceName { get; set; }
         public string Alarm { get; set; }
+
+        public bool Checked { get; set; }
     }
 
     /// <summary>

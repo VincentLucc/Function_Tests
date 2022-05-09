@@ -52,13 +52,14 @@ namespace QuickTests
             this.tbName = new System.Windows.Forms.TextBox();
             this.bSetName = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.bSpeed = new System.Windows.Forms.Button();
             this.bList = new System.Windows.Forms.Button();
             this.bEnumTest = new System.Windows.Forms.Button();
             this.bUpdateOne = new System.Windows.Forms.Button();
             this.bTakeTest1 = new System.Windows.Forms.Button();
             this.bTake = new System.Windows.Forms.Button();
             this.bArray = new System.Windows.Forms.Button();
-            this.bSpeed = new System.Windows.Forms.Button();
+            this.bIntShift = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabEvents.SuspendLayout();
@@ -200,6 +201,7 @@ namespace QuickTests
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.bIntShift);
             this.tabGeneral.Controls.Add(this.bFloat);
             this.tabGeneral.Controls.Add(this.button1);
             this.tabGeneral.Controls.Add(this.button2);
@@ -317,6 +319,16 @@ namespace QuickTests
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // bSpeed
+            // 
+            this.bSpeed.Location = new System.Drawing.Point(347, 18);
+            this.bSpeed.Name = "bSpeed";
+            this.bSpeed.Size = new System.Drawing.Size(75, 23);
+            this.bSpeed.TabIndex = 6;
+            this.bSpeed.Text = "SpeedTest";
+            this.bSpeed.UseVisualStyleBackColor = true;
+            this.bSpeed.Click += new System.EventHandler(this.bSpeed_Click);
+            // 
             // bList
             // 
             this.bList.Location = new System.Drawing.Point(21, 77);
@@ -377,15 +389,15 @@ namespace QuickTests
             this.bArray.UseVisualStyleBackColor = true;
             this.bArray.Click += new System.EventHandler(this.bArray_Click);
             // 
-            // bSpeed
+            // bIntShift
             // 
-            this.bSpeed.Location = new System.Drawing.Point(347, 18);
-            this.bSpeed.Name = "bSpeed";
-            this.bSpeed.Size = new System.Drawing.Size(75, 23);
-            this.bSpeed.TabIndex = 6;
-            this.bSpeed.Text = "SpeedTest";
-            this.bSpeed.UseVisualStyleBackColor = true;
-            this.bSpeed.Click += new System.EventHandler(this.bSpeed_Click);
+            this.bIntShift.Location = new System.Drawing.Point(21, 195);
+            this.bIntShift.Name = "bIntShift";
+            this.bIntShift.Size = new System.Drawing.Size(75, 23);
+            this.bIntShift.TabIndex = 12;
+            this.bIntShift.Text = "Int Shift";
+            this.bIntShift.UseVisualStyleBackColor = true;
+            this.bIntShift.Click += new System.EventHandler(this.bIntShift_Click);
             // 
             // Form1
             // 
@@ -440,6 +452,7 @@ namespace QuickTests
         private System.Windows.Forms.Button bEnumTest;
         private System.Windows.Forms.Button bList;
         private System.Windows.Forms.Button bSpeed;
+        private System.Windows.Forms.Button bIntShift;
     }
 }
 

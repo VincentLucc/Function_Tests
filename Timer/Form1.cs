@@ -107,7 +107,6 @@ namespace OperationBlock
         {
             if (!ButtonOperation.CheckButtonBusy("bButtonBlock_Click")) return;
 
-
             await Task.Delay(3000);
 
             //Finish up

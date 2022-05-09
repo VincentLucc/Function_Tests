@@ -51,7 +51,7 @@ namespace Property_NoAutoValidate
         public string Text3Num { get; set; }
 
         //Test text editor
-        [CustomEditor(EditorType.Cal, "####0.00\\ \\m\\m", MaskType.Numeric)]
+        [CustomEditor(EditorType.Cal, "####0.00\\ \\m\\m", MaskType.Numeric,10,20)]
         [Category("Test")]
         [DisplayName("Numeric Cal Edit"), Description("Text editor with Numeric \r\nMask Metric_Distance5 = ####0.00\\ \\m\\m")]
         public string NumCal { get; set; }
