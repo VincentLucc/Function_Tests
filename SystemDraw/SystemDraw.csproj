@@ -48,6 +48,9 @@
   <ItemGroup>
     <Compile Include="csCommon.cs" />
     <Compile Include="csDrawTool.cs" />
+    <Compile Include="csPaintPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +79,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -89,6 +93,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Coupler_Encoding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chip encoding module-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Product_Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Product_Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Product_Violet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Coupler_Disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Coupler_DisabledV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Coupler_EncodingV3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Coupler_EncodingV2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

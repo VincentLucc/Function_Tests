@@ -31,12 +31,14 @@ namespace SystemDraw
         {
             this.pPaint = new System.Windows.Forms.Panel();
             this.pControl = new System.Windows.Forms.Panel();
+            this.bCoupler = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.bDrawEllipse = new System.Windows.Forms.Button();
             this.bDrawArc = new System.Windows.Forms.Button();
             this.bScreenShot = new System.Windows.Forms.Button();
             this.bClear = new System.Windows.Forms.Button();
             this.bTest = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bCoupler2 = new System.Windows.Forms.Button();
             this.pControl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +52,8 @@ namespace SystemDraw
             // 
             // pControl
             // 
+            this.pControl.Controls.Add(this.bCoupler2);
+            this.pControl.Controls.Add(this.bCoupler);
             this.pControl.Controls.Add(this.button1);
             this.pControl.Controls.Add(this.bDrawEllipse);
             this.pControl.Controls.Add(this.bDrawArc);
@@ -61,6 +65,26 @@ namespace SystemDraw
             this.pControl.Name = "pControl";
             this.pControl.Size = new System.Drawing.Size(200, 450);
             this.pControl.TabIndex = 0;
+            // 
+            // bCoupler
+            // 
+            this.bCoupler.Location = new System.Drawing.Point(28, 327);
+            this.bCoupler.Name = "bCoupler";
+            this.bCoupler.Size = new System.Drawing.Size(112, 23);
+            this.bCoupler.TabIndex = 6;
+            this.bCoupler.Text = "Draw Coupler";
+            this.bCoupler.UseVisualStyleBackColor = true;
+            this.bCoupler.Click += new System.EventHandler(this.bCoupler_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(28, 415);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "No Flick";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // bDrawEllipse
             // 
@@ -112,15 +136,15 @@ namespace SystemDraw
             this.bTest.UseVisualStyleBackColor = true;
             this.bTest.Click += new System.EventHandler(this.bTest_Click);
             // 
-            // button1
+            // bCoupler2
             // 
-            this.button1.Location = new System.Drawing.Point(28, 415);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "No Flick";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bCoupler2.Location = new System.Drawing.Point(28, 356);
+            this.bCoupler2.Name = "bCoupler2";
+            this.bCoupler2.Size = new System.Drawing.Size(112, 23);
+            this.bCoupler2.TabIndex = 7;
+            this.bCoupler2.Text = "Draw Coupler V2";
+            this.bCoupler2.UseVisualStyleBackColor = true;
+            this.bCoupler2.Click += new System.EventHandler(this.bCoupler2_Click);
             // 
             // Form1
             // 
@@ -147,6 +171,8 @@ namespace SystemDraw
         private System.Windows.Forms.Button bDrawArc;
         private System.Windows.Forms.Button bDrawEllipse;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bCoupler;
+        private System.Windows.Forms.Button bCoupler2;
     }
 }
 

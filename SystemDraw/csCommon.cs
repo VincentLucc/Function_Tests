@@ -18,6 +18,8 @@ namespace SystemDraw
         ScreenShot,
         Arc,
         Ellipse,
-        GraphicsContainer
+        GraphicsContainer,
+        Coupler,
+        CouplerV2
     }
 }
