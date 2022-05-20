@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuickTests
 {
-    class csByteConvert
+    class csHex
     {
         #region  CRC16
         public static byte[] CRC16(byte[] data)
@@ -213,8 +213,99 @@ namespace QuickTests
             return Encoding.UTF8.GetString(bData);
         }
 
+        public static bool[] HexStringToBoolArray16(string sHex)
+        {
+            //Prepare value
+            bool[] bitData = new bool[16];
 
-        public static string BoolArrayToHexString(bool[] bitArray)
+            byte[] bData = StringToHexByte(sHex);
+
+            //reverse order
+            bData = bData.Reverse().ToArray();
+
+            //Get value one by one
+            if (bData.Length != 2) return null;
+
+            //Check result
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    //Get current index
+                    int iIndex = i * 8 + j;
+                    //Shift data to the right
+                    byte bShift = (byte)(bData[i] >> j);
+                    //Check first bit on the right
+                    var xx = bShift & 1;
+                    bitData[iIndex] = (bShift & 1) == 1 ? true : false;
+                }
+            }
+
+            return bitData;
+        }
+
+        public static string BoolArray16ToHexString(bool[] bitArray)
+        {
+            //Prepare a 4 bytes data
+            byte[] bDataList = new byte[2];
+
+            //Convert to 4 bytes
+            for (int i = 0; i < 2; i++)
+            {
+                //Copy data to all 8 bits of a byte
+                for (int j = 0; j < 8; j++)
+                {
+                    int iIndex = 8 * i + j;
+                    //Set to 1 if is true
+                    if (bitArray[iIndex])
+                    {
+                        //Set value for each byte                        
+                        bDataList[i] |= (byte)(1 << j);
+                    }
+                }
+            }
+
+            //Convert to Hex string
+            bDataList = bDataList.Reverse().ToArray();//Reverse the byte order in the same time
+            string sHex = BitConverter.ToString(bDataList).Replace("-", " ");
+
+            return sHex;
+        }
+
+
+        public static bool[] HexStringToBoolArray32(string sHex)
+        {
+            //Prepare value
+            bool[] bitData = new bool[32];
+
+            byte[] bData = StringToHexByte(sHex);
+
+            //reverse order
+            bData = bData.Reverse().ToArray();
+
+            //Get value one by one
+            if (bData.Length != 4) return null;
+
+            //Check result
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    //Get current index
+                    int iIndex = i * 8 + j;
+                    //Shift data to the right
+                    byte bShift = (byte)(bData[i] >> j);
+                    //Check first bit on the right
+                    var xx = bShift & 1;
+                    bitData[iIndex] = (bShift & 1) == 1 ? true : false;
+                }
+            }
+
+            return bitData;
+        }
+
+
+        public static string BoolArray32ToHexString(bool[] bitArray)
         {
             //Prepare a 4 bytes data
             byte[] bDataList = new byte[4];
@@ -243,36 +334,7 @@ namespace QuickTests
         }
 
 
-        public static bool[] HexStringToBoolArray(string sHex)
-        {
-            //Prepare value
-            bool[] bitData = new bool[32];
 
-            byte[] bData = csByteConvert.StringToHexByte(sHex);
-
-            //reverse order
-            bData = bData.Reverse().ToArray();
-
-            //Get value one by one
-            if (bData.Length != 4) return null;
-
-            //Check result
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    //Get current index
-                    int iIndex = i * 8 + j;
-                    //Shift data to the right
-                    byte bShift = (byte)(bData[i] >> j);
-                    //Check first bit on the right
-                    var xx = bShift & 1;
-                    bitData[iIndex] = (bShift & 1) == 1 ? true : false;
-                }
-            }
-
-            return bitData;
-        }
 
         public static uint BoolArrayToUInt32(bool[] bList)
         {
@@ -280,7 +342,7 @@ namespace QuickTests
             StringBuilder sBuilder = new StringBuilder();
             for (int i = 0; i < 32; i++)
             {
-                string s = bList[31-i] ? "1" : "0";
+                string s = bList[31 - i] ? "1" : "0";
                 sBuilder.Append(s);
             }
 
@@ -296,7 +358,7 @@ namespace QuickTests
             for (int i = 0; i < str.Length; i++)
             {
                 //Put value in from last position
-                bool bitResult = (str.Substring(str.Length-1 - i, 1)=="1")?true:false;
+                bool bitResult = (str.Substring(str.Length - 1 - i, 1) == "1") ? true : false;
                 bitArray[i] = bitResult;
             }
 
@@ -330,6 +392,24 @@ namespace QuickTests
             }
 
             return bitArray;
+        }
+
+        /// <summary>
+        /// Convert Hex string as a utf8 encoding string
+        /// Caution!!! Not a typical conversion!!!
+        /// </summary>
+        /// <param name="sInput"></param>
+        /// <returns></returns>
+        public static string HexStringToASCIIString(string sInput)
+        {
+            //Check length
+            if (sInput.Length < 1) return null;
+
+            //String sName
+            byte[] bData = StringToHexByte(sInput);
+
+            //Convert to plain text, read hex as UTF8 encoding instead
+            return Encoding.ASCII.GetString(bData);
         }
 
     }

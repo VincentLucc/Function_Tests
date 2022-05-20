@@ -42,6 +42,7 @@ namespace Dev_GridControl
             {
                 var RowView = new DataRowView();
                 RowView.Name = $"ABC_{ 0 + i}";
+                RowView.Description = "ABC_123";
                 TemplateListBuffer.Add(RowView);
             }
 
@@ -50,30 +51,28 @@ namespace Dev_GridControl
 
         private void InitControls()
         {
+            //Init variables
+            csPublic.InitGridviewWithDefaultSettings(TemplateGridView, true);
+
             //Set grid properties
             TemplateGridControl.DataSource = TemplateListBuffer;
-            TemplateGridView.OptionsView.ShowGroupPanel = false; //User don't see group panel
-            TemplateGridView.OptionsView.ShowIndicator = true; //show row header
-            TemplateGridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom; //New row can be added
-            TemplateGridView.OptionsView.ShowButtonMode = ShowButtonModeEnum.ShowAlways; //Always show button
-            TemplateGridView.OptionsBehavior.Editable = true; //Enable input
+            TemplateGridView.RowHeight = 32;
             int iCMDColumn = TemplateGridView.Columns.Add(new GridColumn());
+            var descColumn = TemplateGridView.Columns[nameof(DataRowView.Description)];
+            descColumn.OptionsColumn.ReadOnly = true; //Diable edit
+            TemplateGridView.OptionsView.ShowIndicator = true; //show row header
+            TemplateGridView.OptionsView.ShowButtonMode = ShowButtonModeEnum.ShowAlways; //Always show button
+
+            //Set column
             TemplateGridView.Columns[iCMDColumn].Caption = sCommandCaption;
             TemplateGridView.Columns[iCMDColumn].MaxWidth = 160;
             TemplateGridView.Columns[iCMDColumn].Visible = true; //Must have to be seen
-            var descColumn = TemplateGridView.Columns[nameof(DataRowView.Description)];
-            descColumn.OptionsColumn.ReadOnly = true; //Diable edit
-
-
-
-            TemplateGridView.Appearance.HeaderPanel.TextOptions.HAlignment = HorzAlignment.Center;//Center header text
-            TemplateGridView.Appearance.Row.TextOptions.HAlignment = HorzAlignment.Near;//Center header text
-            TemplateGridView.RowHeight = 32;
             TemplateGridView.OptionsCustomization.AllowFilter = false;
             TemplateGridView.OptionsCustomization.AllowSort = false;
 
             //preview keydown
             TemplateGridControl.PreviewKeyDown += TemplateGridControl_PreviewKeyDown;
+            TemplateGridView.RowCellStyle += TemplateGridView_RowCellStyle;
 
             //Create ImageComboEdit
             var comboBoxEdit = InitComboBoxEditor();
@@ -86,6 +85,7 @@ namespace Dev_GridControl
                 if (e.Column.Caption == sCommandCaption)
                 {
                     e.RepositoryItem = buttonEditor;
+
                 }
                 //ComboBox Edit
                 else if (e.Column.FieldName == nameof(DataRowView.Function))
@@ -93,6 +93,19 @@ namespace Dev_GridControl
                     e.RepositoryItem = comboBoxEdit;
                 }
             };
+
+
+        }
+
+        private void TemplateGridView_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            var columnDesc = TemplateGridView.Columns[nameof(DataRowView.Description)];
+            if (columnDesc == null) return;
+
+            if (e.Column == columnDesc)
+            {
+                e.Appearance.ForeColor = Color.Green;
+            }
         }
 
         private void TemplateGridControl_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -198,7 +211,7 @@ namespace Dev_GridControl
 
         }
 
- 
+
 
 
         private RepositoryItemButtonEdit InitButtonEdit()

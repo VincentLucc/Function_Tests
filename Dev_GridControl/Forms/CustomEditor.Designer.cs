@@ -29,11 +29,10 @@ namespace Dev_GridControl
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomEditor));
             this.TemplateGridControl = new DevExpress.XtraGrid.GridControl();
             this.TemplateGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection();
             this.bMultiSelect = new DevExpress.XtraEditors.SimpleButton();
             this.lcMain = new DevExpress.XtraLayout.LayoutControl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -51,10 +50,10 @@ namespace Dev_GridControl
             // 
             // TemplateGridControl
             // 
-            this.TemplateGridControl.Location = new System.Drawing.Point(12, 12);
+            this.TemplateGridControl.Location = new System.Drawing.Point(6, 6);
             this.TemplateGridControl.MainView = this.TemplateGridView;
             this.TemplateGridControl.Name = "TemplateGridControl";
-            this.TemplateGridControl.Size = new System.Drawing.Size(673, 426);
+            this.TemplateGridControl.Size = new System.Drawing.Size(684, 438);
             this.TemplateGridControl.TabIndex = 0;
             this.TemplateGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.TemplateGridView});
@@ -79,9 +78,9 @@ namespace Dev_GridControl
             // 
             // bMultiSelect
             // 
-            this.bMultiSelect.Location = new System.Drawing.Point(689, 12);
+            this.bMultiSelect.Location = new System.Drawing.Point(692, 6);
             this.bMultiSelect.Name = "bMultiSelect";
-            this.bMultiSelect.Size = new System.Drawing.Size(99, 22);
+            this.bMultiSelect.Size = new System.Drawing.Size(102, 22);
             this.bMultiSelect.StyleController = this.lcMain;
             this.bMultiSelect.TabIndex = 1;
             this.bMultiSelect.Text = "MultiSelect";
@@ -115,16 +114,16 @@ namespace Dev_GridControl
             this.layoutControlItem1.Control = this.TemplateGridControl;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(677, 430);
+            this.layoutControlItem1.Size = new System.Drawing.Size(686, 440);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.bMultiSelect;
-            this.layoutControlItem2.Location = new System.Drawing.Point(677, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(686, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(103, 430);
+            this.layoutControlItem2.Size = new System.Drawing.Size(104, 440);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 

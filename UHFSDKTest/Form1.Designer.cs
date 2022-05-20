@@ -43,15 +43,14 @@
             this.lBaudRate = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.btInventoryRealStop = new System.Windows.Forms.Button();
             this.bBeepOn = new System.Windows.Forms.Button();
             this.bBeepOff = new System.Windows.Forms.Button();
             this.bPower = new System.Windows.Forms.Button();
             this.cbPower = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabConfig = new System.Windows.Forms.TabPage();
-            this.button8 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bUnLock = new System.Windows.Forms.Button();
             this.bLockTag = new System.Windows.Forms.Button();
             this.bReadTID = new System.Windows.Forms.Button();
             this.bWriteOdoo = new System.Windows.Forms.Button();
@@ -71,11 +70,9 @@
             this.bGetAndResetBuffer = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbRetry = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.bBufferReset = new System.Windows.Forms.Button();
             this.bPowerRead = new System.Windows.Forms.Button();
             this.tabTest = new System.Windows.Forms.TabPage();
-            this.bUnLock = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabConfig.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -110,14 +107,14 @@
             this.btInventoryRealStart.Name = "btInventoryRealStart";
             this.btInventoryRealStart.Size = new System.Drawing.Size(161, 25);
             this.btInventoryRealStart.TabIndex = 5;
-            this.btInventoryRealStart.Text = "Inventory real start";
+            this.btInventoryRealStart.Text = "Inventory Tag";
             this.btInventoryRealStart.UseVisualStyleBackColor = true;
             this.btInventoryRealStart.Click += new System.EventHandler(this.btInventoryRealStart_Click);
             // 
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(77, 190);
+            this.button4.Location = new System.Drawing.Point(77, 152);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(116, 25);
             this.button4.TabIndex = 7;
@@ -161,7 +158,7 @@
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(32, 335);
+            this.button9.Location = new System.Drawing.Point(35, 190);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(158, 25);
             this.button9.TabIndex = 12;
@@ -172,7 +169,7 @@
             // button11
             // 
             this.button11.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(32, 366);
+            this.button11.Location = new System.Drawing.Point(48, 230);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(145, 25);
             this.button11.TabIndex = 14;
@@ -259,17 +256,6 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // btInventoryRealStop
-            // 
-            this.btInventoryRealStop.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btInventoryRealStop.Location = new System.Drawing.Point(32, 152);
-            this.btInventoryRealStop.Name = "btInventoryRealStop";
-            this.btInventoryRealStop.Size = new System.Drawing.Size(161, 25);
-            this.btInventoryRealStop.TabIndex = 26;
-            this.btInventoryRealStop.Text = "Inventory real stop";
-            this.btInventoryRealStop.UseVisualStyleBackColor = true;
-            this.btInventoryRealStop.Click += new System.EventHandler(this.btInventoryRealStop_Click);
-            // 
             // bBeepOn
             // 
             this.bBeepOn.Location = new System.Drawing.Point(344, 21);
@@ -332,12 +318,10 @@
             // 
             // tabConfig
             // 
-            this.tabConfig.Controls.Add(this.button8);
             this.tabConfig.Controls.Add(this.groupBox1);
             this.tabConfig.Controls.Add(this.bGetAndResetBuffer);
             this.tabConfig.Controls.Add(this.label1);
             this.tabConfig.Controls.Add(this.tbRetry);
-            this.tabConfig.Controls.Add(this.button2);
             this.tabConfig.Controls.Add(this.bBufferReset);
             this.tabConfig.Controls.Add(this.bPowerRead);
             this.tabConfig.Controls.Add(this.lSerialPort);
@@ -347,7 +331,6 @@
             this.tabConfig.Controls.Add(this.lBaudRate);
             this.tabConfig.Controls.Add(this.bPower);
             this.tabConfig.Controls.Add(this.cbComPort);
-            this.tabConfig.Controls.Add(this.btInventoryRealStop);
             this.tabConfig.Controls.Add(this.button13);
             this.tabConfig.Controls.Add(this.button9);
             this.tabConfig.Controls.Add(this.bBeepOff);
@@ -367,17 +350,6 @@
             this.tabConfig.TabIndex = 0;
             this.tabConfig.Text = "tabPage1";
             this.tabConfig.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(32, 274);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(161, 25);
-            this.button8.TabIndex = 38;
-            this.button8.Text = "Inventory real 3";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
             // groupBox1
             // 
@@ -404,6 +376,16 @@
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operation";
+            // 
+            // bUnLock
+            // 
+            this.bUnLock.Location = new System.Drawing.Point(139, 194);
+            this.bUnLock.Name = "bUnLock";
+            this.bUnLock.Size = new System.Drawing.Size(125, 23);
+            this.bUnLock.TabIndex = 16;
+            this.bUnLock.Text = "Unlock Tag";
+            this.bUnLock.UseVisualStyleBackColor = true;
+            this.bUnLock.Click += new System.EventHandler(this.bUnLock_Click);
             // 
             // bLockTag
             // 
@@ -591,17 +573,6 @@
             this.tbRetry.TabIndex = 34;
             this.tbRetry.Text = "9";
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(32, 230);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(161, 25);
-            this.button2.TabIndex = 33;
-            this.button2.Text = "Inventory real 2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_2);
-            // 
             // bBufferReset
             // 
             this.bBufferReset.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -632,16 +603,6 @@
             this.tabTest.TabIndex = 1;
             this.tabTest.Text = "tabPage2";
             this.tabTest.UseVisualStyleBackColor = true;
-            // 
-            // bUnLock
-            // 
-            this.bUnLock.Location = new System.Drawing.Point(139, 194);
-            this.bUnLock.Name = "bUnLock";
-            this.bUnLock.Size = new System.Drawing.Size(125, 23);
-            this.bUnLock.TabIndex = 16;
-            this.bUnLock.Text = "Unlock Tag";
-            this.bUnLock.UseVisualStyleBackColor = true;
-            this.bUnLock.Click += new System.EventHandler(this.bUnLock_Click);
             // 
             // Form1
             // 
@@ -678,7 +639,6 @@
         private System.Windows.Forms.Label lBaudRate;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button btInventoryRealStop;
         private System.Windows.Forms.Button bBeepOn;
         private System.Windows.Forms.Button bBeepOff;
         private System.Windows.Forms.Button bPower;
@@ -688,7 +648,6 @@
         private System.Windows.Forms.TabPage tabTest;
         private System.Windows.Forms.Button bPowerRead;
         private System.Windows.Forms.Button bBufferReset;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbRetry;
         private System.Windows.Forms.Button bGetAndResetBuffer;
@@ -700,7 +659,6 @@
         private System.Windows.Forms.Button bRead;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button bWriteReserve;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button bWriteEPC;
         private System.Windows.Forms.Button bReadReserve;
         private System.Windows.Forms.Button bGetCurrentTag;

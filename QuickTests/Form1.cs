@@ -79,9 +79,9 @@ namespace QuickTests
             bitData[31] = true;
 
 
-            string s = csByteConvert.BoolArrayToHexString(bitData);
+            string s = csHex.BoolArray32ToHexString(bitData);
 
-            bitData = csByteConvert.HexStringToBoolArray(s);
+            bitData = csHex.HexStringToBoolArray32(s);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -91,9 +91,9 @@ namespace QuickTests
             bitData[1] = true;
             //bitData[31] = true;
 
-            uint iSignal = csByteConvert.BoolArrayToUInt32(bitData);
+            uint iSignal = csHex.BoolArrayToUInt32(bitData);
 
-            bitData = csByteConvert.Uint32ToBoolArray(iSignal);
+            bitData = csHex.Uint32ToBoolArray(iSignal);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -266,9 +266,9 @@ namespace QuickTests
             bitData1[1] = true;
             //bitData[31] = true;
 
-            UInt16 iSignal = csByteConvert.BoolArrayToUInt16(bitData1);
+            UInt16 iSignal = csHex.BoolArrayToUInt16(bitData1);
 
-            bitData = csByteConvert.UInt16ToBoolArray(iSignal);
+            bitData = csHex.UInt16ToBoolArray(iSignal);
         }
 
         private void bFolders_Click(object sender, EventArgs e)

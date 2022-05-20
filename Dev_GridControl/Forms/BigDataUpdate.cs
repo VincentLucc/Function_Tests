@@ -20,7 +20,7 @@ namespace Dev_GridControl
 
         public bool UIExit => (this == null || this.IsDisposed || this.Disposing);
 
-        
+
 
         public BigDataUpdate()
         {
@@ -47,8 +47,8 @@ namespace Dev_GridControl
             for (int i = 0; i < 1000000; i++)
             {
                 Student s = new Student();
-                s.Name = $"X_{i+1}";
-                s.Age= i + 10;
+                s.Name = $"X_{i + 1}";
+                s.Age = i + 10;
                 s.Class = "ABC";
                 Students.Add(s);
             }
@@ -60,23 +60,32 @@ namespace Dev_GridControl
         private void ProcessUpdate()
         {
             Stopwatch watch = new Stopwatch();
-           
 
             while (!UIExit)
             {
-                Thread.Sleep(50);
 
-                watch.Restart();
+                try
+                {
+                    Thread.Sleep(50);
 
-                UpdateValue();
+                    watch.Restart();
 
-                watch.Stop();
-                Debug.WriteLine($"Operation time:{watch.ElapsedMilliseconds}");
+                    UpdateValue();
+
+                    watch.Stop();
+
+                    Debug.WriteLine($"Operation time:{watch.ElapsedMilliseconds}");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("ProcessUpdate:\r\n" + ex.Message);
+                }
+
 
             }
         }
 
-        
+
         private void UpdateValue()
         {
             lock (lockStudents)
@@ -86,10 +95,11 @@ namespace Dev_GridControl
                     Students[i].Age += 1;
                 }
 
-                gridControl1.Invoke(new Action(()=> {
+                gridControl1.Invoke(new Action(() =>
+                {
                     gridControl1.RefreshDataSource();
                 }));
-            
+
             }
 
 

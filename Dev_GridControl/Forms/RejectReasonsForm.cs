@@ -26,8 +26,6 @@ namespace Dev_GridControl
             var sampleData = CreateSampleData();
             gridControl1.DataSource = sampleData;
 
-
-
             //gridView1.OptionsView.ShowGroupedColumns = false; //Hide groupped column
             gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.False;//Display the summary in column lane
             gridView1.OptionsBehavior.AllowPartialGroups = DefaultBoolean.False; //Hide device name
