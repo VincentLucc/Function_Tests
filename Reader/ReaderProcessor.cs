@@ -115,13 +115,11 @@ namespace Reader
                     this.ProcessGetAccessEpcMatch(msgTran);
                     break;
                 case (byte)137://0x89
+                case (byte)139://0x8B
                     this.ProcessInventoryReal(msgTran);
                     break;
                 case (byte)138://0x8A
                     this.ProcessFastSwitch(msgTran);
-                    break;
-                case (byte)139://0x8B
-                    this.ProcessInventoryReal(msgTran);
                     break;
                 case (byte)141://0x8D
                     this.ProcessSetMonzaStatus(msgTran);
