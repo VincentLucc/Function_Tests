@@ -35,9 +35,11 @@ namespace WizardControl
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.WizardPage3 = new DevExpress.XtraWizard.CompletionWizardPage();
             this.wizardPage2 = new DevExpress.XtraWizard.WizardPage();
+            this.cbTest = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).BeginInit();
             this.wizardControl1.SuspendLayout();
             this.wizardPage1.SuspendLayout();
+            this.WizardPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // wizardControl1
@@ -80,6 +82,7 @@ namespace WizardControl
             // 
             // WizardPage3
             // 
+            this.WizardPage3.Controls.Add(this.cbTest);
             this.WizardPage3.Name = "WizardPage3";
             this.WizardPage3.Size = new System.Drawing.Size(740, 282);
             this.WizardPage3.Text = "Completing the wizard page 3";
@@ -89,6 +92,17 @@ namespace WizardControl
             this.wizardPage2.Name = "wizardPage2";
             this.wizardPage2.Size = new System.Drawing.Size(740, 282);
             this.wizardPage2.Text = "Wizard Page 2";
+            // 
+            // cbTest
+            // 
+            this.cbTest.AutoSize = true;
+            this.cbTest.Location = new System.Drawing.Point(16, 14);
+            this.cbTest.Name = "cbTest";
+            this.cbTest.Size = new System.Drawing.Size(88, 17);
+            this.cbTest.TabIndex = 0;
+            this.cbTest.Text = "Click to finish";
+            this.cbTest.UseVisualStyleBackColor = true;
+            this.cbTest.CheckedChanged += new System.EventHandler(this.cbTest_CheckedChanged);
             // 
             // Form1
             // 
@@ -102,6 +116,8 @@ namespace WizardControl
             ((System.ComponentModel.ISupportInitialize)(this.wizardControl1)).EndInit();
             this.wizardControl1.ResumeLayout(false);
             this.wizardPage1.ResumeLayout(false);
+            this.WizardPage3.ResumeLayout(false);
+            this.WizardPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -114,6 +130,7 @@ namespace WizardControl
         private DevExpress.XtraWizard.CompletionWizardPage WizardPage3;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraWizard.WizardPage wizardPage2;
+        private System.Windows.Forms.CheckBox cbTest;
     }
 }
 

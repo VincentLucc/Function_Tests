@@ -157,8 +157,6 @@ namespace SystemDraw
             // Begin graphics container.
             drawType = DrawCommand.GraphicsContainer;
             pPaint.Refresh();
-
-
         }
 
         private void bClear_Click(object sender, EventArgs e)

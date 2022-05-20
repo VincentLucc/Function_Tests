@@ -21,8 +21,5 @@ namespace SystemDraw
         //Brushes
         public static Brush GrayBrush = new SolidBrush(Color.FromArgb(230, 230, 230));
         public static Brush BlueBrush = new SolidBrush(Color.DarkBlue);
-
-
-
     }
 }

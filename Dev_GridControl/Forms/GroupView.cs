@@ -52,12 +52,12 @@ namespace Dev_GridControl
                 column.Caption = column.FieldName;
             }
 
-           
-            gridView1.OptionsView.ShowGroupPanel = false; //User don't see group panel
-            gridView1.OptionsView.ShowIndicator = false; //Hide row header
+
+            //Init view with default settings
+            csPublic.InitGridviewWithDefaultSettings(gridView1);
+
+            //Set grid control customized settings
             gridView1.GroupRowHeight = 50;
-            gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.True;//Display the summary in column lane
-            gridView1.Appearance.GroupFooter.TextOptions.HAlignment = HorzAlignment.Center;//Center the display
 
             //Create group summary
             gridView1.Columns[nameof(Student.Class)].Group();

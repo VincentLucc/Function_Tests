@@ -22,7 +22,10 @@ namespace UHFSDKTest
         /// <summary>
         /// Byte format access code
         /// </summary>
+        //public static byte[] AccessCode => csCRC.StringToHexByte("00 00 00 00");
+
         public static byte[] AccessCode => csCRC.StringToHexByte("50 30 43 4b");
+
         public static byte[] AccessCodeEmpty => csCRC.StringToHexByte("00 00 00 00");
 
         /// <summary>
@@ -109,7 +112,7 @@ namespace UHFSDKTest
 
         void onInventoryTag(RXInventoryTag tag)
         {
-            Console.WriteLine("Inventory EPC:" + tag.strEPC + $"({tag.mReadCount})");
+            Debug.WriteLine("Inventory EPC:" + tag.strEPC + $"({tag.mReadCount})");
 
             //
 

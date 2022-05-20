@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\csPublic.cs" />
     <Compile Include="Forms\BigDataUpdate.cs">
       <SubType>Form</SubType>
     </Compile>

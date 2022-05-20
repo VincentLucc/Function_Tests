@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sunny.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace FileLoading
 {
-    public partial class Form1 : Form
+    public partial class Form1 : UIForm
     {
         /// <summary>
         /// This list must exist to keep MemoryMappedFile in memory, otherwise it will be automatically GC
@@ -29,59 +30,7 @@ namespace FileLoading
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() != DialogResult.OK) return;
-
-            string sPath = ofd.FileName;
-            StringBuilder builder = new StringBuilder();
-
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Test");
-
-            List<string> sDataList = new List<string>();
-
-            IsSave2Memory = false; //Save to memoty
-            MemList.Clear();//Clear current memory
-
-            using (StreamReader reader = new StreamReader(sPath, Encoding.Default))
-            {
-                string sLine = "";
-                int iIndex = 0;
-                while ((sLine = reader.ReadLine()) != null)
-                {
-                    //Save to memory
-                    if (IsSave2Memory) StoreLineTextToMemory(sLine, iIndex);
-
-                    iIndex += 1;
-
-                    var row = dt.NewRow();
-                    row[0] = sLine;
-                    dt.Rows.Add(row);
-
-                    //Show only per 100 line
-                    if (iIndex%100==0)
-                    {
-                        Console.WriteLine($"Read line {iIndex}");
-                    }
-                   
-                    sDataList.Add(sLine);
-                }
-
-                //Write last line
-                Console.WriteLine($"Read line {iIndex}");
-
-                //save memory count to memory
-                if (IsSave2Memory) StoreLineCountToMemory(iIndex);
-            }
-
-            //Save to memory
-            //For time consume calculation
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            Console.WriteLine("StoreToMemory:Start");
-            StoreToMemory3(sDataList);
-            stopwatch.Stop();
-            Console.WriteLine("StoreToMemory:End:"+stopwatch.ElapsedMilliseconds);
+           
         }
 
         private void StoreLineTextToMemory(string sText,long lIndex)
@@ -217,7 +166,7 @@ namespace FileLoading
             {
                 //Use MemoryMappedViewStream instead of MemoryMappedViewAccessor, much faster
                 var viewStream = mappedData.CreateViewStream(writeData.IndexList[i]+8, writeData.DataList[i].Length + 8);
-                mappedData.
+                //mappedData.
                 //Use async write
                 //viewStream.Write(writeData.DataList[i], 0, writeData.DataList[i].Length);
             }
@@ -247,23 +196,69 @@ namespace FileLoading
 
             return writeData;
         }
-    }
 
-
-    public class WriteData
-    {
-        public List<byte[]> DataList { get; set; }
-        public List<long> IndexList { get; set; }
-        public long FullLength { get; set; }
-
-
-        public WriteData()
+        private void bLoad_Click(object sender, EventArgs e)
         {
-            DataList = new List<byte[]>();
-            IndexList = new List<long>();
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() != DialogResult.OK) return;
+
+            lMessage.Text = "N/A";
+
+            string sPath = ofd.FileName;
+            StringBuilder builder = new StringBuilder();
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Test");
+
+            List<string> sDataList = new List<string>();
+
+            IsSave2Memory = false; //Save to memoty
+            MemList.Clear();//Clear current memory
+
+            using (StreamReader reader = new StreamReader(sPath, Encoding.Default))
+            {
+                string sLine = "";
+                int iIndex = 0;
+                while ((sLine = reader.ReadLine()) != null)
+                {
+                    //Save to memory
+                    if (IsSave2Memory) StoreLineTextToMemory(sLine, iIndex);
+
+                    iIndex += 1;
+
+                    var row = dt.NewRow();
+                    row[0] = sLine;
+                    dt.Rows.Add(row);
+
+                    //Show only per 100 line
+                    if (iIndex % 100 == 0)
+                    {
+                        Console.WriteLine($"Read line {iIndex}");
+                    }
+
+                    sDataList.Add(sLine);
+                }
+
+                //Write last line
+                Console.WriteLine($"Read line {iIndex}");
+
+                //save memory count to memory
+                if (IsSave2Memory) StoreLineCountToMemory(iIndex);
+            }
+
+            //Save to memory
+            //For time consume calculation
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            Console.WriteLine("StoreToMemory:Start");
+            StoreToMemory3(sDataList);
+            stopwatch.Stop();
+            Console.WriteLine("StoreToMemory:End:" + stopwatch.ElapsedMilliseconds);
         }
-     
     }
+
+
+
 
 
 }
