@@ -23,6 +23,14 @@ namespace FileLoading
 
         public bool IsSave2Memory { get; set; }
 
+        public static string sMemoryName = "DeltaX_MemoryData";
+
+        public MemoryMappedFile MappedFile;
+
+        public Stopwatch watch;
+
+        public DataTable ProcessedData;
+
         public Form1()
         {
             InitializeComponent();
@@ -30,157 +38,43 @@ namespace FileLoading
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+            watch = new Stopwatch();
         }
 
-        private void StoreLineTextToMemory(string sText,long lIndex)
+        private void bLoad_Click(object sender, EventArgs e)
         {
-            byte[] bDataBuffer = Encoding.UTF8.GetBytes(sText);
-            string sMemName = $"DeltaX_MemoryData_{lIndex}";
-
-            //Write current memory section
-            //First 8 byte, empty, second 8 byte length of data
-            MemoryMappedFile mappedData = MemoryMappedFile.CreateOrOpen(sMemName, bDataBuffer.Length + 8);
-            MemoryMappedViewAccessor accessorData = mappedData.CreateViewAccessor();
-            accessorData.Write(0, (long)bDataBuffer.Length);//Write length
-            accessorData.WriteArray(8, bDataBuffer, 0, bDataBuffer.Length); //Write to data
-
-            //Notice, this will automatically disposed!!!
-            MemList.Add(mappedData);
+            LoadOperation();
         }
 
-        private void StoreLineCountToMemory(long lCount)
+        private void bLoadProcess_Click(object sender, EventArgs e)
         {
-            //Write memory list count
-            MemoryMappedFile mappedIndex = MemoryMappedFile.CreateOrOpen($"DeltaX_MemoryCount", 8);
-            MemoryMappedViewAccessor accessorIndex = mappedIndex.CreateViewAccessor();
-            accessorIndex.Write(0, lCount);//Write length
-           
-            MemList.Add(mappedIndex);
+            LoadOperation(true);
         }
 
-
-        /// <summary>
-        /// Copy data to memory
-        /// 2G file, 20 sec
-        /// </summary>
-        /// <param name="sDataList"></param>
-        private void StoreToMemory(List<string> sDataList)
+        private void Save2Memory(byte[] bData,string sName)
         {
-            MemList.Clear(); //Must save to keep the data in mem
-
-            //Save to memory one by one
-            for (int i = 0; i < sDataList.Count; i++)
+            try
             {
-                byte[] bDataBuffer = Encoding.UTF8.GetBytes(sDataList[i]);
-                string sMemName = $"DeltaX_MemoryData_{i}";
-                
-
-                //Write current memory section
-                //First 8 byte, empty, second 8 byte length of data
-                MemoryMappedFile mappedData = MemoryMappedFile.CreateOrOpen(sMemName, bDataBuffer.Length+8);
-                MemoryMappedViewAccessor accessorData = mappedData.CreateViewAccessor();
-                accessorData.Write(0,(long)bDataBuffer.Length);//Write length
-                accessorData.WriteArray(8, bDataBuffer, 0, bDataBuffer.Length); //Write to data
-
-                //Notice, this will automatically disposed!!!
-                MemList.Add(mappedData);
-
-
-            }
-
-            //Write memory list count
-            MemoryMappedFile mappedIndex = MemoryMappedFile.CreateOrOpen($"DeltaX_MemoryCount", 8);
-            MemoryMappedViewAccessor accessorIndex = mappedIndex.CreateViewAccessor();
-            accessorIndex.Write(0, (long)sDataList.Count);//Write length
-                                                          //
-            MemList.Add(mappedIndex);
-        }
-
-        
-        /// <summary>
-        /// Copy data to memory
-        /// 2G file, 16 sec
-        /// </summary>
-        /// <param name="sDataList"></param>
-        private void StoreToMemory2(List<string> sDataList)
-        {
-            MemList.Clear(); //Must save to keep the data in mem
-
-            string sMemName = $"DeltaX_MemoryData";
-
-            //Cal length
-            long lLength = sDataList.Sum(s=>s.Length);
-           
-
-            MemoryMappedFile mappedData = MemoryMappedFile.CreateOrOpen(sMemName, lLength + 8);
-            MemoryMappedViewAccessor accessorData = mappedData.CreateViewAccessor();
-         
-
-            accessorData.Write(0, lLength);//Write length
-
-            //Save to memory one by one
-            long lAddress = 8;
-            for (int i = 0; i < sDataList.Count; i++)
-            {
-                byte[] bDataBuffer = Encoding.UTF8.GetBytes(sDataList[i]);
-
-                //accessorData.WriteArray(lAddress, bDataBuffer, 0, bDataBuffer.Length); //Write to data
-
-                //Use MemoryMappedViewStream instead of MemoryMappedViewAccessor, much faster
-                var viewStream = mappedData.CreateViewStream(lAddress, bDataBuffer.Length);
-                viewStream.Write(bDataBuffer, 0, bDataBuffer.Length);
+                MappedFile = MemoryMappedFile.CreateOrOpen(sName, bData.Length);
+                //View stream is must than "MemoryMappedViewAccessor"
+                var viewStream = MappedFile.CreateViewStream(0, bData.Length);
+                viewStream.Write(bData, 0, bData.Length);
                 viewStream.Close();
-
-                //Cal new address
-                lAddress += bDataBuffer.Length;
             }
-
-            //Notice, this will automatically disposed!!!
-            MemList.Add(mappedData);
-        }
-
-
-        /// <summary>
-        /// Copy data to memory, using 
-        /// 2G file, 16 sec
-        /// </summary>
-        /// <param name="sDataList"></param>
-        private void StoreToMemory3(List<string> sDataList)
-        {
-            MemList.Clear(); //Must save to keep the data in mem
-
-            string sMemName = $"DeltaX_MemoryData";
-
-            //Cal length
-            var writeData = PrepareData(sDataList);
-
-            //Create map
-            MemoryMappedFile mappedData = MemoryMappedFile.CreateOrOpen(sMemName, writeData.FullLength + 8);
-            var viewStreamCount = mappedData.CreateViewStream(0, 8); //First 8 bytes used to store length
-            byte[] bLength = BitConverter.GetBytes(writeData.FullLength+8);
-            viewStreamCount.Write(bLength,0,bLength.Length);//Write length
-
-            //Save to memory one by one
-            for (int i = 0; i < writeData.DataList.Count; i++)
+            catch (Exception ex)
             {
-                //Use MemoryMappedViewStream instead of MemoryMappedViewAccessor, much faster
-                var viewStream = mappedData.CreateViewStream(writeData.IndexList[i]+8, writeData.DataList[i].Length + 8);
-                //mappedData.
-                //Use async write
-                //viewStream.Write(writeData.DataList[i], 0, writeData.DataList[i].Length);
+                MessageBox.Show(ex.Message);
             }
 
-            //Notice, this will automatically disposed!!!
-            MemList.Add(mappedData);
         }
+
 
 
         private WriteData PrepareData(List<string> sList)
         {
             WriteData writeData = new WriteData();
 
-            long iAddress = 0;            
+            long iAddress = 0;
             for (int i = 0; i < sList.Count; i++)
             {
                 writeData.IndexList.Add(iAddress);
@@ -197,64 +91,78 @@ namespace FileLoading
             return writeData;
         }
 
-        private void bLoad_Click(object sender, EventArgs e)
+        private void InitDisplay()
+        {
+            lPath.Text = "N/A";
+            lProcessTime.Text = "N/A";
+            lMessage.Text = "N/A";
+        }
+
+        private void LoadOperation(bool EnableProcess=false)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() != DialogResult.OK) return;
 
-            lMessage.Text = "N/A";
-
+            InitDisplay();
             string sPath = ofd.FileName;
-            StringBuilder builder = new StringBuilder();
+            lPath.Text = sPath;
 
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Test");
+            try
+            {
+                //Read bytes
+                watch.Restart();
+                lMessage.Text = "Reading file";
+                this.Refresh();//Force UI to update
+                byte[] bData = File.ReadAllBytes(sPath);
+                watch.Stop();
+                lProcessTime.Text = $"File Read: {watch.ElapsedMilliseconds}";
+                lMessage.Text = "Saving to memory";
+                this.Refresh();//Force UI to update
 
-            List<string> sDataList = new List<string>();
+                //Save to memory
+                watch.Restart();
+                Save2Memory(bData, sMemoryName);
+                lProcessTime.Text += $"\r\nMemory time:{watch.ElapsedMilliseconds}";
+                lMessage.Text = EnableProcess?"Processing data":"Finished";
 
-            IsSave2Memory = false; //Save to memoty
-            MemList.Clear();//Clear current memory
+                //Process data
+                if (EnableProcess)
+                {
+                    this.Refresh();//Force UI to update
+                    ProcessData(bData);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+        }
 
-            using (StreamReader reader = new StreamReader(sPath, Encoding.Default))
+        private void ProcessData(byte[] bData)
+        {
+            ProcessedData = new DataTable();
+            ProcessedData.Columns.Add("Test");
+            watch.Restart();
+            using (StreamReader reader=new StreamReader(new MemoryStream(bData),Encoding.UTF8))
             {
                 string sLine = "";
                 int iIndex = 0;
                 while ((sLine = reader.ReadLine()) != null)
                 {
-                    //Save to memory
-                    if (IsSave2Memory) StoreLineTextToMemory(sLine, iIndex);
-
                     iIndex += 1;
-
-                    var row = dt.NewRow();
+                    var row = ProcessedData.NewRow();
                     row[0] = sLine;
-                    dt.Rows.Add(row);
-
-                    //Show only per 100 line
-                    if (iIndex % 100 == 0)
-                    {
-                        Console.WriteLine($"Read line {iIndex}");
-                    }
-
-                    sDataList.Add(sLine);
+                    ProcessedData.Rows.Add(row);
                 }
 
-                //Write last line
-                Console.WriteLine($"Read line {iIndex}");
-
-                //save memory count to memory
-                if (IsSave2Memory) StoreLineCountToMemory(iIndex);
+                watch.Stop();
+                lProcessTime.Text += $"\r\nData processing time:{watch.ElapsedMilliseconds}ms";
+                lMessage.Text = "Finished";
             }
-
-            //Save to memory
-            //For time consume calculation
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            Console.WriteLine("StoreToMemory:Start");
-            StoreToMemory3(sDataList);
-            stopwatch.Stop();
-            Console.WriteLine("StoreToMemory:End:" + stopwatch.ElapsedMilliseconds);
         }
+
+
     }
 
 
