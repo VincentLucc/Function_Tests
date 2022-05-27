@@ -33,13 +33,14 @@ namespace FileLoading
             this.lMessage = new Sunny.UI.UILabel();
             this.uiTitlePanel1 = new Sunny.UI.UITitlePanel();
             this.uiTableLayoutPanel1 = new Sunny.UI.UITableLayoutPanel();
-            this.uiLabel1 = new Sunny.UI.UILabel();
-            this.uiTitlePanel2 = new Sunny.UI.UITitlePanel();
-            this.uiLabel2 = new Sunny.UI.UILabel();
-            this.lPath = new Sunny.UI.UILabel();
-            this.uiLabel3 = new Sunny.UI.UILabel();
             this.lProcessTime = new Sunny.UI.UILabel();
+            this.lPath = new Sunny.UI.UILabel();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.uiLabel3 = new Sunny.UI.UILabel();
+            this.uiTitlePanel2 = new Sunny.UI.UITitlePanel();
             this.bLoadProcess = new Sunny.UI.UIButton();
+            this.bLoadThread = new Sunny.UI.UIButton();
             this.uiTitlePanel1.SuspendLayout();
             this.uiTableLayoutPanel1.SuspendLayout();
             this.uiTitlePanel2.SuspendLayout();
@@ -114,6 +115,42 @@ namespace FileLoading
             this.uiTableLayoutPanel1.TabIndex = 0;
             this.uiTableLayoutPanel1.TagString = null;
             // 
+            // lProcessTime
+            // 
+            this.lProcessTime.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lProcessTime.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lProcessTime.Location = new System.Drawing.Point(239, 92);
+            this.lProcessTime.Name = "lProcessTime";
+            this.lProcessTime.Size = new System.Drawing.Size(537, 69);
+            this.lProcessTime.TabIndex = 6;
+            this.lProcessTime.Text = "N/A";
+            this.lProcessTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lProcessTime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // lPath
+            // 
+            this.lPath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lPath.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lPath.Location = new System.Drawing.Point(239, 20);
+            this.lPath.Name = "lPath";
+            this.lPath.Size = new System.Drawing.Size(537, 72);
+            this.lPath.TabIndex = 4;
+            this.lPath.Text = "N/A";
+            this.lPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lPath.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.uiLabel2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel2.Location = new System.Drawing.Point(78, 44);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(100, 23);
+            this.uiLabel2.TabIndex = 3;
+            this.uiLabel2.Text = "Path:";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // uiLabel1
             // 
             this.uiLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -126,8 +163,21 @@ namespace FileLoading
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // uiLabel3
+            // 
+            this.uiLabel3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.uiLabel3.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel3.Location = new System.Drawing.Point(61, 115);
+            this.uiLabel3.Name = "uiLabel3";
+            this.uiLabel3.Size = new System.Drawing.Size(134, 23);
+            this.uiLabel3.TabIndex = 5;
+            this.uiLabel3.Text = "Process Time:";
+            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiLabel3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
             // uiTitlePanel2
             // 
+            this.uiTitlePanel2.Controls.Add(this.bLoadThread);
             this.uiTitlePanel2.Controls.Add(this.bLoadProcess);
             this.uiTitlePanel2.Controls.Add(this.bLoad);
             this.uiTitlePanel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -144,59 +194,11 @@ namespace FileLoading
             this.uiTitlePanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiTitlePanel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // uiLabel2
-            // 
-            this.uiLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.uiLabel2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel2.Location = new System.Drawing.Point(78, 44);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(100, 23);
-            this.uiLabel2.TabIndex = 3;
-            this.uiLabel2.Text = "Path:";
-            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // lPath
-            // 
-            this.lPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lPath.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lPath.Location = new System.Drawing.Point(239, 20);
-            this.lPath.Name = "lPath";
-            this.lPath.Size = new System.Drawing.Size(537, 72);
-            this.lPath.TabIndex = 4;
-            this.lPath.Text = "N/A";
-            this.lPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lPath.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // uiLabel3
-            // 
-            this.uiLabel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.uiLabel3.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel3.Location = new System.Drawing.Point(61, 115);
-            this.uiLabel3.Name = "uiLabel3";
-            this.uiLabel3.Size = new System.Drawing.Size(134, 23);
-            this.uiLabel3.TabIndex = 5;
-            this.uiLabel3.Text = "Process Time:";
-            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiLabel3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // lProcessTime
-            // 
-            this.lProcessTime.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lProcessTime.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lProcessTime.Location = new System.Drawing.Point(239, 92);
-            this.lProcessTime.Name = "lProcessTime";
-            this.lProcessTime.Size = new System.Drawing.Size(537, 69);
-            this.lProcessTime.TabIndex = 6;
-            this.lProcessTime.Text = "N/A";
-            this.lProcessTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lProcessTime.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
             // bLoadProcess
             // 
             this.bLoadProcess.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bLoadProcess.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bLoadProcess.Location = new System.Drawing.Point(243, 62);
+            this.bLoadProcess.Location = new System.Drawing.Point(200, 62);
             this.bLoadProcess.MinimumSize = new System.Drawing.Size(1, 1);
             this.bLoadProcess.Name = "bLoadProcess";
             this.bLoadProcess.Size = new System.Drawing.Size(134, 35);
@@ -205,6 +207,20 @@ namespace FileLoading
             this.bLoadProcess.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bLoadProcess.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.bLoadProcess.Click += new System.EventHandler(this.bLoadProcess_Click);
+            // 
+            // bLoadThread
+            // 
+            this.bLoadThread.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bLoadThread.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bLoadThread.Location = new System.Drawing.Point(370, 62);
+            this.bLoadThread.MinimumSize = new System.Drawing.Size(1, 1);
+            this.bLoadThread.Name = "bLoadThread";
+            this.bLoadThread.Size = new System.Drawing.Size(134, 35);
+            this.bLoadThread.TabIndex = 2;
+            this.bLoadThread.Text = "Load in Thread";
+            this.bLoadThread.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bLoadThread.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.bLoadThread.Click += new System.EventHandler(this.bLoadThread_Click);
             // 
             // Form1
             // 
@@ -236,6 +252,7 @@ namespace FileLoading
         private Sunny.UI.UILabel uiLabel3;
         private Sunny.UI.UILabel lProcessTime;
         private Sunny.UI.UIButton bLoadProcess;
+        private Sunny.UI.UIButton bLoadThread;
     }
 }
 

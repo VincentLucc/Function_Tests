@@ -16,12 +16,9 @@ namespace FileLoading
 {
     public partial class Form1 : UIForm
     {
-        /// <summary>
-        /// This list must exist to keep MemoryMappedFile in memory, otherwise it will be automatically GC
-        /// </summary>
-        List<MemoryMappedFile> MemList = new List<MemoryMappedFile>();
+ 
 
-        public bool IsSave2Memory { get; set; }
+ 
 
         public static string sMemoryName = "DeltaX_MemoryData";
 
@@ -160,9 +157,19 @@ namespace FileLoading
                 lProcessTime.Text += $"\r\nData processing time:{watch.ElapsedMilliseconds}ms";
                 lMessage.Text = "Finished";
             }
+
+            var stream = new MemoryStream();
+            StreamWriter writer = new StreamWriter(stream,Encoding.UTF8);
+
         }
 
+        private void bLoadThread_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
 
+            }
+        }
     }
 
 
