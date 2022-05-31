@@ -17,11 +17,69 @@ namespace QuickTests
     public partial class Form1 : Form
     {
         bool IsDebug { get; set; }
+        public bool UIExit => this == null || this.IsDisposed || this.Disposing;
         public Form1()
         {
             InitializeComponent();
+            InitVariabes();
+            InitOperation();
+        }
+
+
+        /// <summary>
+        /// Not triggerring
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void Form1_Load(object sender, EventArgs e)
+        {
+            await Task.Delay(1000);
+            this.Visible = true;
+
+#if DEBUG
+            //Not working in custom controls, only in forms
+            IsDebug = true;
+#endif
+        }
+
+
+        private void InitVariabes()
+        {
             this.KeyPreview = true; //Must set to receive key down events
+            csPublic.LED = new csLED(this, 1500, 4);
+        }
+
+        private void InitCOntrols()
+        {
+
+        }
+
+        private void InitOperation()
+        {
             this.PreviewKeyDown += Form1_PreviewKeyDown;
+
+            System.Windows.Forms.Timer t1 = new System.Windows.Forms.Timer();
+            t1.Interval = 100;
+            t1.Tick += T1_Tick;
+            t1.Enabled = true;
+        }
+
+        private void T1_Tick(object sender, EventArgs e)
+        {
+            var t1 = sender as System.Windows.Forms.Timer;
+            if (UIExit) return;
+            t1.Enabled = false;
+
+            if (csPublic.LED.SignalState)
+            {
+                bLEDGreen.BackColor = Color.Green;
+            }
+            else
+            {
+                bLEDGreen.BackColor = Color.Transparent;
+            }
+
+            t1.Enabled = true;
         }
 
         private void Form1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -47,17 +105,7 @@ namespace QuickTests
             Debug.WriteLine($"Elipsed:{watch.ElapsedMilliseconds}");
         }
 
-        private async void Form1_Load(object sender, EventArgs e)
-        {
-            await Task.Delay(1000);
-            this.Visible = true;
-
-#if DEBUG
-            //Not working in custom controls, only in forms
-            IsDebug = true;
-#endif
-        }
-
+       
         private void Form1_Shown(object sender, EventArgs e)
         {
             this.Visible = false;
@@ -447,6 +495,11 @@ namespace QuickTests
             int iTest1 = 257;
             byte b1 = (byte)iTest1;
 
+        }
+
+        private void Form1_Shown_1(object sender, EventArgs e)
+        {
+            int x = 333;
         }
     }
 

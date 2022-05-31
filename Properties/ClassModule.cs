@@ -83,6 +83,10 @@ namespace Properties
         [DisplayName("Folder Mask"), Description("Folder find.")]
         public string TextFolder { get; set; }
 
+        [CustomEditor(EditorType.MacList)]
+        [Category("Test"), DisplayName("Ethernet Adapter"), Description("Ethernet Adapter Mac Address")]
+        public string NetworkAdapter { get; set; }
+
         public Student()
         {
             Cert = new Certificate();

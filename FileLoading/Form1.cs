@@ -28,6 +28,8 @@ namespace FileLoading
 
         public DataTable ProcessedData;
 
+        public List<string> ProcessedCollection;
+
         public Form1()
         {
             InitializeComponent();
@@ -95,7 +97,7 @@ namespace FileLoading
             lMessage.Text = "N/A";
         }
 
-        private void LoadOperation(bool EnableProcess=false)
+        private void LoadOperation(bool EnableProcess=false, bool processInCollection=false)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() != DialogResult.OK) return;
@@ -121,13 +123,21 @@ namespace FileLoading
                 Save2Memory(bData, sMemoryName);
                 lProcessTime.Text += $"\r\nMemory time:{watch.ElapsedMilliseconds}";
                 lMessage.Text = EnableProcess?"Processing data":"Finished";
+                this.Refresh();//Force UI to update  
 
                 //Process data
                 if (EnableProcess)
                 {
-                    this.Refresh();//Force UI to update
-                    ProcessData(bData);
+                    if (processInCollection)
+                    {
+                        ProcessData2Collection(bData);
+                    }
+                    else
+                    {
+                        ProcessData(bData);
+                    }                              
                 }
+                this.Refresh();//Force UI to update    
             }
             catch (Exception ex)
             {
@@ -157,10 +167,26 @@ namespace FileLoading
                 lProcessTime.Text += $"\r\nData processing time:{watch.ElapsedMilliseconds}ms";
                 lMessage.Text = "Finished";
             }
+        }
 
-            var stream = new MemoryStream();
-            StreamWriter writer = new StreamWriter(stream,Encoding.UTF8);
+        private void ProcessData2Collection(byte[] bData)
+        {
+            ProcessedCollection = new List<string>();
+            watch.Restart();
+            using (StreamReader reader = new StreamReader(new MemoryStream(bData), Encoding.UTF8))
+            {
+                string sLine = "";
+                int iIndex = 0;
+                while ((sLine = reader.ReadLine()) != null)
+                {
+                    iIndex += 1;
+                    ProcessedCollection.Add(sLine);
+                }
 
+                watch.Stop();
+                lProcessTime.Text += $"\r\nData processing time:{watch.ElapsedMilliseconds}ms";
+                lMessage.Text = "Finished";
+            }
         }
 
         private void bLoadThread_Click(object sender, EventArgs e)
@@ -169,6 +195,11 @@ namespace FileLoading
             {
 
             }
+        }
+
+        private void bLoadProcessList_Click(object sender, EventArgs e)
+        {
+            LoadOperation(true,true);
         }
     }
 

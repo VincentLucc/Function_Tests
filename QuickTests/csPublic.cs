@@ -20,6 +20,8 @@ namespace QuickTests
         public static long TimeMs => DateTime.Now.Ticks / 10000;
         public static string AppPath => Path.GetDirectoryName(Application.ExecutablePath);
 
+        public static csLED LED;
+
         public static bool IsValidPath(string path)
         {
             try

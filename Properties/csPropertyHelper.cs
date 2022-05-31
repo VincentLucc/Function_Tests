@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using DevExpress.XtraEditors;
 using System.Windows.Forms;
+using System.Net.NetworkInformation;
 
 namespace Properties
 {
@@ -225,8 +226,6 @@ namespace Properties
         }
 
 
-
-
         /// <summary>
         /// Set row editor based on edit type
         /// </summary>
@@ -287,10 +286,20 @@ namespace Properties
                     Debug.Write("ToggleSwitchList:" + row.Properties.FieldName + ":");
                     break;
 
+                case EditorType.MacList:
+                    RepositoryItemLookUpEdit repositoryMacList = new RepositoryItemLookUpEdit();
+                    repositoryMacList.ShowFooter = false;//Hide "X" button in bottom
+                    repositoryMacList.DataSource = csPublic.GetMacAddress().Values.ToList();
+                    repositoryMacList.TextEditStyle = TextEditStyles.Standard; //Enable user edit value
+                    row.Properties.RowEdit = repositoryMacList;
+                    break;
+
                 default:
                     break;
             }
         }
+
+ 
 
         private void FolderButtonEditor_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
@@ -317,7 +326,8 @@ namespace Properties
         Text,
         FolderEditor,
         ToggleSwitch,
-        ToggleSwitchList
+        ToggleSwitchList,
+        MacList
     }
 
 

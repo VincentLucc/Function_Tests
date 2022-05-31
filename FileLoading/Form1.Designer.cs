@@ -39,8 +39,9 @@ namespace FileLoading
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.uiTitlePanel2 = new Sunny.UI.UITitlePanel();
-            this.bLoadProcess = new Sunny.UI.UIButton();
             this.bLoadThread = new Sunny.UI.UIButton();
+            this.bLoadProcess = new Sunny.UI.UIButton();
+            this.bLoadProcessList = new Sunny.UI.UIButton();
             this.uiTitlePanel1.SuspendLayout();
             this.uiTableLayoutPanel1.SuspendLayout();
             this.uiTitlePanel2.SuspendLayout();
@@ -64,9 +65,9 @@ namespace FileLoading
             // 
             this.lMessage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lMessage.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lMessage.Location = new System.Drawing.Point(239, 161);
+            this.lMessage.Location = new System.Drawing.Point(239, 143);
             this.lMessage.Name = "lMessage";
-            this.lMessage.Size = new System.Drawing.Size(537, 70);
+            this.lMessage.Size = new System.Drawing.Size(537, 61);
             this.lMessage.TabIndex = 1;
             this.lMessage.Text = "N/A";
             this.lMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -77,13 +78,13 @@ namespace FileLoading
             this.uiTitlePanel1.Controls.Add(this.uiTableLayoutPanel1);
             this.uiTitlePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiTitlePanel1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiTitlePanel1.Location = new System.Drawing.Point(0, 162);
+            this.uiTitlePanel1.Location = new System.Drawing.Point(0, 189);
             this.uiTitlePanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiTitlePanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiTitlePanel1.Name = "uiTitlePanel1";
             this.uiTitlePanel1.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
             this.uiTitlePanel1.ShowText = false;
-            this.uiTitlePanel1.Size = new System.Drawing.Size(800, 288);
+            this.uiTitlePanel1.Size = new System.Drawing.Size(800, 261);
             this.uiTitlePanel1.TabIndex = 3;
             this.uiTitlePanel1.Text = "Load Result";
             this.uiTitlePanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -111,7 +112,7 @@ namespace FileLoading
             this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.65306F));
             this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.uiTableLayoutPanel1.Size = new System.Drawing.Size(800, 253);
+            this.uiTableLayoutPanel1.Size = new System.Drawing.Size(800, 226);
             this.uiTableLayoutPanel1.TabIndex = 0;
             this.uiTableLayoutPanel1.TagString = null;
             // 
@@ -119,9 +120,9 @@ namespace FileLoading
             // 
             this.lProcessTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lProcessTime.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lProcessTime.Location = new System.Drawing.Point(239, 92);
+            this.lProcessTime.Location = new System.Drawing.Point(239, 83);
             this.lProcessTime.Name = "lProcessTime";
-            this.lProcessTime.Size = new System.Drawing.Size(537, 69);
+            this.lProcessTime.Size = new System.Drawing.Size(537, 60);
             this.lProcessTime.TabIndex = 6;
             this.lProcessTime.Text = "N/A";
             this.lProcessTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -133,7 +134,7 @@ namespace FileLoading
             this.lPath.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lPath.Location = new System.Drawing.Point(239, 20);
             this.lPath.Name = "lPath";
-            this.lPath.Size = new System.Drawing.Size(537, 72);
+            this.lPath.Size = new System.Drawing.Size(537, 63);
             this.lPath.TabIndex = 4;
             this.lPath.Text = "N/A";
             this.lPath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -143,7 +144,7 @@ namespace FileLoading
             // 
             this.uiLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.uiLabel2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel2.Location = new System.Drawing.Point(78, 44);
+            this.uiLabel2.Location = new System.Drawing.Point(78, 40);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(100, 23);
             this.uiLabel2.TabIndex = 3;
@@ -155,9 +156,9 @@ namespace FileLoading
             // 
             this.uiLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.uiLabel1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel1.Location = new System.Drawing.Point(68, 161);
+            this.uiLabel1.Location = new System.Drawing.Point(68, 143);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(120, 70);
+            this.uiLabel1.Size = new System.Drawing.Size(120, 61);
             this.uiLabel1.TabIndex = 2;
             this.uiLabel1.Text = "Message:";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -167,7 +168,7 @@ namespace FileLoading
             // 
             this.uiLabel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.uiLabel3.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel3.Location = new System.Drawing.Point(61, 115);
+            this.uiLabel3.Location = new System.Drawing.Point(61, 101);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(134, 23);
             this.uiLabel3.TabIndex = 5;
@@ -177,6 +178,7 @@ namespace FileLoading
             // 
             // uiTitlePanel2
             // 
+            this.uiTitlePanel2.Controls.Add(this.bLoadProcessList);
             this.uiTitlePanel2.Controls.Add(this.bLoadThread);
             this.uiTitlePanel2.Controls.Add(this.bLoadProcess);
             this.uiTitlePanel2.Controls.Add(this.bLoad);
@@ -188,31 +190,17 @@ namespace FileLoading
             this.uiTitlePanel2.Name = "uiTitlePanel2";
             this.uiTitlePanel2.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
             this.uiTitlePanel2.ShowText = false;
-            this.uiTitlePanel2.Size = new System.Drawing.Size(800, 127);
+            this.uiTitlePanel2.Size = new System.Drawing.Size(800, 154);
             this.uiTitlePanel2.TabIndex = 4;
             this.uiTitlePanel2.Text = "Load Methods";
             this.uiTitlePanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiTitlePanel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
-            // bLoadProcess
-            // 
-            this.bLoadProcess.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bLoadProcess.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bLoadProcess.Location = new System.Drawing.Point(200, 62);
-            this.bLoadProcess.MinimumSize = new System.Drawing.Size(1, 1);
-            this.bLoadProcess.Name = "bLoadProcess";
-            this.bLoadProcess.Size = new System.Drawing.Size(134, 35);
-            this.bLoadProcess.TabIndex = 1;
-            this.bLoadProcess.Text = "Load & Process";
-            this.bLoadProcess.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bLoadProcess.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.bLoadProcess.Click += new System.EventHandler(this.bLoadProcess_Click);
-            // 
             // bLoadThread
             // 
             this.bLoadThread.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bLoadThread.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bLoadThread.Location = new System.Drawing.Point(370, 62);
+            this.bLoadThread.Location = new System.Drawing.Point(614, 62);
             this.bLoadThread.MinimumSize = new System.Drawing.Size(1, 1);
             this.bLoadThread.Name = "bLoadThread";
             this.bLoadThread.Size = new System.Drawing.Size(134, 35);
@@ -221,6 +209,34 @@ namespace FileLoading
             this.bLoadThread.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bLoadThread.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.bLoadThread.Click += new System.EventHandler(this.bLoadThread_Click);
+            // 
+            // bLoadProcess
+            // 
+            this.bLoadProcess.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bLoadProcess.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bLoadProcess.Location = new System.Drawing.Point(200, 62);
+            this.bLoadProcess.MinimumSize = new System.Drawing.Size(1, 1);
+            this.bLoadProcess.Name = "bLoadProcess";
+            this.bLoadProcess.Size = new System.Drawing.Size(216, 35);
+            this.bLoadProcess.TabIndex = 1;
+            this.bLoadProcess.Text = "Load & Process DataTable";
+            this.bLoadProcess.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bLoadProcess.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.bLoadProcess.Click += new System.EventHandler(this.bLoadProcess_Click);
+            // 
+            // bLoadProcessList
+            // 
+            this.bLoadProcessList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bLoadProcessList.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bLoadProcessList.Location = new System.Drawing.Point(200, 111);
+            this.bLoadProcessList.MinimumSize = new System.Drawing.Size(1, 1);
+            this.bLoadProcessList.Name = "bLoadProcessList";
+            this.bLoadProcessList.Size = new System.Drawing.Size(216, 35);
+            this.bLoadProcessList.TabIndex = 3;
+            this.bLoadProcessList.Text = "Load & Process List";
+            this.bLoadProcessList.TipsFont = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bLoadProcessList.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.bLoadProcessList.Click += new System.EventHandler(this.bLoadProcessList_Click);
             // 
             // Form1
             // 
@@ -253,6 +269,7 @@ namespace FileLoading
         private Sunny.UI.UILabel lProcessTime;
         private Sunny.UI.UIButton bLoadProcess;
         private Sunny.UI.UIButton bLoadThread;
+        private Sunny.UI.UIButton bLoadProcessList;
     }
 }
 

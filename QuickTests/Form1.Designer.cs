@@ -43,6 +43,9 @@ namespace QuickTests
             this.bEventsInit = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.bLEDRed = new System.Windows.Forms.Button();
+            this.bLEDGreen = new System.Windows.Forms.Button();
+            this.bIntShift = new System.Windows.Forms.Button();
             this.bFloat = new System.Windows.Forms.Button();
             this.tabEvents = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -59,7 +62,6 @@ namespace QuickTests
             this.bTakeTest1 = new System.Windows.Forms.Button();
             this.bTake = new System.Windows.Forms.Button();
             this.bArray = new System.Windows.Forms.Button();
-            this.bIntShift = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabEvents.SuspendLayout();
@@ -201,6 +203,8 @@ namespace QuickTests
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.bLEDRed);
+            this.tabGeneral.Controls.Add(this.bLEDGreen);
             this.tabGeneral.Controls.Add(this.bIntShift);
             this.tabGeneral.Controls.Add(this.bFloat);
             this.tabGeneral.Controls.Add(this.button1);
@@ -221,6 +225,36 @@ namespace QuickTests
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // bLEDRed
+            // 
+            this.bLEDRed.BackColor = System.Drawing.Color.Red;
+            this.bLEDRed.Location = new System.Drawing.Point(709, 391);
+            this.bLEDRed.Name = "bLEDRed";
+            this.bLEDRed.Size = new System.Drawing.Size(75, 23);
+            this.bLEDRed.TabIndex = 14;
+            this.bLEDRed.Text = "LED Green";
+            this.bLEDRed.UseVisualStyleBackColor = false;
+            // 
+            // bLEDGreen
+            // 
+            this.bLEDGreen.BackColor = System.Drawing.Color.Green;
+            this.bLEDGreen.Location = new System.Drawing.Point(628, 391);
+            this.bLEDGreen.Name = "bLEDGreen";
+            this.bLEDGreen.Size = new System.Drawing.Size(75, 23);
+            this.bLEDGreen.TabIndex = 13;
+            this.bLEDGreen.Text = "LED Green";
+            this.bLEDGreen.UseVisualStyleBackColor = false;
+            // 
+            // bIntShift
+            // 
+            this.bIntShift.Location = new System.Drawing.Point(21, 195);
+            this.bIntShift.Name = "bIntShift";
+            this.bIntShift.Size = new System.Drawing.Size(75, 23);
+            this.bIntShift.TabIndex = 12;
+            this.bIntShift.Text = "Int Shift";
+            this.bIntShift.UseVisualStyleBackColor = true;
+            this.bIntShift.Click += new System.EventHandler(this.bIntShift_Click);
             // 
             // bFloat
             // 
@@ -389,16 +423,6 @@ namespace QuickTests
             this.bArray.UseVisualStyleBackColor = true;
             this.bArray.Click += new System.EventHandler(this.bArray_Click);
             // 
-            // bIntShift
-            // 
-            this.bIntShift.Location = new System.Drawing.Point(21, 195);
-            this.bIntShift.Name = "bIntShift";
-            this.bIntShift.Size = new System.Drawing.Size(75, 23);
-            this.bIntShift.TabIndex = 12;
-            this.bIntShift.Text = "Int Shift";
-            this.bIntShift.UseVisualStyleBackColor = true;
-            this.bIntShift.Click += new System.EventHandler(this.bIntShift_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -408,7 +432,7 @@ namespace QuickTests
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.Shown += new System.EventHandler(this.Form1_Shown_1);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.tabControl1.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);
@@ -453,6 +477,8 @@ namespace QuickTests
         private System.Windows.Forms.Button bList;
         private System.Windows.Forms.Button bSpeed;
         private System.Windows.Forms.Button bIntShift;
+        private System.Windows.Forms.Button bLEDGreen;
+        private System.Windows.Forms.Button bLEDRed;
     }
 }
 
