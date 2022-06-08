@@ -41,22 +41,68 @@
     <BaseIntermediateOutputPath>obj_netFW</BaseIntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v19.1"><HintPath></HintPath><Private>False</Private></Reference>
-    <Reference Include="DevExpress.Diagram.v19.1.Core"><HintPath></HintPath><Private>False</Private></Reference>
-    <Reference Include="DevExpress.Utils.v19.1"><HintPath></HintPath><Private>False</Private></Reference>
-    <Reference Include="DevExpress.XtraBars.v19.1"><HintPath></HintPath><Private>False</Private></Reference>
-    <Reference Include="DevExpress.XtraDiagram.v19.1"><HintPath></HintPath><Private>False</Private></Reference>
-    <Reference Include="DevExpress.XtraEditors.v19.1"><HintPath></HintPath><Private>False</Private></Reference>
-    <Reference Include="DevExpress.XtraVerticalGrid.v19.1"><HintPath></HintPath><Private>False</Private></Reference>
-    <Reference Include="System"><Private>False</Private></Reference>
-    <Reference Include="System.Core"><Private>False</Private></Reference>
-    <Reference Include="System.Xml.Linq"><Private>False</Private></Reference>
-    <Reference Include="System.Data.DataSetExtensions"><Private>False</Private></Reference>
-    <Reference Include="Microsoft.CSharp"><Private>False</Private></Reference>
-    <Reference Include="System.Data"><Private>False</Private></Reference>
-    <Reference Include="System.Drawing"><Private>False</Private></Reference>
-    <Reference Include="System.Windows.Forms"><Private>False</Private></Reference>
-    <Reference Include="System.Xml"><Private>False</Private></Reference>
+    <Reference Include="DevExpress.Data.v19.1">
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Diagram.v19.1.Core">
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v19.1">
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v19.1">
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraDiagram.v19.1">
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v19.1">
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v19.1">
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DesignerFrm.cs">
@@ -70,6 +116,7 @@
     <EmbeddedResource Include="DesignerFrm.resx">
       <DependentUpon>DesignerFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -81,7 +128,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

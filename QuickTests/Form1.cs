@@ -501,6 +501,30 @@ namespace QuickTests
         {
             int x = 333;
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            var students = new List<Student>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                Student s1 = new Student();
+                s1.Name = "x" + i+1;
+                s1.Age = i;
+                students.Add(s1);
+            }
+
+
+            var sList = students.Where(i => i.Age > 2).ToList();
+            //Value changed in original list
+            for (int i = 0; i < sList.Count; i++)
+            {
+                var s2 = sList[i];
+                s2.Description = "haha";
+            }
+
+            var abc = students;
+        }
     }
 
 

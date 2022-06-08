@@ -398,7 +398,7 @@ namespace DevLayout
             // 
             // simpleButton7
             // 
-            this.simpleButton7.Location = new System.Drawing.Point(126, 234);
+            this.simpleButton7.Location = new System.Drawing.Point(126, 230);
             this.simpleButton7.Name = "simpleButton7";
             this.simpleButton7.Size = new System.Drawing.Size(470, 22);
             this.simpleButton7.StyleController = this.PageLayoutControl1;
@@ -407,7 +407,7 @@ namespace DevLayout
             // 
             // simpleButton6
             // 
-            this.simpleButton6.Location = new System.Drawing.Point(126, 208);
+            this.simpleButton6.Location = new System.Drawing.Point(126, 204);
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(470, 22);
             this.simpleButton6.StyleController = this.PageLayoutControl1;
@@ -416,7 +416,7 @@ namespace DevLayout
             // 
             // simpleButton5
             // 
-            this.simpleButton5.Location = new System.Drawing.Point(24, 137);
+            this.simpleButton5.Location = new System.Drawing.Point(24, 135);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(572, 22);
             this.simpleButton5.StyleController = this.PageLayoutControl1;
@@ -475,9 +475,9 @@ namespace DevLayout
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 260);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 256);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(600, 37);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(600, 41);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem7
@@ -496,7 +496,7 @@ namespace DevLayout
             this.layoutControlItem8});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 92);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(600, 71);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(600, 69);
             // 
             // layoutControlItem8
             // 
@@ -512,9 +512,9 @@ namespace DevLayout
             this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem9,
             this.layoutControlItem10});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 163);
+            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 161);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(600, 97);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(600, 95);
             // 
             // layoutControlItem9
             // 
