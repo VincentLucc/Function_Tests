@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.IO.MemoryMappedFiles;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -42,12 +43,17 @@ namespace FileLoading
 
         private void bLoad_Click(object sender, EventArgs e)
         {
-            LoadOperation();
+
+            LoadOperation(new LoadConfig());
         }
 
         private void bLoadProcess_Click(object sender, EventArgs e)
         {
-            LoadOperation(true);
+            var config = new LoadConfig
+            {
+                EnableProcess = true,
+            };
+            LoadOperation(config);
         }
 
         private void Save2Memory(byte[] bData,string sName)
@@ -97,7 +103,7 @@ namespace FileLoading
             lMessage.Text = "N/A";
         }
 
-        private void LoadOperation(bool EnableProcess=false, bool processInCollection=false)
+        private void LoadOperation(LoadConfig config)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() != DialogResult.OK) return;
@@ -105,6 +111,20 @@ namespace FileLoading
             InitDisplay();
             string sPath = ofd.FileName;
             lPath.Text = sPath;
+
+            //clear buffer
+            if (ProcessedData!=null)
+            {
+                ProcessedData.Clear();
+            }
+            if (ProcessedCollection!=null)
+            {
+                ProcessedCollection.Clear();
+            }
+
+            //Force to clear memory, must have to free
+            //ProcessedData takes a lot of memory
+            GC.Collect();
 
             try
             {
@@ -122,22 +142,24 @@ namespace FileLoading
                 watch.Restart();
                 Save2Memory(bData, sMemoryName);
                 lProcessTime.Text += $"\r\nMemory time:{watch.ElapsedMilliseconds}";
-                lMessage.Text = EnableProcess?"Processing data":"Finished";
+                lMessage.Text = config.EnableProcess ? "Processing data":"Finished";
                 this.Refresh();//Force UI to update  
 
                 //Process data
-                if (EnableProcess)
+                if (!config.EnableProcess) return;
+
+                if (config.ProcessInCollection)
                 {
-                    if (processInCollection)
-                    {
-                        ProcessData2Collection(bData);
-                    }
-                    else
-                    {
-                        ProcessData(bData);
-                    }                              
+                    ProcessData2Collection(bData);
                 }
-                this.Refresh();//Force UI to update    
+                else
+                {
+                    ProcessData(bData,config.PartialProcess);
+                }
+                this.Refresh();//Force UI to update
+
+                //Clean up
+                Array.Clear(bData,0,bData.Length);
             }
             catch (Exception ex)
             {
@@ -146,7 +168,7 @@ namespace FileLoading
             }
         }
 
-        private void ProcessData(byte[] bData)
+        private void ProcessData(byte[] bData,bool bPartialProcess=false)
         {
             ProcessedData = new DataTable();
             ProcessedData.Columns.Add("Test");
@@ -159,6 +181,10 @@ namespace FileLoading
                 {
                     iIndex += 1;
                     var row = ProcessedData.NewRow();
+                    if (bPartialProcess&& sLine.Length>=256)
+                    {
+                        sLine = sLine.Substring(0,250)+"...";
+                    }
                     row[0] = sLine;
                     ProcessedData.Rows.Add(row);
                 }
@@ -199,8 +225,28 @@ namespace FileLoading
 
         private void bLoadProcessList_Click(object sender, EventArgs e)
         {
-            LoadOperation(true,true);
+            var config = new LoadConfig
+            {
+                EnableProcess = true,
+                ProcessInCollection=true,
+                PartialProcess=false,
+            };
+            LoadOperation(config);
         }
+
+        private void bLoadPartial_Click(object sender, EventArgs e)
+        {
+            var config = new LoadConfig
+            {
+                EnableProcess = true,
+                ProcessInCollection = false,
+                PartialProcess = true,
+            };
+            LoadOperation(config);
+        }
+
+
+
     }
 
 

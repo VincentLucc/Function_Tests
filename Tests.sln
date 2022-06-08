@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LookUp", "LookUp\LookUp.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_QuickTests", "QuickTests\_QuickTests.csproj", "{388D9A2B-01F7-49EF-9DDB-112F6F3490AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diagram", "Diagram\Diagram.csproj", "{D3CAD4F6-8E90-42F2-B8F6-A571B74C714D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagramDemo", "Diagram\DiagramDemo.csproj", "{D3CAD4F6-8E90-42F2-B8F6-A571B74C714D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Properties", "Properties\Properties.csproj", "{A22BAB32-1A9A-46AD-AC68-46226977AD0A}"
 EndProject
@@ -104,6 +104,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckedListControl", "CheckedListControl\CheckedListControl.csproj", "{1EBB30C6-9570-4301-9D0A-ADF1A74B260E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormLoad", "FormLoad\FormLoad.csproj", "{279A8AB8-19A4-40D8-ACBA-7A27D99AFDF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagramDesigner", "DiagramDesigner\DiagramDesigner.csproj", "{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -938,6 +940,22 @@ Global
 		{279A8AB8-19A4-40D8-ACBA-7A27D99AFDF3}.Release|x64.Build.0 = Release|Any CPU
 		{279A8AB8-19A4-40D8-ACBA-7A27D99AFDF3}.Release|x86.ActiveCfg = Release|Any CPU
 		{279A8AB8-19A4-40D8-ACBA-7A27D99AFDF3}.Release|x86.Build.0 = Release|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Debug|arm64.Build.0 = Debug|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Debug|x64.Build.0 = Debug|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Debug|x86.Build.0 = Debug|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Release|arm64.ActiveCfg = Release|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Release|arm64.Build.0 = Release|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Release|x64.ActiveCfg = Release|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Release|x64.Build.0 = Release|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Release|x86.ActiveCfg = Release|Any CPU
+		{3A8BFF81-6A3E-46D8-913D-E320FB58BE04}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -21,8 +21,11 @@ namespace FileLoading
 
     }
 
-    public class LoadInfo
+    public class LoadConfig
     {
-        
+        public bool EnableProcess { get; set; }
+        public bool ProcessInCollection { get; set; }
+
+        public bool PartialProcess { get; set; }
     }
 }

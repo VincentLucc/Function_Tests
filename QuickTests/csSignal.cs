@@ -9,14 +9,42 @@ namespace QuickTests
 {
     public class FlashSignal
     {
-        public bool State { get; set; }   //ON/OFF status
-        private int Interval { get; set; } //Interval for each gap
-        public bool ActionEnable { get; set; } //Used to mark trigger the action only once
+        /// <summary>
+        /// ON/OFF status
+        /// </summary>
+        public bool State { get; set; }  
+        /// <summary>
+        /// Interval for each gap
+        /// </summary>
+        private int Interval { get; set; }
 
-        private bool Enable { get; set; }  //Signal is enable or not
-        private Thread tSignal { get; set; } //Signal loop thread
+        /// <summary>
+        /// Ratio signal in ON
+        /// </summary>
+        private double SignalOnRatio { get; set; }
 
-        private Stopwatch Watch { get; set; } = new Stopwatch(); //Watch used to count time
+        private int IntervalON => (int)(Interval * SignalOnRatio);
+
+        private int IntervalOFF => (int)(Interval * (1- SignalOnRatio));
+        /// <summary>
+        /// Used to mark trigger the action only once
+        /// </summary>
+        public bool ActionEnable { get; set; } 
+
+        /// <summary>
+        /// Signal is enable or not
+        /// </summary>
+        private bool Enable { get; set; }  
+
+        /// <summary>
+        /// Signal loop thread
+        /// </summary>
+        private Thread tSignal { get; set; } 
+
+        /// <summary>
+        /// Watch used to count time
+        /// </summary>
+        private Stopwatch Watch { get; set; } = new Stopwatch(); 
 
         /// <summary>
         /// Used to guaranty exit
@@ -25,18 +53,26 @@ namespace QuickTests
 
         private bool UIExit => ParentControl == null || ParentControl.IsDisposed || ParentControl.Disposing;
 
-        public FlashSignal(int IntervalInMilliseconds, Control control)
+        public FlashSignal(Control control, int IntervalInMilliseconds, double _onRatio =0.5)
         {
             //Init variables
             ParentControl = control;
-
-            //verify input
+         
+            //verify input interval
             if (IntervalInMilliseconds <= 0)
             {
                 Exception e = new Exception("Invalid Interval Value.");
                 throw e;
             }
-            Interval = IntervalInMilliseconds / 2;
+            Interval = IntervalInMilliseconds;
+
+            //Verify input ration
+            if (_onRatio>=1|| _onRatio<=0)
+            {
+                Exception e = new Exception("Invalid Ratio Value.");
+                throw e;
+            }
+            SignalOnRatio = _onRatio;
 
             //start counting thread
             tSignal = new Thread(ProcessSignal);
@@ -56,12 +92,12 @@ namespace QuickTests
                 if (UIExit) return;
 
                 //On
-                DelayTimeWithExitFlag(Interval);
                 State = true;
+                DelayTimeWithExitFlag(IntervalON);
 
                 //Off
-                DelayTimeWithExitFlag(Interval);
                 State = false;
+                DelayTimeWithExitFlag(IntervalOFF);
 
                 //Enable the action again
                 ActionEnable = true;

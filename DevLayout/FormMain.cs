@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace DevLayout
 {
-    public partial class Form1 : XtraForm
+    public partial class FormMain : XtraForm
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
            
@@ -43,6 +43,13 @@ namespace DevLayout
         {
             FluentDesignForm1 form1 = new FluentDesignForm1();
             form1.Show();
+        }
+
+        private void bGeneratedForm_Click(object sender, EventArgs e)
+        {
+            GeneratedForm formGenerated = new GeneratedForm();
+            formGenerated.StartPosition = FormStartPosition.CenterScreen;
+            formGenerated.ShowDialog();
         }
     }
 }

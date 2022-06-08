@@ -1,5 +1,5 @@
 ﻿
-namespace Diagram
+namespace DiagramDemo
 {
     partial class Form1
     {

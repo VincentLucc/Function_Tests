@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D3CAD4F6-8E90-42F2-B8F6-A571B74C714D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Diagram</RootNamespace>
-    <AssemblyName>Diagram</AssemblyName>
+    <RootNamespace>DiagramDemo</RootNamespace>
+    <AssemblyName>DiagramDemo</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
