@@ -592,7 +592,7 @@ namespace SerialPort_Ink
                 Thread.Sleep(10);
 
                 //Check pause flag
-                if (SendBlocker.Enable)
+                if (SendBlocker.EnableBlock)
                 {
                     SendBlocker.IsBlocked = true;
                     continue;

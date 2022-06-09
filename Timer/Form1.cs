@@ -43,7 +43,7 @@ namespace OperationBlock
             t1.Enabled = false;
 
             //Check pause flag
-            if (Blocker.Enable)
+            if (Blocker.EnableBlock)
             {
                 Blocker.IsBlocked = true;
                 t1.Enabled = true;
@@ -54,7 +54,7 @@ namespace OperationBlock
             Debug.WriteLine("Did sth 1");
 
             //Operation trigger
-            if (Blocker.Enable)
+            if (Blocker.EnableBlock)
             {
                 t1.Enabled = true;
                 return;
@@ -63,7 +63,7 @@ namespace OperationBlock
             Debug.WriteLine("Did sth 2");
 
             //Operation trigger
-            if (Blocker.Enable)
+            if (Blocker.EnableBlock)
             {
                 t1.Enabled = true;
                 return;
@@ -72,7 +72,7 @@ namespace OperationBlock
             Debug.WriteLine("Did sth 3");
 
             //Operation trigger
-            if (Blocker.Enable)
+            if (Blocker.EnableBlock)
             {
                 t1.Enabled = true;
                 return;
@@ -81,7 +81,7 @@ namespace OperationBlock
             Debug.WriteLine("Did sth 4");
 
             //Operation trigger
-            if (Blocker.Enable)
+            if (Blocker.EnableBlock)
             {
                 t1.Enabled = true;
                 return;
@@ -100,7 +100,7 @@ namespace OperationBlock
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Blocker.Enable = false;
+            Blocker.EnableBlock = false;
         }
 
         private async void bButtonBlock_Click(object sender, EventArgs e)

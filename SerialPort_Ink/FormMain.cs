@@ -180,7 +180,7 @@ namespace SerialPort_Ink
             UpdateUI();
 
             //Check operation pause flag
-            if (OperationBlock.Enable)
+            if (OperationBlock.EnableBlock)
             {
                 OperationBlock.IsBlocked = true;
                 tUpdate.Enabled = true;

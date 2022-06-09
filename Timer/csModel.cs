@@ -36,7 +36,16 @@ namespace OperationBlock
     /// </summary>
     public class LoopBlocker
     {
-        public bool Enable { get; set; }
+
+        public bool EnableBlock { get; set; }
+
+        public Stopwatch MonitorWatch { get; set; }
+
+        /// <summary>
+        /// Use main thread timer, this is performance intensive
+        /// </summary>
+        public Timer MonitorTimer { get; set; }
+ 
         /// <summary>
         /// Operation successfully blocked
         /// </summary>
@@ -44,22 +53,49 @@ namespace OperationBlock
         /// <summary>
         /// Block timeout
         /// </summary>
-        public int TimeOut { get; set; }
+        public int BlockTimeOut { get; set; }
+
+        /// <summary>
+        /// Whether automatically stop blocking after certain amount of duration
+        /// Incase no further request is received
+        /// </summary>
+        public bool AutoResumeEnable { get; set; }
+        public int AutoResumeTime { get; set; }
 
         public LoopBlocker()
         {
-            TimeOut = 5000;
+            BlockTimeOut = 5000;
+            AutoResumeEnable = true;
+            AutoResumeTime = 30000; //Will automatically stop blocking, incase no further resume request received
+            MonitorWatch = new Stopwatch();
+            MonitorTimer = new Timer();
+            MonitorTimer.Interval = 200;//Not critical
+            MonitorTimer.Tick += MonitorTimer_Tick;
+            MonitorTimer.Start();
+        }
+
+        private void MonitorTimer_Tick(object sender, EventArgs e)
+        {
+            //Only process when block is enabled
+            if (!EnableBlock) return;
+
+            if (MonitorWatch.ElapsedMilliseconds> AutoResumeTime)
+            {
+                StopBlock();
+            }        
         }
 
         public void StartBlock()
         {
-            Enable = true;
+            EnableBlock = true;
             IsBlocked = false;
+            MonitorWatch.Restart();
         }
 
         public void StopBlock()
         {
-            Enable = false;
+            EnableBlock = false;
+            MonitorWatch.Stop();
         }
 
         public async Task BlockAndWaitAsync()
@@ -76,7 +112,7 @@ namespace OperationBlock
             while (!IsBlocked)
             {
                 await Task.Delay(20);
-                if (stopwatch.ElapsedMilliseconds > TimeOut)
+                if (stopwatch.ElapsedMilliseconds > BlockTimeOut)
                 {
                     Debug.WriteLine($"WaitForBlock Timeout:{stopwatch.ElapsedMilliseconds} ms");
                     return;

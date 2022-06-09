@@ -48,7 +48,7 @@ namespace Lock
         {
             var t1 = (System.Windows.Forms.Timer)sender;
 
-            if (timerBlocker.Enable)
+            if (timerBlocker.EnableBlock)
             {
                 t1.Enabled = true;
                 timerBlocker.IsBlocked = true;
@@ -168,7 +168,7 @@ namespace Lock
 
         private void tsMainTimer_Toggled(object sender, EventArgs e)
         {
-            timerBlocker.Enable = !tsMainTimer.IsOn;
+            timerBlocker.EnableBlock = !tsMainTimer.IsOn;
         }
     }
 }
