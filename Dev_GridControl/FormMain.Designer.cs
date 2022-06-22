@@ -36,6 +36,7 @@ namespace Dev_GridControl
             this.bRejectReasons = new DevExpress.XtraEditors.SimpleButton();
             this.bBigDataUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.bTileView = new DevExpress.XtraEditors.SimpleButton();
+            this.bSizeCompare = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -107,11 +108,22 @@ namespace Dev_GridControl
             this.bTileView.ToolTip = "Web Style Row Display";
             this.bTileView.Click += new System.EventHandler(this.bTileView_Click);
             // 
+            // bSizeCompare
+            // 
+            this.bSizeCompare.Location = new System.Drawing.Point(55, 185);
+            this.bSizeCompare.Name = "bSizeCompare";
+            this.bSizeCompare.Size = new System.Drawing.Size(206, 23);
+            this.bSizeCompare.TabIndex = 7;
+            this.bSizeCompare.Text = "Collection, DataTable Size compare";
+            this.bSizeCompare.ToolTip = "Web Style Row Display";
+            this.bSizeCompare.Click += new System.EventHandler(this.bSizeCompare_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bSizeCompare);
             this.Controls.Add(this.bTileView);
             this.Controls.Add(this.bBigDataUpdate);
             this.Controls.Add(this.bRejectReasons);
@@ -135,6 +147,7 @@ namespace Dev_GridControl
         private DevExpress.XtraEditors.SimpleButton bRejectReasons;
         private DevExpress.XtraEditors.SimpleButton bBigDataUpdate;
         private DevExpress.XtraEditors.SimpleButton bTileView;
+        private DevExpress.XtraEditors.SimpleButton bSizeCompare;
     }
 }
 

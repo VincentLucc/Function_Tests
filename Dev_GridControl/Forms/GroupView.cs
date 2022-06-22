@@ -17,6 +17,9 @@ namespace Dev_GridControl
 {
     public partial class GroupView : Form
     {
+
+        const string sIDField = "N#";
+
         public GroupView()
         {
             InitializeComponent();
@@ -33,7 +36,7 @@ namespace Dev_GridControl
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    Student s = new Student() { Age = j + 1, Name = $"Class_{i}_ID_{j+1}",Class = $"Class{i}"};
+                    Student s = new Student() { Age = j + 1, Name = $"Class_{i}_ID_{j + 1}", Class = $"Class{i}" };
                     s.DescriptionInfo = "TestAbc";
                     students.Add(s);
                 }
@@ -68,10 +71,17 @@ namespace Dev_GridControl
                 FieldName = nameof(Student.Age), //Value name
                 SummaryType = SummaryItemType.Sum,
                 ShowInGroupColumnFooter = gridView1.Columns[nameof(Student.Name)] //Display location
-            }) ;
+            });
 
             //Set group row value
             gridView1.CustomDrawGroupRow += GridView1_CustomDrawGroupRow;
+
+            //Add row index display 
+            var columnID = gridView1.Columns.AddField(sIDField);
+            columnID.VisibleIndex = 0;
+            columnID.Visible = true;
+            gridView1.CustomDrawCell += GridView1_CustomDrawCell;
+
 
             //Start a update timer
             Timer t1 = new Timer();
@@ -79,6 +89,16 @@ namespace Dev_GridControl
             t1.Tick += T1_Tick;
             t1.Start();
         }
+
+        private void GridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column.FieldName== sIDField)
+            {
+                e.DisplayText = (e.RowHandle+1).ToString();
+            }
+        }
+
+
 
         private void GridView1_CustomDrawGroupRow(object sender, DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs e)
         {
@@ -90,7 +110,7 @@ namespace Dev_GridControl
         private void T1_Tick(object sender, EventArgs e)
         {
             ViewData[0].Age += 1;
-            var list= ViewData.ToList();
+            var list = ViewData.ToList();
             list[0].Name = $"haha{ ViewData[0].Age}";
             ViewData = list;
             gridControl1.RefreshDataSource();

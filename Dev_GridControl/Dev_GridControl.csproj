@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -70,6 +70,12 @@
       <DependentUpon>CardViews.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\csModel.cs" />
+    <Compile Include="Forms\CollectionSourceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CollectionSourceForm.Designer.cs">
+      <DependentUpon>CollectionSourceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CustomEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CardViews.resx">
       <DependentUpon>CardViews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CollectionSourceForm.resx">
+      <DependentUpon>CollectionSourceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomEditor.resx">
       <DependentUpon>CustomEditor.cs</DependentUpon>

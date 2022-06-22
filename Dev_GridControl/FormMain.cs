@@ -23,9 +23,11 @@ namespace Dev_GridControl
 
         private void Form1_Load(object sender, EventArgs e)
         {
-     
-           
+
+          
         }
+
+
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
@@ -67,5 +69,17 @@ namespace Dev_GridControl
             TileView winTile = new TileView();
             winTile.Show();
         }
+
+        private void bSizeCompare_Click(object sender, EventArgs e)
+        {
+            using (CollectionSourceForm collectionForm = new CollectionSourceForm())
+            {
+                collectionForm.ShowDialog();
+            }
+           
+          
+        }
+
+       
     }
 }

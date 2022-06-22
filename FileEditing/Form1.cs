@@ -81,5 +81,16 @@ namespace FileEditing
         {
             FileOnHold.Close();
         }
+
+        private void bFileInfo_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            if (fileDialog.ShowDialog()==DialogResult.OK)
+            {
+                string sFileName = fileDialog.FileName;
+                var fileInfo = new FileInfo(sFileName);
+                
+            }
+        }
     }
 }

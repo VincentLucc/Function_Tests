@@ -77,7 +77,7 @@ namespace OperationBlock
         private void MonitorTimer_Tick(object sender, EventArgs e)
         {
             //Only process when block is enabled
-            if (!EnableBlock) return;
+            if (!EnableBlock || !AutoResumeEnable) return;
 
             if (MonitorWatch.ElapsedMilliseconds> AutoResumeTime)
             {
@@ -114,13 +114,13 @@ namespace OperationBlock
                 await Task.Delay(20);
                 if (stopwatch.ElapsedMilliseconds > BlockTimeOut)
                 {
-                    Debug.WriteLine($"WaitForBlock Timeout:{stopwatch.ElapsedMilliseconds} ms");
+                    Debug.WriteLine($"LoopBlocker.WaitForBlock Timeout:{stopwatch.ElapsedMilliseconds} ms");
                     return;
                 }
             }
 
             stopwatch.Stop();
-            Debug.WriteLine($"WaitForBlock:{stopwatch.ElapsedMilliseconds} ms");
+            Debug.WriteLine($"LoopBlocker.WaitForBlock:{stopwatch.ElapsedMilliseconds} ms");
         }
     }
 }

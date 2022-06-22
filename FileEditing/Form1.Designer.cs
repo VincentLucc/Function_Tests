@@ -32,6 +32,7 @@ namespace FileEditing
             this.bHold = new System.Windows.Forms.Button();
             this.bWriteHoldFile = new System.Windows.Forms.Button();
             this.bCLoseHold = new System.Windows.Forms.Button();
+            this.bFileInfo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bHold
@@ -64,11 +65,22 @@ namespace FileEditing
             this.bCLoseHold.UseVisualStyleBackColor = true;
             this.bCLoseHold.Click += new System.EventHandler(this.bCLoseHold_Click);
             // 
+            // bFileInfo
+            // 
+            this.bFileInfo.Location = new System.Drawing.Point(37, 53);
+            this.bFileInfo.Name = "bFileInfo";
+            this.bFileInfo.Size = new System.Drawing.Size(75, 23);
+            this.bFileInfo.TabIndex = 3;
+            this.bFileInfo.Text = "FileInfo";
+            this.bFileInfo.UseVisualStyleBackColor = true;
+            this.bFileInfo.Click += new System.EventHandler(this.bFileInfo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(582, 300);
+            this.Controls.Add(this.bFileInfo);
             this.Controls.Add(this.bCLoseHold);
             this.Controls.Add(this.bWriteHoldFile);
             this.Controls.Add(this.bHold);
@@ -83,6 +95,7 @@ namespace FileEditing
         private System.Windows.Forms.Button bHold;
         private System.Windows.Forms.Button bWriteHoldFile;
         private System.Windows.Forms.Button bCLoseHold;
+        private System.Windows.Forms.Button bFileInfo;
     }
 }
 
