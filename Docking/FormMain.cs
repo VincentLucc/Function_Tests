@@ -33,5 +33,11 @@ namespace Docking
             FormDockPanel winDoc = new FormDockPanel();
             winDoc.Show();
         }
+
+        private void bDocumentWidget_Click(object sender, EventArgs e)
+        {
+            DocumentManagerWidgetViewForm winDoc = new DocumentManagerWidgetViewForm();
+            winDoc.Show();
+        }
     }
 }

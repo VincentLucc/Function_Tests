@@ -12,10 +12,13 @@ namespace DevMessage
 {
     public partial class Form1 : Form
     {
+        csDevMessage messageHelper;
+
         public Form1()
         {
             InitializeComponent();
             csPublic.formMain = this;
+            messageHelper = new csDevMessage(this);
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -41,6 +44,16 @@ namespace DevMessage
         private void bShowInfoDefault_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Info default");
+        }
+
+        private async void simpleButton1_Click(object sender, EventArgs e)
+        {
+            messageHelper.ShowMainLoading("Please wait.");
+            await Task.Delay(2000);
+            UIHelper.CloseLoadingForm();
+            messageHelper.ShowMainLoading();
+            await Task.Delay(1000);
+            messageHelper.CloseLoadingForm();
         }
     }
 }

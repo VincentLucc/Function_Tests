@@ -85,6 +85,12 @@
     <Compile Include="DockManagerDocking.Designer.cs">
       <DependentUpon>DockManagerDocking.cs</DependentUpon>
     </Compile>
+    <Compile Include="DocumentManagerWidgetViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocumentManagerWidgetViewForm.Designer.cs">
+      <DependentUpon>DocumentManagerWidgetViewForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DockManagerDocking.resx">
       <DependentUpon>DockManagerDocking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocumentManagerWidgetViewForm.resx">
+      <DependentUpon>DocumentManagerWidgetViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDockPanel.resx">
       <DependentUpon>FormDockPanel.cs</DependentUpon>

@@ -14,19 +14,26 @@ namespace OperationBlock
 
     public class ButtonOperationGroup
     {
-        public bool IsButtonBusy { get; set; }
+        public bool IsOperating { get; set; }
         public string WorkingOn { get; set; }
-        public bool CheckButtonBusy(string sCurrentOperation)
+
+        /// <summary>
+        /// Indicate wether allow form closing during operation, default false
+        /// </summary>
+        public bool AllowFormClose { get; set; }
+
+        public bool RequestButtonOperation(string sCurrentOperation)
         {
             //Check button busy
-            if (IsButtonBusy)
+            if (IsOperating)
             {
                 MessageBox.Show($"Operating on {sCurrentOperation}, please wait.");
                 return false;
             }
 
             WorkingOn = sCurrentOperation;
-            IsButtonBusy = true;
+            IsOperating = true;
+            AllowFormClose = false;
             return true;
         }
     }

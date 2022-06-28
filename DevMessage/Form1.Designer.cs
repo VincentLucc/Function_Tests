@@ -37,6 +37,7 @@ namespace DevMessage
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.ucMessage1 = new DevMessage.ucMessage();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -94,6 +95,7 @@ namespace DevMessage
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.simpleButton1);
             this.xtraTabPage1.Controls.Add(this.button1);
             this.xtraTabPage1.Controls.Add(this.bShowInfoDefault);
             this.xtraTabPage1.Controls.Add(this.bShowInfo1);
@@ -116,6 +118,15 @@ namespace DevMessage
             this.ucMessage1.Name = "ucMessage1";
             this.ucMessage1.Size = new System.Drawing.Size(794, 422);
             this.ucMessage1.TabIndex = 0;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(20, 96);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(130, 23);
+            this.simpleButton1.TabIndex = 4;
+            this.simpleButton1.Text = "Show Loading Intance";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // Form1
             // 
@@ -143,6 +154,7 @@ namespace DevMessage
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private ucMessage ucMessage1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
 

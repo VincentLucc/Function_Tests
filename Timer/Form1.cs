@@ -105,12 +105,12 @@ namespace OperationBlock
 
         private async void bButtonBlock_Click(object sender, EventArgs e)
         {
-            if (!ButtonOperation.CheckButtonBusy("bButtonBlock_Click")) return;
+            if (!ButtonOperation.RequestButtonOperation("bButtonBlock_Click")) return;
 
             await Task.Delay(3000);
 
             //Finish up
-            ButtonOperation.IsButtonBusy = false;
+            ButtonOperation.IsOperating = false;
         }
     }
 }
