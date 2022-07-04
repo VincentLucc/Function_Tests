@@ -37,6 +37,7 @@ namespace Dev_GridControl
             this.bBigDataUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.bTileView = new DevExpress.XtraEditors.SimpleButton();
             this.bSizeCompare = new DevExpress.XtraEditors.SimpleButton();
+            this.bEditForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -118,11 +119,22 @@ namespace Dev_GridControl
             this.bSizeCompare.ToolTip = "Web Style Row Display";
             this.bSizeCompare.Click += new System.EventHandler(this.bSizeCompare_Click);
             // 
+            // bEditForm
+            // 
+            this.bEditForm.Location = new System.Drawing.Point(55, 214);
+            this.bEditForm.Name = "bEditForm";
+            this.bEditForm.Size = new System.Drawing.Size(109, 23);
+            this.bEditForm.TabIndex = 8;
+            this.bEditForm.Text = "Edit Form";
+            this.bEditForm.UseVisualStyleBackColor = true;
+            this.bEditForm.Click += new System.EventHandler(this.bEditForm_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bEditForm);
             this.Controls.Add(this.bSizeCompare);
             this.Controls.Add(this.bTileView);
             this.Controls.Add(this.bBigDataUpdate);
@@ -148,6 +160,7 @@ namespace Dev_GridControl
         private DevExpress.XtraEditors.SimpleButton bBigDataUpdate;
         private DevExpress.XtraEditors.SimpleButton bTileView;
         private DevExpress.XtraEditors.SimpleButton bSizeCompare;
+        private System.Windows.Forms.Button bEditForm;
     }
 }
 

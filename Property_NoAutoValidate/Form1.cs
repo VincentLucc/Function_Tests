@@ -295,6 +295,27 @@ namespace Property_NoAutoValidate
         {
             Debug.WriteLine("Validating Edit Trigger");
 
+            //Enable auto validation only for certain conditions
+            BaseRow editRow = (sender as PropertyGridControl).FocusedRow;
+            if (editRow is PGridEnumEditorRow || editRow is PGridBooleanEditorRow ||
+                editRow.Properties.RowEdit is RepositoryItemComboBox)
+            {
+                propertyHelper.EnablePropertyValidate = true;
+            }
+
+            //When lookip edit
+            if (editRow.Properties.RowEdit is RepositoryItemLookUpEdit)
+            {
+                var lookUpEdit = editRow.Properties.RowEdit as RepositoryItemLookUpEdit;
+                if (e.Value != null)
+                {
+                    //Only auto validate for existing selection
+                    var row = lookUpEdit.GetDataSourceRowByKeyValue(e.Value.ToString());
+                    if (row != null) propertyHelper.EnablePropertyValidate = true;
+                }
+            }
+
+
             //Skip validation when input not ready
             if (!propertyHelper.EnablePropertyValidate)
             {

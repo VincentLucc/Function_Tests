@@ -95,10 +95,9 @@ namespace Properties
             //Remove null relavent row       
             foreach (var BaseRow in rowsPre)
             {
-                if (BaseRow is CategoryRow || BaseRow is PGridEmptyRow)
-                {
-                    continue;
-                }
+                //Empry row is required!!! used for class name display
+                //if (BaseRow is CategoryRow || BaseRow is PGridEmptyRow) continue;
+                if (BaseRow is CategoryRow) continue;
 
                 //Remove devexpress specific row
                 string sRowName = BaseRow.Properties.FieldName;

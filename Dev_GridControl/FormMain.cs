@@ -75,11 +75,16 @@ namespace Dev_GridControl
             using (CollectionSourceForm collectionForm = new CollectionSourceForm())
             {
                 collectionForm.ShowDialog();
-            }
-           
-          
+            }  
         }
 
-       
+        private void bEditForm_Click(object sender, EventArgs e)
+        {
+            using (EditForm editForm = new EditForm())
+            {
+                editForm.StartPosition = FormStartPosition.CenterParent;
+                editForm.ShowDialog();
+            }
+        }
     }
 }

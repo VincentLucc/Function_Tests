@@ -58,7 +58,7 @@ namespace QuickTests
             //Init variables
             ParentControl = control;
          
-            //verify input interval
+            //Verify input interval
             if (IntervalInMilliseconds <= 0)
             {
                 Exception e = new Exception("Invalid Interval Value.");
@@ -74,7 +74,7 @@ namespace QuickTests
             }
             SignalOnRatio = _onRatio;
 
-            //start counting thread
+            //Start counting thread
             tSignal = new Thread(ProcessSignal);
             Enable = true;
             tSignal.IsBackground = true;

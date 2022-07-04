@@ -1,10 +1,12 @@
-﻿using DevExpress.XtraEditors.Controls;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,19 +36,50 @@ namespace ComboBox
 
             //Image combobox
             icbTest.Properties.Items.Clear();
-            icbTest.Properties.SmallImages = imageCollection1;
+          
+            //icbTest.Properties.SmallImages = GetImageList(); //Not working
+            icbTest.Properties.LargeImages = imageCollection1; //use this instead
+            icbTest.Properties.NullText = "";
+            EnableImageComboBoxEdit(icbTest);
+
             for (int i = 0; i < 2; i++)
             {
                 ImageComboBoxItem item = new ImageComboBoxItem();
                 item.Description = "Desc_"+i;
                 item.ImageIndex = i;
-                item.Value = i; //This must have, otherwise value can't be selected
+                item.Value = item.Description; //This must have, otherwise value can't be selected
                 icbTest.Properties.Items.Add(item);
             }
             icbTest.ShowToolTips = true;
             icbTest.MouseMove += IcbTest_MouseMove;
+            icbTest.KeyDown += IcbTest_KeyDown;
+            
+
+
+
         }
 
+        private void EnableImageComboBoxEdit(ImageComboBoxEdit imageComboBox)
+        {
+            //Forcely set text editor
+            FieldInfo field = imageComboBox.Properties.GetType().GetField("fTextEditStyle", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+            if (field != null) field.SetValue(imageComboBox.Properties, TextEditStyles.Standard);
+        }
+
+        private void IcbTest_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                icbTest.SelectedIndex = -1;
+            }
+        }
+
+
+
+        /// <summary>
+        /// Not working 
+        /// </summary>
+        /// <returns></returns>
         private List<Image> GetImageList()
         {
             List<Image> images = new List<Image>();

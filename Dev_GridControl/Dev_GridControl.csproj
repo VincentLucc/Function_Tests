@@ -57,6 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\csPublic.cs" />
+    <Compile Include="Controls\ucEditForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ucEditForm.Designer.cs">
+      <DependentUpon>ucEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\BigDataUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditForm.Designer.cs">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GroupView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +120,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\ucEditForm.resx">
+      <DependentUpon>ucEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BigDataUpdate.resx">
       <DependentUpon>BigDataUpdate.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditForm.resx">
+      <DependentUpon>EditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GroupView.resx">
       <DependentUpon>GroupView.cs</DependentUpon>
@@ -176,6 +194,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\clear_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

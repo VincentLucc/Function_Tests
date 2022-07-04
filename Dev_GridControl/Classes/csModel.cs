@@ -21,6 +21,8 @@ namespace Dev_GridControl
         public string DescriptionInfo { get; set; }
         [DisplayName("theClass")]
         public string Class { get; set; }
+
+        public bool Enable { get; set; }
     }
 
     public class AlarmInfo

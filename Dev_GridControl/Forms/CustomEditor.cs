@@ -43,7 +43,9 @@ namespace Dev_GridControl
                 var RowView = new DataRowView();
                 RowView.Name = $"ABC_{ 0 + i}";
                 RowView.Description = "ABC_123";
+                RowView.GridLookup = "TestLookup";
                 TemplateListBuffer.Add(RowView);
+
             }
 
             sCommandCaption = "Command";
@@ -70,7 +72,8 @@ namespace Dev_GridControl
             TemplateGridView.OptionsCustomization.AllowFilter = false;
             TemplateGridView.OptionsCustomization.AllowSort = false;
 
-            //preview keydown
+
+            //Preview keydown
             TemplateGridControl.PreviewKeyDown += TemplateGridControl_PreviewKeyDown;
             TemplateGridView.RowCellStyle += TemplateGridView_RowCellStyle;
 
@@ -79,6 +82,13 @@ namespace Dev_GridControl
 
             //Set custom editor
             var buttonEditor = InitButtonEdit();
+
+            //Create switch
+            RepositoryItemToggleSwitch toggleSwitch = new RepositoryItemToggleSwitch();
+
+            //Set gridlookupedit
+            var gridLookup = InitGridLookupEdit();
+
 
             TemplateGridView.CustomRowCellEdit += (s, e) =>
             {
@@ -92,7 +102,56 @@ namespace Dev_GridControl
                 {
                     e.RepositoryItem = comboBoxEdit;
                 }
+                else if (e.Column.FieldName == nameof(DataRowView.Enable))
+                {
+                    e.RepositoryItem = toggleSwitch;
+                }
+                else if (e.Column.FieldName == nameof(DataRowView.GridLookup))
+                {
+                    e.RepositoryItem = gridLookup;
+                }
             };
+
+        }
+
+
+
+        private RepositoryItemGridLookUpEdit InitGridLookupEdit()
+        {
+            RepositoryItemGridLookUpEdit gridLookUpEdit = new RepositoryItemGridLookUpEdit();
+            List<LookupRow> rows = new List<LookupRow>();
+            for (int i = 0; i < 5; i++)
+            {
+                var row1 = new LookupRow();
+                row1.Index = i;
+                row1.Value = "Value_" + i;
+                rows.Add(row1);
+            }
+            //gridLookUpEdit.
+            gridLookUpEdit.ShowFooter = false;//Hide "X" button in bottom
+            gridLookUpEdit.TextEditStyle = TextEditStyles.Standard; //Enable user edit value
+            gridLookUpEdit.DataSource = rows;
+            gridLookUpEdit.ValueMember = nameof(LookupRow.Value);
+            gridLookUpEdit.DisplayMember = nameof(LookupRow.Value);
+            gridLookUpEdit.AcceptEditorTextAsNewValue = DefaultBoolean.True;//User input can be accepted
+            gridLookUpEdit.View.CustomDrawCell += View_CustomDrawCell;
+
+
+            return gridLookUpEdit;
+        }
+
+        private void View_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
+        {
+            var image = Properties.Resources.apply_32x32;
+            var image2 = Properties.Resources.apply_16x16;
+
+            if (e.Column.FieldName == nameof(LookupRow.Index))
+            {
+                //e.DefaultDraw();
+                e.Cache.DrawImage(image2, 20, 20, 16, 16);
+                //e.Handled = true;//Disable default draw
+            }
+
 
 
         }
@@ -253,8 +312,26 @@ namespace Dev_GridControl
             [DisplayName("Template Name")]
             public string Name { get; set; }
             public string Description { get; set; }
-            [DisplayName("Current Function")]
+            [DisplayName("Function ImageComboBox")]
             public string Function { get; set; }
+            [DisplayName("Enable Switch")]
+            public bool Enable { get; set; }
+
+            [DisplayName("String GridLookup")]
+            public string GridLookup { get; set; }
+
+            public DataRowView()
+            {
+                GridLookup = "";
+            }
+
+
+        }
+
+        public class LookupRow
+        {
+            public int Index { get; set; }
+            public string Value { get; set; }
 
         }
 
