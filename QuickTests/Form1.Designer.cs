@@ -55,6 +55,7 @@ namespace QuickTests
             this.tbName = new System.Windows.Forms.TextBox();
             this.bSetName = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button11 = new System.Windows.Forms.Button();
             this.bSpeed = new System.Windows.Forms.Button();
             this.bList = new System.Windows.Forms.Button();
             this.bEnumTest = new System.Windows.Forms.Button();
@@ -62,7 +63,7 @@ namespace QuickTests
             this.bTakeTest1 = new System.Windows.Forms.Button();
             this.bTake = new System.Windows.Forms.Button();
             this.bArray = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.bGroupList = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabEvents.SuspendLayout();
@@ -338,6 +339,7 @@ namespace QuickTests
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.bGroupList);
             this.tabPage1.Controls.Add(this.button11);
             this.tabPage1.Controls.Add(this.bSpeed);
             this.tabPage1.Controls.Add(this.bList);
@@ -354,6 +356,16 @@ namespace QuickTests
             this.tabPage1.Text = "Collections";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(21, 107);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(199, 23);
+            this.button11.TabIndex = 7;
+            this.button11.Text = "Collection to List object changes";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // bSpeed
             // 
@@ -425,15 +437,15 @@ namespace QuickTests
             this.bArray.UseVisualStyleBackColor = true;
             this.bArray.Click += new System.EventHandler(this.bArray_Click);
             // 
-            // button11
+            // bGroupList
             // 
-            this.button11.Location = new System.Drawing.Point(21, 107);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(199, 23);
-            this.button11.TabIndex = 7;
-            this.button11.Text = "Collection to List object changes";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.bGroupList.Location = new System.Drawing.Point(21, 137);
+            this.bGroupList.Name = "bGroupList";
+            this.bGroupList.Size = new System.Drawing.Size(75, 23);
+            this.bGroupList.TabIndex = 8;
+            this.bGroupList.Text = "Group List";
+            this.bGroupList.UseVisualStyleBackColor = true;
+            this.bGroupList.Click += new System.EventHandler(this.bGroupList_Click);
             // 
             // Form1
             // 
@@ -492,6 +504,7 @@ namespace QuickTests
         private System.Windows.Forms.Button bLEDGreen;
         private System.Windows.Forms.Button bLEDRed;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button bGroupList;
     }
 }
 

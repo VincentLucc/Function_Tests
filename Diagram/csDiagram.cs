@@ -43,25 +43,18 @@ namespace DiagramDemo
 
         private void PrepareItems()
         {
-            //Set diagram items
-            //diagramControl1.SelectedStencils = new StencilCollection(new string[] { "Machine", "Auxiliary", "Sequence" });
-            //default items
-            //diagramControl1.OptionsBehavior.SelectedStencils = new StencilCollection(new string[] {
-            //"BasicShapes",
-            //"BasicFlowchartShapes",
-            //"SDLDiagramShapes",
-            //"ArrowShapes",
-            //"SoftwareIcons",
-            //"DecorativeShapes"});
-
             //Container group
             var diagramGroup1 = new DiagramStencil("Group1", "Group Containers");
+
+            //Add tool to group
             diagramGroup1.RegisterTool(new FactoryItemTool("Tool1", () => "Tool1 Device Name", tool1 => new ContainerMain(), new System.Windows.Size(36, 36)));
             diagramGroup1.RegisterTool(new FactoryItemTool("Tool2", () => "Tool2 Device Name", tool2 => new Container1(), new System.Windows.Size(36, 36)));
 
-
+            //Reg type to diagram so it can be save and load properly
             DiagramControl.ItemTypeRegistrator.Register(typeof(ContainerMain));
             DiagramControl.ItemTypeRegistrator.Register(typeof(Container1));
+
+            //Last step
             DiagramToolboxRegistrator.RegisterStencil(diagramGroup1);
 
             //Set visible item group

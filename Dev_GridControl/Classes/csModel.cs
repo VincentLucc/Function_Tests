@@ -23,6 +23,7 @@ namespace Dev_GridControl
         public string Class { get; set; }
 
         public bool Enable { get; set; }
+        public bool Enable2 { get; set; }
     }
 
     public class AlarmInfo

@@ -105,7 +105,7 @@ namespace QuickTests
             Debug.WriteLine($"Elipsed:{watch.ElapsedMilliseconds}");
         }
 
-       
+
         private void Form1_Shown(object sender, EventArgs e)
         {
             this.Visible = false;
@@ -476,7 +476,7 @@ namespace QuickTests
             watch.Stop();
             Debug.WriteLine($"CreateData {watch.ElapsedMilliseconds}");
             watch.Restart();
-            var find = data.Where(a=>a.Age>10000).ToList(); //Make another copy (Time consuming, 200ms)
+            var find = data.Where(a => a.Age > 10000).ToList(); //Make another copy (Time consuming, 200ms)
             watch.Stop();
             Debug.WriteLine($"Data find {watch.ElapsedMilliseconds}");
             watch.Restart();
@@ -488,7 +488,7 @@ namespace QuickTests
 
         private void bIntShift_Click(object sender, EventArgs e)
         {
-            long x =123456789;
+            long x = 123456789;
             x >>= 3; //Value changed
 
             //Only convert last 8 bits
@@ -509,7 +509,7 @@ namespace QuickTests
             for (int i = 0; i < 5; i++)
             {
                 Student s1 = new Student();
-                s1.Name = "x" + i+1;
+                s1.Name = "x" + i + 1;
                 s1.Age = i;
                 students.Add(s1);
             }
@@ -524,6 +524,34 @@ namespace QuickTests
             }
 
             var abc = students;
+        }
+
+        private void bGroupList_Click(object sender, EventArgs e)
+        {
+            List<List<string>> listGroup = new List<List<string>>();
+            for (int i = 0; i < 3; i++)
+            {
+                List<string> listString = new List<string>();
+                for (int j = 0; j < 5; j++)
+                {
+                    string sValue = $"Group_{i}_Value_{j}";
+                    listString.Add(sValue);
+                }
+                listGroup.Add(listString);
+            }
+
+            var currentList = listGroup[2];
+
+            var newList= new List<string>();
+            for (int i = 0; i < 2; i++)
+            {
+                string sValue = $"RowX_V_{i}";
+                newList.Add(sValue);
+            }
+            currentList = newList;
+
+            //CHeck value (Value not changed!!!), make sure to directly set instead
+            var updatedList = listGroup[2];
         }
     }
 
