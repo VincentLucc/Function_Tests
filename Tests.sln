@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabelStringTest", "LabelStr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestColumnSelectionNew", "TestColumnSelectionNew\TestColumnSelectionNew.csproj", "{A0EA2589-EF4D-4D41-8707-75FB14AFA9F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LookUp", "LookUp\LookUp.csproj", "{041F1BE1-9121-4763-A30E-5BD08F9F7729}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LookUpEdit", "LookUp\LookUpEdit.csproj", "{041F1BE1-9121-4763-A30E-5BD08F9F7729}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_QuickTests", "QuickTests\_QuickTests.csproj", "{388D9A2B-01F7-49EF-9DDB-112F6F3490AF}"
 EndProject

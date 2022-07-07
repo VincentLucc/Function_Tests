@@ -26,7 +26,7 @@ namespace Dev_GridLookUpEdit
                 gridData.Add(new RowData() {Value="Input_"+i});
             }
 
-            gridLookUpEdit1.datas
+           
 
         }
 
