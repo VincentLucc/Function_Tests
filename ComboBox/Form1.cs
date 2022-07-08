@@ -36,12 +36,11 @@ namespace ComboBox
 
             //Image combobox
             icbTest.Properties.Items.Clear();
-          
+            icbTest2.Properties.Items.Clear();
             //icbTest.Properties.SmallImages = GetImageList(); //Not working
             icbTest.Properties.LargeImages = imageCollection1; //use this instead
             icbTest.Properties.NullText = "";
             EnableImageComboBoxEdit(icbTest);
-
             for (int i = 0; i < 2; i++)
             {
                 ImageComboBoxItem item = new ImageComboBoxItem();
@@ -49,14 +48,16 @@ namespace ComboBox
                 item.ImageIndex = i;
                 item.Value = item.Description; //This must have, otherwise value can't be selected
                 icbTest.Properties.Items.Add(item);
+                icbTest2.Properties.Items.Add(item);
             }
             icbTest.ShowToolTips = true;
             icbTest.MouseMove += IcbTest_MouseMove;
             icbTest.KeyDown += IcbTest_KeyDown;
-            
 
 
-
+            //Set test2 property
+            icbTest2.Properties.TextEditStyle = TextEditStyles.Standard;
+            icbTest2.Properties.NullText = "";
         }
 
         private void EnableImageComboBoxEdit(ImageComboBoxEdit imageComboBox)

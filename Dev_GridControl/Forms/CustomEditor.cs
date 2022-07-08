@@ -13,6 +13,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -78,7 +79,7 @@ namespace Dev_GridControl
             TemplateGridView.RowCellStyle += TemplateGridView_RowCellStyle;
 
             //Create ImageComboEdit
-            var comboBoxEdit = InitComboBoxEditor();
+            var comboBoxEdit = InitImageComboBoxEditor();
 
             //Set custom editor
             var buttonEditor = InitButtonEdit();
@@ -200,12 +201,13 @@ namespace Dev_GridControl
             TemplateGridControl.RefreshDataSource();
         }
 
-        private RepositoryItemImageComboBox InitComboBoxEditor()
+        private RepositoryItemImageComboBox InitImageComboBoxEditor()
         {
             //Set combo box editor
             RepositoryItemImageComboBox templateSelectionComboBox = new RepositoryItemImageComboBox();
             templateSelectionComboBox.Items.Clear();
             templateSelectionComboBox.SmallImages = imageCollection1;
+
 
             for (int i = 0; i < 3; i++)
             {
@@ -216,10 +218,54 @@ namespace Dev_GridControl
                 templateSelectionComboBox.Items.Add(item);
             }
 
+            //Forcely set text editor
+            FieldInfo field = templateSelectionComboBox.GetType().GetField("fTextEditStyle", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+            if (field != null) field.SetValue(templateSelectionComboBox, TextEditStyles.Standard);
+
+
+            templateSelectionComboBox.CustomDrawButton += TemplateSelectionComboBox_CustomDrawButton;
+
+            //Enable custom display
+            //var button = (RepositoryItemButtonEdit)templateSelectionComboBox;
+            //button.Tag = templateSelectionComboBox;
+            //button.CustomDrawButton += Button_CustomDrawButton;
+
+
             //Set combobox event
             templateSelectionComboBox.SelectedIndexChanged += TemplateSelectionComboBox_SelectedIndexChanged;
+            templateSelectionComboBox.CustomDisplayText += TemplateSelectionComboBox_CustomDisplayText;
+
 
             return templateSelectionComboBox;
+        }
+
+        private void TemplateSelectionComboBox_CustomDrawButton(object sender, CustomDrawButtonEventArgs e)
+        {
+            var comboBox = sender as RepositoryItemImageComboBox;
+            if (comboBox.)
+            {
+
+            }
+            var areaButton = e.Bounds;
+            var newFont = new Font(new FontFamily("Arial"), 8, FontStyle.Regular);
+
+            e.Graphics.DrawString("ABC", newFont, new SolidBrush(Color.Black), areaButton.Location.X-50, areaButton.Location.Y+10);
+        }
+
+        private void Button_CustomDrawButton(object sender, CustomDrawButtonEventArgs e)
+        {
+            var buttonEdit = sender as RepositoryItemButtonEdit;
+            var areaButton = e.Bounds;
+            var newFont = new Font(new FontFamily("Arial"), 8, FontStyle.Regular);
+
+            e.Graphics.DrawString("123", newFont, new SolidBrush(Color.Black), areaButton.Location);
+        }
+
+ 
+
+        private void TemplateSelectionComboBox_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
+        {
+            e.DisplayText = "";
         }
 
         private void TemplateSelectionComboBox_SelectedIndexChanged(object sender, EventArgs e)
