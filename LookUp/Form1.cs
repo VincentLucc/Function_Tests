@@ -26,10 +26,7 @@ namespace LookUp
            
         }
 
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-            Debug.WriteLine("Test:"+sEdit.ToString());
-        }
+
 
         private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
         {
@@ -46,6 +43,24 @@ namespace LookUp
             }
 
 
+            //Lookup edit control, base control
+            LookupEditInit(sList);
+
+
+
+            //Search lookup
+            searchLookUpEdit1.Properties.DataSource= sList;
+
+            //Grid lookup control
+            GridLookupEditInit(sList);
+
+
+
+
+        }
+
+        private void LookupEditInit(BindingList<string> sList)
+        {
             //Normal lookup
             lookUpEdit1.Properties.DataSource = sList;
             lookUpEdit1.EditValue = sEdit;
@@ -62,30 +77,67 @@ namespace LookUp
             lookUpEdit2.CustomDrawCell += LookUpEdit2_CustomDrawCell;
             lookUpEdit2.CustomDisplayText += LookUpEdit2_CustomDisplayText;
             lookUpEdit2.Properties.CustomDrawButton += Properties_CustomDrawButton1;
+        }
 
-            //Search lookup
-            searchLookUpEdit1.Properties.DataSource= sList;
-
+        private void GridLookupEditInit(BindingList<string> sList)
+        {
             //Grid lookup
-            gridLookUpEdit1.Properties.DataSource = sList;
+            gridLookUpEdit1.Properties.DataSource = sList; //single value can be directly bind
             gridLookUpEdit1.EditValue = sEdit;
             gridLookUpEdit1.Properties.ShowFooter = false;
 
+            //Grid lookup customized
+            var image = Properties.Resources.Icon;
+            //List or bind list won't work, use data table instead
+            //BindingList<ImageString> imageStrings = new BindingList<ImageString>();
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    var item = new ImageString();
+            //    item.Image = image;
+            //    item.Value = "Value_"+i+1;
+            //    imageStrings.Add(item);
+            //}
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add(nameof(ImageString.Image), typeof(Bitmap));
+            dt.Columns.Add(nameof(ImageString.Value));
+            for (int i = 0; i < 5; i++)
+            {
+                var dataRow = dt.NewRow();
+                dataRow[nameof(ImageString.Image)] = image;
+                dataRow[nameof(ImageString.Value)] = "Value_" + i + 1;
+                dt.Rows.Add(dataRow);
+            }
+
+            gridLookUpEditCustomized.Properties.DataSource = dt; //If use class list must use data table
+            var gridView = gridLookUpEditCustomized.Properties.View;
+         
+            // The field for the editor's display text.
+            gridLookUpEditCustomized.Properties.DisplayMember = nameof(ImageString.Value);
+            // The field matching the edit value.
+            gridLookUpEditCustomized.Properties.ValueMember = nameof(ImageString.Value);
+            gridLookUpEditCustomized.EditValue = sEdit;
+            gridLookUpEditCustomized.Properties.ShowFooter = false;
+            gridView.OptionsView.ShowColumnHeaders = false;//hide column
+            gridView.Columns[nameof(ImageString.Image)].MaxWidth = 30;
+            //Draw row cell
 
 
         }
 
+
+
         private void Properties_CustomDrawButton1(object sender, DevExpress.XtraEditors.Controls.CustomDrawButtonEventArgs e)
         {
             var image = Properties.Resources.Icon;
-            e.Graphics.DrawImage(image, 0, 0, 50, 15);
+            e.Graphics.DrawImage(image, -100, 0, 50, 20);
         }
 
  
 
         private void LookUpEdit2_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
         {
-            
+            e.DisplayText = "      " + e.DisplayText;
         }
 
         private void LookUpEdit2_CustomDrawCell(object sender, DevExpress.XtraEditors.Popup.LookUpCustomDrawCellArgs e)
@@ -97,10 +149,6 @@ namespace LookUp
             e.Graphics.DrawImage(image, rect.X, rect.Y, 15, 15);
             //e.Cache.DrawImage(image, 10, 10, 15, 15);
             e.DisplayText = "      " + e.DisplayText;
-
-
-            //e.DefaultDraw();
-            //e.Handled = true;
         }
 
 
