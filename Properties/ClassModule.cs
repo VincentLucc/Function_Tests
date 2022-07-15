@@ -20,7 +20,7 @@ namespace Properties
     class Student
     {
         [Category("Test")]
-        [DisplayName("s Name"), Description("Description Method 1 Name of this student.")]
+        [DisplayName("sName"), Description("Description Method 1 Name of this student.")]
         //Directly use custom editor, Type and base type
         [Editor(typeof(FilteredFileNameEditor),typeof(UITypeEditor))]
         public string Name { get; set; }
@@ -28,8 +28,13 @@ namespace Properties
         //User to address editor manually
         [CustomEditor(EditorType.Number)]
         [Category("Test")]
-        [DisplayName("S Age"), Description("Description Method 2, manual address")]
+        [DisplayName("iAge"), Description("Description Method 2, manual address")]
         public int Age { get; set; }
+
+        [CustomEditor(EditorType.NumberSpin)]
+        [Category("Test")]
+        [DisplayName("iAge2"), Description("Age")]
+        public int Age2 { get; set; }
 
         //Test text editor regex
         [CustomEditor(EditorType.Text, true, MaskType.RegEx, @"[a-zA-Z]{1,2}[0-9]*")]

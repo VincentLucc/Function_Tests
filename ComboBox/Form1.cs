@@ -31,8 +31,21 @@ namespace ComboBox
                 sList.Add($"Test{i}");
             }
 
+            //Winform
             cbTest01.DataSource = sList;
             cbTest01.SelectedIndex = 3;
+
+            //Devexpress normal combobox edit
+            comboBoxEditNormal.Properties.Items.Clear();
+            ComboBoxEditCustomized.Properties.Items.Clear();
+            for (int i = 0; i < sList.Count; i++)
+            {
+                comboBoxEditNormal.Properties.Items.Add(sList[i]);
+                ComboBoxEditCustomized.Properties.Items.Add(sList[i]);
+            }
+
+            //Cutomize normal combobox edit
+            ComboBoxEditCustomized.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
 
             //Image combobox
             icbTest.Properties.Items.Clear();

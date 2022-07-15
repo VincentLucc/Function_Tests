@@ -250,6 +250,15 @@ namespace Properties
                     row.Properties.RowEdit = repositoryNumberEdit;
                     break;
 
+                case EditorType.NumberSpin:
+                    RepositoryItemSpinEdit repositorySpinEdit = new RepositoryItemSpinEdit();
+                    repositorySpinEdit.Mask.UseMaskAsDisplayFormat = true;
+                    repositorySpinEdit.Mask.MaskType = MaskType.Numeric;
+                    repositorySpinEdit.Mask.EditMask = string.IsNullOrWhiteSpace(editor.MaskString) ? EditMasks.DigitalValue5 : editor.MaskString;
+                    repositorySpinEdit.ValidateOnEnterKey = true;
+                    row.Properties.RowEdit = repositorySpinEdit;
+                    break;
+
                 case EditorType.Text:
                     RepositoryItemTextEdit textEdit_Text = new RepositoryItemTextEdit();
                     if (editor.IsCustomMaskEnable)
@@ -322,6 +331,7 @@ namespace Properties
         Cal,
         Number,
         NumberReg,
+        NumberSpin,
         Text,
         FolderEditor,
         ToggleSwitch,

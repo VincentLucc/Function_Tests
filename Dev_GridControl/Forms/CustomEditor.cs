@@ -242,10 +242,7 @@ namespace Dev_GridControl
         private void TemplateSelectionComboBox_CustomDrawButton(object sender, CustomDrawButtonEventArgs e)
         {
             var comboBox = sender as RepositoryItemImageComboBox;
-            if (comboBox.)
-            {
 
-            }
             var areaButton = e.Bounds;
             var newFont = new Font(new FontFamily("Arial"), 8, FontStyle.Regular);
 

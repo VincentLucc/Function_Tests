@@ -60,18 +60,25 @@ namespace Dev_GridControl
             csPublic.InitGridviewWithDefaultSettings(gridView1);
 
             //Set grid control customized settings
+            gridView1.OptionsView.ShowGroupPanel = true; //User don't see group panel
             gridView1.GroupRowHeight = 50;
+            //gridView1.OptionsDetail.EnableMasterViewMode = true;
+            //gridView1.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Classic;
+            gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.False;//Display the summary in column lane,Key settings to hide the groupped column
+            gridView1.OptionsBehavior.AllowPartialGroups = DefaultBoolean.False; //Hide device name
 
             //Create group summary
-            gridView1.Columns[nameof(Student.Class)].Group();
-
+            var classColumn = gridView1.Columns[nameof(Student.Class)];
+            classColumn.Group();
+            classColumn.Visible = false;
+ 
             //Set group extra column value
-            gridView1.GroupSummary.Add(new GridGroupSummaryItem()
-            {
-                FieldName = nameof(Student.Age), //Value name
-                SummaryType = SummaryItemType.Sum,
-                ShowInGroupColumnFooter = gridView1.Columns[nameof(Student.Name)] //Display location
-            });
+            //gridView1.GroupSummary.Add(new GridGroupSummaryItem()
+            //{
+            //    FieldName = nameof(Student.Age), //Value name
+            //    SummaryType = SummaryItemType.Sum,
+            //    ShowInGroupColumnFooter = gridView1.Columns[nameof(Student.Name)] //Display location
+            //});
 
             //Set group row value
             gridView1.CustomDrawGroupRow += GridView1_CustomDrawGroupRow;
@@ -92,9 +99,9 @@ namespace Dev_GridControl
 
         private void GridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            if (e.Column.FieldName== sIDField)
+            if (e.Column.FieldName == sIDField)
             {
-                e.DisplayText = (e.RowHandle+1).ToString();
+                e.DisplayText = (e.RowHandle + 1).ToString();
             }
         }
 
