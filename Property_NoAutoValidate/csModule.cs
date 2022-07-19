@@ -56,6 +56,11 @@ namespace Property_NoAutoValidate
         [DisplayName("Numeric Cal Edit"), Description("Text editor with Numeric \r\nMask Metric_Distance5 = ####0.00\\ \\m\\m")]
         public string NumCal { get; set; }
 
+        [CustomEditor(EditorType.NumberSpin, "#0", MaskType.Numeric, 10, 20)]
+        [Category("Test")]
+        [DisplayName("Numeric Spin"), Description("Spin Edit")]
+        public string NumSpin { get; set; }
+
         //Test text editor regex
         [CustomEditor(EditorType.Cal, EditMasks.Metric_RPM, MaskType.Numeric)]
         [Category("Test")]

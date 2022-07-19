@@ -279,6 +279,18 @@ namespace Property_NoAutoValidate
                     row.Properties.RowEdit = repositoryNumberEdit;
                     break;
 
+                case EditorType.NumberSpin:
+                    RepositoryItemSpinEdit repositoryNumberSpin = new RepositoryItemSpinEdit();
+
+                    //Load mask settings
+                    repositoryNumberSpin.Mask.MaskType = editor.MaskType;
+                    repositoryNumberSpin.Mask.UseMaskAsDisplayFormat = true;
+                    repositoryNumberSpin.Mask.EditMask = editor.MaskString;
+                    repositoryNumberSpin.MinValue = (decimal)editor.Min;
+                    repositoryNumberSpin.MaxValue = (decimal)editor.Max;
+                    row.Properties.RowEdit = repositoryNumberSpin;
+                    break;
+
                 case EditorType.Text:
                     string sText = row.Properties.FieldName;
                     RepositoryItemTextEdit textEdit_Text = new RepositoryItemTextEdit();
@@ -338,6 +350,7 @@ namespace Property_NoAutoValidate
     {
         Cal,
         Number,
+        NumberSpin,
         Text,
         ToggleSwitch,
         ToggleSwitchList,
