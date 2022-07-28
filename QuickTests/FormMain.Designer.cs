@@ -66,12 +66,18 @@ namespace QuickTests
             this.bArray = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.bFirst = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.bHex2Int = new System.Windows.Forms.Button();
+            this.bInt2Hex = new System.Windows.Forms.Button();
+            this.bConvert = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabEvents.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -200,6 +206,7 @@ namespace QuickTests
             this.tabControl1.Controls.Add(this.tabEvents);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -472,6 +479,57 @@ namespace QuickTests
             this.bFirst.UseVisualStyleBackColor = true;
             this.bFirst.Click += new System.EventHandler(this.bFirst_Click);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.bHex2Int);
+            this.tabPage3.Controls.Add(this.bInt2Hex);
+            this.tabPage3.Controls.Add(this.bConvert);
+            this.tabPage3.Controls.Add(this.textBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(792, 422);
+            this.tabPage3.TabIndex = 4;
+            this.tabPage3.Text = "BitConversion";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // bHex2Int
+            // 
+            this.bHex2Int.Location = new System.Drawing.Point(8, 64);
+            this.bHex2Int.Name = "bHex2Int";
+            this.bHex2Int.Size = new System.Drawing.Size(97, 23);
+            this.bHex2Int.TabIndex = 3;
+            this.bHex2Int.Text = "Hex to Int";
+            this.bHex2Int.UseVisualStyleBackColor = true;
+            this.bHex2Int.Click += new System.EventHandler(this.bHex2Int_Click);
+            // 
+            // bInt2Hex
+            // 
+            this.bInt2Hex.Location = new System.Drawing.Point(8, 35);
+            this.bInt2Hex.Name = "bInt2Hex";
+            this.bInt2Hex.Size = new System.Drawing.Size(97, 23);
+            this.bInt2Hex.TabIndex = 2;
+            this.bInt2Hex.Text = "Int to Hex";
+            this.bInt2Hex.UseVisualStyleBackColor = true;
+            this.bInt2Hex.Click += new System.EventHandler(this.bInt2Hex_Click);
+            // 
+            // bConvert
+            // 
+            this.bConvert.Location = new System.Drawing.Point(8, 6);
+            this.bConvert.Name = "bConvert";
+            this.bConvert.Size = new System.Drawing.Size(97, 23);
+            this.bConvert.TabIndex = 1;
+            this.bConvert.Text = "Convert Test 1";
+            this.bConvert.UseVisualStyleBackColor = true;
+            this.bConvert.Click += new System.EventHandler(this.bConvert_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(111, 6);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(351, 23);
+            this.textBox1.TabIndex = 0;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -490,6 +548,8 @@ namespace QuickTests
             this.groupBox1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -533,6 +593,11 @@ namespace QuickTests
         private System.Windows.Forms.Button bGroupList;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button bFirst;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button bConvert;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button bHex2Int;
+        private System.Windows.Forms.Button bInt2Hex;
     }
 }
 

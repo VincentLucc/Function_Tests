@@ -326,7 +326,7 @@ namespace Property_NoAutoValidate
             //Init variables
             Debug.WriteLine("Validating Edit Start");
             string sFieldName = pg1.FocusedRow.Properties.FieldName;
-            var editor = propertyHelper.GetEditorType(pg1.FocusedRow, pg1.SelectedObject);  //Get property 
+            var editor = propertyHelper.GetEditorConfig(pg1.FocusedRow, pg1.SelectedObject);  //Get property 
 
             //Validate special properties
             if (sFieldName == nameof(Student.Age))

@@ -54,16 +54,13 @@ namespace Property_NoAutoValidate
             //Set editor
             foreach (var row in rows)
             {
-                var editor = GetEditorType(row, PropertyGrid.SelectedObject);
-                if (editor == null) continue;
-                SetRowEditor(row, editor);
+                var editorConfig = GetEditorConfig(row, PropertyGrid.SelectedObject);
+                if (editorConfig == null) continue;
+                SetRowEditor(row, editorConfig);
 
                 //Trigger custom setting event
-                var data = new RowEditorData(row, editor);//prepare data
-                if (CustomSettingRowEditor != null)
-                {
-                    CustomSettingRowEditor(this, data);
-                }
+                var data = new RowEditorData(row, editorConfig);//prepare data
+                if (CustomSettingRowEditor != null) CustomSettingRowEditor(this, data);
             }
         }
 
@@ -80,15 +77,10 @@ namespace Property_NoAutoValidate
             foreach (var rowLevel1 in PropertyGrid.Rows)
             {
                 rowsPre.Add(rowLevel1);
-
                 foreach (var rowLevel2 in rowLevel1.ChildRows)
                 {
                     rowsPre.Add(rowLevel2);
-
-                    foreach (var rowLevel3 in rowLevel2.ChildRows)
-                    {
-                        rowsPre.Add(rowLevel3);
-                    }
+                    foreach (var rowLevel3 in rowLevel2.ChildRows) rowsPre.Add(rowLevel3);       
                 }
             }
 
@@ -101,11 +93,7 @@ namespace Property_NoAutoValidate
 
                 //Remove devexpress specific row
                 string sRowName = BaseRow.Properties.FieldName;
-                if (sRowName == "Appearance.Options")
-                {
-                    continue;
-                }
-
+                if (sRowName == "Appearance.Options") continue;
                 rowsPost.Add(BaseRow);
             }
 
@@ -122,7 +110,7 @@ namespace Property_NoAutoValidate
         /// <param name="propertyRow"></param>
         /// <param name="PropertyObject">property grid selected object</param>
         /// <returns></returns>
-        public CustomEditorAttribute GetEditorType(BaseRow propertyRow, object PropertyObject)
+        public CustomEditorAttribute GetEditorConfig(BaseRow propertyRow, object PropertyObject)
         {
             //Init variables
             PropertyInfo propertyInfo = null;
@@ -318,6 +306,8 @@ namespace Property_NoAutoValidate
                     break;
             }
         }
+
+       
 
         /// <summary>
         /// Get mac address info

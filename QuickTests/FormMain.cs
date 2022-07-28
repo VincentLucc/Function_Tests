@@ -572,8 +572,26 @@ namespace QuickTests
             var data2 = students.First(s=>s.Name=="x21");
             var data3 = students.FirstOrDefault(s => s.Name == "dfsfsfd");
             var data4 = students.First(s => s.Name == "dfdfsfdsf");//Exception
+        }
 
+        private void bConvert_Click(object sender, EventArgs e)
+        {
+            string sTestCode = "FFFF";
+            string sA=csHex.StringToHexString(sTestCode);
+            string sCRC= csHex.ToCRC16(sTestCode);
+        }
 
+        private void bInt2Hex_Click(object sender, EventArgs e)
+        {
+            int iNumber = 15500;
+            string sNumber = iNumber.ToString("X4");
+        }
+
+        private void bHex2Int_Click(object sender, EventArgs e)
+        {
+            string sNumber = "3C8C";
+            int iNUmber= int.Parse(sNumber, System.Globalization.NumberStyles.HexNumber);
+            
         }
     }
 
