@@ -17,8 +17,6 @@ namespace DevLayout_22_1
         public FormMain()
         {
             InitializeComponent();
-           
-
         }
 
         private void CancelButtonControl_Click(object sender, EventArgs e)
@@ -33,8 +31,6 @@ namespace DevLayout_22_1
             {
                 button.Properties.ImageLocation = DevExpress.XtraEditors.ButtonPanel.ImageLocation.AboveText;
             }
-
-
         }
 
         private void bFluent_Click(object sender, EventArgs e)
