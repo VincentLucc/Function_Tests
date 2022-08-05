@@ -61,6 +61,8 @@ namespace Dev_GridControl
 
             //Set grid control customized settings
             gridView1.OptionsView.ShowGroupPanel = true; //User don't see group panel
+            
+            gridView1.RowHeight = 30;
             gridView1.GroupRowHeight = 50;
             //gridView1.OptionsDetail.EnableMasterViewMode = true;
             //gridView1.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Classic;
@@ -111,6 +113,7 @@ namespace Dev_GridControl
         {
             GridGroupRowInfo groupInfo = e.Info as GridGroupRowInfo;
             groupInfo.GroupText += ":Test Text TEst";
+            groupInfo.GroupText = groupInfo.GroupValueText;
 
         }
 

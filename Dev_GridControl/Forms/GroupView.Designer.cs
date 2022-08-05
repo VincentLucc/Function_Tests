@@ -48,6 +48,10 @@ namespace Dev_GridControl
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 11.25F);
+            this.gridView1.Appearance.GroupRow.Options.UseFont = true;
+            this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10.25F);
+            this.gridView1.Appearance.Row.Options.UseFont = true;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsSelection.MultiSelect = true;

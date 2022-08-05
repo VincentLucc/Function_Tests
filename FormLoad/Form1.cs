@@ -20,7 +20,7 @@ namespace FormLoad
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 10; i++)
             {
                 //Thread.Sleep(100);
                 await Task.Delay(100);
