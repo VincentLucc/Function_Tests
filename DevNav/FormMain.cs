@@ -10,8 +10,7 @@ using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using DevExpress.XtraBars.Navigation;
 
-namespace Socket_Tool
-{
+ 
     public partial class FormMain : DevExpress.XtraEditors.XtraForm
     {
         public SkinElement skinElement;
@@ -93,9 +92,6 @@ namespace Socket_Tool
             Click
         }
 
-        private void barButtonAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            csLayoutHelper.ShowServerAdd();
-        }
+
     }
-}
+ 

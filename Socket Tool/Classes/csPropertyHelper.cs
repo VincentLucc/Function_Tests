@@ -15,10 +15,9 @@ using System.Threading.Tasks;
 using DevExpress.XtraEditors;
 using System.Windows.Forms;
 using System.Net.NetworkInformation;
-using Properties;
 
 
-namespace Properties
+namespace Socket_Tool
 {
     /// <summary>
     /// Help to set the property
@@ -327,4 +326,5 @@ namespace Properties
     }
 
 }
+    
 

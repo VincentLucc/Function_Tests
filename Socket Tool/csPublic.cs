@@ -5,9 +5,9 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Properties
+namespace Socket_Tool
 {
-    class csPublic
+    public class csPublic
     {
         /// <summary>
         /// Get mac address info
@@ -31,8 +31,11 @@ namespace Properties
 
             return sList;
         }
-
     }
 
 
+    public class RegString
+    {
+
+    }
 }
