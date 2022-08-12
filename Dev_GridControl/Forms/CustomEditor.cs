@@ -43,7 +43,7 @@ namespace Dev_GridControl
             {
                 var RowView = new DataRowView();
                 RowView.Name = $"ABC_{ 0 + i}";
-                RowView.Description = "ABC_123";
+                RowView.CustomCellColor = "ABC_123";
                 RowView.GridLookup = "TestLookup";
                 TemplateListBuffer.Add(RowView);
 
@@ -61,7 +61,7 @@ namespace Dev_GridControl
             TemplateGridControl.DataSource = TemplateListBuffer;
             TemplateGridView.RowHeight = 32;
             int iCMDColumn = TemplateGridView.Columns.Add(new GridColumn());
-            var descColumn = TemplateGridView.Columns[nameof(DataRowView.Description)];
+            var descColumn = TemplateGridView.Columns[nameof(DataRowView.CustomCellColor)];
             descColumn.OptionsColumn.ReadOnly = true; //Diable edit
             TemplateGridView.OptionsView.ShowIndicator = true; //show row header
             TemplateGridView.OptionsView.ShowButtonMode = ShowButtonModeEnum.ShowAlways; //Always show button
@@ -159,12 +159,19 @@ namespace Dev_GridControl
 
         private void TemplateGridView_RowCellStyle(object sender, RowCellStyleEventArgs e)
         {
-            var columnDesc = TemplateGridView.Columns[nameof(DataRowView.Description)];
+            var columnDesc = TemplateGridView.Columns[nameof(DataRowView.CustomCellColor)];
             if (columnDesc == null) return;
 
             if (e.Column == columnDesc)
             {
-                e.Appearance.ForeColor = Color.Green;
+                if (e.RowHandle >= 0 && e.RowHandle < 2)
+                {
+                    e.Appearance.BackColor = Color.IndianRed;
+                }
+                else
+                {
+                    e.Appearance.ForeColor = Color.Green;
+                }
             }
         }
 
@@ -246,7 +253,7 @@ namespace Dev_GridControl
             var areaButton = e.Bounds;
             var newFont = new Font(new FontFamily("Arial"), 8, FontStyle.Regular);
 
-            e.Graphics.DrawString("ABC", newFont, new SolidBrush(Color.Black), areaButton.Location.X-50, areaButton.Location.Y+10);
+            e.Graphics.DrawString("ABC", newFont, new SolidBrush(Color.Black), areaButton.Location.X - 50, areaButton.Location.Y + 10);
         }
 
         private void Button_CustomDrawButton(object sender, CustomDrawButtonEventArgs e)
@@ -258,7 +265,7 @@ namespace Dev_GridControl
             e.Graphics.DrawString("123", newFont, new SolidBrush(Color.Black), areaButton.Location);
         }
 
- 
+
 
         private void TemplateSelectionComboBox_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
         {
@@ -354,9 +361,12 @@ namespace Dev_GridControl
         {
             [DisplayName("Template Name")]
             public string Name { get; set; }
-            public string Description { get; set; }
+
+            public string CustomCellColor { get; set; }
+
             [DisplayName("Function ImageComboBox")]
             public string Function { get; set; }
+
             [DisplayName("Enable Switch")]
             public bool Enable { get; set; }
 

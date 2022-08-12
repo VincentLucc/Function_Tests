@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Property_NoAutoValidate
 {
     class csPublic
     {
+        public static ImageCollection imageCollection;
     }
 
     /// <summary>

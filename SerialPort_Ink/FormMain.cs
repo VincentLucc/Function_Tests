@@ -13,18 +13,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using OperationBlock;
+using System.Threading;
+using DevExpress.Utils;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace SerialPort_Ink
 {
     public partial class FormMain : XtraForm
     {
-        SerialPort serialPort = new SerialPort();
         csConfig config = new csConfig();
         /// <summary>
         /// device network status
         /// </summary>
         List<int> DeviceNetwork = new List<int>();
-        LoopBlocker OperationBlock = new LoopBlocker(); //Block process operation only
+        LoopBlocker loopBlock = new LoopBlocker(); //Block process operation only
         /// <summary>
         /// Store device data
         /// 0 is default device without network
@@ -32,6 +34,8 @@ namespace SerialPort_Ink
         /// </summary>
         List<InkDevice> Devices { get; set; }
         int TargetDeviceID => GetTargetDeviceID();
+
+        public bool UIExit => this == null || this.Disposing || this.IsDisposed;
 
         public FormMain()
         {
@@ -66,7 +70,7 @@ namespace SerialPort_Ink
             }
 
             //Disable auto updating data by default
-            OperationBlock.StartBlock();
+            loopBlock.StartBlock();
         }
 
 
@@ -99,7 +103,7 @@ namespace SerialPort_Ink
             {
                 cbStopBits.Properties.Items.Add(item);
             }
-           
+
 
             //verification
             cbVerify.Properties.Items.Clear();
@@ -108,14 +112,10 @@ namespace SerialPort_Ink
             {
                 cbVerify.Properties.Items.Add(item);
             }
-        
+
             //Flow control
-            cbFlowControl.Properties.Items.Clear();
-            cbFlowControl.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            foreach (var item in PortConfig.FlowControlCollection)
-            {
-                cbFlowControl.Properties.Items.Add(item);
-            }
+            tsFlowControl.IsOn = config.Port.EnableFlowControl;
+            tsFlowControl.Toggled += TsFlowControl_Toggled;
 
             //Quick commands
             foreach (var item in config.Commands)
@@ -143,19 +143,67 @@ namespace SerialPort_Ink
             var serialSendMode = Enum.GetNames(typeof(SerialSendMode));
             lueSendMode.Properties.DataSource = serialSendMode;
             lueSendMode.Properties.ShowFooter = false;//remove the X button in bottom
+
+            //Init gridview
+            InitGridviewWithDefaultSettings(gvReceive,false,false, HorzAlignment.Near);
+            gvReceive.OptionsView.ShowVerticalLines = DefaultBoolean.False;
+            gvReceive.OptionsView.ShowHorizontalLines = DefaultBoolean.False;
+            gvReceive.OptionsView.ShowColumnHeaders = false;
         }
 
+        public static void InitGridviewWithDefaultSettings(DevExpress.XtraGrid.Views.Grid.GridView View, bool EnableEdit = false, bool ShowNewRow = false, HorzAlignment alignment = HorzAlignment.Center)
+        {
+            //Basic settings
+            View.OptionsView.ShowGroupPanel = false; //User don't see group panel
+            View.OptionsView.ShowIndicator = false; //Hide row header
+            View.OptionsCustomization.AllowSort = false;//Disable sort
+            View.OptionsCustomization.AllowFilter = false;//distable filter
+            View.OptionsCustomization.AllowQuickHideColumns = false;//User can't drag and hide the column
+            View.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.True;//Display the summary in column lane         
+            View.OptionsDetail.EnableMasterViewMode = false; //Disable group
+
+
+            //Alignments
+            View.Appearance.HeaderPanel.TextOptions.HAlignment = alignment;
+            View.Appearance.Row.TextOptions.HAlignment = alignment;
+            View.Appearance.GroupFooter.TextOptions.HAlignment = alignment;//Center the display
+
+            //Editable
+            //Disable edit(Notice: All editors in grid will be affected include Buttons, ComboBox)
+            //To set editable for seperate items, enable edit first, then disable edit in specific column
+            //nameColumn.OptionsColumn.AllowEdit = false;
+            View.OptionsBehavior.Editable = EnableEdit;
+
+            //New row
+            View.OptionsView.NewItemRowPosition = ShowNewRow ? NewItemRowPosition.Bottom : NewItemRowPosition.None; //Hide new function row
+        }
+
+        private void TsFlowControl_Toggled(object sender, EventArgs e)
+        {
+            config.Port.EnableFlowControl = tsFlowControl.IsOn;
+        }
 
         private void InitOperations()
         {
-            tbReceive1.TextChanged += TbReceive1_TextChanged;
+            lock (csPublic.InkSystem.lockComLog)
+            {
+                gcReceive.DataSource = csPublic.InkSystem.ComLog;
+            }
+         
 
             //Start UI update timer
-            System.Timers.Timer tUpdate = new System.Timers.Timer();
+            System.Windows.Forms.Timer tUpdate = new System.Windows.Forms.Timer();
             tUpdate.Interval = 100;
-            tUpdate.Elapsed += TUIUpdate_Elapsed;
+            tUpdate.Tick += TUIUpdate_Elapsed;
             tUpdate.Start();
+
+
+            //Start operation thread
+            Thread tOperation = new Thread(ProcessOperation);
+            tOperation.IsBackground = true;
+            tOperation.Start();
         }
+
 
         private void TbReceive1_TextChanged(object sender, EventArgs e)
         {
@@ -163,90 +211,91 @@ namespace SerialPort_Ink
 
         }
 
-        private async void TUIUpdate_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private void TUIUpdate_Elapsed(object sender, EventArgs e)
         {
-            var tUpdate = (System.Timers.Timer)sender;
+            var tUpdate = (System.Windows.Forms.Timer)sender;
             tUpdate.Enabled = false; //Avoid overflow
 
             //Auto exit
-            if (this.Disposing || this.IsDisposed)
-            {
-                tUpdate.Enabled = false; //Exist all
-                FinishUpClosing();
-                return;
-            }
+            if (UIExit) return;
 
             //Refresh data to UI
             UpdateUI();
 
-            //Check operation pause flag
-            if (OperationBlock.EnableBlock)
+            tUpdate.Enabled = true; //Avoid overflow
+        }
+
+
+        private async void ProcessOperation()
+        {
+            //Disable loop querry by default.
+            loopBlock.EnableBlock = true;
+
+            while (!UIExit)
             {
-                OperationBlock.IsBlocked = true;
-                tUpdate.Enabled = true;
-                return;
+                Thread.Sleep(100);
+
+                //Check operation pause flag
+                if (loopBlock.EnableBlock)
+                {
+                    loopBlock.IsBlocked = true;
+                    continue;
+                }
+
+                if (!config.EnableUpdate) continue;
+
+                //Attempt to fetch data from ink devices
+                await UpdateDeviceInfo();
             }
 
-            //Attempt to fetch data from ink devices
-            await UpdateDeviceInfo();
-
-            tUpdate.Enabled = true; //Avoid overflow
+            //Finish up
+            FinishUpClosing();
         }
 
         private void UpdateUI()
         {
-            tbReceive1.Invoke(new Action(() =>
+            if (!gcReceive.Focused)
             {
-                if (csPublic.InkSystem.IsConnected && !tbReceive1.Focused)
+                lock (csPublic.InkSystem.lockComLog)
                 {
-                    //Remove extra "\r,\n"
-                    string sCompareA= tbReceive1.Text.Replace('\r'.ToString(), "").Replace('\n'.ToString(), "").Replace(" ","");
-                    string sCompareB = csPublic.InkSystem.ComLogString.Replace('\r'.ToString(), "").Replace('\n'.ToString(),"").Replace(" ","");
-                    if (sCompareA != sCompareB)
-                    {
-                        tbReceive1.SuspendLayout();
-                        tbReceive1.Text = "";
-                        tbReceive1.AppendText(csPublic.InkSystem.ComLogString);                      
-                        tbReceive1.ResumeLayout();
-                        tbReceive1.ScrollToCaret();
-                    }
+                    gcReceive.RefreshDataSource();
                 }
-            }));
+                gvReceive.MoveLast();
+            }
+
 
             //Show device info
-            this.Invoke(new Action(() =>
+            if (TargetDeviceID > -1 && TargetDeviceID < Devices.Count)
             {
-                if (TargetDeviceID > -1&& TargetDeviceID< Devices.Count)
-                {
-                    //Get selected device
-                    var device = Devices[TargetDeviceID];
-                    lBackPressure.Text = device.BackPressure.ToString("F2");
-                    lRecirculation.Text = device.RecirculationPressure.ToString("F2");
-                    lHeaterTemp.Text = device.HeaterTemp.ToString("F2");
-                    lInkTemp.Text = device.InkTempreture.ToString("F2");
-                    lStatusBits.Text = device.StatusBits.ToString("F2");
-                    lAlarm.Text = device.Alarm.ToString("F2");
+                //Get selected device
+                var device = Devices[TargetDeviceID];
+                lBackPressure.Text = device.BackPressure.ToString("F2");
+                lRecirculation.Text = device.RecirculationPressure.ToString("F2");
+                lHeaterTemp.Text = device.HeaterTemp.ToString("F2");
+                lInkTemp.Text = device.InkTempreture.ToString("F2");
+                lStatusBits.Text = device.StatusBits.ToString("F2");
+                lAlarm.Text = device.Alarm.ToString("F2");
 
-                    //Display parameters
-                    if (!tsMeniscusPressure.IsOn)
-                        teMeniscusPressure.Text = device.MeniscusPressureSetPoint.ToString("F2");
-                    if (!tsHeaterSetPoint.IsOn)
-                        teHeaterSetPoint.Text = device.HeaterSetPoint.ToString("F2");
-                    if (!tsFillPumpSpeed.IsOn)
-                        teFillPumpSpeed.Text = device.FillPumpSpeedSetPoint.ToString("F2");
-                    if (!tsFillPumpTimeout.IsOn)
-                        teFillPumpTimeout.Text = device.FillPumpTimeout.ToString("F2");
-                    if (!tsPurgeTime.IsOn)
-                        tePurgeTime.Text = device.PurgeTimeSetPoint.ToString("F2");
-                    if (!tsPurgePressure.IsOn)
-                        tePurgePressure.Text = device.PurgePressureSetpoint.ToString("F2");
-                    if (!tsStartupDelay.IsOn)
-                        teStartupDelay.Text = device.StartUpDelay.ToString("F2");
-                    if (!tsBypassTime.IsOn)
-                        teBypassTime.Text = device.ByPassTime.ToString("F2");
-                }
+                //Display parameters
+                if (!tsMeniscusPressure.IsOn)
+                    teMeniscusPressure.Text = device.MeniscusPressureSetPoint.ToString("F2");
+                if (!tsHeaterSetPoint.IsOn)
+                    teHeaterSetPoint.Text = device.HeaterSetPoint.ToString("F2");
+                if (!tsFillPumpSpeed.IsOn)
+                    teFillPumpSpeed.Text = device.FillPumpSpeedSetPoint.ToString("F2");
+                if (!tsFillPumpTimeout.IsOn)
+                    teFillPumpTimeout.Text = device.FillPumpTimeout.ToString("F2");
+                if (!tsPurgeTime.IsOn)
+                    tePurgeTime.Text = device.PurgeTimeSetPoint.ToString("F2");
+                if (!tsPurgePressure.IsOn)
+                    tePurgePressure.Text = device.PurgePressureSetpoint.ToString("F2");
+                if (!tsStartupDelay.IsOn)
+                    teStartupDelay.Text = device.StartUpDelay.ToString("F2");
+                if (!tsBypassTime.IsOn)
+                    teBypassTime.Text = device.ByPassTime.ToString("F2");
+            }
 
-            }));
+
         }
 
 
@@ -343,7 +392,7 @@ namespace SerialPort_Ink
                     cbStopBits.SelectedIndex = config.Port.StopBitsIndex;
                     cb_Bits.SelectedIndex = config.Port.DataBitsIndex;
                     cbVerify.SelectedIndex = config.Port.ParityIndex;
-                    cbFlowControl.SelectedIndex = config.Port.FlowControlIndex;
+                    tsFlowControl.IsOn = config.Port.EnableFlowControl;
                     lueSendFormat.EditValue = config.SendFormat.ToString();
                     lueReceiveFormat.EditValue = config.ReceiveFormat.ToString();
                     lueSendSuffix.EditValue = config.EndSuffixView;
@@ -395,11 +444,6 @@ namespace SerialPort_Ink
         private void cbVerify_SelectedIndexChanged(object sender, EventArgs e)
         {
             config.Port.ParityIndex = cbVerify.SelectedIndex;
-        }
-
-        private void cbFlowControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            config.Port.FlowControlIndex = cbFlowControl.SelectedIndex;
         }
 
         private void bUpdate_Click(object sender, EventArgs e)
@@ -496,6 +540,8 @@ namespace SerialPort_Ink
         {
             lbDevices.Items.Clear();
 
+            await loopBlock.BlockAndWaitAsync();
+
             if (await csPublic.InkSystem.TryGetDeviceList())
             {
                 for (int i = 0; i < csPublic.InkSystem.DataBuffer.DeviceList.Count; i++)
@@ -507,30 +553,24 @@ namespace SerialPort_Ink
                 //Set current device list
                 DeviceNetwork = csPublic.InkSystem.DataBuffer.DeviceList.ToList();
             }
+
+            loopBlock.StopBlock();
         }
 
-        private async void tsEnableUpdate_Toggled(object sender, EventArgs e)
+        private void tsEnableUpdate_Toggled(object sender, EventArgs e)
         {
-            if (tsEnableUpdate.IsOn)
-            {
-                OperationBlock.StopBlock();
-            }
-            else
-            {
-                await OperationBlock.BlockAndWaitAsync();
-            }
+            config.EnableUpdate = tsEnableUpdate.IsOn;
         }
 
         private async void bFetch_Click(object sender, EventArgs e)
         {
-            if (tsEnableUpdate.IsOn)
-                await OperationBlock.BlockAndWaitAsync();
+
+            await loopBlock.BlockAndWaitAsync();
 
             //Get id
             await UpdateDeviceInfo();
 
-            if (tsEnableUpdate.IsOn)
-                OperationBlock.StopBlock();
+            loopBlock.StopBlock();
         }
 
 
@@ -740,10 +780,10 @@ namespace SerialPort_Ink
         private async void bDegassEnable_Click(object sender, EventArgs e)
         {
             //Try set value
-            if (!await csPublic.InkSystem.TrySetSystemFunction((int)InkSystemFunction.EnableDegass,true, TargetDeviceID))
+            if (!await csPublic.InkSystem.TrySetSystemFunction((int)InkSystemFunction.EnableDegass, true, TargetDeviceID))
                 MessageBox.Show("Error");
 
-            
+
         }
 
         private async void bDegassDisable_Click(object sender, EventArgs e)
@@ -756,7 +796,7 @@ namespace SerialPort_Ink
         private async void bSystemFunctionRead_Click(object sender, EventArgs e)
         {
             //Try set value
-            if (await csPublic.InkSystem.TryReadData2(InkSysCommandType.GetSystemFunction,TargetDeviceID))
+            if (await csPublic.InkSystem.TryReadData2(InkSysCommandType.GetSystemFunction, TargetDeviceID))
             {
                 UInt16 iValue = csPublic.InkSystem.DataBuffer.SystemFunction;
                 string sBinary = Convert.ToString(iValue, 2);
@@ -766,7 +806,7 @@ namespace SerialPort_Ink
             {
                 MessageBox.Show("Error");
             }
-               
+
         }
 
         private void lueSendMode_EditValueChanged(object sender, EventArgs e)

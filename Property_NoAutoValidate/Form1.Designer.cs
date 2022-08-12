@@ -29,6 +29,8 @@ namespace Property_NoAutoValidate
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pg1 = new DevExpress.XtraVerticalGrid.PropertyGridControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pDescription = new System.Windows.Forms.Panel();
@@ -37,11 +39,13 @@ namespace Property_NoAutoValidate
             this.te1 = new DevExpress.XtraEditors.TextEdit();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pg1)).BeginInit();
             this.panel1.SuspendLayout();
             this.pDescription.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.te1.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // pg1
@@ -127,6 +131,14 @@ namespace Property_NoAutoValidate
             this.simpleButton1.TabIndex = 4;
             this.simpleButton1.Text = "Do Sth";
             // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.Images.SetKeyName(0, "close_16x16.png");
+            this.imageCollection1.Images.SetKeyName(1, "apply_16x16.png");
+            this.imageCollection1.Images.SetKeyName(2, "fittopage_16x16.png");
+            this.imageCollection1.Images.SetKeyName(3, "producttopsalesperson_16x16.png");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,6 +155,7 @@ namespace Property_NoAutoValidate
             this.pDescription.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.te1.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -157,6 +170,7 @@ namespace Property_NoAutoValidate
         private System.Windows.Forms.Panel pDescription;
         private System.Windows.Forms.GroupBox groupBox1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.Utils.ImageCollection imageCollection1;
     }
 }
 

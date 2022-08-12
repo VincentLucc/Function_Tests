@@ -14,6 +14,7 @@ using DevExpress.ExpressApp.Win.Editors;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.Model;
 using DevExpress.XtraEditors.Mask;
+using System.Drawing;
 
 namespace Property_NoAutoValidate
 {
@@ -90,8 +91,20 @@ namespace Property_NoAutoValidate
         public bool[] List { get; set; }
 
         [CustomEditor(EditorType.MacLookUpList)]
-        [DisplayName("Mac Address")]
+        [DisplayName("Mac Lookup List")]
         public string MacAddress { get; set; }
+
+        [CustomEditor(EditorType.MacLookupImage)]
+        [DisplayName("Mac Lookup Image")]
+        public string MacLookupImage { get; set; }
+
+        [CustomEditor(EditorType.MacImageComboList)]
+        [DisplayName("Mac Image Combobox")]
+        public string MacImageCombo { get; set; }
+
+        [CustomEditor(EditorType.MacGridLookUp)]
+        [DisplayName("Mac Grid Lookup")]
+        public string MacAddressGridLookup { get; set; }
 
         public Student()
         {
@@ -137,5 +150,10 @@ namespace Property_NoAutoValidate
         }
     }
 
-
+    public class MacInfo
+    {
+        public Image image { get; set; }
+        public string Name { get; set; }
+        public string Value { get; set; }
+    }
 }

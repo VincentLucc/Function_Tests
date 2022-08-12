@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors.Controls;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Mask;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraVerticalGrid;
@@ -6,6 +7,7 @@ using DevExpress.XtraVerticalGrid.Rows;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
@@ -80,7 +82,7 @@ namespace Property_NoAutoValidate
                 foreach (var rowLevel2 in rowLevel1.ChildRows)
                 {
                     rowsPre.Add(rowLevel2);
-                    foreach (var rowLevel3 in rowLevel2.ChildRows) rowsPre.Add(rowLevel3);       
+                    foreach (var rowLevel3 in rowLevel2.ChildRows) rowsPre.Add(rowLevel3);
                 }
             }
 
@@ -231,28 +233,97 @@ namespace Property_NoAutoValidate
                     repositoryCalcEdit.Mask.UseMaskAsDisplayFormat = true;
                     repositoryCalcEdit.Mask.MaskType = editor.MaskType;
                     repositoryCalcEdit.Mask.EditMask = editor.MaskString;
-
                     row.Properties.RowEdit = repositoryCalcEdit;
                     break;
 
                 case EditorType.MacLookUpList:
                     RepositoryItemLookUpEdit repositoryMacList = new RepositoryItemLookUpEdit();
+                    repositoryMacList.TextEditStyle = TextEditStyles.Standard; //Enable user edit value
+                    repositoryMacList.ShowFooter = false;
                     repositoryMacList.DataSource = GetMacAddress().Values.ToList();
+                    repositoryMacList.NullText = "";
                     row.Properties.RowEdit = repositoryMacList;
                     break;
 
-                case EditorType.MacComboList:
-                    RepositoryItemComboBox MacComboList = new RepositoryItemComboBox();
-                    MacComboList.Items.Add(new Object());
+                case EditorType.MacLookupImage:
+                    RepositoryItemLookUpEdit macLookupImage = new RepositoryItemLookUpEdit();
+                    macLookupImage.ShowFooter = false;
+                    macLookupImage.NullText = "";
+                    macLookupImage.TextEditStyle = TextEditStyles.Standard; //Enable edit
+                    var macSource = GetMacAddress().Values.ToList();
+                    macLookupImage.DropDownRows = macSource.Count > 8 ? 8 : macSource.Count; //Limit rows
+                    macLookupImage.DataSource = macSource;
+                    macLookupImage.CustomDrawCell += MacLookupImage_CustomDrawCell;
+                    macLookupImage.CustomDrawButton += MacLookupImage_CustomDrawButton;
+                    macLookupImage.CustomDisplayText += MacLookupImage_CustomDisplayText;
+                    row.Properties.RowEdit = macLookupImage;
+                    break;
+
+                case EditorType.MacGridLookUp:
+                    RepositoryItemGridLookUpEdit macGridLookup = new RepositoryItemGridLookUpEdit();
+                    macGridLookup.ShowFooter = false;
+                    macGridLookup.NullText = "";
+                    List<Tuple<Image, string, string>> xx = new List<Tuple<Image, string, string>>();
+                    var img = csPublic.imageCollection.Images[0];
+                    xx.Add(new Tuple<Image, string, string>(img, "sss", "fff"));
+
+                    //Create sample data
+                    var macList = GetMacAddress();
+                    List<MacInfo> macInfoList = new List<MacInfo>();
+                    int iImageIndex = 0;
+                    foreach (var item in macList)
+                    {
+                        iImageIndex += 1;
+                        var info = new MacInfo();
+                        info.image = csPublic.imageCollection.Images[iImageIndex % 4];
+                        info.Name = item.Key;
+                        info.Value = item.Value;
+                        macInfoList.Add(info);
+                    }
+                    macGridLookup.DataSource = macInfoList;
+
+                    //Set value members (Must have)
+                    macGridLookup.DisplayMember = nameof(MacInfo.Value);
+                    macGridLookup.ValueMember = nameof(MacInfo.Value);
+
+                    //Set view
+                    macGridLookup.View.OptionsView.ShowColumnHeaders = false; //Hide header
+                    macGridLookup.View.OptionsView.ShowIndicator = false;
+                    macGridLookup.View.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
+                    macGridLookup.View.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.False;
+
+                    //Set column
+                    macGridLookup.PopulateViewColumns();//Must have to make sure column exist
+                    macGridLookup.View.Columns[nameof(MacInfo.image)].Width = 20;//Set image width
+
+                    macGridLookup.CustomDrawButton += MacGridLookup_CustomDrawButton;
+
+
+                    row.Properties.RowEdit = macGridLookup;
+                    break;
+
+
+
+                case EditorType.MacImageComboList:
+                    RepositoryItemImageComboBox MacImageComboList = new RepositoryItemImageComboBox();
+                    MacImageComboList.SmallImages = csPublic.imageCollection;
                     var dictData = GetMacAddress();
+                    int iIndex = 0;
                     foreach (var item in dictData)
                     {
-                        var x = MacComboList.Items[0];
-                        ComboBoxItem item1 = new ComboBoxItem();
-                        item1.Value = "";
-                        MacComboList.Items.Add("");
+                        iIndex += 1;
+                        ImageComboBoxItem imageItem = new ImageComboBoxItem();
+                        imageItem.Value = item.Value;
+                        imageItem.Description = item.Value;
+                        imageItem.ImageIndex = iIndex % 4;
+                        MacImageComboList.Items.Add(imageItem);
                     }
-                    row.Properties.RowEdit = MacComboList;
+
+                    //Forcely set text editor, won't show text if not focused
+                    //FieldInfo field = MacImageComboList.GetType().GetField("fTextEditStyle", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+                    //if (field != null) field.SetValue(MacImageComboList, TextEditStyles.Standard);
+
+                    row.Properties.RowEdit = MacImageComboList;
                     break;
 
                 case EditorType.Number:
@@ -307,7 +378,50 @@ namespace Property_NoAutoValidate
             }
         }
 
-       
+        private void MacGridLookup_CustomDrawButton(object sender, CustomDrawButtonEventArgs e)
+        {
+            var x = e.Bounds;
+        }
+
+        private void MacLookupImage_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
+        {
+            //e.DisplayText = "      " + e.DisplayText; //Save space for image
+        }
+
+        private void MacLookupImage_CustomDrawButton(object sender, CustomDrawButtonEventArgs e)
+        {
+
+            //Can't get repository width!!!
+            //            if (sender is LookUpEdit)
+            //            {//During editing
+            //                //Do nothing
+            //            }
+            //            else if (sender is RepositoryItemLookUpEdit)
+            //            {//Not focused
+            //                var editor = (RepositoryItemLookUpEdit)sender;
+            //                var img = csPublic.imageCollection.Images[0];
+            //                var rect = e.Bounds;
+            //                var x = editor.CreateViewInfo();
+
+            ////                viewInfo As ButtonEditViewInfo = TryCast(buttonEdit1.GetViewInfo(), ButtonEditViewInfo)
+            ////Text = String.Format("{0}, {1}, {2}", viewInfo.RightButtons(0).Bounds.Width, viewInfo.RightButtons(1).Bounds.Width, viewInfo.RightButtons(2).Bounds.Width)
+
+
+            //                e.Graphics.DrawImage(img, rect.X-100, rect.Y+3, 16, 16);
+            //            }
+
+        }
+
+        private void MacLookupImage_CustomDrawCell(object sender, DevExpress.XtraEditors.Popup.LookUpCustomDrawCellArgs e)
+        {
+            int iImageIndex = e.RowIndex < 0 ? 0 : e.RowIndex % 4;
+            var rect = e.Bounds; //Get current cell location
+            var img = csPublic.imageCollection.Images[iImageIndex];
+            e.Cache.DrawImage(img, rect.X, rect.Y, 16, 16);
+            e.DisplayText = "      " + e.DisplayText; //Save space for image
+        }
+
+
 
         /// <summary>
         /// Get mac address info
@@ -336,148 +450,7 @@ namespace Property_NoAutoValidate
 
 
 
-    public enum EditorType
-    {
-        Cal,
-        Number,
-        NumberSpin,
-        Text,
-        ToggleSwitch,
-        ToggleSwitchList,
-        MacLookUpList,
-        MacComboList
-    }
-
-
-    /// <summary>
-    /// Define a attribute
-    /// Name+Attribute, simply use name when apply
-    /// </summary>
-    public class CustomEditorAttribute : Attribute
-    {
-        public EditorType Editor;
-        public MaskType MaskType;
-        /// <summary>
-        /// Define input masks for auto input validation
-        /// </summary>
-        public string MaskString;
-        /// <summary>
-        /// Whether custom editor is used
-        /// </summary>
-        public bool IsCustomMaskEnable => string.IsNullOrWhiteSpace(MaskString) ? false : true;
-        public float Min;
-
-        public float Max;
 
 
 
-        /// <summary>
-        /// Min/Max value enabled
-        /// </summary>
-        public bool EnableRangeLimit;
-        /// <summary>
-        /// Current row property is sub property or root property
-        /// </summary>
-        public bool IsSubProperty { get; set; }
-        /// <summary>
-        /// Store any editor related value for customization usage
-        /// </summary>
-        public int IntValue { get; set; }
-
-        public CustomEditorAttribute(EditorType editorType)
-        {
-            Editor = editorType;
-            SetDefaultMask(editorType);
-        }
-
-        public CustomEditorAttribute(EditorType editorType, string maskString, MaskType maskType)
-        {
-            Editor = editorType;
-            MaskType = maskType;
-            MaskString = maskString;
-        }
-
-        public CustomEditorAttribute(EditorType editorType, string maskString, MaskType maskType, float iMin, float iMax)
-        {
-            Editor = editorType;
-            MaskType = maskType;
-            MaskString = maskString;
-            EnableRangeLimit = true;
-            Min = iMin;
-            Max = iMax;
-        }
-
-        public CustomEditorAttribute(EditorType editorType, int iMin, int iMax)
-        {
-            Editor = editorType;
-            Min = iMin;
-            Max = iMax;
-            EnableRangeLimit = true;
-        }
-
-        public CustomEditorAttribute(EditorType editorType, float fMin, int fMax)
-        {
-            Editor = editorType;
-            Min = fMin;
-            Max = fMax;
-            EnableRangeLimit = true;
-        }
-
-        /// <summary>
-        /// Store int value for configuration
-        /// </summary>
-        /// <param name="editorType"></param>
-        /// <param name="iValue"></param>
-        public CustomEditorAttribute(EditorType editorType, int iValue)
-        {
-            Editor = editorType;
-            IntValue = iValue;
-        }
-
-        private void SetDefaultMask(EditorType editorType)
-        {
-            switch (editorType)
-            {
-                case EditorType.Cal:
-                    MaskType = MaskType.Numeric;
-                    MaskString = EditMasks.DigitalValue6;
-                    break;
-                case EditorType.Number:
-                    MaskType = MaskType.Numeric;
-                    MaskString = EditMasks.DigitalValue6;
-                    break;
-                case EditorType.Text:
-                    MaskType = MaskType.None;
-                    break;
-                case EditorType.ToggleSwitch:
-                    break;
-                case EditorType.ToggleSwitchList:
-                    break;
-                case EditorType.MacLookUpList:
-                    break;
-                case EditorType.MacComboList:
-                    break;
-                default:
-                    break;
-            }
-        }
-
-    }
-
-
-    /// <summary>
-    /// Used to set row editor
-    /// </summary>
-    public class RowEditorData
-    {
-        public BaseRow PropertyRow { get; set; }
-        public CustomEditorAttribute Editor { get; set; }
-
-        public RowEditorData(BaseRow propertyRow, CustomEditorAttribute rowEditor)
-        {
-            PropertyRow = propertyRow;
-            Editor = rowEditor;
-        }
-
-    }
 }

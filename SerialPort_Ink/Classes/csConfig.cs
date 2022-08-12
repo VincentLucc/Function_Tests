@@ -18,9 +18,6 @@ namespace SerialPort_Ink
         public SerialSendMode SendMode { get; set; }
         public SerialDataType ReceiveFormat { get; set; }
 
-
-
-
         [XmlIgnore]
         public List<string> Commands { get; set; }
         [XmlIgnore]
@@ -39,6 +36,9 @@ namespace SerialPort_Ink
         /// </summary>
         [XmlIgnore]
         public string EndSuffixValue => Regex.Unescape(EndSuffixView);
+
+        [XmlIgnore]
+        public bool EnableUpdate { get; set; }
         public csConfig()
         {
             Port = new PortConfig();
@@ -82,15 +82,13 @@ namespace SerialPort_Ink
         public int ParityIndex { get; set; }
 
         /// <summary>
-        /// Index value of the flow control, type Handshake
+        /// Software flow control
+        /// If Enabled, set 
+        /// Handshake to XON/XOFF
+        /// Port.DtrEnable = true;
+        /// Port.RtsEnable = true;
         /// </summary>
-        public int FlowControlIndex { get; set; }
-
-        public Handshake FlowControl => (FlowControlIndex < 0 || FlowControlIndex > 3) ? Handshake.None : (Handshake)FlowControlIndex;
-
-
-        public bool DTREnable { get; set; }
-        public bool RTSEnable { get; set; }
+        public bool EnableFlowControl { get; set; }
 
         //Statics
         [XmlIgnore]
@@ -101,10 +99,6 @@ namespace SerialPort_Ink
         public static string[] StopBitsCollection = new string[] { "1", "2", "1.5" };
         [XmlIgnore]
         public static string[] ParityCollection = new string[] { "None", "Odd", "Even" };
-
-        [XmlIgnore]
-        public static string[] FlowControlCollection = new string[] { "None", "XOnXOff", "RequestToSend", "RequestToSendXOnXOff" };
-
 
 
         public PortConfig()

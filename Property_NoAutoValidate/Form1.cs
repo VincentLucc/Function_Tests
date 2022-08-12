@@ -42,6 +42,9 @@ namespace Property_NoAutoValidate
             propertyHelper = new csPropertyHelper(pg1);
             propertyHelper.PropertyGrid.RowHeaderWidth = 40;
 
+            //Image collection
+            csPublic.imageCollection = imageCollection1; //Set alias
+
             //Init property grid settings
             pg1.ValidatingEditor += Pg1_ValidatingEditor;
             pg1.CustomRecordCellEdit += PropertyGridControl1_CustomRecordCellEdit; //Constantly trigger!!!!, avoid

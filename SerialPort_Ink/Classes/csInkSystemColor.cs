@@ -28,23 +28,10 @@ namespace SerialPort_Ink
         /// <summary>
         /// Received message buffer used for display only
         /// </summary>
-        private StringBuilder builderComLog = new StringBuilder();
+        public List<string> ComLog = new List<string>();
 
-        private object lockBuilderComLog = new object(); //BuilderReceivedData lock
-        /// <summary>
-        /// Used to get received messages for display
-        /// All received message
-        /// </summary>
-        public string ComLogString
-        {
-            get
-            {
-                lock (lockBuilderComLog)
-                {
-                    return builderComLog.ToString();
-                }
-            }
-        }
+        public object lockComLog = new object(); //BuilderReceivedData lock
+
         public int ComLogMaxSize { set; get; } //Set the max buffer size
 
         private Task tSend; //Sending thread
@@ -125,13 +112,21 @@ namespace SerialPort_Ink
                     ApplyPortSettings(config);//Make sure set values while port is not connected
                     SendBlocker.StopBlock();//Make sure sending thread is alive
                     Port.Open();
-                    if (config.Port.DTREnable) Port.DtrEnable = true;
-                    if (config.Port.RTSEnable) Port.RtsEnable = true;
+
+                    //Must set after connected
+                    if (config.Port.EnableFlowControl)
+                    {
+                        Port.DtrEnable = true;
+                        Port.RtsEnable = true;
+                    }
+
+                    Port.DataReceived -= Port_DataReceived;
                     Port.DataReceived += Port_DataReceived;
                 }
                 catch (Exception ex)
                 {
                     Debug.WriteLine("Connect:\r\n" + ex.Message);
+                    AppendComLog(csPublic.TimeString + ": Fail to connect.\r\n");
                     return false;
                 }
             }
@@ -150,6 +145,7 @@ namespace SerialPort_Ink
             if (!IsConnected)
             {
                 Debug.WriteLine("Serial Port is not connected.");
+                return;
             }
 
             try
@@ -163,6 +159,7 @@ namespace SerialPort_Ink
                 Debug.WriteLine("Serial Port is closing.");
                 Port.Close();
                 Debug.WriteLine("Serial Port is closed.");
+                AppendComLog(csPublic.TimeString + ":Port closed.\r\n");
             }
             catch (Exception e)
             {
@@ -187,7 +184,15 @@ namespace SerialPort_Ink
             Port.DataBits = config.Port.DataBits;
             Port.StopBits = config.Port.StopBits;
             Port.Parity = config.Port.Parity;
-            Port.Handshake = config.Port.FlowControl;
+
+            if (config.Port.EnableFlowControl)
+            {
+                Port.Handshake = Handshake.XOnXOff;
+            }
+            else
+            {
+                Port.Handshake = Handshake.None;
+            }
         }
 
         private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -289,20 +294,19 @@ namespace SerialPort_Ink
         public void AppendComLog(string sMessage)
         {
             //Add to received data buffer
-            lock (lockBuilderComLog)
+            lock (lockComLog)
             {
                 //Update messages collection for form view to use
-                //String builder is not thread safe
-                builderComLog.Append(sMessage);
+                ComLog.Add(sMessage);
 
                 //Limit builder size
-                while (builderComLog.Length > ComLogMaxSize)
+                while (ComLog.Count > ComLogMaxSize)
                 {
                     //Get reduce amount
                     int ReduceAmount = ComLogMaxSize / 10;
 
                     //Remove fisrt 5000 data
-                    builderComLog.Remove(0, ReduceAmount);
+                    ComLog.RemoveRange(0, ReduceAmount);
                 }
             }
         }
