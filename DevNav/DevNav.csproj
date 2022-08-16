@@ -119,6 +119,7 @@
     <Reference Include="DevExpress.XtraDiagram.v22.1, Version=22.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Win.Diagram.22.1.3\lib\net452\DevExpress.XtraDiagram.v22.1.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.XtraEditors.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v22.1, Version=22.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Win.Navigation.22.1.3\lib\net452\DevExpress.XtraEditors.v22.1.dll</HintPath>
     </Reference>
@@ -179,6 +180,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="csAccordionControlEx.resx">
+      <DependentUpon>csAccordionControlEx.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

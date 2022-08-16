@@ -20,11 +20,22 @@ namespace DevNav
         /// Used for selection area display
         /// </summary>
         public SkinElement skinElement;
+        /// <summary>
+        /// Selected group object
+        /// </summary>
         public AccordionControlElement clickedGroupElement;
+        /// <summary>
+        /// Selected object, element or group
+        /// </summary>
+        public AccordionControlElement selectedObject;
+        public delegate void SelectedObjectChangeAction(AccordionControlElement selectedElement);
+        public event SelectedObjectChangeAction SelectedObjectChanged;
 
         public AccordionControlEx() : base()
         {
-            skinElement = SkinManager.GetSkinElement(SkinProductId.AccordionControl, this.LookAndFeel, "Item"); //Must have to show element
+            this.ShowFilterControl = ShowFilterControl.Always; //Enable search function
+            this.ViewType = AccordionControlViewType.HamburgerMenu;
+            skinElement = SkinManager.GetSkinElement(SkinProductId.AccordionControl, this.LookAndFeel, "Item"); //Must have to show selection paint
             this.CustomDrawElement += AccordionControl1_CustomDrawElement;
             this.MouseClick += AccordionControl1_MouseClick;
         }
@@ -50,12 +61,20 @@ namespace DevNav
             base.OnMouseUp(e);
         }
 
+        private void SetSelectedObject(AccordionControlElement element)
+        {
+            if (element == selectedObject) return;
+            selectedObject = element;
+            SelectedObjectChanged?.Invoke(element);
+        }
+
         private void AccordionControl1_MouseClick(object sender, MouseEventArgs e)
         {
             var hitInfo = this.CalcHitInfo(e.Location);
             if (hitInfo.HitTest == AccordionControlHitTest.Item || hitInfo.HitTest == AccordionControlHitTest.Group)
             {
                 var element = hitInfo.ItemInfo.Element;
+                SetSelectedObject(element);//trigger selection change event
                 element.Tag = MouseEventType.Click;
 
 
@@ -100,5 +119,6 @@ namespace DevNav
             Hover,
             Click
         }
+
     }
 }

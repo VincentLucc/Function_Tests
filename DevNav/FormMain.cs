@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -40,6 +41,14 @@ public partial class FormMain : DevExpress.XtraEditors.XtraForm
         accordionControl1.CustomDrawElement += AccordionControl1_CustomDrawElement;
         accordionControl1.MouseClick += AccordionControl1_MouseClick;
 
+        //Init customized accordiion control
+        accordionControlEx1.SelectedObjectChanged += AccordionControlEx1_SelectedObjectChanged;
+
+    }
+
+    private void AccordionControlEx1_SelectedObjectChanged(AccordionControlElement selectedElement)
+    {
+        Debug.WriteLine(selectedElement.Text);
     }
 
     private void AccordionControl1_MouseClick(object sender, MouseEventArgs e)
