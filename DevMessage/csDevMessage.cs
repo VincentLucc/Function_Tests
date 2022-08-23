@@ -15,6 +15,11 @@ public class csDevMessage
 {
     public Form ParentForm;
 
+    /// <summary>
+    /// Indicate whether message box exist in current folder
+    /// </summary>
+    public bool IsMessageBoxExist { get; set; }
+
     public csDevMessage(Form _parentForm)
     {
         ParentForm = _parentForm;
@@ -38,46 +43,118 @@ public class csDevMessage
         SplashScreenManager.CloseForm(false);
     }
 
-
     public void Error(string text, string caption = "Error")
     {
+        CloseLoadingForm();
+        IsMessageBoxExist = true;
         XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        IsMessageBoxExist = false;
     }
 
     public DialogResult ErrorConfirmOK(string text, string caption = "Error")
     {
-        return XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+        CloseLoadingForm();
+        IsMessageBoxExist = true;
+        var result = XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+        IsMessageBoxExist = false;
+        return result;
     }
 
     public DialogResult ErrorConfirmYes(string text, string caption = "Error")
     {
-        return XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+        CloseLoadingForm();
+        IsMessageBoxExist = true;
+        var result = XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+        IsMessageBoxExist = false;
+        return result;
     }
 
     public DialogResult ErrorConfirmOK(string text)
     {
-        return XtraMessageBox.Show(ParentForm, text, "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+        CloseLoadingForm();
+        IsMessageBoxExist = true;
+        var result = XtraMessageBox.Show(ParentForm, text, "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+        IsMessageBoxExist = false;
+        return result;
     }
 
     public void Warning(string text, string caption = "Warning")
     {
-        XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        CloseLoadingForm();
+        IsMessageBoxExist = true;
+        var result = XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        IsMessageBoxExist = false;
     }
 
     public DialogResult WarningConfirmOK(string text, string caption = "Warning")
     {
-        return XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+        CloseLoadingForm();
+        IsMessageBoxExist = true;
+        var result = XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+        IsMessageBoxExist = false;
+        return result;
     }
 
     public void Info(string text, string caption = "Info")
     {
+        CloseLoadingForm();
+        IsMessageBoxExist = true;
         XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        IsMessageBoxExist = false;
+    }
+
+    /// <summary>
+    /// Show message only once and won't affect current loop
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="caption"></param>
+    public void InfoAsyncNoRepeat(string text, string caption = "Info")
+    {
+
+        if (IsMessageBoxExist) return;
+
+        Task.Run(() =>
+        {
+            ParentForm.Invoke(new Action(() =>
+            {
+                IsMessageBoxExist = true;
+                CloseLoadingForm();
+                XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                IsMessageBoxExist = false;
+            }));
+        });
+    }
+
+    /// <summary>
+    /// Show message only once and won't affect current loop
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="caption"></param>
+    public void ErrorAsyncNoRepeat(string text, string caption = "Error")
+    {
+
+        if (IsMessageBoxExist) return;
+
+        Task.Run(() =>
+        {
+            ParentForm.Invoke(new Action(() =>
+            {
+                IsMessageBoxExist = true;
+                CloseLoadingForm();
+                XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                IsMessageBoxExist = false;
+            }));
+        });
     }
 
 
     public DialogResult InfoConfirmOK(string text, string caption = "Info")
     {
-        return XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        CloseLoadingForm();
+        IsMessageBoxExist = true;
+        var result = XtraMessageBox.Show(ParentForm, text, caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        IsMessageBoxExist = false;
+        return result;
     }
 
     public IOverlaySplashScreenHandle ShowCustomOverLay(string sMessage)

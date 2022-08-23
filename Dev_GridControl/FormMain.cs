@@ -86,5 +86,11 @@ namespace Dev_GridControl
                 editForm.ShowDialog();
             }
         }
+
+        private void bTooltip_Click(object sender, EventArgs e)
+        {
+            var winTooltip = new FormToolTip();
+            winTooltip.ShowDialog();
+        }
     }
 }

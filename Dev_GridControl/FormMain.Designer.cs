@@ -38,6 +38,7 @@ namespace Dev_GridControl
             this.bTileView = new DevExpress.XtraEditors.SimpleButton();
             this.bSizeCompare = new DevExpress.XtraEditors.SimpleButton();
             this.bEditForm = new System.Windows.Forms.Button();
+            this.bTooltip = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -129,11 +130,22 @@ namespace Dev_GridControl
             this.bEditForm.UseVisualStyleBackColor = true;
             this.bEditForm.Click += new System.EventHandler(this.bEditForm_Click);
             // 
+            // bTooltip
+            // 
+            this.bTooltip.Location = new System.Drawing.Point(55, 243);
+            this.bTooltip.Name = "bTooltip";
+            this.bTooltip.Size = new System.Drawing.Size(109, 23);
+            this.bTooltip.TabIndex = 9;
+            this.bTooltip.Text = "Tooltip";
+            this.bTooltip.UseVisualStyleBackColor = true;
+            this.bTooltip.Click += new System.EventHandler(this.bTooltip_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bTooltip);
             this.Controls.Add(this.bEditForm);
             this.Controls.Add(this.bSizeCompare);
             this.Controls.Add(this.bTileView);
@@ -161,6 +173,7 @@ namespace Dev_GridControl
         private DevExpress.XtraEditors.SimpleButton bTileView;
         private DevExpress.XtraEditors.SimpleButton bSizeCompare;
         private System.Windows.Forms.Button bEditForm;
+        private System.Windows.Forms.Button bTooltip;
     }
 }
 

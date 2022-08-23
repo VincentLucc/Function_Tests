@@ -19,15 +19,15 @@ namespace DevNav
         /// <summary>
         /// Used for selection area display
         /// </summary>
-        public SkinElement skinElement;
+        private SkinElement skinElement;
         /// <summary>
         /// Selected group object
         /// </summary>
-        public AccordionControlElement clickedGroupElement;
+        private AccordionControlElement clickedGroupElement;
         /// <summary>
         /// Selected object, element or group
         /// </summary>
-        public AccordionControlElement selectedObject;
+        public AccordionControlElement SelectedObject;
         public delegate void SelectedObjectChangeAction(AccordionControlElement selectedElement);
         public event SelectedObjectChangeAction SelectedObjectChanged;
 
@@ -36,6 +36,8 @@ namespace DevNav
             this.ShowFilterControl = ShowFilterControl.Always; //Enable search function
             this.ViewType = AccordionControlViewType.HamburgerMenu;
             skinElement = SkinManager.GetSkinElement(SkinProductId.AccordionControl, this.LookAndFeel, "Item"); //Must have to show selection paint
+
+            //Used to draw group selection
             this.CustomDrawElement += AccordionControl1_CustomDrawElement;
             this.MouseClick += AccordionControl1_MouseClick;
         }
@@ -63,8 +65,8 @@ namespace DevNav
 
         private void SetSelectedObject(AccordionControlElement element)
         {
-            if (element == selectedObject) return;
-            selectedObject = element;
+            if (element == SelectedObject) return;
+            SelectedObject = element;
             SelectedObjectChanged?.Invoke(element);
         }
 
@@ -92,11 +94,10 @@ namespace DevNav
             }
         }
 
-        private void AccordionControl1_CustomDrawElement(object sender, DevExpress.XtraBars.Navigation.CustomDrawElementEventArgs e)
+        private void AccordionControl1_CustomDrawElement(object sender, CustomDrawElementEventArgs e)
         {
-            if (!(e.Element.Tag is MouseEventType))
-                return;
-
+            //Get event type
+            if (!(e.Element.Tag is MouseEventType)) return;
             var eventType = (MouseEventType)e.Element.Tag;
 
             //Draw group element selection
@@ -113,7 +114,7 @@ namespace DevNav
 
 
 
-        private enum MouseEventType
+        public enum MouseEventType
         {
             Normal,
             Hover,

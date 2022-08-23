@@ -36,7 +36,7 @@ namespace Property_NoAutoValidate
             PropertyGrid.ActiveViewType = PropertyGridView.Office;
             PropertyGrid.MouseWheel += PropertyGrid_MouseWheel;//Make sure editor moves with wheel
         }
-
+        
         private void PropertyGrid_MouseWheel(object sender, MouseEventArgs e)
         {
             PropertyGrid.CloseEditor(); //Make sure editor moves with wheel
@@ -261,11 +261,10 @@ namespace Property_NoAutoValidate
 
                 case EditorType.MacGridLookUp:
                     RepositoryItemGridLookUpEdit macGridLookup = new RepositoryItemGridLookUpEdit();
-                    macGridLookup.ShowFooter = false;
+                    macGridLookup.ShowFooter = false;//Hide "X" button in bottom
                     macGridLookup.NullText = "";
-                    List<Tuple<Image, string, string>> xx = new List<Tuple<Image, string, string>>();
-                    var img = csPublic.imageCollection.Images[0];
-                    xx.Add(new Tuple<Image, string, string>(img, "sss", "fff"));
+                    macGridLookup.TextEditStyle = TextEditStyles.Standard; //Enable user edit value
+                    macGridLookup.AcceptEditorTextAsNewValue = DevExpress.Utils.DefaultBoolean.True; //Accept text value
 
                     //Create sample data
                     var macList = GetMacAddress();

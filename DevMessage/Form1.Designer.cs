@@ -35,18 +35,25 @@ namespace DevMessage
             this.bShowInfoDefault = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.ucMessage1 = new DevMessage.ucMessage();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(20, 14);
+            this.button1.Location = new System.Drawing.Point(6, 78);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 23);
             this.button1.TabIndex = 0;
@@ -56,7 +63,7 @@ namespace DevMessage
             // 
             // bShowInfo1
             // 
-            this.bShowInfo1.Location = new System.Drawing.Point(20, 55);
+            this.bShowInfo1.Location = new System.Drawing.Point(6, 20);
             this.bShowInfo1.Name = "bShowInfo1";
             this.bShowInfo1.Size = new System.Drawing.Size(75, 23);
             this.bShowInfo1.TabIndex = 1;
@@ -65,7 +72,7 @@ namespace DevMessage
             // 
             // bShowInfo2
             // 
-            this.bShowInfo2.Location = new System.Drawing.Point(101, 55);
+            this.bShowInfo2.Location = new System.Drawing.Point(6, 49);
             this.bShowInfo2.Name = "bShowInfo2";
             this.bShowInfo2.Size = new System.Drawing.Size(75, 23);
             this.bShowInfo2.TabIndex = 2;
@@ -74,7 +81,7 @@ namespace DevMessage
             // 
             // bShowInfoDefault
             // 
-            this.bShowInfoDefault.Location = new System.Drawing.Point(182, 55);
+            this.bShowInfoDefault.Location = new System.Drawing.Point(6, 20);
             this.bShowInfoDefault.Name = "bShowInfoDefault";
             this.bShowInfoDefault.Size = new System.Drawing.Size(115, 23);
             this.bShowInfoDefault.TabIndex = 3;
@@ -95,14 +102,21 @@ namespace DevMessage
             // 
             // xtraTabPage1
             // 
-            this.xtraTabPage1.Controls.Add(this.simpleButton1);
-            this.xtraTabPage1.Controls.Add(this.button1);
-            this.xtraTabPage1.Controls.Add(this.bShowInfoDefault);
-            this.xtraTabPage1.Controls.Add(this.bShowInfo1);
-            this.xtraTabPage1.Controls.Add(this.bShowInfo2);
+            this.xtraTabPage1.Controls.Add(this.groupBox3);
+            this.xtraTabPage1.Controls.Add(this.groupBox2);
+            this.xtraTabPage1.Controls.Add(this.groupBox1);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(794, 422);
             this.xtraTabPage1.Text = "xtraTabPage1";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(6, 20);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(130, 23);
+            this.simpleButton1.TabIndex = 4;
+            this.simpleButton1.Text = "Show Loading Intance";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // xtraTabPage2
             // 
@@ -118,15 +132,49 @@ namespace DevMessage
             this.ucMessage1.Name = "ucMessage1";
             this.ucMessage1.Size = new System.Drawing.Size(794, 422);
             this.ucMessage1.TabIndex = 0;
+            this.ucMessage1.Load += new System.EventHandler(this.ucMessage1_Load);
             // 
-            // simpleButton1
+            // groupBox1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(20, 96);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(130, 23);
-            this.simpleButton1.TabIndex = 4;
-            this.simpleButton1.Text = "Show Loading Intance";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.groupBox1.Controls.Add(this.simpleButton2);
+            this.groupBox1.Controls.Add(this.simpleButton1);
+            this.groupBox1.Location = new System.Drawing.Point(323, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(306, 218);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "csDevMessage";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.bShowInfo1);
+            this.groupBox2.Controls.Add(this.bShowInfo2);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Location = new System.Drawing.Point(11, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(306, 218);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "UI Helper";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.bShowInfoDefault);
+            this.groupBox3.Location = new System.Drawing.Point(11, 227);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 188);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "MessageBox";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(6, 49);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(130, 23);
+            this.simpleButton2.TabIndex = 5;
+            this.simpleButton2.Text = "Task.MessageBoxCheck";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // Form1
             // 
@@ -140,6 +188,9 @@ namespace DevMessage
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -155,6 +206,10 @@ namespace DevMessage
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private ucMessage ucMessage1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }
 
