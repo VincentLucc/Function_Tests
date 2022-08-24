@@ -357,5 +357,17 @@ namespace Properties
                 Debug.WriteLine("DisplayValue:\r\n" + s1.TextFolder);
             }
         }
+
+        private void bClear_Click(object sender, EventArgs e)
+        {
+            //Not working while click this button when auto validation not started
+            //Invalid value will be saved
+            if (pg1.SelectedObject!=null)
+            {
+                ValidateChildren(); //Force validate
+                pg1.HideEditor(); // Clear invalid values 
+                pg1.SelectedObject = null;
+            }
+        }
     }
 }

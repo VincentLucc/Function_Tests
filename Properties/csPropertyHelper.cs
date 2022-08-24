@@ -27,6 +27,8 @@ namespace Properties
     {
         public PropertyGridControl PropertyGrid { get; set; }
 
+        
+
         /// <summary>
         /// Trigger when setting row editor for custom editor set outside the class if needed
         /// </summary>
@@ -60,10 +62,10 @@ namespace Properties
                 if (editor == null) continue;
                 SetRowEditor(row, editor);
 
-                //Trigger custom setting event
-                var data = new RowEditorData(row, editor);//prepare data
+                //Trigger custom setting event           
                 if (CustomSettingRowEditor != null)
                 {
+                    var data = new RowEditorData(row, editor);//prepare data
                     CustomSettingRowEditor(this, data);
                 }
             }
@@ -116,22 +118,8 @@ namespace Properties
             return rowsPost;
         }
 
-        public void DoValidate()
-        {
-            //Get current selected row
-            var row = PropertyGrid.FocusedRow;
-
-            if (row != null)
-            {
-                Debug.WriteLine("DoValidate:" + row.Properties.FieldName);
-
-            }
-
-
-
-        }
-
-
+ 
+ 
         /// <summary>
         /// Get attribute type of a property row
         /// </summary>
@@ -263,6 +251,7 @@ namespace Properties
 
                 case EditorType.Text:
                     RepositoryItemTextEdit textEdit_Text = new RepositoryItemTextEdit();
+                    
                     if (editor.IsCustomMaskEnable)
                     {
                         textEdit_Text.Mask.UseMaskAsDisplayFormat = true;
@@ -272,6 +261,7 @@ namespace Properties
                         textEdit_Text.EditValueChangedDelay = 2000;
                     }
                     row.Properties.RowEdit = textEdit_Text;
+               
                     break;
 
                 case EditorType.FolderEditor:

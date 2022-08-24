@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraBars.Docking;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
@@ -40,13 +41,14 @@ namespace Property_NoAutoValidate
 
             //Init helper
             propertyHelper = new csPropertyHelper(pg1Right);
-            propertyHelper.PropertyGrid.RowHeaderWidth = 40;
+            propertyHelper.propertyGrid.RowHeaderWidth = 40;
 
             //Image collection
             csPublic.imageCollection = imageCollection1; //Set alias
 
             //Init property grid settings
             pg1Right.ValidatingEditor += Pg1_ValidatingEditor;
+            pg1Right.InvalidValueException += Pg1_InvalidValueException;
             pg1Right.CustomRecordCellEdit += PropertyGridControl1_CustomRecordCellEdit; //Constantly trigger!!!!, avoid
             pg1Right.SelectedChanged += Pg1_SelectedChanged;
             pg1Right.CustomPropertyDescriptors += Pg1_CustomPropertyDescriptors;
@@ -54,8 +56,7 @@ namespace Property_NoAutoValidate
             pg1Right.EditorKeyDown += Pg1_EditorKeyDown;
             pg1Right.KeyDown += Pg1_KeyDown;
             pg1Right.MouseDown += Pg1_MouseDown1;
-            // pg1.Validated += Pg1_Validated;
-            pg1Right.InvalidValueException += Pg1_InvalidValueException;
+
             pg1Right.CausesValidation = true; //Default not to validate only when required
             pg1Right.LostFocus += Pg1_LostFocus;
             pg1Right.OptionsBehavior.UseTabKey = false;
@@ -77,38 +78,54 @@ namespace Property_NoAutoValidate
 
             //Tests
             //te1.Validating += TextEdit1_Validating;
+            InitDockManager();
+        }
+
+        private void InitDockManager()
+        {
+            foreach (DockPanel panel in dockManager1.Panels)
+            {
+                panel.Options.ShowAutoHideButton = false; //hide auto hide button
+                panel.Options.ShowMaximizeButton = false; //hide maximum button
+                panel.Options.ShowCloseButton = false; //Hide close button
+            }
         }
 
         private void Pg1_MouseDown1(object sender, MouseEventArgs e)
         {
             //Force validate
             Debug.WriteLine("Pg1_MouseDown1");
-            TriggerPropertyValidate();
+            ForcePropertyValidate();
         }
 
         /// <summary>
         /// Trigger validation process on condition
         /// </summary>
         /// <param name="IsTrigger"></param>
-        public void TriggerPropertyValidate()
+        public bool ForcePropertyValidate()
         {
             try
             {
+                object selectedObject = propertyHelper.propertyGrid.SelectedObject;
+                if (selectedObject == null) return true;
+
+                propertyHelper.IsValidationOK = true;//Reset
                 propertyHelper.EnablePropertyValidate = true;
-                //Manual trigger validation
-                ValidateChildren();
+                ValidateChildren(); //Manual trigger validation
             }
             catch (Exception e)
             {
                 Debug.WriteLine("TriggerPropertyValidate:\r\n" + e.Message);
+                propertyHelper.IsValidationOK = false;
             }
+
+            return propertyHelper.IsValidationOK;
         }
 
         private void Pg1_LostFocus(object sender, EventArgs e)
         {
             //run twice, may cause problem
             //May not trigger
-
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -117,39 +134,7 @@ namespace Property_NoAutoValidate
         }
 
 
-
-        private void Pg1_CustomRecordCellEdit(object sender, GetCustomRowCellEditEventArgs e)
-        {
-            Debug.WriteLine("Pg1_CustomRecordCellEdit");
-
-        }
-
-        /// <summary>
-        /// Use key down instead, key press trigger when press and realse combined
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Pg1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Debug.WriteLine("Pg1_KeyPress:" + (Keys)e.KeyChar);
-        }
-
-        /// <summary>
-        ///Notice, return(enter) key happens after validation and value change.
-        ///Rest of the key inputs happen before validation.
-        ///So a manual validate required when enter pressed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Pg1_EditorKeyPress(object sender, KeyPressEventArgs e)
-        {
-            Debug.WriteLine("Pg1_EditorKeyPress:" + (Keys)e.KeyChar);
-
-            //Press enter when inside the editor
-            //TriggerPropertyValidate(e.KeyChar == (char)Keys.Return);
-
-
-        }
+ 
 
 
         private void Pg1_InvalidValueException(object sender, InvalidValueExceptionEventArgs e)
@@ -160,15 +145,10 @@ namespace Property_NoAutoValidate
                 e.ExceptionMode = ExceptionMode.Ignore;
             }
 
-
-
             Debug.WriteLine("Invalid Exception:EnableValidate:" + propertyHelper.EnablePropertyValidate);
+            propertyHelper.IsValidationOK = false;
         }
 
-        private void Pg1_Validated(object sender, EventArgs e)
-        {
-
-        }
 
         private void Pg1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -177,7 +157,7 @@ namespace Property_NoAutoValidate
             //When "enter" pressed outside the property editor
             if (e.KeyCode == Keys.Return)
             {
-                TriggerPropertyValidate();
+                ForcePropertyValidate();
             }
 
         }
@@ -206,35 +186,7 @@ namespace Property_NoAutoValidate
         }
 
 
-        /// <summary>
-        /// This will trigger properly when editor lose focus
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Pg1_MouseCaptureChanged(object sender, EventArgs e)
-        {
-
-            Debug.WriteLine("Pg1_MouseCaptureChanged");
-
-
-        }
-
-        private void Pg1_FocusedRecordCellChanged(object sender, IndexChangedEventArgs e)
-        {
-            Debug.WriteLine("Pg1_FocusedRecordCellChanged");
-        }
-
-        private void Pg1_FocusedRecordChanged(object sender, IndexChangedEventArgs e)
-        {
-            Debug.WriteLine("Pg1_FocusedRecordChanged");
-        }
-
-
-        //Only work when on different row
-        private void Pg1_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
-        {
-            Debug.WriteLine("Pg1_FocusedRowChanged");
-        }
+ 
 
         private void Pg1_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
@@ -285,8 +237,6 @@ namespace Property_NoAutoValidate
             //    }
             //}
         }
-
-
 
 
         private void Pg1_SelectedChanged(object sender, SelectedChangedEventArgs e)
@@ -407,42 +357,8 @@ namespace Property_NoAutoValidate
             e.Valid = true;
         }
 
-        private void VerifyLength(BaseContainerValidateEditorEventArgs e, int iMin)
-        {
-            if (e.Value == null)
-            {
-                if (iMin != 0)
-                {
-                    e.Valid = false;
-                    e.ErrorText = $"Invalid input.";
-                    return;
-                }
-                else
-                {
-                    e.Valid = true;
-                    return;
-                }
-            }
-
-            //Check length
-            if (e.Value.ToString().Length < iMin)
-            {
-                e.Valid = false;
-                e.ErrorText = $"Length must be no less than {iMin}";
-                return;
-            }
-
-            //pass all steps
-            e.Valid = true;
-        }
-
-        private void TextEdit1_Validating(object sender, CancelEventArgs e)
-        {
-            Debug.WriteLine("Validating");
-        }
-
-
-
+ 
+  
         private void PropertyGridControl1_CustomRecordCellEdit(object sender, GetCustomRowCellEditEventArgs e)
         {
             //Trigger too many times!!!, do not use
@@ -483,11 +399,7 @@ namespace Property_NoAutoValidate
 
         }
 
-        private void Edit_ButtonClick(object sender, ButtonPressedEventArgs e)
-        {
-            MessageBox.Show("Clicked");
-        }
-
+ 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Skip
@@ -496,26 +408,6 @@ namespace Property_NoAutoValidate
             if (lbLeft.SelectedIndex < 0) return;
             pg1Right.SelectedObject = sList[lbLeft.SelectedIndex];
 
-
-            //Get all rows
-            //var rows = GetAllPropertyRows();
-
-            ////Set editor
-            //foreach (var row in rows)
-            //{
-            //    var editor = GetEditorType(row);
-            //    if (editor == null) continue;
-
-            //    switch (editor.Editor)
-            //    {
-            //        case EditorType.Number:
-            //            RepositoryItemCalcEdit repositoryCalcEdit = new RepositoryItemCalcEdit();
-            //            row.Properties.RowEdit = repositoryCalcEdit;
-            //            break;
-            //        default:
-            //            break;
-            //    }
-            //}
             Debug.WriteLine(pg1Right.Rows.Count);
         }
 
@@ -529,6 +421,30 @@ namespace Property_NoAutoValidate
 
         }
 
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Did Sth");
+        }
 
+        private void bClear_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Clear clicked");
+
+            if (pg1Right.SelectedObject != null)
+            {
+                ForcePropertyValidate();
+                pg1Right.HideEditor();//Ignore invalid value
+                pg1Right.SelectedObject = null;
+            }
+        }
+
+        private void bVerify_Click(object sender, EventArgs e)
+        {
+            if (!ForcePropertyValidate())
+            {
+                MessageBox.Show("Something is wrong.");
+                return;
+            }
+        }
     }
 }

@@ -37,6 +37,7 @@ namespace Properties
             this.te1 = new DevExpress.XtraEditors.TextEdit();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.bClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pg1)).BeginInit();
             this.panel1.SuspendLayout();
             this.pDescription.SuspendLayout();
@@ -52,7 +53,7 @@ namespace Properties
             this.pg1.Name = "pg1";
             this.pg1.OptionsBehavior.AutoPostEditorDelay = 1000;
             this.pg1.OptionsCollectionEditor.AllowMultiSelect = false;
-            this.pg1.Size = new System.Drawing.Size(450, 429);
+            this.pg1.Size = new System.Drawing.Size(450, 434);
             this.pg1.TabIndex = 0;
             this.pg1.DataSourceChanged += new System.EventHandler(this.pg1_DataSourceChanged);
             this.pg1.Click += new System.EventHandler(this.propertyGridControl1_Click);
@@ -62,9 +63,9 @@ namespace Properties
             this.panel1.Controls.Add(this.pg1);
             this.panel1.Controls.Add(this.pDescription);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(484, 0);
+            this.panel1.Location = new System.Drawing.Point(486, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 511);
+            this.panel1.Size = new System.Drawing.Size(450, 516);
             this.panel1.TabIndex = 1;
             // 
             // pDescription
@@ -72,7 +73,7 @@ namespace Properties
             this.pDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pDescription.Controls.Add(this.pd1);
             this.pDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pDescription.Location = new System.Drawing.Point(0, 429);
+            this.pDescription.Location = new System.Drawing.Point(0, 434);
             this.pDescription.Name = "pDescription";
             this.pDescription.Size = new System.Drawing.Size(450, 82);
             this.pDescription.TabIndex = 4;
@@ -95,7 +96,7 @@ namespace Properties
             this.lb1.FormattingEnabled = true;
             this.lb1.Location = new System.Drawing.Point(0, 0);
             this.lb1.Name = "lb1";
-            this.lb1.Size = new System.Drawing.Size(149, 511);
+            this.lb1.Size = new System.Drawing.Size(149, 516);
             this.lb1.TabIndex = 2;
             this.lb1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -109,12 +110,13 @@ namespace Properties
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.bClear);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.te1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(149, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(335, 511);
+            this.groupBox1.Size = new System.Drawing.Size(337, 516);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -129,11 +131,21 @@ namespace Properties
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // bClear
+            // 
+            this.bClear.Location = new System.Drawing.Point(17, 74);
+            this.bClear.Name = "bClear";
+            this.bClear.Size = new System.Drawing.Size(75, 23);
+            this.bClear.TabIndex = 5;
+            this.bClear.Text = "Clear";
+            this.bClear.UseVisualStyleBackColor = true;
+            this.bClear.Click += new System.EventHandler(this.bClear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 511);
+            this.ClientSize = new System.Drawing.Size(936, 516);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lb1);
             this.Controls.Add(this.panel1);
@@ -159,6 +171,7 @@ namespace Properties
         private System.Windows.Forms.Panel pDescription;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bClear;
     }
 }
 

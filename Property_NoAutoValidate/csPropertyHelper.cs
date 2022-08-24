@@ -23,8 +23,10 @@ namespace Property_NoAutoValidate
     /// </summary>
     public class csPropertyHelper
     {
-        public PropertyGridControl PropertyGrid { get; set; }
+        public PropertyGridControl propertyGrid { get; set; }
         public bool EnablePropertyValidate { get; set; }
+
+        public bool IsValidationOK { get; set; }
 
         /// <summary>
         /// Trigger when setting row editor for custom editor set outside the class if needed
@@ -32,23 +34,17 @@ namespace Property_NoAutoValidate
         public event EventHandler<RowEditorData> CustomSettingRowEditor;
         public csPropertyHelper(PropertyGridControl propertyGridControl)
         {
-            PropertyGrid = propertyGridControl;
-            PropertyGrid.ActiveViewType = PropertyGridView.Office;
-            PropertyGrid.MouseWheel += PropertyGrid_MouseWheel;//Make sure editor moves with wheel
+            propertyGrid = propertyGridControl;        
+            propertyGrid.ActiveViewType = PropertyGridView.Office;
         }
         
-        private void PropertyGrid_MouseWheel(object sender, MouseEventArgs e)
-        {
-            PropertyGrid.CloseEditor(); //Make sure editor moves with wheel
-        }
-
         public void ReloadAll()
         {
             //Null verification
-            if (PropertyGrid == null) return;
+            if (propertyGrid == null) return;
 
             //Create new rows before set properties
-            PropertyGrid.UpdateRows();
+            propertyGrid.UpdateRows();
 
             //Get all rows
             var rows = GetAllPropertyRows();
@@ -56,7 +52,7 @@ namespace Property_NoAutoValidate
             //Set editor
             foreach (var row in rows)
             {
-                var editorConfig = GetEditorConfig(row, PropertyGrid.SelectedObject);
+                var editorConfig = GetEditorConfig(row, propertyGrid.SelectedObject);
                 if (editorConfig == null) continue;
                 SetRowEditor(row, editorConfig);
 
@@ -76,7 +72,7 @@ namespace Property_NoAutoValidate
             List<BaseRow> rowsPre = new List<BaseRow>(); //Get all rows
             List<BaseRow> rowsPost = new List<BaseRow>(); //Required rows
 
-            foreach (var rowLevel1 in PropertyGrid.Rows)
+            foreach (var rowLevel1 in propertyGrid.Rows)
             {
                 rowsPre.Add(rowLevel1);
                 foreach (var rowLevel2 in rowLevel1.ChildRows)
@@ -254,7 +250,6 @@ namespace Property_NoAutoValidate
                     macLookupImage.DropDownRows = macSource.Count > 8 ? 8 : macSource.Count; //Limit rows
                     macLookupImage.DataSource = macSource;
                     macLookupImage.CustomDrawCell += MacLookupImage_CustomDrawCell;
-                    macLookupImage.CustomDrawButton += MacLookupImage_CustomDrawButton;
                     macLookupImage.CustomDisplayText += MacLookupImage_CustomDisplayText;
                     row.Properties.RowEdit = macLookupImage;
                     break;
@@ -385,30 +380,6 @@ namespace Property_NoAutoValidate
         private void MacLookupImage_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
         {
             //e.DisplayText = "      " + e.DisplayText; //Save space for image
-        }
-
-        private void MacLookupImage_CustomDrawButton(object sender, CustomDrawButtonEventArgs e)
-        {
-
-            //Can't get repository width!!!
-            //            if (sender is LookUpEdit)
-            //            {//During editing
-            //                //Do nothing
-            //            }
-            //            else if (sender is RepositoryItemLookUpEdit)
-            //            {//Not focused
-            //                var editor = (RepositoryItemLookUpEdit)sender;
-            //                var img = csPublic.imageCollection.Images[0];
-            //                var rect = e.Bounds;
-            //                var x = editor.CreateViewInfo();
-
-            ////                viewInfo As ButtonEditViewInfo = TryCast(buttonEdit1.GetViewInfo(), ButtonEditViewInfo)
-            ////Text = String.Format("{0}, {1}, {2}", viewInfo.RightButtons(0).Bounds.Width, viewInfo.RightButtons(1).Bounds.Width, viewInfo.RightButtons(2).Bounds.Width)
-
-
-            //                e.Graphics.DrawImage(img, rect.X-100, rect.Y+3, 16, 16);
-            //            }
-
         }
 
         private void MacLookupImage_CustomDrawCell(object sender, DevExpress.XtraEditors.Popup.LookUpCustomDrawCellArgs e)
