@@ -1,10 +1,11 @@
-﻿using System;
+﻿using DevExpress.Skins;
+using DevExpress.UserSkins;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OperationBlock
+namespace DevRibbon
 {
     static class Program
     {

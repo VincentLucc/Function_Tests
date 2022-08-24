@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace OperationBlock
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
 
         public LoopBlocker Blocker { get; set; }
 
         public ButtonOperationGroup ButtonOperation { get; set; }
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -34,6 +34,33 @@ namespace OperationBlock
 
             Blocker = new LoopBlocker();
             ButtonOperation = new ButtonOperationGroup();
+
+            bButtonBlock2.MouseDown += BButtonBlock2_MouseDown;
+        }
+
+        private void BButtonBlock2_MouseDown(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private async void bButtonBlock_Click(object sender, EventArgs e)
+        {
+            if (!ButtonOperation.RequestButtonOperation("bButtonBlock_Click")) return;
+
+            await Task.Delay(3000);
+
+            //Finish up
+            ButtonOperation.IsOperating = false;
+        }
+
+        private async void bButtonBlock2_Click(object sender, EventArgs e)
+        {
+            if (!ButtonOperation.RequestButtonOperation("bButtonBlock2_Click")) return;
+
+            await Task.Delay(3000);
+
+            //Finish up
+            ButtonOperation.IsOperating = false;
         }
 
         private async void T1_Tick(object sender, EventArgs e)
@@ -103,14 +130,6 @@ namespace OperationBlock
             Blocker.EnableBlock = false;
         }
 
-        private async void bButtonBlock_Click(object sender, EventArgs e)
-        {
-            if (!ButtonOperation.RequestButtonOperation("bButtonBlock_Click")) return;
 
-            await Task.Delay(3000);
-
-            //Finish up
-            ButtonOperation.IsOperating = false;
-        }
     }
 }

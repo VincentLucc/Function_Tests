@@ -1,7 +1,7 @@
 ﻿
 namespace OperationBlock
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -34,6 +34,7 @@ namespace OperationBlock
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bButtonBlock = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bButtonBlock2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -75,12 +76,13 @@ namespace OperationBlock
             this.bButtonBlock.Name = "bButtonBlock";
             this.bButtonBlock.Size = new System.Drawing.Size(94, 23);
             this.bButtonBlock.TabIndex = 3;
-            this.bButtonBlock.Text = "Button Block";
+            this.bButtonBlock.Text = "Button Block 1";
             this.bButtonBlock.UseVisualStyleBackColor = true;
             this.bButtonBlock.Click += new System.EventHandler(this.bButtonBlock_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.bButtonBlock2);
             this.groupBox2.Controls.Add(this.bButtonBlock);
             this.groupBox2.Location = new System.Drawing.Point(218, 12);
             this.groupBox2.Name = "groupBox2";
@@ -89,14 +91,24 @@ namespace OperationBlock
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Button Block";
             // 
-            // Form1
+            // bButtonBlock2
+            // 
+            this.bButtonBlock2.Location = new System.Drawing.Point(6, 62);
+            this.bButtonBlock2.Name = "bButtonBlock2";
+            this.bButtonBlock2.Size = new System.Drawing.Size(94, 23);
+            this.bButtonBlock2.TabIndex = 4;
+            this.bButtonBlock2.Text = "Button Block 2";
+            this.bButtonBlock2.UseVisualStyleBackColor = true;
+            this.bButtonBlock2.Click += new System.EventHandler(this.bButtonBlock2_Click);
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "FormMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
@@ -112,6 +124,7 @@ namespace OperationBlock
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button bButtonBlock;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button bButtonBlock2;
     }
 }
 
