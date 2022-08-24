@@ -18,13 +18,13 @@ using DevExpress.XtraVerticalGrid.Rows;
 
 namespace Property_NoAutoValidate
 {
-    public partial class Form1 : XtraForm
+    public partial class FormMain : XtraForm
     {
         List<Student> sList;
         public csPropertyHelper propertyHelper { get; set; }
         public string ErrorMessage { get; set; }
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -39,29 +39,29 @@ namespace Property_NoAutoValidate
             this.MouseDown += Form1_MouseDown;
 
             //Init helper
-            propertyHelper = new csPropertyHelper(pg1);
+            propertyHelper = new csPropertyHelper(pg1Right);
             propertyHelper.PropertyGrid.RowHeaderWidth = 40;
 
             //Image collection
             csPublic.imageCollection = imageCollection1; //Set alias
 
             //Init property grid settings
-            pg1.ValidatingEditor += Pg1_ValidatingEditor;
-            pg1.CustomRecordCellEdit += PropertyGridControl1_CustomRecordCellEdit; //Constantly trigger!!!!, avoid
-            pg1.SelectedChanged += Pg1_SelectedChanged;
-            pg1.CustomPropertyDescriptors += Pg1_CustomPropertyDescriptors;
-            pg1.CellValueChanged += Pg1_CellValueChanged; //Happen before Pg1_ValidatingEditor!!!
-            pg1.EditorKeyDown += Pg1_EditorKeyDown;
-            pg1.KeyDown += Pg1_KeyDown;
-            pg1.MouseDown += Pg1_MouseDown1;
+            pg1Right.ValidatingEditor += Pg1_ValidatingEditor;
+            pg1Right.CustomRecordCellEdit += PropertyGridControl1_CustomRecordCellEdit; //Constantly trigger!!!!, avoid
+            pg1Right.SelectedChanged += Pg1_SelectedChanged;
+            pg1Right.CustomPropertyDescriptors += Pg1_CustomPropertyDescriptors;
+            pg1Right.CellValueChanged += Pg1_CellValueChanged; //Happen before Pg1_ValidatingEditor!!!
+            pg1Right.EditorKeyDown += Pg1_EditorKeyDown;
+            pg1Right.KeyDown += Pg1_KeyDown;
+            pg1Right.MouseDown += Pg1_MouseDown1;
             // pg1.Validated += Pg1_Validated;
-            pg1.InvalidValueException += Pg1_InvalidValueException;
-            pg1.CausesValidation = true; //Default not to validate only when required
-            pg1.LostFocus += Pg1_LostFocus;
-            pg1.OptionsBehavior.UseTabKey = false;
+            pg1Right.InvalidValueException += Pg1_InvalidValueException;
+            pg1Right.CausesValidation = true; //Default not to validate only when required
+            pg1Right.LostFocus += Pg1_LostFocus;
+            pg1Right.OptionsBehavior.UseTabKey = false;
 
             //Set description
-            pd1.PropertyGrid = pg1;
+            pd1Right.PropertyGrid = pg1Right;
 
             sList = new List<Student>();
             for (int i = 0; i < 5; i++)
@@ -70,10 +70,10 @@ namespace Property_NoAutoValidate
                 sTemp.Name = $"S_{i + 1}";
                 sTemp.Age = i + 1;
                 sList.Add(sTemp);
-                lb1.Items.Add(i + 1);
+                lbLeft.Items.Add(i + 1);
             }
 
-            lb1.DataSource = sList.Select(x => x.Name).ToList();
+            lbLeft.DataSource = sList.Select(x => x.Name).ToList();
 
             //Tests
             //te1.Validating += TextEdit1_Validating;
@@ -245,7 +245,7 @@ namespace Property_NoAutoValidate
 
         private void pg1_DataSourceChanged(object sender, EventArgs e)
         {
-            Debug.WriteLine("SourceChange:" + pg1.Rows.Count);
+            Debug.WriteLine("SourceChange:" + pg1Right.Rows.Count);
 
             //recreate all rows
             //pg1.RetrieveFields(true);
@@ -328,8 +328,8 @@ namespace Property_NoAutoValidate
 
             //Init variables
             Debug.WriteLine("Validating Edit Start");
-            string sFieldName = pg1.FocusedRow.Properties.FieldName;
-            var editor = propertyHelper.GetEditorConfig(pg1.FocusedRow, pg1.SelectedObject);  //Get property 
+            string sFieldName = pg1Right.FocusedRow.Properties.FieldName;
+            var editor = propertyHelper.GetEditorConfig(pg1Right.FocusedRow, pg1Right.SelectedObject);  //Get property 
 
             //Validate special properties
             if (sFieldName == nameof(Student.Age))
@@ -493,8 +493,8 @@ namespace Property_NoAutoValidate
             //Skip
 
             //Verify index
-            if (lb1.SelectedIndex < 0) return;
-            pg1.SelectedObject = sList[lb1.SelectedIndex];
+            if (lbLeft.SelectedIndex < 0) return;
+            pg1Right.SelectedObject = sList[lbLeft.SelectedIndex];
 
 
             //Get all rows
@@ -516,7 +516,7 @@ namespace Property_NoAutoValidate
             //            break;
             //    }
             //}
-            Debug.WriteLine(pg1.Rows.Count);
+            Debug.WriteLine(pg1Right.Rows.Count);
         }
 
 

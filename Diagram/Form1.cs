@@ -40,37 +40,9 @@ namespace DiagramDemo
             diagramControl1.AddingNewItem += DiagramControl1_AddingNewItem;//Main method 2 do something
             diagramControl1.MouseClick += DiagramControl1_MouseClick;
             diagramControl1.CustomDrawItem += DiagramControl1_CustomDrawItem;
-
-            //Disable diagram control shortcut
-            DisableDiagramControlShortCuts(diagramControl1);
         }
 
-        public void DisableDiagramControlShortCuts(DiagramControl diagram)
-        {
-            diagram.Commands.RegisterHotKeys(x => {
-                x.ClearHotKeys(DiagramCommandsBase.UndoCommand);//Ctrl+Z
-                x.ClearHotKeys(DiagramCommandsBase.RedoCommand);
-                x.ClearHotKeys(DiagramCommandsBase.CopyCommand); //Ctrl+C
-                x.ClearHotKeys(DiagramCommandsBase.PasteCommand);//Ctrl+V
-                x.ClearHotKeys(DiagramCommandsBase.CutCommand);//Ctrl+X
-                x.ClearHotKeys(DiagramCommandsBase.NewFileCommand);//Ctrl+N
-                x.ClearHotKeys(DiagramCommandsBase.OpenFileCommand);//Ctrl+O
-                x.ClearHotKeys(DiagramCommandsBase.RotateCommand);//Ctrl+R
-                x.ClearHotKeys(DiagramCommandsBase.InsertImageCommand);
-                x.ClearHotKeys(DiagramCommandsBase.ToggleFontBoldCommand);//Ctrl+B
-                x.ClearHotKeys(DiagramCommandsBase.ToggleFontUnderlineCommand);//Ctrl+U
-                x.ClearHotKeys(DiagramCommandsBase.ToggleFontItalicCommand);//Ctrl+I
-                x.ClearHotKeys(DiagramCommandsBase.ToggleFontStrikethroughCommand);
-                x.ClearHotKeys(DiagramCommandsBase.ToggleSubordinatesVisibilityCommand);
-                x.ClearHotKeys(DiagramCommandsBase.PrintCommand);
-                x.ClearHotKeys(DiagramCommandsBase.QuickPrintCommand);
-                x.ClearHotKeys(DiagramCommandsBase.ShowPrintPreviewCommand); // Ctrl+P
-                x.ClearHotKeys(DiagramCommandsBase.SaveFileAsCommand);
-                x.ClearHotKeys(DiagramCommandsBase.SaveFileCommand);
-                x.ClearHotKeys(DiagramCommandsBase.SelectAllCommand);
-                x.ClearHotKeys(DiagramCommandsBase.ChangeConnectorTypeCommand);
-            });
-        }
+
 
         private void DiagramControl1_AddingNewItem(object sender, DiagramAddingNewItemEventArgs e)
         {

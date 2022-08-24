@@ -37,8 +37,35 @@ namespace DiagramDemo
             diagram.OptionsView.ShowPageBreaks = false; //Hide page division lines
             diagram.OptionsView.ScrollMargin = new Padding(int.MaxValue);//Will hide scroll bar in maximum mode
             diagram.OptionsBehavior.SelectionMode = DevExpress.Diagram.Core.SelectionMode.Single; //Single selection only
-         
+            DisableDiagramControlShortCuts(diagram);
             diagram.FitToDrawing(); //No scroll bar
+        }
+
+        public void DisableDiagramControlShortCuts(DiagramControl diagram)
+        {
+            diagram.Commands.RegisterHotKeys(x => {
+                x.ClearHotKeys(DiagramCommandsBase.UndoCommand);//Ctrl+Z
+                x.ClearHotKeys(DiagramCommandsBase.RedoCommand);
+                x.ClearHotKeys(DiagramCommandsBase.CopyCommand); //Ctrl+C
+                x.ClearHotKeys(DiagramCommandsBase.PasteCommand);//Ctrl+V
+                x.ClearHotKeys(DiagramCommandsBase.CutCommand);//Ctrl+X
+                x.ClearHotKeys(DiagramCommandsBase.NewFileCommand);//Ctrl+N
+                x.ClearHotKeys(DiagramCommandsBase.OpenFileCommand);//Ctrl+O
+                x.ClearHotKeys(DiagramCommandsBase.RotateCommand);//Ctrl+R
+                x.ClearHotKeys(DiagramCommandsBase.InsertImageCommand);
+                x.ClearHotKeys(DiagramCommandsBase.ToggleFontBoldCommand);//Ctrl+B
+                x.ClearHotKeys(DiagramCommandsBase.ToggleFontUnderlineCommand);//Ctrl+U
+                x.ClearHotKeys(DiagramCommandsBase.ToggleFontItalicCommand);//Ctrl+I
+                x.ClearHotKeys(DiagramCommandsBase.ToggleFontStrikethroughCommand);
+                x.ClearHotKeys(DiagramCommandsBase.ToggleSubordinatesVisibilityCommand);
+                x.ClearHotKeys(DiagramCommandsBase.PrintCommand);
+                x.ClearHotKeys(DiagramCommandsBase.QuickPrintCommand);
+                x.ClearHotKeys(DiagramCommandsBase.ShowPrintPreviewCommand); // Ctrl+P
+                x.ClearHotKeys(DiagramCommandsBase.SaveFileAsCommand);
+                x.ClearHotKeys(DiagramCommandsBase.SaveFileCommand);
+                x.ClearHotKeys(DiagramCommandsBase.SelectAllCommand);
+                x.ClearHotKeys(DiagramCommandsBase.ChangeConnectorTypeCommand);
+            });
         }
 
         private void PrepareItems()
