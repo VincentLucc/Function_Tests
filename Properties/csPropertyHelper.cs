@@ -291,6 +291,7 @@ namespace Properties
                     repositoryMacList.ShowFooter = false;//Hide "X" button in bottom
                     repositoryMacList.DataSource = csPublic.GetMacAddress().Values.ToList();
                     repositoryMacList.TextEditStyle = TextEditStyles.Standard; //Enable user edit value
+                    repositoryMacList.NullText = "";
                     row.Properties.RowEdit = repositoryMacList;
                     break;
 

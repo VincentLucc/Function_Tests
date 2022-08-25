@@ -593,6 +593,31 @@ namespace QuickTests
             int iNUmber= int.Parse(sNumber, System.Globalization.NumberStyles.HexNumber);
             
         }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            List<string> sList=new List<string>() {"111","2222","333","111","111" };
+            var list2= sList.Distinct();
+
+
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            Dictionary<int, string> dictTest = new Dictionary<int, string>();
+            for (int i = 0; i < 5; i++)
+            {
+                dictTest.Add(i,$"Value{i}");
+            }
+
+            dictTest.Add(-1,"Value3");
+
+            foreach (var item in dictTest)
+            {
+                Debug.WriteLine(item.Value);
+            }
+        }
     }
 
 

@@ -65,12 +65,15 @@ namespace QuickTests
             this.bTake = new System.Windows.Forms.Button();
             this.bArray = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button12 = new System.Windows.Forms.Button();
             this.bFirst = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.bHex2Int = new System.Windows.Forms.Button();
             this.bInt2Hex = new System.Windows.Forms.Button();
             this.bConvert = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button13 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabEvents.SuspendLayout();
@@ -78,6 +81,7 @@ namespace QuickTests
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -350,6 +354,7 @@ namespace QuickTests
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.bGroupList);
             this.tabPage1.Controls.Add(this.button11);
             this.tabPage1.Controls.Add(this.bSpeed);
@@ -460,6 +465,7 @@ namespace QuickTests
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button12);
             this.tabPage2.Controls.Add(this.bFirst);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
@@ -468,6 +474,16 @@ namespace QuickTests
             this.tabPage2.TabIndex = 3;
             this.tabPage2.Text = "LINQ";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(9, 36);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(145, 23);
+            this.button12.TabIndex = 1;
+            this.button12.Text = "List duplicate check";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // bFirst
             // 
@@ -530,6 +546,26 @@ namespace QuickTests
             this.textBox1.Size = new System.Drawing.Size(351, 23);
             this.textBox1.TabIndex = 0;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button13);
+            this.groupBox2.Location = new System.Drawing.Point(8, 314);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 100);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Dictionary";
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(6, 22);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(106, 23);
+            this.button13.TabIndex = 10;
+            this.button13.Text = "Dictionary Oder";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -550,6 +586,7 @@ namespace QuickTests
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -598,6 +635,9 @@ namespace QuickTests
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button bHex2Int;
         private System.Windows.Forms.Button bInt2Hex;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button13;
     }
 }
 

@@ -19,7 +19,7 @@ using DevExpress.XtraVerticalGrid.Rows;
 
 namespace Properties
 {
-    public partial class Form1 : XtraForm
+    public partial class FormMain : XtraForm
     {
         List<Student> sList;
         public csPropertyHelper propertyHelper { get; set; }
@@ -27,7 +27,7 @@ namespace Properties
 
 
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -68,41 +68,10 @@ namespace Properties
             lb1.DataSource = sList.Select(x => x.Name).ToList();
         }
 
+
         private void Pg1_CustomDrawRowHeaderCell(object sender, CustomDrawRowHeaderCellEventArgs e)
         {
             e.Appearance.TextOptions.HAlignment = HorzAlignment.Near; //Set captain alignment
-        }
-
-        private void Pg1_CustomRecordCellEdit(object sender, GetCustomRowCellEditEventArgs e)
-        {
-            Debug.WriteLine("Pg1_CustomRecordCellEdit");
-        }
-
-        /// <summary>
-        /// Use key down instead, key press trigger when press and realse combined
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Pg1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Debug.WriteLine("Pg1_KeyPress:" + (Keys)e.KeyChar);
-        }
-
-        /// <summary>
-        ///Notice, return(enter) key happens after validation and value change.
-        ///Rest of the key inputs happen before validation.
-        ///So a manual validate required when enter pressed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Pg1_EditorKeyPress(object sender, KeyPressEventArgs e)
-        {
-            Debug.WriteLine("Pg1_EditorKeyPress:" + (Keys)e.KeyChar);
-
-            //Press enter when inside the editor
-            //TriggerPropertyValidate(e.KeyChar == (char)Keys.Return);
-
-
         }
 
 
@@ -309,27 +278,6 @@ namespace Properties
             //Verify index
             if (lb1.SelectedIndex < 0) return;
             pg1.SelectedObject = sList[lb1.SelectedIndex];
-
-
-            //Get all rows
-            //var rows = GetAllPropertyRows();
-
-            ////Set editor
-            //foreach (var row in rows)
-            //{
-            //    var editor = GetEditorType(row);
-            //    if (editor == null) continue;
-
-            //    switch (editor.Editor)
-            //    {
-            //        case EditorType.Number:
-            //            RepositoryItemCalcEdit repositoryCalcEdit = new RepositoryItemCalcEdit();
-            //            row.Properties.RowEdit = repositoryCalcEdit;
-            //            break;
-            //        default:
-            //            break;
-            //    }
-            //}
             Debug.WriteLine(pg1.Rows.Count);
         }
 
@@ -360,9 +308,19 @@ namespace Properties
 
         private void bClear_Click(object sender, EventArgs e)
         {
+            ClearSelection();
+        }
+
+        private void bClearItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ClearSelection();
+        }
+
+        private void ClearSelection()
+        {
             //Not working while click this button when auto validation not started
             //Invalid value will be saved
-            if (pg1.SelectedObject!=null)
+            if (pg1.SelectedObject != null)
             {
                 ValidateChildren(); //Force validate
                 pg1.HideEditor(); // Clear invalid values 
