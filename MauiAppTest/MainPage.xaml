@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppTest.MainPage">
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem x:Name="menuClose" Text="Close" Clicked="menuClose_Clicked"/>
+        </MenuBarItem>
+        <MenuBarItem Text="Locations">
+            <MenuFlyoutSubItem Text="Change Location">
+                <MenuFlyoutItem Text="Redmond, USA"
+                                CommandParameter="Redmond" />
+                <MenuFlyoutItem Text="London, UK"
+                                CommandParameter="London" />
+                <MenuFlyoutItem Text="Berlin, DE"
+                                CommandParameter="Berlin"/>
+            </MenuFlyoutSubItem>
+            <MenuFlyoutItem Text="Add Location"/>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="5"
+            Padding="20,0">
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="50"/>
+
+            <Label
+                Text="Heading 1"
+                SemanticProperties.HeadingLevel="Level1"/>
+
+            <Label
+                Text="Normal Test"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"/>
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Click me center"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />
+
+            <HorizontalStackLayout>
+                <Button x:Name="bTestPage" Text="Test Page" Clicked="bTestPage_Clicked"></Button>
+                <Button x:Name="bTestAlert" Text="Alert" Clicked="bTestAlert_Clicked"></Button>
+                <Button x:Name="bSelectionSimple" Text="Show Selection" Clicked="bSelectionSimple_Clicked"></Button>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+
+
+</ContentPage>

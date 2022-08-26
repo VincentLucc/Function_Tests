@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColumnSelectionTest", "Test001\ColumnSelectionTest.csproj", "{BFD6EF80-2D59-4F13-985A-998D26D1D60C}"
 EndProject
@@ -134,6 +134,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevNav", "DevNav\DevNav.csproj", "{E1F7A0D1-6E1E-4902-BBA1-14AD949920F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevRibbon", "DevRibbon\DevRibbon.csproj", "{7A917238-1E05-45AE-A7DF-492B757EF9E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAppTest", "MauiAppTest\MauiAppTest.csproj", "{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1208,6 +1210,30 @@ Global
 		{7A917238-1E05-45AE-A7DF-492B757EF9E5}.Release|x64.Build.0 = Release|Any CPU
 		{7A917238-1E05-45AE-A7DF-492B757EF9E5}.Release|x86.ActiveCfg = Release|Any CPU
 		{7A917238-1E05-45AE-A7DF-492B757EF9E5}.Release|x86.Build.0 = Release|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Debug|arm64.Build.0 = Debug|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Debug|arm64.Deploy.0 = Debug|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Debug|x64.Build.0 = Debug|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Debug|x64.Deploy.0 = Debug|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Debug|x86.Build.0 = Debug|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Debug|x86.Deploy.0 = Debug|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Release|arm64.ActiveCfg = Release|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Release|arm64.Build.0 = Release|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Release|arm64.Deploy.0 = Release|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Release|x64.ActiveCfg = Release|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Release|x64.Build.0 = Release|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Release|x64.Deploy.0 = Release|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Release|x86.ActiveCfg = Release|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Release|x86.Build.0 = Release|Any CPU
+		{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}.Release|x86.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
