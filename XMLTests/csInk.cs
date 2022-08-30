@@ -17,10 +17,30 @@ namespace XMLTests
         public string COMPortName { get; set; }
         public List<InkDeviceConfig> DeviceCollection { get; set; }
 
+        public List<ModelInfo> ABC;
+
         public InkSysConfig()
         {
             DeviceCollection = new List<InkDeviceConfig>();
             CommInterface = _commInterfaces.Serial;
+            ABC = new List<ModelInfo>();
+            for (int i = 0; i < 3; i++)
+            {
+                string sName = "ABC" + i.ToString("D2");
+                ModelInfo modelInfo = new ModelInfo() { 
+                  Name = sName, Description=new List<int>() { 1,2}
+                };
+                ABC.Add(modelInfo);
+
+            }
+        }
+
+        public class ModelInfo
+        {
+            [XmlAttribute]
+            public string Name;
+            [XmlAttribute]
+            public List<int> Description;
         }
     }
 
