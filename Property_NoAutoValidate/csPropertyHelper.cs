@@ -3,6 +3,7 @@ using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Mask;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraVerticalGrid;
+using DevExpress.XtraVerticalGrid.Events;
 using DevExpress.XtraVerticalGrid.Rows;
 using System;
 using System.Collections.Generic;
@@ -36,8 +37,16 @@ namespace Property_NoAutoValidate
         {
             propertyGrid = propertyGridControl;        
             propertyGrid.ActiveViewType = PropertyGridView.Office;
+            propertyGrid.DataSourceChanged += PropertyGrid_DataSourceChanged;
         }
-        
+
+
+
+        private void PropertyGrid_DataSourceChanged(object sender, EventArgs e)
+        {
+            ReloadAll();
+        }
+
         public void ReloadAll()
         {
             //Null verification
@@ -59,6 +68,29 @@ namespace Property_NoAutoValidate
                 //Trigger custom setting event
                 var data = new RowEditorData(row, editorConfig);//prepare data
                 if (CustomSettingRowEditor != null) CustomSettingRowEditor(this, data);
+            }
+        }
+
+
+        /// <summary>
+        /// Only reload in specific situation when value been changed.
+        /// </summary>
+        /// <param name="e"></param>
+        public void ReloadBasedOnChangedValueType(CellValueChangedEventArgs e)
+        {
+            var propName = e.Row.Properties.FieldName;
+
+            //Special row need to be updated
+            //Feeder.FeederCount: value may be changed before validating been triggered, this will refershed updated value
+            string[] sUpdateList = new string[] { "PropertyOne"};
+
+            //Type change, list change, visible properties which needs to be refreshed
+            if (e.Row is PGridEnumEditorRow ||
+                e.Row is PGridBooleanEditorRow ||
+                e.Row.Properties.RowEdit is RepositoryItemLookUpEdit ||
+                sUpdateList.Contains(propName)) //Partial text match
+            {
+                ReloadAll();
             }
         }
 

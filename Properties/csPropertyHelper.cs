@@ -25,7 +25,7 @@ namespace Properties
     /// </summary>
     public class csPropertyHelper
     {
-        public PropertyGridControl PropertyGrid { get; set; }
+        public PropertyGridControl propertyGrid { get; set; }
 
         
 
@@ -35,22 +35,31 @@ namespace Properties
         public event EventHandler<RowEditorData> CustomSettingRowEditor;
         public csPropertyHelper(PropertyGridControl propertyGridControl)
         {
-            PropertyGrid = propertyGridControl;
+            propertyGrid = propertyGridControl;
+            propertyGrid.DataSourceChanged += PropertyGrid_DataSourceChanged;
+
             InitProperty();
         }
 
+
+
         public void InitProperty()
         {
-            PropertyGrid.ActiveViewType = PropertyGridView.Office;
+            propertyGrid.ActiveViewType = PropertyGridView.Office;
+        }
+
+        private void PropertyGrid_DataSourceChanged(object sender, EventArgs e)
+        {
+            ReloadAll();
         }
 
         public void ReloadAll()
         {
             //Null verification
-            if (PropertyGrid == null) return;
+            if (propertyGrid == null) return;
 
             //Create new rows before set properties
-            PropertyGrid.UpdateRows();
+            propertyGrid.UpdateRows();
 
             //Get all rows
             var rows = GetAllPropertyRows();
@@ -58,7 +67,7 @@ namespace Properties
             //Set editor
             foreach (var row in rows)
             {
-                var editor = GetEditorType(row, PropertyGrid.SelectedObject);
+                var editor = GetEditorType(row, propertyGrid.SelectedObject);
                 if (editor == null) continue;
                 SetRowEditor(row, editor);
 
@@ -81,7 +90,7 @@ namespace Properties
             List<BaseRow> rowsPre = new List<BaseRow>(); //Get all rows
             List<BaseRow> rowsPost = new List<BaseRow>(); //Required rows
 
-            foreach (var rowLevel1 in PropertyGrid.Rows)
+            foreach (var rowLevel1 in propertyGrid.Rows)
             {
                 rowsPre.Add(rowLevel1);
 
@@ -126,7 +135,7 @@ namespace Properties
         /// <param name="propertyRow"></param>
         /// <param name="PropertyObject">property grid selected object</param>
         /// <returns></returns>
-        private CustomEditorAttribute GetEditorType(BaseRow propertyRow, object PropertyObject)
+        public CustomEditorAttribute GetEditorType(BaseRow propertyRow, object PropertyObject)
         {
             //Init variables
             PropertyInfo propertyInfo = null;

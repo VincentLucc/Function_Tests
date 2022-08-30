@@ -91,7 +91,6 @@ namespace Property_NoAutoValidate
             this.pg1Right.OptionsCollectionEditor.AllowMultiSelect = false;
             this.pg1Right.Size = new System.Drawing.Size(287, 325);
             this.pg1Right.TabIndex = 0;
-            this.pg1Right.DataSourceChanged += new System.EventHandler(this.pg1_DataSourceChanged);
             this.pg1Right.Click += new System.EventHandler(this.propertyGridControl1_Click);
             // 
             // pd1Right

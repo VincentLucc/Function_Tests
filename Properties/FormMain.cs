@@ -46,7 +46,6 @@ namespace Properties
             //Init property grid events
             pg1.ValidatingEditor += Pg1_ValidatingEditor;
             pg1.CustomRecordCellEdit += PropertyGridControl1_CustomRecordCellEdit; //Constantly trigger!!!!, avoid
-            pg1.SelectedChanged += Pg1_SelectedChanged;
             pg1.CellValueChanged += Pg1_CellValueChanged; //Happen before Pg1_ValidatingEditor!!!
             pg1.EditorKeyDown += Pg1_EditorKeyDown;
             pg1.CustomDrawRowHeaderCell += Pg1_CustomDrawRowHeaderCell;
@@ -93,19 +92,7 @@ namespace Properties
             Debug.WriteLine($"Cell Value changed.{e.Value}");
         }
 
-        private void pg1_DataSourceChanged(object sender, EventArgs e)
-        {
-            Debug.WriteLine("SourceChange:" + pg1.Rows.Count);
 
-            //recreate all rows
-            propertyHelper.ReloadAll();
-        }
-
-
-        private void Pg1_SelectedChanged(object sender, SelectedChangedEventArgs e)
-        {
-            Debug.WriteLine($"SelectionChange:Row:{e.Row},Cell:{e.Cell},Record:{e.Record}");
-        }
 
         private void Pg1_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
         {

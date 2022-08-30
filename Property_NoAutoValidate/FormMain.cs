@@ -50,7 +50,6 @@ namespace Property_NoAutoValidate
             pg1Right.ValidatingEditor += Pg1_ValidatingEditor;
             pg1Right.InvalidValueException += Pg1_InvalidValueException;
             pg1Right.CustomRecordCellEdit += PropertyGridControl1_CustomRecordCellEdit; //Constantly trigger!!!!, avoid
-            pg1Right.SelectedChanged += Pg1_SelectedChanged;
             pg1Right.CustomPropertyDescriptors += Pg1_CustomPropertyDescriptors;
             pg1Right.CellValueChanged += Pg1_CellValueChanged; //Happen before Pg1_ValidatingEditor!!!
             pg1Right.EditorKeyDown += Pg1_EditorKeyDown;
@@ -190,20 +189,9 @@ namespace Property_NoAutoValidate
 
         private void Pg1_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
-            Debug.WriteLine($"Cell Value changed.{e.Value}");
-
-            //propertyHelper.ReloadAll();
+            propertyHelper.ReloadBasedOnChangedValueType(e);
         }
 
-        private void pg1_DataSourceChanged(object sender, EventArgs e)
-        {
-            Debug.WriteLine("SourceChange:" + pg1Right.Rows.Count);
-
-            //recreate all rows
-            //pg1.RetrieveFields(true);
-            propertyHelper.ReloadAll();
-
-        }
 
 
 
@@ -239,10 +227,6 @@ namespace Property_NoAutoValidate
         }
 
 
-        private void Pg1_SelectedChanged(object sender, SelectedChangedEventArgs e)
-        {
-            Debug.WriteLine($"SelectionChange:Row:{e.Row},Cell:{e.Cell},Record:{e.Record}");
-        }
 
         private void Pg1_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
         {

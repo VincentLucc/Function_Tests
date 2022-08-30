@@ -44,8 +44,6 @@ namespace Property_NoAutoValidate
 
         public float Max;
 
-
-
         /// <summary>
         /// Min/Max value enabled
         /// </summary>
