@@ -1,4 +1,5 @@
 ﻿
+using MauiAppTest.Pages;
 using Microsoft.Maui;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace MauiAppTest
     public class UIHelper
     {
         public static PageTest winTest;
+        public static AboutPage winAbout;
 
         public static void ShowTestWindow()
         {
@@ -20,6 +22,17 @@ namespace MauiAppTest
             }
 
             App.Current.MainPage = winTest;
+        }
+
+
+        public static void ShowAboutWindow()
+        {
+            if (winAbout==null)
+            {
+                winAbout = new AboutPage();
+            }
+
+            App.Current.MainPage = winAbout;
         }
     }
 

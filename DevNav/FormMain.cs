@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using DevExpress.XtraBars.Navigation;
+using DevExpress.XtraNavBar;
 
 
 public partial class FormMain : DevExpress.XtraEditors.XtraForm
@@ -33,6 +34,9 @@ public partial class FormMain : DevExpress.XtraEditors.XtraForm
         //Init variables
         //skinElement = SkinManager.GetSkinElement(SkinProductId.AccordionControl, UserLookAndFeel.Default, "Item");
         skinElement = SkinManager.GetSkinElement(SkinProductId.AccordionControl, this.LookAndFeel, "Item");
+
+        //Init tab controls
+        navBarControl2.Appearance.ItemHotTracked.Options.UseFont = true; //Hide underline
 
 
         //Init according control

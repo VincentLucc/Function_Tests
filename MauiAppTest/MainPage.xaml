@@ -46,8 +46,10 @@
 
             <HorizontalStackLayout>
                 <Button x:Name="bTestPage" Text="Test Page" Clicked="bTestPage_Clicked"></Button>
+                <Button x:Name="bAboutPage" Text="About Page" Clicked="bAboutPage_Clicked"></Button>
                 <Button x:Name="bTestAlert" Text="Alert" Clicked="bTestAlert_Clicked"></Button>
                 <Button x:Name="bSelectionSimple" Text="Show Selection" Clicked="bSelectionSimple_Clicked"></Button>
+                <Button x:Name="bOpenLink" Text="Open Link" Clicked="bOpenLink_Clicked"></Button>
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

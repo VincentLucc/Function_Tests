@@ -1,7 +1,6 @@
-﻿
-namespace FormLoad
+﻿namespace FormLoad
 {
-    partial class Form1
+    partial class FormEvent
     {
         /// <summary>
         /// Required designer variable.
@@ -29,22 +28,34 @@ namespace FormLoad
         /// </summary>
         private void InitializeComponent()
         {
+            this.bTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Form1
+            // bTest
+            // 
+            this.bTest.Location = new System.Drawing.Point(13, 13);
+            this.bTest.Name = "bTest";
+            this.bTest.Size = new System.Drawing.Size(75, 23);
+            this.bTest.TabIndex = 0;
+            this.bTest.Text = "Test";
+            this.bTest.UseVisualStyleBackColor = true;
+            this.bTest.Click += new System.EventHandler(this.bTest_Click);
+            // 
+            // FormEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.ClientSize = new System.Drawing.Size(225, 128);
+            this.Controls.Add(this.bTest);
+            this.Name = "FormEvent";
+            this.Text = "FormEvent";
+            this.Load += new System.EventHandler(this.FormEvent_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button bTest;
     }
 }
-

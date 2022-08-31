@@ -5,20 +5,19 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FormLoad
 {
-    public partial class Form1 : Form
+    public partial class FormLoadTest : Form
     {
-        public Form1()
+        public FormLoadTest()
         {
             InitializeComponent();
         }
 
-        private async void Form1_Load(object sender, EventArgs e)
+        private async void FormLoadTest_Load(object sender, EventArgs e)
         {
             for (int i = 0; i < 10; i++)
             {
@@ -29,7 +28,7 @@ namespace FormLoad
             this.Show();
         }
 
-        private void Form1_Shown(object sender, EventArgs e)
+        private void FormLoadTest_Shown(object sender, EventArgs e)
         {
             int x = 122;
             this.Hide();

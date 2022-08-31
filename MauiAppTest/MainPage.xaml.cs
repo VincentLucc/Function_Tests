@@ -1,4 +1,6 @@
-﻿namespace MauiAppTest
+﻿using Microsoft.Maui.ApplicationModel;
+
+namespace MauiAppTest
 {
     public partial class MainPage : ContentPage
     {
@@ -48,6 +50,16 @@
         private void menuClose_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        private void bAboutPage_Clicked(object sender, EventArgs e)
+        {
+            UIHelper.ShowAboutWindow();
+        }
+
+        private async void bOpenLink_Clicked(object sender, EventArgs e)
+        {
+            await Launcher.Default.OpenAsync("https://aka.ms/maui");
         }
     }
 }

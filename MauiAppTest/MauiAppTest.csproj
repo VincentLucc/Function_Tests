@@ -49,15 +49,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="PageTest.xaml.cs">
+	  <None Remove="Resources\Images\icon_about.png" />
+	  <None Remove="Resources\Images\icon_notes.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\PageTest.xaml.cs">
 	    <DependentUpon>PageTest.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="PageTest.xaml">
+	  <MauiXaml Update="Pages\AboutPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\PageTest.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Views\" />
 	</ItemGroup>
 
 </Project>
