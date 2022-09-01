@@ -1,4 +1,5 @@
 ﻿
+using DevExpress.LookAndFeel;
 using DevExpress.XtraTab;
 
 partial class FormMain
@@ -43,9 +44,18 @@ partial class FormMain
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
+            this.CustomNavBarControl = new DevExpress.XtraNavBar.NavBarControl();
+            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItem6 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem7 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItem8 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem9 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem10 = new DevExpress.XtraNavBar.NavBarItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
@@ -55,6 +65,7 @@ partial class FormMain
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl5 = new DevExpress.XtraLayout.LayoutControl();
+            this.bTestAccordion1 = new DevExpress.XtraEditors.SimpleButton();
             this.accordionControlEx1 = new DevNav.AccordionControlEx();
             this.accordionControlElement9 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement10 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -77,6 +88,7 @@ partial class FormMain
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -93,15 +105,6 @@ partial class FormMain
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.navBarControl2 = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarItem6 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem7 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarItem8 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem9 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem10 = new DevExpress.XtraNavBar.NavBarItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -110,9 +113,11 @@ partial class FormMain
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
             this.layoutControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomNavBarControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).BeginInit();
             this.layoutControl4.SuspendLayout();
@@ -129,11 +134,10 @@ partial class FormMain
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
             // 
             // navBarControl1
@@ -232,7 +236,7 @@ partial class FormMain
             // 
             // layoutControl3
             // 
-            this.layoutControl3.Controls.Add(this.navBarControl2);
+            this.layoutControl3.Controls.Add(this.CustomNavBarControl);
             this.layoutControl3.Controls.Add(this.navBarControl1);
             this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl3.Location = new System.Drawing.Point(0, 0);
@@ -241,6 +245,71 @@ partial class FormMain
             this.layoutControl3.Size = new System.Drawing.Size(775, 446);
             this.layoutControl3.TabIndex = 0;
             this.layoutControl3.Text = "layoutControl3";
+            // 
+            // CustomNavBarControl
+            // 
+            this.CustomNavBarControl.ActiveGroup = this.navBarGroup1;
+            this.CustomNavBarControl.Appearance.ItemHotTracked.Options.UseFont = true;
+            this.CustomNavBarControl.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
+            this.navBarGroup1,
+            this.navBarGroup3});
+            this.CustomNavBarControl.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
+            this.navBarItem6,
+            this.navBarItem7,
+            this.navBarItem8,
+            this.navBarItem9,
+            this.navBarItem10});
+            this.CustomNavBarControl.Location = new System.Drawing.Point(201, 16);
+            this.CustomNavBarControl.Name = "CustomNavBarControl";
+            this.CustomNavBarControl.OptionsNavPane.ExpandedWidth = 193;
+            this.CustomNavBarControl.Size = new System.Drawing.Size(193, 414);
+            this.CustomNavBarControl.TabIndex = 4;
+            this.CustomNavBarControl.Text = "navBarControl2";
+            this.CustomNavBarControl.View = new DevExpress.XtraNavBar.ViewInfo.SkinExplorerBarViewInfoRegistrator();
+            // 
+            // navBarGroup1
+            // 
+            this.navBarGroup1.Caption = "TCP Server";
+            this.navBarGroup1.Expanded = true;
+            this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem6),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem7)});
+            this.navBarGroup1.Name = "navBarGroup1";
+            // 
+            // navBarItem6
+            // 
+            this.navBarItem6.Caption = "192.168.0.1:1234";
+            this.navBarItem6.Name = "navBarItem6";
+            // 
+            // navBarItem7
+            // 
+            this.navBarItem7.Caption = "192.168.0.1:2222";
+            this.navBarItem7.Name = "navBarItem7";
+            // 
+            // navBarGroup3
+            // 
+            this.navBarGroup3.Caption = "TCP Client";
+            this.navBarGroup3.Expanded = true;
+            this.navBarGroup3.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem8),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem9),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem10)});
+            this.navBarGroup3.Name = "navBarGroup3";
+            // 
+            // navBarItem8
+            // 
+            this.navBarItem8.Caption = "192.168.1.1:2222";
+            this.navBarItem8.Name = "navBarItem8";
+            // 
+            // navBarItem9
+            // 
+            this.navBarItem9.Caption = "192.168.1.1:2223";
+            this.navBarItem9.Name = "navBarItem9";
+            // 
+            // navBarItem10
+            // 
+            this.navBarItem10.Caption = "192.168.1.1:2224";
+            this.navBarItem10.Name = "navBarItem10";
             // 
             // layoutControlGroup2
             // 
@@ -270,6 +339,15 @@ partial class FormMain
             this.emptySpaceItem2.Name = "emptySpaceItem2";
             this.emptySpaceItem2.Size = new System.Drawing.Size(365, 420);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.CustomNavBarControl;
+            this.layoutControlItem4.Location = new System.Drawing.Point(185, 0);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(199, 420);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
             // 
             // xtraTabPage2
             // 
@@ -360,6 +438,7 @@ partial class FormMain
             // 
             // layoutControl5
             // 
+            this.layoutControl5.Controls.Add(this.bTestAccordion1);
             this.layoutControl5.Controls.Add(this.accordionControlEx1);
             this.layoutControl5.Controls.Add(this.accordionControl1);
             this.layoutControl5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -370,13 +449,26 @@ partial class FormMain
             this.layoutControl5.TabIndex = 0;
             this.layoutControl5.Text = "layoutControl5";
             // 
+            // bTestAccordion1
+            // 
+            this.bTestAccordion1.Location = new System.Drawing.Point(16, 402);
+            this.bTestAccordion1.Name = "bTestAccordion1";
+            this.bTestAccordion1.Size = new System.Drawing.Size(265, 28);
+            this.bTestAccordion1.StyleController = this.layoutControl5;
+            this.bTestAccordion1.TabIndex = 8;
+            this.bTestAccordion1.Text = "Test";
+            this.bTestAccordion1.Click += new System.EventHandler(this.bTestAccordion1_Click);
+            // 
             // accordionControlEx1
             // 
+            this.accordionControlEx1.AllowItemSelection = true;
             this.accordionControlEx1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement9,
             this.accordionControlElement13});
             this.accordionControlEx1.Location = new System.Drawing.Point(287, 16);
             this.accordionControlEx1.Name = "accordionControlEx1";
+            this.accordionControlEx1.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.False;
+            this.accordionControlEx1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Fluent;
             this.accordionControlEx1.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Always;
             this.accordionControlEx1.Size = new System.Drawing.Size(284, 414);
             this.accordionControlEx1.StyleController = this.layoutControl5;
@@ -420,6 +512,7 @@ partial class FormMain
             this.accordionControlElement18});
             this.accordionControlElement13.Expanded = true;
             this.accordionControlElement13.Name = "accordionControlElement13";
+            this.accordionControlElement13.Tag = DevNav.AccordionControlEx.MouseEventType.Click;
             this.accordionControlElement13.Text = "Element13";
             // 
             // accordionControlElement16
@@ -447,8 +540,9 @@ partial class FormMain
             this.accordionControlElement2});
             this.accordionControl1.Location = new System.Drawing.Point(16, 16);
             this.accordionControl1.Name = "accordionControl1";
-            this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Fluent;
-            this.accordionControl1.Size = new System.Drawing.Size(265, 414);
+            this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
+            this.accordionControl1.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Always;
+            this.accordionControl1.Size = new System.Drawing.Size(265, 380);
             this.accordionControl1.StyleController = this.layoutControl5;
             this.accordionControl1.TabIndex = 0;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
@@ -516,7 +610,8 @@ partial class FormMain
             this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem3,
             this.layoutControlItem5,
-            this.emptySpaceItem4});
+            this.emptySpaceItem4,
+            this.layoutControlItem7});
             this.layoutControlGroup4.Name = "layoutControlGroup4";
             this.layoutControlGroup4.Size = new System.Drawing.Size(775, 446);
             this.layoutControlGroup4.TextVisible = false;
@@ -526,7 +621,7 @@ partial class FormMain
             this.layoutControlItem3.Control = this.accordionControl1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(271, 420);
+            this.layoutControlItem3.Size = new System.Drawing.Size(271, 386);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -546,6 +641,15 @@ partial class FormMain
             this.emptySpaceItem4.Name = "emptySpaceItem4";
             this.emptySpaceItem4.Size = new System.Drawing.Size(188, 420);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.bTestAccordion1;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 386);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(271, 34);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
             // 
             // Root
             // 
@@ -709,80 +813,6 @@ partial class FormMain
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 509);
             // 
-            // navBarControl2
-            // 
-            this.navBarControl2.ActiveGroup = this.navBarGroup1;
-            this.navBarControl2.Appearance.ItemHotTracked.Options.UseFont = true;
-            this.navBarControl2.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.navBarGroup1,
-            this.navBarGroup3});
-            this.navBarControl2.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
-            this.navBarItem6,
-            this.navBarItem7,
-            this.navBarItem8,
-            this.navBarItem9,
-            this.navBarItem10});
-            this.navBarControl2.Location = new System.Drawing.Point(201, 16);
-            this.navBarControl2.Name = "navBarControl2";
-            this.navBarControl2.OptionsNavPane.ExpandedWidth = 193;
-            this.navBarControl2.Size = new System.Drawing.Size(193, 414);
-            this.navBarControl2.TabIndex = 4;
-            this.navBarControl2.Text = "navBarControl2";
-            this.navBarControl2.View = new DevExpress.XtraNavBar.ViewInfo.SkinExplorerBarViewInfoRegistrator();
-            // 
-            // navBarGroup1
-            // 
-            this.navBarGroup1.Caption = "TCP Server";
-            this.navBarGroup1.Expanded = true;
-            this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem6),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem7)});
-            this.navBarGroup1.Name = "navBarGroup1";
-            // 
-            // navBarItem6
-            // 
-            this.navBarItem6.Caption = "192.168.0.1:1234";
-            this.navBarItem6.Name = "navBarItem6";
-            // 
-            // navBarItem7
-            // 
-            this.navBarItem7.Caption = "192.168.0.1:2222";
-            this.navBarItem7.Name = "navBarItem7";
-            // 
-            // navBarGroup3
-            // 
-            this.navBarGroup3.Caption = "TCP Client";
-            this.navBarGroup3.Expanded = true;
-            this.navBarGroup3.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem8),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem9),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem10)});
-            this.navBarGroup3.Name = "navBarGroup3";
-            // 
-            // navBarItem8
-            // 
-            this.navBarItem8.Caption = "192.168.1.1:2222";
-            this.navBarItem8.Name = "navBarItem8";
-            // 
-            // navBarItem9
-            // 
-            this.navBarItem9.Caption = "192.168.1.1:2223";
-            this.navBarItem9.Name = "navBarItem9";
-            // 
-            // navBarItem10
-            // 
-            this.navBarItem10.Caption = "192.168.1.1:2224";
-            this.navBarItem10.Name = "navBarItem10";
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.navBarControl2;
-            this.layoutControlItem4.Location = new System.Drawing.Point(185, 0);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(199, 420);
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextVisible = false;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -805,9 +835,11 @@ partial class FormMain
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
             this.layoutControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CustomNavBarControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).EndInit();
             this.layoutControl4.ResumeLayout(false);
@@ -824,11 +856,10 @@ partial class FormMain
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -897,7 +928,7 @@ partial class FormMain
     private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
-    private DevExpress.XtraNavBar.NavBarControl navBarControl2;
+    private DevExpress.XtraNavBar.NavBarControl CustomNavBarControl;
     private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
     private DevExpress.XtraNavBar.NavBarItem navBarItem6;
     private DevExpress.XtraNavBar.NavBarItem navBarItem7;
@@ -906,6 +937,8 @@ partial class FormMain
     private DevExpress.XtraNavBar.NavBarItem navBarItem9;
     private DevExpress.XtraNavBar.NavBarItem navBarItem10;
     private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+    private DevExpress.XtraEditors.SimpleButton bTestAccordion1;
+    private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
 }
 
 

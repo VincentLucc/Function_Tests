@@ -1,5 +1,6 @@
 ﻿using DevExpress.Skins;
 using DevExpress.XtraBars.Navigation;
+using DevExpress.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,8 @@ namespace DevNav
         public AccordionControlEx() : base()
         {
             this.ShowFilterControl = ShowFilterControl.Always; //Enable search function
+            this.AllowItemSelection = true;
+            this.OptionsMinimizing.AllowMinimizeMode = DefaultBoolean.False; //Hide the header area menu button
             this.ViewType = AccordionControlViewType.HamburgerMenu;
             skinElement = SkinManager.GetSkinElement(SkinProductId.AccordionControl, this.LookAndFeel, "Item"); //Must have to show selection paint
 

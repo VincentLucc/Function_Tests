@@ -16,6 +16,7 @@ namespace DevNav
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            DevExpress.UserSkins.BonusSkins.Register(); //Support bonus skin
             Application.Run(new FormMain());
         }
     }

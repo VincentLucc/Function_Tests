@@ -10,7 +10,9 @@ using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using DevExpress.XtraBars.Navigation;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraNavBar;
+using DevNav;
 
 
 public partial class FormMain : DevExpress.XtraEditors.XtraForm
@@ -23,30 +25,61 @@ public partial class FormMain : DevExpress.XtraEditors.XtraForm
 
     public FormMain()
     {
+
         InitializeComponent();
-        this.Load += FormMain_Load;
+        InitEvents();
+
     }
 
     private void FormMain_Load(object sender, EventArgs e)
     {
-        this.LookAndFeel.SetSkinStyle(SkinStyle.WXICompact, SkinSvgPalette.WXICompact.Clearness);
 
-        //Init variables
-        //skinElement = SkinManager.GetSkinElement(SkinProductId.AccordionControl, UserLookAndFeel.Default, "Item");
-        skinElement = SkinManager.GetSkinElement(SkinProductId.AccordionControl, this.LookAndFeel, "Item");
+        InitControls();
+    }
 
-        //Init tab controls
-        navBarControl2.Appearance.ItemHotTracked.Options.UseFont = true; //Hide underline
+    private void InitEvents()
+    {
+        //Forms
+        this.Load += FormMain_Load;
 
-
-        //Init according control
-        accordionControl1.AllowItemSelection = true;//Item can be selected
-        accordionControl1.ShowFilterControl = ShowFilterControl.Always; //Enable search function
+        //Normal according control
         accordionControl1.CustomDrawElement += AccordionControl1_CustomDrawElement;
         accordionControl1.MouseClick += AccordionControl1_MouseClick;
 
-        //Init customized accordiion control
+        //Custom according control
         accordionControlEx1.SelectedObjectChanged += AccordionControlEx1_SelectedObjectChanged;
+    }
+
+    private void InitControls()
+    {
+        //Set skins
+        //this.LookAndFeel.SetSkinStyle(SkinStyle.WXICompact, SkinSvgPalette.WXICompact.Clearness);
+        //skinElement = SkinManager.GetSkinElement(SkinProductId.AccordionControl, UserLookAndFeel.Default, "Item");
+        skinElement = SkinManager.GetSkinElement(SkinProductId.AccordionControl, accordionControl1.LookAndFeel, "Item");
+
+        //Init tab controls
+        CustomNavBarControl.Appearance.ItemHotTracked.Options.UseFont = true; //Hide underline
+
+        //Init normal according control
+        accordionControl1.AllowItemSelection = true;//Item can be selected
+        accordionControl1.ShowFilterControl = ShowFilterControl.Always; //Enable search function
+        accordionControl1.LookAndFeel.SkinName = "Metropolis";  //From "SkinStyle" class
+        accordionControl1.LookAndFeel.UseDefaultLookAndFeel = false;
+        DevExpress.LookAndFeel.LookAndFeelHelper.ForceDefaultLookAndFeelChanged();
+        accordionControl1.Refresh();
+        SkinStyle
+ 
+
+        //Init customized accordiion control
+        //Add group
+        var groupCategory = new AccordionControlElement() { Text = "Category", Style = ElementStyle.Group, Expanded = true };
+        accordionControlEx1.Elements.Add(groupCategory);
+        //Add items
+        var elementMachineSettings = new AccordionControlElement() { Text = "Test Object 1", Style = ElementStyle.Item, Tag = null };
+        groupCategory.Elements.Add(elementMachineSettings);
+        var elementProductionSettings = new AccordionControlElement() { Text = "Test Object 2", Style = ElementStyle.Item, Tag = null };
+        groupCategory.Elements.Add(elementProductionSettings);
+
 
     }
 
@@ -97,10 +130,6 @@ public partial class FormMain : DevExpress.XtraEditors.XtraForm
         }
     }
 
-
-
-
-
     private enum MouseEventType
     {
         Normal,
@@ -108,6 +137,10 @@ public partial class FormMain : DevExpress.XtraEditors.XtraForm
         Click
     }
 
-
+    private void bTestAccordion1_Click(object sender, EventArgs e)
+    {
+        Debug.WriteLine(accordionControl1.LookAndFeel);
+        accordionControl1.Refresh();
+    }
 }
 
