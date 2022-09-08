@@ -60,7 +60,6 @@ namespace Properties
             this.pg1.OptionsCollectionEditor.AllowMultiSelect = false;
             this.pg1.Size = new System.Drawing.Size(450, 322);
             this.pg1.TabIndex = 0;
-            this.pg1.DataSourceChanged += new System.EventHandler(this.pg1_DataSourceChanged);
             this.pg1.Click += new System.EventHandler(this.propertyGridControl1_Click);
             // 
             // panel1

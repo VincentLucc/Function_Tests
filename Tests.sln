@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_QuickTests", "QuickTests\_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagramDemo", "Diagram\DiagramDemo.csproj", "{D3CAD4F6-8E90-42F2-B8F6-A571B74C714D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Properties", "Properties\Properties.csproj", "{A22BAB32-1A9A-46AD-AC68-46226977AD0A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertiesDev19.1", "Properties\PropertiesDev19.1.csproj", "{A22BAB32-1A9A-46AD-AC68-46226977AD0A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Docking", "Docking\Docking.csproj", "{902AA23E-66AB-49C1-9F59-D217B94F9ABC}"
 EndProject
@@ -39,7 +39,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditForm", "EditForm\EditFo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunnyUI", "SunnyUI\SunnyUI.csproj", "{24386CDB-CBBC-43FD-8FBA-419244D2B860}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Property_NoAutoValidate", "Property_NoAutoValidate\Property_NoAutoValidate.csproj", "{078251D6-05C4-4368-8888-5BEC6E599ADF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Property_NoAutoValidate_Dev19.1", "Property_NoAutoValidate\Property_NoAutoValidate_Dev19.1.csproj", "{078251D6-05C4-4368-8888-5BEC6E599ADF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dev_GridControl", "Dev_GridControl\Dev_GridControl.csproj", "{E2E8ED54-CC91-4BF7-8CD1-1F151E1B641D}"
 EndProject
@@ -136,6 +136,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiAppTest", "MauiAppTest\MauiAppTest.csproj", "{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormDrag", "FormDrag\FormDrag.csproj", "{78F3D453-479E-40E1-B766-ED257D75F4A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrollableControl", "ScrollableControl\ScrollableControl.csproj", "{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1234,6 +1236,22 @@ Global
 		{78F3D453-479E-40E1-B766-ED257D75F4A5}.Release|x64.Build.0 = Release|Any CPU
 		{78F3D453-479E-40E1-B766-ED257D75F4A5}.Release|x86.ActiveCfg = Release|Any CPU
 		{78F3D453-479E-40E1-B766-ED257D75F4A5}.Release|x86.Build.0 = Release|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Debug|arm64.Build.0 = Debug|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Debug|x64.Build.0 = Debug|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Debug|x86.Build.0 = Debug|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Release|arm64.ActiveCfg = Release|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Release|arm64.Build.0 = Release|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Release|x64.ActiveCfg = Release|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Release|x64.Build.0 = Release|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Release|x86.ActiveCfg = Release|Any CPU
+		{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

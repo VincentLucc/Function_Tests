@@ -51,6 +51,8 @@ namespace Properties
         NumberSpin,
         Text,
         FolderEditor,
+        ButtonEdit,
+        ButtonEditHide,
         ToggleSwitch,
         ToggleSwitchList,
         MacList
@@ -64,7 +66,7 @@ namespace Properties
     {
         public EditorType Editor;
         public bool IsCustomMaskEnable;
-        public DevExpress.XtraEditors.Mask.MaskType MaskType;
+        public MaskType MaskType;
         /// <summary>
         /// Define input masks for auto input validation
         /// </summary>
@@ -109,8 +111,7 @@ namespace Properties
             EnableRangeLimit = true;
         }
 
-        public CustomEditorAttribute(EditorType editorType, bool enableCustomMask,
-     MaskType maskType = MaskType.Custom, string maskString = "")
+        public CustomEditorAttribute(EditorType editorType, bool enableCustomMask, MaskType maskType = MaskType.Custom, string maskString = "")
         {
             Editor = editorType;
             IsCustomMaskEnable = enableCustomMask;

@@ -27,7 +27,7 @@ namespace Properties
     {
         public PropertyGridControl propertyGrid { get; set; }
 
-        
+
 
         /// <summary>
         /// Trigger when setting row editor for custom editor set outside the class if needed
@@ -127,8 +127,8 @@ namespace Properties
             return rowsPost;
         }
 
- 
- 
+
+
         /// <summary>
         /// Get attribute type of a property row
         /// </summary>
@@ -258,9 +258,25 @@ namespace Properties
                     row.Properties.RowEdit = repositorySpinEdit;
                     break;
 
+                case EditorType.ButtonEdit:
+                    RepositoryItemButtonEdit buttonEdit = new RepositoryItemButtonEdit();
+                    buttonEdit.TextEditStyle = TextEditStyles.DisableTextEditor;
+                    buttonEdit.NullText = ""; //Null display
+                    buttonEdit.CustomDisplayText += ButtonEdit_CustomDisplayText; ; //Clear display
+                    row.Properties.RowEdit = buttonEdit;
+                    break;
+
+                case EditorType.ButtonEditHide:
+                    RepositoryItemButtonEdit buttonEditHide = new RepositoryItemButtonEdit();
+                    buttonEditHide.TextEditStyle = TextEditStyles.HideTextEditor;
+                    buttonEditHide.NullText = ""; //Null display
+                    buttonEditHide.CustomDisplayText += ButtonEdit_CustomDisplayText; ; //Clear display
+                    row.Properties.RowEdit = buttonEditHide;
+                    break;
+
                 case EditorType.Text:
                     RepositoryItemTextEdit textEdit_Text = new RepositoryItemTextEdit();
-                    
+
                     if (editor.IsCustomMaskEnable)
                     {
                         textEdit_Text.Mask.UseMaskAsDisplayFormat = true;
@@ -270,7 +286,7 @@ namespace Properties
                         textEdit_Text.EditValueChangedDelay = 2000;
                     }
                     row.Properties.RowEdit = textEdit_Text;
-               
+
                     break;
 
                 case EditorType.FolderEditor:
@@ -309,7 +325,10 @@ namespace Properties
             }
         }
 
-
+        private void ButtonEdit_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
+        {
+            e.DisplayText = "";
+        }
 
         private void FolderButtonEditor_ButtonClick(object sender, ButtonPressedEventArgs e)
         {

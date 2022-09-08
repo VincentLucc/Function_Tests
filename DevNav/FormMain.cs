@@ -67,7 +67,6 @@ public partial class FormMain : DevExpress.XtraEditors.XtraForm
         accordionControl1.LookAndFeel.UseDefaultLookAndFeel = false;
         DevExpress.LookAndFeel.LookAndFeelHelper.ForceDefaultLookAndFeelChanged();
         accordionControl1.Refresh();
-        SkinStyle
  
 
         //Init customized accordiion control

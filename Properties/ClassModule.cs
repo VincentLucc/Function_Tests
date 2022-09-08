@@ -17,7 +17,7 @@ using DevExpress.XtraEditors.Mask;
 
 namespace Properties
 {
-    class Student
+  public  class Student
     {
         [Category("Test")]
         [DisplayName("sName"), Description("Description Method 1 Name of this student.")]
@@ -59,6 +59,20 @@ namespace Properties
         [DisplayName("Text4 Numeric Mask"), Description("Text editor with Numeric Mask")]
         public string Text4Num { get; set; }
 
+        [CustomEditor(EditorType.ButtonEdit)]
+        [Category("Test")]
+        [DisplayName("Button Edit"), Description("Button Edit General")]
+        public string ButtonEditGeneral { get; set; }
+
+        [CustomEditor(EditorType.ButtonEdit)]
+        [Category("Test")]
+        [DisplayName("Button Edit Class"), Description("Button Edit object define as a class")]
+        public Student ButtonEditClass { get; set; }
+
+        [CustomEditor(EditorType.ButtonEditHide)]
+        [Category("Test")]
+        [DisplayName("Button Edit Hide"), Description("Button Edit Hide")]
+        public string ButtonEditHide { get; set; }
 
         [TypeConverter(typeof(ExpandableObjectConverter))] //Show sub class properties
         [ExpandableRowSettings(false)] //Hide class root editor
@@ -107,6 +121,14 @@ namespace Properties
         [CustomEditor(EditorType.Number)]
         public int CertificateID { get; set; }
         public string Name { get; set; }
+
+        [DisplayName("ButtonEdit"), Description("ButtonEdit")]
+        [CustomEditor(EditorType.ButtonEdit)]
+        public string ButtonEdit { get; set; }
+
+        [DisplayName("ButtonEdit Class"), Description("ButtonEdit class")]
+        [CustomEditor(EditorType.ButtonEdit)]
+        public Student ButtonEditClass { get; set; }
 
         public bool IsOK { get; set; }
     }
