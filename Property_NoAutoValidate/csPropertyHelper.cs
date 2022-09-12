@@ -49,26 +49,33 @@ namespace Property_NoAutoValidate
 
         public void ReloadAll()
         {
-            //Null verification
-            if (propertyGrid == null) return;
-
-            //Create new rows before set properties
-            propertyGrid.UpdateRows();
-
-            //Get all rows
-            var rows = GetAllPropertyRows();
-
-            //Set editor
-            foreach (var row in rows)
+            try
             {
-                var editorConfig = GetEditorConfig(row, propertyGrid.SelectedObject);
-                if (editorConfig == null) continue;
-                SetRowEditor(row, editorConfig);
+                //Null verification
+                if (propertyGrid == null) return;
 
-                //Trigger custom setting event
-                var data = new RowEditorData(row, editorConfig);//prepare data
-                if (CustomSettingRowEditor != null) CustomSettingRowEditor(this, data);
+                //Create new rows before set properties
+                propertyGrid.UpdateRows();
+
+                //Get all rows
+                var rows = GetAllPropertyRows();
+
+                //Set editor
+                foreach (var row in rows)
+                {
+                    var editorConfig = GetEditorConfig(row, propertyGrid.SelectedObject);
+                    if (editorConfig == null) continue;
+                    SetRowEditor(row, editorConfig);
+
+                    //Trigger custom setting event
+                    var data = new RowEditorData(row, editorConfig);//prepare data
+                    if (CustomSettingRowEditor != null) CustomSettingRowEditor(this, data);
+                }
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("PropertyHelper.ReloadAll:\r\n" + ex.Message);
+            }           
         }
 
 

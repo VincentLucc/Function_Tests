@@ -618,6 +618,19 @@ namespace QuickTests
                 Debug.WriteLine(item.Value);
             }
         }
+
+        private void bSubString_Click(object sender, EventArgs e)
+        {
+            string sTest = "BC";
+            string s1 = sTest.Substring(1, sTest.Length-2); //Substring length can be 0
+        }
+
+        private void bStringSplit_Click(object sender, EventArgs e)
+        {
+            //Split input can be empty, but not null
+            string sTest = "";
+            var result = sTest.Split(new string[] { "|" }, StringSplitOptions.None);
+        }
     }
 
 

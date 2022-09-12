@@ -58,27 +58,61 @@ namespace Properties
             //Null verification
             if (propertyGrid == null) return;
 
-            //Create new rows before set properties
-            propertyGrid.UpdateRows();
-
-            //Get all rows
-            var rows = GetAllPropertyRows();
-
-            //Set editor
-            foreach (var row in rows)
+            try
             {
-                var editor = GetEditorType(row, propertyGrid.SelectedObject);
-                if (editor == null) continue;
-                SetRowEditor(row, editor);
+                propertyGrid.BeginUpdate();
 
-                //Trigger custom setting event           
-                if (CustomSettingRowEditor != null)
+                //Create new rows before set properties
+                propertyGrid.UpdateRows();
+
+                //Get all rows
+                var rows = GetAllPropertyRows();
+
+                //Set editor
+                foreach (var row in rows)
                 {
-                    var data = new RowEditorData(row, editor);//prepare data
-                    CustomSettingRowEditor(this, data);
-                }
+                    var editor = GetEditorType(row, propertyGrid.SelectedObject);
+                    if (editor == null) continue;
+                    SetRowEditor(row, editor);
+
+                    //Trigger custom setting event           
+                    if (CustomSettingRowEditor != null)
+                    {
+                        var data = new RowEditorData(row, editor);//prepare data
+                        CustomSettingRowEditor(this, data);
+                    }
+
+                    //set row visibility
+                    SetRowVisibility(row, editor);
+                }          
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("PropertyHelper.ReloadAll:\r\n" + ex.Message);
+            }
+
+           propertyGrid.EndUpdate();
         }
+
+        private void SetRowVisibility(BaseRow row, CustomEditorAttribute editor)
+        {
+            SetStudentVisibility(row);        
+        }
+
+        private void SetStudentVisibility(BaseRow row)
+        {
+            //check current selection
+            var selectedObject = propertyGrid.SelectedObject;
+            if (!(selectedObject is Student)) return;
+
+            //Prepare variable
+            var student = propertyGrid.SelectedObject as Student;
+            string sName = row.Properties.FieldName;
+
+
+        }
+
+
 
         /// <summary>
         /// Get all relavent rows from property grid

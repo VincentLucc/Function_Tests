@@ -43,6 +43,7 @@ namespace QuickTests
             this.bEventsInit = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.bSubString = new System.Windows.Forms.Button();
             this.bLEDRed = new System.Windows.Forms.Button();
             this.bLEDGreen = new System.Windows.Forms.Button();
             this.bIntShift = new System.Windows.Forms.Button();
@@ -55,6 +56,8 @@ namespace QuickTests
             this.tbName = new System.Windows.Forms.TextBox();
             this.bSetName = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button13 = new System.Windows.Forms.Button();
             this.bGroupList = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.bSpeed = new System.Windows.Forms.Button();
@@ -72,16 +75,17 @@ namespace QuickTests
             this.bInt2Hex = new System.Windows.Forms.Button();
             this.bConvert = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button13 = new System.Windows.Forms.Button();
+            this.bStringSplit = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.tabEvents.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -220,6 +224,7 @@ namespace QuickTests
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.groupBox3);
             this.tabGeneral.Controls.Add(this.bLEDRed);
             this.tabGeneral.Controls.Add(this.bLEDGreen);
             this.tabGeneral.Controls.Add(this.bIntShift);
@@ -242,6 +247,16 @@ namespace QuickTests
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // bSubString
+            // 
+            this.bSubString.Location = new System.Drawing.Point(6, 22);
+            this.bSubString.Name = "bSubString";
+            this.bSubString.Size = new System.Drawing.Size(75, 23);
+            this.bSubString.TabIndex = 15;
+            this.bSubString.Text = "SubString";
+            this.bSubString.UseVisualStyleBackColor = true;
+            this.bSubString.Click += new System.EventHandler(this.bSubString_Click);
             // 
             // bLEDRed
             // 
@@ -372,6 +387,26 @@ namespace QuickTests
             this.tabPage1.Text = "Collections";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button13);
+            this.groupBox2.Location = new System.Drawing.Point(8, 314);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 100);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Dictionary";
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(6, 22);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(106, 23);
+            this.button13.TabIndex = 10;
+            this.button13.Text = "Dictionary Oder";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // bGroupList
             // 
@@ -546,25 +581,26 @@ namespace QuickTests
             this.textBox1.Size = new System.Drawing.Size(351, 23);
             this.textBox1.TabIndex = 0;
             // 
-            // groupBox2
+            // bStringSplit
             // 
-            this.groupBox2.Controls.Add(this.button13);
-            this.groupBox2.Location = new System.Drawing.Point(8, 314);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Dictionary";
+            this.bStringSplit.Location = new System.Drawing.Point(6, 51);
+            this.bStringSplit.Name = "bStringSplit";
+            this.bStringSplit.Size = new System.Drawing.Size(75, 23);
+            this.bStringSplit.TabIndex = 16;
+            this.bStringSplit.Text = "Split";
+            this.bStringSplit.UseVisualStyleBackColor = true;
+            this.bStringSplit.Click += new System.EventHandler(this.bStringSplit_Click);
             // 
-            // button13
+            // groupBox3
             // 
-            this.button13.Location = new System.Drawing.Point(6, 22);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(106, 23);
-            this.button13.TabIndex = 10;
-            this.button13.Text = "Dictionary Oder";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.groupBox3.Controls.Add(this.bSubString);
+            this.groupBox3.Controls.Add(this.bStringSplit);
+            this.groupBox3.Location = new System.Drawing.Point(21, 235);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 100);
+            this.groupBox3.TabIndex = 17;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "String";
             // 
             // FormMain
             // 
@@ -583,10 +619,11 @@ namespace QuickTests
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -638,6 +675,9 @@ namespace QuickTests
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button bSubString;
+        private System.Windows.Forms.Button bStringSplit;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
 
