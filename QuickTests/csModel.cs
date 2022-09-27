@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Text;
 
@@ -9,6 +11,7 @@ namespace QuickTests
     {
     }
 
+    [Serializable]
     public class Student
     {
         public int Age { get; set; }
@@ -94,5 +97,17 @@ namespace QuickTests
     {
         public int DeviceName { get; set; }
         public bool Connected { get; set; }
+    }
+
+    public enum SampleEnumTest
+    {
+        [Description("ABC DESC")]
+        ABC,
+        [Description("DEF DESC")]
+        DEF,
+        [Description("GHJ DESC")]
+        GHJ,
+        [Display(Name ="dfsdf")]
+        MNX
     }
 }

@@ -37,6 +37,7 @@ namespace Property_NoAutoValidate
         {
             propertyGrid = propertyGridControl;        
             propertyGrid.ActiveViewType = PropertyGridView.Office;
+            propertyGrid.OptionsBehavior.PropertySort = DevExpress.XtraVerticalGrid.PropertySort.NoSort; //Disable auto sort
             propertyGrid.DataSourceChanged += PropertyGrid_DataSourceChanged;
         }
 

@@ -95,12 +95,10 @@ public partial class FormMain : DevExpress.XtraEditors.XtraForm
             var element = hitInfo.ItemInfo.Element;
             element.Tag = MouseEventType.Click;
 
-
             if (clickedGroupElement != null && clickedGroupElement != element)
             {
                 clickedGroupElement.Tag = MouseEventType.Normal;
             }
-
 
             if (hitInfo.HitTest == AccordionControlHitTest.Group)
             {

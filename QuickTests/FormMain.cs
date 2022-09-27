@@ -631,6 +631,21 @@ namespace QuickTests
             string sTest = "";
             var result = sTest.Split(new string[] { "|" }, StringSplitOptions.None);
         }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            Student s1 = new Student() { Name = "123" };
+            var s2 = s1.DeepCopyBySerialize();
+            s1.Name = "333";
+            var xxx = s2.Name;
+        }
+
+        private void bEnum01_Click(object sender, EventArgs e)
+        {
+            SampleEnumTest test01= SampleEnumTest.DEF;
+
+           var result= EnumHelper<SampleEnumTest>.GetDescriptions();
+        }
     }
 
 
