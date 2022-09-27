@@ -1,6 +1,4 @@
 ﻿
-namespace RangeControls
-{
     partial class RangeUserControl
     {
         /// <summary> 
@@ -42,30 +40,28 @@ namespace RangeControls
             DevExpress.XtraEditors.Repository.TrackBarLabel trackBarLabel11 = new DevExpress.XtraEditors.Repository.TrackBarLabel();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.MaxLabelControl = new DevExpress.XtraEditors.LabelControl();
-            this.MinLabelControl = new DevExpress.XtraEditors.LabelControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.MaxTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.MinLabelControl = new DevExpress.XtraEditors.LabelControl();
             this.MinTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.rangeTrackBarControl1 = new DevExpress.XtraEditors.RangeTrackBarControl();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rangeTrackBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rangeTrackBarControl1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -79,88 +75,43 @@ namespace RangeControls
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(323, 168);
+            this.layoutControl1.Size = new System.Drawing.Size(323, 109);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // MaxLabelControl
             // 
             this.MaxLabelControl.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.MaxLabelControl.Location = new System.Drawing.Point(158, 120);
+            this.MaxLabelControl.Location = new System.Drawing.Point(155, 80);
             this.MaxLabelControl.Name = "MaxLabelControl";
             this.MaxLabelControl.Size = new System.Drawing.Size(24, 13);
             this.MaxLabelControl.StyleController = this.layoutControl1;
             this.MaxLabelControl.TabIndex = 9;
             this.MaxLabelControl.Text = "Max:";
             // 
+            // MaxTextEdit
+            // 
+            this.MaxTextEdit.Location = new System.Drawing.Point(183, 77);
+            this.MaxTextEdit.Name = "MaxTextEdit";
+            this.MaxTextEdit.Size = new System.Drawing.Size(128, 20);
+            this.MaxTextEdit.StyleController = this.layoutControl1;
+            this.MaxTextEdit.TabIndex = 8;
+            this.MaxTextEdit.EditValueChanged += new System.EventHandler(this.MaxTextEdit_EditValueChanged);
+            // 
             // MinLabelControl
             // 
-            this.MinLabelControl.Location = new System.Drawing.Point(16, 120);
+            this.MinLabelControl.Location = new System.Drawing.Point(12, 80);
             this.MinLabelControl.Name = "MinLabelControl";
             this.MinLabelControl.Size = new System.Drawing.Size(20, 13);
             this.MinLabelControl.StyleController = this.layoutControl1;
             this.MinLabelControl.TabIndex = 7;
             this.MinLabelControl.Text = "Min:";
             // 
-            // Root
-            // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
-            this.layoutControlItem3,
-            this.layoutControlItem2,
-            this.layoutControlItem4,
-            this.layoutControlItem5,
-            this.emptySpaceItem1});
-            this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(323, 168);
-            this.Root.TextVisible = false;
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.layoutControlItem4.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.layoutControlItem4.Control = this.MinLabelControl;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 97);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(26, 34);
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextVisible = false;
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.layoutControlItem5.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.layoutControlItem5.Control = this.MaxLabelControl;
-            this.layoutControlItem5.Location = new System.Drawing.Point(142, 97);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(30, 34);
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem5.TextVisible = false;
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 131);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(297, 11);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // MaxTextEdit
-            // 
-            this.MaxTextEdit.Location = new System.Drawing.Point(188, 113);
-            this.MaxTextEdit.Name = "MaxTextEdit";
-            this.MaxTextEdit.Size = new System.Drawing.Size(119, 28);
-            this.MaxTextEdit.StyleController = this.layoutControl1;
-            this.MaxTextEdit.TabIndex = 8;
-            this.MaxTextEdit.EditValueChanged += new System.EventHandler(this.MaxTextEdit_EditValueChanged);
-            // 
             // MinTextEdit
             // 
-            this.MinTextEdit.Location = new System.Drawing.Point(42, 113);
+            this.MinTextEdit.Location = new System.Drawing.Point(36, 77);
             this.MinTextEdit.Name = "MinTextEdit";
-            this.MinTextEdit.Size = new System.Drawing.Size(110, 28);
+            this.MinTextEdit.Size = new System.Drawing.Size(115, 20);
             this.MinTextEdit.StyleController = this.layoutControl1;
             this.MinTextEdit.TabIndex = 6;
             this.MinTextEdit.EditValueChanged += new System.EventHandler(this.MinTextEdit_EditValueChanged);
@@ -168,7 +119,7 @@ namespace RangeControls
             // rangeTrackBarControl1
             // 
             this.rangeTrackBarControl1.EditValue = new DevExpress.XtraEditors.Repository.TrackBarRange(30, 70);
-            this.rangeTrackBarControl1.Location = new System.Drawing.Point(16, 35);
+            this.rangeTrackBarControl1.Location = new System.Drawing.Point(12, 28);
             this.rangeTrackBarControl1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.rangeTrackBarControl1.Name = "rangeTrackBarControl1";
             this.rangeTrackBarControl1.Properties.LabelAppearance.Options.UseTextOptions = true;
@@ -209,20 +160,33 @@ namespace RangeControls
             trackBarLabel11});
             this.rangeTrackBarControl1.Properties.Maximum = 255;
             this.rangeTrackBarControl1.Properties.Minimum = 1;
-            this.rangeTrackBarControl1.Properties.ShowLabels = true;
             this.rangeTrackBarControl1.Properties.ShowValueToolTip = true;
             this.rangeTrackBarControl1.Properties.TickFrequency = 25;
-            this.rangeTrackBarControl1.Size = new System.Drawing.Size(291, 72);
+            this.rangeTrackBarControl1.Size = new System.Drawing.Size(299, 45);
             this.rangeTrackBarControl1.StyleController = this.layoutControl1;
             this.rangeTrackBarControl1.TabIndex = 4;
             this.rangeTrackBarControl1.Value = new DevExpress.XtraEditors.Repository.TrackBarRange(30, 70);
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem3,
+            this.layoutControlItem2,
+            this.layoutControlItem4,
+            this.layoutControlItem5});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(323, 109);
+            this.Root.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.rangeTrackBarControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(297, 97);
+            this.layoutControlItem1.Size = new System.Drawing.Size(303, 65);
             this.layoutControlItem1.Text = "Scale Range";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(59, 13);
@@ -230,9 +194,9 @@ namespace RangeControls
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.MinTextEdit;
-            this.layoutControlItem3.Location = new System.Drawing.Point(26, 97);
+            this.layoutControlItem3.Location = new System.Drawing.Point(24, 65);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(116, 34);
+            this.layoutControlItem3.Size = new System.Drawing.Size(119, 24);
             this.layoutControlItem3.Text = "Max:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
@@ -240,11 +204,33 @@ namespace RangeControls
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.MaxTextEdit;
-            this.layoutControlItem2.Location = new System.Drawing.Point(172, 97);
+            this.layoutControlItem2.Location = new System.Drawing.Point(171, 65);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(125, 34);
+            this.layoutControlItem2.Size = new System.Drawing.Size(132, 24);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.layoutControlItem4.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.layoutControlItem4.Control = this.MinLabelControl;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 65);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(24, 24);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.ContentHorzAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.layoutControlItem5.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.layoutControlItem5.Control = this.MaxLabelControl;
+            this.layoutControlItem5.Location = new System.Drawing.Point(143, 65);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(28, 24);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
             // 
             // RangeUserControl
             // 
@@ -252,22 +238,20 @@ namespace RangeControls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.layoutControl1);
             this.Name = "RangeUserControl";
-            this.Size = new System.Drawing.Size(323, 168);
+            this.Size = new System.Drawing.Size(323, 109);
             this.Load += new System.EventHandler(this.RangeUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            this.layoutControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rangeTrackBarControl1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rangeTrackBarControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -286,6 +270,5 @@ namespace RangeControls
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
     }
-}
+

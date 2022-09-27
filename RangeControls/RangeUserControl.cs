@@ -12,8 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RangeControls
-{
+
     public partial class RangeUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         public int iLowLimit { get; set; }
@@ -56,9 +55,19 @@ namespace RangeControls
             MaxTextEdit.Text = _iHighValue.ToString();
         }
 
+        public void HideLabels(int iCount)
+        {
+            rangeTrackBarControl1.Properties.Labels.Clear();
+            rangeTrackBarControl1.Properties.ShowLabels = false;
+            int iRange = iHighLimit - iLowLimit;
+            float fInterval = iRange / (iCount - 1);
+            rangeTrackBarControl1.Properties.TickFrequency = (int)fInterval;
+        }
+
         public void CreateLabels(int iCount)
         {
             rangeTrackBarControl1.Properties.Labels.Clear();
+            rangeTrackBarControl1.Properties.ShowLabels = true;
             int iRange = iHighLimit - iLowLimit;
             float fInterval = iRange / (iCount-1);
             rangeTrackBarControl1.Properties.TickFrequency = (int)fInterval; 
@@ -166,4 +175,4 @@ namespace RangeControls
             }
         }
     }
-}
+

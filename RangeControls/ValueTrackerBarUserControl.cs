@@ -10,8 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RangeControls
-{
+
     public partial class ValueTrackerBarUserControl : UserControl
     {
         public int iLowLimit = 0;
@@ -86,4 +85,4 @@ namespace RangeControls
             }
         }
     }
-}
+
