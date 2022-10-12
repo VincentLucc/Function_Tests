@@ -15,6 +15,7 @@ namespace Dev_GaugeControl
         public ucGauge1()
         {
             InitializeComponent();
+         
         }
     }
 }
