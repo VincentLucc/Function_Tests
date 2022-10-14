@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Property_Normal_Dev191.Properties {
+namespace Property_Normal_221.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

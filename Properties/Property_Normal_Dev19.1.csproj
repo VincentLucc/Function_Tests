@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A22BAB32-1A9A-46AD-AC68-46226977AD0A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Properties</RootNamespace>
-    <AssemblyName>Properties</AssemblyName>
+    <RootNamespace>Property_Normal_Dev191</RootNamespace>
+    <AssemblyName>Property_Normal_Dev191</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

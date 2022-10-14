@@ -50,5 +50,10 @@ namespace HalconTest
             watch.Stop();
             Debug.WriteLine("Htuple convert use:" + watch.ElapsedMilliseconds);
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
