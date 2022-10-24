@@ -17,7 +17,7 @@ using DevExpress.XtraVerticalGrid;
 using DevExpress.XtraVerticalGrid.Events;
 using DevExpress.XtraVerticalGrid.Rows;
 
-namespace Properties
+namespace Property_Normal_Dev191
 {
     public partial class FormMain : XtraForm
     {

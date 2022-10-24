@@ -1,5 +1,5 @@
 ﻿
-namespace Properties
+namespace Property_Normal_212
 {
     partial class FormMain
     {
@@ -58,7 +58,8 @@ namespace Properties
             this.pg1.Name = "pg1";
             this.pg1.OptionsBehavior.AutoPostEditorDelay = 1000;
             this.pg1.OptionsCollectionEditor.AllowMultiSelect = false;
-            this.pg1.Size = new System.Drawing.Size(450, 322);
+            this.pg1.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.True;
+            this.pg1.Size = new System.Drawing.Size(450, 313);
             this.pg1.TabIndex = 0;
             this.pg1.Click += new System.EventHandler(this.propertyGridControl1_Click);
             // 
@@ -67,9 +68,9 @@ namespace Properties
             this.panel1.Controls.Add(this.pg1);
             this.panel1.Controls.Add(this.pd1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(423, 141);
+            this.panel1.Location = new System.Drawing.Point(423, 150);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 402);
+            this.panel1.Size = new System.Drawing.Size(450, 393);
             this.panel1.TabIndex = 1;
             // 
             // pd1
@@ -78,7 +79,7 @@ namespace Properties
             this.pd1.Appearance.Panel.Options.UseBorderColor = true;
             this.pd1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
             this.pd1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pd1.Location = new System.Drawing.Point(0, 322);
+            this.pd1.Location = new System.Drawing.Point(0, 313);
             this.pd1.Name = "pd1";
             this.pd1.Size = new System.Drawing.Size(450, 80);
             this.pd1.TabIndex = 1;
@@ -88,9 +89,9 @@ namespace Properties
             // 
             this.lb1.Dock = System.Windows.Forms.DockStyle.Left;
             this.lb1.FormattingEnabled = true;
-            this.lb1.Location = new System.Drawing.Point(0, 141);
+            this.lb1.Location = new System.Drawing.Point(0, 150);
             this.lb1.Name = "lb1";
-            this.lb1.Size = new System.Drawing.Size(149, 402);
+            this.lb1.Size = new System.Drawing.Size(149, 393);
             this.lb1.TabIndex = 2;
             this.lb1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -134,7 +135,7 @@ namespace Properties
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbonControl1.Size = new System.Drawing.Size(873, 141);
+            this.ribbonControl1.Size = new System.Drawing.Size(873, 150);
             // 
             // bClearItem
             // 
@@ -164,9 +165,9 @@ namespace Properties
             this.pCenter.Controls.Add(this.button1);
             this.pCenter.Controls.Add(this.bClear);
             this.pCenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pCenter.Location = new System.Drawing.Point(149, 141);
+            this.pCenter.Location = new System.Drawing.Point(149, 150);
             this.pCenter.Name = "pCenter";
-            this.pCenter.Size = new System.Drawing.Size(274, 402);
+            this.pCenter.Size = new System.Drawing.Size(274, 393);
             this.pCenter.TabIndex = 6;
             // 
             // FormMain

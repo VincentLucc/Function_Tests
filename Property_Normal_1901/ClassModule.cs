@@ -15,7 +15,7 @@ using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.Model;
 using DevExpress.XtraEditors.Mask;
 
-namespace Properties
+namespace Property_Normal_Dev191
 {
   public  class Student
     {

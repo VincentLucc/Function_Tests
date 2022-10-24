@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.ExpressApp.Win.Editors;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
@@ -17,7 +18,8 @@ using DevExpress.XtraVerticalGrid;
 using DevExpress.XtraVerticalGrid.Events;
 using DevExpress.XtraVerticalGrid.Rows;
 
-namespace Property_Normal_221
+
+namespace Property_Normal_212
 {
     public partial class FormMain : XtraForm
     {
@@ -49,6 +51,7 @@ namespace Property_Normal_221
             pg1.CellValueChanged += Pg1_CellValueChanged; //Happen before Pg1_ValidatingEditor!!!
             pg1.EditorKeyDown += Pg1_EditorKeyDown;
             pg1.CustomDrawRowHeaderCell += Pg1_CustomDrawRowHeaderCell;
+            pg1.InvalidValueException += Pg1_InvalidValueException;
 
             //Set description display area
             pd1.PropertyGrid = pg1;
@@ -67,10 +70,25 @@ namespace Property_Normal_221
             lb1.DataSource = sList.Select(x => x.Name).ToList();
         }
 
+        private void Pg1_InvalidValueException(object sender, InvalidValueExceptionEventArgs e)
+        {
+            Debug.WriteLine($"Cell Value changed.{e.Value}");
+
+            //Init variables
+            //string sFieldName = pg1.FocusedRow.Properties.FieldName;
+
+            //if (sFieldName == nameof(Student.ToggleSwitch))
+            //{
+
+            //    pg1.FocusedRow.Properties.Value = false;
+
+            //}
+        }
 
         private void Pg1_CustomDrawRowHeaderCell(object sender, CustomDrawRowHeaderCellEventArgs e)
         {
             e.Appearance.TextOptions.HAlignment = HorzAlignment.Near; //Set captain alignment
+
         }
 
 
@@ -121,7 +139,6 @@ namespace Property_Normal_221
 
             //Init variables
             string sFieldName = pg1.FocusedRow.Properties.FieldName;
-            Student selectedStudent = pg1.SelectedObject as Student;
 
             if (sFieldName == nameof(Student.Age))
             {

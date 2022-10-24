@@ -11,11 +11,9 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.ExpressApp.Win.Editors;
-using DevExpress.ExpressApp.Editors;
-using DevExpress.ExpressApp.Model;
 using DevExpress.XtraEditors.Mask;
 
-namespace Property_Normal_221
+namespace Property_Normal_212
 {
   public  class Student
     {

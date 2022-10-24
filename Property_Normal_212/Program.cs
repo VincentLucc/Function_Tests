@@ -1,12 +1,14 @@
-﻿using System;
+﻿using DevExpress.LookAndFeel;
+using DevExpress.Skins;
+using DevExpress.UserSkins;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Properties
+namespace Property_Normal_212
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application.

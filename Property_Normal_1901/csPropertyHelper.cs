@@ -15,10 +15,10 @@ using System.Threading.Tasks;
 using DevExpress.XtraEditors;
 using System.Windows.Forms;
 using System.Net.NetworkInformation;
-using Properties;
+using Property_Normal_Dev191;
 
 
-namespace Properties
+namespace Property_Normal_Dev191
 {
     /// <summary>
     /// Help to set the property

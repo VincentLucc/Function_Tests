@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Properties
+namespace Property_Normal_212
 {
     /// <summary>
     /// Masks
