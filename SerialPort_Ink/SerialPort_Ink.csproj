@@ -80,6 +80,7 @@
     <Compile Include="Classes\csByteConvert.cs" />
     <Compile Include="Classes\csConfig.cs" />
     <Compile Include="Classes\csInkSystemColor.cs" />
+    <Compile Include="Classes\csOperationBlock.cs" />
     <Compile Include="Classes\csPublic.cs" />
     <Compile Include="Classes\csXML.cs" />
     <Compile Include="FormMain.cs">
@@ -120,12 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\SerialPort.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Timer\OperationBlock.csproj">
-      <Project>{d061f609-2042-4806-9674-900e8f45a974}</Project>
-      <Name>OperationBlock</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

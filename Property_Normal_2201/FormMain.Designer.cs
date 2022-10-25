@@ -52,13 +52,16 @@ namespace Property_Normal_221
             // 
             // pg1
             // 
+            this.pg1.ActiveViewType = DevExpress.XtraVerticalGrid.PropertyGridView.Office;
             this.pg1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pg1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pg1.Location = new System.Drawing.Point(0, 0);
             this.pg1.Name = "pg1";
             this.pg1.OptionsBehavior.AutoPostEditorDelay = 1000;
             this.pg1.OptionsCollectionEditor.AllowMultiSelect = false;
-            this.pg1.Size = new System.Drawing.Size(450, 322);
+            this.pg1.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.True;
+            this.pg1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.pg1.Size = new System.Drawing.Size(450, 316);
             this.pg1.TabIndex = 0;
             this.pg1.Click += new System.EventHandler(this.propertyGridControl1_Click);
             // 
@@ -67,9 +70,9 @@ namespace Property_Normal_221
             this.panel1.Controls.Add(this.pg1);
             this.panel1.Controls.Add(this.pd1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(423, 141);
+            this.panel1.Location = new System.Drawing.Point(431, 146);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 402);
+            this.panel1.Size = new System.Drawing.Size(450, 396);
             this.panel1.TabIndex = 1;
             // 
             // pd1
@@ -78,7 +81,7 @@ namespace Property_Normal_221
             this.pd1.Appearance.Panel.Options.UseBorderColor = true;
             this.pd1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
             this.pd1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pd1.Location = new System.Drawing.Point(0, 322);
+            this.pd1.Location = new System.Drawing.Point(0, 316);
             this.pd1.Name = "pd1";
             this.pd1.Size = new System.Drawing.Size(450, 80);
             this.pd1.TabIndex = 1;
@@ -88,9 +91,9 @@ namespace Property_Normal_221
             // 
             this.lb1.Dock = System.Windows.Forms.DockStyle.Left;
             this.lb1.FormattingEnabled = true;
-            this.lb1.Location = new System.Drawing.Point(0, 141);
+            this.lb1.Location = new System.Drawing.Point(0, 146);
             this.lb1.Name = "lb1";
-            this.lb1.Size = new System.Drawing.Size(149, 402);
+            this.lb1.Size = new System.Drawing.Size(149, 396);
             this.lb1.TabIndex = 2;
             this.lb1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -134,7 +137,7 @@ namespace Property_Normal_221
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbonControl1.Size = new System.Drawing.Size(873, 141);
+            this.ribbonControl1.Size = new System.Drawing.Size(881, 146);
             // 
             // bClearItem
             // 
@@ -164,16 +167,16 @@ namespace Property_Normal_221
             this.pCenter.Controls.Add(this.button1);
             this.pCenter.Controls.Add(this.bClear);
             this.pCenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pCenter.Location = new System.Drawing.Point(149, 141);
+            this.pCenter.Location = new System.Drawing.Point(149, 146);
             this.pCenter.Name = "pCenter";
-            this.pCenter.Size = new System.Drawing.Size(274, 402);
+            this.pCenter.Size = new System.Drawing.Size(282, 396);
             this.pCenter.TabIndex = 6;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 543);
+            this.ClientSize = new System.Drawing.Size(881, 542);
             this.Controls.Add(this.pCenter);
             this.Controls.Add(this.lb1);
             this.Controls.Add(this.panel1);
