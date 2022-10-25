@@ -253,6 +253,20 @@ namespace SerialPort_Ink
                 //Seperate to command list
                 string[] sDataGroup = sData.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
+                //Add to message
+                if (sDataGroup.Length==1)
+                {
+                    string sDebug = $"{csPublic.TimeString}:Received:{sDataGroup[0]}";
+                    AppendComLog(sDebug);
+                }
+                else
+                {
+                    string sDebug = $"{csPublic.TimeString}:Received:";
+                    AppendComLog(sDebug);
+                    foreach (var item in sDataGroup) AppendComLog(item);
+                }
+            
+         
                 //Process Data
                 InspectData(sDataGroup);
             }
@@ -284,7 +298,6 @@ namespace SerialPort_Ink
             //debug info
             string sDebug = $"{csPublic.TimeString}:Received:{sData}";
             Debug.WriteLine(sDebug);
-            AppendComLog(sDebug);
         }
 
         /// <summary>
@@ -847,10 +860,10 @@ namespace SerialPort_Ink
             switch (SysConfig.SendFormat)
             {
                 case SerialDataType.ASCII:
-                    byte[] bDataAscii = Encoding.ASCII.GetBytes(sMessage);
-                    if (SysConfig.SendMode==SerialSendMode.Normal)
+                    byte[] bDataAscii = Encoding.ASCII.GetBytes(sMessage + SysConfig.EndSuffixValue);
+                    if (SysConfig.SendMode == SerialSendMode.Normal)
                     {
-                       Port.Write(sMessage+ SysConfig.EndSuffixValue); //Directly send
+                        Port.Write(sMessage); //Directly send
                     }
                     else
                     {
@@ -861,7 +874,7 @@ namespace SerialPort_Ink
                     break;
 
                 case SerialDataType.HEX:
-                    byte[] bDataHex = csByteConvert.StringToHexByte(sMessage);
+                    byte[] bDataHex = csByteConvert.StringToHexByte(sMessage + SysConfig.EndSuffixValue);
 
                     if (SysConfig.SendMode == SerialSendMode.Normal)
                     {
@@ -872,7 +885,7 @@ namespace SerialPort_Ink
                         SendWith2BytesGap(bDataHex);
                     }
                     sLogInfo = $"{csPublic.TimeString}:Send HEX Message:{sMessage}"; //Display message
-                    
+
                     break;
                 default:
                     break;

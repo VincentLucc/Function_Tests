@@ -46,7 +46,9 @@ namespace SerialPort_Ink
             ReceiveFormat = SerialDataType.ASCII;
             EndSuffixView = "";
             Commands = new List<string>() {
-            "STA?0","SEB?0"
+            "@SNI#","@SNI?","@SNI,00","@SNI,01","@SNI,02","@SNI,03","@SNI,04",
+            "STA?0","ASTA?","BSTA?","CSTA?","DSTA?",
+            "SEB?0"
             };
 
         }

@@ -133,15 +133,18 @@ namespace SerialPort_Ink
 
             //Data receive format
             lueReceiveFormat.Properties.DataSource = serialTypeList;
+            lueReceiveFormat.Properties.DropDownRows= serialTypeList.Length;
             lueReceiveFormat.Properties.ShowFooter = false;//remove the X button in bottom
 
             //Data send surfix
             lueSendSuffix.Properties.DataSource = csConfig.EndSuffixCollection;
+            lueSendSuffix.Properties.DropDownRows = csConfig.EndSuffixCollection.Length;
             lueSendSuffix.Properties.ShowFooter = false;//remove the X button in bottom
 
             //Serial port send mode normal or 2bytes by 2 bytes
             var serialSendMode = Enum.GetNames(typeof(SerialSendMode));
             lueSendMode.Properties.DataSource = serialSendMode;
+            lueSendMode.Properties.DropDownRows = serialSendMode.Length;
             lueSendMode.Properties.ShowFooter = false;//remove the X button in bottom
 
             //Init gridview
@@ -220,11 +223,28 @@ namespace SerialPort_Ink
             if (UIExit) return;
 
             //Refresh data to UI
-            UpdateUI();
+            RefreshReceivedData();
+            ShowDeviceInfo();
+            UpdateSerialPortConnection();
 
             tUpdate.Enabled = true; //Avoid overflow
         }
 
+        private void UpdateSerialPortConnection()
+        {
+            bool isConected = csPublic.InkSystem.IsConnected;
+
+            if (isConected)
+            {
+                bOpen.Enabled = false;
+                bDisconnect.Enabled = true;
+            }
+            else
+            {
+                bOpen.Enabled = true;
+                bDisconnect.Enabled = false;
+            }
+        }
 
         private async void ProcessOperation()
         {
@@ -252,7 +272,7 @@ namespace SerialPort_Ink
             FinishUpClosing();
         }
 
-        private void UpdateUI()
+        private void RefreshReceivedData()
         {
             if (!gcReceive.Focused)
             {
@@ -262,8 +282,12 @@ namespace SerialPort_Ink
                 }
                 gvReceive.MoveLast();
             }
+        }
 
 
+
+        private void ShowDeviceInfo()
+        {
             //Show device info
             if (TargetDeviceID > -1 && TargetDeviceID < Devices.Count)
             {
@@ -294,10 +318,7 @@ namespace SerialPort_Ink
                 if (!tsBypassTime.IsOn)
                     teBypassTime.Text = device.ByPassTime.ToString("F2");
             }
-
-
         }
-
 
 
         private async Task UpdateDeviceInfo()

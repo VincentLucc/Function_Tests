@@ -33,6 +33,8 @@ namespace SerialPort_Ink
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
+            this.gcReceive = new DevExpress.XtraGrid.GridControl();
+            this.gvReceive = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.cbCommands = new DevExpress.XtraEditors.ComboBoxEdit();
             this.tsCommandEnable = new DevExpress.XtraEditors.ToggleSwitch();
             this.bSend = new DevExpress.XtraEditors.SimpleButton();
@@ -41,9 +43,9 @@ namespace SerialPort_Ink
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem71 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.tsFlowControl = new DevExpress.XtraEditors.ToggleSwitch();
@@ -203,15 +205,14 @@ namespace SerialPort_Ink
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gcReceive = new DevExpress.XtraGrid.GridControl();
-            this.gvReceive = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.layoutControlItem71 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
             this.layoutControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcReceive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvReceive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbCommands.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsCommandEnable.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.meSend.Properties)).BeginInit();
@@ -219,9 +220,9 @@ namespace SerialPort_Ink
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem71)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -367,9 +368,6 @@ namespace SerialPort_Ink
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcReceive)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvReceive)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem71)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -408,32 +406,48 @@ namespace SerialPort_Ink
             this.layoutControl3.TabIndex = 0;
             this.layoutControl3.Text = "layoutControl3";
             // 
+            // gcReceive
+            // 
+            this.gcReceive.Location = new System.Drawing.Point(12, 164);
+            this.gcReceive.MainView = this.gvReceive;
+            this.gcReceive.Name = "gcReceive";
+            this.gcReceive.Size = new System.Drawing.Size(584, 301);
+            this.gcReceive.TabIndex = 13;
+            this.gcReceive.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvReceive});
+            // 
+            // gvReceive
+            // 
+            this.gvReceive.GridControl = this.gcReceive;
+            this.gvReceive.Name = "gvReceive";
+            // 
             // cbCommands
             // 
-            this.cbCommands.Location = new System.Drawing.Point(269, 122);
+            this.cbCommands.Location = new System.Drawing.Point(336, 122);
+            this.cbCommands.MinimumSize = new System.Drawing.Size(100, 0);
             this.cbCommands.Name = "cbCommands";
             this.cbCommands.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbCommands.Size = new System.Drawing.Size(151, 20);
+            this.cbCommands.Size = new System.Drawing.Size(100, 20);
             this.cbCommands.StyleController = this.layoutControl3;
             this.cbCommands.TabIndex = 12;
             // 
             // tsCommandEnable
             // 
-            this.tsCommandEnable.Location = new System.Drawing.Point(132, 122);
+            this.tsCommandEnable.Location = new System.Drawing.Point(145, 122);
             this.tsCommandEnable.Name = "tsCommandEnable";
             this.tsCommandEnable.Properties.OffText = "Off";
             this.tsCommandEnable.Properties.OnText = "On";
             this.tsCommandEnable.Properties.ShowText = false;
-            this.tsCommandEnable.Size = new System.Drawing.Size(70, 19);
+            this.tsCommandEnable.Size = new System.Drawing.Size(54, 19);
             this.tsCommandEnable.StyleController = this.layoutControl3;
             this.tsCommandEnable.TabIndex = 11;
             // 
             // bSend
             // 
-            this.bSend.Location = new System.Drawing.Point(524, 122);
+            this.bSend.Location = new System.Drawing.Point(530, 122);
             this.bSend.Name = "bSend";
-            this.bSend.Size = new System.Drawing.Size(72, 22);
+            this.bSend.Size = new System.Drawing.Size(66, 22);
             this.bSend.StyleController = this.layoutControl3;
             this.bSend.TabIndex = 8;
             this.bSend.Text = "Send";
@@ -455,10 +469,9 @@ namespace SerialPort_Ink
             this.layoutControlItem13,
             this.layoutControlItem12,
             this.emptySpaceItem3,
-            this.emptySpaceItem4,
             this.layoutControlItem20,
-            this.layoutControlItem17,
-            this.layoutControlItem71});
+            this.layoutControlItem71,
+            this.layoutControlItem17});
             this.layoutControlGroup2.Name = "Root";
             this.layoutControlGroup2.Size = new System.Drawing.Size(608, 477);
             this.layoutControlGroup2.TextVisible = false;
@@ -471,50 +484,52 @@ namespace SerialPort_Ink
             this.layoutControlItem13.Size = new System.Drawing.Size(588, 110);
             this.layoutControlItem13.Text = "Send:";
             this.layoutControlItem13.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(60, 13);
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(130, 13);
             // 
             // layoutControlItem12
             // 
             this.layoutControlItem12.Control = this.bSend;
-            this.layoutControlItem12.Location = new System.Drawing.Point(512, 110);
+            this.layoutControlItem12.Location = new System.Drawing.Point(518, 110);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(76, 26);
+            this.layoutControlItem12.Size = new System.Drawing.Size(70, 26);
             this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem12.TextVisible = false;
             // 
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(412, 110);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(428, 110);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(100, 26);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(90, 26);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // emptySpaceItem4
-            // 
-            this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 110);
-            this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(120, 26);
-            this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem20
             // 
             this.layoutControlItem20.Control = this.tsCommandEnable;
-            this.layoutControlItem20.Location = new System.Drawing.Point(120, 110);
+            this.layoutControlItem20.Location = new System.Drawing.Point(0, 110);
             this.layoutControlItem20.Name = "layoutControlItem20";
-            this.layoutControlItem20.Size = new System.Drawing.Size(74, 26);
-            this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem20.TextVisible = false;
+            this.layoutControlItem20.Size = new System.Drawing.Size(191, 26);
+            this.layoutControlItem20.Text = "Send Selected Command:";
+            this.layoutControlItem20.TextSize = new System.Drawing.Size(130, 13);
             // 
             // layoutControlItem17
             // 
             this.layoutControlItem17.Control = this.cbCommands;
-            this.layoutControlItem17.Location = new System.Drawing.Point(194, 110);
+            this.layoutControlItem17.Location = new System.Drawing.Point(191, 110);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(218, 26);
-            this.layoutControlItem17.Text = "Commands:";
-            this.layoutControlItem17.TextSize = new System.Drawing.Size(60, 13);
+            this.layoutControlItem17.Size = new System.Drawing.Size(237, 26);
+            this.layoutControlItem17.Text = "Command Options:";
+            this.layoutControlItem17.TextSize = new System.Drawing.Size(130, 13);
+            // 
+            // layoutControlItem71
+            // 
+            this.layoutControlItem71.Control = this.gcReceive;
+            this.layoutControlItem71.Location = new System.Drawing.Point(0, 136);
+            this.layoutControlItem71.Name = "layoutControlItem71";
+            this.layoutControlItem71.Size = new System.Drawing.Size(588, 321);
+            this.layoutControlItem71.Text = "Receive:";
+            this.layoutControlItem71.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem71.TextSize = new System.Drawing.Size(130, 13);
             // 
             // groupControl1
             // 
@@ -2166,31 +2181,6 @@ namespace SerialPort_Ink
             this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem19.TextVisible = false;
             // 
-            // gcReceive
-            // 
-            this.gcReceive.Location = new System.Drawing.Point(12, 164);
-            this.gcReceive.MainView = this.gvReceive;
-            this.gcReceive.Name = "gcReceive";
-            this.gcReceive.Size = new System.Drawing.Size(584, 301);
-            this.gcReceive.TabIndex = 13;
-            this.gcReceive.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvReceive});
-            // 
-            // gvReceive
-            // 
-            this.gvReceive.GridControl = this.gcReceive;
-            this.gvReceive.Name = "gvReceive";
-            // 
-            // layoutControlItem71
-            // 
-            this.layoutControlItem71.Control = this.gcReceive;
-            this.layoutControlItem71.Location = new System.Drawing.Point(0, 136);
-            this.layoutControlItem71.Name = "layoutControlItem71";
-            this.layoutControlItem71.Size = new System.Drawing.Size(588, 321);
-            this.layoutControlItem71.Text = "Receive:";
-            this.layoutControlItem71.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem71.TextSize = new System.Drawing.Size(60, 13);
-            // 
             // FormMain
             // 
             this.Appearance.Options.UseFont = true;
@@ -2209,6 +2199,8 @@ namespace SerialPort_Ink
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
             this.layoutControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcReceive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvReceive)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbCommands.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsCommandEnable.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.meSend.Properties)).EndInit();
@@ -2216,9 +2208,9 @@ namespace SerialPort_Ink
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem71)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
@@ -2364,9 +2356,6 @@ namespace SerialPort_Ink
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gcReceive)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvReceive)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem71)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2419,7 +2408,6 @@ namespace SerialPort_Ink
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraEditors.ToggleSwitch tsCommandEnable;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
         private DevExpress.XtraEditors.ComboBoxEdit cbCommands;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
         private DevExpress.XtraLayout.LayoutControl LayoutControlPageInkControls;
