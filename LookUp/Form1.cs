@@ -81,7 +81,7 @@ namespace LookUp
 
         private void GridLookupEditInit(BindingList<string> sList)
         {
-            //Grid lookup
+            //Grid lookup normal
             gridLookUpEdit1.Properties.DataSource = sList; //single value can be directly bind
             gridLookUpEdit1.EditValue = sEdit;
             gridLookUpEdit1.Properties.ShowFooter = false;
@@ -89,28 +89,28 @@ namespace LookUp
             //Grid lookup customized
             var image = Properties.Resources.Icon;
             //List or bind list won't work, use data table instead
-            //BindingList<ImageString> imageStrings = new BindingList<ImageString>();
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    var item = new ImageString();
-            //    item.Image = image;
-            //    item.Value = "Value_"+i+1;
-            //    imageStrings.Add(item);
-            //}
-
-            DataTable dt = new DataTable();
-            dt.Columns.Add(nameof(ImageString.Image), typeof(Bitmap));
-            dt.Columns.Add(nameof(ImageString.Value));
+            BindingList<ImageString> imageStrings = new BindingList<ImageString>();
             for (int i = 0; i < 5; i++)
             {
-                var dataRow = dt.NewRow();
-                dataRow[nameof(ImageString.Image)] = image;
-                dataRow[nameof(ImageString.Value)] = "Value_" + i + 1;
-                dt.Rows.Add(dataRow);
+                var item = new ImageString();
+                item.Image = image;
+                item.Value = "Value_" + i + 1;
+                imageStrings.Add(item);
             }
 
-            gridLookUpEditCustomized.Properties.DataSource = dt; //If use class list must use data table
-            var gridView = gridLookUpEditCustomized.Properties.View;
+            //DataTable dt = new DataTable();
+            //dt.Columns.Add(nameof(ImageString.Image), typeof(Bitmap));
+            //dt.Columns.Add(nameof(ImageString.Value));
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    var dataRow = dt.NewRow();
+            //    dataRow[nameof(ImageString.Image)] = image;
+            //    dataRow[nameof(ImageString.Value)] = "Value_" + i + 1;
+            //    dt.Rows.Add(dataRow);
+            //}
+
+            gridLookUpEditCustomized.Properties.DataSource = imageStrings; //If use class list must use data table
+            var gridView = gridLookUpEditCustomized.Properties.PopupView;
          
             // The field for the editor's display text.
             gridLookUpEditCustomized.Properties.DisplayMember = nameof(ImageString.Value);
@@ -118,8 +118,10 @@ namespace LookUp
             gridLookUpEditCustomized.Properties.ValueMember = nameof(ImageString.Value);
             gridLookUpEditCustomized.EditValue = sEdit;
             gridLookUpEditCustomized.Properties.ShowFooter = false;
-            gridView.OptionsView.ShowColumnHeaders = false;//hide column
-            gridView.Columns[nameof(ImageString.Image)].MaxWidth = 30;
+            gridView.OptionsView.ShowViewCaption = false;//hide column
+            gridView.PopulateColumns();
+            //gridView.Columns[nameof(ImageString.Image)].MaxWidth = 30;
+  
             //Draw row cell
 
 

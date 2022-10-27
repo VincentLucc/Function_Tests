@@ -41,6 +41,7 @@ namespace Property_Normal_221
         {
             //Init helper
             propertyHelper = new csPropertyHelper(pg1);
+            pg1.ActiveViewType = PropertyGridView.Classic;
             pg1.RowHeaderWidth = 30; //Manual set captain row width
 
             //Init property grid events

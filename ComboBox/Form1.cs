@@ -44,6 +44,7 @@ namespace ComboBox
                 ComboBoxEditCustomized.Properties.Items.Add(sList[i]);
             }
 
+
             //Cutomize normal combobox edit
             ComboBoxEditCustomized.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
 
@@ -117,6 +118,11 @@ namespace ComboBox
 
             cbTest01.DataSource= sList;
             cbTest01.SelectedIndex = -1;
+        }
+
+        private void ComboBoxEditCustomized_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
