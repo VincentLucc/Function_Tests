@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColumnSelectionTest", "Test001\ColumnSelectionTest.csproj", "{BFD6EF80-2D59-4F13-985A-998D26D1D60C}"
 EndProject
@@ -154,6 +154,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Property_Normal_Dev21.2", "Property_Normal_212\Property_Normal_Dev21.2.csproj", "{FD396762-3FBE-4508-A3EC-34D47090705B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarManagerToolBar", "BarManagerToolBar\BarManagerToolBar.csproj", "{57119184-1FA2-4D94-B499-09134B492B4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPAddressHelper", "IPAddress\IPAddressHelper.csproj", "{FF053370-D9DB-409A-9555-4E2844C7210F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1396,6 +1398,22 @@ Global
 		{57119184-1FA2-4D94-B499-09134B492B4E}.Release|x64.Build.0 = Release|Any CPU
 		{57119184-1FA2-4D94-B499-09134B492B4E}.Release|x86.ActiveCfg = Release|Any CPU
 		{57119184-1FA2-4D94-B499-09134B492B4E}.Release|x86.Build.0 = Release|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Debug|arm64.Build.0 = Debug|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Debug|x64.Build.0 = Debug|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Debug|x86.Build.0 = Debug|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Release|arm64.ActiveCfg = Release|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Release|arm64.Build.0 = Release|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Release|x64.ActiveCfg = Release|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Release|x64.Build.0 = Release|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Release|x86.ActiveCfg = Release|Any CPU
+		{FF053370-D9DB-409A-9555-4E2844C7210F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

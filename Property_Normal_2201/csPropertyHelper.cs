@@ -72,14 +72,19 @@ namespace Property_Normal_221
                 foreach (var row in rows)
                 {
                     var editor = GetEditorType(row, propertyGrid.SelectedObject);
-                    if (editor == null) continue;
-                    SetRowEditor(row, editor);
-
-                    //Trigger custom setting event           
-                    if (CustomSettingRowEditor != null)
+                    if (editor == null)
                     {
+                        //Trigger custom setting event
                         var data = new RowEditorData(row, editor);//prepare data
-                        CustomSettingRowEditor(this, data);
+                        CustomSettingRowEditor?.Invoke(this, data);
+                    }
+                    else
+                    {
+                        SetRowEditor(row, editor);
+
+                        //Trigger custom setting event
+                        var data = new RowEditorData(row, editor);//prepare data
+                        CustomSettingRowEditor?.Invoke(this, data);
                     }
 
                     //set row visibility
@@ -364,7 +369,7 @@ namespace Property_Normal_221
 
         private void FolderButtonEditor_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
-            //XtraOpenFileDialog dialog = new XtraOpenFileDialog();
+
             XtraFolderBrowserDialog dialog = new XtraFolderBrowserDialog();
 
             if (dialog.ShowDialog() == DialogResult.OK)

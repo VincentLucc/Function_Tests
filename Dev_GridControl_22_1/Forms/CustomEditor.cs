@@ -380,7 +380,7 @@ namespace Dev_GridControl_22_1
             buttonEditor.Buttons[1].ImageOptions.SvgImage = Properties.Resources.open;
             buttonEditor.Buttons[0].Appearance.ForeColor = Color.Green;
             buttonEditor.Buttons[1].Appearance.ForeColor = Color.Red;
-            buttonEditor.Buttons[0].ImageOptions.Location = ImageLocation.MiddleRight;
+            buttonEditor.Buttons[0].ImageOptions.Location = ImageLocation.MiddleRight;//Make sure to show text
             buttonEditor.Buttons[1].ImageOptions.Location = ImageLocation.MiddleRight;
             buttonEditor.Buttons[0].Click += CustomEditorButton1_Click;
             buttonEditor.Buttons[1].Click += CustomEditorButton2_Click;
@@ -393,7 +393,7 @@ namespace Dev_GridControl_22_1
             EditorButton editorButton = (EditorButton)sender;
             int iRow = TemplateGridView.FocusedRowHandle;
             // string sValue = TemplateGridView.GetRowCellValue(iRow, TemplateGridView.Columns[0]).ToString();
-
+            //    var selectedRow = (CameraInfoView)CameraListGridView.GetRow(iSelection);
         }
 
         private void CustomEditorButton2_Click(object sender, EventArgs e)
