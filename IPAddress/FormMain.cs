@@ -33,5 +33,32 @@ namespace IPAddressHelper
 
             string sValue= newAddress.ToString();
         }
+
+        private void ToIPStringsimpleButton1_Click(object sender, EventArgs e)
+        {
+            
+            
+            if (!long.TryParse(IPNumberTextEdit.Text, out long lAddress))
+            {
+                MessageBox.Show("Invalid input");
+                return;
+            }
+
+            var ipAddress = new IPAddress(lAddress);
+
+            IPStringTextEdit.Text = ipAddress.ToString();
+
+        }
+
+        private void ToIPNUmberSimpleButton_Click(object sender, EventArgs e)
+        {
+            if (!IPAddress.TryParse(IPStringTextEdit.Text,out IPAddress ipAddress))
+            {
+                MessageBox.Show("Invalid input");
+                return;
+            }
+
+            IPNumberTextEdit.Text = ipAddress.Address.ToString();
+        }
     }
 }

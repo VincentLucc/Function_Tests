@@ -164,7 +164,6 @@ namespace SerialPort_Ink
             View.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.True;//Display the summary in column lane         
             View.OptionsDetail.EnableMasterViewMode = false; //Disable group
 
-
             //Alignments
             View.Appearance.HeaderPanel.TextOptions.HAlignment = alignment;
             View.Appearance.Row.TextOptions.HAlignment = alignment;

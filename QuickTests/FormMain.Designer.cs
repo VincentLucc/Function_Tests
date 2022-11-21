@@ -29,6 +29,7 @@ namespace QuickTests
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -43,6 +44,9 @@ namespace QuickTests
             this.bEventsInit = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.bReference = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.bEnum01 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
@@ -54,6 +58,9 @@ namespace QuickTests
             this.bIntShift = new System.Windows.Forms.Button();
             this.bFloat = new System.Windows.Forms.Button();
             this.tabEvents = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button16 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbAge = new System.Windows.Forms.TextBox();
@@ -80,19 +87,20 @@ namespace QuickTests
             this.bInt2Hex = new System.Windows.Forms.Button();
             this.bConvert = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.bEnum01 = new System.Windows.Forms.Button();
+            this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
+            this.button17 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabEvents.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -231,6 +239,7 @@ namespace QuickTests
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.bReference);
             this.tabGeneral.Controls.Add(this.groupBox5);
             this.tabGeneral.Controls.Add(this.groupBox4);
             this.tabGeneral.Controls.Add(this.groupBox3);
@@ -256,6 +265,36 @@ namespace QuickTests
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // bReference
+            // 
+            this.bReference.Location = new System.Drawing.Point(347, 107);
+            this.bReference.Name = "bReference";
+            this.bReference.Size = new System.Drawing.Size(134, 23);
+            this.bReference.TabIndex = 20;
+            this.bReference.Text = "Reference";
+            this.bReference.UseVisualStyleBackColor = true;
+            this.bReference.Click += new System.EventHandler(this.bReference_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.bEnum01);
+            this.groupBox5.Location = new System.Drawing.Point(451, 235);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(200, 100);
+            this.groupBox5.TabIndex = 19;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Enum";
+            // 
+            // bEnum01
+            // 
+            this.bEnum01.Location = new System.Drawing.Point(6, 22);
+            this.bEnum01.Name = "bEnum01";
+            this.bEnum01.Size = new System.Drawing.Size(107, 23);
+            this.bEnum01.TabIndex = 0;
+            this.bEnum01.Text = "Get Description";
+            this.bEnum01.UseVisualStyleBackColor = true;
+            this.bEnum01.Click += new System.EventHandler(this.bEnum01_Click);
             // 
             // groupBox4
             // 
@@ -360,6 +399,7 @@ namespace QuickTests
             // 
             // tabEvents
             // 
+            this.tabEvents.Controls.Add(this.groupBox6);
             this.tabEvents.Controls.Add(this.groupBox1);
             this.tabEvents.Location = new System.Drawing.Point(4, 24);
             this.tabEvents.Name = "tabEvents";
@@ -368,6 +408,37 @@ namespace QuickTests
             this.tabEvents.TabIndex = 1;
             this.tabEvents.Text = "Events";
             this.tabEvents.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.button17);
+            this.groupBox6.Controls.Add(this.label2);
+            this.groupBox6.Controls.Add(this.button16);
+            this.groupBox6.Location = new System.Drawing.Point(5, 192);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(366, 160);
+            this.groupBox6.TabIndex = 2;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Loop Event Trigger Projection Check";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(272, 15);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Simulated with a timer (Similar to camera capture)";
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(12, 53);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(135, 23);
+            this.button16.TabIndex = 1;
+            this.button16.Text = "Trigger inside a Timer";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // groupBox1
             // 
@@ -641,25 +712,20 @@ namespace QuickTests
             this.textBox1.Size = new System.Drawing.Size(351, 23);
             this.textBox1.TabIndex = 0;
             // 
-            // groupBox5
+            // LoopEventTimer
             // 
-            this.groupBox5.Controls.Add(this.bEnum01);
-            this.groupBox5.Location = new System.Drawing.Point(451, 235);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(200, 100);
-            this.groupBox5.TabIndex = 19;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Enum";
+            this.LoopEventTimer.Interval = 1000;
+            this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick);
             // 
-            // bEnum01
+            // button17
             // 
-            this.bEnum01.Location = new System.Drawing.Point(6, 22);
-            this.bEnum01.Name = "bEnum01";
-            this.bEnum01.Size = new System.Drawing.Size(107, 23);
-            this.bEnum01.TabIndex = 0;
-            this.bEnum01.Text = "Get Description";
-            this.bEnum01.UseVisualStyleBackColor = true;
-            this.bEnum01.Click += new System.EventHandler(this.bEnum01_Click);
+            this.button17.Location = new System.Drawing.Point(158, 53);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(90, 23);
+            this.button17.TabIndex = 3;
+            this.button17.Text = "Stop Timer";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
             // FormMain
             // 
@@ -674,9 +740,12 @@ namespace QuickTests
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.tabControl1.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.tabEvents.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -684,7 +753,6 @@ namespace QuickTests
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -744,6 +812,12 @@ namespace QuickTests
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button bEnum01;
+        private System.Windows.Forms.Button bReference;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer LoopEventTimer;
+        private System.Windows.Forms.Button button17;
     }
 }
 

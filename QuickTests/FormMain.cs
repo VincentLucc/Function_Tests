@@ -18,6 +18,8 @@ namespace QuickTests
     {
         bool IsDebug { get; set; }
         public bool UIExit => this == null || this.IsDisposed || this.Disposing;
+
+        public string TimeStringDebug => DateTime.Now.ToString("HH':'mm':'ss':'fff");
         public FormMain()
         {
             InitializeComponent();
@@ -542,7 +544,7 @@ namespace QuickTests
 
             var currentList = listGroup[2];
 
-            var newList= new List<string>();
+            var newList = new List<string>();
             for (int i = 0; i < 2; i++)
             {
                 string sValue = $"RowX_V_{i}";
@@ -568,8 +570,8 @@ namespace QuickTests
 
 
             //Init data
-            var data1 = students.FirstOrDefault(s=>s.Name=="x21");
-            var data2 = students.First(s=>s.Name=="x21");
+            var data1 = students.FirstOrDefault(s => s.Name == "x21");
+            var data2 = students.First(s => s.Name == "x21");
             var data3 = students.FirstOrDefault(s => s.Name == "dfsfsfd");
             var data4 = students.First(s => s.Name == "dfdfsfdsf");//Exception
         }
@@ -577,8 +579,8 @@ namespace QuickTests
         private void bConvert_Click(object sender, EventArgs e)
         {
             string sTestCode = "FFFF";
-            string sA=csHex.StringToHexString(sTestCode);
-            string sCRC= csHex.ToCRC16(sTestCode);
+            string sA = csHex.StringToHexString(sTestCode);
+            string sCRC = csHex.ToCRC16(sTestCode);
         }
 
         private void bInt2Hex_Click(object sender, EventArgs e)
@@ -590,14 +592,14 @@ namespace QuickTests
         private void bHex2Int_Click(object sender, EventArgs e)
         {
             string sNumber = "3C8C";
-            int iNUmber= int.Parse(sNumber, System.Globalization.NumberStyles.HexNumber);
-            
+            int iNUmber = int.Parse(sNumber, System.Globalization.NumberStyles.HexNumber);
+
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            List<string> sList=new List<string>() {"111","2222","333","111","111" };
-            var list2= sList.Distinct();
+            List<string> sList = new List<string>() { "111", "2222", "333", "111", "111" };
+            var list2 = sList.Distinct();
 
 
 
@@ -608,10 +610,10 @@ namespace QuickTests
             Dictionary<int, string> dictTest = new Dictionary<int, string>();
             for (int i = 0; i < 5; i++)
             {
-                dictTest.Add(i,$"Value{i}");
+                dictTest.Add(i, $"Value{i}");
             }
 
-            dictTest.Add(-1,"Value3");
+            dictTest.Add(-1, "Value3");
 
             foreach (var item in dictTest)
             {
@@ -622,7 +624,7 @@ namespace QuickTests
         private void bSubString_Click(object sender, EventArgs e)
         {
             string sTest = "BC";
-            string s1 = sTest.Substring(1, sTest.Length-2); //Substring length can be 0
+            string s1 = sTest.Substring(1, sTest.Length - 2); //Substring length can be 0
         }
 
         private void bStringSplit_Click(object sender, EventArgs e)
@@ -642,9 +644,54 @@ namespace QuickTests
 
         private void bEnum01_Click(object sender, EventArgs e)
         {
-            SampleEnumTest test01= SampleEnumTest.DEF;
+            SampleEnumTest test01 = SampleEnumTest.DEF;
 
-           var result= EnumHelper<SampleEnumTest>.GetDescriptions();
+            var result = EnumHelper<SampleEnumTest>.GetDescriptions();
+        }
+
+        private void bReference_Click(object sender, EventArgs e)
+        {
+            Student s1 = new Student() { Name = "123" };
+            var s2 = s1;
+            var value = s2.Name;
+            s2 = null;
+            var value2 = s1.Name;
+        }
+
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            LoopEvent += FormMain_LoopEvent;
+            LoopEventTimer.Start();
+        }
+
+
+
+        private void FormMain_LoopEvent()
+        {
+            Thread.Sleep(3500);
+        }
+
+        int iCount = 0;
+        public delegate void loopEventAction();
+        public event loopEventAction LoopEvent;
+        bool IsTimerLooping;
+        private void LoopEventTimer_Tick(object sender, EventArgs e)
+        {
+            if (IsTimerLooping) return;
+            IsTimerLooping = true;
+
+            Debug.WriteLine("Timer Start:"+ TimeStringDebug);
+            LoopEvent?.Invoke();
+            Debug.WriteLine(TimeStringDebug + ":" + iCount++);
+
+            IsTimerLooping = false;
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            LoopEvent -= FormMain_LoopEvent;
+            LoopEventTimer.Stop();
         }
     }
 

@@ -39,6 +39,14 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.IPStringTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.IPNumberTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ToIPNUmberSimpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ToIPStringsimpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IPAddressSimpleTextEdit.Properties)).BeginInit();
@@ -49,10 +57,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IPStringTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IPNumberTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.ToIPStringsimpleButton1);
+            this.layoutControl1.Controls.Add(this.ToIPNUmberSimpleButton);
+            this.layoutControl1.Controls.Add(this.IPNumberTextEdit);
+            this.layoutControl1.Controls.Add(this.IPStringTextEdit);
             this.layoutControl1.Controls.Add(this.CheckSimpleButon);
             this.layoutControl1.Controls.Add(this.bCheck);
             this.layoutControl1.Controls.Add(this.IPAddressSimpleTextEdit);
@@ -112,7 +130,11 @@
             this.emptySpaceItem1,
             this.layoutControlItem2,
             this.layoutControlItem4,
-            this.layoutControlItem3});
+            this.layoutControlItem3,
+            this.layoutControlItem5,
+            this.layoutControlItem6,
+            this.layoutControlItem7,
+            this.layoutControlItem8});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(387, 432);
             this.Root.TextVisible = false;
@@ -129,9 +151,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 52);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 126);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(367, 360);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(367, 286);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem2
@@ -161,6 +183,78 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
+            // IPStringTextEdit
+            // 
+            this.IPStringTextEdit.Location = new System.Drawing.Point(184, 90);
+            this.IPStringTextEdit.Name = "IPStringTextEdit";
+            this.IPStringTextEdit.Size = new System.Drawing.Size(191, 20);
+            this.IPStringTextEdit.StyleController = this.layoutControl1;
+            this.IPStringTextEdit.TabIndex = 7;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.IPStringTextEdit;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 78);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(367, 24);
+            this.layoutControlItem5.Text = "IP Address String";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(160, 13);
+            // 
+            // IPNumberTextEdit
+            // 
+            this.IPNumberTextEdit.Location = new System.Drawing.Point(184, 114);
+            this.IPNumberTextEdit.Name = "IPNumberTextEdit";
+            this.IPNumberTextEdit.Size = new System.Drawing.Size(191, 20);
+            this.IPNumberTextEdit.StyleController = this.layoutControl1;
+            this.IPNumberTextEdit.TabIndex = 8;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.IPNumberTextEdit;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 102);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(367, 24);
+            this.layoutControlItem6.Text = "IP Address Number";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(160, 13);
+            // 
+            // ToIPNUmberSimpleButton
+            // 
+            this.ToIPNUmberSimpleButton.Location = new System.Drawing.Point(12, 64);
+            this.ToIPNUmberSimpleButton.Name = "ToIPNUmberSimpleButton";
+            this.ToIPNUmberSimpleButton.Size = new System.Drawing.Size(170, 22);
+            this.ToIPNUmberSimpleButton.StyleController = this.layoutControl1;
+            this.ToIPNUmberSimpleButton.TabIndex = 5;
+            this.ToIPNUmberSimpleButton.Text = "To Ip Number";
+            this.ToIPNUmberSimpleButton.Click += new System.EventHandler(this.ToIPNUmberSimpleButton_Click);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.ToIPNUmberSimpleButton;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 52);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(174, 26);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
+            // 
+            // ToIPStringsimpleButton1
+            // 
+            this.ToIPStringsimpleButton1.Location = new System.Drawing.Point(186, 64);
+            this.ToIPStringsimpleButton1.Name = "ToIPStringsimpleButton1";
+            this.ToIPStringsimpleButton1.Size = new System.Drawing.Size(189, 22);
+            this.ToIPStringsimpleButton1.StyleController = this.layoutControl1;
+            this.ToIPStringsimpleButton1.TabIndex = 6;
+            this.ToIPStringsimpleButton1.Text = "To IP String";
+            this.ToIPStringsimpleButton1.Click += new System.EventHandler(this.ToIPStringsimpleButton1_Click);
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.ToIPStringsimpleButton1;
+            this.layoutControlItem8.Location = new System.Drawing.Point(174, 52);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(193, 26);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -179,6 +273,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IPStringTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IPNumberTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,5 +296,13 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.SimpleButton CheckSimpleButon;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraEditors.SimpleButton ToIPStringsimpleButton1;
+        private DevExpress.XtraEditors.SimpleButton ToIPNUmberSimpleButton;
+        private DevExpress.XtraEditors.TextEdit IPNumberTextEdit;
+        private DevExpress.XtraEditors.TextEdit IPStringTextEdit;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
     }
 }
