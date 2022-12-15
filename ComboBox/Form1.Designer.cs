@@ -47,6 +47,8 @@ namespace ComboBox
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.CustomTextImageComboBoxEdit = new DevExpress.XtraEditors.ImageComboBoxEdit();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.icbTest.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -62,6 +64,8 @@ namespace ComboBox
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomTextImageComboBoxEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // cbTest01
@@ -84,16 +88,17 @@ namespace ComboBox
             // 
             // icbTest
             // 
-            this.icbTest.Location = new System.Drawing.Point(158, 84);
+            this.icbTest.Location = new System.Drawing.Point(191, 84);
             this.icbTest.Name = "icbTest";
             this.icbTest.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.icbTest.Size = new System.Drawing.Size(334, 20);
+            this.icbTest.Size = new System.Drawing.Size(301, 20);
             this.icbTest.StyleController = this.layoutControl1;
             this.icbTest.TabIndex = 2;
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.CustomTextImageComboBoxEdit);
             this.layoutControl1.Controls.Add(this.ComboBoxEditCustomized);
             this.layoutControl1.Controls.Add(this.icbTest2);
             this.layoutControl1.Controls.Add(this.comboBoxEditNormal);
@@ -108,32 +113,32 @@ namespace ComboBox
             // 
             // ComboBoxEditCustomized
             // 
-            this.ComboBoxEditCustomized.Location = new System.Drawing.Point(158, 36);
+            this.ComboBoxEditCustomized.Location = new System.Drawing.Point(191, 36);
             this.ComboBoxEditCustomized.Name = "ComboBoxEditCustomized";
             this.ComboBoxEditCustomized.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ComboBoxEditCustomized.Size = new System.Drawing.Size(334, 20);
+            this.ComboBoxEditCustomized.Size = new System.Drawing.Size(301, 20);
             this.ComboBoxEditCustomized.StyleController = this.layoutControl1;
             this.ComboBoxEditCustomized.TabIndex = 6;
             this.ComboBoxEditCustomized.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEditCustomized_SelectedIndexChanged);
             // 
             // icbTest2
             // 
-            this.icbTest2.Location = new System.Drawing.Point(158, 60);
+            this.icbTest2.Location = new System.Drawing.Point(191, 60);
             this.icbTest2.Name = "icbTest2";
             this.icbTest2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.icbTest2.Size = new System.Drawing.Size(334, 20);
+            this.icbTest2.Size = new System.Drawing.Size(301, 20);
             this.icbTest2.StyleController = this.layoutControl1;
             this.icbTest2.TabIndex = 5;
             // 
             // comboBoxEditNormal
             // 
-            this.comboBoxEditNormal.Location = new System.Drawing.Point(158, 12);
+            this.comboBoxEditNormal.Location = new System.Drawing.Point(191, 12);
             this.comboBoxEditNormal.Name = "comboBoxEditNormal";
             this.comboBoxEditNormal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEditNormal.Size = new System.Drawing.Size(334, 20);
+            this.comboBoxEditNormal.Size = new System.Drawing.Size(301, 20);
             this.comboBoxEditNormal.StyleController = this.layoutControl1;
             this.comboBoxEditNormal.TabIndex = 4;
             // 
@@ -146,7 +151,8 @@ namespace ComboBox
             this.emptySpaceItem1,
             this.layoutControlItem2,
             this.layoutControlItem3,
-            this.layoutControlItem4});
+            this.layoutControlItem4,
+            this.layoutControlItem5});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(504, 227);
             this.Root.TextVisible = false;
@@ -158,14 +164,14 @@ namespace ComboBox
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(484, 24);
             this.layoutControlItem1.Text = "Image combo box with Edit:";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(143, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(176, 13);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 96);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 120);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(484, 111);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(484, 87);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem2
@@ -175,7 +181,7 @@ namespace ComboBox
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(484, 24);
             this.layoutControlItem2.Text = "Normal combo box:";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(143, 13);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(176, 13);
             // 
             // layoutControlItem3
             // 
@@ -184,7 +190,7 @@ namespace ComboBox
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(484, 24);
             this.layoutControlItem3.Text = "Image Combo Box 2:";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(143, 13);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(176, 13);
             // 
             // layoutControlItem4
             // 
@@ -193,7 +199,7 @@ namespace ComboBox
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(484, 24);
             this.layoutControlItem4.Text = "Normal combo customize:";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(143, 13);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(176, 13);
             // 
             // imageCollection1
             // 
@@ -224,6 +230,25 @@ namespace ComboBox
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "WinForm";
             // 
+            // CustomTextImageComboBoxEdit
+            // 
+            this.CustomTextImageComboBoxEdit.Location = new System.Drawing.Point(191, 108);
+            this.CustomTextImageComboBoxEdit.Name = "CustomTextImageComboBoxEdit";
+            this.CustomTextImageComboBoxEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CustomTextImageComboBoxEdit.Size = new System.Drawing.Size(301, 20);
+            this.CustomTextImageComboBoxEdit.StyleController = this.layoutControl1;
+            this.CustomTextImageComboBoxEdit.TabIndex = 7;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.CustomTextImageComboBoxEdit;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 96);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(484, 24);
+            this.layoutControlItem5.Text = "imageComboBox CustomDIsplayText";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(176, 13);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,6 +274,8 @@ namespace ComboBox
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CustomTextImageComboBoxEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -271,6 +298,8 @@ namespace ComboBox
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraEditors.ComboBoxEdit ComboBoxEditCustomized;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraEditors.ImageComboBoxEdit CustomTextImageComboBoxEdit;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }
 

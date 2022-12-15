@@ -58,7 +58,12 @@ namespace QuickTests
             this.bIntShift = new System.Windows.Forms.Button();
             this.bFloat = new System.Windows.Forms.Button();
             this.tabEvents = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button17 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -88,13 +93,14 @@ namespace QuickTests
             this.bConvert = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
-            this.button17 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabEvents.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -239,6 +245,7 @@ namespace QuickTests
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.button21);
             this.tabGeneral.Controls.Add(this.bReference);
             this.tabGeneral.Controls.Add(this.groupBox5);
             this.tabGeneral.Controls.Add(this.groupBox4);
@@ -399,6 +406,7 @@ namespace QuickTests
             // 
             // tabEvents
             // 
+            this.tabEvents.Controls.Add(this.groupBox7);
             this.tabEvents.Controls.Add(this.groupBox6);
             this.tabEvents.Controls.Add(this.groupBox1);
             this.tabEvents.Location = new System.Drawing.Point(4, 24);
@@ -408,6 +416,48 @@ namespace QuickTests
             this.tabEvents.TabIndex = 1;
             this.tabEvents.Text = "Events";
             this.tabEvents.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.button20);
+            this.groupBox7.Controls.Add(this.button19);
+            this.groupBox7.Controls.Add(this.button18);
+            this.groupBox7.Location = new System.Drawing.Point(377, 6);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(200, 100);
+            this.groupBox7.TabIndex = 3;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Clear Evnet in Class Null Check";
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(87, 17);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(84, 23);
+            this.button20.TabIndex = 2;
+            this.button20.Text = "Event Trigger";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(6, 17);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(75, 23);
+            this.button19.TabIndex = 1;
+            this.button19.Text = "Event Reg";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(6, 46);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(75, 23);
+            this.button18.TabIndex = 0;
+            this.button18.Text = "Event Clear";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // groupBox6
             // 
@@ -420,6 +470,16 @@ namespace QuickTests
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Loop Event Trigger Projection Check";
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(158, 53);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(90, 23);
+            this.button17.TabIndex = 3;
+            this.button17.Text = "Stop Timer";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
             // label2
             // 
@@ -717,15 +777,15 @@ namespace QuickTests
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick);
             // 
-            // button17
+            // button21
             // 
-            this.button17.Location = new System.Drawing.Point(158, 53);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(90, 23);
-            this.button17.TabIndex = 3;
-            this.button17.Text = "Stop Timer";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
+            this.button21.Location = new System.Drawing.Point(190, 195);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(134, 23);
+            this.button21.TabIndex = 21;
+            this.button21.Text = "Class Staic Value";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // FormMain
             // 
@@ -744,6 +804,7 @@ namespace QuickTests
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.tabEvents.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -818,6 +879,11 @@ namespace QuickTests
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer LoopEventTimer;
         private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button button21;
     }
 }
 

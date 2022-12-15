@@ -78,6 +78,7 @@ namespace Dev_GridControl_22_1
             TemplateGridControl.PreviewKeyDown += TemplateGridControl_PreviewKeyDown;
             TemplateGridView.RowCellStyle += TemplateGridView_RowCellStyle;
             TemplateGridView.ValidatingEditor += TemplateGridView_ValidatingEditor;
+            
 
 
             //Create ImageComboEdit

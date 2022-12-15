@@ -20,9 +20,13 @@ namespace QuickTests
 
         public string Class { get; set; }
 
+        [Browsable(false)]
+        public static string StaticText = "500";
+
         /// <summary>
         /// Virtual won't run
         /// </summary>
+        /// 
         public virtual void DoSth()
         {
             Debug.WriteLine("Dosth in Base.");

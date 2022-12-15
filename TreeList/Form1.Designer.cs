@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.treeList1 = new DevExpress.XtraTreeList.TreeList();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bAdd = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.bDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.bAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.treeList1 = new DevExpress.XtraTreeList.TreeList();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
@@ -58,6 +59,39 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // bDelete
+            // 
+            this.bDelete.Location = new System.Drawing.Point(349, 12);
+            this.bDelete.Name = "bDelete";
+            this.bDelete.Size = new System.Drawing.Size(333, 22);
+            this.bDelete.StyleController = this.layoutControl1;
+            this.bDelete.TabIndex = 6;
+            this.bDelete.Text = "Delete";
+            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
+            // 
+            // bAdd
+            // 
+            this.bAdd.Location = new System.Drawing.Point(12, 12);
+            this.bAdd.Name = "bAdd";
+            this.bAdd.Size = new System.Drawing.Size(333, 22);
+            this.bAdd.StyleController = this.layoutControl1;
+            this.bAdd.TabIndex = 5;
+            this.bAdd.Text = "Add";
+            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
+            // 
+            // treeList1
+            // 
+            this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.treeListColumn1});
+            this.treeList1.Location = new System.Drawing.Point(12, 38);
+            this.treeList1.Name = "treeList1";
+            this.treeList1.BeginUnboundLoad();
+            this.treeList1.AppendNode(new object[] {
+            "jhgjhgjh"}, -1);
+            this.treeList1.EndUnboundLoad();
+            this.treeList1.Size = new System.Drawing.Size(670, 381);
+            this.treeList1.TabIndex = 4;
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -70,13 +104,6 @@
             this.Root.Size = new System.Drawing.Size(694, 431);
             this.Root.TextVisible = false;
             // 
-            // treeList1
-            // 
-            this.treeList1.Location = new System.Drawing.Point(12, 38);
-            this.treeList1.Name = "treeList1";
-            this.treeList1.Size = new System.Drawing.Size(670, 381);
-            this.treeList1.TabIndex = 4;
-            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.treeList1;
@@ -85,16 +112,6 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(674, 385);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
-            // bAdd
-            // 
-            this.bAdd.Location = new System.Drawing.Point(12, 12);
-            this.bAdd.Name = "bAdd";
-            this.bAdd.Size = new System.Drawing.Size(333, 22);
-            this.bAdd.StyleController = this.layoutControl1;
-            this.bAdd.TabIndex = 5;
-            this.bAdd.Text = "Add";
-            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
             // 
             // layoutControlItem2
             // 
@@ -105,16 +122,6 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // bDelete
-            // 
-            this.bDelete.Location = new System.Drawing.Point(349, 12);
-            this.bDelete.Name = "bDelete";
-            this.bDelete.Size = new System.Drawing.Size(333, 22);
-            this.bDelete.StyleController = this.layoutControl1;
-            this.bDelete.TabIndex = 6;
-            this.bDelete.Text = "Delete";
-            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.bDelete;
@@ -123,6 +130,14 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(337, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
+            // 
+            // treeListColumn1
+            // 
+            this.treeListColumn1.Caption = "treeListColumn1";
+            this.treeListColumn1.FieldName = "treeListColumn1";
+            this.treeListColumn1.Name = "treeListColumn1";
+            this.treeListColumn1.Visible = true;
+            this.treeListColumn1.VisibleIndex = 0;
             // 
             // Form1
             // 
@@ -135,8 +150,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
@@ -154,6 +169,7 @@
         private DevExpress.XtraEditors.SimpleButton bAdd;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
     }
 }
 

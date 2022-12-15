@@ -72,6 +72,40 @@ namespace ComboBox
             //Set test2 property
             icbTest2.Properties.TextEditStyle = TextEditStyles.Standard;
             icbTest2.Properties.NullText = "";
+
+            InitCustomTextImageComboBox();
+
+        }
+
+        private void InitCustomTextImageComboBox()
+        {
+            CustomTextImageComboBoxEdit.Properties.Items.Clear();
+            CustomTextImageComboBoxEdit.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;
+            CustomTextImageComboBoxEdit.Properties.NullText = "";
+            CustomTextImageComboBoxEdit.Properties.LargeImages = imageCollection1; //Set image source
+
+            for (int i = 0; i < 2; i++)
+            {
+                ImageComboBoxItem item = new ImageComboBoxItem();
+                item.Description = "Item_" + i;
+                item.ImageIndex = i;
+                item.Value = item.Description; //This must have, otherwise value can't be selected
+                CustomTextImageComboBoxEdit.Properties.Items.Add(item);
+            }
+
+            CustomTextImageComboBoxEdit.CustomDisplayText += CustomTextImageComboBoxEdit_CustomDisplayText;
+
+        }
+
+        private void CustomTextImageComboBoxEdit_CustomDisplayText(object sender, CustomDisplayTextEventArgs e)
+        {
+            if (e.Value == null) return;
+            
+
+            if (e.Value.ToString().StartsWith("Item_"))
+            {
+                e.DisplayText = e.Value.ToString() + "2333";
+            }
         }
 
         private void EnableImageComboBoxEdit(ImageComboBoxEdit imageComboBox)

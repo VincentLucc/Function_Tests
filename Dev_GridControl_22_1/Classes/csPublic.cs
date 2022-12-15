@@ -22,6 +22,7 @@ namespace Dev_GridControl_22_1
             View.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.True;//Display the summary in column lane         
             View.OptionsDetail.EnableMasterViewMode = false; //Disable group
 
+            View.OptionsMenu.EnableColumnMenu = false; //Hide column menu
 
             //Alignments
             View.Appearance.HeaderPanel.TextOptions.HAlignment = HorzAlignment.Center;

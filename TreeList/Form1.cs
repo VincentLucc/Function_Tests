@@ -26,7 +26,11 @@ namespace TreeList
             //column1.Caption = "Procedure";
             //column1.Visible = true;
 
+            csUIHelper.InitTreeList(treeList1);
+            
             treeList1.DataSource = new string[] {"1","2" };
+
+
         }
 
         private void bAdd_Click(object sender, EventArgs e)

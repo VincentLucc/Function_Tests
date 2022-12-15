@@ -693,6 +693,40 @@ namespace QuickTests
             LoopEvent -= FormMain_LoopEvent;
             LoopEventTimer.Stop();
         }
+
+
+        public delegate void nullEventAction();
+        public event nullEventAction nullEvent;
+        private void button19_Click(object sender, EventArgs e)
+        {
+            nullEvent += FormMain_nullEvent;
+        }
+
+        private void FormMain_nullEvent()
+        {
+            Debug.WriteLine(csPublic.TimeString);
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if (nullEvent!=null)
+            {
+                nullEvent = null;
+            }
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            nullEvent?.Invoke();
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            Student s1 = new Student();
+            Student s2 = new Student();
+            Student.StaticText = "600";
+
+        }
     }
 
 
