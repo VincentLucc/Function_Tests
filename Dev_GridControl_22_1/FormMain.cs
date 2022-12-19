@@ -92,5 +92,11 @@ namespace Dev_GridControl_22_1
             var winTooltip = new FormToolTip();
             winTooltip.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var winCustomBindingEdit=new CustomBindingEditForm();
+            winCustomBindingEdit.ShowDialog();
+        }
     }
 }

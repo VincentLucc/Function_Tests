@@ -33,7 +33,7 @@ namespace Dev_GridControl_22_1.Forms
                 students.Add(student);
             }
             gridControl1.DataSource = students;
-            csPublic.InitGridviewWithDefaultSettings(gridView1);
+            csPublic.InitGridview(gridView1);
 
             //Set tooltip
             toolTipController1.GetActiveObjectInfo += ToolTipController1_GetActiveObjectInfo;

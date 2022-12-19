@@ -55,7 +55,7 @@ namespace Dev_GridControl_22_1
         private void InitControls()
         {
             //Init variables
-            csPublic.InitGridviewWithDefaultSettings(TemplateGridView, true);
+            csPublic.InitGridview(TemplateGridView, true);
 
             //Set grid properties
             TemplateGridControl.DataSource = TemplateListBuffer;

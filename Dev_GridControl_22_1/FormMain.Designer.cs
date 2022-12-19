@@ -39,6 +39,7 @@ namespace Dev_GridControl_22_1
             this.bSizeCompare = new DevExpress.XtraEditors.SimpleButton();
             this.bEditForm = new System.Windows.Forms.Button();
             this.bTooltip = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -64,7 +65,7 @@ namespace Dev_GridControl_22_1
             // simpleButton2
             // 
             this.simpleButton2.ImageOptions.SvgImage = global::Dev_GridControl_22_1.Properties.Resources.open2;
-            this.simpleButton2.Location = new System.Drawing.Point(55, 93);
+            this.simpleButton2.Location = new System.Drawing.Point(55, 122);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(109, 57);
             this.simpleButton2.TabIndex = 2;
@@ -72,7 +73,7 @@ namespace Dev_GridControl_22_1
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(170, 63);
+            this.simpleButton3.Location = new System.Drawing.Point(55, 92);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(109, 23);
             this.simpleButton3.TabIndex = 3;
@@ -82,7 +83,7 @@ namespace Dev_GridControl_22_1
             // 
             // bRejectReasons
             // 
-            this.bRejectReasons.Location = new System.Drawing.Point(285, 63);
+            this.bRejectReasons.Location = new System.Drawing.Point(170, 92);
             this.bRejectReasons.Name = "bRejectReasons";
             this.bRejectReasons.Size = new System.Drawing.Size(109, 23);
             this.bRejectReasons.TabIndex = 4;
@@ -92,7 +93,7 @@ namespace Dev_GridControl_22_1
             // 
             // bBigDataUpdate
             // 
-            this.bBigDataUpdate.Location = new System.Drawing.Point(55, 156);
+            this.bBigDataUpdate.Location = new System.Drawing.Point(285, 34);
             this.bBigDataUpdate.Name = "bBigDataUpdate";
             this.bBigDataUpdate.Size = new System.Drawing.Size(109, 23);
             this.bBigDataUpdate.TabIndex = 5;
@@ -140,11 +141,22 @@ namespace Dev_GridControl_22_1
             this.bTooltip.UseVisualStyleBackColor = true;
             this.bTooltip.Click += new System.EventHandler(this.bTooltip_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(170, 63);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(149, 23);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Custom Editor With Binding";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.bTooltip);
             this.Controls.Add(this.bEditForm);
             this.Controls.Add(this.bSizeCompare);
@@ -174,6 +186,7 @@ namespace Dev_GridControl_22_1
         private DevExpress.XtraEditors.SimpleButton bSizeCompare;
         private System.Windows.Forms.Button bEditForm;
         private System.Windows.Forms.Button bTooltip;
+        private System.Windows.Forms.Button button2;
     }
 }
 

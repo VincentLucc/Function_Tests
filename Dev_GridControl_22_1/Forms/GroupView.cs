@@ -57,7 +57,7 @@ namespace Dev_GridControl_22_1
 
 
             //Init view with default settings
-            csPublic.InitGridviewWithDefaultSettings(gridView1);
+            csPublic.InitGridview(gridView1);
 
             //Set grid control customized settings
             gridView1.OptionsView.ShowGroupPanel = true; //User don't see group panel

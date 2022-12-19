@@ -1,4 +1,5 @@
-﻿using DevExpress.Utils;
+﻿using DevExpress.ExpressApp.Win;
+using DevExpress.Utils;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
@@ -11,7 +12,7 @@ namespace Dev_GridControl_22_1
 {
     class csPublic
     {
-        public static void InitGridviewWithDefaultSettings(GridView View, bool EnableEdit = false)
+        public static void InitGridview(GridView View, bool EnableEdit = false, bool ShowNewRow = false)
         {
             //Basic settings
             View.OptionsView.ShowGroupPanel = false; //User don't see group panel
@@ -21,17 +22,35 @@ namespace Dev_GridControl_22_1
             View.OptionsCustomization.AllowQuickHideColumns = false;//User can't drag and hide the column
             View.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.True;//Display the summary in column lane         
             View.OptionsDetail.EnableMasterViewMode = false; //Disable group
-
             View.OptionsMenu.EnableColumnMenu = false; //Hide column menu
 
-            //Alignments
-            View.Appearance.HeaderPanel.TextOptions.HAlignment = HorzAlignment.Center;
-            View.Appearance.Row.TextOptions.HAlignment = HorzAlignment.Center;
-            View.Appearance.GroupFooter.TextOptions.HAlignment = HorzAlignment.Center;//Center the display
-
             //Editable
-            View.OptionsBehavior.Editable = EnableEdit; //Disable edit
-            View.OptionsView.NewItemRowPosition = EnableEdit ? NewItemRowPosition.Bottom : NewItemRowPosition.None; //Hide new function row
+            //Disable edit(Notice: All editors in grid will be affected include Buttons, ComboBox)
+            //To set editable for seperate items, enable edit first, then disable edit in specific column
+            //nameColumn.OptionsColumn.AllowEdit = false;
+            View.OptionsBehavior.Editable = EnableEdit;
+
+            //New row
+            if (ShowNewRow)
+            {
+                View.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom;
+                View.OptionsView.ShowIndicator = true; //User can distinguish new row
+            }
+            else
+            {
+                View.OptionsView.NewItemRowPosition = NewItemRowPosition.None; //Hide new function row
+                View.OptionsView.ShowIndicator = false; //Hide row header
+            }
         }
+
+        public static void SetGridViewAlignment(GridView View, HorzAlignment alignmentContent = HorzAlignment.Center, HorzAlignment alignmentHeader = HorzAlignment.Center, HorzAlignment alignmentGroup = HorzAlignment.Center)
+        {
+            //Alignments
+            View.Appearance.HeaderPanel.TextOptions.HAlignment = alignmentHeader;
+            View.Appearance.Row.TextOptions.HAlignment = alignmentContent;
+            View.Appearance.GroupFooter.TextOptions.HAlignment = alignmentGroup;//Center the display
+        }
+
+   
     }
 }
