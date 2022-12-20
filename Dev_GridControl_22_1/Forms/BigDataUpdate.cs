@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -95,11 +96,27 @@ namespace Dev_GridControl_22_1
                     Students[i].Age += 1;
                 }
 
+
+              
+
                 gridControl1.Invoke(new Action(() =>
                 {
-                    gridControl1.RefreshDataSource();
+                    gridControl1.RefreshDataSource();           
+
                 }));
 
+                int iRowCount = gridView1.RowCount;
+
+                // gridView1.TopRowIndex= iRowCount;
+                GridViewInfo viewInfo= (GridViewInfo)gridView1.GetViewInfo();
+                int iViewCount= viewInfo.RowsInfo.Count;
+                int iRowIndex = iViewCount;
+
+                gridControl1.Invoke(new Action(() =>
+                {
+                    gridView1.TopRowIndex= -100;
+
+                }));
             }
 
 
