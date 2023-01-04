@@ -67,6 +67,8 @@ namespace DocumentManager
         // Assigning a required content for each auto generated Document
         void widgetView1_QueryControl(object sender, DevExpress.XtraBars.Docking2010.Views.QueryControlEventArgs e)
         {
+            this.SuspendLayout();
+
             if (e.Document == widgetView1.Documents[0])
                 e.Control = new uc1();
 
@@ -87,6 +89,8 @@ namespace DocumentManager
 
             if (e.Control == null)
                 e.Control = new Control();
+
+            this.ResumeLayout();
         }
     }
 }

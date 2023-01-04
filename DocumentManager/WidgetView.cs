@@ -13,6 +13,10 @@ namespace DocumentManager
 {
     public partial class WidgetView : DevExpress.XtraEditors.XtraForm
     {
+        uc1 uc01 = new DocumentManager.uc1();
+        uc2 uc02 = new DocumentManager.uc2();
+        UC3 uc03 = new DocumentManager.UC3();
+
         public WidgetView()
         {
             InitializeComponent();
@@ -31,14 +35,32 @@ namespace DocumentManager
         // Assigning a required content for each auto generated Document
         void widgetView1_QueryControl(object sender, DevExpress.XtraBars.Docking2010.Views.QueryControlEventArgs e)
         {
-            if (e.Document == uc1Document)
-                e.Control = new DocumentManager.uc1();
 
-            if (e.Document == uc2Document)
-                e.Control = new DocumentManager.uc2();
 
-            if (e.Document == uC3Document)
-                e.Control = new DocumentManager.UC3();
+            bool bUseNew = true;
+
+            if (bUseNew)
+            {
+                if (e.Document == uc1Document)
+                    e.Control = new DocumentManager.uc1();
+
+                if (e.Document == uc2Document)
+                    e.Control = new DocumentManager.uc2();
+
+                if (e.Document == uC3Document)
+                    e.Control = new DocumentManager.UC3();
+            }
+            else
+            {
+                if (e.Document == uc1Document)
+                    e.Control = uc01;
+
+                if (e.Document == uc2Document)
+                    e.Control = uc02;
+
+                if (e.Document == uC3Document)
+                    e.Control = uc03;
+            }
 
             if (e.Control == null)
                 e.Control = new System.Windows.Forms.Control();

@@ -9,62 +9,81 @@ using System.Xml.Serialization;
 
 namespace XMLTests
 {
-    class csXML
+    public class csXML
     {
-        //read xml
+        /// <summary>
+        /// read xml
+        /// </summary>
+        /// <param name="ClassType"></param>
+        /// <param name="FilePath"></param>
+        /// <param name="oResult"></param>
+        /// <returns></returns>
         public static bool ReadXML(Type ClassType, string FilePath, out object oResult)
         {
-            //Init values
-            XmlSerializer xmlSerializer = new XmlSerializer(ClassType);
+            //Init
             oResult = new object();
 
             try
             {
-                //Check file existance
-                if (!File.Exists(FilePath))
-                {
-                    return false;
-                }
+                XmlSerializer xmlSerializer = new XmlSerializer(ClassType);
 
-                //Write to XML
+                //Check file existance
+                if (!File.Exists(FilePath)) return false;
+
+                //Read xml file
                 using (FileStream reader = new FileStream(FilePath, FileMode.Open))
                 {
                     oResult = xmlSerializer.Deserialize(reader);
+                    reader.Close();
                 }
+
+
+                if (oResult == null) return false;
             }
             catch (Exception e1)
             {
-                Debug.WriteLine("csXML.ReadXML" + e1.Message);
+                Debug.WriteLine("csXML.ReadXML:\r\n" + e1.Message);
                 return false;
             }
+
 
             //Pass all steps
             return true;
         }
 
-        public static bool WriteXML(object TargetObject, Type ClassType, string FilePath)
+
+        /// <summary>
+        /// Write to xml
+        /// </summary>
+        /// <param name="TargetObject"></param>
+        /// <param name="ClassType"></param>
+        /// <param name="FilePath"></param>
+        /// <returns></returns>
+        public static bool WriteXML(string FilePath, object TargetObject)
         {
-
-            //Init values
-            XmlSerializer xmlSerializer = new XmlSerializer(ClassType);
-
             try
             {
-                //Check file existance, make sure to close the file after creation
-                if (!File.Exists(FilePath)) File.Create(FilePath).Close();
+                //Init values
+                XmlSerializer xmlSerializer = new XmlSerializer(TargetObject.GetType());
 
-                //Check null
-                if (TargetObject == null) return false;
+                //Check directory
+                string sDir = Path.GetDirectoryName(FilePath);
+                if (!Directory.Exists(sDir)) Directory.CreateDirectory(sDir);
 
                 //Write to XML
-                using (TextWriter write = new StreamWriter(FilePath))
+                //Must enable write through to make sure write to disk instead of system cache, incase system shutdown
+                using (Stream writer = new FileStream(FilePath, FileMode.Create, FileAccess.Write, FileShare.None,
+                                                      8192, FileOptions.WriteThrough))
                 {
-                    xmlSerializer.Serialize(write, TargetObject);
+                    xmlSerializer.Serialize(writer, TargetObject);
+                    writer.Flush();
+                    writer.Close();
                 }
+ 
             }
             catch (Exception e1)
             {
-                Debug.WriteLine("csXML.WriteXML" + e1.Message);
+                Debug.WriteLine("csXML.WriteXML:\r\n" + e1.Message);
                 return false;
             }
 

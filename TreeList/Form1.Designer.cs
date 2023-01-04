@@ -1,4 +1,6 @@
-﻿namespace TreeList
+﻿using DevExpress.XtraEditors;
+
+namespace TreeList
 {
     partial class Form1
     {
@@ -29,14 +31,18 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.bDelete = new DevExpress.XtraEditors.SimpleButton();
             this.bAdd = new DevExpress.XtraEditors.SimpleButton();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
+            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -44,10 +50,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.simpleButton2);
+            this.layoutControl1.Controls.Add(this.simpleButton1);
             this.layoutControl1.Controls.Add(this.bDelete);
             this.layoutControl1.Controls.Add(this.bAdd);
             this.layoutControl1.Controls.Add(this.treeList1);
@@ -58,6 +68,16 @@
             this.layoutControl1.Size = new System.Drawing.Size(694, 431);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(12, 38);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(333, 22);
+            this.simpleButton1.StyleController = this.layoutControl1;
+            this.simpleButton1.TabIndex = 7;
+            this.simpleButton1.Text = "Directly Node Add (SUper slow)";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // bDelete
             // 
@@ -83,14 +103,22 @@
             // 
             this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn1});
-            this.treeList1.Location = new System.Drawing.Point(12, 38);
+            this.treeList1.Location = new System.Drawing.Point(12, 64);
             this.treeList1.Name = "treeList1";
             this.treeList1.BeginUnboundLoad();
             this.treeList1.AppendNode(new object[] {
             "jhgjhgjh"}, -1);
             this.treeList1.EndUnboundLoad();
-            this.treeList1.Size = new System.Drawing.Size(670, 381);
+            this.treeList1.Size = new System.Drawing.Size(670, 355);
             this.treeList1.TabIndex = 4;
+            // 
+            // treeListColumn1
+            // 
+            this.treeListColumn1.Caption = "treeListColumn1";
+            this.treeListColumn1.FieldName = "treeListColumn1";
+            this.treeListColumn1.Name = "treeListColumn1";
+            this.treeListColumn1.Visible = true;
+            this.treeListColumn1.VisibleIndex = 0;
             // 
             // Root
             // 
@@ -99,7 +127,9 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem2,
-            this.layoutControlItem3});
+            this.layoutControlItem3,
+            this.layoutControlItem4,
+            this.layoutControlItem5});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(694, 431);
             this.Root.TextVisible = false;
@@ -107,9 +137,9 @@
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.treeList1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 52);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(674, 385);
+            this.layoutControlItem1.Size = new System.Drawing.Size(674, 359);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -131,13 +161,33 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // treeListColumn1
+            // layoutControlItem4
             // 
-            this.treeListColumn1.Caption = "treeListColumn1";
-            this.treeListColumn1.FieldName = "treeListColumn1";
-            this.treeListColumn1.Name = "treeListColumn1";
-            this.treeListColumn1.Visible = true;
-            this.treeListColumn1.VisibleIndex = 0;
+            this.layoutControlItem4.Control = this.simpleButton1;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(337, 26);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(349, 38);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(333, 22);
+            this.simpleButton2.StyleController = this.layoutControl1;
+            this.simpleButton2.TabIndex = 8;
+            this.simpleButton2.Text = "Use Data Binding (196 times faster)";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.simpleButton2;
+            this.layoutControlItem5.Location = new System.Drawing.Point(337, 26);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(337, 26);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
             // 
             // Form1
             // 
@@ -155,6 +205,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -170,6 +222,10 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
+        private SimpleButton simpleButton1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private SimpleButton simpleButton2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }
 
