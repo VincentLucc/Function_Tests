@@ -1,5 +1,6 @@
 ﻿using DevExpress.ChartRangeControlClient.Core;
 using DevExpress.XtraEditors;
+using DevExpress.XtraTreeList;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,6 +43,7 @@ namespace TreeList
             int iStart = sDataSource.Count;
             int iEnd = iStart + iCount;
 
+ 
             for (int i = iStart; i < iEnd; i++)
             {
                 var sutdent = new Student()
@@ -51,7 +53,9 @@ namespace TreeList
             }
 
             treeList1.RefreshDataSource();
+            treeList1.MoveLast();
  
+
             watch.Stop();
             Debug.WriteLine(watch.ElapsedMilliseconds);
 
@@ -65,7 +69,7 @@ namespace TreeList
             treeList1.RefreshDataSource();
             treeList1.DataSource = sDataSource;
 
-            AddRecords(10000);
+            AddRecords(100000);
 
             timer1.Start();
         }

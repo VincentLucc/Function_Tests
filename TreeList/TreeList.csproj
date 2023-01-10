@@ -83,6 +83,18 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="BindHierachicalData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BindHierachicalData.Designer.cs">
+      <DependentUpon>BindHierachicalData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PartialModification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PartialModification.Designer.cs">
+      <DependentUpon>PartialModification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DataSourceTreeList.resx">
@@ -96,6 +108,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BindHierachicalData.resx">
+      <DependentUpon>BindHierachicalData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartialModification.resx">
+      <DependentUpon>PartialModification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
