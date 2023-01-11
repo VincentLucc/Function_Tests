@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using DevExpress.XtraBars.Navigation;
+using Socket_Tool.Forms;
 
 namespace Socket_Tool
 {
@@ -16,10 +17,12 @@ namespace Socket_Tool
     {
         public SkinElement skinElement;
         private AccordionControlElement clickedGroupElement;
+        public FormMain Instance;
 
         public FormMain()
         {
             InitializeComponent();
+            Instance = this;
             this.Load += FormMain_Load;
         }
 
@@ -82,10 +85,6 @@ namespace Socket_Tool
             }
         }
 
-       
-
-
-
         private enum EventType
         {
             Normal,
@@ -95,7 +94,7 @@ namespace Socket_Tool
 
         private void barButtonAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            csLayoutHelper.ShowServerAdd();
+            FormServerEdit.ShowForm();
         }
     }
 }
