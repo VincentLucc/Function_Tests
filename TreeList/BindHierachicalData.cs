@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,90 +17,161 @@ namespace TreeList
     public partial class BindHierachicalData : DevExpress.XtraEditors.XtraForm
     {
 
-        public BindingList<Student4Tree> Classes = new BindingList<Student4Tree>();
+        public BindingList<csTreeItem> TreeItems = new BindingList<csTreeItem>();
 
         public BindHierachicalData()
         {
             InitializeComponent();
+            InitEvnets();
         }
 
-        private void PartialModification_Load(object sender, EventArgs e)
+        private void InitEvnets()
         {
-            treeList1.KeyFieldName = nameof(StudentTree.TreeID);
-            treeList1.ParentFieldName = nameof(StudentTree.TreeParentID);
+            //Show hide columns, don't use custom style event (Won't trigger)
+            treeList1.CustomColumnDisplayText += TreeList1_CustomColumnDisplayText; ;
+        }
+
+        private void TreeList1_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
+        {
+            string sName = e.Column.FieldName;
+
+            if (sName == (nameof(csTreeItem.Tag)))
+            {
+                e.Column.Visible = false;
+            }
+            else if (sName == (nameof(csTreeItem.Name)))
+            {
+                e.Column.OptionsColumn.AllowEdit = false;
+            }
+            else if (sName == (nameof(csTreeItem.Icon)))
+            {
+                e.Column.Width = 32;
+            }
+
+        }
+
+        private void BindHierachicalData_Load(object sender, EventArgs e)
+        {
+            csUIHelper.InitTreeList(treeList1);
 
             for (int i = 0; i < 3; i++)
             {
-                var sItem = new Student4Tree();
+                var sItem = new csTreeItem();
                 sItem.Name = $"Main_{i}";
+                sItem.Icon = imageCollection1.Images[1]; //Eye
 
                 for (int j = 0; j < 3; j++)
                 {
-                    var stu = new Student4Tree()
+                    var subItem = new csTreeItem()
                     {
-                        Name = $"S_{i}"
+                        Name = $"Sub_{i}",
+                        Icon = imageCollection1.Images[0] //folder
                     };
 
-                    sItem.students.Add(stu);
+                    sItem.SubItems.Add(subItem);
                 }
 
-                Classes.Add(sItem);
+                TreeItems.Add(sItem);
             }
 
-            treeList1.ChildListFieldName = nameof(Student4Tree.students);
-            treeList1.DataSource = Classes;
+            treeList1.ChildListFieldName = nameof(csTreeItem.SubItems);
+            treeList1.DataSource = TreeItems;
+
+
+
+            //Custom view settings
+            treeList1.OptionsView.ShowVertLines = false;
+            treeList1.OptionsView.ShowHorzLines = false;
+            treeList1.OptionsView.ShowIndicator = false;
+            treeList1.OptionsView.ShowColumns = false;
+
+
+
         }
+
+
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-            //if (treeList1.FocusedNode != null)
-            //{
-            //    //Get node parent
-            //    var parentID = (int)treeList1.FocusedNode.GetValue(nameof(StudentTree.TreeID));
+            //Get level
+            int iLevel = treeList1.FocusedNode.Level;
 
-            //    var newItem = new StudentTree()
-            //    {
-            //        TreeID = students.Count,
-            //        TreeParentID = parentID,
-            //        Icon = imageCollection1.Images[0],
-            //        name = $"Add_{students.Count}"
-            //    };
+            //Add root
+            if (iLevel == 0)
+            {
+                int iCount = TreeItems.Count;
 
-            //    //Directly add
-            //    students.Add(newItem);
-            //    treeList1.RefreshDataSource();
-            //}
+                var newItem = new csTreeItem()
+                {
+                    Name = $"Eye_{iCount + 1}",
+                    Icon = imageCollection1.Images[1], //Eye
+                };
 
+                TreeItems.Add(newItem);
+            }
+            else if (iLevel == 1)
+            {
+                var parentNode = treeList1.FocusedNode.ParentNode;        
+                if (parentNode == null) return;
+                var parentRecord = (csTreeItem)treeList1.GetDataRecordByNode(parentNode);
+                int iCount = treeList1.FocusedNode.ParentNode.Nodes.Count;
 
+                var newItem = new csTreeItem()
+                {
+                    Name = $"Folder_{iCount+1}",
+                    Icon = imageCollection1.Images[0], //Folder
+                };
+                parentRecord.SubItems.Add(newItem);
+            }
+            else
+            {
+                //DO nothing
+            }
+
+  
         }
 
-        private void GetValidID()
-        {
 
+
+
+
+        private void AddSubNode_Click(object sender, EventArgs e)
+        {
+            if (treeList1.FocusedNode == null) return;
+            var sRecord = (csTreeItem)treeList1.GetDataRecordByNode(treeList1.FocusedNode);
+
+            //Get level
+            int iLevel = treeList1.FocusedNode.Level;
+            int iCount = sRecord.SubItems.Count;
+
+            //Add root
+            if (iLevel == 0)
+            {          
+                var newItem = new csTreeItem()
+                {
+                    Name = $"Folder_{iCount + 1}",
+                    Icon = imageCollection1.Images[0], //Folder
+                };
+
+                sRecord.SubItems.Add(newItem);
+            }
+            else if (iLevel == 1)
+            {
+                var newItem = new csTreeItem()
+                {
+                    Name = $"Tool_{iCount + 1}",
+                    Icon = imageCollection1.Images[2], //Bars
+                };
+                sRecord.SubItems.Add(newItem);
+            }
+
+            treeList1.FocusedNode.Expand();
         }
 
-        private void AddNode_Click(object sender, EventArgs e)
+        private void bDeleteItem_Click(object sender, EventArgs e)
         {
-            //if (treeList1.FocusedNode != null)
-            //{
-            //    //Get node parent
-            //    var parentID = (int)treeList1.FocusedNode.GetValue(nameof(StudentTree.TreeID));
-
-            //    var newItem = new StudentTree()
-            //    {
-            //        TreeID = students.Count,
-            //        TreeParentID = parentID,
-            //        Icon = imageCollection1.Images[0],
-            //        name = $"Add_{students.Count}"
-            //    };
-
-            //    //Directly add
-            //    //treeList1.FocusedNode.Nodes.Add(newItem);
-            //    var nodeValues = new object[] { newItem.TreeID, newItem.TreeParentID, newItem.Icon, newItem.name, newItem.id, newItem.age }; //Tree node only accept this
-            //    //treeList1.AppendNode(nodeValues, treeList1.FocusedNode);//Same effects
-            //    treeList1.FocusedNode.Nodes.Add(nodeValues);
-            //}
-
+            if (treeList1.FocusedNode == null) return;
+            treeList1.FocusedNode.Remove();
         }
     }
 
@@ -107,16 +179,45 @@ namespace TreeList
     /// <summary>
     /// Must define a class like this to directly show the structure
     /// </summary>
-    public class Student4Tree
+    public class csTreeItem : INotifyPropertyChanged
     {
 
-        public string Name { get; set; }
+        public Image Icon { get; set; }
 
-        public List<Student4Tree> students { get; set; }
-
-        public Student4Tree()
+        private string _name;
+        public string Name
         {
-            students = new List<Student4Tree>();
+            get { return _name; }
+            set
+            {
+                if (value != _name)
+                {
+                    _name = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Item type
+        /// </summary>
+        public object Tag { get; set; }
+
+        public BindingList<csTreeItem> SubItems { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public csTreeItem()
+        {
+            SubItems = new BindingList<csTreeItem>();
+        }
+
+        // This method is called by the Set accessor of each property.
+        // The CallerMemberName attribute that is applied to the optional propertyName
+        // parameter causes the property name of the caller to be substituted as an argument.
+        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -33,8 +33,8 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
-            this.AddNode = new DevExpress.XtraEditors.SimpleButton();
-            this.bAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.AddSubNode = new DevExpress.XtraEditors.SimpleButton();
+            this.bAddSame = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -44,6 +44,8 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.bDeleteItem = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -59,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -84,8 +87,9 @@
             // 
             // layoutControl2
             // 
-            this.layoutControl2.Controls.Add(this.AddNode);
-            this.layoutControl2.Controls.Add(this.bAdd);
+            this.layoutControl2.Controls.Add(this.bDeleteItem);
+            this.layoutControl2.Controls.Add(this.AddSubNode);
+            this.layoutControl2.Controls.Add(this.bAddSame);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.Location = new System.Drawing.Point(2, 23);
             this.layoutControl2.Name = "layoutControl2";
@@ -94,25 +98,25 @@
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
-            // AddNode
+            // AddSubNode
             // 
-            this.AddNode.Location = new System.Drawing.Point(12, 38);
-            this.AddNode.Name = "AddNode";
-            this.AddNode.Size = new System.Drawing.Size(181, 22);
-            this.AddNode.StyleController = this.layoutControl2;
-            this.AddNode.TabIndex = 6;
-            this.AddNode.Text = "Add Through Node";
-            this.AddNode.Click += new System.EventHandler(this.AddNode_Click);
+            this.AddSubNode.Location = new System.Drawing.Point(12, 38);
+            this.AddSubNode.Name = "AddSubNode";
+            this.AddSubNode.Size = new System.Drawing.Size(181, 22);
+            this.AddSubNode.StyleController = this.layoutControl2;
+            this.AddSubNode.TabIndex = 6;
+            this.AddSubNode.Text = "Add Sub Item";
+            this.AddSubNode.Click += new System.EventHandler(this.AddSubNode_Click);
             // 
-            // bAdd
+            // bAddSame
             // 
-            this.bAdd.Location = new System.Drawing.Point(12, 12);
-            this.bAdd.Name = "bAdd";
-            this.bAdd.Size = new System.Drawing.Size(181, 22);
-            this.bAdd.StyleController = this.layoutControl2;
-            this.bAdd.TabIndex = 5;
-            this.bAdd.Text = "Add Through Source";
-            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
+            this.bAddSame.Location = new System.Drawing.Point(12, 12);
+            this.bAddSame.Name = "bAddSame";
+            this.bAddSame.Size = new System.Drawing.Size(181, 22);
+            this.bAddSame.StyleController = this.layoutControl2;
+            this.bAddSame.TabIndex = 5;
+            this.bAddSame.Text = "Add Same Item";
+            this.bAddSame.Click += new System.EventHandler(this.bAdd_Click);
             // 
             // layoutControlGroup1
             // 
@@ -121,14 +125,15 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem2,
             this.emptySpaceItem1,
-            this.layoutControlItem4});
+            this.layoutControlItem4,
+            this.layoutControlItem5});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(205, 475);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.bAdd;
+            this.layoutControlItem2.Control = this.bAddSame;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(185, 26);
@@ -138,14 +143,14 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 52);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 78);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(185, 403);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(185, 377);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
             // 
-            this.layoutControlItem4.Control = this.AddNode;
+            this.layoutControlItem4.Control = this.AddSubNode;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(185, 26);
@@ -193,6 +198,27 @@
             // 
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
             this.imageCollection1.Images.SetKeyName(0, "loadfrom_16x16.png");
+            this.imageCollection1.Images.SetKeyName(1, "show_16x16.png");
+            this.imageCollection1.Images.SetKeyName(2, "alignhorizontaltop2_16x16.png");
+            // 
+            // bDeleteItem
+            // 
+            this.bDeleteItem.Location = new System.Drawing.Point(12, 64);
+            this.bDeleteItem.Name = "bDeleteItem";
+            this.bDeleteItem.Size = new System.Drawing.Size(181, 22);
+            this.bDeleteItem.StyleController = this.layoutControl2;
+            this.bDeleteItem.TabIndex = 7;
+            this.bDeleteItem.Text = "Delete Item";
+            this.bDeleteItem.Click += new System.EventHandler(this.bDeleteItem_Click);
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.bDeleteItem;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 52);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(185, 26);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
             // 
             // BindHierachicalData
             // 
@@ -202,8 +228,8 @@
             this.Controls.Add(this.layoutControl1);
             this.Name = "BindHierachicalData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Bind Hierachical Data";
-            this.Load += new System.EventHandler(this.PartialModification_Load);
+            this.Text = "Bind Hierachical Data (Special Class)";
+            this.Load += new System.EventHandler(this.BindHierachicalData_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -219,6 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -229,7 +256,7 @@
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraLayout.LayoutControl layoutControl2;
-        private DevExpress.XtraEditors.SimpleButton bAdd;
+        private DevExpress.XtraEditors.SimpleButton bAddSame;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
@@ -237,7 +264,9 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.Utils.ImageCollection imageCollection1;
-        private DevExpress.XtraEditors.SimpleButton AddNode;
+        private DevExpress.XtraEditors.SimpleButton AddSubNode;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraEditors.SimpleButton bDeleteItem;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }

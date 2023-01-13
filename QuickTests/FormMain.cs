@@ -722,10 +722,12 @@ namespace QuickTests
 
         private void button21_Click(object sender, EventArgs e)
         {
-            Student s1 = new Student();
+            Student s1 = new Student() { Name="s1"};
             Student s2 = new Student();
             Student.StaticText = "600";
-
+            s2 = s1;
+            s1 = new Student();
+            string sName = s2.Name; //Value stayed
         }
     }
 

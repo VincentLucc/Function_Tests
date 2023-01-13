@@ -15,7 +15,9 @@ namespace TreeList
 {
     public partial class PartialModification : DevExpress.XtraEditors.XtraForm
     {
-
+        /// <summary>
+        /// Use binding list for easier update
+        /// </summary>
         public BindingList<StudentTree> students = new BindingList<StudentTree>();
 
         public PartialModification()
@@ -61,17 +63,12 @@ namespace TreeList
 
                 //Directly add
                 students.Add(newItem);
-                treeList1.RefreshDataSource();
             }
 
 
         }
 
-        private void GetValidID()
-        {
-
-        }
-
+ 
         private void AddNode_Click(object sender, EventArgs e)
         {
             if (treeList1.FocusedNode != null)
