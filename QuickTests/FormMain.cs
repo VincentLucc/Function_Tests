@@ -726,8 +726,16 @@ namespace QuickTests
             Student s2 = new Student();
             Student.StaticText = "600";
             s2 = s1;
+
+            if (s2==s1)
+            {
+                Debug.WriteLine("Do Sth");
+            }
+
             s1 = new Student();
             string sName = s2.Name; //Value stayed
+
+           
         }
     }
 

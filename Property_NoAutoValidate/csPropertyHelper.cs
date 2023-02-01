@@ -55,6 +55,9 @@ namespace Property_NoAutoValidate
                 //Null verification
                 if (propertyGrid == null) return;
 
+
+                propertyGrid.BeginUpdate();
+
                 //Create new rows before set properties
                 propertyGrid.UpdateRows();
 
@@ -76,7 +79,9 @@ namespace Property_NoAutoValidate
             catch (Exception ex)
             {
                 Debug.WriteLine("PropertyHelper.ReloadAll:\r\n" + ex.Message);
-            }           
+            }
+
+            propertyGrid.EndUpdate();
         }
 
 

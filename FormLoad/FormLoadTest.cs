@@ -12,6 +12,8 @@ namespace FormLoad
 {
     public partial class FormLoadTest : Form
     {
+
+
         public FormLoadTest()
         {
             InitializeComponent();
@@ -34,5 +36,7 @@ namespace FormLoad
             this.Hide();
             this.Visible = true;
         }
+
+
     }
 }

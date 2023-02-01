@@ -31,6 +31,7 @@ namespace FormLoad
         {
             this.bFormEvent = new System.Windows.Forms.Button();
             this.bFormLoadTest = new System.Windows.Forms.Button();
+            this.bReload = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bFormEvent
@@ -53,11 +54,22 @@ namespace FormLoad
             this.bFormLoadTest.UseVisualStyleBackColor = true;
             this.bFormLoadTest.Click += new System.EventHandler(this.bFormLoadTest_Click);
             // 
+            // bReload
+            // 
+            this.bReload.Location = new System.Drawing.Point(13, 71);
+            this.bReload.Name = "bReload";
+            this.bReload.Size = new System.Drawing.Size(105, 23);
+            this.bReload.TabIndex = 2;
+            this.bReload.Text = "Form Reload Test";
+            this.bReload.UseVisualStyleBackColor = true;
+            this.bReload.Click += new System.EventHandler(this.bReload_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(315, 174);
+            this.Controls.Add(this.bReload);
             this.Controls.Add(this.bFormLoadTest);
             this.Controls.Add(this.bFormEvent);
             this.Name = "FormMain";
@@ -71,6 +83,7 @@ namespace FormLoad
 
         private System.Windows.Forms.Button bFormEvent;
         private System.Windows.Forms.Button bFormLoadTest;
+        private System.Windows.Forms.Button bReload;
     }
 }
 

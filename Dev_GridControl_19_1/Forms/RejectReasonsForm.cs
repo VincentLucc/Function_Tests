@@ -26,26 +26,30 @@ namespace Dev_GridControl_19_1
             var sampleData = CreateSampleData();
             gridControl1.DataSource = sampleData;
 
-            //gridView1.OptionsView.ShowGroupedColumns = false; //Hide groupped column
+            gridView1.OptionsBehavior.Editable = false; //Dsiable user active editor
             gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.False;//Display the summary in column lane
             gridView1.OptionsBehavior.AllowPartialGroups = DefaultBoolean.False; //Hide device name
             gridView1.Appearance.GroupFooter.TextOptions.HAlignment = HorzAlignment.Center;//Center the display
+
+            gridView1.OptionsView.ShowGroupPanel = false;
+            gridView1.OptionsView.ShowIndicator = false; //Hide row header
             gridView1.OptionsView.ShowFooter = false;
+
+            gridView1.Appearance.GroupFooter.TextOptions.HAlignment = HorzAlignment.Center;//Center the display
+            gridView1.Appearance.GroupFooter.Font = new Font(gridView1.Appearance.GroupFooter.Font, FontStyle.Bold);//Set to bold
+            gridView1.GroupRowHeight = 20;
 
             //Create group
             var deviceColumn = gridView1.Columns[nameof(AuxInfoView.DeviceName)];
             deviceColumn.Group();
             deviceColumn.Visible = false;
 
-            //Set group summaries
-            //string sNumberColumn = nameof(AuxInfoView.NumberOfTaggedProducts);
-            //GridGroupSummaryItem item = new GridGroupSummaryItem()
-            //{
-            //    FieldName = sNumberColumn,
-            //    SummaryType = SummaryItemType.Sum,
-            //    ShowInGroupColumnFooter = gridView1.Columns[sNumberColumn]  //Display location
-            //};
-            //gridView1.GroupSummary.Add(item);
+            //Set common properties
+            foreach (DevExpress.XtraGrid.Columns.GridColumn column in gridView1.Columns)
+            {
+                column.AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
+                column.AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
+            }
 
             //Set group row value
             gridView1.CustomDrawGroupRow += GridView1_CustomDrawGroupRow;
@@ -61,12 +65,12 @@ namespace Dev_GridControl_19_1
 
         private void GridView1_CustomDrawFooter(object sender, DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs e)
         {
-           
+
         }
 
         private void GridView1_CustomDrawFooterCell(object sender, DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventArgs e)
         {
-           
+
         }
 
         private void GridView1_CustomDrawGroupRow(object sender, DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs e)
@@ -74,12 +78,12 @@ namespace Dev_GridControl_19_1
             GridGroupRowInfo groupInfo = e.Info as GridGroupRowInfo;
 
             //Get summary
-            string sDevice=groupInfo.EditValue.ToString();
-            List<AuxInfoView> sampleData=(List<AuxInfoView>)gridControl1.DataSource;
-            int iSummary= sampleData.Where(i=>i.DeviceName==sDevice).Sum(i=>i.NumberOfTaggedProducts);
+            string sDevice = groupInfo.EditValue.ToString();
+            List<AuxInfoView> sampleData = (List<AuxInfoView>)gridControl1.DataSource;
+            int iSummary = sampleData.Where(i => i.DeviceName == sDevice).Sum(i => i.NumberOfTaggedProducts);
 
             //Set text
-            groupInfo.GroupText =$"{sDevice}:(count={iSummary})";
+            groupInfo.GroupText = $"{sDevice}:({iSummary})";
         }
 
         private List<AuxInfoView> CreateSampleData()

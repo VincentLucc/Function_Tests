@@ -44,6 +44,7 @@ namespace QuickTests
             this.bEventsInit = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.button21 = new System.Windows.Forms.Button();
             this.bReference = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.bEnum01 = new System.Windows.Forms.Button();
@@ -93,7 +94,7 @@ namespace QuickTests
             this.bConvert = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
-            this.button21 = new System.Windows.Forms.Button();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -107,6 +108,7 @@ namespace QuickTests
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -245,7 +247,7 @@ namespace QuickTests
             // 
             // tabGeneral
             // 
-            this.tabGeneral.Controls.Add(this.button21);
+            this.tabGeneral.Controls.Add(this.groupBox8);
             this.tabGeneral.Controls.Add(this.bReference);
             this.tabGeneral.Controls.Add(this.groupBox5);
             this.tabGeneral.Controls.Add(this.groupBox4);
@@ -272,6 +274,16 @@ namespace QuickTests
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(9, 22);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(134, 23);
+            this.button21.TabIndex = 21;
+            this.button21.Text = "Class Staic Value";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // bReference
             // 
@@ -777,15 +789,15 @@ namespace QuickTests
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick);
             // 
-            // button21
+            // groupBox8
             // 
-            this.button21.Location = new System.Drawing.Point(190, 195);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(134, 23);
-            this.button21.TabIndex = 21;
-            this.button21.Text = "Class Staic Value";
-            this.button21.UseVisualStyleBackColor = true;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
+            this.groupBox8.Controls.Add(this.button21);
+            this.groupBox8.Location = new System.Drawing.Point(451, 136);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(200, 100);
+            this.groupBox8.TabIndex = 22;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Class";
             // 
             // FormMain
             // 
@@ -814,6 +826,7 @@ namespace QuickTests
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -884,6 +897,7 @@ namespace QuickTests
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.GroupBox groupBox8;
     }
 }
 

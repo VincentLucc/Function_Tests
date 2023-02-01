@@ -39,11 +39,14 @@ namespace Dev_GridControl_19_1
             this.bSizeCompare = new DevExpress.XtraEditors.SimpleButton();
             this.bEditForm = new System.Windows.Forms.Button();
             this.bTooltip = new System.Windows.Forms.Button();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(55, 34);
+            this.simpleButton1.Location = new System.Drawing.Point(5, 23);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(109, 23);
             this.simpleButton1.TabIndex = 0;
@@ -82,7 +85,7 @@ namespace Dev_GridControl_19_1
             // 
             // bRejectReasons
             // 
-            this.bRejectReasons.Location = new System.Drawing.Point(285, 63);
+            this.bRejectReasons.Location = new System.Drawing.Point(5, 58);
             this.bRejectReasons.Name = "bRejectReasons";
             this.bRejectReasons.Size = new System.Drawing.Size(109, 23);
             this.bRejectReasons.TabIndex = 4;
@@ -140,24 +143,35 @@ namespace Dev_GridControl_19_1
             this.bTooltip.UseVisualStyleBackColor = true;
             this.bTooltip.Click += new System.EventHandler(this.bTooltip_Click);
             // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.simpleButton1);
+            this.groupControl1.Controls.Add(this.bRejectReasons);
+            this.groupControl1.Location = new System.Drawing.Point(588, 12);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(200, 204);
+            this.groupControl1.TabIndex = 10;
+            this.groupControl1.Text = "Group View";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.bTooltip);
             this.Controls.Add(this.bEditForm);
             this.Controls.Add(this.bSizeCompare);
             this.Controls.Add(this.bTileView);
             this.Controls.Add(this.bBigDataUpdate);
-            this.Controls.Add(this.bRejectReasons);
             this.Controls.Add(this.simpleButton3);
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.simpleButton1);
             this.Name = "FormMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -174,6 +188,7 @@ namespace Dev_GridControl_19_1
         private DevExpress.XtraEditors.SimpleButton bSizeCompare;
         private System.Windows.Forms.Button bEditForm;
         private System.Windows.Forms.Button bTooltip;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
     }
 }
 

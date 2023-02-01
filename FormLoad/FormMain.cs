@@ -52,5 +52,10 @@ namespace FormLoad
         {
             csUIHelper.ShowEventForm();
         }
+
+        private void bReload_Click(object sender, EventArgs e)
+        {
+            FormReloadTest.ShowReloadForm();
+        }
     }
 }

@@ -58,5 +58,10 @@ namespace Dev_GridControl_19_1
         /// </summary>
         [Browsable(false)]
         public static string DefaultReason = null;
+
+        public void dd()
+        {
+            
+        }
     }
 }

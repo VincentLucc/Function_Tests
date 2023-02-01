@@ -94,7 +94,7 @@ namespace Socket_Tool
 
         private void barButtonAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FormServerEdit.ShowForm();
+            FormServerEdit.ShowForm("New Any");
         }
     }
 }
