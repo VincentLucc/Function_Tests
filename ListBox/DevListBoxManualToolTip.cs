@@ -1,4 +1,5 @@
 ﻿using DevExpress.Utils;
+using DevExpress.Utils.Html.Internal;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.ViewInfo;
@@ -26,7 +27,7 @@ namespace ListBox
         private void DevListBox_Load(object sender, EventArgs e)
         {
             //Generate list
-            List<csValueItem> dataList = new List<csValueItem>();
+            List<string> dataList = new List<string>();
 
             //Trim option
             //Trimming.Default trim by length except "\r\n"
@@ -34,41 +35,42 @@ namespace ListBox
             //Trimming.EllipsisCharacter trim by length, include "\r\n", add "...", "AABBCCDDEEFF"=>"AABBCC...."
             //Trimming.EllipsisPath trim by length, replace in center include "\r\n", add "...", "AABBCCDDEEFF"=>"AABB...EEFF"
             //Trimming.EllipsisWord trim by length, replace in last include "\r\n", add "...", "AABB CCDD EEFF GGHH IIJJ KKLL MMNN OOPP"=>"AABB CCDD EEFF GGHH IIJJ..."
-            listBoxControl1.Appearance.TextOptions.Trimming = Trimming.EllipsisCharacter;//Enable this to allow text shrink based on control size
+            //Enable this to allow text shrink based on control size
+            listBoxControl1.Appearance.TextOptions.Trimming = Trimming.EllipsisCharacter;
             //Show tooltip, only allow manual tooltip, auto ones now can be wrong
             //listBoxControl1.ShowToolTipForTrimmedText = DefaultBoolean.True;
             
 
             for (int i = 0; i < 1000; i++)
             {
-
                 string sMessage = "AABB CCDD EEFF GGHH IIJJ KKLL MMNN OOPP\r\n";
-                string sDisplay = "";
-
                 if (i % 2 == 0)
                 {
                     sMessage += BitConverter.ToString(new byte[200]) + "\r\n";
                     sMessage += sMessage;
                     sMessage += sMessage;
                 }
-
-                //Limit maximum display length
-                if (sMessage.Length > 100) sDisplay = sMessage.Substring(0, 97) + "...";
- 
-                //Keeps only one line in the data area
-                if (sDisplay.Contains("\n")) sDisplay = sDisplay.Substring(0, sDisplay.IndexOf('\n')) + "...";
-
-                //Check if display been set
-                if (sDisplay=="") sDisplay = sMessage;
-
-                var item = new csValueItem(sMessage, sDisplay);
-                dataList.Add(item);
+                dataList.Add(sMessage);
             }
             listBoxControl1.DataSource = dataList;
-            listBoxControl1.DisplayMember = nameof(csValueItem.Description);
-            listBoxControl1.ValueMember = nameof(csValueItem.Value);
 
+            listBoxControl1.CustomItemDisplayText += ListBoxControl1_CustomItemDisplayText;
             toolTipController1.GetActiveObjectInfo += ToolTipController1_GetActiveObjectInfo;
+        }
+
+        private void ListBoxControl1_CustomItemDisplayText(object sender, CustomItemDisplayTextEventArgs e)
+        {
+            //Init variables
+            if (e.Value == null) return;
+            string sValue = e.Value.ToString();
+
+            //Limit maximum display length
+            if (sValue.Length > 100) sValue = sValue.Substring(0, 97) + "...";
+
+            //Keeps only one line in the data area
+            if (sValue.Contains("\n")) sValue = sValue.Substring(0, sValue.IndexOf('\n')) + "...";
+
+            e.DisplayText = sValue;
         }
 
         private void ToolTipController1_GetActiveObjectInfo(object sender, ToolTipControllerGetActiveObjectInfoEventArgs e)
@@ -79,8 +81,8 @@ namespace ListBox
                 if (listBoxControl == null) return;
                 int index = listBoxControl.IndexFromPoint(e.ControlMousePosition);
                 if (index < 0) return;
-                var item = listBoxControl.GetItem(index) as csValueItem;
-                e.Info = new ToolTipControlInfo(item.Value, item.Value);
+                var item = listBoxControl.GetItem(index) as string;
+                e.Info = new ToolTipControlInfo(item, item);
             }
             catch (Exception ex)
             {
