@@ -40,6 +40,7 @@ namespace Dev_GridControl_22_1
             this.bEditForm = new System.Windows.Forms.Button();
             this.bTooltip = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.bRowSelection = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -64,7 +65,6 @@ namespace Dev_GridControl_22_1
             // 
             // simpleButton2
             // 
-            this.simpleButton2.ImageOptions.SvgImage = global::Dev_GridControl_22_1.Properties.Resources.open2;
             this.simpleButton2.Location = new System.Drawing.Point(55, 122);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(109, 57);
@@ -151,11 +151,21 @@ namespace Dev_GridControl_22_1
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // bRowSelection
+            // 
+            this.bRowSelection.Location = new System.Drawing.Point(55, 273);
+            this.bRowSelection.Name = "bRowSelection";
+            this.bRowSelection.Size = new System.Drawing.Size(109, 23);
+            this.bRowSelection.TabIndex = 11;
+            this.bRowSelection.Text = "Row Selection";
+            this.bRowSelection.Click += new System.EventHandler(this.bRowSelection_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bRowSelection);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.bTooltip);
             this.Controls.Add(this.bEditForm);
@@ -187,6 +197,7 @@ namespace Dev_GridControl_22_1
         private System.Windows.Forms.Button bEditForm;
         private System.Windows.Forms.Button bTooltip;
         private System.Windows.Forms.Button button2;
+        private DevExpress.XtraEditors.SimpleButton bRowSelection;
     }
 }
 

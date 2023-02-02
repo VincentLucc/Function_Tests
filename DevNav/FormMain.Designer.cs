@@ -451,9 +451,9 @@ partial class FormMain
             // 
             // bTestAccordion1
             // 
-            this.bTestAccordion1.Location = new System.Drawing.Point(16, 402);
+            this.bTestAccordion1.Location = new System.Drawing.Point(577, 16);
             this.bTestAccordion1.Name = "bTestAccordion1";
-            this.bTestAccordion1.Size = new System.Drawing.Size(265, 28);
+            this.bTestAccordion1.Size = new System.Drawing.Size(182, 28);
             this.bTestAccordion1.StyleController = this.layoutControl5;
             this.bTestAccordion1.TabIndex = 8;
             this.bTestAccordion1.Text = "Test";
@@ -535,6 +535,7 @@ partial class FormMain
             // 
             // accordionControl1
             // 
+            this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1,
             this.accordionControlElement2});
@@ -542,7 +543,7 @@ partial class FormMain
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Hidden;
             this.accordionControl1.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Always;
-            this.accordionControl1.Size = new System.Drawing.Size(265, 380);
+            this.accordionControl1.Size = new System.Drawing.Size(265, 414);
             this.accordionControl1.StyleController = this.layoutControl5;
             this.accordionControl1.TabIndex = 0;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
@@ -621,7 +622,7 @@ partial class FormMain
             this.layoutControlItem3.Control = this.accordionControl1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(271, 386);
+            this.layoutControlItem3.Size = new System.Drawing.Size(271, 420);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -637,17 +638,17 @@ partial class FormMain
             // emptySpaceItem4
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.Location = new System.Drawing.Point(561, 0);
+            this.emptySpaceItem4.Location = new System.Drawing.Point(561, 34);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(188, 420);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(188, 386);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.bTestAccordion1;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 386);
+            this.layoutControlItem7.Location = new System.Drawing.Point(561, 0);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(271, 34);
+            this.layoutControlItem7.Size = new System.Drawing.Size(188, 34);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 

@@ -98,5 +98,11 @@ namespace Dev_GridControl_22_1
             var winCustomBindingEdit=new CustomBindingEditForm();
             winCustomBindingEdit.ShowDialog();
         }
+
+        private void bRowSelection_Click(object sender, EventArgs e)
+        {
+            var winSelection = new GridRowSelection();
+            winSelection.ShowDialog();
+        }
     }
 }
