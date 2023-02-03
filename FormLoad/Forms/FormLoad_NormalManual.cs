@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace FormLoad
 {
-    public partial class FormLoadTest : Form
+    public partial class FormLoad_NormalManual : FormReloadBaseManual
     {
 
 
-        public FormLoadTest()
+        public FormLoad_NormalManual()
         {
             InitializeComponent();
         }
@@ -26,8 +26,6 @@ namespace FormLoad
                 //Thread.Sleep(100);
                 await Task.Delay(100);
             }
-
-            this.Show();
         }
 
         private void FormLoadTest_Shown(object sender, EventArgs e)

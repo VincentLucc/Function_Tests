@@ -1,6 +1,6 @@
 ﻿namespace FormLoad
 {
-    partial class FormLoadTest
+    partial class FormLoad_NormalManual
     {
         /// <summary>
         /// Required designer variable.

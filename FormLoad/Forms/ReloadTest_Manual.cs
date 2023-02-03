@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace FormLoad
 {
-    public partial class FormReloadTest : FormReloadBase
+    public partial class ReloadTest_Manual : FormReloadBaseManual
     {
-        public static FormReloadTest instance;
+        public static ReloadTest_Manual instance;
 
-        public FormReloadTest()
+        public ReloadTest_Manual()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace FormLoad
         {
             if (instance == null)
             {
-                instance = new FormReloadTest();
+                instance = new ReloadTest_Manual();
             }
 
             return instance.ShowDialog();
