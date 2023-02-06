@@ -3,6 +3,7 @@ using DevExpress.Utils.Animation;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -23,11 +24,16 @@ namespace FormLoad
         private System.ComponentModel.IContainer components;
         public string WorkSpaceID = "Default";
         public bool IsFirstLoadComplete;
+        /// <summary>
+        /// Check whether program is running in desgin mode
+        /// </summary>
+        public bool isDesignMode;
         public FormReloadBaseDev()
         {
             this.InitializeComponent();
 
-            //Init controls
+            //Init variables
+            isDesignMode = (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
             this.StartPosition = FormStartPosition.CenterParent;
 
             //Save init control settings
@@ -58,6 +64,9 @@ namespace FormLoad
 
         private void FormReload_Load(object sender, EventArgs e)
         {
+            //Avoid hot load to run this piece of code which could change the source file
+            if (isDesignMode) return;
+
             //Init form settings
             Debug.WriteLine("FormReload_Load");
             if (!IsFirstLoadComplete) workspaceManager1.CaptureWorkspace(WorkSpaceID, true);

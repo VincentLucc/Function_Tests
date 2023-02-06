@@ -1,6 +1,7 @@
 ﻿using DevExpress.Utils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -19,10 +20,14 @@ namespace FormLoad
         public Size originSize;
         public FormWindowState originState;
         public bool IsFirstLoadComplete;
+        /// <summary>
+        /// Check whether program is running in desgin mode
+        /// </summary>
+        public bool isDesignMode;
         public FormReloadBaseManual()
         {
             //Init variables
-            //Init controls
+            isDesignMode = (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
             this.StartPosition = FormStartPosition.CenterParent;
 
             //Init events
@@ -46,6 +51,9 @@ namespace FormLoad
 
         private void FormReload_Load(object sender, EventArgs e)
         {
+            //Avoid hot load to run this piece of code which could change the source file
+            if (isDesignMode) return;
+
             //Save init state
             //Window state must be set when form is visible to be valid
             if (!IsFirstLoadComplete)
