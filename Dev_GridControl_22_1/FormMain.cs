@@ -104,5 +104,16 @@ namespace Dev_GridControl_22_1
             var winSelection = new GridRowSelection();
             winSelection.ShowDialog();
         }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleButton4_Click_1(object sender, EventArgs e)
+        {
+            var winDataTable = new DataTableBinding();
+            winDataTable.ShowDialog();
+        }
     }
 }
