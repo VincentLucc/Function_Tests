@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="csCodeParser.cs" />
+    <Compile Include="csLayoutVisitor.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
