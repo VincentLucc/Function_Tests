@@ -61,7 +61,8 @@ namespace TextEdit
             //Hide ruler
             richEditControl1.Options.HorizontalRuler.Visibility = RichEditRulerVisibility.Hidden;
             richEditControl1.Options.VerticalRuler.Visibility = RichEditRulerVisibility.Hidden;
-            richEditControl1.ReadOnly = false;  //Disable edit
+          
+
         }
 
         private void InitEvents()

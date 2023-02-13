@@ -44,6 +44,7 @@ namespace QuickTests
             this.bEventsInit = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.button21 = new System.Windows.Forms.Button();
             this.bReference = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -94,9 +95,10 @@ namespace QuickTests
             this.bConvert = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.bSortedList = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -108,7 +110,6 @@ namespace QuickTests
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -274,6 +275,16 @@ namespace QuickTests
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.button21);
+            this.groupBox8.Location = new System.Drawing.Point(451, 136);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(200, 100);
+            this.groupBox8.TabIndex = 22;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Class";
             // 
             // button21
             // 
@@ -572,6 +583,7 @@ namespace QuickTests
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.bSortedList);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.bGroupList);
             this.tabPage1.Controls.Add(this.button11);
@@ -789,15 +801,15 @@ namespace QuickTests
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick);
             // 
-            // groupBox8
+            // bSortedList
             // 
-            this.groupBox8.Controls.Add(this.button21);
-            this.groupBox8.Location = new System.Drawing.Point(451, 136);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(200, 100);
-            this.groupBox8.TabIndex = 22;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Class";
+            this.bSortedList.Location = new System.Drawing.Point(21, 166);
+            this.bSortedList.Name = "bSortedList";
+            this.bSortedList.Size = new System.Drawing.Size(75, 23);
+            this.bSortedList.TabIndex = 10;
+            this.bSortedList.Text = "SortedList";
+            this.bSortedList.UseVisualStyleBackColor = true;
+            this.bSortedList.Click += new System.EventHandler(this.bSortedList_Click);
             // 
             // FormMain
             // 
@@ -812,6 +824,7 @@ namespace QuickTests
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.tabControl1.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -826,7 +839,6 @@ namespace QuickTests
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -898,6 +910,7 @@ namespace QuickTests
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button bSortedList;
     }
 }
 
