@@ -75,6 +75,7 @@ namespace QuickTests
             this.tbName = new System.Windows.Forms.TextBox();
             this.bSetName = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.bSortedList = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button13 = new System.Windows.Forms.Button();
             this.bGroupList = new System.Windows.Forms.Button();
@@ -95,7 +96,10 @@ namespace QuickTests
             this.bConvert = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
-            this.bSortedList = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -110,6 +114,9 @@ namespace QuickTests
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -239,6 +246,7 @@ namespace QuickTests
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -603,6 +611,16 @@ namespace QuickTests
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // bSortedList
+            // 
+            this.bSortedList.Location = new System.Drawing.Point(21, 166);
+            this.bSortedList.Name = "bSortedList";
+            this.bSortedList.Size = new System.Drawing.Size(75, 23);
+            this.bSortedList.TabIndex = 10;
+            this.bSortedList.Text = "SortedList";
+            this.bSortedList.UseVisualStyleBackColor = true;
+            this.bSortedList.Click += new System.EventHandler(this.bSortedList_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button13);
@@ -801,15 +819,43 @@ namespace QuickTests
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick);
             // 
-            // bSortedList
+            // tabPage4
             // 
-            this.bSortedList.Location = new System.Drawing.Point(21, 166);
-            this.bSortedList.Name = "bSortedList";
-            this.bSortedList.Size = new System.Drawing.Size(75, 23);
-            this.bSortedList.TabIndex = 10;
-            this.bSortedList.Text = "SortedList";
-            this.bSortedList.UseVisualStyleBackColor = true;
-            this.bSortedList.Click += new System.EventHandler(this.bSortedList_Click);
+            this.tabPage4.Controls.Add(this.panel1);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(792, 422);
+            this.tabPage4.TabIndex = 5;
+            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(792, 422);
+            this.panel1.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(792, 422);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(792, 422);
+            this.panel2.TabIndex = 1;
             // 
             // FormMain
             // 
@@ -839,6 +885,9 @@ namespace QuickTests
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -911,6 +960,10 @@ namespace QuickTests
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Button bSortedList;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

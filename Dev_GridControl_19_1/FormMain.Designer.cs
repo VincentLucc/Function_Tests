@@ -40,8 +40,17 @@ namespace Dev_GridControl_19_1
             this.bEditForm = new System.Windows.Forms.Button();
             this.bTooltip = new System.Windows.Forms.Button();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -56,7 +65,7 @@ namespace Dev_GridControl_19_1
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(55, 63);
+            this.button1.Location = new System.Drawing.Point(5, 23);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 23);
             this.button1.TabIndex = 1;
@@ -67,7 +76,7 @@ namespace Dev_GridControl_19_1
             // simpleButton2
             // 
             this.simpleButton2.ImageOptions.SvgImage = global::Dev_GridControl_19_1.Properties.Resources.open2;
-            this.simpleButton2.Location = new System.Drawing.Point(55, 93);
+            this.simpleButton2.Location = new System.Drawing.Point(5, 80);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(109, 57);
             this.simpleButton2.TabIndex = 2;
@@ -75,7 +84,7 @@ namespace Dev_GridControl_19_1
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(170, 63);
+            this.simpleButton3.Location = new System.Drawing.Point(5, 51);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(109, 23);
             this.simpleButton3.TabIndex = 3;
@@ -85,7 +94,7 @@ namespace Dev_GridControl_19_1
             // 
             // bRejectReasons
             // 
-            this.bRejectReasons.Location = new System.Drawing.Point(5, 58);
+            this.bRejectReasons.Location = new System.Drawing.Point(5, 51);
             this.bRejectReasons.Name = "bRejectReasons";
             this.bRejectReasons.Size = new System.Drawing.Size(109, 23);
             this.bRejectReasons.TabIndex = 4;
@@ -95,7 +104,7 @@ namespace Dev_GridControl_19_1
             // 
             // bBigDataUpdate
             // 
-            this.bBigDataUpdate.Location = new System.Drawing.Point(55, 156);
+            this.bBigDataUpdate.Location = new System.Drawing.Point(5, 52);
             this.bBigDataUpdate.Name = "bBigDataUpdate";
             this.bBigDataUpdate.Size = new System.Drawing.Size(109, 23);
             this.bBigDataUpdate.TabIndex = 5;
@@ -105,7 +114,7 @@ namespace Dev_GridControl_19_1
             // 
             // bTileView
             // 
-            this.bTileView.Location = new System.Drawing.Point(170, 34);
+            this.bTileView.Location = new System.Drawing.Point(5, 23);
             this.bTileView.Name = "bTileView";
             this.bTileView.Size = new System.Drawing.Size(109, 23);
             this.bTileView.TabIndex = 6;
@@ -115,7 +124,7 @@ namespace Dev_GridControl_19_1
             // 
             // bSizeCompare
             // 
-            this.bSizeCompare.Location = new System.Drawing.Point(55, 185);
+            this.bSizeCompare.Location = new System.Drawing.Point(5, 23);
             this.bSizeCompare.Name = "bSizeCompare";
             this.bSizeCompare.Size = new System.Drawing.Size(206, 23);
             this.bSizeCompare.TabIndex = 7;
@@ -125,7 +134,7 @@ namespace Dev_GridControl_19_1
             // 
             // bEditForm
             // 
-            this.bEditForm.Location = new System.Drawing.Point(55, 214);
+            this.bEditForm.Location = new System.Drawing.Point(5, 51);
             this.bEditForm.Name = "bEditForm";
             this.bEditForm.Size = new System.Drawing.Size(109, 23);
             this.bEditForm.TabIndex = 8;
@@ -135,7 +144,7 @@ namespace Dev_GridControl_19_1
             // 
             // bTooltip
             // 
-            this.bTooltip.Location = new System.Drawing.Point(55, 243);
+            this.bTooltip.Location = new System.Drawing.Point(5, 139);
             this.bTooltip.Name = "bTooltip";
             this.bTooltip.Size = new System.Drawing.Size(109, 23);
             this.bTooltip.TabIndex = 9;
@@ -147,31 +156,64 @@ namespace Dev_GridControl_19_1
             // 
             this.groupControl1.Controls.Add(this.simpleButton1);
             this.groupControl1.Controls.Add(this.bRejectReasons);
-            this.groupControl1.Location = new System.Drawing.Point(588, 12);
+            this.groupControl1.Location = new System.Drawing.Point(336, 12);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(200, 204);
             this.groupControl1.TabIndex = 10;
             this.groupControl1.Text = "Group View";
             // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.bTileView);
+            this.groupControl2.Controls.Add(this.simpleButton3);
+            this.groupControl2.Location = new System.Drawing.Point(174, 12);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(156, 203);
+            this.groupControl2.TabIndex = 11;
+            this.groupControl2.Text = "groupControl2";
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.Controls.Add(this.bSizeCompare);
+            this.groupControl3.Controls.Add(this.bBigDataUpdate);
+            this.groupControl3.Location = new System.Drawing.Point(12, 221);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(234, 179);
+            this.groupControl3.TabIndex = 12;
+            this.groupControl3.Text = "Performance";
+            // 
+            // groupControl4
+            // 
+            this.groupControl4.Controls.Add(this.button1);
+            this.groupControl4.Controls.Add(this.bEditForm);
+            this.groupControl4.Controls.Add(this.simpleButton2);
+            this.groupControl4.Controls.Add(this.bTooltip);
+            this.groupControl4.Location = new System.Drawing.Point(12, 12);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.Size = new System.Drawing.Size(156, 203);
+            this.groupControl4.TabIndex = 13;
+            this.groupControl4.Text = "groupControl4";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(549, 450);
+            this.Controls.Add(this.groupControl4);
+            this.Controls.Add(this.groupControl3);
+            this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
-            this.Controls.Add(this.bTooltip);
-            this.Controls.Add(this.bEditForm);
-            this.Controls.Add(this.bSizeCompare);
-            this.Controls.Add(this.bTileView);
-            this.Controls.Add(this.bBigDataUpdate);
-            this.Controls.Add(this.simpleButton3);
-            this.Controls.Add(this.simpleButton2);
-            this.Controls.Add(this.button1);
             this.Name = "FormMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -189,6 +231,9 @@ namespace Dev_GridControl_19_1
         private System.Windows.Forms.Button bEditForm;
         private System.Windows.Forms.Button bTooltip;
         private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraEditors.GroupControl groupControl4;
     }
 }
 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32819.101
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColumnSelectionTest", "Test001\ColumnSelectionTest.csproj", "{BFD6EF80-2D59-4F13-985A-998D26D1D60C}"
 EndProject
@@ -168,6 +168,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListBox", "ListBox\ListBox.csproj", "{B9B3A243-F28D-45AA-A9EB-CC19888D3819}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextEdit", "TextEdit\TextEdit.csproj", "{0001B185-7F0F-4B91-AD72-B93595C6E032}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitConverter", "UnitConverter\UnitConverter.csproj", "{4828C19E-2A4F-4677-8001-87BAE6CA6946}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1522,6 +1524,22 @@ Global
 		{0001B185-7F0F-4B91-AD72-B93595C6E032}.Release|x64.Build.0 = Release|Any CPU
 		{0001B185-7F0F-4B91-AD72-B93595C6E032}.Release|x86.ActiveCfg = Release|Any CPU
 		{0001B185-7F0F-4B91-AD72-B93595C6E032}.Release|x86.Build.0 = Release|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Debug|arm64.Build.0 = Debug|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Debug|x64.Build.0 = Debug|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Debug|x86.Build.0 = Debug|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Release|arm64.ActiveCfg = Release|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Release|arm64.Build.0 = Release|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Release|x64.ActiveCfg = Release|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Release|x64.Build.0 = Release|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Release|x86.ActiveCfg = Release|Any CPU
+		{4828C19E-2A4F-4677-8001-87BAE6CA6946}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

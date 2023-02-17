@@ -23,12 +23,14 @@ namespace Dev_GridControl_19_1
 
         private void RejectReasonsForm_Load(object sender, EventArgs e)
         {
+            csPublic.InitGridviewWithDefaultSettings(gridView1);
+
             var sampleData = CreateSampleData();
             gridControl1.DataSource = sampleData;
 
             gridView1.OptionsBehavior.Editable = false; //Dsiable user active editor
             gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DefaultBoolean.False;//Display the summary in column lane
-            gridView1.OptionsBehavior.AllowPartialGroups = DefaultBoolean.False; //Hide device name
+            gridView1.OptionsBehavior.AllowPartialGroups = DefaultBoolean.False; //Hide the group column
             gridView1.Appearance.GroupFooter.TextOptions.HAlignment = HorzAlignment.Center;//Center the display
 
             gridView1.OptionsView.ShowGroupPanel = false;
@@ -53,8 +55,6 @@ namespace Dev_GridControl_19_1
 
             //Set group row value
             gridView1.CustomDrawGroupRow += GridView1_CustomDrawGroupRow;
-            gridView1.CustomDrawFooterCell += GridView1_CustomDrawFooterCell;
-            gridView1.CustomDrawFooter += GridView1_CustomDrawFooter;
             gridView1.SelectionChanged += GridView1_SelectionChanged;
         }
 
@@ -63,15 +63,6 @@ namespace Dev_GridControl_19_1
             gridView1.ClearSelection();
         }
 
-        private void GridView1_CustomDrawFooter(object sender, DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs e)
-        {
-
-        }
-
-        private void GridView1_CustomDrawFooterCell(object sender, DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventArgs e)
-        {
-
-        }
 
         private void GridView1_CustomDrawGroupRow(object sender, DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs e)
         {
@@ -83,16 +74,16 @@ namespace Dev_GridControl_19_1
             int iSummary = sampleData.Where(i => i.DeviceName == sDevice).Sum(i => i.NumberOfTaggedProducts);
 
             //Set text
-            groupInfo.GroupText = $"{sDevice}:({iSummary})";
+            groupInfo.GroupText = $"{sDevice}  ({iSummary})";
         }
 
         private List<AuxInfoView> CreateSampleData()
         {
             List<AuxInfoView> infoList = new List<AuxInfoView>();
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 1; i < 5; i++)
             {
-                for (int j = 0; j < 4; j++)
+                for (int j = 1; j < 5; j++)
                 {
                     AuxInfoView info = new AuxInfoView();
                     info.DeviceName = $"Device_{i}";
