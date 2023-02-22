@@ -842,6 +842,14 @@ namespace SerialPort_Ink
             }
         }
 
+        private void tsFlowControl_Toggled_1(object sender, EventArgs e)
+        {
 
+        }
+
+        private void tsCommandEnable_Toggled(object sender, EventArgs e)
+        {
+
+        }
     }
 }

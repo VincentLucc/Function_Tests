@@ -40,8 +40,6 @@ namespace Dev_GridControl_19_1
             CustomEditor customEditor = new CustomEditor();
             customEditor.StartPosition = FormStartPosition.CenterParent;
             customEditor.ShowDialog();
-
-            
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)

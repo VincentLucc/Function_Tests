@@ -23,7 +23,6 @@ namespace Dev_GridControl_19_1.Forms
 
         private void EditForm_Load(object sender, EventArgs e)
         {
-
             sData = new List<Student>();
             for (int i = 0; i < 5; i++)
             {
@@ -37,13 +36,17 @@ namespace Dev_GridControl_19_1.Forms
             }
 
             gridControl1.DataSource = sData;
-            gridView1.OptionsEditForm.CustomEditFormLayout = new ucEditForm();
-            gridView1.CustomRowCellEdit += GridView1_CustomRowCellEdit;
-            gridView1.MouseDown += GridView1_MouseDown;
-            gridView1.RowCellClick += GridView1_RowCellClick;
             gridView1.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditForm;
+            gridView1.OptionsEditForm.CustomEditFormLayout = new ucEditForm();
+            gridView1.EditFormPrepared += GridView1_EditFormPrepared;//Run before visible
+            gridView1.CustomRowCellEdit += GridView1_CustomRowCellEdit;
+            gridView1.RowCellClick += GridView1_RowCellClick;
             gridView1.CellValueChanging += GridView1_CellValueChanging;
+        }
 
+        private void GridView1_EditFormPrepared(object sender, DevExpress.XtraGrid.Views.Grid.EditFormPreparedEventArgs e)
+        {
+             
         }
 
         private void GridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -72,25 +75,6 @@ namespace Dev_GridControl_19_1.Forms
 
                 }
             }
-        }
-
-
-
-        private void GridView1_MouseDown(object sender, MouseEventArgs e)
-        {
-            //Dynamically set edit mode based on columns(Causing problem if switch is clicked)
-            //var hitInfo = gridView1.CalcHitInfo(e.Location);
-            //if (hitInfo.Column == gridView1.Columns[nameof(Student.Enable2)])
-            //{
-            //    int RowHandle = gridView1.FocusedRowHandle;
-            //    if (RowHandle > 0)
-            //    {
-            //        var bVlaue = (bool)gridView1.GetRowCellValue(RowHandle, hitInfo.Column);
-            //        gridView1.SetRowCellValue(RowHandle, hitInfo.Column, !bVlaue);
-            //        gridControl1.RefreshDataSource();
-            //    }
-            //}
-
         }
 
         private void GridView1_CustomRowCellEdit(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
