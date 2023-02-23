@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -20,6 +21,15 @@ namespace QuickTests
         public bool UIExit => this == null || this.IsDisposed || this.Disposing;
 
         public string TimeStringDebug => DateTime.Now.ToString("HH':'mm':'ss':'fff");
+
+        #region Performance
+        Dictionary<string, string> DictPerformSource = new Dictionary<string, string>();
+        DataTable dtPerformanceSource = new DataTable();
+        List<string> lPerfSource = new List<string>();
+        Stopwatch watchPerformance = new Stopwatch();
+        HashSet<string> hashPerfSource=new HashSet<string>();
+        #endregion Performance
+
         public FormMain()
         {
             InitializeComponent();
@@ -681,7 +691,7 @@ namespace QuickTests
             if (IsTimerLooping) return;
             IsTimerLooping = true;
 
-            Debug.WriteLine("Timer Start:"+ TimeStringDebug);
+            Debug.WriteLine("Timer Start:" + TimeStringDebug);
             LoopEvent?.Invoke();
             Debug.WriteLine(TimeStringDebug + ":" + iCount++);
 
@@ -709,7 +719,7 @@ namespace QuickTests
 
         private void button18_Click(object sender, EventArgs e)
         {
-            if (nullEvent!=null)
+            if (nullEvent != null)
             {
                 nullEvent = null;
             }
@@ -722,12 +732,12 @@ namespace QuickTests
 
         private void button21_Click(object sender, EventArgs e)
         {
-            Student s1 = new Student() { Name="s1"};
+            Student s1 = new Student() { Name = "s1" };
             Student s2 = new Student();
             Student.StaticText = "600";
             s2 = s1;
 
-            if (s2==s1)
+            if (s2 == s1)
             {
                 Debug.WriteLine("Do Sth");
             }
@@ -735,14 +745,196 @@ namespace QuickTests
             s1 = new Student();
             string sName = s2.Name; //Value stayed
 
-           
+
         }
 
         private void bSortedList_Click(object sender, EventArgs e)
         {
             Dictionary<string, KeyValuePair<int, DateTime>> pairs = new Dictionary<string, KeyValuePair<int, DateTime>>();
-   
 
+
+        }
+
+
+
+        private void bPrepareData_Click(object sender, EventArgs e)
+        {
+            PreparePerformanceData(false);
+        }
+
+        private void bPreparewithKey_Click(object sender, EventArgs e)
+        {
+            PreparePerformanceData(true);
+        }
+
+        private void PreparePerformanceData(bool withKey)
+        {
+            //Init variables
+            DictPerformSource.Clear();
+            dtPerformanceSource.Rows.Clear();
+            dtPerformanceSource.PrimaryKey = null;
+            dtPerformanceSource.Columns.Clear();
+            lPerfSource.Clear();
+
+            int iStart = 1000000;
+            int iRecordCount = 100000;
+
+            //Create list data 6ms
+            watchPerformance.Restart();
+            for (int i = iStart; i < iStart + iRecordCount; i++)
+            {
+                lPerfSource.Add(i.ToString());
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Create list record:{lPerfSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Create hashset 19ms
+            watchPerformance.Restart();
+            for (int i = iStart; i < iStart + iRecordCount; i++)
+            {
+                hashPerfSource.Add(i.ToString());
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Create hashset record:{hashPerfSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Create dictionary data 29ms
+            watchPerformance.Restart();
+            for (int i = iStart; i < iStart + iRecordCount; i++)
+            {
+                DictPerformSource.Add(i.ToString(), $"Record_{i}");
+            }
+
+            watchPerformance.Stop();
+            Debug.WriteLine($"Create dictionary record:{DictPerformSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Create datatable data 137ms
+            var nameColumn = dtPerformanceSource.Columns.Add("Name", typeof(string));
+            dtPerformanceSource.Columns.Add("Value", typeof(string));
+            if (withKey) dtPerformanceSource.PrimaryKey = new DataColumn[] { nameColumn };
+            watchPerformance.Restart();
+            for (int i = iStart; i < iStart + iRecordCount; i++)
+            {
+                var dataRow = dtPerformanceSource.NewRow();
+                dataRow["Name"] = i.ToString();
+                dataRow["Value"] = $"Record_{i}";
+                dtPerformanceSource.Rows.Add(dataRow);
+            }
+
+            watchPerformance.Stop();
+            Debug.WriteLine($"Create data table record:{iRecordCount}, time:{watchPerformance.ElapsedMilliseconds}.");
+        }
+
+        private void bAddwithDucplicationCheck_Click(object sender, EventArgs e)
+        {
+            AddPerfDataWithDucpulcationCheck();
+        }
+
+
+        private void AddPerfDataWithDucpulcationCheck(bool bStaticEnumerator = false)
+        {
+            //Init varibales
+            int iAddCount = 1000;
+            int iStart = 0;
+            string sLast = "";
+
+            //Add list
+            string sValue = lPerfSource.Last();
+            iStart = int.Parse(sValue);//Time consuming action
+            watchPerformance.Restart();
+            for (int i = iStart; i < iStart + iAddCount; i++)
+            {
+                //Order will be OK if no delete 
+                string sNewKey = (i + 1).ToString();
+
+                //Method 1, 689ms
+                //if (!lPerfSource.Contains(sNewKey)) lPerfSource.Add(sNewKey);
+
+                //Mrthod 2, 1625ms
+                if (!lPerfSource.Any(a=>a== sNewKey)) lPerfSource.Add(sNewKey);
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Add (List) record:{iAddCount}, Total:{lPerfSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Add hashset
+            sLast = hashPerfSource.Last();
+            iStart = int.Parse(sLast);//Time consuming action
+            watchPerformance.Restart();
+            for (int i = iStart; i < iStart + iAddCount; i++)
+            {
+                //Order will be OK if no delete 
+                string sNewKey = (i + 1).ToString();
+
+                //Method 0 ms
+                if (!hashPerfSource.Contains(sNewKey))
+                {
+                    hashPerfSource.Add(sNewKey);
+                }
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Add (HashSet) record:{iAddCount}, Total:{hashPerfSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+
+            //Add dictionary
+            string sKey = DictPerformSource.Last().Key;
+            iStart = int.Parse(sKey);//Time consuming action
+            watchPerformance.Restart();
+            for (int i = iStart; i < iStart + iAddCount; i++)
+            {
+                //Order will be OK if no delete 
+                string sNewKey = (i + 1).ToString();
+
+                //Method 1, 0ms
+                if (!DictPerformSource.ContainsKey(sNewKey))
+                {
+                    DictPerformSource.Add(sNewKey, $"Add_{sNewKey}");
+                }
+
+                //Method 2, 0ms
+                //if (!DictPerformSource.Keys.Contains(sNewKey))
+                //{
+                //    DictPerformSource.Add(sNewKey, $"Add_{sNewKey}");
+                //}
+
+                //method 3, 2691ms
+                //if (!DictPerformSource.Any(a => a.Key == sNewKey))
+                //{
+                //    DictPerformSource.Add(sNewKey, $"Add_{sNewKey}");
+                //}
+
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Add dictionary record:{iAddCount}, Total:{DictPerformSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Add to datatable
+            string sName = dtPerformanceSource.Rows[dtPerformanceSource.Rows.Count - 1]["Name"].ToString();
+            int iName = int.Parse(sName);
+            watchPerformance.Restart();
+            for (int i = iName; i < iName + iAddCount; i++)
+            {
+                string sNewName = (i + 1).ToString();
+
+                //Add method 1: 9526 (No difference with or withou key column)
+                if (!dtPerformanceSource.AsEnumerable().Any(row => row["Name"].ToString() == sNewName))
+                {
+                    var dataRow = dtPerformanceSource.NewRow();
+                    dataRow["Name"] = sNewName;
+                    dataRow["Value"] = $"Add_{sNewName}";
+                    dtPerformanceSource.Rows.Add(dataRow);
+                }
+
+                //Add method 2: 
+                //No key column: 350,152ms !!!!?
+                //With Key column: 32 ms !!!
+                //if (dtPerformanceSource.Select($"Name={sNewName}").Count() == 0)
+                //{
+                //    var dataRow = dtPerformanceSource.NewRow();
+                //    dataRow["Name"] = sNewName;
+                //    dataRow["Value"] = $"Add_{sNewName}";
+                //    dtPerformanceSource.Rows.Add(dataRow);
+                //}
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Add dictionary record:{iAddCount}, Total:{dtPerformanceSource.Rows.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
         }
     }
 

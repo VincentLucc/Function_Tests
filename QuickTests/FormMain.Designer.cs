@@ -95,11 +95,14 @@ namespace QuickTests
             this.bInt2Hex = new System.Windows.Forms.Button();
             this.bConvert = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.bAddwithDucplicationCheck = new System.Windows.Forms.Button();
+            this.bPreparewithKey = new System.Windows.Forms.Button();
+            this.bPrepareData = new System.Windows.Forms.Button();
+            this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -116,7 +119,8 @@ namespace QuickTests
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -814,11 +818,6 @@ namespace QuickTests
             this.textBox1.Size = new System.Drawing.Size(351, 23);
             this.textBox1.TabIndex = 0;
             // 
-            // LoopEventTimer
-            // 
-            this.LoopEventTimer.Interval = 1000;
-            this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick);
-            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.panel1);
@@ -826,12 +825,11 @@ namespace QuickTests
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(792, 422);
             this.tabPage4.TabIndex = 5;
-            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.Text = "Performance";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -839,23 +837,61 @@ namespace QuickTests
             this.panel1.Size = new System.Drawing.Size(792, 422);
             this.panel1.TabIndex = 0;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(792, 422);
-            this.dataGridView1.TabIndex = 0;
-            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.groupBox9);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(792, 422);
             this.panel2.TabIndex = 1;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.bAddwithDucplicationCheck);
+            this.groupBox9.Controls.Add(this.bPreparewithKey);
+            this.groupBox9.Controls.Add(this.bPrepareData);
+            this.groupBox9.Location = new System.Drawing.Point(8, 3);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(200, 234);
+            this.groupBox9.TabIndex = 0;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Dictionay vs DataTable vs List";
+            // 
+            // bAddwithDucplicationCheck
+            // 
+            this.bAddwithDucplicationCheck.Location = new System.Drawing.Point(6, 80);
+            this.bAddwithDucplicationCheck.Name = "bAddwithDucplicationCheck";
+            this.bAddwithDucplicationCheck.Size = new System.Drawing.Size(163, 23);
+            this.bAddwithDucplicationCheck.TabIndex = 2;
+            this.bAddwithDucplicationCheck.Text = "Add data with duplication check";
+            this.bAddwithDucplicationCheck.UseVisualStyleBackColor = true;
+            this.bAddwithDucplicationCheck.Click += new System.EventHandler(this.bAddwithDucplicationCheck_Click);
+            // 
+            // bPreparewithKey
+            // 
+            this.bPreparewithKey.Location = new System.Drawing.Point(6, 51);
+            this.bPreparewithKey.Name = "bPreparewithKey";
+            this.bPreparewithKey.Size = new System.Drawing.Size(139, 23);
+            this.bPreparewithKey.TabIndex = 1;
+            this.bPreparewithKey.Text = "Prepare data with Key";
+            this.bPreparewithKey.UseVisualStyleBackColor = true;
+            this.bPreparewithKey.Click += new System.EventHandler(this.bPreparewithKey_Click);
+            // 
+            // bPrepareData
+            // 
+            this.bPrepareData.Location = new System.Drawing.Point(6, 22);
+            this.bPrepareData.Name = "bPrepareData";
+            this.bPrepareData.Size = new System.Drawing.Size(99, 23);
+            this.bPrepareData.TabIndex = 0;
+            this.bPrepareData.Text = "Prepare data";
+            this.bPrepareData.UseVisualStyleBackColor = true;
+            this.bPrepareData.Click += new System.EventHandler(this.bPrepareData_Click);
+            // 
+            // LoopEventTimer
+            // 
+            this.LoopEventTimer.Interval = 1000;
+            this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick);
             // 
             // FormMain
             // 
@@ -887,7 +923,8 @@ namespace QuickTests
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -962,8 +999,11 @@ namespace QuickTests
         private System.Windows.Forms.Button bSortedList;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Button bPrepareData;
+        private System.Windows.Forms.Button bPreparewithKey;
+        private System.Windows.Forms.Button bAddwithDucplicationCheck;
     }
 }
 
