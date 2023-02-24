@@ -26,6 +26,9 @@ namespace EditButton
 
         public delegate void InternalClickedEventHandler(object sender, ButtonPressedEventArgs e);
 
+        /// <summary>
+        /// Make sure invoke method only trigger once
+        /// </summary>
         public bool AllowRaiseClick;
 
         private ButtonPressedEventArgs clickParameter;
@@ -52,10 +55,11 @@ namespace EditButton
         /// <param name="e"></param>
         public void InvokeCustomClick(ButtonPressedEventArgs e)
         {
+            //Limit event to only trigger once 
             AllowRaiseClick = true;
             clickParameter = e;
-            
-            //Action won't run until second action called
+
+            //Action will start to process when click && button click events both finished
             this.BeginInvoke(new Action(() => {
                 if (AllowRaiseClick)
                 {
