@@ -35,7 +35,7 @@ namespace DevLayout_22_1
 
         private void bFluent_Click(object sender, EventArgs e)
         {
-            FluentDesignForm1 form1 = new FluentDesignForm1();
+            FluentDesignForm form1 = new FluentDesignForm();
             form1.Show();
         }
 

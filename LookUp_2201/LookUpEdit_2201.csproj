@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DAC5E761-8282-4983-9137-8C3CF54BF2F6}</ProjectGuid>
+    <ProjectGuid>{DA4E6B8A-5DB8-4E83-9B40-A547861EAF6B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>DevLayout</RootNamespace>
-    <AssemblyName>DevLayout</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>LookUpEdit_2201</RootNamespace>
+    <AssemblyName>LookUpEdit_2201</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +33,26 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v22.1, Version=22.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
@@ -156,8 +175,12 @@
     <Reference Include="DevExpress.XtraWizard.v22.1, Version=22.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpress.Win.22.1.7\lib\net452\DevExpress.XtraWizard.v22.1.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -167,82 +190,23 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\csPublic.cs" />
-    <Compile Include="Controls\ucGridDemo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucGridDemo.Designer.cs">
-      <DependentUpon>ucGridDemo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ucSample.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\ucSample.Designer.cs">
-      <DependentUpon>ucSample.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FluentDesignForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FluentDesignForm.Designer.cs">
-      <DependentUpon>FluentDesignForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="csDrawTool.cs" />
+    <Compile Include="csModel.cs" />
+    <Compile Include="csPublic.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormLayoutConvert.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormLayoutConvert.Designer.cs">
-      <DependentUpon>FormLayoutConvert.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormTableLayout.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormTableLayout.Designer.cs">
-      <DependentUpon>FormTableLayout.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\GeneratedForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\GeneratedForm.Designer.cs">
-      <DependentUpon>GeneratedForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ToolbarForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ToolbarForm.Designer.cs">
-      <DependentUpon>ToolbarForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controls\ucGridDemo.resx">
-      <DependentUpon>ucGridDemo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ucSample.resx">
-      <DependentUpon>ucSample.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FluentDesignForm.resx">
-      <DependentUpon>FluentDesignForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormLayoutConvert.resx">
-      <DependentUpon>FormLayoutConvert.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormTableLayout.resx">
-      <DependentUpon>FormTableLayout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GeneratedForm.resx">
-      <DependentUpon>GeneratedForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ToolbarForm.resx">
-      <DependentUpon>ToolbarForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -268,6 +232,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\DevExpress.Reporting.Core.22.1.7\build\DevExpress.Reporting.Core.targets" Condition="Exists('..\packages\DevExpress.Reporting.Core.22.1.7\build\DevExpress.Reporting.Core.targets')" />

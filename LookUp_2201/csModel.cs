@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LookUp
+namespace LookUpEdit_2201
 {
     class csModel
     {
@@ -13,9 +13,8 @@ namespace LookUp
 
     public class ImageString
     {
-        public Bitmap Image;
-        public string Value;
-
-
+        public Image Image { get; set; }
+        public string Value { get; set; }
+        public int Index { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace LookUp
+namespace LookUpEdit_2201
 {
     class csDrawTool
     {

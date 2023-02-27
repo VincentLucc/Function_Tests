@@ -1,7 +1,7 @@
 ﻿
 namespace DevLayout_22_1
 {
-    partial class FluentDesignForm1
+    partial class FluentDesignForm
     {
         /// <summary>
         /// Required designer variable.

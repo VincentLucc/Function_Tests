@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,11 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LookUp
+namespace LookUpEdit_191
 {
-    public partial class Form1 : Form
+    public partial class FormMain : XtraForm
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }

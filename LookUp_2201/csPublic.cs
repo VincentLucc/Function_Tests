@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LookUp
+namespace LookUpEdit_2201
 {
     class csPublic
     {

@@ -29,20 +29,19 @@ namespace DevLayout_22_1
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.layoutConverter1 = new DevExpress.XtraLayout.Converter.LayoutConverter(this.components);
+            this.layoutConverter1 = new DevExpress.XtraLayout.Converter.LayoutConverter();
             this.FormLayoutConvertlayoutControl1ConvertedLayout = new DevExpress.XtraLayout.LayoutControl();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.panel1item = new DevExpress.XtraLayout.LayoutControlItem();
             this.panel2item = new DevExpress.XtraLayout.LayoutControlItem();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FormLayoutConvertlayoutControl1ConvertedLayout)).BeginInit();
             this.FormLayoutConvertlayoutControl1ConvertedLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -54,41 +53,41 @@ namespace DevLayout_22_1
             // 
             this.panel1.Controls.Add(this.textEdit1);
             this.panel1.Controls.Add(this.simpleButton2);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(16, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(776, 287);
+            this.panel1.Size = new System.Drawing.Size(768, 281);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // textEdit1
             // 
-            this.panel2.Controls.Add(this.simpleButton1);
-            this.panel2.Location = new System.Drawing.Point(12, 303);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(776, 135);
-            this.panel2.TabIndex = 1;
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Location = new System.Drawing.Point(689, 39);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "OK";
+            this.textEdit1.Location = new System.Drawing.Point(3, 3);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(349, 28);
+            this.textEdit1.TabIndex = 1;
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(334, 218);
+            this.simpleButton2.Location = new System.Drawing.Point(358, 5);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(75, 23);
             this.simpleButton2.TabIndex = 0;
             this.simpleButton2.Text = "simpleButton2";
             // 
-            // textEdit1
+            // panel2
             // 
-            this.textEdit1.Location = new System.Drawing.Point(203, 103);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(349, 20);
-            this.textEdit1.TabIndex = 1;
+            this.panel2.Controls.Add(this.simpleButton1);
+            this.panel2.Location = new System.Drawing.Point(16, 303);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(768, 131);
+            this.panel2.TabIndex = 1;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(690, 3);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 0;
+            this.simpleButton1.Text = "OK";
             // 
             // FormLayoutConvertlayoutControl1ConvertedLayout
             // 
@@ -117,16 +116,16 @@ namespace DevLayout_22_1
             this.panel1item.Control = this.panel1;
             this.panel1item.Location = new System.Drawing.Point(0, 0);
             this.panel1item.Name = "panel1item";
-            this.panel1item.Size = new System.Drawing.Size(780, 291);
+            this.panel1item.Size = new System.Drawing.Size(774, 287);
             this.panel1item.TextSize = new System.Drawing.Size(0, 0);
             this.panel1item.TextVisible = false;
             // 
             // panel2item
             // 
             this.panel2item.Control = this.panel2;
-            this.panel2item.Location = new System.Drawing.Point(0, 291);
+            this.panel2item.Location = new System.Drawing.Point(0, 287);
             this.panel2item.Name = "panel2item";
-            this.panel2item.Size = new System.Drawing.Size(780, 139);
+            this.panel2item.Size = new System.Drawing.Size(774, 137);
             this.panel2item.TextSize = new System.Drawing.Size(0, 0);
             this.panel2item.TextVisible = false;
             // 
@@ -139,8 +138,8 @@ namespace DevLayout_22_1
             this.Name = "FormLayoutConvert";
             this.Text = "Form2";
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FormLayoutConvertlayoutControl1ConvertedLayout)).EndInit();
             this.FormLayoutConvertlayoutControl1ConvertedLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
