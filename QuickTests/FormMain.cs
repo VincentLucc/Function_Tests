@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.AccessControl;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -24,10 +25,15 @@ namespace QuickTests
 
         #region Performance
         Dictionary<string, string> DictPerformSource = new Dictionary<string, string>();
+        Dictionary<string, Student> DictStudentSource = new Dictionary<string, Student>();
         DataTable dtPerformanceSource = new DataTable();
         List<string> lPerfSource = new List<string>();
+        List<Student> lStudents = new List<Student>();
+        List<List<string>> llSource = new List<List<string>>();
+        List<string[]> lArraySource = new List<string[]>();
         Stopwatch watchPerformance = new Stopwatch();
-        HashSet<string> hashPerfSource=new HashSet<string>();
+        HashSet<string> hashPerfSource = new HashSet<string>();
+        int iStartBase = 1000000; //Index start base
         #endregion Performance
 
         public FormMain()
@@ -776,21 +782,61 @@ namespace QuickTests
             dtPerformanceSource.Columns.Clear();
             lPerfSource.Clear();
 
-            int iStart = 1000000;
-            int iRecordCount = 100000;
+            int iRecordCount = 500000;
 
-            //Create list data 6ms
+            //Create list string data 6ms
             watchPerformance.Restart();
-            for (int i = iStart; i < iStart + iRecordCount; i++)
+            for (int i = iStartBase; i < iStartBase + iRecordCount; i++)
             {
                 lPerfSource.Add(i.ToString());
             }
             watchPerformance.Stop();
-            Debug.WriteLine($"Create list record:{lPerfSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+            Debug.WriteLine($"Create list string record:{lPerfSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Create list class data 
+            watchPerformance.Restart();
+            for (int i = iStartBase; i < iStartBase + iRecordCount; i++)
+            {
+                var stu = new Student(i);
+                lStudents.Add(stu);
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Create list students record:{lStudents.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Create list-list
+            watchPerformance.Restart();
+            for (int i = iStartBase; i < iStartBase + iRecordCount; i++)
+            {
+                var stu = new Student(i);
+                List<string> values=new List<string>();
+                for (int j = 0; j < 4; j++)
+                {
+                    values.Add($"Stu_{i}");
+                    values.Add(i.ToString());
+                    values.Add($"Record_{i}");
+                }
+                llSource.Add(values);
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Create List-List record:{llSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+
+            //Create list-Array
+            watchPerformance.Restart();
+            for (int i = iStartBase; i < iStartBase + iRecordCount; i++)
+            {
+                string[] nodes=new string[4];
+                nodes[0] = $"Stu_{i}";
+                nodes[1] = i.ToString();
+                nodes[2] = $"Record_{i}";
+                lArraySource.Add(nodes);
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Create List-Array record:{lArraySource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
 
             //Create hashset 19ms
             watchPerformance.Restart();
-            for (int i = iStart; i < iStart + iRecordCount; i++)
+            for (int i = iStartBase; i < iStartBase + iRecordCount; i++)
             {
                 hashPerfSource.Add(i.ToString());
             }
@@ -799,24 +845,42 @@ namespace QuickTests
 
             //Create dictionary data 29ms
             watchPerformance.Restart();
-            for (int i = iStart; i < iStart + iRecordCount; i++)
+            for (int i = iStartBase; i < iStartBase + iRecordCount; i++)
             {
                 DictPerformSource.Add(i.ToString(), $"Record_{i}");
             }
-
             watchPerformance.Stop();
-            Debug.WriteLine($"Create dictionary record:{DictPerformSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+            Debug.WriteLine($"Create dictionary string record:{DictPerformSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Create dictionary data students
+            watchPerformance.Restart();
+            for (int i = iStartBase; i < iStartBase + iRecordCount; i++)
+            {
+                var stu = new Student(i);
+                DictStudentSource.Add(i.ToString(), stu);
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Create dictionary student record:{DictStudentSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+
 
             //Create datatable data 137ms
-            var nameColumn = dtPerformanceSource.Columns.Add("Name", typeof(string));
-            dtPerformanceSource.Columns.Add("Value", typeof(string));
-            if (withKey) dtPerformanceSource.PrimaryKey = new DataColumn[] { nameColumn };
+            var nameColumn = dtPerformanceSource.Columns.Add(nameof(Student.Name), typeof(string));
+            var valueColumn = dtPerformanceSource.Columns.Add(nameof(Student.Age), typeof(int));
+            dtPerformanceSource.Columns.Add(nameof(Student.Description), typeof(string));
+            dtPerformanceSource.Columns.Add(nameof(Student.Class), typeof(string));
+            if (withKey)
+            {
+                //Primary key
+                //注意，这只是合并的Key和Index, 实际只有一个Key与Index!!!!
+                dtPerformanceSource.PrimaryKey = new DataColumn[] { nameColumn, valueColumn };
+            }
             watchPerformance.Restart();
-            for (int i = iStart; i < iStart + iRecordCount; i++)
+            for (int i = iStartBase; i < iStartBase + iRecordCount; i++)
             {
                 var dataRow = dtPerformanceSource.NewRow();
-                dataRow["Name"] = i.ToString();
-                dataRow["Value"] = $"Record_{i}";
+                dataRow[nameof(Student.Name)] = $"Stu_{i}";
+                dataRow[nameof(Student.Age)] = i;
+                dataRow[nameof(Student.Description)] = $"Record_{i}";
                 dtPerformanceSource.Rows.Add(dataRow);
             }
 
@@ -826,57 +890,80 @@ namespace QuickTests
 
         private void bAddwithDucplicationCheck_Click(object sender, EventArgs e)
         {
-            AddPerfDataWithDucpulcationCheck();
+            AddPerfData(AddDataType.DuplicationCheck);
         }
 
 
-        private void AddPerfDataWithDucpulcationCheck(bool bStaticEnumerator = false)
+        private void AddPerfData(AddDataType addType, bool bStaticEnumerator = false)
         {
             //Init varibales
             int iAddCount = 1000;
             int iStart = 0;
-            string sLast = "";
 
             //Add list
-            string sValue = lPerfSource.Last();
-            iStart = int.Parse(sValue);//Time consuming action
+            iStart = lPerfSource.Count + iStartBase;//Time consuming action
             watchPerformance.Restart();
             for (int i = iStart; i < iStart + iAddCount; i++)
             {
                 //Order will be OK if no delete 
                 string sNewKey = (i + 1).ToString();
 
-                //Method 1, 689ms
-                //if (!lPerfSource.Contains(sNewKey)) lPerfSource.Add(sNewKey);
+                if (addType == AddDataType.DuplicationCheck)
+                {
+                    //Method 1, 689ms
+                    //if (!lPerfSource.Contains(sNewKey)) lPerfSource.Add(sNewKey);
 
-                //Mrthod 2, 1625ms
-                if (!lPerfSource.Any(a=>a== sNewKey)) lPerfSource.Add(sNewKey);
+                    //Mrthod 2, 1625ms
+                    //if (!lPerfSource.Any(a=>a== sNewKey)) lPerfSource.Add(sNewKey);
+
+                    //Method 3, 584ms (Use multiple cpu)
+                    if (lPerfSource.AsParallel().FirstOrDefault(a => a == sNewKey) == null)
+                    {
+                        lPerfSource.Add(sNewKey);
+                    }
+                }
+                else if (addType == AddDataType.Insert)
+                {
+                    //Get intert position
+                    int iInsert = lPerfSource.Count / 2;
+                    lPerfSource.Insert(iInsert, sNewKey);
+                }
+
             }
             watchPerformance.Stop();
             Debug.WriteLine($"Add (List) record:{iAddCount}, Total:{lPerfSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
 
+
+
+
             //Add hashset
-            sLast = hashPerfSource.Last();
-            iStart = int.Parse(sLast);//Time consuming action
+            iStart = hashPerfSource.Count + iStartBase;
             watchPerformance.Restart();
             for (int i = iStart; i < iStart + iAddCount; i++)
             {
                 //Order will be OK if no delete 
                 string sNewKey = (i + 1).ToString();
 
-                //Method 0 ms
-                if (!hashPerfSource.Contains(sNewKey))
+                if (addType == AddDataType.DuplicationCheck)
                 {
+                    //Method 0 ms
+                    if (!hashPerfSource.Contains(sNewKey))
+                    {
+                        hashPerfSource.Add(sNewKey);
+                    }
+                }
+                else if (addType == AddDataType.Insert)
+                {
+
                     hashPerfSource.Add(sNewKey);
                 }
             }
             watchPerformance.Stop();
+            if (addType == AddDataType.Insert) Debug.WriteLine("HasSetHas no order, directly add value.");
             Debug.WriteLine($"Add (HashSet) record:{iAddCount}, Total:{hashPerfSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
 
-
             //Add dictionary
-            string sKey = DictPerformSource.Last().Key;
-            iStart = int.Parse(sKey);//Time consuming action
+            iStart = DictPerformSource.Count + iStartBase;
             watchPerformance.Restart();
             for (int i = iStart; i < iStart + iAddCount; i++)
             {
@@ -906,35 +993,164 @@ namespace QuickTests
             Debug.WriteLine($"Add dictionary record:{iAddCount}, Total:{DictPerformSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
 
             //Add to datatable
-            string sName = dtPerformanceSource.Rows[dtPerformanceSource.Rows.Count - 1]["Name"].ToString();
-            int iName = int.Parse(sName);
+            iStart = dtPerformanceSource.Rows.Count + iStartBase;
+            var sSearchSource = dtPerformanceSource.AsEnumerable();
             watchPerformance.Restart();
-            for (int i = iName; i < iName + iAddCount; i++)
+            for (int i = iStart; i < iStart + iAddCount; i++)
             {
                 string sNewName = (i + 1).ToString();
 
-                //Add method 1: 9526 (No difference with or withou key column)
-                if (!dtPerformanceSource.AsEnumerable().Any(row => row["Name"].ToString() == sNewName))
+                if (addType == AddDataType.DuplicationCheck)
+                {
+                    //Add method 1: 9526 (No difference with or withou key column)
+                    //if (!dtPerformanceSource.AsEnumerable().Any(row => row["Name"].ToString() == sNewName))
+                    //{
+                    //    var dataRow = dtPerformanceSource.NewRow();
+                    //    dataRow["Name"] = sNewName;
+                    //    dataRow["Value"] = $"Add_{sNewName}";
+                    //    dtPerformanceSource.Rows.Add(dataRow);
+                    //}
+
+                    //Add method 2: 
+                    //No key column: 350,152ms !!!!?
+                    //With Key column: 32 ms !!!
+                    if (dtPerformanceSource.Select($"Name='{sNewName}'").Count() == 0)
+                    {
+                        var dataRow = dtPerformanceSource.NewRow();
+                        dataRow[nameof(Student.Name)] = sNewName;
+                        dataRow[nameof(Student.Description)] = $"Add_{sNewName}";
+                        dtPerformanceSource.Rows.Add(dataRow);
+                    }
+
+                    //Method 3:10893ms
+                    //if (!sSearchSource.Any(row => row["Name"].ToString() == sNewName))
+                    //{
+                    //    var dataRow = dtPerformanceSource.NewRow();
+                    //    dataRow["Name"] = sNewName;
+                    //    dataRow["Value"] = $"Add_{sNewName}";
+                    //    dtPerformanceSource.Rows.Add(dataRow);
+                    //}
+
+                    //Method 4: 9069ms
+                    //if (!sSearchSource.AsParallel().Any(row => row["Name"].ToString() == sNewName))
+                    //{
+                    //    var dataRow = dtPerformanceSource.NewRow();
+                    //    dataRow["Name"] = sNewName;
+                    //    dataRow["Value"] = $"Add_{sNewName}";
+                    //    dtPerformanceSource.Rows.Add(dataRow);
+                    //}
+                }
+                else if (addType == AddDataType.Insert)
                 {
                     var dataRow = dtPerformanceSource.NewRow();
-                    dataRow["Name"] = sNewName;
-                    dataRow["Value"] = $"Add_{sNewName}";
-                    dtPerformanceSource.Rows.Add(dataRow);
+                    dataRow[nameof(Student.Name)] = sNewName;
+                    dataRow[nameof(Student.Description)] = $"Add_{sNewName}";
+                    int iInsert = dtPerformanceSource.Rows.Count / 2;
+                    dtPerformanceSource.Rows.InsertAt(dataRow, iInsert);
                 }
-
-                //Add method 2: 
-                //No key column: 350,152ms !!!!?
-                //With Key column: 32 ms !!!
-                //if (dtPerformanceSource.Select($"Name={sNewName}").Count() == 0)
-                //{
-                //    var dataRow = dtPerformanceSource.NewRow();
-                //    dataRow["Name"] = sNewName;
-                //    dataRow["Value"] = $"Add_{sNewName}";
-                //    dtPerformanceSource.Rows.Add(dataRow);
-                //}
             }
             watchPerformance.Stop();
-            Debug.WriteLine($"Add dictionary record:{iAddCount}, Total:{dtPerformanceSource.Rows.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+            Debug.WriteLine($"Add datatable record:{iAddCount}, Total:{dtPerformanceSource.Rows.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+        }
+
+        private void bSort_Click(object sender, EventArgs e)
+        {
+            //Sort list students 
+            watchPerformance.Restart();
+            var sortedListTudents = lStudents.OrderByDescending(a => a.Name).DistinctBy(a => a.Name);
+            sortedListTudents = lStudents.OrderByDescending(a => a.Age);
+            watchPerformance.Stop();
+            Debug.WriteLine($"Sort list student record:{lStudents.Count}, Time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Sort dictionary students 
+            watchPerformance.Restart();
+            var sortedDictSTudents = DictStudentSource.OrderByDescending(a => a.Value.Name).DistinctBy(a => a.Value.Name);
+            sortedDictSTudents = DictStudentSource.OrderByDescending(a => a.Value.Age);
+            watchPerformance.Stop();
+            Debug.WriteLine($"Sort dictionary student record:{DictStudentSource.Count}, Time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Sort datatable students 
+            watchPerformance.Restart();
+            var sortedTableStudents = dtPerformanceSource.AsEnumerable().OrderBy(a => a.Field<int>(nameof(Student.Name))).DistinctBy(a => a.Field<int>(nameof(Student.Name))); ;
+            sortedTableStudents = dtPerformanceSource.AsEnumerable().OrderBy(a => a.Field<int>(nameof(Student.Age)));
+            watchPerformance.Stop();
+            Debug.WriteLine($"Sort datatable student record:{dtPerformanceSource.Rows.Count}, Time:{watchPerformance.ElapsedMilliseconds}.");
+        }
+
+        private void bLinkedList_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bInsert_Click(object sender, EventArgs e)
+        {
+            AddPerfData(AddDataType.Insert);
+        }
+
+        private void bValueChange_Click(object sender, EventArgs e)
+        {
+            ModifyAllData();
+        }
+
+        private void ModifyAllData()
+        {
+            //Init variables
+            int iCount = 0;
+
+            //Modify list string
+            iCount = lPerfSource.Count;
+            watchPerformance.Restart();
+            for (int i = 0; i < iCount; i++)
+            {
+                lPerfSource[i] = lPerfSource[i] + "_X";
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Mofify (List-String) record:{iCount}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Modify list stduent
+            watchPerformance.Restart();
+            iCount = lStudents.Count;
+            for (int i = 0; i < iCount; i++)
+            {
+                var item = lStudents[i];
+                item.Name = item.Name + "_X";
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Mofify (List-Student) record:{iCount}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Modify list-list
+            watchPerformance.Restart();
+            iCount = llSource.Count;
+            for (int i = 0; i < iCount; i++)
+            {
+                var item = llSource[i];
+                item[0] = item[0] + "_X";
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Mofify (List-List) record:{iCount}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Modify list-array
+            watchPerformance.Restart();
+            iCount = lArraySource.Count;
+            for (int i = 0; i < iCount; i++)
+            {
+                var item = lArraySource[i];
+                item[0] = item[0] + "_X";
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Mofify (List-Array) record:{iCount}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Modify data table
+            watchPerformance.Restart();
+            iCount = dtPerformanceSource.Rows.Count;
+            for (int i = 0; i < iCount; i++)
+            {
+                var item = dtPerformanceSource.Rows[i];
+                string sName = item.Field<string>(nameof(Student.Name)) + "_X";
+                item[nameof(Student.Name)] = sName;
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Mofify (Datatable Student) record:{iCount}, time:{watchPerformance.ElapsedMilliseconds}.");
         }
     }
 

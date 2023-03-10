@@ -22,5 +22,11 @@ namespace EditForm
             SetBoundFieldName(tbName,nameof(Student.Name));
             SetBoundFieldName(toggleSwitch1, nameof(Student.ToggleSwitch));
         }
+
+        private void ucEditForm_Load(object sender, EventArgs e)
+        {
+            //Get edit row
+            
+        }
     }
 }

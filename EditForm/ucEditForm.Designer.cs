@@ -30,9 +30,9 @@ namespace EditForm
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.tbName = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.toggleSwitch1 = new DevExpress.XtraEditors.ToggleSwitch();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).BeginInit();
@@ -58,6 +58,15 @@ namespace EditForm
             this.tableLayoutPanel1.Size = new System.Drawing.Size(622, 403);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // labelControl2
+            // 
+            this.SetBoundPropertyName(this.labelControl2, "");
+            this.labelControl2.Location = new System.Drawing.Point(3, 204);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(65, 13);
+            this.labelControl2.TabIndex = 2;
+            this.labelControl2.Text = "Toggle switch";
+            // 
             // labelControl1
             // 
             this.SetBoundPropertyName(this.labelControl1, "");
@@ -74,15 +83,6 @@ namespace EditForm
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(100, 20);
             this.tbName.TabIndex = 1;
-            // 
-            // labelControl2
-            // 
-            this.SetBoundPropertyName(this.labelControl2, "");
-            this.labelControl2.Location = new System.Drawing.Point(3, 204);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(65, 13);
-            this.labelControl2.TabIndex = 2;
-            this.labelControl2.Text = "Toggle switch";
             // 
             // toggleSwitch1
             // 
@@ -101,6 +101,7 @@ namespace EditForm
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ucEditForm";
             this.Size = new System.Drawing.Size(622, 403);
+            this.Load += new System.EventHandler(this.ucEditForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbName.Properties)).EndInit();

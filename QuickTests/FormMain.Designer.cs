@@ -75,6 +75,7 @@ namespace QuickTests
             this.tbName = new System.Windows.Forms.TextBox();
             this.bSetName = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.bLinkedList = new System.Windows.Forms.Button();
             this.bSortedList = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button13 = new System.Windows.Forms.Button();
@@ -98,11 +99,15 @@ namespace QuickTests
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.bInsert = new System.Windows.Forms.Button();
+            this.bSort = new System.Windows.Forms.Button();
             this.bAddwithDucplicationCheck = new System.Windows.Forms.Button();
             this.bPreparewithKey = new System.Windows.Forms.Button();
             this.bPrepareData = new System.Windows.Forms.Button();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
+            this.bValueChange = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -595,6 +600,7 @@ namespace QuickTests
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.bLinkedList);
             this.tabPage1.Controls.Add(this.bSortedList);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.bGroupList);
@@ -614,6 +620,16 @@ namespace QuickTests
             this.tabPage1.Text = "Collections";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // bLinkedList
+            // 
+            this.bLinkedList.Location = new System.Drawing.Point(21, 195);
+            this.bLinkedList.Name = "bLinkedList";
+            this.bLinkedList.Size = new System.Drawing.Size(75, 23);
+            this.bLinkedList.TabIndex = 11;
+            this.bLinkedList.Text = "Linked List";
+            this.bLinkedList.UseVisualStyleBackColor = true;
+            this.bLinkedList.Click += new System.EventHandler(this.bLinkedList_Click);
             // 
             // bSortedList
             // 
@@ -839,6 +855,7 @@ namespace QuickTests
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.richTextBox1);
             this.panel2.Controls.Add(this.groupBox9);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -846,8 +863,20 @@ namespace QuickTests
             this.panel2.Size = new System.Drawing.Size(792, 422);
             this.panel2.TabIndex = 1;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 243);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(792, 179);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "";
+            // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.bValueChange);
+            this.groupBox9.Controls.Add(this.bInsert);
+            this.groupBox9.Controls.Add(this.bSort);
             this.groupBox9.Controls.Add(this.bAddwithDucplicationCheck);
             this.groupBox9.Controls.Add(this.bPreparewithKey);
             this.groupBox9.Controls.Add(this.bPrepareData);
@@ -857,6 +886,26 @@ namespace QuickTests
             this.groupBox9.TabIndex = 0;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Dictionay vs DataTable vs List";
+            // 
+            // bInsert
+            // 
+            this.bInsert.Location = new System.Drawing.Point(6, 109);
+            this.bInsert.Name = "bInsert";
+            this.bInsert.Size = new System.Drawing.Size(163, 23);
+            this.bInsert.TabIndex = 4;
+            this.bInsert.Text = "Insert Data";
+            this.bInsert.UseVisualStyleBackColor = true;
+            this.bInsert.Click += new System.EventHandler(this.bInsert_Click);
+            // 
+            // bSort
+            // 
+            this.bSort.Location = new System.Drawing.Point(6, 138);
+            this.bSort.Name = "bSort";
+            this.bSort.Size = new System.Drawing.Size(99, 23);
+            this.bSort.TabIndex = 3;
+            this.bSort.Text = "Sort Data";
+            this.bSort.UseVisualStyleBackColor = true;
+            this.bSort.Click += new System.EventHandler(this.bSort_Click);
             // 
             // bAddwithDucplicationCheck
             // 
@@ -892,6 +941,16 @@ namespace QuickTests
             // 
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick);
+            // 
+            // bValueChange
+            // 
+            this.bValueChange.Location = new System.Drawing.Point(6, 167);
+            this.bValueChange.Name = "bValueChange";
+            this.bValueChange.Size = new System.Drawing.Size(99, 23);
+            this.bValueChange.TabIndex = 5;
+            this.bValueChange.Text = "Value Change";
+            this.bValueChange.UseVisualStyleBackColor = true;
+            this.bValueChange.Click += new System.EventHandler(this.bValueChange_Click);
             // 
             // FormMain
             // 
@@ -1004,6 +1063,11 @@ namespace QuickTests
         private System.Windows.Forms.Button bPrepareData;
         private System.Windows.Forms.Button bPreparewithKey;
         private System.Windows.Forms.Button bAddwithDucplicationCheck;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button bSort;
+        private System.Windows.Forms.Button bLinkedList;
+        private System.Windows.Forms.Button bInsert;
+        private System.Windows.Forms.Button bValueChange;
     }
 }
 

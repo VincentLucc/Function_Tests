@@ -47,6 +47,19 @@ namespace QuickTests
 
             return sNew;
         }
+
+        public Student( )
+        {
+ 
+        }
+
+        public Student(int iID)
+        {
+            Age = iID;
+            Name = "Stu_" + iID;
+            Description = "Info_" + iID;
+            Class = "Class_" + iID / 10;
+        }
     }
 
     public class StudentOverWrite : Student
@@ -113,5 +126,13 @@ namespace QuickTests
         GHJ,
         [Display(Name ="dfsdf")]
         MNX
+    }
+
+
+    public enum AddDataType
+    {
+        DuplicationCheck,
+        Append,
+        Insert
     }
 }

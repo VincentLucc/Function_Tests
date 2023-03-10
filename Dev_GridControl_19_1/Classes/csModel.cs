@@ -16,14 +16,21 @@ namespace Dev_GridControl_19_1
     {
         [DisplayName("AgeView")]
         public int Age { get; set; }
-
         public string Name { get; set; }
         public string DescriptionInfo { get; set; }
-    
         public string Class { get; set; }
-
         public bool Enable { get; set; }
         public bool Enable2 { get; set; }
+
+        public Student()
+        {
+            Age = -1;
+            Name = "Test";
+            Enable = false;
+            Enable2 = false;
+            Class = "No Class";
+        }
+
     }
 
     public class AlarmInfo
@@ -61,7 +68,7 @@ namespace Dev_GridControl_19_1
 
         public void dd()
         {
-            
+
         }
     }
 }

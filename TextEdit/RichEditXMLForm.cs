@@ -17,6 +17,7 @@ using DevExpress.XtraRichEdit.Services;
 using System.Threading;
 using System.Collections.Concurrent;
 using DevExpress.XtraRichEdit.API.Layout;
+using DevExpress.XtraPrinting.Native;
 
 namespace TextEdit
 {
@@ -47,22 +48,25 @@ namespace TextEdit
 
         private void InitControls()
         {
-            // Use service substitution to register a custom service that implements syntax highlighting.
-            //var syntaxHighLighter = new csSyntaxHighLightService(richEditControl1);
-            //syntaxHighLighter.ForceLanguageType = ParserLanguageID.Xml;
+            InitRichEditControl(richEditControl1);
+            richEditControl1.ReadOnly = false;
+            //Apply syntax highlight
+            richEditControl1.ReplaceService<ISyntaxHighlightService>(new csXMLSyntaxHighLightService(richEditControl1.Document));
+        }
 
-            //richEditControl1.ReplaceService<ISyntaxHighlightService>(syntaxHighLighter);
-            //Simple or draft mode will Hide borders, pages will also been disabled
-            richEditControl1.ActiveViewType = RichEditViewType.Simple;
-            richEditControl1.ActiveView.AllowDisplayLineNumbers = true;
-            //Allow number to be visible in simple mode or draft mode
-            richEditControl1.Views.SimpleView.Padding = new DevExpress.Portable.PortablePadding(60, 20, 20, 20);
-            richEditControl1.Views.SimpleView.WordWrap = false;
+        private void InitRichEditControl(RichEditControl richEdit)
+        {
             //Hide ruler
-            richEditControl1.Options.HorizontalRuler.Visibility = RichEditRulerVisibility.Hidden;
-            richEditControl1.Options.VerticalRuler.Visibility = RichEditRulerVisibility.Hidden;
-          
-
+            richEdit.Options.HorizontalRuler.Visibility = RichEditRulerVisibility.Hidden;
+            richEdit.Options.VerticalRuler.Visibility = RichEditRulerVisibility.Hidden;
+            //Disable edit
+            richEdit.ReadOnly = true;
+            //Hide border, pages will also been disabled
+            richEdit.ActiveViewType = RichEditViewType.Simple;
+            richEdit.ActiveView.AllowDisplayLineNumbers = true;
+            //Allow number to be visible in simple mode or draft mode
+            richEdit.Views.SimpleView.Padding = new DevExpress.Portable.PortablePadding(60, 20, 20, 20);
+            richEdit.Views.SimpleView.WordWrap = false;
         }
 
         private void InitEvents()
@@ -194,6 +198,8 @@ namespace TextEdit
                     doc.CaretPosition = doc.Range.End; //Move caret to the end
                     richEditControl1.ScrollToCaret();  //Set scroll position
                     richEditControl1.EndUpdate();
+
+                    Debug.WriteLine($"{TimeString}:TimerComplete:{timerWatch.ElapsedMilliseconds},Current Lines:{DocumentLineCount}");
                 }
             }
             catch (Exception ex)
@@ -201,10 +207,9 @@ namespace TextEdit
                 Debug.WriteLine($"timer1_Tick:\r\n{ex.Message}");
             }
 
-
             //Finish up
             timerWatch.Stop();
-            Debug.WriteLine($"{TimeString}:TimerComplete:{timerWatch.ElapsedMilliseconds},Current Lines:{DocumentLineCount}");
+            
             t1.Enabled = true;
         }
 

@@ -14,7 +14,7 @@ namespace LookUpEdit_2201
     public class ImageString
     {
         public Image Image { get; set; }
-        public string Value { get; set; }
-        public int Index { get; set; }
+        public string StringValue { get; set; }
+        public int IndexValue { get; set; }
     }
 }

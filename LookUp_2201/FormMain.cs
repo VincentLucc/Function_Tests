@@ -1,4 +1,5 @@
 ﻿using DevExpress.ExpressApp.Win.Editors;
+using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -43,12 +44,46 @@ namespace LookUpEdit_2201
             InitNormalLookupEdit();
             InitCustomDrawLookupEdit();
             InitImageLookupEdit();
+            InitCustomImageLookupEdit();
 
             //Search lookup
             searchLookUpEdit1.Properties.DataSource = sList;
 
             //Grid lookup control
             GridLookupEditInit();
+        }
+
+        private void InitCustomImageLookupEdit()
+        {
+            ImageCustomLookUpEdit.Properties.DataSource = imageStrings;
+            ImageCustomLookUpEdit.Properties.Columns.Clear();
+            ImageCustomLookUpEdit.Properties.DropDownRows = imageStrings.Count;
+            ImageCustomLookUpEdit.Properties.ShowFooter = false;
+            ImageCustomLookUpEdit.Properties.NullText = null;
+            ImageCustomLookUpEdit.Properties.ValueMember = nameof(ImageString.IndexValue);
+            ImageCustomLookUpEdit.Properties.DisplayMember = nameof(ImageString.StringValue);
+            ImageCustomLookUpEdit.EditValueChanged += ImageCustomLookUpEdit_EditValueChanged;
+            ImageCustomLookUpEdit.EditValue = 2;
+
+            ImageCustomLookUpEdit.Properties.ShowHeader = false;
+            ImageCustomLookUpEdit.Properties.ShowLines = false;
+            ImageCustomLookUpEdit.Properties.PopulateColumns();
+
+            //Must set alignment for each column
+            var imageColumn = ImageCustomLookUpEdit.Properties.Columns[nameof(ImageString.Image)];
+            imageColumn.Width = 24;
+            imageColumn.MaxWidth = 24;//Must set this
+            imageColumn.Alignment = HorzAlignment.Far;
+        }
+
+        private void ImageCustomLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            var selectedObject = ImageCustomLookUpEdit.GetSelectedDataRow();
+            if (selectedObject is ImageString)
+            {
+                var rowValue = selectedObject as ImageString;
+                ImageCustomLookUpEdit.Properties.ContextImageOptions.Image = rowValue.Image;
+            }
         }
 
         private void InitData()
@@ -66,8 +101,8 @@ namespace LookUpEdit_2201
             {
                 var item = new ImageString();
                 item.Image = imageCollection1.Images[i];
-                item.Value = $"Value_{i + 1}_123abc";
-                item.Index = i;
+                item.StringValue = $"Value_{(i + 1).ToString("d2")}";
+                item.IndexValue = i;
                 imageStrings.Add(item);
             }
         }
@@ -104,6 +139,7 @@ namespace LookUpEdit_2201
             lookUpEdit2.CustomDisplayText += LookUpEdit2_CustomDisplayText;
             lookUpEdit2.Properties.CustomDrawButton += Properties_CustomDrawButton1;
             lookUpEdit2.EditValueChanged += LookUpEdit2_EditValueChanged;
+
         }
 
         private void LookUpEdit2_EditValueChanged(object sender, EventArgs e)
@@ -130,9 +166,9 @@ namespace LookUpEdit_2201
             var gridView = gridLookUpEditCustomized.Properties.PopupView;
 
             // The field for the editor's display text.
-            gridLookUpEditCustomized.Properties.DisplayMember = nameof(ImageString.Value);
+            gridLookUpEditCustomized.Properties.DisplayMember = nameof(ImageString.StringValue);
             // The field matching the edit value.
-            gridLookUpEditCustomized.Properties.ValueMember = nameof(ImageString.Value);
+            gridLookUpEditCustomized.Properties.ValueMember = nameof(ImageString.StringValue);
             gridLookUpEditCustomized.EditValue = sEdit;
             gridLookUpEditCustomized.Properties.ShowFooter = false;
             gridView.OptionsView.ShowViewCaption = false;//hide column
