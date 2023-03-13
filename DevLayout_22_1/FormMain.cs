@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.ButtonPanel;
+using DevLayout.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,11 +36,32 @@ namespace DevLayout_22_1
 
         private void bFluent_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void bGeneratedForm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CustomFormButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CustomFormTitleButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var customForm = new CustomizedXtraForm();
+            customForm.ShowDialog();
+        }
+
+        private void FluentFormBarButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
             FluentDesignForm form1 = new FluentDesignForm();
             form1.Show();
         }
 
-        private void bGeneratedForm_Click(object sender, EventArgs e)
+        private void GeneratedFormButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             GeneratedForm formGenerated = new GeneratedForm();
             formGenerated.StartPosition = FormStartPosition.CenterScreen;

@@ -53,16 +53,16 @@ namespace DevLayout_22_1
             // 
             this.panel1.Controls.Add(this.textEdit1);
             this.panel1.Controls.Add(this.simpleButton2);
-            this.panel1.Location = new System.Drawing.Point(16, 16);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(768, 281);
+            this.panel1.Size = new System.Drawing.Size(776, 287);
             this.panel1.TabIndex = 0;
             // 
             // textEdit1
             // 
             this.textEdit1.Location = new System.Drawing.Point(3, 3);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(349, 28);
+            this.textEdit1.Size = new System.Drawing.Size(349, 20);
             this.textEdit1.TabIndex = 1;
             // 
             // simpleButton2
@@ -76,9 +76,9 @@ namespace DevLayout_22_1
             // panel2
             // 
             this.panel2.Controls.Add(this.simpleButton1);
-            this.panel2.Location = new System.Drawing.Point(16, 303);
+            this.panel2.Location = new System.Drawing.Point(12, 303);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(768, 131);
+            this.panel2.Size = new System.Drawing.Size(776, 135);
             this.panel2.TabIndex = 1;
             // 
             // simpleButton1
@@ -116,16 +116,16 @@ namespace DevLayout_22_1
             this.panel1item.Control = this.panel1;
             this.panel1item.Location = new System.Drawing.Point(0, 0);
             this.panel1item.Name = "panel1item";
-            this.panel1item.Size = new System.Drawing.Size(774, 287);
+            this.panel1item.Size = new System.Drawing.Size(780, 291);
             this.panel1item.TextSize = new System.Drawing.Size(0, 0);
             this.panel1item.TextVisible = false;
             // 
             // panel2item
             // 
             this.panel2item.Control = this.panel2;
-            this.panel2item.Location = new System.Drawing.Point(0, 287);
+            this.panel2item.Location = new System.Drawing.Point(0, 291);
             this.panel2item.Name = "panel2item";
-            this.panel2item.Size = new System.Drawing.Size(774, 137);
+            this.panel2item.Size = new System.Drawing.Size(780, 139);
             this.panel2item.TextSize = new System.Drawing.Size(0, 0);
             this.panel2item.TextVisible = false;
             // 

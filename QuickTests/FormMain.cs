@@ -1151,6 +1151,16 @@ namespace QuickTests
             }
             watchPerformance.Stop();
             Debug.WriteLine($"Mofify (Datatable Student) record:{iCount}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Modify data table
+            var enumRows = dtPerformanceSource.AsEnumerable();
+            watchPerformance.Restart();
+            foreach (DataRow row in enumRows)
+            {
+                string sName = row.Field<string>(nameof(Student.Name)) + "_X";
+                row[nameof(Student.Name)] = sName;
+            }
+            Debug.WriteLine($"Mofify (Datatable Student) with Enum record:{enumRows.Count()}, time:{watchPerformance.ElapsedMilliseconds}.");
         }
     }
 

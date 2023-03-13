@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,12 @@ namespace DevRibbon
         private void FormMain_Load(object sender, EventArgs e)
         {
             barButtonItem1.ItemClick += BarButtonItem1_ItemClick;
+
+            //Ribbon control
+            ribbonControl1.ShowToolbarCustomizeItem = false; //Hide customizing button
+            ribbonControl1.ShowApplicationButton = DefaultBoolean.False; //Hide menu button
+            ribbonControl1.Minimized = true; //Hide ribbon control;
+            //ribbonControl1.Pages[0].Visible = false;
         }
 
         private void BarButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
