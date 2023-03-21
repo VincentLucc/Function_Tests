@@ -18,7 +18,13 @@ namespace QuickTests
         public string Name { get; set; }
         public string Description { get; set; }
 
+        /// <summary>
+        /// Order inside the class room
+        /// </summary>
+        public int SeatOrder { get; set; }
         public string Class { get; set; }
+
+        public string Grade { get; set; }
 
         [Browsable(false)]
         public static string StaticText = "500";

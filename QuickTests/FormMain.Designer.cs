@@ -75,6 +75,7 @@ namespace QuickTests
             this.tbName = new System.Windows.Forms.TextBox();
             this.bSetName = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button22 = new System.Windows.Forms.Button();
             this.bLinkedList = new System.Windows.Forms.Button();
             this.bSortedList = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -89,6 +90,7 @@ namespace QuickTests
             this.bTake = new System.Windows.Forms.Button();
             this.bArray = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.bLinqSOrt = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.bFirst = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -101,13 +103,14 @@ namespace QuickTests
             this.panel2 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.bValueChange = new System.Windows.Forms.Button();
             this.bInsert = new System.Windows.Forms.Button();
             this.bSort = new System.Windows.Forms.Button();
             this.bAddwithDucplicationCheck = new System.Windows.Forms.Button();
             this.bPreparewithKey = new System.Windows.Forms.Button();
             this.bPrepareData = new System.Windows.Forms.Button();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
-            this.bValueChange = new System.Windows.Forms.Button();
+            this.bEnumerator = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -600,6 +603,8 @@ namespace QuickTests
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.bEnumerator);
+            this.tabPage1.Controls.Add(this.button22);
             this.tabPage1.Controls.Add(this.bLinkedList);
             this.tabPage1.Controls.Add(this.bSortedList);
             this.tabPage1.Controls.Add(this.groupBox2);
@@ -620,6 +625,16 @@ namespace QuickTests
             this.tabPage1.Text = "Collections";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(102, 78);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(106, 23);
+            this.button22.TabIndex = 12;
+            this.button22.Text = "List-ArrayIndex";
+            this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // bLinkedList
             // 
@@ -753,6 +768,7 @@ namespace QuickTests
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.bLinqSOrt);
             this.tabPage2.Controls.Add(this.button12);
             this.tabPage2.Controls.Add(this.bFirst);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
@@ -762,6 +778,16 @@ namespace QuickTests
             this.tabPage2.TabIndex = 3;
             this.tabPage2.Text = "LINQ";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // bLinqSOrt
+            // 
+            this.bLinqSOrt.Location = new System.Drawing.Point(9, 65);
+            this.bLinqSOrt.Name = "bLinqSOrt";
+            this.bLinqSOrt.Size = new System.Drawing.Size(75, 23);
+            this.bLinqSOrt.TabIndex = 2;
+            this.bLinqSOrt.Text = "Sort Test";
+            this.bLinqSOrt.UseVisualStyleBackColor = true;
+            this.bLinqSOrt.Click += new System.EventHandler(this.bLinqSOrt_Click);
             // 
             // button12
             // 
@@ -887,6 +913,16 @@ namespace QuickTests
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Dictionay vs DataTable vs List";
             // 
+            // bValueChange
+            // 
+            this.bValueChange.Location = new System.Drawing.Point(6, 167);
+            this.bValueChange.Name = "bValueChange";
+            this.bValueChange.Size = new System.Drawing.Size(99, 23);
+            this.bValueChange.TabIndex = 5;
+            this.bValueChange.Text = "Value Change";
+            this.bValueChange.UseVisualStyleBackColor = true;
+            this.bValueChange.Click += new System.EventHandler(this.bValueChange_Click);
+            // 
             // bInsert
             // 
             this.bInsert.Location = new System.Drawing.Point(6, 109);
@@ -942,15 +978,15 @@ namespace QuickTests
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick);
             // 
-            // bValueChange
+            // bEnumerator
             // 
-            this.bValueChange.Location = new System.Drawing.Point(6, 167);
-            this.bValueChange.Name = "bValueChange";
-            this.bValueChange.Size = new System.Drawing.Size(99, 23);
-            this.bValueChange.TabIndex = 5;
-            this.bValueChange.Text = "Value Change";
-            this.bValueChange.UseVisualStyleBackColor = true;
-            this.bValueChange.Click += new System.EventHandler(this.bValueChange_Click);
+            this.bEnumerator.Location = new System.Drawing.Point(214, 78);
+            this.bEnumerator.Name = "bEnumerator";
+            this.bEnumerator.Size = new System.Drawing.Size(106, 23);
+            this.bEnumerator.TabIndex = 13;
+            this.bEnumerator.Text = "List Enumerator";
+            this.bEnumerator.UseVisualStyleBackColor = true;
+            this.bEnumerator.Click += new System.EventHandler(this.bEnumerator_Click);
             // 
             // FormMain
             // 
@@ -1068,6 +1104,9 @@ namespace QuickTests
         private System.Windows.Forms.Button bLinkedList;
         private System.Windows.Forms.Button bInsert;
         private System.Windows.Forms.Button bValueChange;
+        private System.Windows.Forms.Button bLinqSOrt;
+        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button bEnumerator;
     }
 }
 

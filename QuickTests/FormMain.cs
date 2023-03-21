@@ -808,7 +808,7 @@ namespace QuickTests
             for (int i = iStartBase; i < iStartBase + iRecordCount; i++)
             {
                 var stu = new Student(i);
-                List<string> values=new List<string>();
+                List<string> values = new List<string>();
                 for (int j = 0; j < 4; j++)
                 {
                     values.Add($"Stu_{i}");
@@ -825,7 +825,7 @@ namespace QuickTests
             watchPerformance.Restart();
             for (int i = iStartBase; i < iStartBase + iRecordCount; i++)
             {
-                string[] nodes=new string[4];
+                string[] nodes = new string[4];
                 nodes[0] = $"Stu_{i}";
                 nodes[1] = i.ToString();
                 nodes[2] = $"Record_{i}";
@@ -1162,7 +1162,106 @@ namespace QuickTests
             }
             Debug.WriteLine($"Mofify (Datatable Student) with Enum record:{enumRows.Count()}, time:{watchPerformance.ElapsedMilliseconds}.");
         }
+
+        private void bLinqSOrt_Click(object sender, EventArgs e)
+        {
+            //Prepare fake data 
+            List<Student> stuList = new List<Student>();
+            List<int> stuOrders = new List<int>();
+            int iIndex = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    iIndex++;
+                    Student student = new Student()
+                    {
+                        Name = $"Stu{iIndex.ToString("d3")}",
+                        Age = iIndex,
+                        SeatOrder = j + 1,
+                        Class = (i + 1).ToString("d3")
+                    };
+
+                    stuList.Add(student);
+                    stuOrders.Add(iIndex);
+                }
+
+            }
+
+            Debug.WriteLine($"Before:");
+            foreach (var item in stuList)
+            {
+                Debug.WriteLine($"StuName:{item.Name},Seat:{item.SeatOrder},Class:{item.Class}");
+            }
+            Debug.WriteLine($"-------\r\n\r\n\r\n");
+
+            var result1 = stuList.OrderByDescending(A => A.SeatOrder).ToList();
+            var result2 = result1.OrderByDescending(a => a.Class).ToList();
+            Debug.WriteLine($"After:");
+            foreach (var item in result2)
+            {
+                Debug.WriteLine($"StuName:{item.Name},Seat:{item.SeatOrder},Class:{item.Class}");
+            }
+            Debug.WriteLine($"-------\r\n\r\n\r\n");
+
+
+            //Sort by extra list of index
+            var result3 = stuList.OrderByDescending(a => GetMatchedOrder(a)).ToString();
+            Debug.WriteLine($"SOrt by extra:");
+            foreach (var item in result2)
+            {
+                Debug.WriteLine($"StuName:{item.Name},Seat:{item.SeatOrder},Class:{item.Class}");
+            }
+            Debug.WriteLine($"-------\r\n\r\n\r\n");
+
+            int GetMatchedOrder(Student stu)
+            {
+                int iStuIndex = stuList.IndexOf(stu);
+                int iOrder = stuOrders[iStuIndex];
+                return iOrder;
+            }
+
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            List<string[]> strings= new List<string[]>();
+            for (int i = 0; i < 10; i++)
+            {
+                string[] data=new string[3] {i.ToString(),i.ToString(),i.ToString() };
+                strings.Add(data);
+            }
+
+            strings.Add(new string[] {"2","2","2" });
+            strings.Add(new string[] {"5","5","5" });
+
+            var row10 = strings[10];
+            int iRowIndex = strings.IndexOf(row10);
+            var newData = new string[] { "2", "2", "2" };
+            iRowIndex = strings.IndexOf(newData);//Reference type!!!!
+        }
+
+        private void bEnumerator_Click(object sender, EventArgs e)
+        {
+            List<string> strings= new List<string>();
+            for (int i = 0; i < 5; i++)
+            {
+                strings.Add((i+1).ToString());
+            }
+
+            //Current value is null by default, maust use "MoveNext" to get first value
+            var enumerator= strings.AsEnumerable().GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                string sCurrent=enumerator.Current;
+                Debug.WriteLine(sCurrent);
+            }
+        }
     }
 
 
+
 }
+
+
+
