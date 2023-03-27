@@ -45,8 +45,9 @@ namespace Dev_GridControl_22_1
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.bFilterButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -210,6 +211,7 @@ namespace Dev_GridControl_22_1
             // 
             // groupControl4
             // 
+            this.groupControl4.Controls.Add(this.bFilterButton);
             this.groupControl4.Controls.Add(this.simpleButton4);
             this.groupControl4.Controls.Add(this.bTooltip);
             this.groupControl4.Controls.Add(this.bRowSelection);
@@ -220,6 +222,15 @@ namespace Dev_GridControl_22_1
             this.groupControl4.TabIndex = 15;
             this.groupControl4.Text = "Special Functions";
             // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Location = new System.Drawing.Point(5, 113);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(148, 23);
+            this.simpleButton4.TabIndex = 12;
+            this.simpleButton4.Text = "Data Table Binding Updates";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click_1);
+            // 
             // groupControl5
             // 
             this.groupControl5.Controls.Add(this.bRejectReasons);
@@ -229,14 +240,15 @@ namespace Dev_GridControl_22_1
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Text = "Application Test";
             // 
-            // simpleButton4
+            // bFilterButton
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(5, 113);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(148, 23);
-            this.simpleButton4.TabIndex = 12;
-            this.simpleButton4.Text = "Data Table Binding Updates";
-            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click_1);
+            this.bFilterButton.Location = new System.Drawing.Point(5, 142);
+            this.bFilterButton.Name = "bFilterButton";
+            this.bFilterButton.Size = new System.Drawing.Size(109, 23);
+            this.bFilterButton.TabIndex = 7;
+            this.bFilterButton.Text = "Filter Function";
+            this.bFilterButton.ToolTip = "Web Style Row Display";
+            this.bFilterButton.Click += new System.EventHandler(this.bFilterButton_Click);
             // 
             // FormMain
             // 
@@ -285,6 +297,7 @@ namespace Dev_GridControl_22_1
         private DevExpress.XtraEditors.GroupControl groupControl4;
         private DevExpress.XtraEditors.GroupControl groupControl5;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton bFilterButton;
     }
 }
 

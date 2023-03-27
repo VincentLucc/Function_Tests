@@ -115,5 +115,11 @@ namespace Dev_GridControl_22_1
             var winDataTable = new DataTableBinding();
             winDataTable.ShowDialog();
         }
+
+        private void bFilterButton_Click(object sender, EventArgs e)
+        {
+            var winFIlter=new FIlterFunctionForm();
+            winFIlter.ShowDialog();
+        }
     }
 }

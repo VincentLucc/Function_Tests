@@ -36,6 +36,16 @@ namespace DevRibbon
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bMessageInfo = new DevExpress.XtraBars.BarButtonItem();
+            this.bWarning = new DevExpress.XtraBars.BarButtonItem();
+            this.bError = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
+            this.skinPaletteDropDownButtonItem1 = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
+            this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
@@ -50,12 +60,21 @@ namespace DevRibbon
             this.barButtonItem1,
             this.barButtonItem2,
             this.barButtonItem3,
-            this.barButtonItem4});
+            this.barButtonItem4,
+            this.bMessageInfo,
+            this.bWarning,
+            this.bError,
+            this.skinDropDownButtonItem1,
+            this.skinPaletteDropDownButtonItem1,
+            this.skinRibbonGalleryBarItem1,
+            this.skinPaletteRibbonGalleryBarItem1});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 5;
+            this.ribbonControl1.MaxItemId = 12;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.barButtonItem2);
-            this.ribbonControl1.Size = new System.Drawing.Size(952, 62);
+            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPage1});
+            this.ribbonControl1.Size = new System.Drawing.Size(952, 158);
             // 
             // barButtonItem1
             // 
@@ -92,10 +111,10 @@ namespace DevRibbon
             // layoutControl1
             // 
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 62);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 158);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(952, 576);
+            this.layoutControl1.Size = new System.Drawing.Size(952, 480);
             this.layoutControl1.TabIndex = 1;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -104,8 +123,76 @@ namespace DevRibbon
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(952, 576);
+            this.Root.Size = new System.Drawing.Size(952, 480);
             this.Root.TextVisible = false;
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup2});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Default Page";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.bMessageInfo);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bWarning);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bError);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Message Box";
+            // 
+            // bMessageInfo
+            // 
+            this.bMessageInfo.Caption = "Info";
+            this.bMessageInfo.Id = 5;
+            this.bMessageInfo.Name = "bMessageInfo";
+            this.bMessageInfo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bMessageBox_ItemClick);
+            // 
+            // bWarning
+            // 
+            this.bWarning.Caption = "Warning";
+            this.bWarning.Id = 6;
+            this.bWarning.Name = "bWarning";
+            this.bWarning.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bWarning_ItemClick);
+            // 
+            // bError
+            // 
+            this.bError.Caption = "Error";
+            this.bError.Id = 7;
+            this.bError.Name = "bError";
+            this.bError.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bError_ItemClick);
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.skinDropDownButtonItem1);
+            this.ribbonPageGroup2.ItemLinks.Add(this.skinPaletteDropDownButtonItem1);
+            this.ribbonPageGroup2.ItemLinks.Add(this.skinRibbonGalleryBarItem1);
+            this.ribbonPageGroup2.ItemLinks.Add(this.skinPaletteRibbonGalleryBarItem1);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Skin";
+            // 
+            // skinDropDownButtonItem1
+            // 
+            this.skinDropDownButtonItem1.Id = 8;
+            this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
+            // 
+            // skinPaletteDropDownButtonItem1
+            // 
+            this.skinPaletteDropDownButtonItem1.Id = 9;
+            this.skinPaletteDropDownButtonItem1.Name = "skinPaletteDropDownButtonItem1";
+            // 
+            // skinRibbonGalleryBarItem1
+            // 
+            this.skinRibbonGalleryBarItem1.Caption = "skinRibbonGalleryBarItem1";
+            this.skinRibbonGalleryBarItem1.Id = 10;
+            this.skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
+            // 
+            // skinPaletteRibbonGalleryBarItem1
+            // 
+            this.skinPaletteRibbonGalleryBarItem1.Caption = "skinPaletteRibbonGalleryBarItem1";
+            this.skinPaletteRibbonGalleryBarItem1.Id = 11;
+            this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
             // 
             // FormMain
             // 
@@ -135,6 +222,16 @@ namespace DevRibbon
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraBars.BarButtonItem bMessageInfo;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.BarButtonItem bWarning;
+        private DevExpress.XtraBars.BarButtonItem bError;
+        private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
+        private DevExpress.XtraBars.SkinPaletteDropDownButtonItem skinPaletteDropDownButtonItem1;
+        private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
+        private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
     }
 }
 

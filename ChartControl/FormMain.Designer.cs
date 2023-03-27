@@ -36,9 +36,9 @@ namespace ChartControl
             // 
             this.simpleButton1.Location = new System.Drawing.Point(41, 12);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(86, 23);
             this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "View1";
+            this.simpleButton1.Text = "View: Pie View";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // FormMain
@@ -47,8 +47,8 @@ namespace ChartControl
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.simpleButton1);
+            this.IconOptions.ShowIcon = false;
             this.Name = "FormMain";
-            this.ShowIcon = false;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
