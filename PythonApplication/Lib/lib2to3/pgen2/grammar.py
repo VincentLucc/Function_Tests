@@ -17,7 +17,7 @@ import collections
 import pickle
 
 # Local imports
-from . import token
+from . import token, tokenize
 
 
 class Grammar(object):
@@ -104,8 +104,9 @@ class Grammar(object):
 
     def load(self, filename):
         """Load the grammar tables from a pickle file."""
-        with open(filename, "rb") as f:
-            d = pickle.load(f)
+        f = open(filename, "rb")
+        d = pickle.load(f)
+        f.close()
         self.__dict__.update(d)
 
     def loads(self, pkl):
@@ -128,23 +129,23 @@ class Grammar(object):
     def report(self):
         """Dump the grammar tables to standard output, for debugging."""
         from pprint import pprint
-        print("s2n")
+        print "s2n"
         pprint(self.symbol2number)
-        print("n2s")
+        print "n2s"
         pprint(self.number2symbol)
-        print("states")
+        print "states"
         pprint(self.states)
-        print("dfas")
+        print "dfas"
         pprint(self.dfas)
-        print("labels")
+        print "labels"
         pprint(self.labels)
-        print("start", self.start)
+        print "start", self.start
 
 
 def _make_deterministic(top):
     if isinstance(top, dict):
         return collections.OrderedDict(
-            sorted(((k, _make_deterministic(v)) for k, v in top.items())))
+            sorted(((k, _make_deterministic(v)) for k, v in top.iteritems())))
     if isinstance(top, list):
         return [_make_deterministic(e) for e in top]
     if isinstance(top, tuple):
@@ -202,7 +203,6 @@ opmap_raw = """
 // DOUBLESLASH
 //= DOUBLESLASHEQUAL
 -> RARROW
-:= COLONEQUAL
 """
 
 opmap = {}

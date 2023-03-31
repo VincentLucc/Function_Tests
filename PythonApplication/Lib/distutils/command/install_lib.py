@@ -3,8 +3,9 @@
 Implements the Distutils 'install_lib' command
 (install all Python modules)."""
 
+__revision__ = "$Id$"
+
 import os
-import importlib.util
 import sys
 
 from distutils.core import Command
@@ -12,7 +13,10 @@ from distutils.errors import DistutilsOptionError
 
 
 # Extension for Python source files.
-PYTHON_SOURCE_EXTENSION = ".py"
+if hasattr(os, 'extsep'):
+    PYTHON_SOURCE_EXTENSION = os.extsep + "py"
+else:
+    PYTHON_SOURCE_EXTENSION = ".py"
 
 class install_lib(Command):
 
@@ -22,15 +26,15 @@ class install_lib(Command):
     # possible scenarios:
     #   1) no compilation at all (--no-compile --no-optimize)
     #   2) compile .pyc only (--compile --no-optimize; default)
-    #   3) compile .pyc and "opt-1" .pyc (--compile --optimize)
-    #   4) compile "opt-1" .pyc only (--no-compile --optimize)
-    #   5) compile .pyc and "opt-2" .pyc (--compile --optimize-more)
-    #   6) compile "opt-2" .pyc only (--no-compile --optimize-more)
+    #   3) compile .pyc and "level 1" .pyo (--compile --optimize)
+    #   4) compile "level 1" .pyo only (--no-compile --optimize)
+    #   5) compile .pyc and "level 2" .pyo (--compile --optimize-more)
+    #   6) compile "level 2" .pyo only (--no-compile --optimize-more)
     #
-    # The UI for this is two options, 'compile' and 'optimize'.
+    # The UI for this is two option, 'compile' and 'optimize'.
     # 'compile' is strictly boolean, and only decides whether to
     # generate .pyc files.  'optimize' is three-way (0, 1, or 2), and
-    # decides both whether to generate .pyc files and what level of
+    # decides both whether to generate .pyo files and what level of
     # optimization to use.
 
     user_options = [
@@ -71,9 +75,9 @@ class install_lib(Command):
                                   )
 
         if self.compile is None:
-            self.compile = True
+            self.compile = 1
         if self.optimize is None:
-            self.optimize = False
+            self.optimize = 0
 
         if not isinstance(self.optimize, int):
             try:
@@ -81,7 +85,7 @@ class install_lib(Command):
                 if self.optimize not in (0, 1, 2):
                     raise AssertionError
             except (ValueError, AssertionError):
-                raise DistutilsOptionError("optimize must be 0, 1, or 2")
+                raise DistutilsOptionError, "optimize must be 0, 1, or 2"
 
     def run(self):
         # Make sure we have built everything we need first
@@ -165,11 +169,9 @@ class install_lib(Command):
             if ext != PYTHON_SOURCE_EXTENSION:
                 continue
             if self.compile:
-                bytecode_files.append(importlib.util.cache_from_source(
-                    py_file, optimization=''))
+                bytecode_files.append(py_file + "c")
             if self.optimize > 0:
-                bytecode_files.append(importlib.util.cache_from_source(
-                    py_file, optimization=self.optimize))
+                bytecode_files.append(py_file + "o")
 
         return bytecode_files
 

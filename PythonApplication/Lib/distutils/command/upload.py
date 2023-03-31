@@ -1,17 +1,15 @@
-"""
-distutils.command.upload
+"""distutils.command.upload
 
-Implements the Distutils 'upload' subcommand (upload package to a package
-index).
-"""
-
+Implements the Distutils 'upload' subcommand (upload package to PyPI)."""
 import os
-import io
+import socket
 import platform
-import hashlib
+from urllib2 import urlopen, Request, HTTPError
 from base64 import standard_b64encode
-from urllib.request import urlopen, Request, HTTPError
-from urllib.parse import urlparse
+import urlparse
+import cStringIO as StringIO
+from hashlib import md5
+
 from distutils.errors import DistutilsError, DistutilsOptionError
 from distutils.core import PyPIRCCommand
 from distutils.spawn import spawn
@@ -66,7 +64,7 @@ class upload(PyPIRCCommand):
     def upload_file(self, command, pyversion, filename):
         # Makes sure the repository URL is compliant
         schema, netloc, url, params, query, fragments = \
-            urlparse(self.repository)
+            urlparse.urlparse(self.repository)
         if params or query or fragments:
             raise AssertionError("Incompatible url %s" % self.repository)
 
@@ -92,7 +90,7 @@ class upload(PyPIRCCommand):
         data = {
             # action
             ':action': 'file_upload',
-            'protocol_version': '1',
+            'protcol_version': '1',
 
             # identify release
             'name': meta.get_name(),
@@ -102,10 +100,10 @@ class upload(PyPIRCCommand):
             'content': (os.path.basename(filename),content),
             'filetype': command,
             'pyversion': pyversion,
-            'md5_digest': hashlib.md5(content).hexdigest(),
+            'md5_digest': md5(content).hexdigest(),
 
             # additional meta-data
-            'metadata_version': '1.0',
+            'metadata_version' : '1.0',
             'summary': meta.get_description(),
             'home_page': meta.get_url(),
             'author': meta.get_contact(),
@@ -132,46 +130,43 @@ class upload(PyPIRCCommand):
 
         if self.sign:
             data['gpg_signature'] = (os.path.basename(filename) + ".asc",
-                                     open(filename+".asc", "rb").read())
+                                     open(filename+".asc").read())
 
         # set up the authentication
-        user_pass = (self.username + ":" + self.password).encode('ascii')
-        # The exact encoding of the authentication string is debated.
-        # Anyway PyPI only accepts ascii for both username or password.
-        auth = "Basic " + standard_b64encode(user_pass).decode('ascii')
+        auth = "Basic " + standard_b64encode(self.username + ":" +
+                                             self.password)
 
         # Build up the MIME payload for the POST data
         boundary = '--------------GHSKFJDLGDS7543FJKLFHRE75642756743254'
-        sep_boundary = b'\r\n--' + boundary.encode('ascii')
-        end_boundary = sep_boundary + b'--\r\n'
-        body = io.BytesIO()
+        sep_boundary = '\r\n--' + boundary
+        end_boundary = sep_boundary + '--\r\n'
+        body = StringIO.StringIO()
         for key, value in data.items():
-            title = '\r\nContent-Disposition: form-data; name="%s"' % key
             # handle multiple entries for the same name
             if not isinstance(value, list):
                 value = [value]
             for value in value:
-                if type(value) is tuple:
-                    title += '; filename="%s"' % value[0]
+                if isinstance(value, tuple):
+                    fn = ';filename="%s"' % value[0]
                     value = value[1]
                 else:
-                    value = str(value).encode('utf-8')
+                    fn = ""
+
                 body.write(sep_boundary)
-                body.write(title.encode('utf-8'))
-                body.write(b"\r\n\r\n")
+                body.write('\r\nContent-Disposition: form-data; name="%s"' % key)
+                body.write(fn)
+                body.write("\r\n\r\n")
                 body.write(value)
         body.write(end_boundary)
         body = body.getvalue()
 
-        msg = "Submitting %s to %s" % (filename, self.repository)
-        self.announce(msg, log.INFO)
+        self.announce("Submitting %s to %s" % (filename, self.repository), log.INFO)
 
         # build the Request
-        headers = {
-            'Content-type': 'multipart/form-data; boundary=%s' % boundary,
-            'Content-length': str(len(body)),
-            'Authorization': auth,
-        }
+        headers = {'Content-type':
+                        'multipart/form-data; boundary=%s' % boundary,
+                   'Content-length': str(len(body)),
+                   'Authorization': auth}
 
         request = Request(self.repository, data=body,
                           headers=headers)
@@ -180,20 +175,19 @@ class upload(PyPIRCCommand):
             result = urlopen(request)
             status = result.getcode()
             reason = result.msg
-        except HTTPError as e:
-            status = e.code
-            reason = e.msg
-        except OSError as e:
+            if self.show_response:
+                msg = '\n'.join(('-' * 75, result.read(), '-' * 75))
+                self.announce(msg, log.INFO)
+        except socket.error, e:
             self.announce(str(e), log.ERROR)
             raise
+        except HTTPError, e:
+            status = e.code
+            reason = e.msg
 
         if status == 200:
             self.announce('Server response (%s): %s' % (status, reason),
                           log.INFO)
-            if self.show_response:
-                text = self._read_pypi_response(result)
-                msg = '\n'.join(('-' * 75, text, '-' * 75))
-                self.announce(msg, log.INFO)
         else:
             msg = 'Upload failed (%s): %s' % (status, reason)
             self.announce(msg, log.ERROR)

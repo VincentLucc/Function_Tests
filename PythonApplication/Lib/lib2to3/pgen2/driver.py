@@ -17,10 +17,10 @@ __all__ = ["Driver", "load_grammar"]
 
 # Python imports
 import codecs
-import io
 import os
 import logging
 import pkgutil
+import StringIO
 import sys
 
 # Pgen imports
@@ -44,7 +44,7 @@ class Driver(object):
         lineno = 1
         column = 0
         type = value = start = end = line_text = None
-        prefix = ""
+        prefix = u""
         for quintuple in tokens:
             type, value, start, end, line_text = quintuple
             if start != (lineno, column):
@@ -95,12 +95,15 @@ class Driver(object):
 
     def parse_file(self, filename, encoding=None, debug=False):
         """Parse a file and return the syntax tree."""
-        with io.open(filename, "r", encoding=encoding) as stream:
+        stream = codecs.open(filename, "r", encoding)
+        try:
             return self.parse_stream(stream, debug)
+        finally:
+            stream.close()
 
     def parse_string(self, text, debug=False):
         """Parse a string and return the syntax tree."""
-        tokens = tokenize.generate_tokens(io.StringIO(text).readline)
+        tokens = tokenize.generate_tokens(StringIO.StringIO(text).readline)
         return self.parse_tokens(tokens, debug)
 
 
@@ -124,7 +127,7 @@ def load_grammar(gt="Grammar.txt", gp=None,
             logger.info("Writing grammar tables to %s", gp)
             try:
                 g.dump(gp)
-            except OSError as e:
+            except IOError as e:
                 logger.info("Writing failed: %s", e)
     else:
         g = grammar.Grammar()

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
     ast
     ~~~
@@ -25,6 +26,7 @@
     :license: Python License.
 """
 from _ast import *
+from _ast import __version__
 
 
 def parse(source, filename='<unknown>', mode='exec'):
@@ -39,32 +41,16 @@ def literal_eval(node_or_string):
     """
     Safely evaluate an expression node or a string containing a Python
     expression.  The string or node provided may only consist of the following
-    Python literal structures: strings, bytes, numbers, tuples, lists, dicts,
-    sets, booleans, and None.
+    Python literal structures: strings, numbers, tuples, lists, dicts, booleans,
+    and None.
     """
-    if isinstance(node_or_string, str):
+    _safe_names = {'None': None, 'True': True, 'False': False}
+    if isinstance(node_or_string, basestring):
         node_or_string = parse(node_or_string, mode='eval')
     if isinstance(node_or_string, Expression):
         node_or_string = node_or_string.body
-    def _convert_num(node):
-        if isinstance(node, Constant):
-            if isinstance(node.value, (int, float, complex)):
-                return node.value
-        elif isinstance(node, Num):
-            return node.n
-        raise ValueError('malformed node or string: ' + repr(node))
-    def _convert_signed_num(node):
-        if isinstance(node, UnaryOp) and isinstance(node.op, (UAdd, USub)):
-            operand = _convert_num(node.operand)
-            if isinstance(node.op, UAdd):
-                return + operand
-            else:
-                return - operand
-        return _convert_num(node)
     def _convert(node):
-        if isinstance(node, Constant):
-            return node.value
-        elif isinstance(node, (Str, Bytes)):
+        if isinstance(node, Str):
             return node.s
         elif isinstance(node, Num):
             return node.n
@@ -72,56 +58,50 @@ def literal_eval(node_or_string):
             return tuple(map(_convert, node.elts))
         elif isinstance(node, List):
             return list(map(_convert, node.elts))
-        elif isinstance(node, Set):
-            return set(map(_convert, node.elts))
         elif isinstance(node, Dict):
-            return dict(zip(map(_convert, node.keys),
-                            map(_convert, node.values)))
-        elif isinstance(node, NameConstant):
-            return node.value
-        elif isinstance(node, BinOp) and isinstance(node.op, (Add, Sub)):
-            left = _convert_signed_num(node.left)
-            right = _convert_num(node.right)
-            if isinstance(left, (int, float)) and isinstance(right, complex):
-                if isinstance(node.op, Add):
-                    return left + right
-                else:
-                    return left - right
-        return _convert_signed_num(node)
+            return dict((_convert(k), _convert(v)) for k, v
+                        in zip(node.keys, node.values))
+        elif isinstance(node, Name):
+            if node.id in _safe_names:
+                return _safe_names[node.id]
+        elif isinstance(node, BinOp) and \
+             isinstance(node.op, (Add, Sub)) and \
+             isinstance(node.right, Num) and \
+             isinstance(node.right.n, complex) and \
+             isinstance(node.left, Num) and \
+             isinstance(node.left.n, (int, long, float)):
+            left = node.left.n
+            right = node.right.n
+            if isinstance(node.op, Add):
+                return left + right
+            else:
+                return left - right
+        raise ValueError('malformed string')
     return _convert(node_or_string)
 
 
 def dump(node, annotate_fields=True, include_attributes=False):
     """
-    Return a formatted dump of the tree in node.  This is mainly useful for
-    debugging purposes.  If annotate_fields is true (by default),
-    the returned string will show the names and the values for fields.
-    If annotate_fields is false, the result string will be more compact by
-    omitting unambiguous field names.  Attributes such as line
+    Return a formatted dump of the tree in *node*.  This is mainly useful for
+    debugging purposes.  The returned string will show the names and the values
+    for fields.  This makes the code impossible to evaluate, so if evaluation is
+    wanted *annotate_fields* must be set to False.  Attributes such as line
     numbers and column offsets are not dumped by default.  If this is wanted,
-    include_attributes can be set to true.
+    *include_attributes* can be set to True.
     """
     def _format(node):
         if isinstance(node, AST):
-            args = []
-            keywords = annotate_fields
-            for field in node._fields:
-                try:
-                    value = getattr(node, field)
-                except AttributeError:
-                    keywords = True
-                else:
-                    if keywords:
-                        args.append('%s=%s' % (field, _format(value)))
-                    else:
-                        args.append(_format(value))
+            fields = [(a, _format(b)) for a, b in iter_fields(node)]
+            rv = '%s(%s' % (node.__class__.__name__, ', '.join(
+                ('%s=%s' % field for field in fields)
+                if annotate_fields else
+                (b for a, b in fields)
+            ))
             if include_attributes and node._attributes:
-                for a in node._attributes:
-                    try:
-                        args.append('%s=%s' % (a, _format(getattr(node, a))))
-                    except AttributeError:
-                        pass
-            return '%s(%s)' % (node.__class__.__name__, ', '.join(args))
+                rv += fields and ', ' or ' '
+                rv += ', '.join('%s=%s' % (a, _format(getattr(node, a)))
+                                for a in node._attributes)
+            return rv + ')'
         elif isinstance(node, list):
             return '[%s]' % ', '.join(_format(x) for x in node)
         return repr(node)
@@ -209,25 +189,15 @@ def get_docstring(node, clean=True):
     Return the docstring for the given node or None if no docstring can
     be found.  If the node provided does not have docstrings a TypeError
     will be raised.
-
-    If *clean* is `True`, all tabs are expanded to spaces and any whitespace
-    that can be uniformly removed from the second line onwards is removed.
     """
-    if not isinstance(node, (AsyncFunctionDef, FunctionDef, ClassDef, Module)):
+    if not isinstance(node, (FunctionDef, ClassDef, Module)):
         raise TypeError("%r can't have docstrings" % node.__class__.__name__)
-    if not(node.body and isinstance(node.body[0], Expr)):
-        return None
-    node = node.body[0].value
-    if isinstance(node, Str):
-        text = node.s
-    elif isinstance(node, Constant) and isinstance(node.value, str):
-        text = node.value
-    else:
-        return None
-    if clean:
-        import inspect
-        text = inspect.cleandoc(text)
-    return text
+    if node.body and isinstance(node.body[0], Expr) and \
+       isinstance(node.body[0].value, Str):
+        if clean:
+            import inspect
+            return inspect.cleandoc(node.body[0].value.s)
+        return node.body[0].value.s
 
 
 def walk(node):
@@ -298,11 +268,11 @@ class NodeTransformer(NodeVisitor):
        class RewriteName(NodeTransformer):
 
            def visit_Name(self, node):
-               return Subscript(
+               return copy_location(Subscript(
                    value=Name(id='data', ctx=Load()),
                    slice=Index(value=Str(s=node.id)),
                    ctx=node.ctx
-               )
+               ), node)
 
     Keep in mind that if the node you're operating on has child nodes you must
     either transform the child nodes yourself or call the :meth:`generic_visit`
@@ -319,6 +289,7 @@ class NodeTransformer(NodeVisitor):
 
     def generic_visit(self, node):
         for field, old_value in iter_fields(node):
+            old_value = getattr(node, field, None)
             if isinstance(old_value, list):
                 new_values = []
                 for value in old_value:

@@ -41,7 +41,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperationBlock", "Timer\Ope
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevMessage", "DevMessage\DevMessage.csproj", "{A00A359A-B002-47B2-922C-C6F82A2319F9}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonApplication", "PythonApplication\PythonApplication.pyproj", "{54B720E2-57BA-43EC-9652-2C097905F3C9}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonApplication_3.7", "PythonApplication\PythonApplication_3.7.pyproj", "{54B720E2-57BA-43EC-9652-2C097905F3C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadingLock", "Lock\ThreadingLock.csproj", "{C8AC63CD-7E71-4707-A252-0D7BC28226C8}"
 EndProject
@@ -123,7 +123,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormMemory", "FormMemory\Fo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevNav", "DevNav\DevNav.csproj", "{E1F7A0D1-6E1E-4902-BBA1-14AD949920F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevRibbon", "DevRibbon\DevRibbon.csproj", "{7A917238-1E05-45AE-A7DF-492B757EF9E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevRibbon_22_1", "DevRibbon\DevRibbon_22_1.csproj", "{7A917238-1E05-45AE-A7DF-492B757EF9E5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiAppTest", "MauiAppTest\MauiAppTest.csproj", "{DE1122F7-8B1A-43EA-A508-63D7F2BF097D}"
 EndProject

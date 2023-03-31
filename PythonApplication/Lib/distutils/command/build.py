@@ -2,16 +2,17 @@
 
 Implements the Distutils 'build' command."""
 
+__revision__ = "$Id$"
+
 import sys, os
+
+from distutils.util import get_platform
 from distutils.core import Command
 from distutils.errors import DistutilsOptionError
-from distutils.util import get_platform
-
 
 def show_compilers():
     from distutils.ccompiler import show_compilers
     show_compilers()
-
 
 class build(Command):
 
@@ -36,8 +37,6 @@ class build(Command):
          "(default: %s)" % get_platform()),
         ('compiler=', 'c',
          "specify the compiler type"),
-        ('parallel=', 'j',
-         "number of parallel build jobs"),
         ('debug', 'g',
          "compile extensions and libraries with debugging information"),
         ('force', 'f',
@@ -67,7 +66,6 @@ class build(Command):
         self.debug = None
         self.force = 0
         self.executable = None
-        self.parallel = None
 
     def finalize_options(self):
         if self.plat_name is None:
@@ -81,7 +79,7 @@ class build(Command):
                             "--plat-name only supported on Windows (try "
                             "using './configure --help' on your platform)")
 
-        plat_specifier = ".%s-%d.%d" % (self.plat_name, *sys.version_info[:2])
+        plat_specifier = ".%s-%s" % (self.plat_name, sys.version[0:3])
 
         # Make it so Python 2.x and Python 2.x with --with-pydebug don't
         # share the same build directories. Doing so confuses the build
@@ -114,16 +112,10 @@ class build(Command):
                                            'temp' + plat_specifier)
         if self.build_scripts is None:
             self.build_scripts = os.path.join(self.build_base,
-                                              'scripts-%d.%d' % sys.version_info[:2])
+                                              'scripts-' + sys.version[0:3])
 
-        if self.executable is None and sys.executable:
+        if self.executable is None:
             self.executable = os.path.normpath(sys.executable)
-
-        if isinstance(self.parallel, str):
-            try:
-                self.parallel = int(self.parallel)
-            except ValueError:
-                raise DistutilsOptionError("parallel should be an integer")
 
     def run(self):
         # Run all relevant sub-commands.  This will be some subset of:
@@ -134,21 +126,19 @@ class build(Command):
         for cmd_name in self.get_sub_commands():
             self.run_command(cmd_name)
 
-
     # -- Predicates for the sub-command list ---------------------------
 
-    def has_pure_modules(self):
+    def has_pure_modules (self):
         return self.distribution.has_pure_modules()
 
-    def has_c_libraries(self):
+    def has_c_libraries (self):
         return self.distribution.has_c_libraries()
 
-    def has_ext_modules(self):
+    def has_ext_modules (self):
         return self.distribution.has_ext_modules()
 
-    def has_scripts(self):
+    def has_scripts (self):
         return self.distribution.has_scripts()
-
 
     sub_commands = [('build_py',      has_pure_modules),
                     ('build_clib',    has_c_libraries),

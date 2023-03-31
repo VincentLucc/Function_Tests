@@ -16,7 +16,7 @@ from struct import calcsize as _calcsize
 if __version__ != _ctypes_version:
     raise Exception("Version number mismatch", __version__, _ctypes_version)
 
-if _os.name == "nt":
+if _os.name in ("nt", "ce"):
     from _ctypes import FormatError
 
 DEFAULT_MODE = RTLD_LOCAL
@@ -26,7 +26,7 @@ if _os.name == "posix" and _sys.platform == "darwin":
     # libraries.  OS X 10.3 is Darwin 7, so we check for
     # that.
 
-    if int(_os.uname().release.split('.')[0]) < 8:
+    if int(_os.uname()[2].split('.')[0]) < 8:
         DEFAULT_MODE = RTLD_GLOBAL
 
 from _ctypes import FUNCFLAG_CDECL as _FUNCFLAG_CDECL, \
@@ -34,29 +34,31 @@ from _ctypes import FUNCFLAG_CDECL as _FUNCFLAG_CDECL, \
      FUNCFLAG_USE_ERRNO as _FUNCFLAG_USE_ERRNO, \
      FUNCFLAG_USE_LASTERROR as _FUNCFLAG_USE_LASTERROR
 
-# WINOLEAPI -> HRESULT
-# WINOLEAPI_(type)
-#
-# STDMETHODCALLTYPE
-#
-# STDMETHOD(name)
-# STDMETHOD_(type, name)
-#
-# STDAPICALLTYPE
+"""
+WINOLEAPI -> HRESULT
+WINOLEAPI_(type)
+
+STDMETHODCALLTYPE
+
+STDMETHOD(name)
+STDMETHOD_(type, name)
+
+STDAPICALLTYPE
+"""
 
 def create_string_buffer(init, size=None):
-    """create_string_buffer(aBytes) -> character array
+    """create_string_buffer(aString) -> character array
     create_string_buffer(anInteger) -> character array
-    create_string_buffer(aBytes, anInteger) -> character array
+    create_string_buffer(aString, anInteger) -> character array
     """
-    if isinstance(init, bytes):
+    if isinstance(init, (str, unicode)):
         if size is None:
             size = len(init)+1
         buftype = c_char * size
         buf = buftype()
         buf.value = init
         return buf
-    elif isinstance(init, int):
+    elif isinstance(init, (int, long)):
         buftype = c_char * init
         buf = buftype()
         return buf
@@ -103,9 +105,12 @@ def CFUNCTYPE(restype, *argtypes, **kw):
         _c_functype_cache[(restype, argtypes, flags)] = CFunctionType
         return CFunctionType
 
-if _os.name == "nt":
+if _os.name in ("nt", "ce"):
     from _ctypes import LoadLibrary as _dlopen
     from _ctypes import FUNCFLAG_STDCALL as _FUNCFLAG_STDCALL
+    if _os.name == "ce":
+        # 'ce' doesn't have the stdcall calling convention
+        _FUNCFLAG_STDCALL = _FUNCFLAG_CDECL
 
     _win_functype_cache = {}
     def WINFUNCTYPE(restype, *argtypes, **kw):
@@ -152,7 +157,7 @@ class py_object(_SimpleCData):
     _type_ = "O"
     def __repr__(self):
         try:
-            return super().__repr__()
+            return super(py_object, self).__repr__()
         except ValueError:
             return "%s(<NULL>)" % type(self).__name__
 _check_size(py_object, "P")
@@ -234,8 +239,14 @@ _check_size(c_char)
 
 class c_char_p(_SimpleCData):
     _type_ = "z"
-    def __repr__(self):
-        return "%s(%s)" % (self.__class__.__name__, c_void_p.from_buffer(self).value)
+    if _os.name == "nt":
+        def __repr__(self):
+            if not windll.kernel32.IsBadStringPtrA(self, -1):
+                return "%s(%r)" % (self.__class__.__name__, self.value)
+            return "%s(%s)" % (self.__class__.__name__, cast(self, c_void_p).value)
+    else:
+        def __repr__(self):
+            return "%s(%s)" % (self.__class__.__name__, cast(self, c_void_p).value)
 _check_size(c_char_p, "P")
 
 class c_void_p(_SimpleCData):
@@ -248,18 +259,10 @@ class c_bool(_SimpleCData):
 
 from _ctypes import POINTER, pointer, _pointer_type_cache
 
-class c_wchar_p(_SimpleCData):
-    _type_ = "Z"
-    def __repr__(self):
-        return "%s(%s)" % (self.__class__.__name__, c_void_p.from_buffer(self).value)
-
-class c_wchar(_SimpleCData):
-    _type_ = "u"
-
 def _reset_cache():
     _pointer_type_cache.clear()
     _c_functype_cache.clear()
-    if _os.name == "nt":
+    if _os.name in ("nt", "ce"):
         _win_functype_cache.clear()
     # _SimpleCData.c_wchar_p_from_param
     POINTER(c_wchar).from_param = c_wchar_p.from_param
@@ -272,32 +275,39 @@ def _reset_cache():
     # compiled with the MS SDK compiler.  Or an uninitialized variable?
     CFUNCTYPE(c_int)(lambda: None)
 
-def create_unicode_buffer(init, size=None):
-    """create_unicode_buffer(aString) -> character array
-    create_unicode_buffer(anInteger) -> character array
-    create_unicode_buffer(aString, anInteger) -> character array
-    """
-    if isinstance(init, str):
-        if size is None:
-            if sizeof(c_wchar) == 2:
-                # UTF-16 requires a surrogate pair (2 wchar_t) for non-BMP
-                # characters (outside [U+0000; U+FFFF] range). +1 for trailing
-                # NUL character.
-                size = sum(2 if ord(c) > 0xFFFF else 1 for c in init) + 1
-            else:
-                # 32-bit wchar_t (1 wchar_t per Unicode character). +1 for
-                # trailing NUL character.
-                size = len(init) + 1
-        buftype = c_wchar * size
-        buf = buftype()
-        buf.value = init
-        return buf
-    elif isinstance(init, int):
-        buftype = c_wchar * init
-        buf = buftype()
-        return buf
-    raise TypeError(init)
+try:
+    from _ctypes import set_conversion_mode
+except ImportError:
+    pass
+else:
+    if _os.name in ("nt", "ce"):
+        set_conversion_mode("mbcs", "ignore")
+    else:
+        set_conversion_mode("ascii", "strict")
 
+    class c_wchar_p(_SimpleCData):
+        _type_ = "Z"
+
+    class c_wchar(_SimpleCData):
+        _type_ = "u"
+
+    def create_unicode_buffer(init, size=None):
+        """create_unicode_buffer(aString) -> character array
+        create_unicode_buffer(anInteger) -> character array
+        create_unicode_buffer(aString, anInteger) -> character array
+        """
+        if isinstance(init, (str, unicode)):
+            if size is None:
+                size = len(init)+1
+            buftype = c_wchar * size
+            buf = buftype()
+            buf.value = init
+            return buf
+        elif isinstance(init, (int, long)):
+            buftype = c_wchar * init
+            buf = buftype()
+            return buf
+        raise TypeError(init)
 
 # XXX Deprecated
 def SetPointerType(pointer, cls):
@@ -346,14 +356,6 @@ class CDLL(object):
             flags |= _FUNCFLAG_USE_ERRNO
         if use_last_error:
             flags |= _FUNCFLAG_USE_LASTERROR
-        if _sys.platform.startswith("aix"):
-            """When the name contains ".a(" and ends with ")",
-               e.g., "libFOO.a(libFOO.so)" - this is taken to be an
-               archive(member) syntax for dlopen(), and the mode is adjusted.
-               Otherwise, name is presented to dlopen() as a file argument.
-            """
-            if name and name.endswith(")") and ".a(" in name:
-                mode |= ( _os.RTLD_MEMBER | _os.RTLD_NOW )
 
         class _FuncPtr(_CFuncPtr):
             _flags_ = flags
@@ -366,10 +368,10 @@ class CDLL(object):
             self._handle = handle
 
     def __repr__(self):
-        return "<%s '%s', handle %x at %#x>" % \
+        return "<%s '%s', handle %x at %x>" % \
                (self.__class__.__name__, self._name,
-                (self._handle & (_sys.maxsize*2 + 1)),
-                id(self) & (_sys.maxsize*2 + 1))
+                (self._handle & (_sys.maxint*2 + 1)),
+                id(self) & (_sys.maxint*2 + 1))
 
     def __getattr__(self, name):
         if name.startswith('__') and name.endswith('__'):
@@ -380,7 +382,7 @@ class CDLL(object):
 
     def __getitem__(self, name_or_ordinal):
         func = self._FuncPtr((name_or_ordinal, self))
-        if not isinstance(name_or_ordinal, int):
+        if not isinstance(name_or_ordinal, (int, long)):
             func.__name__ = name_or_ordinal
         return func
 
@@ -391,7 +393,7 @@ class PyDLL(CDLL):
     """
     _func_flags_ = _FUNCFLAG_CDECL | _FUNCFLAG_PYTHONAPI
 
-if _os.name == "nt":
+if _os.name in ("nt", "ce"):
 
     class WinDLL(CDLL):
         """This class represents a dll exporting functions using the
@@ -406,7 +408,7 @@ if _os.name == "nt":
         _type_ = "l"
         # _check_retval_ is called with the function's result when it
         # is used as restype.  It checks for the FAILED bit, and
-        # raises an OSError if it is set.
+        # raises a WindowsError if it is set.
         #
         # The _check_retval_ method is implemented in C, so that the
         # method definition itself is not included in the traceback
@@ -418,7 +420,7 @@ if _os.name == "nt":
     class OleDLL(CDLL):
         """This class represents a dll exporting functions using the
         Windows stdcall calling convention, and returning HRESULT.
-        HRESULT error values are automatically raised as OSError
+        HRESULT error values are automatically raised as WindowsError
         exceptions.
         """
         _func_flags_ = _FUNCFLAG_STDCALL
@@ -444,19 +446,24 @@ class LibraryLoader(object):
 cdll = LibraryLoader(CDLL)
 pydll = LibraryLoader(PyDLL)
 
-if _os.name == "nt":
+if _os.name in ("nt", "ce"):
     pythonapi = PyDLL("python dll", None, _sys.dllhandle)
 elif _sys.platform == "cygwin":
     pythonapi = PyDLL("libpython%d.%d.dll" % _sys.version_info[:2])
+elif _sys.platform == "cli": # Need to determine how to do this
+    pythonapi = None
 else:
     pythonapi = PyDLL(None)
 
 
-if _os.name == "nt":
+if _os.name in ("nt", "ce"):
     windll = LibraryLoader(WinDLL)
     oledll = LibraryLoader(OleDLL)
 
-    GetLastError = windll.kernel32.GetLastError
+    if _os.name == "nt":
+        GetLastError = windll.kernel32.GetLastError
+    else:
+        GetLastError = windll.coredll.GetLastError
     from _ctypes import get_last_error, set_last_error
 
     def WinError(code=None, descr=None):
@@ -464,7 +471,7 @@ if _os.name == "nt":
             code = GetLastError()
         if descr is None:
             descr = FormatError(code).strip()
-        return OSError(None, descr, None, code)
+        return WindowsError(code, descr)
 
 if sizeof(c_uint) == sizeof(c_void_p):
     c_size_t = c_uint
@@ -517,7 +524,7 @@ else:
         return _wstring_at(ptr, size)
 
 
-if _os.name == "nt": # COM stuff
+if _os.name in ("nt", "ce"): # COM stuff
     def DllGetClassObject(rclsid, riid, ppv):
         try:
             ccom = __import__("comtypes.server.inprocserver", globals(), locals(), ['*'])
