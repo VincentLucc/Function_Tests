@@ -61,9 +61,12 @@ namespace FileLoading
         {
             try
             {
+                //When create again if file size is larger, you can't write data to the file
+                if (MappedFile != null) MappedFile.Dispose();
                 MappedFile = MemoryMappedFile.CreateOrOpen(sName, bData.Length);
-                //View stream is must than "MemoryMappedViewAccessor"
+                //View stream is must than "MemoryMappedViewAccessor"              
                 var viewStream = MappedFile.CreateViewStream(0, bData.Length);
+
                 viewStream.Write(bData, 0, bData.Length);
                 viewStream.Close();
             }
@@ -466,7 +469,7 @@ namespace FileLoading
 
             //prepare memory file
             MappedFile = MemoryMappedFile.CreateOrOpen(sMemoryName, iMemSizeMax);
-            
+
 
             //Start to read
             using (var reader = File.OpenRead(sPath))

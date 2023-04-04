@@ -11,7 +11,7 @@ namespace FormMemory
 {
     public partial class FormMain : DevExpress.XtraEditors.XtraForm
     {
-        FormTest winTest=new FormTest();
+        FormTest winTest = new FormTest();
 
         public FormMain()
         {
@@ -30,12 +30,12 @@ namespace FormMemory
                 testForm.ShowDialog();
                 testForm.Close();
             }
-          
+
         }
 
         private void bClear_Click(object sender, EventArgs e)
         {
-            GC.Collect(GC.MaxGeneration,GCCollectionMode.Forced,true);
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
         }
     }
 }

@@ -19,7 +19,7 @@ manufacture_order_list = ""
 
 class XmlRpc:
 
-     # Query list of open Manufacture Orders from Odoo. 
+     # Query list of open Manufacture Orders from Odoo.
     def fetchManufactureOrders(self):
         global manufacture_order_list
         manufacture_order_list = models.execute_kw(db, uid, password, 'mrp.production', 'search_read',
@@ -53,10 +53,25 @@ class XmlRpc:
             return -1 # Odoo Server Error.
         return 1
     
-    # Request the next RFID sequence ('PS####') from Odoo and increase the counter by one.
+    # Request the next RFID sequence ('PS####') from Odoo and increase the
+    # counter by one.
     def getNextSequenceNumber(self):
         sequence = models.execute_kw(db, uid, password, 'ir.sequence', 'next_by_code', [['rfid']])
         return sequence
+
+    # Request sequence numbers in range
+    def getNextRange(self,your_order_qty_here):
+        try:
+            sequence = models.execute_kw(db, uid, password, 'ir.sequence', 'search_read', [[['code', '=', 'rfid']]], {'fields': ['number_next_actual']})
+            sequence_id= sequence[0]['id']
+            sequence_number = sequence[0]['number_next_actual']
+            new_sequence_number = sequence_number + your_order_qty_here
+            models.execute_kw(db, uid, password, 'ir.sequence', 'write', [sequence_id, {'number_next_actual': new_sequence_number}])
+        except ex:
+            print('Get sequence number range:' + str(ex))
+            return -1 # Log-in Failed
+        return sequence_number
+
 
     def getUserName(self):
         user_info = models.execute_kw(db, uid, password, 'res.users', 'search_read', [[['id', '=', uid]]], {'fields': ['name']})
@@ -83,20 +98,22 @@ class XmlRpc:
             models = xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(url),use_datetime=True,context=ssl._create_unverified_context())
 
         except Exception as ex:
-            print('Login exception:'+str(ex))
+            print('Login exception:' + str(ex))
             return -1 # Log-in Failed
                 
         # Check user's access rights
         # TODO: Return a value
         try:
             can_mfg = models.execute_kw(db, uid, password, 'res.users', 'get_mfg_rights', [uid])
-            #can_test = models.execute_kw(db, uid, password, 'res.users', 'get_test_rights', [uid])
-            #can_debug = models.execute_kw(db, uid, password, 'res.users', 'get_debug_rights', [uid])
+            #can_test = models.execute_kw(db, uid, password, 'res.users',
+            #'get_test_rights', [uid])
+            #can_debug = models.execute_kw(db, uid, password, 'res.users',
+            #'get_debug_rights', [uid])
             #can_debug=True;
             #iValue=can_mfg+can_test*2+can_debug*4
-            iValue=int(can_mfg)
+            iValue = int(can_mfg)
             return iValue
         except Exception as ex:
-            print('Login exception:'+str(ex))
+            print('Login exception:' + str(ex))
             return -2 # Failed to check Access Rights
         return -3 # User logged in, but he/she has no rights to perform any action
