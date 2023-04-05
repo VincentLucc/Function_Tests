@@ -117,7 +117,7 @@ namespace SerialPort_Ink
             tsFlowControl.Toggled += TsFlowControl_Toggled;
 
             //Quick commands
-            foreach (var item in config.Commands)
+            foreach (var item in config.InitCommands)
             {
                 cbCommands.Properties.Items.Add(item);
             }
@@ -406,7 +406,10 @@ namespace SerialPort_Ink
                     //Get config
                     config = (csConfig)xmlconfig;
 
-                    //Apply settings
+                    //Debug use only
+                    if (false) config.AddSampleCommands();
+ 
+                    //Apply settings on UI
                     cbPortRate.SelectedIndex = config.Port.BaudRateIndex;
                     cbStopBits.SelectedIndex = config.Port.StopBitsIndex;
                     cb_Bits.SelectedIndex = config.Port.DataBitsIndex;
@@ -416,6 +419,8 @@ namespace SerialPort_Ink
                     lueReceiveFormat.EditValue = config.ReceiveFormat.ToString();
                     lueSendSuffix.EditValue = config.EndSuffixView;
                     lueSendMode.EditValue = config.SendMode.ToString();
+
+
                 }
                 catch (Exception e)
                 {
@@ -850,6 +855,16 @@ namespace SerialPort_Ink
         private void tsCommandEnable_Toggled(object sender, EventArgs e)
         {
 
+        }
+
+        private void bCommands_ChangeUICues(object sender, UICuesEventArgs e)
+        {
+
+        }
+
+        private void bCommands_Click(object sender, EventArgs e)
+        {
+            csUIHelper.ShowCommandsDialog(config.Commands);
         }
     }
 }

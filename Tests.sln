@@ -51,7 +51,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplitContainer", "SplitCont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardControl", "WizardControl\WizardControl.csproj", "{3A48A4A6-E50F-4680-984F-9F376E40FBF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPort_Ink", "SerialPort_Ink\SerialPort_Ink.csproj", "{E2C158D1-C04F-40B2-B550-1BBF3E7DCF22}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPort_Ink_19.1", "SerialPort_Ink\SerialPort_Ink_19.1.csproj", "{E2C158D1-C04F-40B2-B550-1BBF3E7DCF22}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevChartControl", "ChartControl\DevChartControl.csproj", "{16CBBD4F-0983-412D-A6C9-87D439E970D0}"
 EndProject

@@ -2,6 +2,8 @@ import sys
 import xmlrpclib
 import ssl
 import logging
+import ast
+
 
 RFIDConnected = False
 RFIDTagReady = False
@@ -46,10 +48,13 @@ class XmlRpc:
         return manufacture_orders
     
     # Pass the ID of finished MO and a list of Serial Numbers used to Odoo
-    def validateMO(self, mo_id, serial_list):
+    def validateMO(self, mo_id, serial_number_list):
         try:
+            #parse string to python format
+            serial_number_list = ast.literal_eval(serial_number_list)
             models.execute_kw(db, uid, password, 'mrp.production', 'action_mass_produce_RFID', [[mo_id], serial_number_list])
-        except Exception:
+        except Exception as ex:
+            print('validateMO:' + str(ex))
             return -1 # Odoo Server Error.
         return 1
     
@@ -67,7 +72,7 @@ class XmlRpc:
             sequence_number = sequence[0]['number_next_actual']
             new_sequence_number = sequence_number + your_order_qty_here
             models.execute_kw(db, uid, password, 'ir.sequence', 'write', [sequence_id, {'number_next_actual': new_sequence_number}])
-        except ex:
+        except Exception as ex:
             print('Get sequence number range:' + str(ex))
             return -1 # Log-in Failed
         return sequence_number

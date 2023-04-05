@@ -1,4 +1,10 @@
 import xml_rpc
+import ast
+
+
+x = '[["PS6179=S2-0071","PS6179=S2-0071"],["PS6180=S2-0071","PS6180=S2-0071"]]'
+y= ast.literal_eval(x)
+
 Odoo = xml_rpc.XmlRpc()
 sUrl = 'https://packsmart-sla-7785082.dev.odoo.com'
 sDB = 'packsmart-sla-7785082'

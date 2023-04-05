@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
@@ -19,7 +20,10 @@ namespace SerialPort_Ink
         public SerialDataType ReceiveFormat { get; set; }
 
         [XmlIgnore]
-        public List<string> Commands { get; set; }
+        public List<string> InitCommands { get; set; }
+
+        public BindingList<CommandInfo> Commands { get; set; }
+
         [XmlIgnore]
         public static string DefaultPath => GetDefaultPath();
         /// <summary>
@@ -45,18 +49,35 @@ namespace SerialPort_Ink
             SendFormat = SerialDataType.ASCII;
             ReceiveFormat = SerialDataType.ASCII;
             EndSuffixView = "";
-            Commands = new List<string>() {
+            InitCommands = new List<string>() {
             "@SNI#","@SNI?","@SNI,00","@SNI,01","@SNI,02","@SNI,03","@SNI,04",
             "STA?0","ASTA?","BSTA?","CSTA?","DSTA?",
             "SEB?0"
             };
-
+            Commands = new BindingList<CommandInfo>();
         }
 
         private static string GetDefaultPath()
         {
             return Path.GetDirectoryName(Application.ExecutablePath)
                 + @"\SerialPort.xml";
+        }
+
+        public void AddSampleCommands()
+        {
+            Commands.Add(new CommandInfo() { Command = "@SNI#", Description = "" });
+            Commands.Add(new CommandInfo() { Command = "@SNI?", Description = "" });
+            Commands.Add(new CommandInfo() { Command = "@SNI,00", Description = "Set device to network 0." });
+            Commands.Add(new CommandInfo() { Command = "@SNI,01", Description = "Set device to network 1." });
+            Commands.Add(new CommandInfo() { Command = "@SNI,02", Description = "Set device to network 2." });
+            Commands.Add(new CommandInfo() { Command = "@SNI,03", Description = "Set device to network 3." });
+            Commands.Add(new CommandInfo() { Command = "@SNI,04", Description = "Set device to network 4." });
+            Commands.Add(new CommandInfo() { Command = "STA?0", Description = "Get device 0 general status." });
+            Commands.Add(new CommandInfo() { Command = "ASTA?", Description = "Get device 1 general status." });
+            Commands.Add(new CommandInfo() { Command = "BSTA?", Description = "Get device 2 general status." });
+            Commands.Add(new CommandInfo() { Command = "CSTA?", Description = "Get device 3 general status." });
+            Commands.Add(new CommandInfo() { Command = "DSTA?", Description = "Get device 4 general status." });
+            Commands.Add(new CommandInfo() { Command = "SEB?0", Description = "Get device 0 function state." });
         }
     }
 
@@ -130,6 +151,14 @@ namespace SerialPort_Ink
 
             }
         }
+    }
+
+    public class CommandInfo
+    {
+        [XmlAttribute]
+        public string Command { get; set; }
+        [XmlAttribute]
+        public string Description { get; set; }
     }
 
     public enum SerialDataType

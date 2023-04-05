@@ -108,7 +108,6 @@ namespace FileLoading
             string sPath = ofd.FileName;
             lPath.Text = sPath;
 
-
             //Check file size
             var fileInfo = new FileInfo(sPath);
             if (fileInfo.Length > fileLimit)
@@ -118,15 +117,9 @@ namespace FileLoading
             }
 
             //clear buffer
-            if (ProcessedDataTable != null)
-            {
-                ProcessedDataTable.Clear();
-            }
-            if (ProcessedCollection != null)
-            {
-                ProcessedCollection.Clear();
-            }
-
+            if (ProcessedDataTable != null) ProcessedDataTable.Clear();
+            if (ProcessedCollection != null) ProcessedCollection.Clear();
+ 
             //Force to clear memory, must have to free
             //ProcessedData takes a lot of memory
             GC.Collect();
