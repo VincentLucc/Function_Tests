@@ -1,6 +1,6 @@
 ﻿namespace Dev_GridControl_22_1.Forms
 {
-    partial class DataTableBinding
+    partial class FormUpdate_DataTable
     {
         /// <summary>
         /// Required designer variable.

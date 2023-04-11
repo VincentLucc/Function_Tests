@@ -36,6 +36,7 @@ namespace Property_NoAutoValidate
             this.lbLeft = new System.Windows.Forms.ListBox();
             this.te1 = new DevExpress.XtraEditors.TextEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.bVerify = new DevExpress.XtraEditors.SimpleButton();
             this.bClear = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -43,6 +44,7 @@ namespace Property_NoAutoValidate
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
@@ -55,8 +57,7 @@ namespace Property_NoAutoValidate
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.bVerify = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.repositoryItemToggleSwitch1 = new DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch();
             ((System.ComponentModel.ISupportInitialize)(this.pg1Right)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.te1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -66,6 +67,7 @@ namespace Property_NoAutoValidate
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
@@ -78,18 +80,22 @@ namespace Property_NoAutoValidate
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemToggleSwitch1)).BeginInit();
             this.SuspendLayout();
             // 
             // pg1Right
             // 
             this.pg1Right.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pg1Right.DefaultEditors.AddRange(new DevExpress.XtraVerticalGrid.Rows.DefaultEditor[] {
+            new DevExpress.XtraVerticalGrid.Rows.DefaultEditor(typeof(bool), this.repositoryItemToggleSwitch1)});
             this.pg1Right.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pg1Right.Location = new System.Drawing.Point(0, 0);
             this.pg1Right.Name = "pg1Right";
             this.pg1Right.OptionsBehavior.AutoPostEditorDelay = 1000;
             this.pg1Right.OptionsCollectionEditor.AllowMultiSelect = false;
-            this.pg1Right.Size = new System.Drawing.Size(287, 325);
+            this.pg1Right.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemToggleSwitch1});
+            this.pg1Right.Size = new System.Drawing.Size(287, 304);
             this.pg1Right.TabIndex = 0;
             this.pg1Right.Click += new System.EventHandler(this.propertyGridControl1_Click);
             // 
@@ -101,7 +107,7 @@ namespace Property_NoAutoValidate
             this.pd1Right.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pd1Right.Location = new System.Drawing.Point(0, 0);
             this.pd1Right.Name = "pd1Right";
-            this.pd1Right.Size = new System.Drawing.Size(287, 133);
+            this.pd1Right.Size = new System.Drawing.Size(287, 112);
             this.pd1Right.TabIndex = 1;
             this.pd1Right.TabStop = false;
             // 
@@ -111,15 +117,15 @@ namespace Property_NoAutoValidate
             this.lbLeft.FormattingEnabled = true;
             this.lbLeft.Location = new System.Drawing.Point(0, 0);
             this.lbLeft.Name = "lbLeft";
-            this.lbLeft.Size = new System.Drawing.Size(193, 487);
+            this.lbLeft.Size = new System.Drawing.Size(193, 466);
             this.lbLeft.TabIndex = 2;
             this.lbLeft.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // te1
             // 
-            this.te1.Location = new System.Drawing.Point(108, 12);
+            this.te1.Location = new System.Drawing.Point(114, 12);
             this.te1.Name = "te1";
-            this.te1.Size = new System.Drawing.Size(88, 20);
+            this.te1.Size = new System.Drawing.Size(83, 20);
             this.te1.StyleController = this.layoutControl1;
             this.te1.TabIndex = 3;
             this.te1.EditValueChanged += new System.EventHandler(this.textEdit1_EditValueChanged);
@@ -134,15 +140,25 @@ namespace Property_NoAutoValidate
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(300, 491);
+            this.layoutControl1.Size = new System.Drawing.Size(302, 492);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // bVerify
+            // 
+            this.bVerify.Location = new System.Drawing.Point(12, 38);
+            this.bVerify.Name = "bVerify";
+            this.bVerify.Size = new System.Drawing.Size(137, 22);
+            this.bVerify.StyleController = this.layoutControl1;
+            this.bVerify.TabIndex = 6;
+            this.bVerify.Text = "Verify Only";
+            this.bVerify.Click += new System.EventHandler(this.bVerify_Click);
+            // 
             // bClear
             // 
-            this.bClear.Location = new System.Drawing.Point(152, 38);
+            this.bClear.Location = new System.Drawing.Point(153, 38);
             this.bClear.Name = "bClear";
-            this.bClear.Size = new System.Drawing.Size(136, 22);
+            this.bClear.Size = new System.Drawing.Size(137, 22);
             this.bClear.StyleController = this.layoutControl1;
             this.bClear.TabIndex = 5;
             this.bClear.Text = "Force Clear";
@@ -150,9 +166,9 @@ namespace Property_NoAutoValidate
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(200, 12);
+            this.simpleButton1.Location = new System.Drawing.Point(201, 12);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(88, 22);
+            this.simpleButton1.Size = new System.Drawing.Size(89, 22);
             this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 4;
             this.simpleButton1.Text = "Do Sth";
@@ -169,7 +185,7 @@ namespace Property_NoAutoValidate
             this.layoutControlItem3,
             this.layoutControlItem4});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(300, 491);
+            this.Root.Size = new System.Drawing.Size(302, 492);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -177,34 +193,43 @@ namespace Property_NoAutoValidate
             this.layoutControlItem1.Control = this.te1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(188, 26);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(93, 13);
+            this.layoutControlItem1.Size = new System.Drawing.Size(189, 26);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(99, 13);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 52);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(280, 419);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(282, 420);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.simpleButton1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(188, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(189, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(92, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(93, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.bClear;
-            this.layoutControlItem3.Location = new System.Drawing.Point(140, 26);
+            this.layoutControlItem3.Location = new System.Drawing.Point(141, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(140, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(141, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.bVerify;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(141, 26);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
             // 
             // imageCollection1
             // 
@@ -248,9 +273,9 @@ namespace Property_NoAutoValidate
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.lbLeft);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 46);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(193, 487);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(193, 466);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // panelContainer1
@@ -282,9 +307,9 @@ namespace Property_NoAutoValidate
             // dockPanel2_Container
             // 
             this.dockPanel2_Container.Controls.Add(this.pg1Right);
-            this.dockPanel2_Container.Location = new System.Drawing.Point(4, 25);
+            this.dockPanel2_Container.Location = new System.Drawing.Point(4, 46);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(287, 325);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(287, 304);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // dockPanel3
@@ -301,9 +326,9 @@ namespace Property_NoAutoValidate
             // dockPanel3_Container
             // 
             this.dockPanel3_Container.Controls.Add(this.pd1Right);
-            this.dockPanel3_Container.Location = new System.Drawing.Point(4, 25);
+            this.dockPanel3_Container.Location = new System.Drawing.Point(4, 46);
             this.dockPanel3_Container.Name = "dockPanel3_Container";
-            this.dockPanel3_Container.Size = new System.Drawing.Size(287, 133);
+            this.dockPanel3_Container.Size = new System.Drawing.Size(287, 112);
             this.dockPanel3_Container.TabIndex = 0;
             // 
             // xtraTabControl1
@@ -322,33 +347,21 @@ namespace Property_NoAutoValidate
             // 
             this.xtraTabPage1.Controls.Add(this.layoutControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(300, 491);
+            this.xtraTabPage1.Size = new System.Drawing.Size(302, 492);
             this.xtraTabPage1.Text = "xtraTabPage1";
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(300, 491);
+            this.xtraTabPage2.Size = new System.Drawing.Size(302, 492);
             this.xtraTabPage2.Text = "xtraTabPage2";
             // 
-            // bVerify
+            // repositoryItemToggleSwitch1
             // 
-            this.bVerify.Location = new System.Drawing.Point(12, 38);
-            this.bVerify.Name = "bVerify";
-            this.bVerify.Size = new System.Drawing.Size(136, 22);
-            this.bVerify.StyleController = this.layoutControl1;
-            this.bVerify.TabIndex = 6;
-            this.bVerify.Text = "Verify Only";
-            this.bVerify.Click += new System.EventHandler(this.bVerify_Click);
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.bVerify;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 26);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(140, 26);
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextVisible = false;
+            this.repositoryItemToggleSwitch1.AutoHeight = false;
+            this.repositoryItemToggleSwitch1.Name = "repositoryItemToggleSwitch1";
+            this.repositoryItemToggleSwitch1.OffText = "Off";
+            this.repositoryItemToggleSwitch1.OnText = "On";
             // 
             // FormMain
             // 
@@ -370,6 +383,7 @@ namespace Property_NoAutoValidate
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
@@ -382,7 +396,7 @@ namespace Property_NoAutoValidate
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemToggleSwitch1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -415,6 +429,7 @@ namespace Property_NoAutoValidate
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraEditors.SimpleButton bVerify;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch repositoryItemToggleSwitch1;
     }
 }
 

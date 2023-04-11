@@ -11,6 +11,7 @@
     <Name>PythonApplication_2.7</Name>
     <RootNamespace>PythonApplication_2.7</RootNamespace>
     <InterpreterId>Global|PythonCore|2.7</InterpreterId>
+    <SuppressConfigureTestFrameworkPrompt>true</SuppressConfigureTestFrameworkPrompt>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

@@ -782,7 +782,7 @@ namespace QuickTests
             dtPerformanceSource.Columns.Clear();
             lPerfSource.Clear();
 
-            int iRecordCount = 500000;
+            int iRecordCount = 5000;
 
             //Create list string data 6ms
             watchPerformance.Restart();

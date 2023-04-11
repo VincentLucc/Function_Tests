@@ -112,7 +112,7 @@ namespace Dev_GridControl_22_1
 
         private void simpleButton4_Click_1(object sender, EventArgs e)
         {
-            var winDataTable = new DataTableBinding();
+            var winDataTable = new FormUpdate_DataTable();
             winDataTable.ShowDialog();
         }
 
@@ -120,6 +120,12 @@ namespace Dev_GridControl_22_1
         {
             var winFIlter=new FIlterFunctionForm();
             winFIlter.ShowDialog();
+        }
+
+        private void bUpdateListSource_Click(object sender, EventArgs e)
+        {
+            var winList = new FormUpdate_List();
+            winList.ShowDialog();
         }
     }
 }

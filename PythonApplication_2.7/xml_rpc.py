@@ -3,6 +3,7 @@ import xmlrpclib
 import ssl
 import logging
 import ast
+import traceback
 
 
 RFIDConnected = False
@@ -49,14 +50,20 @@ class XmlRpc:
     
     # Pass the ID of finished MO and a list of Serial Numbers used to Odoo
     def validateMO(self, mo_id, serial_number_list):
+        result=[-1,""]
         try:
             #parse string to python format
             serial_number_list = ast.literal_eval(serial_number_list)
-            models.execute_kw(db, uid, password, 'mrp.production', 'action_mass_produce_RFID', [[mo_id], serial_number_list])
+            print('Sync order:' + str(mo_id) + ', Tag count:' + str(len(serial_number_list)))
+            result[0] = models.execute_kw(db, uid, password, 'mrp.production', 'action_mass_produce_RFID', [[mo_id], serial_number_list])
+            return result
         except Exception as ex:
             print('validateMO:' + str(ex))
-            return -1 # Odoo Server Error.
-        return 1
+            result[0]=-1
+            result[1]=ex.faultString
+            print(ex.faultString)
+            #traceback.print_exc()
+            return result # Odoo Server Error.
     
     # Request the next RFID sequence ('PS####') from Odoo and increase the
     # counter by one.
@@ -68,7 +75,7 @@ class XmlRpc:
     def getNextRange(self,your_order_qty_here):
         try:
             sequence = models.execute_kw(db, uid, password, 'ir.sequence', 'search_read', [[['code', '=', 'rfid']]], {'fields': ['number_next_actual']})
-            sequence_id= sequence[0]['id']
+            sequence_id = sequence[0]['id']
             sequence_number = sequence[0]['number_next_actual']
             new_sequence_number = sequence_number + your_order_qty_here
             models.execute_kw(db, uid, password, 'ir.sequence', 'write', [sequence_id, {'number_next_actual': new_sequence_number}])
