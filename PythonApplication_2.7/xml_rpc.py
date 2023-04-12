@@ -47,6 +47,29 @@ class XmlRpc:
             except Exception:
                 return -1 # Failed to fetch MO
         return manufacture_orders
+
+        #Read order detail
+    def getOrderDetail(self, orderID):
+        # 0: Result
+        # 1: ink volume
+        # 2: expering date
+        # 3: message
+        orderInfo = [-1,0,0,'']
+        try:
+            #Get ink volumn
+            ink_volume = models.execute_kw(db, uid, password, 'mrp.production', 'get_rfid_ink_volume', [orderID])
+            orderInfo[1] = ink_volume
+            #Get expiring date
+            expiry_date = models.execute_kw(db, uid, password, 'mrp.production', 'get_rfid_expiry_date', [orderID])
+            orderInfo[2] = expiry_date
+            #Set success
+            orderInfo[0]=1;
+        except Exception as ex:
+            print(ex.faultString)
+            orderInfo[3]= ex.faultString
+        return orderInfo
+
+
     
     # Pass the ID of finished MO and a list of Serial Numbers used to Odoo
     def validateMO(self, mo_id, serial_number_list):
