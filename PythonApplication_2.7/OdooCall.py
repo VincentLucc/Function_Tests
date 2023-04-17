@@ -1,9 +1,13 @@
 import xml_rpc
 import ast
+import datetime
 
 
 x = '[["PS6179=S2-0071","PS6179=S2-0071"],["PS6180=S2-0071","PS6180=S2-0071"]]'
 y = ast.literal_eval(x)
+
+#Time
+abc = datetime.datetime.today() 
 
 Odoo = xml_rpc.XmlRpc()
 sUrl = 'https://packsmart-sla-improvements-7903878.dev.odoo.com'
