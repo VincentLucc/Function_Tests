@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace Hardware
 {
@@ -53,6 +54,14 @@ namespace Hardware
         {
            var assembly= Assembly.GetExecutingAssembly();
             string sVersion = assembly.GetName().Version.ToString();
+        }
+
+        private void bMotherBoard_Click(object sender, EventArgs e)
+        {
+            //Works, some property name might not exist
+            string sBrand= MotherboardInfo.Manufacturer;
+            string serialNumber = MotherboardInfo.SerialNumber;
+            Debug.WriteLine($"Brand:{sBrand}, S/N:{serialNumber}");
         }
     }
 }

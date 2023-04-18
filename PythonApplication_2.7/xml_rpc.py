@@ -25,9 +25,15 @@ class XmlRpc:
      # Query list of open Manufacture Orders from Odoo.
     def fetchManufactureOrders(self):
         global manufacture_order_list
-        manufacture_order_list = models.execute_kw(db, uid, password, 'mrp.production', 'search_read',
+        try:
+            manufacture_order_list = models.execute_kw(db, uid, password, 'mrp.production', 'search_read',
                                                [[('state', 'in', ['confirmed', 'progress']), ('product_id', 'ilike', 'S2')]],
                                                {'fields': ['id', 'name', 'product_id', 'product_qty']})
+ 
+        except Exception as ex:
+                print(ex.faultString)
+                return -1 # Failed to fetch MO
+        
         manufacture_orders = []
         
         if manufacture_order_list:
@@ -44,29 +50,38 @@ class XmlRpc:
                     eng_code = product_rec[0].get('engineering_code')
 
                     manufacture_orders.append([_production_id, _production_name, _product_id[0], eng_code, _product_id[1], _product_qty])
-            except Exception:
+            except Exception as ex:
+                print(ex.faultString)
                 return -1 # Failed to fetch MO
         return manufacture_orders
 
         #Read order detail
     def getOrderDetail(self, orderID):
         # 0: Result
-        # 1: ink volume
-        # 2: expering date
-        # 3: message
-        orderInfo = [-1,0,0,'']
+        # 1: head type
+        # 2: ink volume
+        # 3: expiring date
+        # 4: message
+        orderInfo = [-1,'',0,'','']
         try:
-            #Get ink volumn
+            #Get head type (String)
+            head_Type = models.execute_kw(db, uid, password, 'mrp.production', 'get_rfid_head_type', [orderID])
+            orderInfo[1] = head_Type
+              
+            #Get ink volume
             ink_volume = models.execute_kw(db, uid, password, 'mrp.production', 'get_rfid_ink_volume', [orderID])
-            orderInfo[1] = ink_volume
+            orderInfo[2] = ink_volume
+
             #Get expiring date
             expiry_date = models.execute_kw(db, uid, password, 'mrp.production', 'get_rfid_expiry_date', [orderID])
-            orderInfo[2] = expiry_date
+            orderInfo[3] = expiry_date
+
             #Set success
             orderInfo[0]=1;
+
         except Exception as ex:
             print(ex.faultString)
-            orderInfo[3]= ex.faultString
+            orderInfo[4]= ex.faultString
         return orderInfo
 
 
@@ -103,9 +118,9 @@ class XmlRpc:
             new_sequence_number = sequence_number + your_order_qty_here
             models.execute_kw(db, uid, password, 'ir.sequence', 'write', [sequence_id, {'number_next_actual': new_sequence_number}])
         except Exception as ex:
-            print('Get sequence number range:' + str(ex))
-            return -1 # Log-in Failed
-        return sequence_number
+            print(ex.faultString)
+            return [-1,ex.faultString] # Log-in Failed
+        return [sequence_number,'']
 
 
     def getUserName(self):
@@ -133,8 +148,8 @@ class XmlRpc:
             models = xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(url),use_datetime=True,context=ssl._create_unverified_context())
 
         except Exception as ex:
-            print('Login exception:' + str(ex))
-            return -1 # Log-in Failed
+            print('Login exception:\n' + ex.strerror)
+            return [-1,ex.strerror] # Log-in Failed
                 
         # Check user's access rights
         # TODO: Return a value
@@ -144,11 +159,10 @@ class XmlRpc:
             #'get_test_rights', [uid])
             #can_debug = models.execute_kw(db, uid, password, 'res.users',
             #'get_debug_rights', [uid])
-            #can_debug=True;
-            #iValue=can_mfg+can_test*2+can_debug*4
+            #iValue = can_mfg + can_test * 2 + can_debug * 4
             iValue = int(can_mfg)
-            return iValue
+            return [iValue,'']
         except Exception as ex:
-            print('Login exception:' + str(ex))
-            return -2 # Failed to check Access Rights
-        return -3 # User logged in, but he/she has no rights to perform any action
+            print('Login exception:\n' + ex.faultString)
+            return [-2,ex.faultString] # Failed to check Access Rights
+        return [-3,'No permission match found.'] # User logged in, but he/she has no rights to perform any action

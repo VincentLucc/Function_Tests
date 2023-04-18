@@ -10,11 +10,12 @@ y = ast.literal_eval(x)
 abc = datetime.datetime.today() 
 
 Odoo = xml_rpc.XmlRpc()
-sUrl = 'https://packsmart-sla-improvements-7903878.dev.odoo.com'
-sDB = 'packsmart-sla-improvements-7903878'
+sUrl = 'https://packsmart-staging-7949387.dev.odoo.com'
+sDB = 'packsmart-staging-7949387'
 sUser = 'smuroyan@packsmartinc.com'
 sPass = 'Qwerty123'
 result = Odoo.login(sUrl,sDB,sUser,sPass)
+    
 
 orderList = Odoo.fetchManufactureOrders()
 sOrderID = orderList[0][0]
