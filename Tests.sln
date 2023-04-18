@@ -183,6 +183,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonApplication_2.7", "Py
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_QuickTest_Framwork472", "_QuickTest_Framwork472\_QuickTest_Framwork472.csproj", "{FB035F81-CB3E-488B-A0A7-AA0CF226EC85}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistryTests", "Registry\RegistryTests.csproj", "{CF5D23BE-0BB6-4636-8820-D1A13C39897D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1640,6 +1642,22 @@ Global
 		{FB035F81-CB3E-488B-A0A7-AA0CF226EC85}.Release|x64.Build.0 = Release|Any CPU
 		{FB035F81-CB3E-488B-A0A7-AA0CF226EC85}.Release|x86.ActiveCfg = Release|Any CPU
 		{FB035F81-CB3E-488B-A0A7-AA0CF226EC85}.Release|x86.Build.0 = Release|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Debug|arm64.Build.0 = Debug|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Debug|x64.Build.0 = Debug|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Debug|x86.Build.0 = Debug|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Release|arm64.ActiveCfg = Release|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Release|arm64.Build.0 = Release|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Release|x64.ActiveCfg = Release|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Release|x64.Build.0 = Release|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Release|x86.ActiveCfg = Release|Any CPU
+		{CF5D23BE-0BB6-4636-8820-D1A13C39897D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -31,7 +31,8 @@ class XmlRpc:
                                                {'fields': ['id', 'name', 'product_id', 'product_qty']})
  
         except Exception as ex:
-                print(ex.faultString)
+                message = GetExceptionMessage(ex)
+                print(message)
                 return -1 # Failed to fetch MO
         
         manufacture_orders = []
@@ -51,7 +52,8 @@ class XmlRpc:
 
                     manufacture_orders.append([_production_id, _production_name, _product_id[0], eng_code, _product_id[1], _product_qty])
             except Exception as ex:
-                print(ex.faultString)
+                message = GetExceptionMessage(ex)
+                print(message)
                 return -1 # Failed to fetch MO
         return manufacture_orders
 
@@ -77,18 +79,17 @@ class XmlRpc:
             orderInfo[3] = expiry_date
 
             #Set success
-            orderInfo[0]=1;
+            orderInfo[0] = 1
 
         except Exception as ex:
-            print(ex.faultString)
-            orderInfo[4]= ex.faultString
+            message = GetExceptionMessage(ex)
+            print(message)
+            orderInfo[4] = message
         return orderInfo
 
-
-    
     # Pass the ID of finished MO and a list of Serial Numbers used to Odoo
     def validateMO(self, mo_id, serial_number_list):
-        result=[-1,""]
+        result = [-1,""]
         try:
             #parse string to python format
             serial_number_list = ast.literal_eval(serial_number_list)
@@ -96,11 +97,10 @@ class XmlRpc:
             result[0] = models.execute_kw(db, uid, password, 'mrp.production', 'action_mass_produce_RFID', [[mo_id], serial_number_list])
             return result
         except Exception as ex:
-            print('validateMO:' + str(ex))
-            result[0]=-1
-            result[1]=ex.faultString
-            print(ex.faultString)
-            #traceback.print_exc()
+            message = GetExceptionMessage(ex)
+            print('validateMO:' + message)
+            result[0] = -1
+            result[1] = message
             return result # Odoo Server Error.
     
     # Request the next RFID sequence ('PS####') from Odoo and increase the
@@ -118,8 +118,9 @@ class XmlRpc:
             new_sequence_number = sequence_number + your_order_qty_here
             models.execute_kw(db, uid, password, 'ir.sequence', 'write', [sequence_id, {'number_next_actual': new_sequence_number}])
         except Exception as ex:
-            print(ex.faultString)
-            return [-1,ex.faultString] # Log-in Failed
+            message = GetExceptionMessage(ex)
+            print(message)
+            return [-1,message] # Log-in Failed
         return [sequence_number,'']
 
 
@@ -148,8 +149,9 @@ class XmlRpc:
             models = xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(url),use_datetime=True,context=ssl._create_unverified_context())
 
         except Exception as ex:
-            print('Login exception:\n' + ex.strerror)
-            return [-1,ex.strerror] # Log-in Failed
+            sMessage = GetExceptionMessage(ex)
+            print('Login exception:\n' + sMessage)
+            return [-1,sMessage] # Log-in Failed
                 
         # Check user's access rights
         # TODO: Return a value
@@ -163,6 +165,19 @@ class XmlRpc:
             iValue = int(can_mfg)
             return [iValue,'']
         except Exception as ex:
-            print('Login exception:\n' + ex.faultString)
-            return [-2,ex.faultString] # Failed to check Access Rights
+            message = GetExceptionMessage(ex)
+            print('Login exception:\n' + message)
+            return [-2,message] # Failed to check Access Rights
         return [-3,'No permission match found.'] # User logged in, but he/she has no rights to perform any action
+
+
+#Output detailed exception info from Odoo server
+def GetExceptionMessage(ex):
+    sMessage = str(ex) + '\n'
+    if hasattr(ex,'errmsg'):
+        sMessage+=ex.errmsg
+    if hasattr(ex,'strerror'):
+        sMessage+=ex.strerror
+    if hasattr(ex,'faultString'):
+        sMessage+=ex.faultString
+    return sMessage
