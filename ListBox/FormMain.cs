@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace ListBox
 {
-    public partial class Form1 : DevExpress.XtraEditors.XtraForm
+    public partial class FormMain : DevExpress.XtraEditors.XtraForm
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -26,6 +26,18 @@ namespace ListBox
         {
             DevListBoxManualToolTip winListBox = new DevListBoxManualToolTip();
             winListBox.ShowDialog(this);
+        }
+
+        private void bWinListBox_Click(object sender, EventArgs e)
+        {
+            WinListBox winListBox = new WinListBox();
+            winListBox.ShowDialog(this);
+        }
+
+        private void bDevListBoxAlignment_Click(object sender, EventArgs e)
+        {
+            DevListBoxAlignment winAlignment = new DevListBoxAlignment();
+            winAlignment.ShowDialog(this);
         }
     }
 }

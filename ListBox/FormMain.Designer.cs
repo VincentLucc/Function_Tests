@@ -1,6 +1,6 @@
 ﻿namespace ListBox
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,10 @@
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bWinListBox = new DevExpress.XtraEditors.SimpleButton();
+            this.bDevListBoxAlignment = new DevExpress.XtraEditors.SimpleButton();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -46,10 +50,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.groupControl3);
             this.layoutControl1.Controls.Add(this.groupControl2);
             this.layoutControl1.Controls.Add(this.groupControl1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -83,13 +91,14 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.bDevListBoxAlignment);
             this.groupControl1.Controls.Add(this.bListBoxManualToolTip);
             this.groupControl1.Controls.Add(this.bDevListBox);
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(323, 440);
+            this.groupControl1.Size = new System.Drawing.Size(323, 248);
             this.groupControl1.TabIndex = 4;
-            this.groupControl1.Text = "groupControl1";
+            this.groupControl1.Text = "Devexpress ListBox";
             // 
             // bListBoxManualToolTip
             // 
@@ -115,7 +124,8 @@
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
-            this.layoutControlItem2});
+            this.layoutControlItem2,
+            this.layoutControlItem3});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(704, 464);
             this.Root.TextVisible = false;
@@ -125,7 +135,7 @@
             this.layoutControlItem1.Control = this.groupControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(327, 444);
+            this.layoutControlItem1.Size = new System.Drawing.Size(327, 252);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -138,13 +148,49 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // Form1
+            // bWinListBox
+            // 
+            this.bWinListBox.Location = new System.Drawing.Point(5, 26);
+            this.bWinListBox.Name = "bWinListBox";
+            this.bWinListBox.Size = new System.Drawing.Size(132, 23);
+            this.bWinListBox.TabIndex = 2;
+            this.bWinListBox.Text = "Win ListBox";
+            this.bWinListBox.Click += new System.EventHandler(this.bWinListBox_Click);
+            // 
+            // bDevListBoxAlignment
+            // 
+            this.bDevListBoxAlignment.Location = new System.Drawing.Point(5, 84);
+            this.bDevListBoxAlignment.Name = "bDevListBoxAlignment";
+            this.bDevListBoxAlignment.Size = new System.Drawing.Size(132, 23);
+            this.bDevListBoxAlignment.TabIndex = 3;
+            this.bDevListBoxAlignment.Text = "List Box Alignment";
+            this.bDevListBoxAlignment.Click += new System.EventHandler(this.bDevListBoxAlignment_Click);
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.Controls.Add(this.bWinListBox);
+            this.groupControl3.Location = new System.Drawing.Point(12, 264);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(323, 188);
+            this.groupControl3.TabIndex = 6;
+            this.groupControl3.Text = "Winform ListBox";
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.groupControl3;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 252);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(327, 192);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 464);
             this.Controls.Add(this.layoutControl1);
-            this.Name = "Form1";
+            this.Name = "FormMain";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -155,6 +201,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -170,6 +219,10 @@
         private DevExpress.XtraEditors.SimpleButton bDevListBox;
         private DevExpress.XtraEditors.SimpleButton bListBoxManualToolTip;
         private DevExpress.XtraRichEdit.RichEditControl richEditControl1;
+        private DevExpress.XtraEditors.SimpleButton bWinListBox;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraEditors.SimpleButton bDevListBoxAlignment;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
 }
 
