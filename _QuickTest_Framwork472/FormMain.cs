@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -71,6 +72,17 @@ namespace _QuickTest_Framwork472
             var sLines = sText.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
             var splitResult = Regex.Split(sText, "(\r\n)|\r|\n");
 
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            long x1 = 100;
+            ulong y = 50;
+            y = y + (ulong)x1;
+            x1 = -10;
+            ulong x2 = (ulong)x1;
+            y =y + x2;
+            
         }
     }
 }

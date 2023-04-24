@@ -31,15 +31,15 @@ namespace QuickTests
         {
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bHexConvert = new System.Windows.Forms.Button();
+            this.bUnit32ToBitArray = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.bUShort16ToBitArray = new System.Windows.Forms.Button();
             this.bFolders = new System.Windows.Forms.Button();
             this.bEventsInit = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -57,7 +57,6 @@ namespace QuickTests
             this.bStringSplit = new System.Windows.Forms.Button();
             this.bLEDRed = new System.Windows.Forms.Button();
             this.bLEDGreen = new System.Windows.Forms.Button();
-            this.bIntShift = new System.Windows.Forms.Button();
             this.bFloat = new System.Windows.Forms.Button();
             this.tabEvents = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -75,6 +74,7 @@ namespace QuickTests
             this.tbName = new System.Windows.Forms.TextBox();
             this.bSetName = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.bEnumerator = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.bLinkedList = new System.Windows.Forms.Button();
             this.bSortedList = new System.Windows.Forms.Button();
@@ -89,11 +89,13 @@ namespace QuickTests
             this.bTakeTest1 = new System.Windows.Forms.Button();
             this.bTake = new System.Windows.Forms.Button();
             this.bArray = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPageLINQ = new System.Windows.Forms.TabPage();
             this.bLinqSOrt = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.bFirst = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPageBitConvert = new System.Windows.Forms.TabPage();
+            this.bBase16ToBase36 = new System.Windows.Forms.Button();
+            this.bIntShift = new System.Windows.Forms.Button();
             this.bHex2Int = new System.Windows.Forms.Button();
             this.bInt2Hex = new System.Windows.Forms.Button();
             this.bConvert = new System.Windows.Forms.Button();
@@ -109,8 +111,13 @@ namespace QuickTests
             this.bAddwithDucplicationCheck = new System.Windows.Forms.Button();
             this.bPreparewithKey = new System.Windows.Forms.Button();
             this.bPrepareData = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbEncryption = new System.Windows.Forms.RichTextBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.tbPlain = new System.Windows.Forms.RichTextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
-            this.bEnumerator = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -123,12 +130,13 @@ namespace QuickTests
             this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tabPageLINQ.SuspendLayout();
+            this.tabPageBitConvert.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -141,25 +149,25 @@ namespace QuickTests
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // bHexConvert
             // 
-            this.button2.Location = new System.Drawing.Point(21, 61);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(134, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Hex Convert";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.bHexConvert.Location = new System.Drawing.Point(8, 151);
+            this.bHexConvert.Name = "bHexConvert";
+            this.bHexConvert.Size = new System.Drawing.Size(134, 23);
+            this.bHexConvert.TabIndex = 1;
+            this.bHexConvert.Text = "Hex Convert";
+            this.bHexConvert.UseVisualStyleBackColor = true;
+            this.bHexConvert.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // bUnit32ToBitArray
             // 
-            this.button3.Location = new System.Drawing.Point(21, 107);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(134, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Uint32 to BitArray";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.bUnit32ToBitArray.Location = new System.Drawing.Point(8, 64);
+            this.bUnit32ToBitArray.Name = "bUnit32ToBitArray";
+            this.bUnit32ToBitArray.Size = new System.Drawing.Size(134, 23);
+            this.bUnit32ToBitArray.TabIndex = 2;
+            this.bUnit32ToBitArray.Text = "Uint32 to BitArray";
+            this.bUnit32ToBitArray.UseVisualStyleBackColor = true;
+            this.bUnit32ToBitArray.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -221,15 +229,15 @@ namespace QuickTests
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // button10
+            // bUShort16ToBitArray
             // 
-            this.button10.Location = new System.Drawing.Point(21, 151);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(134, 23);
-            this.button10.TabIndex = 9;
-            this.button10.Text = "UShort16 to BitArray";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.bUShort16ToBitArray.Location = new System.Drawing.Point(8, 122);
+            this.bUShort16ToBitArray.Name = "bUShort16ToBitArray";
+            this.bUShort16ToBitArray.Size = new System.Drawing.Size(134, 23);
+            this.bUShort16ToBitArray.TabIndex = 9;
+            this.bUShort16ToBitArray.Text = "UShort16 to BitArray";
+            this.bUShort16ToBitArray.UseVisualStyleBackColor = true;
+            this.bUShort16ToBitArray.Click += new System.EventHandler(this.button10_Click);
             // 
             // bFolders
             // 
@@ -256,9 +264,10 @@ namespace QuickTests
             this.tabControl1.Controls.Add(this.tabGeneral);
             this.tabControl1.Controls.Add(this.tabEvents);
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPageLINQ);
+            this.tabControl1.Controls.Add(this.tabPageBitConvert);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -275,14 +284,10 @@ namespace QuickTests
             this.tabGeneral.Controls.Add(this.groupBox3);
             this.tabGeneral.Controls.Add(this.bLEDRed);
             this.tabGeneral.Controls.Add(this.bLEDGreen);
-            this.tabGeneral.Controls.Add(this.bIntShift);
             this.tabGeneral.Controls.Add(this.bFloat);
             this.tabGeneral.Controls.Add(this.button1);
-            this.tabGeneral.Controls.Add(this.button2);
             this.tabGeneral.Controls.Add(this.bFolders);
-            this.tabGeneral.Controls.Add(this.button3);
             this.tabGeneral.Controls.Add(this.button9);
-            this.tabGeneral.Controls.Add(this.button10);
             this.tabGeneral.Controls.Add(this.button7);
             this.tabGeneral.Controls.Add(this.button8);
             this.tabGeneral.Controls.Add(this.button5);
@@ -350,7 +355,7 @@ namespace QuickTests
             // 
             this.groupBox4.Controls.Add(this.button14);
             this.groupBox4.Controls.Add(this.button15);
-            this.groupBox4.Location = new System.Drawing.Point(227, 235);
+            this.groupBox4.Location = new System.Drawing.Point(21, 257);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(200, 100);
             this.groupBox4.TabIndex = 18;
@@ -380,9 +385,9 @@ namespace QuickTests
             // 
             this.groupBox3.Controls.Add(this.bSubString);
             this.groupBox3.Controls.Add(this.bStringSplit);
-            this.groupBox3.Location = new System.Drawing.Point(21, 235);
+            this.groupBox3.Location = new System.Drawing.Point(21, 146);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 100);
+            this.groupBox3.Size = new System.Drawing.Size(156, 100);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "String";
@@ -426,16 +431,6 @@ namespace QuickTests
             this.bLEDGreen.TabIndex = 13;
             this.bLEDGreen.Text = "LED Green";
             this.bLEDGreen.UseVisualStyleBackColor = false;
-            // 
-            // bIntShift
-            // 
-            this.bIntShift.Location = new System.Drawing.Point(21, 195);
-            this.bIntShift.Name = "bIntShift";
-            this.bIntShift.Size = new System.Drawing.Size(75, 23);
-            this.bIntShift.TabIndex = 12;
-            this.bIntShift.Text = "Int Shift";
-            this.bIntShift.UseVisualStyleBackColor = true;
-            this.bIntShift.Click += new System.EventHandler(this.bIntShift_Click);
             // 
             // bFloat
             // 
@@ -626,6 +621,16 @@ namespace QuickTests
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // bEnumerator
+            // 
+            this.bEnumerator.Location = new System.Drawing.Point(214, 78);
+            this.bEnumerator.Name = "bEnumerator";
+            this.bEnumerator.Size = new System.Drawing.Size(106, 23);
+            this.bEnumerator.TabIndex = 13;
+            this.bEnumerator.Text = "List Enumerator";
+            this.bEnumerator.UseVisualStyleBackColor = true;
+            this.bEnumerator.Click += new System.EventHandler(this.bEnumerator_Click);
+            // 
             // button22
             // 
             this.button22.Location = new System.Drawing.Point(102, 78);
@@ -766,18 +771,18 @@ namespace QuickTests
             this.bArray.UseVisualStyleBackColor = true;
             this.bArray.Click += new System.EventHandler(this.bArray_Click);
             // 
-            // tabPage2
+            // tabPageLINQ
             // 
-            this.tabPage2.Controls.Add(this.bLinqSOrt);
-            this.tabPage2.Controls.Add(this.button12);
-            this.tabPage2.Controls.Add(this.bFirst);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 422);
-            this.tabPage2.TabIndex = 3;
-            this.tabPage2.Text = "LINQ";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPageLINQ.Controls.Add(this.bLinqSOrt);
+            this.tabPageLINQ.Controls.Add(this.button12);
+            this.tabPageLINQ.Controls.Add(this.bFirst);
+            this.tabPageLINQ.Location = new System.Drawing.Point(4, 24);
+            this.tabPageLINQ.Name = "tabPageLINQ";
+            this.tabPageLINQ.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLINQ.Size = new System.Drawing.Size(792, 422);
+            this.tabPageLINQ.TabIndex = 3;
+            this.tabPageLINQ.Text = "LINQ";
+            this.tabPageLINQ.UseVisualStyleBackColor = true;
             // 
             // bLinqSOrt
             // 
@@ -809,23 +814,48 @@ namespace QuickTests
             this.bFirst.UseVisualStyleBackColor = true;
             this.bFirst.Click += new System.EventHandler(this.bFirst_Click);
             // 
-            // tabPage3
+            // tabPageBitConvert
             // 
-            this.tabPage3.Controls.Add(this.bHex2Int);
-            this.tabPage3.Controls.Add(this.bInt2Hex);
-            this.tabPage3.Controls.Add(this.bConvert);
-            this.tabPage3.Controls.Add(this.textBox1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(792, 422);
-            this.tabPage3.TabIndex = 4;
-            this.tabPage3.Text = "BitConversion";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPageBitConvert.Controls.Add(this.bBase16ToBase36);
+            this.tabPageBitConvert.Controls.Add(this.bIntShift);
+            this.tabPageBitConvert.Controls.Add(this.bHexConvert);
+            this.tabPageBitConvert.Controls.Add(this.bUShort16ToBitArray);
+            this.tabPageBitConvert.Controls.Add(this.bUnit32ToBitArray);
+            this.tabPageBitConvert.Controls.Add(this.bHex2Int);
+            this.tabPageBitConvert.Controls.Add(this.bInt2Hex);
+            this.tabPageBitConvert.Controls.Add(this.bConvert);
+            this.tabPageBitConvert.Controls.Add(this.textBox1);
+            this.tabPageBitConvert.Location = new System.Drawing.Point(4, 24);
+            this.tabPageBitConvert.Name = "tabPageBitConvert";
+            this.tabPageBitConvert.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageBitConvert.Size = new System.Drawing.Size(792, 422);
+            this.tabPageBitConvert.TabIndex = 4;
+            this.tabPageBitConvert.Text = "BitConversion";
+            this.tabPageBitConvert.UseVisualStyleBackColor = true;
+            // 
+            // bBase16ToBase36
+            // 
+            this.bBase16ToBase36.Location = new System.Drawing.Point(9, 177);
+            this.bBase16ToBase36.Name = "bBase16ToBase36";
+            this.bBase16ToBase36.Size = new System.Drawing.Size(133, 23);
+            this.bBase16ToBase36.TabIndex = 13;
+            this.bBase16ToBase36.Text = "10*Base16 To 8*Base36";
+            this.bBase16ToBase36.UseVisualStyleBackColor = true;
+            this.bBase16ToBase36.Click += new System.EventHandler(this.bBase16ToBase36_Click);
+            // 
+            // bIntShift
+            // 
+            this.bIntShift.Location = new System.Drawing.Point(111, 35);
+            this.bIntShift.Name = "bIntShift";
+            this.bIntShift.Size = new System.Drawing.Size(75, 23);
+            this.bIntShift.TabIndex = 12;
+            this.bIntShift.Text = "Int Shift";
+            this.bIntShift.UseVisualStyleBackColor = true;
+            this.bIntShift.Click += new System.EventHandler(this.bIntShift_Click);
             // 
             // bHex2Int
             // 
-            this.bHex2Int.Location = new System.Drawing.Point(8, 64);
+            this.bHex2Int.Location = new System.Drawing.Point(8, 93);
             this.bHex2Int.Name = "bHex2Int";
             this.bHex2Int.Size = new System.Drawing.Size(97, 23);
             this.bHex2Int.TabIndex = 3;
@@ -973,20 +1003,71 @@ namespace QuickTests
             this.bPrepareData.UseVisualStyleBackColor = true;
             this.bPrepareData.Click += new System.EventHandler(this.bPrepareData_Click);
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.tbEncryption);
+            this.tabPage2.Controls.Add(this.button10);
+            this.tabPage2.Controls.Add(this.button3);
+            this.tabPage2.Controls.Add(this.tbPlain);
+            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(792, 422);
+            this.tabPage2.TabIndex = 6;
+            this.tabPage2.Text = "Encryption";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tbEncryption
+            // 
+            this.tbEncryption.Location = new System.Drawing.Point(311, 34);
+            this.tbEncryption.Name = "tbEncryption";
+            this.tbEncryption.Size = new System.Drawing.Size(182, 125);
+            this.tbEncryption.TabIndex = 4;
+            this.tbEncryption.Text = "";
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(204, 64);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.TabIndex = 3;
+            this.button10.Text = "Decrypt";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click_1);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(204, 35);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Encrypt";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // tbPlain
+            // 
+            this.tbPlain.Location = new System.Drawing.Point(8, 35);
+            this.tbPlain.Name = "tbPlain";
+            this.tbPlain.Size = new System.Drawing.Size(170, 125);
+            this.tbPlain.TabIndex = 1;
+            this.tbPlain.Text = "";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(8, 6);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(114, 23);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Init Encryption";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // LoopEventTimer
             // 
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick);
-            // 
-            // bEnumerator
-            // 
-            this.bEnumerator.Location = new System.Drawing.Point(214, 78);
-            this.bEnumerator.Name = "bEnumerator";
-            this.bEnumerator.Size = new System.Drawing.Size(106, 23);
-            this.bEnumerator.TabIndex = 13;
-            this.bEnumerator.Text = "List Enumerator";
-            this.bEnumerator.UseVisualStyleBackColor = true;
-            this.bEnumerator.Click += new System.EventHandler(this.bEnumerator_Click);
             // 
             // FormMain
             // 
@@ -1013,13 +1094,14 @@ namespace QuickTests
             this.groupBox1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.tabPageLINQ.ResumeLayout(false);
+            this.tabPageBitConvert.ResumeLayout(false);
+            this.tabPageBitConvert.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1027,15 +1109,15 @@ namespace QuickTests
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bHexConvert;
+        private System.Windows.Forms.Button bUnit32ToBitArray;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button bUShort16ToBitArray;
         private System.Windows.Forms.Button bFolders;
         private System.Windows.Forms.Button bEventsInit;
         private System.Windows.Forms.TabControl tabControl1;
@@ -1061,9 +1143,9 @@ namespace QuickTests
         private System.Windows.Forms.Button bLEDRed;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button bGroupList;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPageLINQ;
         private System.Windows.Forms.Button bFirst;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPageBitConvert;
         private System.Windows.Forms.Button bConvert;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button bHex2Int;
@@ -1107,6 +1189,13 @@ namespace QuickTests
         private System.Windows.Forms.Button bLinqSOrt;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button bEnumerator;
+        private System.Windows.Forms.Button bBase16ToBase36;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.RichTextBox tbEncryption;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.RichTextBox tbPlain;
     }
 }
 

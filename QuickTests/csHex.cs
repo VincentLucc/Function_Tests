@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Security;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace QuickTests
@@ -89,7 +93,7 @@ namespace QuickTests
 
         public static string ToModbusCRC16(string s, bool isReverse)
         {
-            return ByteToString(CRC16(StringToHexByte(s)), isReverse);
+            return ByteToString(CRC16(HexStringToHexByte(s)), isReverse);
         }
 
         public static string ToModbusCRC16(byte[] data)
@@ -168,7 +172,7 @@ namespace QuickTests
             return s.ToString();
         }
 
-        public static byte[] StringToHexByte(string str)
+        public static byte[] HexStringToHexByte(string str)
         {
             return StringToHexByte(str, false);
         }
@@ -207,7 +211,7 @@ namespace QuickTests
             if (sInput.Length < 1) return null;
 
             //String sName
-            byte[] bData = StringToHexByte(sInput);
+            byte[] bData = HexStringToHexByte(sInput);
 
             //Convert to plain text, read hex as UTF8 encoding instead
             return Encoding.UTF8.GetString(bData);
@@ -218,7 +222,7 @@ namespace QuickTests
             //Prepare value
             bool[] bitData = new bool[16];
 
-            byte[] bData = StringToHexByte(sHex);
+            byte[] bData = HexStringToHexByte(sHex);
 
             //reverse order
             bData = bData.Reverse().ToArray();
@@ -278,7 +282,7 @@ namespace QuickTests
             //Prepare value
             bool[] bitData = new bool[32];
 
-            byte[] bData = StringToHexByte(sHex);
+            byte[] bData = HexStringToHexByte(sHex);
 
             //reverse order
             bData = bData.Reverse().ToArray();
@@ -406,11 +410,187 @@ namespace QuickTests
             if (sInput.Length < 1) return null;
 
             //String sName
-            byte[] bData = StringToHexByte(sInput);
+            byte[] bData = HexStringToHexByte(sInput);
 
             //Convert to plain text, read hex as UTF8 encoding instead
             return Encoding.ASCII.GetString(bData);
         }
 
+
+        public static List<char> Base36Chars = new List<char> {
+            '0','1','2','3','4', '5', '6', '7', '8', '9',
+            'A','B','C','D','E', 'F', 'G', 'H', 'I', 'J',
+            'K','L','M','N','O', 'P', 'Q', 'R', 'S', 'T',
+            'U','V','W','X','Y', 'Z'
+        };
+
+        public const long Base36_8_Half = 1410554953728;
+
+        /// <summary>
+        /// Base36 * 8
+        /// Convert 10 char Hex string to 8 char base 36 string
+        /// Convert 5 char Hex string to 4 char base 36 string
+        /// </summary>
+        /// <param name="sHexString"></param>
+        /// <returns></returns>
+        public static string HexStringToBase36String(string sHexString, int iTagetLength = 8)
+        {
+            //Input verification
+            if (!IsHexString(sHexString)) return null;
+            string sInput = sHexString.Replace(" ", "").Replace("-", "");
+            if (sInput.Length > 14) return null;
+
+            //To raw data
+            if (!HexStringToUlong(sInput, out ulong lValue)) return null;
+
+            //Convert to base 36 letter
+            string sBase36 = UlongToBase36String(lValue, iTagetLength);
+
+            return sBase36;
+        }
+
+
+        public static string Base36StringToHexString(string sBase36String, int iTagetLength = 10)
+        {
+            //Check format
+            if (!Base36StringToUlong(sBase36String, out ulong lValue)) return null;
+
+            byte[] bData = BitConverter.GetBytes(lValue);
+            //Order is reversed when saved
+            bData = bData.Reverse().ToArray();
+            string sHexString = BitConverter.ToString(bData).Replace("-", "");
+
+            //trim result
+            while (sHexString.StartsWith("0"))
+            {
+                sHexString = sHexString.Substring(1, sHexString.Length - 1);
+            }
+
+            //Fill result
+            while (sHexString.Length < iTagetLength)
+            {
+                sHexString = "0" + sHexString;
+            }
+
+            return sHexString;
+        }
+
+        public static bool IsHexString(string sInput)
+        {
+            if (string.IsNullOrWhiteSpace(sInput)) return false;
+            sInput = sInput.Replace("-", "").Replace(" ", "").ToUpper();
+            if (!Regex.IsMatch(sInput, @"^[0-9A-F]+$")) return false;
+            return true;
+        }
+
+        /// <summary>
+        /// Make sure base 36 string contains none HEX chars
+        /// </summary>
+        /// <param name="sInput"></param>
+        public static string Base36StringShift(string sInput, long shiftValue)
+        {
+            //Make sure length <8
+            if (string.IsNullOrWhiteSpace(sInput) || sInput.Length > 8) return null;
+
+            //Check format
+            if (!Base36StringToUlong(sInput, out ulong lValue)) return null;
+
+            //Scale result
+            if (shiftValue >= 0)
+            {
+                lValue = lValue + (ulong)shiftValue;
+            }
+            else
+            {
+                lValue = lValue - (ulong)Math.Abs(shiftValue);
+            }
+
+            string sResult = UlongToBase36String(lValue, sInput.Length);
+            return sResult;
+        }
+
+        public static bool Base36StringToUlong(string sInput, out ulong lValue)
+        {
+
+            lValue = 0;
+            if (string.IsNullOrWhiteSpace(sInput)) return false;
+            sInput = sInput.Replace(" ", "").Replace("-", "");
+            if (!Regex.IsMatch(sInput, @"^[0-9A-Z]{1,8}$")) return false;
+
+
+            int iPosition = 0;
+            for (int i = sInput.Length - 1; i > -1; i--)
+            {
+                var charValue = sInput[i];
+                int iValue = Base36Chars.IndexOf(charValue);
+                lValue += (ulong)iValue * (ulong)(Math.Pow(36, iPosition));
+                iPosition++;
+            }
+
+            return true;
+        }
+
+        public static bool HexStringToUlong(string sInput, out ulong lValue)
+        {
+            lValue = 0;
+            if (string.IsNullOrWhiteSpace(sInput)) return false;
+            sInput = sInput.Replace(" ", "").Replace("-", "");
+            if (!Regex.IsMatch(sInput, @"^[0-9A-F]{1,12}$")) return false;
+
+
+            int iPosition = 0;
+            for (int i = sInput.Length - 1; i > -1; i--)
+            {
+                var charValue = sInput[i];
+                int iValue = Base36Chars.IndexOf(charValue);
+                lValue += (ulong)iValue * (ulong)(Math.Pow(16, iPosition));
+                iPosition++;
+            }
+
+            return true;
+        }
+
+
+        public static string UlongToBase36String(ulong transData, int iTagetLength = 8)
+        {
+
+            //Convert to base 36 letter
+            List<int> base36Indexs = new List<int>();
+            while (transData >= 36)
+            {
+                int iIndex = (int)(transData % 36);
+                base36Indexs.Add(iIndex);
+                transData = transData / 36;
+            }
+            //Add last piece
+            base36Indexs.Add((int)transData);
+
+            //Make sure output is minimum 8 chars
+            while (base36Indexs.Count < iTagetLength)
+                base36Indexs.Add(0);
+
+            //Convert to string
+            StringBuilder sbBase36 = new StringBuilder();
+            //Reverse the order
+            for (int i = base36Indexs.Count - 1; i > -1; i--)
+            {
+                int iIndex = base36Indexs[i];
+                sbBase36.Append(Base36Chars[iIndex]);
+            }
+
+            string sBase36 = sbBase36.ToString();
+
+            return sBase36;
+        }
+
+
+    }
+
+    public enum csHexScaleType
+    {
+        //*2
+        Duplicate,
+        // x/2
+        Half
     }
 }

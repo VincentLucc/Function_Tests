@@ -31,9 +31,9 @@ namespace _QuickTest_Framwork472
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bDateTimeOffset = new System.Windows.Forms.Button();
-            this.bThreadGapTest = new System.Windows.Forms.Button();
             this.tbGapInput = new System.Windows.Forms.TextBox();
+            this.bThreadGapTest = new System.Windows.Forms.Button();
+            this.bDateTimeOffset = new System.Windows.Forms.Button();
             this.bQUickStringTest = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -53,15 +53,13 @@ namespace _QuickTest_Framwork472
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // bDateTimeOffset
+            // tbGapInput
             // 
-            this.bDateTimeOffset.Location = new System.Drawing.Point(6, 19);
-            this.bDateTimeOffset.Name = "bDateTimeOffset";
-            this.bDateTimeOffset.Size = new System.Drawing.Size(98, 23);
-            this.bDateTimeOffset.TabIndex = 0;
-            this.bDateTimeOffset.Text = "DateTime Offset";
-            this.bDateTimeOffset.UseVisualStyleBackColor = true;
-            this.bDateTimeOffset.Click += new System.EventHandler(this.bDateTimeOffset_Click);
+            this.tbGapInput.Location = new System.Drawing.Point(122, 50);
+            this.tbGapInput.Name = "tbGapInput";
+            this.tbGapInput.Size = new System.Drawing.Size(51, 20);
+            this.tbGapInput.TabIndex = 2;
+            this.tbGapInput.Text = "10";
             // 
             // bThreadGapTest
             // 
@@ -73,13 +71,15 @@ namespace _QuickTest_Framwork472
             this.bThreadGapTest.UseVisualStyleBackColor = true;
             this.bThreadGapTest.Click += new System.EventHandler(this.bThreadGapTest_Click);
             // 
-            // tbGapInput
+            // bDateTimeOffset
             // 
-            this.tbGapInput.Location = new System.Drawing.Point(122, 50);
-            this.tbGapInput.Name = "tbGapInput";
-            this.tbGapInput.Size = new System.Drawing.Size(51, 20);
-            this.tbGapInput.TabIndex = 2;
-            this.tbGapInput.Text = "10";
+            this.bDateTimeOffset.Location = new System.Drawing.Point(6, 19);
+            this.bDateTimeOffset.Name = "bDateTimeOffset";
+            this.bDateTimeOffset.Size = new System.Drawing.Size(98, 23);
+            this.bDateTimeOffset.TabIndex = 0;
+            this.bDateTimeOffset.Text = "DateTime Offset";
+            this.bDateTimeOffset.UseVisualStyleBackColor = true;
+            this.bDateTimeOffset.Click += new System.EventHandler(this.bDateTimeOffset_Click);
             // 
             // bQUickStringTest
             // 
@@ -119,6 +119,7 @@ namespace _QuickTest_Framwork472
             this.Controls.Add(this.groupBox1);
             this.Name = "FormMain";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

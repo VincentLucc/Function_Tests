@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _QuickTests;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,7 +36,7 @@ namespace QuickTests
         HashSet<string> hashPerfSource = new HashSet<string>();
         int iStartBase = 1000000; //Index start base
         #endregion Performance
-
+        csEncryption encryption = new csEncryption();
         public FormMain()
         {
             InitializeComponent();
@@ -913,7 +914,7 @@ namespace QuickTests
                     //Method 1, 689ms
                     //if (!lPerfSource.Contains(sNewKey)) lPerfSource.Add(sNewKey);
 
-                    //Mrthod 2, 1625ms
+                    //Method 2, 1625ms
                     //if (!lPerfSource.Any(a=>a== sNewKey)) lPerfSource.Add(sNewKey);
 
                     //Method 3, 584ms (Use multiple cpu)
@@ -1225,15 +1226,15 @@ namespace QuickTests
 
         private void button22_Click(object sender, EventArgs e)
         {
-            List<string[]> strings= new List<string[]>();
+            List<string[]> strings = new List<string[]>();
             for (int i = 0; i < 10; i++)
             {
-                string[] data=new string[3] {i.ToString(),i.ToString(),i.ToString() };
+                string[] data = new string[3] { i.ToString(), i.ToString(), i.ToString() };
                 strings.Add(data);
             }
 
-            strings.Add(new string[] {"2","2","2" });
-            strings.Add(new string[] {"5","5","5" });
+            strings.Add(new string[] { "2", "2", "2" });
+            strings.Add(new string[] { "5", "5", "5" });
 
             var row10 = strings[10];
             int iRowIndex = strings.IndexOf(row10);
@@ -1243,19 +1244,58 @@ namespace QuickTests
 
         private void bEnumerator_Click(object sender, EventArgs e)
         {
-            List<string> strings= new List<string>();
+            List<string> strings = new List<string>();
             for (int i = 0; i < 5; i++)
             {
-                strings.Add((i+1).ToString());
+                strings.Add((i + 1).ToString());
             }
 
             //Current value is null by default, maust use "MoveNext" to get first value
-            var enumerator= strings.AsEnumerable().GetEnumerator();
+            var enumerator = strings.AsEnumerable().GetEnumerator();
             while (enumerator.MoveNext())
             {
-                string sCurrent=enumerator.Current;
+                string sCurrent = enumerator.Current;
                 Debug.WriteLine(sCurrent);
             }
+        }
+
+        private void bBase16ToBase36_Click(object sender, EventArgs e)
+        {
+ 
+            bool isSUccess= csHex.HexStringToUlong("0F FF FF FF", out ulong uValue);
+
+       
+            string sHex = "FF FF FF FF F1";
+            //sHex = "11 22 33 CR C0";
+            string sBase36 = csHex.HexStringToBase36String(sHex);
+
+            string sBase36Input = "ZZ ZZ ZZ ZZ";
+            isSUccess=csHex.Base36StringToUlong(sBase36Input, out ulong uValue2);
+            string sBase36Convert1 = csHex.Base36StringShift(sBase36,csHex.Base36_8_Half);
+            string sBase36Convert2 = csHex.Base36StringShift(sBase36Convert1, -csHex.Base36_8_Half);
+          
+            string sHexFrom= csHex.Base36StringToHexString(sBase36Convert2);
+        }
+
+
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            encryption.keyData.GenerateNew();
+            Debug.WriteLine(encryption.keyData.KeyString);
+            Debug.WriteLine(encryption.keyData.VectorString);
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+           string sOutput=  encryption.EncryptToAesString(tbPlain.Text);
+            tbEncryption.Text = sOutput;
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            string sPlainText = encryption.DecryptFromAESString(tbEncryption.Text);
+            tbPlain.Text = sPlainText;
         }
     }
 
