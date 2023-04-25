@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Text;
 
-namespace QuickTests
+namespace _QuickTest_Framwork472
 {
     class csModel
     {

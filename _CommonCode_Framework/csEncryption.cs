@@ -7,19 +7,37 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _QuickTests
+namespace _CommonCode_Framework
 {
     public class csEncryption
     {
 
-        public AesKeyData keyData { get; set; }
+        public AesKeyData AesKey { get; set; }
 
         public csEncryption()
         {
-            keyData = new AesKeyData();
+            AesKey = new AesKeyData();
         }
 
+        /// <summary>
+        /// Set key based on base64 string
+        /// </summary>
+        /// <param name="sKey"></param>
+        /// <param name="sVector"></param>
+        public void SetKey(string sKey, string sVector)
+        {
+            AesKey.LoadBase64(sKey, sVector);
+        }
 
+        /// <summary>
+        /// Set key based on byte array
+        /// </summary>
+        /// <param name="sKey"></param>
+        /// <param name="sVector"></param>
+        public void SetKey(byte[] bKey, byte[] bVector)
+        {
+            AesKey.LoadByte(bKey, bVector);
+        }
 
         public byte[] EncryptToAesByte(string Input)
         {
@@ -28,8 +46,8 @@ namespace _QuickTests
             Aes theAES = Aes.Create();
 
             //Set values
-            theAES.Key = keyData.KeyByte;
-            theAES.IV = keyData.VectorByte;
+            theAES.Key = AesKey.KeyByte;
+            theAES.IV = AesKey.VectorByte;
 
             try
             {
@@ -77,8 +95,11 @@ namespace _QuickTests
             string sResult = null;
 
             //set values
-            theAES.Key = keyData.KeyByte;
-            theAES.IV = keyData.VectorByte;
+            theAES.Key = AesKey.KeyByte;
+            theAES.IV = AesKey.VectorByte;
+
+            //Check unput
+            if (bData == null) return null;
 
             try
             {
@@ -88,8 +109,10 @@ namespace _QuickTests
                 //Create stream for encryption
                 using (MemoryStream msAES = new MemoryStream(bData))
                 {
+                    // Create crypto stream   
                     using (CryptoStream csAES = new CryptoStream(msAES, decryptor, CryptoStreamMode.Read))
                     {
+                        // Read crypto stream 
                         using (StreamReader srAES = new StreamReader(csAES))
                         {
                             sResult = srAES.ReadToEnd();//Get result  
@@ -115,6 +138,46 @@ namespace _QuickTests
             string sResult = DecryptFromAesByte(bData);
             return sResult;
         }
+
+        /// <summary>
+        /// Create MD5 bytes
+        /// </summary>
+        /// <returns></returns>
+        public static byte[] CreateMD5Bytes(byte[] bInput)
+        {
+            // Use input string to calculate MD5 hash
+            byte[] hashBytes = null;
+            using (MD5 md5 = MD5.Create())
+            {
+                hashBytes = md5.ComputeHash(bInput);
+            }
+            return hashBytes;
+        }
+
+        /// <summary>
+        /// Create MD5 but only take first 4 bytes of data
+        /// </summary>
+        /// <returns></returns>
+        public static byte[] CreateMD5Bytes_4Bytes(byte[] bInput)
+        {
+            var md5Hash = CreateMD5Bytes(bInput);
+            //Check length
+            if (md5Hash == null || md5Hash.Length < 4) return null;
+
+            // Use input string to calculate MD5 hash
+            byte[] bHash4Bytes = new byte[4];
+
+            Array.Copy(md5Hash, bHash4Bytes, 4);
+            return bHash4Bytes;
+        }
+
+        public static string CreateMD5String_4Bytes(string sInput)
+        {
+            if (string.IsNullOrWhiteSpace(sInput)) return null;
+            var bMd5 = CreateMD5Bytes_4Bytes(csHex.HexStringToHexByte(sInput));
+            string sMd5 = BitConverter.ToString(bMd5).Replace("-", "");
+            return sMd5;
+        }
     }
 
     public class AesKeyData
@@ -124,12 +187,32 @@ namespace _QuickTests
         public byte[] KeyByte { get; set; }
         public byte[] VectorByte { get; set; }
 
+
+
         public AesKeyData()
         {
             KeyString = "W7xJ1G2xUDVHENLzCsgaE2cei3y0C72YxwBm8DC/w0Y=";//AES Key
             KeyByte = Convert.FromBase64String(KeyString);
             VectorString = "0qMAoH6Wz/f6CPgWLBsb4A==";//AES vector
             VectorByte = Convert.FromBase64String(VectorString);
+        }
+
+        public void LoadBase64(string sKey, string sVector)
+        {
+            KeyString = sKey;
+            KeyByte = Convert.FromBase64String(KeyString);
+
+            VectorString = sVector;
+            VectorByte = Convert.FromBase64String(VectorString);
+        }
+
+        public void LoadByte(byte[] bKey, byte[] bVector)
+        {
+            KeyByte = bKey;
+            KeyString = Convert.ToBase64String(KeyByte);
+
+            VectorByte = bVector;
+            VectorString = Convert.ToBase64String(VectorByte);
         }
 
         public void GenerateNew(bool IgnoreVector = false)

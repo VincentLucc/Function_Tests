@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _CommonCode_Framework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -76,13 +77,10 @@ namespace _QuickTest_Framwork472
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            long x1 = 100;
-            ulong y = 50;
-            y = y + (ulong)x1;
-            x1 = -10;
-            ulong x2 = (ulong)x1;
-            y =y + x2;
-            
+ 
+            string sHex = csHex.IntToHexString(128,4);
+ 
+
         }
     }
 }

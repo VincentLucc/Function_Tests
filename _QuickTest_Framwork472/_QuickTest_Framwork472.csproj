@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="csHex.cs" />
     <Compile Include="csModel.cs" />
     <Compile Include="csPublic.cs" />
     <Compile Include="FormMain.cs">
@@ -82,6 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\_CommonCode_Framework\_CommonCode_Framework.csproj">
+      <Project>{925B87B3-C48D-414A-9D9A-E74147A67868}</Project>
+      <Name>_CommonCode_Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

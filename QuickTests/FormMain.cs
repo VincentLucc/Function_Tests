@@ -1,5 +1,4 @@
-﻿using _QuickTests;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _CommonCode_Framework;
 
 namespace QuickTests
 {
@@ -37,6 +37,7 @@ namespace QuickTests
         int iStartBase = 1000000; //Index start base
         #endregion Performance
         csEncryption encryption = new csEncryption();
+  
         public FormMain()
         {
             InitializeComponent();
@@ -1281,9 +1282,9 @@ namespace QuickTests
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            encryption.keyData.GenerateNew();
-            Debug.WriteLine(encryption.keyData.KeyString);
-            Debug.WriteLine(encryption.keyData.VectorString);
+            encryption.AesKey.GenerateNew();
+            Debug.WriteLine(encryption.AesKey.KeyString);
+            Debug.WriteLine(encryption.AesKey.VectorString);
         }
 
         private void button3_Click_1(object sender, EventArgs e)

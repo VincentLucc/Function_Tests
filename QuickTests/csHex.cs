@@ -585,12 +585,4 @@ namespace QuickTests
 
 
     }
-
-    public enum csHexScaleType
-    {
-        //*2
-        Duplicate,
-        // x/2
-        Half
-    }
 }

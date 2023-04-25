@@ -8,7 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
 
-namespace QuickTests
+namespace _QuickTest_Framwork472
 {
     public static class csPublic
     {

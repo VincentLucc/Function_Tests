@@ -12,4 +12,8 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\_CommonCode_Framework\_CommonCode_Framework.csproj" />
+  </ItemGroup>
+
 </Project>
