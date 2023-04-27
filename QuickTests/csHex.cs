@@ -186,7 +186,7 @@ namespace QuickTests
         {
             string hex = isFilterChinese ? FilterChinese(str) : ConvertChinese(str);
             //Clear space
-            hex = hex.Replace(" ", "");
+            hex = hex.Replace(" ", "").Replace("-","");
             //make sure length is even number, if not add 0 to last, when data received
             hex += hex.Length % 2 != 0 ? "-" : ""; //Add a "-" to bottom make it even
             byte[] result = new byte[hex.Length / 2];

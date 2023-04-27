@@ -116,7 +116,7 @@ namespace QuickTests
             this.button10 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.tbPlain = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bEncryptionInit = new System.Windows.Forms.Button();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
@@ -1009,7 +1009,7 @@ namespace QuickTests
             this.tabPage2.Controls.Add(this.button10);
             this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.tbPlain);
-            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.bEncryptionInit);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -1054,15 +1054,15 @@ namespace QuickTests
             this.tbPlain.TabIndex = 1;
             this.tbPlain.Text = "";
             // 
-            // button2
+            // bEncryptionInit
             // 
-            this.button2.Location = new System.Drawing.Point(8, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(114, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Init Encryption";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.bEncryptionInit.Location = new System.Drawing.Point(8, 6);
+            this.bEncryptionInit.Name = "bEncryptionInit";
+            this.bEncryptionInit.Size = new System.Drawing.Size(114, 23);
+            this.bEncryptionInit.TabIndex = 0;
+            this.bEncryptionInit.Text = "Init Encryption";
+            this.bEncryptionInit.UseVisualStyleBackColor = true;
+            this.bEncryptionInit.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // LoopEventTimer
             // 
@@ -1191,7 +1191,7 @@ namespace QuickTests
         private System.Windows.Forms.Button bEnumerator;
         private System.Windows.Forms.Button bBase16ToBase36;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bEncryptionInit;
         private System.Windows.Forms.RichTextBox tbEncryption;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button3;

@@ -37,7 +37,7 @@ namespace QuickTests
         int iStartBase = 1000000; //Index start base
         #endregion Performance
         csEncryption encryption = new csEncryption();
-  
+
         public FormMain()
         {
             InitializeComponent();
@@ -1262,40 +1262,45 @@ namespace QuickTests
 
         private void bBase16ToBase36_Click(object sender, EventArgs e)
         {
- 
-            bool isSUccess= csHex.HexStringToUlong("0F FF FF FF", out ulong uValue);
 
-       
+            bool isSUccess = csHex.HexStringToUlong("0F FF FF FF", out ulong uValue);
+
+
             string sHex = "FF FF FF FF F1";
             //sHex = "11 22 33 CR C0";
             string sBase36 = csHex.HexStringToBase36String(sHex);
 
             string sBase36Input = "ZZ ZZ ZZ ZZ";
-            isSUccess=csHex.Base36StringToUlong(sBase36Input, out ulong uValue2);
-            string sBase36Convert1 = csHex.Base36StringShift(sBase36,csHex.Base36_8_Half);
+            isSUccess = csHex.Base36StringToUlong(sBase36Input, out ulong uValue2);
+            string sBase36Convert1 = csHex.Base36StringShift(sBase36, csHex.Base36_8_Half);
             string sBase36Convert2 = csHex.Base36StringShift(sBase36Convert1, -csHex.Base36_8_Half);
-          
-            string sHexFrom= csHex.Base36StringToHexString(sBase36Convert2);
+
+            string sHexFrom = csHex.Base36StringToHexString(sBase36Convert2);
         }
 
 
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            encryption.AesKey.GenerateNew();
-            Debug.WriteLine(encryption.AesKey.KeyString);
-            Debug.WriteLine(encryption.AesKey.VectorString);
+            encryption.GenerateNew();
+            string sHexKey = BitConverter.ToString(encryption.KeyByte).Replace("-","");
+            string sHexVector = BitConverter.ToString(encryption.VectorByte).Replace("-", "");
+            var bKey= csHex.HexStringToHexByte(sHexKey);
+            string sKeyBase64=Convert.ToBase64String(bKey);
+            bool isEqual = sKeyBase64 == encryption.KeyString;
+            Debug.WriteLine(encryption.KeyString);
+            Debug.WriteLine(encryption.VectorString);
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-           string sOutput=  encryption.EncryptToAesString(tbPlain.Text);
+            string sOutput = encryption.EncryptToAesString(tbPlain.Text);
             tbEncryption.Text = sOutput;
         }
 
         private void button10_Click_1(object sender, EventArgs e)
         {
-            string sPlainText = encryption.DecryptFromAESString(tbEncryption.Text);
+            string sPlainText = encryption.DecryptAesFromBase64String(tbEncryption.Text);
             tbPlain.Text = sPlainText;
         }
     }

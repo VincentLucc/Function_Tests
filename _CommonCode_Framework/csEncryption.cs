@@ -11,12 +11,50 @@ namespace _CommonCode_Framework
 {
     public class csEncryption
     {
+        public string KeyString { get; set; }
+        public string VectorString { get; set; }
+        public byte[] KeyByte { get; set; }
+        public byte[] VectorByte { get; set; }
 
-        public AesKeyData AesKey { get; set; }
+        public PaddingMode Padding { get; set; }
+
+        public CipherMode Mode { get; set; }
+
+        public int KeySize { get; set; }
+
+        public int BlockSize { get; set; }
 
         public csEncryption()
         {
-            AesKey = new AesKeyData();
+            InitParameters();
+        }
+
+        public void InitParameters()
+        {
+            //Init default settings
+            Padding = PaddingMode.PKCS7;
+            Mode = CipherMode.CBC;
+            KeySize = 256;
+            BlockSize = 128;
+
+            //Create default key
+            KeyString = "W7xJ1G2xUDVHENLzCsgaE2cei3y0C72YxwBm8DC/w0Y=";//AES Key
+            KeyByte = Convert.FromBase64String(KeyString);
+            VectorString = "0qMAoH6Wz/f6CPgWLBsb4A==";//AES vector
+            VectorByte = Convert.FromBase64String(VectorString);
+        }
+
+
+        public void LoadParameters(Aes theAES)
+        {
+            theAES.Padding = Padding;
+            theAES.Mode = Mode;
+
+            theAES.KeySize = KeySize;
+            theAES.BlockSize = BlockSize;
+
+            theAES.Key = KeyByte;
+            theAES.IV = VectorByte;
         }
 
         /// <summary>
@@ -24,9 +62,13 @@ namespace _CommonCode_Framework
         /// </summary>
         /// <param name="sKey"></param>
         /// <param name="sVector"></param>
-        public void SetKey(string sKey, string sVector)
+        public void SetAesKey(string sKey, string sVector)
         {
-            AesKey.LoadBase64(sKey, sVector);
+            KeyString = sKey;
+            KeyByte = Convert.FromBase64String(KeyString);
+
+            VectorString = sVector;
+            VectorByte = Convert.FromBase64String(VectorString);
         }
 
         /// <summary>
@@ -34,9 +76,26 @@ namespace _CommonCode_Framework
         /// </summary>
         /// <param name="sKey"></param>
         /// <param name="sVector"></param>
-        public void SetKey(byte[] bKey, byte[] bVector)
+        public void SetAesKey(byte[] bKey, byte[] bVector)
         {
-            AesKey.LoadByte(bKey, bVector);
+            KeyByte = bKey;
+            KeyString = Convert.ToBase64String(KeyByte);
+
+            VectorByte = bVector;
+            VectorString = Convert.ToBase64String(VectorByte);
+        }
+
+        public void GenerateNew(bool IgnoreVector = false)
+        {
+            Aes theAes = Aes.Create();
+            KeyByte = theAes.Key;
+            KeyString = Convert.ToBase64String(theAes.Key);
+
+            if (!IgnoreVector)
+            {
+                VectorByte = theAes.IV;
+                VectorString = Convert.ToBase64String(theAes.IV);
+            }
         }
 
         public byte[] EncryptToAesByte(string Input)
@@ -44,10 +103,7 @@ namespace _CommonCode_Framework
             //Init variables
             byte[] bResult = null;
             Aes theAES = Aes.Create();
-
-            //Set values
-            theAES.Key = AesKey.KeyByte;
-            theAES.IV = AesKey.VectorByte;
+            LoadParameters(theAES);
 
             try
             {
@@ -94,12 +150,8 @@ namespace _CommonCode_Framework
             Aes theAES = Aes.Create();
             string sResult = null;
 
-            //set values
-            theAES.Key = AesKey.KeyByte;
-            theAES.IV = AesKey.VectorByte;
-
-            //Check unput
-            if (bData == null) return null;
+            //Set values
+            LoadParameters(theAES);
 
             try
             {
@@ -109,20 +161,19 @@ namespace _CommonCode_Framework
                 //Create stream for encryption
                 using (MemoryStream msAES = new MemoryStream(bData))
                 {
-                    // Create crypto stream   
                     using (CryptoStream csAES = new CryptoStream(msAES, decryptor, CryptoStreamMode.Read))
                     {
-                        // Read crypto stream 
+
                         using (StreamReader srAES = new StreamReader(csAES))
                         {
-                            sResult = srAES.ReadToEnd();//Get result  
+                            sResult = srAES.ReadToEnd();//Get result                                      
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("csEncryption.DecryptAES:\r\n" + ex.Message);
+                Debug.WriteLine("csEncryption.DecryptFromAesByte:\r\n" + ex.Message);
                 sResult = null;
             }
 
@@ -132,11 +183,45 @@ namespace _CommonCode_Framework
             return sResult;
         }
 
-        public string DecryptFromAESString(string Input)
+        public string DecryptAesFromBase64String(string Input)
         {
             byte[] bData = Convert.FromBase64String(Input);
             string sResult = DecryptFromAesByte(bData);
             return sResult;
+        }
+
+        /// <summary>
+        /// Customized method
+        /// Decrypt a hex string, treat the data as ASCII encoded text
+        /// Then decrypt that text
+        /// </summary>
+        /// <param name="inputEncrypt"></param>
+        /// <returns></returns>
+        public string DecryptAesFromHEX(string inputEncrypt)
+        {
+            // Create AesManaged    
+            try
+            {
+                inputEncrypt = inputEncrypt.Trim();
+                //Null verify
+                if (inputEncrypt == "" || inputEncrypt.StartsWith("00"))
+                {//can't covert 0x00 to ASCII word
+                    return "";
+                }
+
+                //Convert to HEX to ASCII string
+                string sBase64 = csHex.HexStringToASCIIString(inputEncrypt);
+
+                //Treat this string as base 64 string
+                //This is customized, for backward compatibility
+                Debug.WriteLine($"Base64:{sBase64}");
+                return DecryptAesFromBase64String(sBase64);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DecryptAesFromHEX:\r\n" + ex.Message);
+                return "";
+            }
         }
 
         /// <summary>
@@ -177,91 +262,6 @@ namespace _CommonCode_Framework
             var bMd5 = CreateMD5Bytes_4Bytes(csHex.HexStringToHexByte(sInput));
             string sMd5 = BitConverter.ToString(bMd5).Replace("-", "");
             return sMd5;
-        }
-    }
-
-    public class AesKeyData
-    {
-        public string KeyString { get; set; }
-        public string VectorString { get; set; }
-        public byte[] KeyByte { get; set; }
-        public byte[] VectorByte { get; set; }
-
-
-
-        public AesKeyData()
-        {
-            KeyString = "W7xJ1G2xUDVHENLzCsgaE2cei3y0C72YxwBm8DC/w0Y=";//AES Key
-            KeyByte = Convert.FromBase64String(KeyString);
-            VectorString = "0qMAoH6Wz/f6CPgWLBsb4A==";//AES vector
-            VectorByte = Convert.FromBase64String(VectorString);
-        }
-
-        public void LoadBase64(string sKey, string sVector)
-        {
-            KeyString = sKey;
-            KeyByte = Convert.FromBase64String(KeyString);
-
-            VectorString = sVector;
-            VectorByte = Convert.FromBase64String(VectorString);
-        }
-
-        public void LoadByte(byte[] bKey, byte[] bVector)
-        {
-            KeyByte = bKey;
-            KeyString = Convert.ToBase64String(KeyByte);
-
-            VectorByte = bVector;
-            VectorString = Convert.ToBase64String(VectorByte);
-        }
-
-        public void GenerateNew(bool IgnoreVector = false)
-        {
-            Aes theAes = Aes.Create();
-            KeyByte = theAes.Key;
-            KeyString = Convert.ToBase64String(theAes.Key);
-
-            if (!IgnoreVector)
-            {
-                VectorByte = theAes.IV;
-                VectorString = Convert.ToBase64String(theAes.IV);
-            }
-        }
-
-        public static AesKeyData CreateNew(bool IgnoreVector, string sBase64Key = null)
-        {
-            AesKeyData keyData = new AesKeyData();
-            Aes theAes = Aes.Create();
-
-            //Set key
-            try
-            {
-                if (string.IsNullOrEmpty(sBase64Key))
-                {
-                    keyData.KeyByte = theAes.Key;
-                    keyData.KeyString = Convert.ToBase64String(theAes.Key);
-                }
-                else
-                {
-                    keyData.KeyByte = Convert.FromBase64String(sBase64Key);
-                    keyData.KeyString = sBase64Key;
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("AesKeyData.CreateNew:\r\n" + ex.Message);
-                return null;
-            }
-
-
-            //Set vector
-            if (!IgnoreVector)
-            {
-                keyData.VectorByte = theAes.IV;
-                keyData.VectorString = Convert.ToBase64String(theAes.IV);
-            }
-
-            return keyData;
         }
     }
 }

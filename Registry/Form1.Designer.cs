@@ -33,6 +33,7 @@ namespace RegistryTests
             this.bCreate = new System.Windows.Forms.Button();
             this.bHold = new System.Windows.Forms.Button();
             this.bThread = new System.Windows.Forms.Button();
+            this.bRead = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bCheck
@@ -75,17 +76,29 @@ namespace RegistryTests
             this.bThread.UseVisualStyleBackColor = true;
             this.bThread.Click += new System.EventHandler(this.bThread_Click);
             // 
+            // bRead
+            // 
+            this.bRead.Location = new System.Drawing.Point(147, 72);
+            this.bRead.Name = "bRead";
+            this.bRead.Size = new System.Drawing.Size(112, 23);
+            this.bRead.TabIndex = 4;
+            this.bRead.Text = "Read";
+            this.bRead.UseVisualStyleBackColor = true;
+            this.bRead.Click += new System.EventHandler(this.bRead_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bRead);
             this.Controls.Add(this.bThread);
             this.Controls.Add(this.bHold);
             this.Controls.Add(this.bCreate);
             this.Controls.Add(this.bCheck);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
@@ -96,6 +109,7 @@ namespace RegistryTests
         private System.Windows.Forms.Button bCreate;
         private System.Windows.Forms.Button bHold;
         private System.Windows.Forms.Button bThread;
+        private System.Windows.Forms.Button bRead;
     }
 }
 

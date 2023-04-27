@@ -563,7 +563,7 @@ namespace _CommonCode_Framework
         {
             lValue = 0;
             if (string.IsNullOrWhiteSpace(sInput)) return false;
-            sInput = sInput.Replace(" ", "").Replace("-", "");
+            sInput = sInput.Replace(" ", "").Replace("-", "").ToUpper();
             if (!Regex.IsMatch(sInput, @"^[0-9A-Z]{1,8}$")) return false;
 
 
@@ -583,7 +583,7 @@ namespace _CommonCode_Framework
         {
             lValue = 0;
             if (string.IsNullOrWhiteSpace(sInput)) return false;
-            sInput = sInput.Replace(" ", "").Replace("-", "");
+            sInput = sInput.Replace(" ", "").Replace("-", "").ToUpper();
             if (!Regex.IsMatch(sInput, @"^[0-9A-F]{1,12}$")) return false;
 
 
