@@ -11,6 +11,7 @@ namespace _CommonCode_Framework
 {
     public class csEncryption
     {
+        public string Description { get; set; }
         public string KeyString { get; set; }
         public string VectorString { get; set; }
         public byte[] KeyByte { get; set; }
@@ -36,6 +37,7 @@ namespace _CommonCode_Framework
             Mode = CipherMode.CBC;
             KeySize = 256;
             BlockSize = 128;
+            Description = "Default";
 
             //Create default key
             KeyString = "W7xJ1G2xUDVHENLzCsgaE2cei3y0C72YxwBm8DC/w0Y=";//AES Key

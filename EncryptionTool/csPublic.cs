@@ -8,6 +8,6 @@ namespace EncryptionTool
 {
     public class csPublic
     {
-        public static csConfig Config;
+        public static csDevMessage messageHelper;
     }
 }

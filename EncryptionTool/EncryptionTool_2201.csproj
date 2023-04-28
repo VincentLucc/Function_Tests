@@ -30,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
@@ -62,13 +63,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="csConfig.cs" />
+    <Compile Include="csConfigureHelper.cs" />
+    <Compile Include="csDevMessage.cs" />
     <Compile Include="csEncryptionModel.cs" />
     <Compile Include="csPublic.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAesConfig.cs">
       <SubType>Form</SubType>
@@ -78,8 +81,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAesConfig.resx">
       <DependentUpon>FormAesConfig.cs</DependentUpon>

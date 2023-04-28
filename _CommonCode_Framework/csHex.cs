@@ -174,6 +174,14 @@ namespace _CommonCode_Framework
             return HexStringToHexByte(str, false);
         }
 
+        public static string HexStringToCRCString(string sHex)
+        {
+            byte[] bDate = HexStringToHexByte(sHex);
+            byte[] bCRC = CRC16(bDate);
+            string sCRC = BitConverter.ToString(bCRC).Replace("-", "");
+            return sCRC;
+        }
+
 
         /// </summary>
         /// <param name="str"></param>

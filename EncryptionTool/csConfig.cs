@@ -7,9 +7,11 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace EncryptionTool
 {
+    [XmlRoot("Config")]
     public class csConfig
     {
         public _TextType InputType { get; set; }
@@ -17,12 +19,17 @@ namespace EncryptionTool
 
         public csEncryption Encryption { get; set; }
 
+        public List<csEncryption> Encryptions { get; set; }
+
+        public csEncryption SelectedEncryption { get; set; }
+
         public csConfig()
         {
             InputType = _TextType.String;
             OutputType = _TextType.String;
-            
-            Encryption=new csEncryption();
+            Encryptions = new List<csEncryption>();
+            SelectedEncryption = new csEncryption();
+            Encryption = new csEncryption();
 
             //Code method 1
             //var regKey = Convert.FromBase64String("UEBDSyRNQVJURDMxVEEtWA==");
@@ -48,7 +55,7 @@ namespace EncryptionTool
         Hex,
         [Description("Base-64 String")]
         Base64String,
-        [Description("Raw Bytes")]
-        Raw,
+        [Description("File Bytes")]
+        FileStream,
     }
 }

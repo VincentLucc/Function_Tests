@@ -27,5 +27,18 @@ namespace EncryptionTool
         {
 
         }
+
+        private void bAdd_Click(object sender, EventArgs e)
+        {
+            string sInput = XtraInputBox.Show("Please add a description","Add encryption","Default");
+            if (string.IsNullOrWhiteSpace(sInput)) return;
+ 
+
+        }
+
+        private void bDelete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
