@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.bReset = new DevExpress.XtraEditors.SimpleButton();
+            this.bDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.bAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.EncryptionsLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             this.spinEdit2 = new DevExpress.XtraEditors.SpinEdit();
             this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
@@ -46,18 +51,15 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bAdd = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bDelete = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bReset = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EncryptionsLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
@@ -74,12 +76,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,7 +89,7 @@
             this.layoutControl1.Controls.Add(this.bReset);
             this.layoutControl1.Controls.Add(this.bDelete);
             this.layoutControl1.Controls.Add(this.bAdd);
-            this.layoutControl1.Controls.Add(this.lookUpEdit3);
+            this.layoutControl1.Controls.Add(this.EncryptionsLookUpEdit);
             this.layoutControl1.Controls.Add(this.lookUpEdit2);
             this.layoutControl1.Controls.Add(this.spinEdit2);
             this.layoutControl1.Controls.Add(this.spinEdit1);
@@ -104,6 +104,59 @@
             this.layoutControl1.Size = new System.Drawing.Size(470, 438);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Location = new System.Drawing.Point(117, 38);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(341, 20);
+            this.textEdit1.StyleController = this.layoutControl1;
+            this.textEdit1.TabIndex = 15;
+            // 
+            // bReset
+            // 
+            this.bReset.Location = new System.Drawing.Point(388, 12);
+            this.bReset.MaximumSize = new System.Drawing.Size(70, 0);
+            this.bReset.MinimumSize = new System.Drawing.Size(50, 0);
+            this.bReset.Name = "bReset";
+            this.bReset.Size = new System.Drawing.Size(70, 22);
+            this.bReset.StyleController = this.layoutControl1;
+            this.bReset.TabIndex = 14;
+            this.bReset.Text = "Reset";
+            // 
+            // bDelete
+            // 
+            this.bDelete.Location = new System.Drawing.Point(331, 12);
+            this.bDelete.MaximumSize = new System.Drawing.Size(70, 0);
+            this.bDelete.MinimumSize = new System.Drawing.Size(50, 0);
+            this.bDelete.Name = "bDelete";
+            this.bDelete.Size = new System.Drawing.Size(53, 22);
+            this.bDelete.StyleController = this.layoutControl1;
+            this.bDelete.TabIndex = 13;
+            this.bDelete.Text = "Delete";
+            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
+            // 
+            // bAdd
+            // 
+            this.bAdd.Location = new System.Drawing.Point(257, 12);
+            this.bAdd.MaximumSize = new System.Drawing.Size(70, 0);
+            this.bAdd.MinimumSize = new System.Drawing.Size(50, 0);
+            this.bAdd.Name = "bAdd";
+            this.bAdd.Size = new System.Drawing.Size(70, 22);
+            this.bAdd.StyleController = this.layoutControl1;
+            this.bAdd.TabIndex = 12;
+            this.bAdd.Text = "Add";
+            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
+            // 
+            // EncryptionsLookUpEdit
+            // 
+            this.EncryptionsLookUpEdit.Location = new System.Drawing.Point(117, 12);
+            this.EncryptionsLookUpEdit.Name = "EncryptionsLookUpEdit";
+            this.EncryptionsLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.EncryptionsLookUpEdit.Size = new System.Drawing.Size(136, 20);
+            this.EncryptionsLookUpEdit.StyleController = this.layoutControl1;
+            this.EncryptionsLookUpEdit.TabIndex = 11;
             // 
             // lookUpEdit2
             // 
@@ -283,36 +336,14 @@
             this.layoutControlItem6.Size = new System.Drawing.Size(225, 24);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(93, 13);
             // 
-            // lookUpEdit3
-            // 
-            this.lookUpEdit3.Location = new System.Drawing.Point(117, 12);
-            this.lookUpEdit3.Name = "lookUpEdit3";
-            this.lookUpEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit3.Size = new System.Drawing.Size(136, 20);
-            this.lookUpEdit3.StyleController = this.layoutControl1;
-            this.lookUpEdit3.TabIndex = 11;
-            // 
             // layoutControlItem8
             // 
-            this.layoutControlItem8.Control = this.lookUpEdit3;
+            this.layoutControlItem8.Control = this.EncryptionsLookUpEdit;
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(245, 26);
             this.layoutControlItem8.Text = "Encryption";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(93, 13);
-            // 
-            // bAdd
-            // 
-            this.bAdd.Location = new System.Drawing.Point(257, 12);
-            this.bAdd.MaximumSize = new System.Drawing.Size(70, 0);
-            this.bAdd.MinimumSize = new System.Drawing.Size(50, 0);
-            this.bAdd.Name = "bAdd";
-            this.bAdd.Size = new System.Drawing.Size(70, 22);
-            this.bAdd.StyleController = this.layoutControl1;
-            this.bAdd.TabIndex = 12;
-            this.bAdd.Text = "Add";
-            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
             // 
             // layoutControlItem9
             // 
@@ -323,18 +354,6 @@
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
-            // bDelete
-            // 
-            this.bDelete.Location = new System.Drawing.Point(331, 12);
-            this.bDelete.MaximumSize = new System.Drawing.Size(70, 0);
-            this.bDelete.MinimumSize = new System.Drawing.Size(50, 0);
-            this.bDelete.Name = "bDelete";
-            this.bDelete.Size = new System.Drawing.Size(53, 22);
-            this.bDelete.StyleController = this.layoutControl1;
-            this.bDelete.TabIndex = 13;
-            this.bDelete.Text = "Delete";
-            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
-            // 
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.bDelete;
@@ -344,17 +363,6 @@
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
-            // bReset
-            // 
-            this.bReset.Location = new System.Drawing.Point(388, 12);
-            this.bReset.MaximumSize = new System.Drawing.Size(70, 0);
-            this.bReset.MinimumSize = new System.Drawing.Size(50, 0);
-            this.bReset.Name = "bReset";
-            this.bReset.Size = new System.Drawing.Size(70, 22);
-            this.bReset.StyleController = this.layoutControl1;
-            this.bReset.TabIndex = 14;
-            this.bReset.Text = "Reset";
-            // 
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.bReset;
@@ -363,14 +371,6 @@
             this.layoutControlItem11.Size = new System.Drawing.Size(74, 26);
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.Location = new System.Drawing.Point(117, 38);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(341, 20);
-            this.textEdit1.StyleController = this.layoutControl1;
-            this.textEdit1.TabIndex = 15;
             // 
             // layoutControlItem12
             // 
@@ -392,6 +392,8 @@
             this.Load += new System.EventHandler(this.FormAesConfig_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EncryptionsLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
@@ -408,12 +410,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             this.ResumeLayout(false);
 
@@ -441,7 +441,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraEditors.SimpleButton bDelete;
         private DevExpress.XtraEditors.SimpleButton bAdd;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit3;
+        private DevExpress.XtraEditors.LookUpEdit EncryptionsLookUpEdit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;

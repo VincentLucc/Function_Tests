@@ -18,7 +18,7 @@ namespace EncryptionTool
 
         public byte[] SourceBytes { get; set; }
 
-       
+        public csConfig config { get; set; }
 
         public FormMain()
         {
@@ -72,6 +72,7 @@ namespace EncryptionTool
                 messageHelper.Error(sMessage);
                 return false;
             }
+            config = csConfigureHelper.Config;
 
             //Pass all steps
             return true;
@@ -87,14 +88,6 @@ namespace EncryptionTool
             InputLookUpEdit.EditValue = csConfigureHelper.Config.InputType;
             InputLookUpEdit.EditValueChanged += InputLookUpEdit_EditValueChanged;
 
-
-
-            InitLookupEdit(OutputLookUpEdit);
-            OutputLookUpEdit.Properties.DataSource = typeList;
-            OutputLookUpEdit.Properties.DropDownRows = typeList.Length; //Limit rows
-            OutputLookUpEdit.EditValue = csConfigureHelper.Config.OutputType;
-            OutputLookUpEdit.EditValueChanged += OutputLookUpEdit_EditValueChanged;
-
             InitLookupEdit(EncryptionListLookUpEdit);
             var itemList = csConfigureHelper.Config.Encryptions.Select(a => a.Description).ToList();
             EncryptionListLookUpEdit.Properties.DataSource = itemList;
@@ -103,27 +96,14 @@ namespace EncryptionTool
 
         }
 
-        private void OutputLookUpEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            if (OutputLookUpEdit.EditValue is _TextType)
-            {
-                csConfigureHelper.Config.OutputType = (_TextType)OutputLookUpEdit.EditValue;
-            }
-        }
 
         private void InputLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
             if (InputLookUpEdit.EditValue is _TextType)
             {
                 csConfigureHelper.Config.InputType = (_TextType)InputLookUpEdit.EditValue;
-                if (csConfigureHelper.Config.InputType == _TextType.FileStream)
-                {
-                    UpdateFileStreamMode(true);
-                }
-                else
-                {
-                    UpdateFileStreamMode(false);
-                }
+                string sDIsplay = GetDisplayString(SourceBytes, csConfigureHelper.Config.InputType);
+                InputMemoEdit.Text = sDIsplay;
             }
         }
 
@@ -160,49 +140,109 @@ namespace EncryptionTool
             }
         }
 
-        private void bCOnvert_Click(object sender, EventArgs e)
+        private void bENcrypt_Click(object sender, EventArgs e)
         {
-            string sInput = InputMemoEdit.Text;
-            if (string.IsNullOrWhiteSpace(sInput))
-            {
-                MessageBox.Show("Empty inputs");
-                return;
-            }
+            if (!TryGetInputBytes()) return;
+            var encryption = csConfigureHelper.Config.SelectedEncryption;
+            string sInput = Encoding.UTF8.GetString(SourceBytes);
+            string sResult = encryption.EncryptToAesString(sInput);
+            OutputMemoEdit.Text = sResult;
+        }
 
-            //Convert input to bytes
-            byte[] bData = null;
-            if (csConfigureHelper.Config.InputType == _TextType.Hex)
-            {
-
-            }
-            else if (csConfigureHelper.Config.InputType == _TextType.FileStream)
-            {
-                bData = Encoding.UTF8.GetBytes(sInput);
-            }
-
-            var encryption = csConfigureHelper.Config.Encryption;
-            string sResult = encryption.DecryptFromAesByte(bData);
+        private void bConvert_Click(object sender, EventArgs e)
+        {
+            if (!TryGetInputBytes()) return;
+            var encryption = csConfigureHelper.Config.SelectedEncryption;
+            string sResult = encryption.DecryptFromAesByte(SourceBytes);
 
             OutputMemoEdit.Text = sResult;
         }
 
+
+
+        private bool TryGetInputBytes()
+        {
+            string sInput = InputMemoEdit.Text;
+
+            if (string.IsNullOrWhiteSpace(sInput))
+            {
+                MessageBox.Show("Empty inputs");
+                return false;
+            }
+
+            if (csConfigureHelper.Config.InputType == _TextType.Hex)
+            {
+                if (!csHex.IsHexString(sInput))
+                {
+                    messageHelper.Info("Input is not valid hex string.");
+                    return false;
+                }
+
+                SourceBytes = csHex.HexStringToHexByte(sInput);
+
+            }
+            else if (csConfigureHelper.Config.InputType == _TextType.String)
+            {
+                SourceBytes = Encoding.UTF8.GetBytes(sInput);
+            }
+            else if (csConfigureHelper.Config.InputType == _TextType.Base64String)
+            {
+                if (!csHex.IsBase64String(sInput))
+                {
+                    messageHelper.Info("Input is not valid base-64 string.");
+                    return false;
+                }
+                SourceBytes = Convert.FromBase64String(sInput);
+            }
+
+            //Pass all steps
+            return true;
+        }
+
         private void bLoadFile_Click(object sender, EventArgs e)
         {
-            byte[] bData = null;
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     string sPath = dialog.FileName;
-                    bData = File.ReadAllBytes(sPath);
-                    string sInput = File.ReadAllText(sPath);
-                    InputMemoEdit.Text = sInput;
+                    SourceBytes = File.ReadAllBytes(sPath);
+                    string sDisplay = GetDisplayString(SourceBytes, config.InputType);
+                    InputMemoEdit.Text = sDisplay;
 
-                    var encryption = csConfigureHelper.Config.Encryption;
-                    string sResult = encryption.DecryptFromAesByte(bData);
+                    var encryption = config.SelectedEncryption;
+                    if (encryption == null)
+                    {
+                        messageHelper.Info("No encryption config found.");
+                        return;
+                    }
+                    string sResult = encryption.DecryptFromAesByte(SourceBytes);
                     OutputMemoEdit.Text = sResult;
                 }
             }
+        }
+
+        private string GetDisplayString(byte[] bSource, _TextType textType)
+        {
+            string sOutput = "";
+            if (bSource == null || bSource.Length == 0) return string.Empty;
+
+            switch (textType)
+            {
+                case _TextType.String:
+                    sOutput = Encoding.UTF8.GetString(bSource);
+                    break;
+                case _TextType.Hex:
+                    sOutput = BitConverter.ToString(bSource).Replace("-", " ");
+                    break;
+                case _TextType.Base64String:
+                    sOutput = Convert.ToBase64String(bSource);
+                    break;
+                default:
+                    break;
+            }
+
+            return sOutput;
         }
 
         private void bSettings_Click(object sender, EventArgs e)
@@ -210,6 +250,41 @@ namespace EncryptionTool
             FormAesConfig winConfig = new FormAesConfig();
             winConfig.StartPosition = FormStartPosition.CenterParent;
             winConfig.ShowDialog();
+        }
+
+        private void bEncryptToFile_Click(object sender, EventArgs e)
+        {
+            var encryption = config.SelectedEncryption;
+            if (encryption == null)
+            {
+                messageHelper.Info("No encryption config found.");
+                return;
+            }
+
+            //Check input
+            if (!TryGetInputBytes())
+            {
+                messageHelper.Info("Enmpty input.");
+                return;
+            }
+
+            //Encryption
+            string sINput = Encoding.UTF8.GetString(SourceBytes);
+            var encrptedData = encryption.EncryptToAesByte(sINput);
+
+            using (SaveFileDialog fileDialog = new SaveFileDialog())
+            {
+                if (fileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string sPath = fileDialog.FileName;
+
+                    using (FileStream steram=new FileStream(sPath,FileMode.Create,
+                        FileAccess.Write,FileShare.None,8196,FileOptions.WriteThrough))
+                    {
+                        steram.Write(encrptedData,0, encrptedData.Length);
+                    }
+                }
+            }
         }
     }
 }

@@ -223,6 +223,14 @@ namespace _CommonCode_Framework
             return Encoding.UTF8.GetString(bData);
         }
 
+        public static bool IsBase64String(string base64)
+        {
+            base64 = base64.Trim();
+            if (base64.Length % 4 != 0) return false;
+            if (!Regex.IsMatch(base64, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None)) return false;
+            return true;
+        }
+
         public static bool[] HexStringToBoolArray16(string sHex)
         {
             //Prepare value
@@ -677,8 +685,115 @@ namespace _CommonCode_Framework
             return sBase36;
         }
 
+        /// <summary>
+        /// Easier to read
+        /// </summary>
+        public static List<char> Base32Chars = new List<char> {
+            '2', '3', '4', '5', '6', '7', '8', '9',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+            'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R',
+            'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+        };
+
+        public const string Base32Pattern = @"^[2-9A-HJ-NP-Z]{1,8}$";
+        /// <summary>
+        /// Base32 * 8
+        /// Convert 10 char Hex string to 8 char base-32 string
+        /// Convert 5 char Hex string to 4 char base-32 string
+        /// </summary>
+        /// <param name="sHexString"></param>
+        /// <returns></returns>
+        public static string HexStringToBase32String(string sHexString, int iTagetLength = 8)
+        {
+            //Input verification
+            if (!IsHexString(sHexString)) return null;
+            string sInput = sHexString.Replace(" ", "").Replace("-", "");
+            if (sInput.Length > 14) return null;
+
+            //To raw data
+            if (!HexStringToUlong(sInput, out ulong lValue)) return null;
+
+            //Convert to base 32 letter
+            string sBase32 = UlongToBase32String(lValue, iTagetLength);
+
+            return sBase32;
+        }
+
+        public static string UlongToBase32String(ulong transData, int iTagetLength = 8)
+        {
+
+            //Convert to base 32 letter
+            List<int> base32Indexs = new List<int>();
+            while (transData >= 32)
+            {
+                int iIndex = (int)(transData % 32);
+                base32Indexs.Add(iIndex);
+                transData = transData / 32;
+            }
+            //Add last piece
+            base32Indexs.Add((int)transData);
+
+            //Make sure output is minimum 8 chars
+            while (base32Indexs.Count < iTagetLength)
+                base32Indexs.Add(0);
+
+            //Convert to string
+            StringBuilder sbBase32 = new StringBuilder();
+            //Reverse the order
+            for (int i = base32Indexs.Count - 1; i > -1; i--)
+            {
+                int iIndex = base32Indexs[i];
+                sbBase32.Append(Base32Chars[iIndex]);
+            }
+
+            string sBase32 = sbBase32.ToString();
+
+            return sBase32;
+        }
+
+        public static string Base32StringToHexString(string sBase32String, int iTagetLength = 10)
+        {
+            //Check format
+            if (!Base32StringToUlong(sBase32String, out ulong lValue)) return null;
+
+            byte[] bData = BitConverter.GetBytes(lValue);
+            //Order is reversed when saved
+            bData = bData.Reverse().ToArray();
+            string sHexString = BitConverter.ToString(bData).Replace("-", "");
+
+            //trim result
+            while (sHexString.StartsWith("0"))
+            {
+                sHexString = sHexString.Substring(1, sHexString.Length - 1);
+            }
+
+            //Fill result
+            while (sHexString.Length < iTagetLength)
+            {
+                sHexString = "0" + sHexString;
+            }
+
+            return sHexString;
+        }
+
+        public static bool Base32StringToUlong(string sInput, out ulong lValue)
+        {
+            lValue = 0;
+            if (string.IsNullOrWhiteSpace(sInput)) return false;
+            sInput = sInput.Replace(" ", "").Replace("-", "").ToUpper();
+            if (!Regex.IsMatch(sInput, Base32Pattern)) return false;
 
 
+            int iPosition = 0;
+            for (int i = sInput.Length - 1; i > -1; i--)
+            {
+                var charValue = sInput[i];
+                int iValue = Base32Chars.IndexOf(charValue);
+                lValue += (ulong)iValue * (ulong)(Math.Pow(32, iPosition));
+                iPosition++;
+            }
 
+            return true;
+        }
     }
 }

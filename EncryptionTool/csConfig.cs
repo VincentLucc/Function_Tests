@@ -16,21 +16,26 @@ namespace EncryptionTool
     {
         public _TextType InputType { get; set; }
         public _TextType OutputType { get; set; }
-
-        public csEncryption Encryption { get; set; }
-
         public List<csEncryption> Encryptions { get; set; }
 
-        public csEncryption SelectedEncryption { get; set; }
+        /// <summary>
+        /// Current selected encryption
+        /// </summary>
+        public int SelectedIndex { get; set; }
+
+        [XmlIgnore]
+        public csEncryption SelectedEncryption => GetSelection();
 
         public csConfig()
         {
             InputType = _TextType.String;
             OutputType = _TextType.String;
             Encryptions = new List<csEncryption>();
-            SelectedEncryption = new csEncryption();
-            Encryption = new csEncryption();
+        }
 
+        private csEncryption CreateNew()
+        {
+            var Encryption = new csEncryption();
             //Code method 1
             //var regKey = Convert.FromBase64String("UEBDSyRNQVJURDMxVEEtWA==");
             //var regVector = Convert.FromBase64String("AAAAAAAAAAAAAAAAAAAAAA==");
@@ -41,9 +46,19 @@ namespace EncryptionTool
             //Encryption.BlockSize = 128;
 
             //Method2
+            Encryption.GenerateNew();
             var defaultKey = Convert.FromBase64String("poBOzKAk+kvj74NOIx398nVBErA1IfKVCtDdrPyTPPs=");
             var defaultVector = new byte[16];
             Encryption.SetAesKey(defaultKey, defaultVector);
+            return Encryption;
+        }
+
+
+        private csEncryption GetSelection()
+        {
+            if (Encryptions == null || Encryptions.Count == 0) return null;
+            if (SelectedIndex < 0 || SelectedIndex >= Encryptions.Count) return null;
+            return Encryptions[SelectedIndex];
         }
     }
 
@@ -55,7 +70,5 @@ namespace EncryptionTool
         Hex,
         [Description("Base-64 String")]
         Base64String,
-        [Description("File Bytes")]
-        FileStream,
     }
 }

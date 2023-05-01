@@ -7,10 +7,63 @@ using System.Threading.Tasks;
 
 namespace Hardware
 {
-    static public class MotherboardInfo
+    static public class csHardware
     {
         private static ManagementObjectSearcher baseboardSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_BaseBoard");
         private static ManagementObjectSearcher motherboardSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_MotherboardDevice");
+        private static ManagementObjectSearcher hardDrive = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PhysicalMedia");
+        private static ManagementObjectSearcher systemInfo = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_ComputerSystemProduct");
+
+
+        public static string UUID
+        {
+            get
+            {
+                try
+                {
+                    foreach (ManagementObject queryObj in systemInfo.Get())
+                    {
+                        string sUID = queryObj["UUID"].ToString();
+                        return sUID;
+                    }
+                    return "";
+                }
+                catch (Exception e)
+                {
+                    return "";
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Get the main harddrive ID
+        /// </summary>
+        static public string FirstHardDriveID
+        {
+            get
+            {
+                try
+                {
+                    foreach (ManagementObject queryObj in hardDrive.Get())
+                    {
+                        string sID = queryObj["SerialNumber"].ToString();
+
+                        //Tag="\\\.\\PHYSICALDRIVE0"
+                        string sTag = queryObj["Tag"].ToString();
+                        sTag = sTag.ToUpper();                     
+                        if (sTag.EndsWith("PHYSICALDRIVE0")) return sID;
+                      
+                    }
+                    return "";
+                }
+                catch (Exception e)
+                {
+                    return "";
+                }
+            }
+        }
+
 
         /// <summary>
         /// Running or Full Power
@@ -93,6 +146,8 @@ namespace Hardware
                 }
             }
         }
+
+
 
         /// <summary>
         /// May not have

@@ -59,9 +59,15 @@ namespace Hardware
         private void bMotherBoard_Click(object sender, EventArgs e)
         {
             //Works, some property name might not exist
-            string sBrand= MotherboardInfo.Manufacturer;
-            string serialNumber = MotherboardInfo.SerialNumber;
+            string sBrand= csHardware.Manufacturer;
+            string serialNumber = csHardware.SerialNumber;
             Debug.WriteLine($"Brand:{sBrand}, S/N:{serialNumber}");
+        }
+
+        private void bHardDrive_Click(object sender, EventArgs e)
+        {
+            string sHDDID = csHardware.FirstHardDriveID;
+            Debug.WriteLine($"Disk:{sHDDID}");
         }
     }
 }

@@ -34,6 +34,7 @@ namespace Hardware
             this.bAssemblyInfo = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bMotherBoard = new System.Windows.Forms.Button();
+            this.bHardDrive = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,11 +86,22 @@ namespace Hardware
             this.bMotherBoard.UseVisualStyleBackColor = true;
             this.bMotherBoard.Click += new System.EventHandler(this.bMotherBoard_Click);
             // 
+            // bHardDrive
+            // 
+            this.bHardDrive.Location = new System.Drawing.Point(12, 166);
+            this.bHardDrive.Name = "bHardDrive";
+            this.bHardDrive.Size = new System.Drawing.Size(118, 23);
+            this.bHardDrive.TabIndex = 5;
+            this.bHardDrive.Text = "HardDrive ID";
+            this.bHardDrive.UseVisualStyleBackColor = true;
+            this.bHardDrive.Click += new System.EventHandler(this.bHardDrive_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bHardDrive);
             this.Controls.Add(this.bMotherBoard);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bAssemblyInfo);
@@ -108,6 +120,7 @@ namespace Hardware
         private DevExpress.XtraEditors.SimpleButton bAssemblyInfo;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button bMotherBoard;
+        private System.Windows.Forms.Button bHardDrive;
     }
 }
 

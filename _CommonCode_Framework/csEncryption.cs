@@ -11,7 +11,26 @@ namespace _CommonCode_Framework
 {
     public class csEncryption
     {
-        public string Description { get; set; }
+
+        private string _description;
+
+        public string Description
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_description))
+                {
+                    return "Undefined";
+                }
+                else
+                {
+                    return _description;
+                }
+          
+            }
+            set { _description = value; }
+        }
+
         public string KeyString { get; set; }
         public string VectorString { get; set; }
         public byte[] KeyByte { get; set; }
