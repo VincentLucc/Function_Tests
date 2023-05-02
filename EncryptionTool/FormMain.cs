@@ -108,8 +108,6 @@ namespace EncryptionTool
             if (InputLookUpEdit.EditValue is _TextType)
             {
                 csConfigureHelper.Config.InputType = (_TextType)InputLookUpEdit.EditValue;
-                string sDIsplay = GetDisplayString(SourceBytes, csConfigureHelper.Config.InputType);
-                InputMemoEdit.Text = sDIsplay;
             }
         }
 
