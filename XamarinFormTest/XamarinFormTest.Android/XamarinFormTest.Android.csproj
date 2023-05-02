@@ -91,11 +91,5 @@
     <AndroidResource Include="Resources\drawable\icon_about.png" />
     <AndroidResource Include="Resources\drawable\icon_feed.png" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\XamarinFormTest\XamarinFormTest.csproj">
-      <Project>{700FB860-DE81-405B-8666-33785D2927A6}</Project>
-      <Name>XamarinFormTest</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
