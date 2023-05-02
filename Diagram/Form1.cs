@@ -80,7 +80,7 @@ namespace DiagramDemo
             }
             else if (e.Item is Container1)
             {
-               (e.Item as Container1).Draw(e);
+                (e.Item as Container1).Draw(e);
             }
         }
 
@@ -99,7 +99,7 @@ namespace DiagramDemo
 
         private void DiagramControl1_CustomItemDrag(object sender, DiagramCustomItemDragEventArgs e)
         {
-
+            Debug.WriteLine("DiagramControl1_CustomItemDrag");
         }
 
         private void DiagramControl1_CustomItemDragResult(object sender, DiagramCustomItemDragResultEventArgs e)
@@ -132,11 +132,30 @@ namespace DiagramDemo
             {
                 if (movingItem.Item is DiagramImage)
                 {
+
                     //Image can only sit in root
                     if (!(movingItem.NewParent is DiagramRoot))
                     {
                         e.Cancel = true;
                         return;
+                    }
+                }
+
+              
+                else if (movingItem.Item is DiagramShape)
+                {
+                    var itemShape = (DiagramShape)movingItem.Item;
+
+                    if (itemShape.Shape.ToString() == "Triangle")
+                    {
+                        //Check parent null to know if this item is new or existing item
+                        //Allow new item moving to add new item
+                        if (itemShape.ParentItem != null)
+                        {
+                            e.Cancel = true;
+                            return;
+                        }
+
                     }
                 }
 
@@ -159,7 +178,7 @@ namespace DiagramDemo
         private void DiagramControl1_MouseMove(object sender, MouseEventArgs e)
         {
 
-
+            Debug.WriteLine("DiagramControl1_MouseMove");
         }
 
         private void DiagramControl1_SelectionChanged(object sender, DiagramSelectionChangedEventArgs e)

@@ -97,7 +97,7 @@
             // 
             this.bEncryptToFile.Location = new System.Drawing.Point(12, 164);
             this.bEncryptToFile.Name = "bEncryptToFile";
-            this.bEncryptToFile.Size = new System.Drawing.Size(125, 22);
+            this.bEncryptToFile.Size = new System.Drawing.Size(99, 22);
             this.bEncryptToFile.StyleController = this.layoutControl1;
             this.bEncryptToFile.TabIndex = 10;
             this.bEncryptToFile.Text = "Encrypt To File";
@@ -107,7 +107,7 @@
             // 
             this.bENcrypt.Location = new System.Drawing.Point(12, 138);
             this.bENcrypt.Name = "bENcrypt";
-            this.bENcrypt.Size = new System.Drawing.Size(77, 22);
+            this.bENcrypt.Size = new System.Drawing.Size(99, 22);
             this.bENcrypt.StyleController = this.layoutControl1;
             this.bENcrypt.TabIndex = 9;
             this.bENcrypt.Text = "Encrypt";
@@ -125,19 +125,20 @@
             // 
             // bSettings
             // 
-            this.bSettings.Location = new System.Drawing.Point(180, 138);
+            this.bSettings.Location = new System.Drawing.Point(566, 164);
             this.bSettings.Name = "bSettings";
-            this.bSettings.Size = new System.Drawing.Size(95, 22);
+            this.bSettings.Size = new System.Drawing.Size(77, 22);
             this.bSettings.StyleController = this.layoutControl1;
             this.bSettings.TabIndex = 6;
             this.bSettings.Text = "Settings";
+            this.bSettings.Visible = false;
             this.bSettings.Click += new System.EventHandler(this.bSettings_Click);
             // 
             // bDecrypt
             // 
-            this.bDecrypt.Location = new System.Drawing.Point(93, 138);
+            this.bDecrypt.Location = new System.Drawing.Point(115, 138);
             this.bDecrypt.Name = "bDecrypt";
-            this.bDecrypt.Size = new System.Drawing.Size(83, 22);
+            this.bDecrypt.Size = new System.Drawing.Size(97, 22);
             this.bDecrypt.StyleController = this.layoutControl1;
             this.bDecrypt.TabIndex = 5;
             this.bDecrypt.Text = "Decrypt";
@@ -145,9 +146,9 @@
             // 
             // bLoadFile
             // 
-            this.bLoadFile.Location = new System.Drawing.Point(141, 164);
+            this.bLoadFile.Location = new System.Drawing.Point(115, 164);
             this.bLoadFile.Name = "bLoadFile";
-            this.bLoadFile.Size = new System.Drawing.Size(134, 22);
+            this.bLoadFile.Size = new System.Drawing.Size(97, 22);
             this.bLoadFile.StyleController = this.layoutControl1;
             this.bLoadFile.TabIndex = 7;
             this.bLoadFile.Text = "Decrypt From File";
@@ -192,11 +193,11 @@
             this.emptySpaceItem5,
             this.layoutControlItem7,
             this.layoutControlItem3,
-            this.layoutControlItem8,
             this.layoutControlItem4,
             this.emptySpaceItem1,
             this.layoutControlItem6,
-            this.layoutControlItem9});
+            this.layoutControlItem9,
+            this.layoutControlItem8});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(655, 457);
             this.Root.TextVisible = false;
@@ -255,17 +256,17 @@
             // emptySpaceItem5
             // 
             this.emptySpaceItem5.AllowHotTrack = false;
-            this.emptySpaceItem5.Location = new System.Drawing.Point(267, 126);
+            this.emptySpaceItem5.Location = new System.Drawing.Point(204, 126);
             this.emptySpaceItem5.Name = "emptySpaceItem5";
-            this.emptySpaceItem5.Size = new System.Drawing.Size(71, 26);
+            this.emptySpaceItem5.Size = new System.Drawing.Size(134, 26);
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.bDecrypt;
-            this.layoutControlItem7.Location = new System.Drawing.Point(81, 126);
+            this.layoutControlItem7.Location = new System.Drawing.Point(103, 126);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(87, 26);
+            this.layoutControlItem7.Size = new System.Drawing.Size(101, 26);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
@@ -281,27 +282,28 @@
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.bSettings;
-            this.layoutControlItem8.Location = new System.Drawing.Point(168, 126);
+            this.layoutControlItem8.Location = new System.Drawing.Point(554, 152);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(99, 26);
+            this.layoutControlItem8.Size = new System.Drawing.Size(81, 26);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
+            this.layoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.bENcrypt;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 126);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(81, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(103, 26);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(267, 152);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(204, 152);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(368, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(350, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem6
@@ -309,16 +311,16 @@
             this.layoutControlItem6.Control = this.bEncryptToFile;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 152);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(129, 26);
+            this.layoutControlItem6.Size = new System.Drawing.Size(103, 26);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.bLoadFile;
-            this.layoutControlItem9.Location = new System.Drawing.Point(129, 152);
+            this.layoutControlItem9.Location = new System.Drawing.Point(103, 152);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(138, 26);
+            this.layoutControlItem9.Size = new System.Drawing.Size(101, 26);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
