@@ -57,7 +57,7 @@ namespace EncryptionTool
                 }
 
                 bData = null;
-
+                IsLoad = true;
                 return true;
 
             }

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <InputType>Base64String</InputType>
+  <OutputType>String</OutputType>
+  <Encryptions>
+    <csEncryption>
+      <Description>Ink Record and Tag</Description>
+      <KeyString>poBOzKAk+kvj74NOIx398nVBErA1IfKVCtDdrPyTPPs=</KeyString>
+      <VectorString>AAAAAAAAAAAAAAAAAAAAAA==</VectorString>
+      <KeyByte>poBOzKAk+kvj74NOIx398nVBErA1IfKVCtDdrPyTPPs=</KeyByte>
+      <VectorByte>AAAAAAAAAAAAAAAAAAAAAA==</VectorByte>
+      <Padding>PKCS7</Padding>
+      <Mode>CBC</Mode>
+      <KeySize>256</KeySize>
+      <BlockSize>128</BlockSize>
+    </csEncryption>
+    <csEncryption>
+      <Description>Delta-X Project File</Description>
+      <KeyString>UEBDSyRNQVJURDMxVEEtWA==</KeyString>
+      <VectorString>AAAAAAAAAAAAAAAAAAAAAA==</VectorString>
+      <KeyByte>UEBDSyRNQVJURDMxVEEtWA==</KeyByte>
+      <VectorByte>AAAAAAAAAAAAAAAAAAAAAA==</VectorByte>
+      <Padding>Zeros</Padding>
+      <Mode>ECB</Mode>
+      <KeySize>128</KeySize>
+      <BlockSize>128</BlockSize>
+    </csEncryption>
+  </Encryptions>
+  <SelectedIndex>0</SelectedIndex>
+</Config>

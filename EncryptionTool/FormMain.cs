@@ -93,9 +93,15 @@ namespace EncryptionTool
             EncryptionListLookUpEdit.Properties.DataSource = itemList;
             EncryptionListLookUpEdit.Properties.DropDownRows = itemList.Count(); //Limit rows
             EncryptionListLookUpEdit.EditValue = itemList[0];
+            EncryptionListLookUpEdit.EditValueChanged += EncryptionListLookUpEdit_EditValueChanged;
 
         }
 
+        private void EncryptionListLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (EncryptionListLookUpEdit.ItemIndex < 0) return;
+            config.SelectedIndex = EncryptionListLookUpEdit.ItemIndex;
+        }
 
         private void InputLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
