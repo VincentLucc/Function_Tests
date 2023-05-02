@@ -191,7 +191,8 @@ namespace _CommonCode_Framework
         {
             string hex = isFilterChinese ? FilterChinese(str) : ConvertChinese(str);
             //Clear space
-            hex = hex.Replace(" ", "");
+            hex = FormatHexString(hex);
+
             //make sure length is even number, if not insert 0 to front
             if (hex.Length % 2 != 0) hex = "0" + hex;
 
@@ -465,7 +466,7 @@ namespace _CommonCode_Framework
         {
             //Input verification
             if (!IsHexString(sHexString)) return null;
-            string sInput = sHexString.Replace(" ", "").Replace("-", "");
+            string sInput = FormatHexString(sHexString);
             if (sInput.Length > 14) return null;
 
             //To raw data
@@ -506,9 +507,17 @@ namespace _CommonCode_Framework
         public static bool IsHexString(string sInput)
         {
             if (string.IsNullOrWhiteSpace(sInput)) return false;
-            sInput = sInput.Replace("-", "").Replace(" ", "").ToUpper();
+            sInput = FormatHexString(sInput);
             if (!Regex.IsMatch(sInput, @"^[0-9A-F]+$")) return false;
             return true;
+        }
+
+        public static string FormatHexString(string sHex)
+        {
+            if (string.IsNullOrWhiteSpace(sHex)) return string.Empty;
+            string sPattern = @"\r|\n|\-|\s|\,";
+            string sOutput = Regex.Replace(sHex, sPattern, "").ToUpper();
+            return sOutput;
         }
 
         /// <summary>
@@ -707,7 +716,7 @@ namespace _CommonCode_Framework
         {
             //Input verification
             if (!IsHexString(sHexString)) return null;
-            string sInput = sHexString.Replace(" ", "").Replace("-", "");
+            string sInput = FormatHexString(sHexString);
             if (sInput.Length > 14) return null;
 
             //To raw data

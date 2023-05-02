@@ -3,6 +3,7 @@
   <InputType>Base64String</InputType>
   <OutputType>String</OutputType>
   <Encryptions>
+
     <csEncryption>
       <Description>Ink Record and Tag</Description>
       <KeyString>poBOzKAk+kvj74NOIx398nVBErA1IfKVCtDdrPyTPPs=</KeyString>
@@ -14,6 +15,7 @@
       <KeySize>256</KeySize>
       <BlockSize>128</BlockSize>
     </csEncryption>
+	
     <csEncryption>
       <Description>Delta-X Project File</Description>
       <KeyString>UEBDSyRNQVJURDMxVEEtWA==</KeyString>
@@ -25,6 +27,20 @@
       <KeySize>128</KeySize>
       <BlockSize>128</BlockSize>
     </csEncryption>
+	
+	<csEncryption>
+      <Description>Ink Volume Reg</Description>
+      <KeyString>UEBDSyRNQVJUSU5LTUctWA==</KeyString>
+      <VectorString>AAAAAAAAAAAAAAAAAAAAAA==</VectorString>
+      <KeyByte>UEBDSyRNQVJUSU5LTUctWA==</KeyByte>
+      <VectorByte>AAAAAAAAAAAAAAAAAAAAAA==</VectorByte>
+      <Padding>Zeros</Padding>
+      <Mode>ECB</Mode>
+      <KeySize>128</KeySize>
+      <BlockSize>128</BlockSize>
+    </csEncryption>
+	
+	
   </Encryptions>
   <SelectedIndex>0</SelectedIndex>
 </Config>
