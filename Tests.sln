@@ -181,6 +181,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Command", "Command\Command.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptionTool_2201", "EncryptionTool\EncryptionTool_2201.csproj", "{FECC386F-7886-4A86-AE42-32ADD246E237}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database_SQLite_2201", "Database_SQLite\Database_SQLite_2201.csproj", "{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database_Sqlite_SqlCipher", "Database_Sqlite_SqlCipher\Database_Sqlite_SqlCipher.csproj", "{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1598,6 +1602,38 @@ Global
 		{FECC386F-7886-4A86-AE42-32ADD246E237}.Release|x64.Build.0 = Release|Any CPU
 		{FECC386F-7886-4A86-AE42-32ADD246E237}.Release|x86.ActiveCfg = Release|Any CPU
 		{FECC386F-7886-4A86-AE42-32ADD246E237}.Release|x86.Build.0 = Release|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Debug|arm64.Build.0 = Debug|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Debug|x64.Build.0 = Debug|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Debug|x86.Build.0 = Debug|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Release|arm64.ActiveCfg = Release|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Release|arm64.Build.0 = Release|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Release|x64.ActiveCfg = Release|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Release|x64.Build.0 = Release|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Release|x86.ActiveCfg = Release|Any CPU
+		{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}.Release|x86.Build.0 = Release|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Debug|arm64.Build.0 = Debug|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Debug|x64.Build.0 = Debug|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Debug|x86.Build.0 = Debug|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Release|arm64.ActiveCfg = Release|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Release|arm64.Build.0 = Release|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Release|x64.ActiveCfg = Release|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Release|x64.Build.0 = Release|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Release|x86.ActiveCfg = Release|Any CPU
+		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
