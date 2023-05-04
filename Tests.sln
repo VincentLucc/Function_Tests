@@ -181,9 +181,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Command", "Command\Command.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptionTool_2201", "EncryptionTool\EncryptionTool_2201.csproj", "{FECC386F-7886-4A86-AE42-32ADD246E237}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database_SQLite_2201", "Database_SQLite\Database_SQLite_2201.csproj", "{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database_SQLite_Official_2201", "Database_SQLite\Database_SQLite_Official_2201.csproj", "{8E455F61-98A5-4E8F-B10A-CF1D435AA1DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database_Sqlite_SqlCipher", "Database_Sqlite_SqlCipher\Database_Sqlite_SqlCipher.csproj", "{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database_SQLite_MS_Normal", "Database_SQLite_MS_Normal\Database_SQLite_MS_Normal.csproj", "{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1634,6 +1636,22 @@ Global
 		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Release|x64.Build.0 = Release|Any CPU
 		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Release|x86.ActiveCfg = Release|Any CPU
 		{BA7AA54F-5626-4AAE-AADB-53C43AB69B0B}.Release|x86.Build.0 = Release|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Debug|arm64.Build.0 = Debug|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Debug|x64.Build.0 = Debug|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Debug|x86.Build.0 = Debug|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Release|arm64.ActiveCfg = Release|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Release|arm64.Build.0 = Release|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Release|x64.ActiveCfg = Release|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Release|x64.Build.0 = Release|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Release|x86.ActiveCfg = Release|Any CPU
+		{AE6BE8AA-B0B0-4104-B837-4B4A916F5FCC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

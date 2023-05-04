@@ -32,15 +32,16 @@ namespace Database_SQLite
             this.components = new System.ComponentModel.Container();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.bCreateDatabase = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bCreateDatabase = new DevExpress.XtraBars.BarButtonItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.bAddRecords = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -58,9 +59,10 @@ namespace Database_SQLite
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.bCreateDatabase});
+            this.bCreateDatabase,
+            this.bAddRecords});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 1;
+            this.barManager1.MaxItemId = 2;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -70,8 +72,16 @@ namespace Database_SQLite
             this.bar1.DockRow = 1;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bCreateDatabase)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bCreateDatabase),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bAddRecords)});
             this.bar1.Text = "Tools";
+            // 
+            // bCreateDatabase
+            // 
+            this.bCreateDatabase.Caption = "Create";
+            this.bCreateDatabase.Id = 0;
+            this.bCreateDatabase.Name = "bCreateDatabase";
+            this.bCreateDatabase.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bCreateDatabase_ItemClick);
             // 
             // bar2
             // 
@@ -127,13 +137,6 @@ namespace Database_SQLite
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 362);
             // 
-            // bCreateDatabase
-            // 
-            this.bCreateDatabase.Caption = "Create";
-            this.bCreateDatabase.Id = 0;
-            this.bCreateDatabase.Name = "bCreateDatabase";
-            this.bCreateDatabase.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bCreateDatabase_ItemClick);
-            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -151,6 +154,13 @@ namespace Database_SQLite
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
+            // bAddRecords
+            // 
+            this.bAddRecords.Caption = "Add Records";
+            this.bAddRecords.Id = 1;
+            this.bAddRecords.Name = "bAddRecords";
+            this.bAddRecords.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bAddRecords_ItemClick);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,7 +172,7 @@ namespace Database_SQLite
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FormMain";
-            this.Text = "Form Main";
+            this.Text = "ca";
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -184,6 +194,7 @@ namespace Database_SQLite
         private DevExpress.XtraBars.BarButtonItem bCreateDatabase;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraBars.BarButtonItem bAddRecords;
     }
 }
 

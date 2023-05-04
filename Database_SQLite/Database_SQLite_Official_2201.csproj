@@ -85,6 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="csRecordModel.cs" />
     <Compile Include="csSqlHelper.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
