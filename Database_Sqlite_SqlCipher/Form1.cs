@@ -15,5 +15,10 @@ namespace Database_Sqlite_SqlCipher
         {
             InitializeComponent();
         }
+
+        private void bInitDB_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            csSqlHelper.InitDataBase();
+        }
     }
 }

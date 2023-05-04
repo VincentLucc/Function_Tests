@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Database_SQLite
+namespace Database_Sqlite_SqlCipher
 {
     class csSqlHelper
     {
-        public static string sDataBasePath = $"{Application.StartupPath}\\Data.db";
-        public static string sPassword = "123";
+        public static string sDataBasePath = $"Data.db";
+        public static string sPassword = "INKRecord2305041034!";
 
         /// <summary>
         /// Only used to encrypt the database
@@ -22,7 +22,7 @@ namespace Database_SQLite
         public static SqliteConnection PasswordConnection()
         {
             //Must set to version 3 to setup the password
-            string baseConnectionString = $"data source={sDataBasePath};Version=3;";
+            string baseConnectionString = $"data source={sDataBasePath};";
             var connectionString = new SqliteConnectionStringBuilder(baseConnectionString)
             {
                 Mode = SqliteOpenMode.ReadWriteCreate,
@@ -47,18 +47,14 @@ namespace Database_SQLite
                     return true;
                 }
 
-                //File not exist, create a new data base
-                SqliteConnection.CreateFile(sDataBasePath);
-                
+
                 using (var connection = PasswordConnection())
                 {
-                    connection.SetPassword("Test01");
                     connection.Open();
 
                     //Create table
                     var command = connection.CreateCommand();
-                    string sCreateTable = "Create Table highscores (name varchar(20), score int)";
-                    SqliteCommand command = new SqliteCommand(sCreateTable, connection);
+                    command.CommandText = "Create Table highscores (name varchar(20), score int)";
                     command.ExecuteNonQuery();
 
                 }
