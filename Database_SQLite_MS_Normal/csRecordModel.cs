@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Database_Sqlite_SqlCipher
+namespace Database_SQLite_MS_Normal
 {
     public class RecordRow
     {
@@ -12,10 +12,6 @@ namespace Database_Sqlite_SqlCipher
         public int CustomerID { get; set; }
         public string RecordType { get; set; }
         public int HeadType { get; set; }
-
-        /// <summary>
-        /// Unit ml
-        /// </summary>
         public int Volume { get; set; }
         public string ExpDate { get; set; }
         public string Description { get; set; }

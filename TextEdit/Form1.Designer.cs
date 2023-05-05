@@ -47,6 +47,8 @@
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -65,6 +67,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -90,22 +94,23 @@
             // 
             // layoutControl2
             // 
+            this.layoutControl2.Controls.Add(this.textEdit2);
             this.layoutControl2.Controls.Add(this.bRichEditXML);
             this.layoutControl2.Controls.Add(this.richTextBox1);
             this.layoutControl2.Controls.Add(this.memoEdit1);
             this.layoutControl2.Controls.Add(this.textBox1);
             this.layoutControl2.Controls.Add(this.textEdit1);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl2.Location = new System.Drawing.Point(2, 23);
+            this.layoutControl2.Location = new System.Drawing.Point(2, 27);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup1;
-            this.layoutControl2.Size = new System.Drawing.Size(249, 401);
+            this.layoutControl2.Size = new System.Drawing.Size(249, 397);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
             // bRichEditXML
             // 
-            this.bRichEditXML.Location = new System.Drawing.Point(12, 229);
+            this.bRichEditXML.Location = new System.Drawing.Point(12, 228);
             this.bRichEditXML.Name = "bRichEditXML";
             this.bRichEditXML.Size = new System.Drawing.Size(225, 22);
             this.bRichEditXML.StyleController = this.layoutControl2;
@@ -115,23 +120,23 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(109, 137);
+            this.richTextBox1.Location = new System.Drawing.Point(109, 150);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(128, 88);
+            this.richTextBox1.Size = new System.Drawing.Size(128, 74);
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "";
             // 
             // memoEdit1
             // 
-            this.memoEdit1.Location = new System.Drawing.Point(109, 60);
+            this.memoEdit1.Location = new System.Drawing.Point(109, 84);
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(128, 73);
+            this.memoEdit1.Size = new System.Drawing.Size(128, 62);
             this.memoEdit1.StyleController = this.layoutControl2;
             this.memoEdit1.TabIndex = 6;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(109, 36);
+            this.textBox1.Location = new System.Drawing.Point(109, 60);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(128, 20);
             this.textBox1.TabIndex = 5;
@@ -154,9 +159,10 @@
             this.layoutControlItem4,
             this.layoutControlItem5,
             this.layoutControlItem6,
-            this.layoutControlItem7});
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(249, 401);
+            this.layoutControlItem7,
+            this.layoutControlItem8});
+            this.layoutControlGroup1.Name = "Root";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(249, 397);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem3
@@ -171,15 +177,15 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 243);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 242);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(229, 138);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(229, 135);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.textBox1;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(229, 24);
             this.layoutControlItem4.Text = "Win: TextBox";
@@ -188,25 +194,25 @@
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.memoEdit1;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(229, 77);
+            this.layoutControlItem5.Size = new System.Drawing.Size(229, 66);
             this.layoutControlItem5.Text = "Dev: MemEdit";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(85, 13);
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.richTextBox1;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 125);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 138);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(229, 92);
+            this.layoutControlItem6.Size = new System.Drawing.Size(229, 78);
             this.layoutControlItem6.Text = "Win: RichTextBox";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(85, 13);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.bRichEditXML;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 217);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 216);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(229, 26);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
@@ -248,6 +254,26 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
+            // textEdit2
+            // 
+            this.textEdit2.Location = new System.Drawing.Point(109, 36);
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.RegularMaskManager));
+            this.textEdit2.Properties.MaskSettings.Set("mask", "[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}");
+            this.textEdit2.Properties.UseMaskAsDisplayFormat = true;
+            this.textEdit2.Size = new System.Drawing.Size(128, 20);
+            this.textEdit2.StyleController = this.layoutControl2;
+            this.textEdit2.TabIndex = 9;
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.textEdit2;
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(229, 24);
+            this.layoutControlItem8.Text = "Dev Code Input";
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(85, 13);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +300,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -299,6 +327,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraEditors.SimpleButton bRichEditXML;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
     }
 }
 

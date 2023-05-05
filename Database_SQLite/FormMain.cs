@@ -29,7 +29,7 @@ namespace Database_SQLite
 
             Stopwatch watch = new Stopwatch();
             watch.Start();
-            int iBase = 1000;
+            int iBase = 1200;
             for (int i = 0; i < 10; i++)
             {
                 int iSN = iBase + i;

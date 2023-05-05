@@ -151,6 +151,7 @@ namespace Database_Sqlite_SqlCipher
             this.Controls.Add(this.barDockControlTop);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
