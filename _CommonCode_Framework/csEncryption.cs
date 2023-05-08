@@ -36,6 +36,9 @@ namespace _CommonCode_Framework
         public byte[] KeyByte { get; set; }
         public byte[] VectorByte { get; set; }
 
+        /// <summary>
+        /// Values after the string
+        /// </summary>
         public PaddingMode Padding { get; set; }
 
         public CipherMode Mode { get; set; }

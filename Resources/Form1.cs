@@ -11,6 +11,9 @@ using System.Resources;
 using System.IO;
 using System.Reflection;
 using DevExpress.Utils.Svg;
+using System.Collections;
+using System.Diagnostics;
+using System.Globalization;
 
 namespace Resources
 {
@@ -39,6 +42,28 @@ namespace Resources
             //SvgImage svg = svgImageCollection["edit11"];
             simpleButton1.ImageOptions.SvgImage = Properties.Resources.edit11;
 
+        }
+
+        private void bResString_Click(object sender, EventArgs e)
+        {
+            //Read from internal compiled resource
+            var resManager = Properties.ResourceStrings.ResourceManager;
+            var culture = CultureInfo.InvariantCulture;
+            //Must set to true:true
+            ResourceSet resourceValue = resManager.GetResourceSet(culture, createIfNotExists:true, tryParents:true);
+            if (resourceValue==null)
+            {
+                Debug.WriteLine("Resource not found.");
+                return;
+            }
+            foreach (DictionaryEntry entry in resourceValue)
+            {
+                Debug.WriteLine($"Key:{entry.Key},Value:{entry.Value}");
+            }
+
+
+            //Read from a resource file (Extertnal)
+            
         }
     }
 }

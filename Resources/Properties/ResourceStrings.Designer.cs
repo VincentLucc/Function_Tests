@@ -61,7 +61,7 @@ namespace Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ABC.
+        ///   Looks up a localized string similar to Hello.
         /// </summary>
         internal static string Test {
             get {
