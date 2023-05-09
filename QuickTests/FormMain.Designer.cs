@@ -118,6 +118,7 @@ namespace QuickTests
             this.tbPlain = new System.Windows.Forms.RichTextBox();
             this.bEncryptionInit = new System.Windows.Forms.Button();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
+            this.bRemoveData = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -930,6 +931,7 @@ namespace QuickTests
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.bRemoveData);
             this.groupBox9.Controls.Add(this.bValueChange);
             this.groupBox9.Controls.Add(this.bInsert);
             this.groupBox9.Controls.Add(this.bSort);
@@ -945,7 +947,7 @@ namespace QuickTests
             // 
             // bValueChange
             // 
-            this.bValueChange.Location = new System.Drawing.Point(6, 167);
+            this.bValueChange.Location = new System.Drawing.Point(6, 205);
             this.bValueChange.Name = "bValueChange";
             this.bValueChange.Size = new System.Drawing.Size(99, 23);
             this.bValueChange.TabIndex = 5;
@@ -965,7 +967,7 @@ namespace QuickTests
             // 
             // bSort
             // 
-            this.bSort.Location = new System.Drawing.Point(6, 138);
+            this.bSort.Location = new System.Drawing.Point(6, 176);
             this.bSort.Name = "bSort";
             this.bSort.Size = new System.Drawing.Size(99, 23);
             this.bSort.TabIndex = 3;
@@ -1068,6 +1070,16 @@ namespace QuickTests
             // 
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick);
+            // 
+            // bRemoveData
+            // 
+            this.bRemoveData.Location = new System.Drawing.Point(6, 138);
+            this.bRemoveData.Name = "bRemoveData";
+            this.bRemoveData.Size = new System.Drawing.Size(163, 23);
+            this.bRemoveData.TabIndex = 6;
+            this.bRemoveData.Text = "Remove Data";
+            this.bRemoveData.UseVisualStyleBackColor = true;
+            this.bRemoveData.Click += new System.EventHandler(this.bRemoveData_Click);
             // 
             // FormMain
             // 
@@ -1196,6 +1208,7 @@ namespace QuickTests
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.RichTextBox tbPlain;
+        private System.Windows.Forms.Button bRemoveData;
     }
 }
 

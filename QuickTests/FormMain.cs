@@ -211,8 +211,6 @@ namespace QuickTests
 
             double dValue = -101.23f;
             dValue = fValue % 100;
-
-
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -784,7 +782,7 @@ namespace QuickTests
             dtPerformanceSource.Columns.Clear();
             lPerfSource.Clear();
 
-            int iRecordCount = 5000;
+            int iRecordCount = 100000;
 
             //Create list string data 6ms
             watchPerformance.Restart();
@@ -1089,6 +1087,38 @@ namespace QuickTests
             AddPerfData(AddDataType.Insert);
         }
 
+        private void bRemoveData_Click(object sender, EventArgs e)
+        {
+            RemovePerfRecords();
+        }
+
+
+        private void RemovePerfRecords()
+        {
+            watchPerformance.Restart();
+            //Hashset-String
+            //10K, time 8024
+            int iTotal = hashPerfSource.Count;
+            while (hashPerfSource.Count > 0)
+            {
+                string sValue = hashPerfSource.First();
+                hashPerfSource.Remove(sValue);
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Remove (Hashset-String) record:Total:{iTotal}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //List-String
+            //10K,1328
+            iTotal = lPerfSource.Count;
+            watchPerformance.Restart();
+            while (lPerfSource.Count>0)
+            {
+                lPerfSource.RemoveAt(0);
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Remove (List-String) record:Total:{iTotal}, time:{watchPerformance.ElapsedMilliseconds}.");
+        }
+
         private void bValueChange_Click(object sender, EventArgs e)
         {
             ModifyAllData();
@@ -1283,10 +1313,10 @@ namespace QuickTests
         private void button2_Click_1(object sender, EventArgs e)
         {
             encryption.GenerateNew();
-            string sHexKey = BitConverter.ToString(encryption.KeyByte).Replace("-","");
+            string sHexKey = BitConverter.ToString(encryption.KeyByte).Replace("-", "");
             string sHexVector = BitConverter.ToString(encryption.VectorByte).Replace("-", "");
-            var bKey= csHex.HexStringToHexByte(sHexKey);
-            string sKeyBase64=Convert.ToBase64String(bKey);
+            var bKey = csHex.HexStringToHexByte(sHexKey);
+            string sKeyBase64 = Convert.ToBase64String(bKey);
             bool isEqual = sKeyBase64 == encryption.KeyString;
             Debug.WriteLine(encryption.KeyString);
             Debug.WriteLine(encryption.VectorString);
@@ -1303,6 +1333,8 @@ namespace QuickTests
             string sPlainText = encryption.DecryptAesFromBase64String(tbEncryption.Text);
             tbPlain.Text = sPlainText;
         }
+
+
     }
 
 
