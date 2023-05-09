@@ -34,6 +34,7 @@ namespace QuickTests
         List<string[]> lArraySource = new List<string[]>();
         Stopwatch watchPerformance = new Stopwatch();
         HashSet<string> hashPerfSource = new HashSet<string>();
+        Queue<string> queuePerfSource = new Queue<string>();
         int iStartBase = 1000000; //Index start base
         #endregion Performance
         csEncryption encryption = new csEncryption();
@@ -841,7 +842,16 @@ namespace QuickTests
                 hashPerfSource.Add(i.ToString());
             }
             watchPerformance.Stop();
-            Debug.WriteLine($"Create hashset record:{hashPerfSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+            Debug.WriteLine($"Create hashset-string record:{hashPerfSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Create queue
+            watchPerformance.Restart();
+            for (int i = iStartBase; i < iStartBase + iRecordCount; i++)
+            {
+                queuePerfSource.Enqueue(i.ToString());
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Create queue-string record:{queuePerfSource.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
 
             //Create dictionary data 29ms
             watchPerformance.Restart();
@@ -1097,7 +1107,7 @@ namespace QuickTests
         {
             watchPerformance.Restart();
             //Hashset-String
-            //10K, time 8024
+            //10K:8024ms
             int iTotal = hashPerfSource.Count;
             while (hashPerfSource.Count > 0)
             {
@@ -1108,15 +1118,26 @@ namespace QuickTests
             Debug.WriteLine($"Remove (Hashset-String) record:Total:{iTotal}, time:{watchPerformance.ElapsedMilliseconds}.");
 
             //List-String
-            //10K,1328
+            //10K:1328ms
             iTotal = lPerfSource.Count;
             watchPerformance.Restart();
-            while (lPerfSource.Count>0)
+            while (lPerfSource.Count > 0)
             {
                 lPerfSource.RemoveAt(0);
             }
             watchPerformance.Stop();
             Debug.WriteLine($"Remove (List-String) record:Total:{iTotal}, time:{watchPerformance.ElapsedMilliseconds}.");
+
+            //Queue-string
+            //10K:0ms
+            iTotal = queuePerfSource.Count;
+            watchPerformance.Restart();
+            while (queuePerfSource.Count > 0)
+            {
+                queuePerfSource.Dequeue();
+            }
+            watchPerformance.Stop();
+            Debug.WriteLine($"Remove (Queue-String) record:Total:{iTotal}, time:{watchPerformance.ElapsedMilliseconds}.");
         }
 
         private void bValueChange_Click(object sender, EventArgs e)

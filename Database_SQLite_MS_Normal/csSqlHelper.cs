@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -12,52 +13,92 @@ namespace Database_SQLite_MS_Normal
 {
     class csSqlHelper
     {
-        public static string sDataBasePath = $"Data.db";
+        public static string sDataBasePath = $"abc/Data.db";
         //File operation flag
         public static bool IsBusy;
 
+        public static SqliteConnection connection;
+
         /// <summary>
-        /// Only used to encrypt the database
+        /// Used to read/write unique identifier
+        /// </summary>
+        public static string FieldHardDisk = "HardDisk0";
+        /// <summary>
+        /// This field used for read/write test
+        /// </summary>
+        public static string FieldTest = "Test";
+
+        /// <summary>
+        /// Connect to the database
         /// </summary>
         /// <returns></returns>
-        public static SqliteConnection GetConnection()
+        public static bool InitConnection(bool createDatabase, out string sMessage)
         {
-            string baseConnectionString = $"data source={sDataBasePath};";
-            var connectionString = new SqliteConnectionStringBuilder(baseConnectionString)
+            sMessage = "";
+            try
             {
-                Mode = SqliteOpenMode.ReadWriteCreate,
-            }.ToString();
-       
-       
-            var con = new SqliteConnection(connectionString);
-            
+                if (!File.Exists(sDataBasePath) && !createDatabase)
+                {
+                    sMessage = "Database file is missing.";
+                    return false;
+                }
 
-            return con;
+                if (connection == null)
+                {
+                    //Init the settings
+                    string baseConnectionString = $"data source={sDataBasePath};";
+                    var connectionString = new SqliteConnectionStringBuilder(baseConnectionString)
+                    {
+                        Mode = createDatabase ? SqliteOpenMode.ReadWriteCreate : SqliteOpenMode.ReadWrite
+                    }.ToString();
+
+                    connection = new SqliteConnection(connectionString);
+                }
+
+                connection.Open();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("CreateOrConnectDatabase:" + ex.Message);
+            }
+
+            return false;
         }
 
-        public static bool InitDataBase()
+        public static bool CreateDataBase(out string sMessage)
         {
+            sMessage = "";
+            SqliteCommand cmd = null;
+            SqliteTransaction trans = null;
+
             try
             {
                 //File exist, just check if database is valid
                 if (File.Exists(sDataBasePath))
                 {
-                    //Verify connection
-                    using (var connection = GetConnection())
-                    {
-                        connection.Open();
-                    }
-                    return true;
+                    sMessage = "File already exist.";
+                    return false;
                 }
 
-
-                using (var connection = GetConnection())
+                //Create directory
+                string sDir = Path.GetDirectoryName(sDataBasePath);
+                //Make sure directory is valid
+                if (!string.IsNullOrWhiteSpace(sDir) && !Directory.Exists(sDir))
                 {
-                    connection.Open();
+                    Directory.CreateDirectory(sDir);
+                }
+  
+                //Create connection
+                if (!InitConnection(createDatabase: true, out sMessage)) return false;
 
-                    //Create table
-                    var command = connection.CreateCommand();
-                    command.CommandText = @"
+                //Prepare to start
+                cmd = connection.CreateCommand();
+                trans = connection.BeginTransaction();
+                cmd.Transaction = trans;
+
+                //Create table
+                cmd.CommandText = @"
                             CREATE TABLE ""Records"" (
 	                            ""ID""	INTEGER,
 	                            ""SerialNumber""	INTEGER UNIQUE,
@@ -70,20 +111,49 @@ namespace Database_SQLite_MS_Normal
 	                            PRIMARY KEY(""ID"" AUTOINCREMENT)
                             );
                             ";
-                    command.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
 
-                    //Create index
-                    command.CommandText = @"
+                //Create index
+                cmd.CommandText = @"
                             CREATE UNIQUE INDEX ""Record_Index_SerialNumber"" ON ""Records"" (
 	                            ""SerialNumber""	ASC
                             )
                             ";
-                    command.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
+
+                //Create hardare table
+                cmd.CommandText = @"
+                        CREATE TABLE ""HardwareInfo"" (
+	                        ""Name""	TEXT,
+	                        ""Value""	TEXT,
+	                        ""Description""	TEXT,
+	                        PRIMARY KEY(""Name"")
+                        );
+                        ";
+                cmd.ExecuteNonQuery();
+
+                //Insert hardwareID info
+                string sID = csHardware.FirstHardDriveID;
+                if (string.IsNullOrWhiteSpace(sID))
+                {
+                    sMessage = $"Unable to fetch device info.";
+                    return false;
                 }
+                cmd.CommandText = $"INSERT INTO HardwareInfo (Name,Value,Description) VALUES ('{FieldHardDisk}','{sID}','Main/First Drive ID');";
+                cmd.ExecuteNonQuery();
+
+                //A sample data used for read/write test
+                //Must make sure the database is readable
+                cmd.CommandText = $"INSERT INTO HardwareInfo (Name,Value,Description) VALUES ('{FieldTest}','{DateTime.Now}','Read/Write Test');";
+                cmd.ExecuteNonQuery();
+
+                //Commit 
+                trans.Commit();
+
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("InitDataBase:\r\n" + ex.Message);
+                Debug.WriteLine("CreateDataBase:\r\n" + ex.Message);
                 return false;
             }
 
@@ -101,10 +171,12 @@ namespace Database_SQLite_MS_Normal
 
             try
             {
-                using (var con = GetConnection())
-                {
-                    con.Open();
-                    var cmd = con.CreateCommand();
+                //Prepare connection
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+
+            
+                    var cmd = connection.CreateCommand();
 
                     //Verify dupilication
                     cmd.CommandText = $"select * from records WHERE SerialNumber={recordRow.SerialNumber} LIMIT 1";
@@ -132,13 +204,13 @@ namespace Database_SQLite_MS_Normal
                     ) VALUES " + sValues;
 
                     cmd.ExecuteNonQuery();
-                    
+
                     //success
                     IsBusy = false;
                     watch.Stop();
                     Debug.WriteLine($"AddRecord.Insert:{watch.ElapsedMilliseconds}ms");
                     return true;
-                }
+              
             }
             catch (Exception ex)
             {
@@ -156,5 +228,5 @@ namespace Database_SQLite_MS_Normal
 
     }
 
- 
+
 }

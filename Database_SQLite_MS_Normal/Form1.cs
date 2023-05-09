@@ -19,7 +19,11 @@ namespace Database_SQLite_MS_Normal
 
         private void bInit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            csSqlHelper.InitDataBase();
+            if (!csSqlHelper.CreateDataBase(out string sMessage))
+            {
+                MessageBox.Show(sMessage);
+                return;
+            }
         }
 
         private void bAddRecords_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -49,7 +53,16 @@ namespace Database_SQLite_MS_Normal
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
+
+        }
+
+        private void bInitCOnnection_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!csSqlHelper.InitConnection(createDatabase:false, out string sMessage))
+            {
+                MessageBox.Show(sMessage);    
+                return;
+            }
         }
     }
 }

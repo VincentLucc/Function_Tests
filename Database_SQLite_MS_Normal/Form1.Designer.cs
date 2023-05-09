@@ -32,14 +32,15 @@ namespace Database_SQLite_MS_Normal
             this.components = new System.ComponentModel.Container();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.bInit = new DevExpress.XtraBars.BarButtonItem();
+            this.bAddRecords = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bInit = new DevExpress.XtraBars.BarButtonItem();
-            this.bAddRecords = new DevExpress.XtraBars.BarButtonItem();
+            this.bInitCOnnection = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,9 +57,10 @@ namespace Database_SQLite_MS_Normal
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bInit,
-            this.bAddRecords});
+            this.bAddRecords,
+            this.bInitCOnnection});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 2;
+            this.barManager1.MaxItemId = 3;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -68,9 +70,24 @@ namespace Database_SQLite_MS_Normal
             this.bar1.DockRow = 1;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bInitCOnnection),
             new DevExpress.XtraBars.LinkPersistInfo(this.bInit),
             new DevExpress.XtraBars.LinkPersistInfo(this.bAddRecords)});
             this.bar1.Text = "Tools";
+            // 
+            // bInit
+            // 
+            this.bInit.Caption = "Create Database";
+            this.bInit.Id = 0;
+            this.bInit.Name = "bInit";
+            this.bInit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bInit_ItemClick);
+            // 
+            // bAddRecords
+            // 
+            this.bAddRecords.Caption = "Add Records";
+            this.bAddRecords.Id = 1;
+            this.bAddRecords.Name = "bAddRecords";
+            this.bAddRecords.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bAddRecords_ItemClick);
             // 
             // bar2
             // 
@@ -100,21 +117,21 @@ namespace Database_SQLite_MS_Normal
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(632, 44);
+            this.barDockControlTop.Size = new System.Drawing.Size(632, 43);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 341);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 340);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(632, 18);
+            this.barDockControlBottom.Size = new System.Drawing.Size(632, 19);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 44);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 43);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 297);
             // 
@@ -122,23 +139,16 @@ namespace Database_SQLite_MS_Normal
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(632, 44);
+            this.barDockControlRight.Location = new System.Drawing.Point(632, 43);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 297);
             // 
-            // bInit
+            // bInitCOnnection
             // 
-            this.bInit.Caption = "Init Database";
-            this.bInit.Id = 0;
-            this.bInit.Name = "bInit";
-            this.bInit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bInit_ItemClick);
-            // 
-            // bAddRecords
-            // 
-            this.bAddRecords.Caption = "Add Records";
-            this.bAddRecords.Id = 1;
-            this.bAddRecords.Name = "bAddRecords";
-            this.bAddRecords.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bAddRecords_ItemClick);
+            this.bInitCOnnection.Caption = "Init Connection";
+            this.bInitCOnnection.Id = 2;
+            this.bInitCOnnection.Name = "bInitCOnnection";
+            this.bInitCOnnection.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bInitCOnnection_ItemClick);
             // 
             // Form1
             // 
@@ -170,6 +180,7 @@ namespace Database_SQLite_MS_Normal
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem bInit;
         private DevExpress.XtraBars.BarButtonItem bAddRecords;
+        private DevExpress.XtraBars.BarButtonItem bInitCOnnection;
     }
 }
 
