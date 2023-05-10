@@ -36,8 +36,8 @@ namespace Database_SQLite_MS_Normal
 
             Stopwatch watch = new Stopwatch();
             watch.Start();
-            int iBase = 3300;
-            for (int i = 0; i < 10; i++)
+            int iBase = 3500;
+            for (int i = 0; i < 100; i++)
             {
                 int iSN = iBase + i;
                 var record = new RecordRow(iSN, 123, 201, 1500, "03/20", "Tag");

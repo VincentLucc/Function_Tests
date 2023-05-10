@@ -13,7 +13,7 @@ namespace Database_SQLite_MS_Normal
 {
     class csSqlHelper
     {
-        public static string sDataBasePath = $"abc/Data.db";
+        public static string sDataBasePath = $"Data.db";
         //File operation flag
         public static bool IsBusy;
 
@@ -29,7 +29,7 @@ namespace Database_SQLite_MS_Normal
         public static string FieldTest = "Test";
 
         /// <summary>
-        /// Connect to the database
+        /// Connection creation is time consuming in this dll, create only once
         /// </summary>
         /// <returns></returns>
         public static bool InitConnection(bool createDatabase, out string sMessage)
@@ -88,7 +88,7 @@ namespace Database_SQLite_MS_Normal
                 {
                     Directory.CreateDirectory(sDir);
                 }
-  
+
                 //Create connection
                 if (!InitConnection(createDatabase: true, out sMessage)) return false;
 
@@ -171,29 +171,34 @@ namespace Database_SQLite_MS_Normal
 
             try
             {
-                //Prepare connection
-                if (connection.State == ConnectionState.Closed)
+                if (connection == null)
+                {
+                    sMessage = "Connection not yet init.";
+                    return false;
+                }
+                else if (connection.State == ConnectionState.Closed)
+                {
                     connection.Open();
+                }
 
-            
-                    var cmd = connection.CreateCommand();
+                var cmd = connection.CreateCommand();
 
-                    //Verify dupilication
-                    cmd.CommandText = $"select * from records WHERE SerialNumber={recordRow.SerialNumber} LIMIT 1";
-                    var result = cmd.ExecuteReader();
-                    string sSerialNumber = recordRow.SerialNumber < 999999 ? recordRow.SerialNumber.ToString("D6") : recordRow.SerialNumber.ToString();
-                    if (result.HasRows)
-                    {
-                        sMessage = $"SerialNumber {sSerialNumber} already used.";
-                        goto Fail;
-                    }
-                    result.Close();
-                    watch.Stop();
-                    Debug.WriteLine($"AddRecord.CheckExist:{watch.ElapsedMilliseconds}ms");
-                    watch.Restart();
+                //Verify dupilication
+                cmd.CommandText = $"select * from records WHERE SerialNumber={recordRow.SerialNumber} LIMIT 1";
+                var result = cmd.ExecuteReader();
+                string sSerialNumber = recordRow.SerialNumber < 999999 ? recordRow.SerialNumber.ToString("D6") : recordRow.SerialNumber.ToString();
+                if (result.HasRows)
+                {
+                    sMessage = $"SerialNumber {sSerialNumber} already used.";
+                    goto Fail;
+                }
+                result.Close();
+                watch.Stop();
+                Debug.WriteLine($"AddRecord.CheckExist:{watch.ElapsedMilliseconds}ms");
+                watch.Restart();
 
-                    string sValues = $"({recordRow.SerialNumber},{recordRow.CustomerID},{recordRow.HeadType},{recordRow.Volume},'{recordRow.ExpDate}','{recordRow.Description}');";
-                    cmd.CommandText = @"
+                string sValues = $"({recordRow.SerialNumber},{recordRow.CustomerID},{recordRow.HeadType},{recordRow.Volume},'{recordRow.ExpDate}','{recordRow.Description}');";
+                cmd.CommandText = @"
                     INSERT INTO Records (
                     SerialNumber,
                     CustomerID,
@@ -203,14 +208,14 @@ namespace Database_SQLite_MS_Normal
                     Description
                     ) VALUES " + sValues;
 
-                    cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
 
-                    //success
-                    IsBusy = false;
-                    watch.Stop();
-                    Debug.WriteLine($"AddRecord.Insert:{watch.ElapsedMilliseconds}ms");
-                    return true;
-              
+                //success
+                IsBusy = false;
+                watch.Stop();
+                Debug.WriteLine($"AddRecord.Insert:{watch.ElapsedMilliseconds}ms");
+                return true;
+
             }
             catch (Exception ex)
             {
