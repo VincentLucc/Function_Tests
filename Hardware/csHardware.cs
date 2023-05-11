@@ -11,7 +11,8 @@ namespace Hardware
     {
         private static ManagementObjectSearcher baseboardSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_BaseBoard");
         private static ManagementObjectSearcher motherboardSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_MotherboardDevice");
-        private static ManagementObjectSearcher hardDrive = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PhysicalMedia");
+        private static ManagementObjectSearcher psysicalMedia = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PhysicalMedia");
+        private static ManagementObjectSearcher diskDrive = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_DiskDrive");
         private static ManagementObjectSearcher systemInfo = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_ComputerSystemProduct");
 
 
@@ -38,6 +39,8 @@ namespace Hardware
 
         /// <summary>
         /// Get the main harddrive ID
+        /// Might read hex value in WIN7,
+        /// Read string value in win10
         /// </summary>
         static public string FirstHardDriveID
         {
@@ -45,15 +48,48 @@ namespace Hardware
             {
                 try
                 {
-                    foreach (ManagementObject queryObj in hardDrive.Get())
+                    foreach (ManagementObject queryObj in diskDrive.Get())
                     {
                         string sID = queryObj["SerialNumber"].ToString();
+                        if (string.IsNullOrWhiteSpace(sID)) return "";
+                        sID = sID.Trim().ToUpper();
+                        //Tag="\\\.\\PHYSICALDRIVE0"
+                        string sTag = queryObj["DeviceID"].ToString();
+                        sTag = sTag.ToUpper();
+                        if (sTag.EndsWith("PHYSICALDRIVE0")) return sID;
 
+                    }
+                    return "";
+                }
+                catch (Exception e)
+                {
+                    return "";
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get the main harddrive ID
+        /// Always read string value (Need to trim!!!)
+        /// Might raise different value when privilege is different
+        /// 9LS6B7RN vs L96S7BNR
+        /// </summary>
+        static public string FirstHardDriveID_Media
+        {
+            get
+            {
+                try
+                {
+                    foreach (ManagementObject queryObj in psysicalMedia.Get())
+                    {
+                        string sID = queryObj["SerialNumber"].ToString();
+                        if (string.IsNullOrWhiteSpace(sID)) return "";
+                        sID = sID.Trim().ToUpper();
                         //Tag="\\\.\\PHYSICALDRIVE0"
                         string sTag = queryObj["Tag"].ToString();
-                        sTag = sTag.ToUpper();                     
+                        sTag = sTag.ToUpper();
                         if (sTag.EndsWith("PHYSICALDRIVE0")) return sID;
-                      
+
                     }
                     return "";
                 }
