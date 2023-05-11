@@ -13,7 +13,6 @@ namespace Database_SQLite
     class csSqlHelper
     {
         public static string sDataBasePath = $"Data.db";
-        public static string sPassword = "INKRecord2305041034!";
         public static bool IsBusy;
 
         public static SQLiteConnection NewConnection()
