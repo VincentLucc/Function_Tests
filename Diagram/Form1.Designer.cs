@@ -329,6 +329,7 @@ namespace DiagramDemo
             this.diagramBarController1 = new DevExpress.XtraDiagram.Bars.DiagramBarController(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.propertyDescriptionControl1 = new DevExpress.XtraVerticalGrid.PropertyDescriptionControl();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.diagramControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl1)).BeginInit();
             this.pLeft.SuspendLayout();
@@ -364,7 +365,7 @@ namespace DiagramDemo
             this.diagramShape3,
             this.diagramConnector1,
             this.diagramConnector2});
-            this.diagramControl1.Location = new System.Drawing.Point(200, 139);
+            this.diagramControl1.Location = new System.Drawing.Point(200, 146);
             this.diagramControl1.Name = "diagramControl1";
             this.diagramControl1.OptionsBehavior.SelectedStencils = new DevExpress.Diagram.Core.StencilCollection(new string[] {
             "BasicShapes",
@@ -378,7 +379,7 @@ namespace DiagramDemo
             this.diagramControl1.OptionsView.ShowGrid = false;
             this.diagramControl1.OptionsView.ShowRulers = false;
             this.diagramControl1.PropertyGrid = this.propertyGridControl1;
-            this.diagramControl1.Size = new System.Drawing.Size(622, 575);
+            this.diagramControl1.Size = new System.Drawing.Size(622, 568);
             this.diagramControl1.TabIndex = 0;
             this.diagramControl1.Text = "diagramControl1";
             this.diagramControl1.Toolbox = this.toolboxControl1;
@@ -434,7 +435,7 @@ namespace DiagramDemo
             this.propertyGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGridControl1.Location = new System.Drawing.Point(0, 0);
             this.propertyGridControl1.Name = "propertyGridControl1";
-            this.propertyGridControl1.Size = new System.Drawing.Size(200, 475);
+            this.propertyGridControl1.Size = new System.Drawing.Size(200, 468);
             this.propertyGridControl1.TabIndex = 1;
             // 
             // toolboxControl1
@@ -448,7 +449,7 @@ namespace DiagramDemo
             this.toolboxControl1.OptionsView.MenuButtonCaption = "More Shapes";
             this.toolboxControl1.OptionsView.ShowToolboxCaption = true;
             this.toolboxControl1.SelectedGroupIndex = 1;
-            this.toolboxControl1.Size = new System.Drawing.Size(200, 456);
+            this.toolboxControl1.Size = new System.Drawing.Size(200, 449);
             this.toolboxControl1.TabIndex = 0;
             this.toolboxControl1.Text = "Shapes";
             // 
@@ -457,9 +458,9 @@ namespace DiagramDemo
             this.pLeft.Controls.Add(this.panel2);
             this.pLeft.Controls.Add(this.panel1);
             this.pLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pLeft.Location = new System.Drawing.Point(0, 139);
+            this.pLeft.Location = new System.Drawing.Point(0, 146);
             this.pLeft.Name = "pLeft";
-            this.pLeft.Size = new System.Drawing.Size(200, 575);
+            this.pLeft.Size = new System.Drawing.Size(200, 568);
             this.pLeft.TabIndex = 1;
             // 
             // panel2
@@ -468,7 +469,7 @@ namespace DiagramDemo
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 119);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 456);
+            this.panel2.Size = new System.Drawing.Size(200, 449);
             this.panel2.TabIndex = 1;
             // 
             // panel1
@@ -664,9 +665,10 @@ namespace DiagramDemo
             this.diagramCommandBackgroundColorBarSplitButtonItem1,
             this.diagramCommandStrokeColorBarSplitButtonItem1,
             this.diagramCommandBringToFrontBarSplitButtonItem1,
-            this.diagramCommandSendToBackBarSplitButtonItem1});
+            this.diagramCommandSendToBackBarSplitButtonItem1,
+            this.barButtonItem1});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 167;
+            this.ribbonControl1.MaxItemId = 170;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.diagramContainerToolsRibbonPageCategory1,
@@ -684,7 +686,7 @@ namespace DiagramDemo
             this.repositoryItemFontEdit1,
             this.repositoryItemDiagramFontSizeEdit1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
-            this.ribbonControl1.Size = new System.Drawing.Size(1022, 139);
+            this.ribbonControl1.Size = new System.Drawing.Size(1022, 146);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above;
             // 
@@ -2592,19 +2594,25 @@ namespace DiagramDemo
             this.panel3.Controls.Add(this.propertyGridControl1);
             this.panel3.Controls.Add(this.propertyDescriptionControl1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(822, 139);
+            this.panel3.Location = new System.Drawing.Point(822, 146);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 575);
+            this.panel3.Size = new System.Drawing.Size(200, 568);
             this.panel3.TabIndex = 4;
             // 
             // propertyDescriptionControl1
             // 
             this.propertyDescriptionControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.propertyDescriptionControl1.Location = new System.Drawing.Point(0, 475);
+            this.propertyDescriptionControl1.Location = new System.Drawing.Point(0, 468);
             this.propertyDescriptionControl1.Name = "propertyDescriptionControl1";
             this.propertyDescriptionControl1.Size = new System.Drawing.Size(200, 100);
             this.propertyDescriptionControl1.TabIndex = 0;
             this.propertyDescriptionControl1.TabStop = false;
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 167;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // Form1
             // 
@@ -2872,6 +2880,7 @@ namespace DiagramDemo
         private DevExpress.XtraVerticalGrid.PropertyGridControl propertyGridControl1;
         private DevExpress.XtraVerticalGrid.PropertyDescriptionControl propertyDescriptionControl1;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
 
