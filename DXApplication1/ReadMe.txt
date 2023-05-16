@@ -1,0 +1,2 @@
+只支持html与css
+不支持JavaScript

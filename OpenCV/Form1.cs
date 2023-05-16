@@ -12,6 +12,8 @@ using OpenCvSharp.Extensions;
 using System.Diagnostics;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.Utils;
+using System.Drawing.Imaging;
 
 namespace OpenCV_Sharp4
 {
@@ -36,7 +38,7 @@ namespace OpenCV_Sharp4
 
             repositoryItemComboBox1.TextEditStyle = TextEditStyles.DisableTextEditor;
             repositoryItemComboBox1.Items.Clear();
-            repositoryItemComboBox1.Items.AddRange(new List<int> {0,90,180,270 });
+            repositoryItemComboBox1.Items.AddRange(new List<int> { 0, 90, 180, 270 });
             cbRotate.EditValueChanged += RepositoryItemComboBox1_EditValueChanged;
 
         }
@@ -63,7 +65,7 @@ namespace OpenCV_Sharp4
                     Mat imageRotate = RotateImage(imageRead, iRotate);
 
                     // mat 转 bitmap
-                    Bitmap bitmap = BitmapConverter.ToBitmap(imageRotate); 
+                    Bitmap bitmap = BitmapConverter.ToBitmap(imageRotate);
                     pictureBox1.Image = bitmap;
                 }
             }
@@ -99,6 +101,32 @@ namespace OpenCV_Sharp4
             Cv2.Rotate(sourceImage, outPut, rotateFlag);
             sourceImage.Dispose();
             return outPut;
+        }
+
+        private void bScreenShot_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //ScreenCaptureHelper
+            try
+            {
+                var mainScreen = Screen.AllScreens.FirstOrDefault(a => a.Primary);
+                var bounds = mainScreen.Bounds;
+                Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height);
+
+                using (Graphics g = Graphics.FromImage(bitmap))
+                {
+                    g.CopyFromScreen(System.Drawing.Point.Empty, System.Drawing.Point.Empty, bounds.Size);
+                }
+
+ 
+                pictureBox1.Image?.Dispose();
+                pictureBox1.Image = bitmap;
+                bitmap.Save("Test.jpg");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message); ;
+            }
+
         }
     }
 }

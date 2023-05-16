@@ -34,6 +34,7 @@
             this.bOpen = new DevExpress.XtraBars.BarButtonItem();
             this.cbRotate = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bScreenShot = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -66,9 +67,10 @@
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bOpen,
-            this.cbRotate});
+            this.cbRotate,
+            this.bScreenShot});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 3;
+            this.barManager1.MaxItemId = 4;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1});
             this.barManager1.StatusBar = this.bar3;
@@ -81,7 +83,8 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bOpen),
-            new DevExpress.XtraBars.LinkPersistInfo(this.cbRotate)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.cbRotate),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bScreenShot)});
             this.bar1.Text = "Tools";
             // 
             // bOpen
@@ -106,6 +109,13 @@
             this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+            // 
+            // bScreenShot
+            // 
+            this.bScreenShot.Caption = "ScreenShot";
+            this.bScreenShot.Id = 3;
+            this.bScreenShot.Name = "bScreenShot";
+            this.bScreenShot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bScreenShot_ItemClick);
             // 
             // bar2
             // 
@@ -178,6 +188,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(12, 28);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(610, 330);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
@@ -243,6 +254,7 @@
         private DevExpress.XtraBars.BarButtonItem bOpen;
         private DevExpress.XtraBars.BarEditItem cbRotate;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
+        private DevExpress.XtraBars.BarButtonItem bScreenShot;
     }
 }
 

@@ -1,7 +1,6 @@
-﻿
-namespace Database_SQLite
+﻿namespace DXApplication1
 {
-    partial class FormMain
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -30,21 +29,18 @@ namespace Database_SQLite
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.bCreateDatabase = new DevExpress.XtraBars.BarButtonItem();
-            this.bAddRecords = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.htmlContentControl1 = new DevExpress.XtraEditors.HtmlContentControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.htmlContentControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -58,11 +54,7 @@ namespace Database_SQLite
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
-            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.bCreateDatabase,
-            this.bAddRecords});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 2;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -71,24 +63,7 @@ namespace Database_SQLite
             this.bar1.DockCol = 0;
             this.bar1.DockRow = 1;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bCreateDatabase),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bAddRecords)});
             this.bar1.Text = "Tools";
-            // 
-            // bCreateDatabase
-            // 
-            this.bCreateDatabase.Caption = "Create";
-            this.bCreateDatabase.Id = 0;
-            this.bCreateDatabase.Name = "bCreateDatabase";
-            this.bCreateDatabase.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bCreateDatabase_ItemClick);
-            // 
-            // bAddRecords
-            // 
-            this.bAddRecords.Caption = "Add Records";
-            this.bAddRecords.Id = 1;
-            this.bAddRecords.Name = "bAddRecords";
-            this.bAddRecords.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bAddRecords_ItemClick);
             // 
             // bar2
             // 
@@ -118,64 +93,59 @@ namespace Database_SQLite
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(634, 44);
+            this.barDockControlTop.Size = new System.Drawing.Size(632, 41);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 408);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 259);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(634, 18);
+            this.barDockControlBottom.Size = new System.Drawing.Size(632, 19);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 44);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 41);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 364);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 218);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(634, 44);
+            this.barDockControlRight.Location = new System.Drawing.Point(632, 41);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 364);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 218);
             // 
-            // gridControl1
+            // htmlContentControl1
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 44);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.MenuManager = this.barManager1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(634, 364);
-            this.gridControl1.TabIndex = 4;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.htmlContentControl1.Cursor = System.Windows.Forms.Cursors.Default;
             // 
-            // gridView1
             // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
             // 
-            // FormMain
+            this.htmlContentControl1.HtmlTemplate.Styles = resources.GetString("htmlContentControl1.HtmlTemplate.Styles");
+            this.htmlContentControl1.HtmlTemplate.Template = resources.GetString("htmlContentControl1.HtmlTemplate.Template");
+            this.htmlContentControl1.Location = new System.Drawing.Point(71, 75);
+            this.htmlContentControl1.Name = "htmlContentControl1";
+            this.htmlContentControl1.Size = new System.Drawing.Size(181, 150);
+            this.htmlContentControl1.TabIndex = 4;
+            // 
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 426);
-            this.Controls.Add(this.gridControl1);
+            this.ClientSize = new System.Drawing.Size(632, 278);
+            this.Controls.Add(this.htmlContentControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "FormMain";
-            this.Text = "ca";
+            this.Name = "Form1";
+            this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.htmlContentControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,10 +161,7 @@ namespace Database_SQLite
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem bCreateDatabase;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraBars.BarButtonItem bAddRecords;
+        private DevExpress.XtraEditors.HtmlContentControl htmlContentControl1;
     }
 }
 
