@@ -26,9 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp.Win" Version="22.1.9" />
-    <PackageReference Include="DevExpress.Win.Design" Version="22.1.9" />
-    <PackageReference Include="DevExpress.Win.Dialogs" Version="22.1.9" />
+    <PackageReference Include="DevExpress.ExpressApp.Win" Version="22.1.7" />
+    <PackageReference Include="DevExpress.Win.Design" Version="22.1.7" />
+    <PackageReference Include="DevExpress.Win.Dialogs" Version="22.1.7" />
   </ItemGroup>
 
 </Project>

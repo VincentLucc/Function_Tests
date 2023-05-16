@@ -67,7 +67,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socket_TCP_UDP", "Socket_TC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTests", "JsonTests\JsonTests.csproj", "{9C51B5D2-E7CC-4147-B0D7-95A9095A945E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization", "Serialization\Serialization.csproj", "{658CAF07-F754-4C28-B148-B265EA51AA51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serialization.Net", "Serialization\Serialization.Net.csproj", "{658CAF07-F754-4C28-B148-B265EA51AA51}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaitForm", "WaitForm\WaitForm.csproj", "{D6F8E391-21F2-43E8-8AE7-E474289757CE}"
 EndProject
