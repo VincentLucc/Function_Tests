@@ -37,12 +37,14 @@ namespace _QuickTest_Framwork472
             this.bQUickStringTest = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bParse = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.bParse);
             this.groupBox1.Controls.Add(this.tbGapInput);
             this.groupBox1.Controls.Add(this.bThreadGapTest);
             this.groupBox1.Controls.Add(this.bDateTimeOffset);
@@ -110,6 +112,16 @@ namespace _QuickTest_Framwork472
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
+            // bParse
+            // 
+            this.bParse.Location = new System.Drawing.Point(7, 78);
+            this.bParse.Name = "bParse";
+            this.bParse.Size = new System.Drawing.Size(75, 23);
+            this.bParse.TabIndex = 3;
+            this.bParse.Text = "Parse Tests";
+            this.bParse.UseVisualStyleBackColor = true;
+            this.bParse.Click += new System.EventHandler(this.bParse_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,6 +148,7 @@ namespace _QuickTest_Framwork472
         private System.Windows.Forms.Button bQUickStringTest;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button bParse;
     }
 }
 

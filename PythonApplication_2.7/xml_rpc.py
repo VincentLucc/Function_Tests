@@ -57,6 +57,21 @@ class XmlRpc:
                 return -1 # Failed to fetch MO
         return manufacture_orders
 
+ 
+    # Verify if order is valid with enough reserve
+    def getReservationState(self, orderID):
+        try:
+            isValid = models.execute_kw(db, uid, password, 'mrp.production', 'get_reservation_state', [orderID])
+            if (isValid==True): 
+                return [1,'']               
+            else: 
+                return [0,'']
+        except Exception as ex:
+            message = GetExceptionMessage(ex)
+            print(message)
+            return [-1,message] # Odoo Server Error.
+
+
         #Read order detail
     def getOrderDetail(self, orderID):
         # 0: Result

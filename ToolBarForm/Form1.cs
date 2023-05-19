@@ -19,10 +19,11 @@ namespace ToolBarForm
 
         private void Form1_Load(object sender, EventArgs e)
         {    
-            //INit dropdown button
+            //Init dropdown button
             bPopup.ButtonStyle = BarButtonStyle.DropDown;
             bPopup.DropDownControl = popupMenu1;
-            bPopup.ActAsDropDown = true; //Whole area can be clicked
+            //Whole area can be clicked
+            bPopup.ActAsDropDown = true; 
         }
     }
 }

@@ -82,5 +82,17 @@ namespace _QuickTest_Framwork472
  
 
         }
+
+        private void bParse_Click(object sender, EventArgs e)
+        {
+            object abc = "False";
+            abc = -1;
+            if (bool.TryParse(abc.ToString(), out bool bValue))
+            {
+
+            }
+      
+
+        }
     }
 }
