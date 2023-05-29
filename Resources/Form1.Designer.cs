@@ -31,6 +31,7 @@ namespace Resources
         {
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.bResString = new DevExpress.XtraEditors.SimpleButton();
+            this.bCommentRead = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -44,18 +45,28 @@ namespace Resources
             // 
             // bResString
             // 
-            this.bResString.Location = new System.Drawing.Point(22, 59);
+            this.bResString.Location = new System.Drawing.Point(22, 71);
             this.bResString.Name = "bResString";
-            this.bResString.Size = new System.Drawing.Size(83, 23);
+            this.bResString.Size = new System.Drawing.Size(176, 23);
             this.bResString.TabIndex = 1;
-            this.bResString.Text = "String Resource";
+            this.bResString.Text = "String Resource: Read Key Value";
             this.bResString.Click += new System.EventHandler(this.bResString_Click);
+            // 
+            // bCommentRead
+            // 
+            this.bCommentRead.Location = new System.Drawing.Point(22, 100);
+            this.bCommentRead.Name = "bCommentRead";
+            this.bCommentRead.Size = new System.Drawing.Size(176, 23);
+            this.bCommentRead.TabIndex = 2;
+            this.bCommentRead.Text = "String Resource: Read COmments";
+            this.bCommentRead.Click += new System.EventHandler(this.bCommentRead_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bCommentRead);
             this.Controls.Add(this.bResString);
             this.Controls.Add(this.simpleButton1);
             this.Name = "Form1";
@@ -69,6 +80,7 @@ namespace Resources
 
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton bResString;
+        private DevExpress.XtraEditors.SimpleButton bCommentRead;
     }
 }
 

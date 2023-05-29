@@ -22,14 +22,14 @@ namespace Resources.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ResourceStrings {
+    internal class ResourceXX {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourceStrings() {
+        internal ResourceXX() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Resources.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Properties.ResourceStrings", typeof(ResourceStrings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Properties.ResourceXX", typeof(ResourceXX).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,29 @@ namespace Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to dsadsadasdas.
+        ///   Looks up a localized string similar to adfdasfads.
         /// </summary>
-        internal static string dsadsad {
+        internal static string adfdf {
             get {
-                return ResourceManager.GetString("dsadsad", resourceCulture);
+                return ResourceManager.GetString("adfdf", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LOL.
+        ///   Looks up a localized string similar to dafdsfsadf.
         /// </summary>
-        internal static string Key01 {
+        internal static string dafdsf {
             get {
-                return ResourceManager.GetString("Key01", resourceCulture);
+                return ResourceManager.GetString("dafdsf", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hello.
+        ///   Looks up a localized string similar to fsdfsdfdsf.
         /// </summary>
-        internal static string Test {
+        internal static string String1 {
             get {
-                return ResourceManager.GetString("Test", resourceCulture);
+                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
     }

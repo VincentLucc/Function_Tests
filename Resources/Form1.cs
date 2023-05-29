@@ -14,6 +14,7 @@ using DevExpress.Utils.Svg;
 using System.Collections;
 using System.Diagnostics;
 using System.Globalization;
+using System.ComponentModel.Design;
 
 namespace Resources
 {
@@ -50,8 +51,8 @@ namespace Resources
             var resManager = Properties.ResourceStrings.ResourceManager;
             var culture = CultureInfo.InvariantCulture;
             //Must set to true:true
-            ResourceSet resourceValue = resManager.GetResourceSet(culture, createIfNotExists:true, tryParents:true);
-            if (resourceValue==null)
+            ResourceSet resourceValue = resManager.GetResourceSet(culture, createIfNotExists: true, tryParents: true);
+            if (resourceValue == null)
             {
                 Debug.WriteLine("Resource not found.");
                 return;
@@ -60,10 +61,45 @@ namespace Resources
             {
                 Debug.WriteLine($"Key:{entry.Key},Value:{entry.Value}");
             }
+        }
 
+        private void bCommentRead_Click(object sender, EventArgs e)
+        {
 
-            //Read from a resource file (Extertnal)
-            
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            //Get possible resource path
+            var paths = assembly.GetManifestResourceNames();
+            //Load to stream
+            Stream stream = assembly.GetManifestResourceStream("Resources.Properties.ResourceXX.resources");
+
+            ResourceReader reader1 = new ResourceReader(stream);
+            var emReader = reader1.GetEnumerator();
+            while (emReader.MoveNext())
+            {
+                var item= emReader.Current;
+                var getValue = (ResXDataNode)emReader.Value;
+                
+            }
+   
+
+            //Read stream
+            using (ResXResourceReader reader = new ResXResourceReader(stream))
+            {
+                reader.UseResXDataNodes = true; 
+
+                foreach (System.Collections.DictionaryEntry d in reader)
+                {
+                    System.Resources.ResXDataNode node = (System.Resources.ResXDataNode)d.Value;
+                }
+
+                    var enumerator = reader.GetMetadataEnumerator();
+                while (enumerator.MoveNext())
+                {
+                    ResXDataNode node = (ResXDataNode)enumerator.Value;
+                    Debug.WriteLine($"Name:{node.Name},{node.GetValue((ITypeResolutionService)null)},Comment:{node.Comment}");
+                }
+            }
+
         }
     }
 }
