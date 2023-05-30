@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Resources.Properties {
+namespace ResourcesTest.Properties {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace Resources.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class ResourceStrings {
@@ -39,7 +39,7 @@ namespace Resources.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Properties.ResourceStrings", typeof(ResourceStrings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ResourcesTest.Properties.ResourceStrings", typeof(ResourceStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -75,6 +75,33 @@ namespace Resources.Properties {
         internal static string Key01 {
             get {
                 return ResourceManager.GetString("Key01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value100.
+        /// </summary>
+        internal static string Name100 {
+            get {
+                return ResourceManager.GetString("Name100", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value101.
+        /// </summary>
+        internal static string Name101 {
+            get {
+                return ResourceManager.GetString("Name101", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value102.
+        /// </summary>
+        internal static string Name102 {
+            get {
+                return ResourceManager.GetString("Name102", resourceCulture);
             }
         }
         

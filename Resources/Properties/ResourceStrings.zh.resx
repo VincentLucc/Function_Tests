@@ -119,8 +119,10 @@
   </resheader>
   <data name="Test" xml:space="preserve">
     <value>你好</value>
+    <comment>com2</comment>
   </data>
   <data name="Key01" xml:space="preserve">
     <value>HAHA</value>
+    <comment>com1</comment>
   </data>
 </root>

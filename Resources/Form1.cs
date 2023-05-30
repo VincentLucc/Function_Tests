@@ -16,7 +16,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.ComponentModel.Design;
 
-namespace Resources
+namespace ResourcesTest
 {
     public partial class Form1 : Form
     {
@@ -32,7 +32,7 @@ namespace Resources
             string[] sResourceList = assembly.GetManifestResourceNames(); //Get all names
             string sReourceName = "Resources.Properties.ResourceStrings.resources"; //Set current name
             var stream = assembly.GetManifestResourceStream(sReourceName); //Get stream
-            ResourceReader rReader = new ResourceReader(stream); //Create reader
+            //ResourceReader rReader = new ResourceReader(stream); //Create reader
 
         }
 
@@ -41,7 +41,7 @@ namespace Resources
             //SvgImage svg = SvgImage.FromResources(Properties.Resources.edit11,(this.GetType()).Assembly);
 
             //SvgImage svg = svgImageCollection["edit11"];
-            simpleButton1.ImageOptions.SvgImage = Properties.Resources.edit11;
+            //simpleButton1.ImageOptions.SvgImage = Properties.Resources.edit11;
 
         }
 
@@ -67,39 +67,54 @@ namespace Resources
         {
 
             Assembly assembly = Assembly.GetExecutingAssembly();
+            assembly = this.GetType().Assembly;
             //Get possible resource path
             var paths = assembly.GetManifestResourceNames();
+            //Build resource 为 Resource
+            string sPath = "ResourcesTest.g.resources";
+            var resInfo = assembly.GetManifestResourceInfo(sPath);
+
+            string sOutput = "";
             //Load to stream
-            Stream stream = assembly.GetManifestResourceStream("Resources.Properties.ResourceXX.resources");
-
-            ResourceReader reader1 = new ResourceReader(stream);
-            var emReader = reader1.GetEnumerator();
-            while (emReader.MoveNext())
+            //C#中则是：项目命名空间.资源文件所在文件夹名.资源文件名 
+            using (Stream stream = assembly.GetManifestResourceStream(sPath))
             {
-                var item= emReader.Current;
-                var getValue = (ResXDataNode)emReader.Value;
-                
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    //Content stream, modify the content if required
+                    //Not a pure xml start from something wierld
+                    //"���\u0001\0\0\0�\0\0\0lSystem.Resources.ResourceReader, 
+                    //mscorlib, Version = 4.0.0.0, Culture = neutral, PublicKeyToken = b77a5c561934e089
+                    //# System.Resources.RuntimeResourceSet\u0002\0\0\0\u0001\0\0\0\0\0\0\0PADPADPS���\0\0\0\0�\0\0\04p\0r\0o\0p\0e\0r\0t\0i\0e\0s\0/\0r\0e\0s\0o\0u\0r\0c\0e\0x\0x\0.\0r\0e\0s\0x\0\0\0\0\0!\u0012\u0018\0\0
+                    //<? xml version =\"1.0\" encoding=\"utf-8\"?>\r\n
+                    sOutput = reader.ReadToEnd();
+                    //Grab only xml format
+                    sOutput = sOutput.Substring(sOutput.IndexOf("﻿<?xml version"));
+                }
             }
-   
 
-            //Read stream
-            using (ResXResourceReader reader = new ResXResourceReader(stream))
+            //Fixed stream in XML ｆｏｒｍａｔ
+            byte[] byteArray = Encoding.ASCII.GetBytes(sOutput);
+            using (MemoryStream modified = new MemoryStream(byteArray))
             {
-                reader.UseResXDataNodes = true; 
-
-                foreach (System.Collections.DictionaryEntry d in reader)
+                using (ResXResourceReader resxReader = new ResXResourceReader(modified))
                 {
-                    System.Resources.ResXDataNode node = (System.Resources.ResXDataNode)d.Value;
+                    resxReader.UseResXDataNodes = true;
+                    IDictionaryEnumerator enumerator = resxReader.GetEnumerator();
+                    while (enumerator.MoveNext())
+                    {
+                        ResXDataNode node = (ResXDataNode)enumerator.Value;
+                        Debug.WriteLine($"Name:{node.Name},{node.GetValue((ITypeResolutionService)null)},Comment:{node.Comment}");
+                    }
                 }
 
-                    var enumerator = reader.GetMetadataEnumerator();
-                while (enumerator.MoveNext())
-                {
-                    ResXDataNode node = (ResXDataNode)enumerator.Value;
-                    Debug.WriteLine($"Name:{node.Name},{node.GetValue((ITypeResolutionService)null)},Comment:{node.Comment}");
-                }
             }
 
         }
+
+
+
+
+
     }
 }

@@ -117,4 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="String1" xml:space="preserve">
+    <value>Value1</value>
+    <comment>Com1</comment>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>Value2</value>
+    <comment>Com2</comment>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value>11</value>
+    <comment>111</comment>
+  </data>
 </root>

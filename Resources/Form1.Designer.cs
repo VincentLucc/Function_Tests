@@ -1,5 +1,5 @@
 ﻿
-namespace Resources
+namespace ResourcesTest
 {
     partial class Form1
     {
@@ -58,7 +58,7 @@ namespace Resources
             this.bCommentRead.Name = "bCommentRead";
             this.bCommentRead.Size = new System.Drawing.Size(176, 23);
             this.bCommentRead.TabIndex = 2;
-            this.bCommentRead.Text = "String Resource: Read COmments";
+            this.bCommentRead.Text = "String Resource: Read Comments";
             this.bCommentRead.Click += new System.EventHandler(this.bCommentRead_Click);
             // 
             // Form1
