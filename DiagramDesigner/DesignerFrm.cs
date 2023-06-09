@@ -27,6 +27,9 @@ namespace DevExpress.XtraDiagram.Demos {
             Icon = LoadDefaultIcon();
             WindowState = FormWindowState.Maximized;
             AddSingleShape();
+
+            
+
         }
 
         protected void AddSingleShape() {

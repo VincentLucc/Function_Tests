@@ -141,7 +141,7 @@ namespace DiagramDemo
                     }
                 }
 
-              
+
                 else if (movingItem.Item is DiagramShape)
                 {
                     var itemShape = (DiagramShape)movingItem.Item;
@@ -175,10 +175,20 @@ namespace DiagramDemo
             Debug.WriteLine("Drag and Drop Complete");
         }
 
+
+
+
         private void DiagramControl1_MouseMove(object sender, MouseEventArgs e)
         {
-
             Debug.WriteLine("DiagramControl1_MouseMove");
+
+            //Change mouse cursor
+            var Item = diagramControl1.CalcHitItem(e.Location);
+            if (Item == null) return;
+            Debug.WriteLine($"{Item}");
+
+
+
         }
 
         private void DiagramControl1_SelectionChanged(object sender, DiagramSelectionChangedEventArgs e)

@@ -43,6 +43,8 @@ namespace DiagramDemo
 
         public void DisableDiagramControlShortCuts(DiagramControl diagram)
         {
+            
+
             diagram.Commands.RegisterHotKeys(x => {
                 x.ClearHotKeys(DiagramCommandsBase.UndoCommand);//Ctrl+Z
                 x.ClearHotKeys(DiagramCommandsBase.RedoCommand);

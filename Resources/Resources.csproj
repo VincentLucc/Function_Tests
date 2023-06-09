@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="csResourceHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,10 +81,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Resource Include="Properties\ResourceStrings.resx">
+    <EmbeddedResource Include="Properties\ResourceStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceStrings.Designer.cs</LastGenOutput>
-    </Resource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\ResourceStrings.zh.resx" />
     <EmbeddedResource Include="Properties\ResourceXX.resx" />
     <Content Include="Resources\Resource230530.resx">

@@ -112,9 +112,32 @@ namespace ResourcesTest
 
         }
 
+        private void bDirectCall_Click(object sender, EventArgs e)
+        {
+            string abc = Properties.ResourceStrings.Name100;
+        }
 
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceNames = assembly.GetManifestResourceNames();
+            string sTest = Properties.Resources.ResourceStrings;
+            // [NameSpace].
+            byte[] byteArray = Encoding.ASCII.GetBytes(sTest);
+            using (MemoryStream modified = new MemoryStream(byteArray))
+            {
+                using (ResXResourceReader resxReader = new ResXResourceReader(modified))
+                {
+                    resxReader.UseResXDataNodes = true;
+                    IDictionaryEnumerator enumerator = resxReader.GetEnumerator();
+                    while (enumerator.MoveNext())
+                    {
+                        ResXDataNode node = (ResXDataNode)enumerator.Value;
+                        Debug.WriteLine($"Name:{node.Name},{node.GetValue((ITypeResolutionService)null)},Comment:{node.Comment}");
+                    }
+                }
 
-
-
+            }
+        }
     }
 }
