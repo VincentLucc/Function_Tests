@@ -74,13 +74,17 @@ namespace DiagramDemo
 
         private void DiagramControl1_CustomDrawItem(object sender, CustomDrawItemEventArgs e)
         {
-            if (e.Item is ContainerMain)
+            if (e.Item is Container1)
             {
-                ((ContainerMain)e.Item).Draw(e);
+                ((Container1)e.Item).Draw(e);
             }
-            else if (e.Item is Container1)
+            else if (e.Item is Container2)
             {
-                (e.Item as Container1).Draw(e);
+                (e.Item as Container2).Draw(e);
+            }
+            else if (e.Item is csItem1)
+            {
+                (e.Item as csItem1).Draw(e);
             }
         }
 

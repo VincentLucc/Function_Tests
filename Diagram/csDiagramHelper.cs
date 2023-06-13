@@ -72,24 +72,28 @@ namespace DiagramDemo
 
         private void PrepareItems()
         {
+            //Reg type to diagram so it can be save and load properly
+            DiagramControl.ItemTypeRegistrator.Register(typeof(Container1));
+            DiagramControl.ItemTypeRegistrator.Register(typeof(Container2));
+            DiagramControl.ItemTypeRegistrator.Register(typeof(csItem1));
+
             //Container group
             var diagramGroup1 = new DiagramStencil("Group1", "Group Containers");
 
             //Add tool to group
-            diagramGroup1.RegisterTool(new FactoryItemTool("Tool1", () => "Tool1 Device Name", tool1 => new ContainerMain(), new System.Windows.Size(36, 36)));
-            diagramGroup1.RegisterTool(new FactoryItemTool("Tool2", () => "Tool2 Device Name", tool2 => new Container1(), new System.Windows.Size(36, 36)));
-
-            //Reg type to diagram so it can be save and load properly
-            DiagramControl.ItemTypeRegistrator.Register(typeof(ContainerMain));
-            DiagramControl.ItemTypeRegistrator.Register(typeof(Container1));
+            diagramGroup1.RegisterTool(new FactoryItemTool("Tool1", () => "Tool1DisName", tool1 => new Container1(), new System.Windows.Size(36, 36)));
+            diagramGroup1.RegisterTool(new FactoryItemTool("Tool2", () => "Tool2DisName", tool2 => new Container2(), new System.Windows.Size(36, 36)));
 
             //Last step
             DiagramToolboxRegistrator.RegisterStencil(diagramGroup1);
 
-            //Set visible item group
-            diagram.SelectedStencils = new StencilCollection() { "Group1" };
+            //Items
+            var diagramGroup2 = new DiagramStencil("Items11", "Items11");
+            diagramGroup2.RegisterTool(new FactoryItemTool("Item1", () => "Item1", tool1 => new csItem1(), new System.Windows.Size(36, 36)));
+            DiagramToolboxRegistrator.RegisterStencil(diagramGroup2);
 
-
+            //Set default selected item group
+            diagram.SelectedStencils = new StencilCollection() { diagramGroup1.Id, diagramGroup2.Id};
         }
 
         private void AddTestObjects()

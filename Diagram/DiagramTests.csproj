@@ -77,11 +77,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="csContainer2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="csDiagramHelper.cs" />
     <Compile Include="csContainer1.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="csDiagram.cs" />
-    <Compile Include="csContainer.cs">
+    <Compile Include="csItem1.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Form1.cs">
@@ -121,6 +124,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\objects-color_globe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\piestyledonut_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\piestyledonut_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -107,6 +107,7 @@ namespace DiagramDemo
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup5 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.diagramControl1 = new DevExpress.XtraDiagram.DiagramControl();
             this.diagramShape1 = new DevExpress.XtraDiagram.DiagramShape();
             this.diagramShape2 = new DevExpress.XtraDiagram.DiagramShape();
@@ -299,6 +300,7 @@ namespace DiagramDemo
             this.BringToFrontPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.diagramCommandSendToBackBarSplitButtonItem1 = new DevExpress.XtraDiagram.Bars.DiagramCommandSendToBackBarSplitButtonItem();
             this.SendToBackPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.diagramContainerToolsRibbonPageCategory1 = new DevExpress.XtraDiagram.Bars.DiagramContainerToolsRibbonPageCategory();
             this.diagramFormatContainerRibbonPage1 = new DevExpress.XtraDiagram.Bars.DiagramFormatContainerRibbonPage();
             this.diagramContainerSizeRibbonPageGroup1 = new DevExpress.XtraDiagram.Bars.DiagramContainerSizeRibbonPageGroup();
@@ -329,7 +331,9 @@ namespace DiagramDemo
             this.diagramBarController1 = new DevExpress.XtraDiagram.Bars.DiagramBarController(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.propertyDescriptionControl1 = new DevExpress.XtraVerticalGrid.PropertyDescriptionControl();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.diagramControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl1)).BeginInit();
             this.pLeft.SuspendLayout();
@@ -354,6 +358,7 @@ namespace DiagramDemo
             ((System.ComponentModel.ISupportInitialize)(this.diagramOrgChartController1.TemplateDiagram)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.diagramBarController1)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // diagramControl1
@@ -666,9 +671,10 @@ namespace DiagramDemo
             this.diagramCommandStrokeColorBarSplitButtonItem1,
             this.diagramCommandBringToFrontBarSplitButtonItem1,
             this.diagramCommandSendToBackBarSplitButtonItem1,
-            this.barButtonItem1});
+            this.barButtonItem1,
+            this.barButtonItem2});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 170;
+            this.ribbonControl1.MaxItemId = 171;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.diagramContainerToolsRibbonPageCategory1,
@@ -2203,6 +2209,12 @@ namespace DiagramDemo
             this.SendToBackPopupMenu.Name = "SendToBackPopupMenu";
             this.SendToBackPopupMenu.Ribbon = this.ribbonControl1;
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 167;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // diagramContainerToolsRibbonPageCategory1
             // 
             this.diagramContainerToolsRibbonPageCategory1.AutoStretchPageHeaders = true;
@@ -2379,7 +2391,8 @@ namespace DiagramDemo
             // 
             this.diagramViewRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.diagramShowRibbonPageGroup1,
-            this.diagramZoomRibbonPageGroup1});
+            this.diagramZoomRibbonPageGroup1,
+            this.ribbonPageGroup1});
             this.diagramViewRibbonPage1.Name = "diagramViewRibbonPage1";
             // 
             // diagramShowRibbonPageGroup1
@@ -2608,11 +2621,25 @@ namespace DiagramDemo
             this.propertyDescriptionControl1.TabIndex = 0;
             this.propertyDescriptionControl1.TabStop = false;
             // 
-            // barButtonItem1
+            // imageCollection1
             // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.Id = 167;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.Images.SetKeyName(0, "othercharts_32x32.png");
+            this.imageCollection1.Images.SetKeyName(1, "iconsetredtoblack4_32x32.png");
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem2);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "barButtonItem2";
+            this.barButtonItem2.Id = 170;
+            this.barButtonItem2.ImageOptions.Image = global::DiagramDemo.Properties.Resources.piestyledonut_16x16;
+            this.barButtonItem2.ImageOptions.LargeImage = global::DiagramDemo.Properties.Resources.piestyledonut_32x32;
+            this.barButtonItem2.Name = "barButtonItem2";
             // 
             // Form1
             // 
@@ -2651,6 +2678,7 @@ namespace DiagramDemo
             ((System.ComponentModel.ISupportInitialize)(this.diagramOrgChartController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.diagramBarController1)).EndInit();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2881,6 +2909,9 @@ namespace DiagramDemo
         private DevExpress.XtraVerticalGrid.PropertyDescriptionControl propertyDescriptionControl1;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
     }
 }
 

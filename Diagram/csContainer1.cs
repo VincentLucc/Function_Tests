@@ -16,7 +16,7 @@ namespace DiagramDemo
         /// <summary>
         /// Constructor
         /// </summary>
-        public Container1()
+        public Container1(bool StartThread = false)
         {
             //Container Basic settings
             ShowHeader = false;
@@ -37,7 +37,30 @@ namespace DiagramDemo
             Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
 
-            CanResize = false;
+            SizeChanged += ContainerMain_SizeChanged;
+            
+
+            if (!StartThread) return;
+
+            Thread t1 = new Thread(ProcessDoSomething);
+            t1.IsBackground = false;
+            t1.Start();
+
+        }
+
+        private void ContainerMain_SizeChanged(object sender, EventArgs e)
+        {
+            this.Height = 64;
+            this.Width = 64;
+        }
+
+        private void ProcessDoSomething()
+        {
+            while (!this.IsDisposed)
+            {
+                Thread.Sleep(1000);
+                Debug.WriteLine("ProcessDoSomething: I am alive");
+            }
         }
 
         public void Draw(CustomDrawItemEventArgs e)

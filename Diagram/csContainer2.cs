@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace DiagramDemo
 {
-    public class ContainerMain : DiagramContainer
+    public class Container2 : DiagramContainer
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public ContainerMain(bool StartThread = false)
+        public Container2()
         {
             //Container Basic settings
             ShowHeader = false;
@@ -37,30 +37,7 @@ namespace DiagramDemo
             Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
 
-            SizeChanged += ContainerMain_SizeChanged;
-            
-
-            if (!StartThread) return;
-
-            Thread t1 = new Thread(ProcessDoSomething);
-            t1.IsBackground = false;
-            t1.Start();
-
-        }
-
-        private void ContainerMain_SizeChanged(object sender, EventArgs e)
-        {
-            this.Height = 64;
-            this.Width = 64;
-        }
-
-        private void ProcessDoSomething()
-        {
-            while (!this.IsDisposed)
-            {
-                Thread.Sleep(1000);
-                Debug.WriteLine("ProcessDoSomething: I am alive");
-            }
+            CanResize = false;
         }
 
         public void Draw(CustomDrawItemEventArgs e)
@@ -75,6 +52,8 @@ namespace DiagramDemo
             {
                 e.Graphics.DrawImage(Properties.Resources.objects_color_globe, 0, 0, 64, 64);
             }
+
+
         }
     }
 }
