@@ -17,6 +17,10 @@ namespace Class_Copy
         public string A03 { get; set; }
         public Sub1 Sub1 { get; set; }
 
+        public List<string> ListString { get; set; }
+
+        public List<Sub1> ListSub { get; set; }
+
         public Test1()
         {
             Sub1 = new Sub1();
@@ -33,6 +37,10 @@ namespace Class_Copy
         public string A04 { get; set; }
 
         public Sub2 Sub1 { get; set; }
+
+        public List<string> ListString { get; set; }
+
+        public List<Sub2> ListSub { get; set; }
     }
 
     public class Sub1
@@ -45,5 +53,11 @@ namespace Class_Copy
     {
         public string ABC { get; set; }
         public string A03 { get; set; }
+
+        public Sub2()
+        {
+            ABC = DateTime.Now.ToString();
+            A03 = DateTime.Now.ToString();
+        }
     }
 }

@@ -37,16 +37,12 @@ namespace Property_Normal_221
         {
             propertyGrid = propertyGridControl;
             propertyGrid.DataSourceChanged += PropertyGrid_DataSourceChanged;
-
             InitProperty();
         }
 
 
 
-        public void InitProperty()
-        {
-            propertyGrid.ActiveViewType = PropertyGridView.Office;
-        }
+
 
         private void PropertyGrid_DataSourceChanged(object sender, EventArgs e)
         {
@@ -113,8 +109,6 @@ namespace Property_Normal_221
             //Prepare variable
             var student = propertyGrid.SelectedObject as Student;
             string sName = row.Properties.FieldName;
-
-
         }
 
 
@@ -263,6 +257,13 @@ namespace Property_Normal_221
         }
 
 
+ 
+        public void InitProperty()
+        {
+            propertyGrid.ActiveViewType = PropertyGridView.Office;
+
+            
+        }
         /// <summary>
         /// Set row editor based on edit type
         /// </summary>
@@ -315,7 +316,7 @@ namespace Property_Normal_221
 
                 case EditorType.Text:
                     RepositoryItemTextEdit textEdit_Text = new RepositoryItemTextEdit();
-
+                    textEdit_Text.Tag = 101;
                     if (editor.IsCustomMaskEnable)
                     {
                         textEdit_Text.Mask.UseMaskAsDisplayFormat = true;
@@ -325,7 +326,6 @@ namespace Property_Normal_221
                         textEdit_Text.EditValueChangedDelay = 2000;
                     }
                     row.Properties.RowEdit = textEdit_Text;
-
                     break;
 
                 case EditorType.FolderEditor:
