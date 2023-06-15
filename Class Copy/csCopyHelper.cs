@@ -172,42 +172,36 @@ namespace Class_Copy
                     object valueCopy = matchedField.GetValue(copySourceInstance);
 
                     //Check field type
-                    if (filedInfo.FieldType != matchedField.FieldType)
-                    {//Attempt to do deep copy
+                    if (filedInfo.FieldType == matchedField.FieldType)
+                    {
+                        filedInfo.SetValue(selfInstance, valueCopy);
+                        continue;
+                    }
+                    //Attempt to do deep copy
 
-                        //Enum can go endless loop, handle enum manually
-                        if (filedInfo.FieldType.IsEnum)
+                    //Enum can go endless loop, handle enum manually
+                    if (filedInfo.FieldType.IsEnum)
+                    {
+                        //Allow directly set value if possible
+                        int iValue = (int)valueCopy;
+                        if (Enum.IsDefined(filedInfo.FieldType, iValue))
                         {
-                            //Allow directly set value if possible
-                            int iValue = (int)valueCopy;
-                            if (Enum.IsDefined(filedInfo.FieldType, iValue))
-                            {
-                                filedInfo.SetValue(selfInstance, iValue);
-                                continue;
-                            }
-                            else
-                            {
-                                Debug.WriteLine($"Property Copy.Enum Undefined:{filedInfo.Name}({iValue})");
-                            }
-
-                        }
-                        else if (filedInfo.FieldType.IsGenericType)
-                        {
-                            Debug.WriteLine($"Property Copy.Generic Ignored:{filedInfo.Name}");
-                            continue; //Ignore collections
+                            filedInfo.SetValue(selfInstance, iValue);
                         }
                         else
                         {
-                            valueThis.CopyValuesSpecial(valueCopy);
-                            continue;
+                            Debug.WriteLine($"Property Copy.Enum Undefined:{filedInfo.Name}({iValue})");
                         }
 
-                        //Handle special case
-
                     }
-
-                    //Write value to this
-                    filedInfo.SetValue(selfInstance, valueCopy);
+                    else if (filedInfo.FieldType.IsGenericType)
+                    {
+                        Debug.WriteLine($"Property Copy.Generic Ignored:{filedInfo.Name}");
+                    }
+                    else
+                    {
+                        valueThis.CopyValuesSpecial(valueCopy);
+                    }
                 }
 
                 //Check all properties
@@ -232,53 +226,49 @@ namespace Class_Copy
                     object valueCopy = matchedProperty.GetValue(copySourceInstance, null);
 
                     //Check property type
-                    if (propertyInfo.PropertyType != matchedProperty.PropertyType)
-                    {//Attempt to do deep copy
-                     //Enum can go endless loop, handle enum manually
-
-                        if (propertyInfo.PropertyType == typeof(List<Sub1>))
+                    if (propertyInfo.PropertyType == matchedProperty.PropertyType)
+                    {
+                        propertyInfo.SetValue(selfInstance, valueCopy, null);
+                        continue;
+                    }
+                    //Attempt to do deep copy
+                    //Enum can go endless loop, handle enum manually
+                    if (propertyInfo.PropertyType == typeof(List<Sub1>))
+                    {
+                        var newList = new List<Sub1>();
+                        if (matchedProperty.PropertyType == typeof(List<Sub2>))
                         {
-                            var newList = new List<Sub1>();
-                            if (matchedProperty.PropertyType == typeof(List<Sub2>))
+                            var listCopy = valueCopy as List<Sub2>;
+                            foreach (var item in listCopy)
                             {
-                                var listCopy = valueCopy as List<Sub2>;
-                                foreach (var item in listCopy)
-                                {
-                                    var sub1Item = new Sub1();
-                                    sub1Item.CopyValuesSpecial(item);
-                                    newList.Add(sub1Item);
-                                }
-                            }
-                            propertyInfo.SetValue(selfInstance, newList, null);
-                        }
-                        else if (propertyInfo.PropertyType.IsEnum)
-                        {
-                            //Allow directly set value if possible
-                            int iValue = (int)valueCopy;
-                            if (Enum.IsDefined(propertyInfo.PropertyType, iValue))
-                            {
-                                propertyInfo.SetValue(selfInstance, iValue, null);
-                                continue;
-                            }
-                            else
-                            {
-                                Debug.WriteLine($"Property Copy.Enum Undefined:{propertyInfo.Name}({iValue})");
+                                var sub1Item = new Sub1();
+                                sub1Item.CopyValuesSpecial(item);
+                                newList.Add(sub1Item);
                             }
                         }
-                        else if (propertyInfo.PropertyType.IsGenericType)
+                        propertyInfo.SetValue(selfInstance, newList, null);
+                    }
+                    else if (propertyInfo.PropertyType.IsEnum)
+                    {
+                        //Allow directly set value if possible
+                        int iValue = (int)valueCopy;
+                        if (Enum.IsDefined(propertyInfo.PropertyType, iValue))
                         {
-                            Debug.WriteLine($"Property Copy.Generic Ignored:{propertyInfo.Name}");
-                            continue; //Ignore collections
+                            propertyInfo.SetValue(selfInstance, iValue, null);
                         }
                         else
                         {
-                            valueThis.CopyValuesSpecial(valueCopy);
-                            continue;
+                            Debug.WriteLine($"Property Copy.Enum Undefined:{propertyInfo.Name}({iValue})");
                         }
                     }
-
-                    //Write value to this
-                    propertyInfo.SetValue(selfInstance, valueCopy, null);
+                    else if (propertyInfo.PropertyType.IsGenericType)
+                    {
+                        Debug.WriteLine($"Property Copy.Generic Ignored:{propertyInfo.Name}");
+                    }
+                    else
+                    {
+                        valueThis.CopyValuesSpecial(valueCopy);
+                    }
                 }
             }
             catch (Exception ex)
