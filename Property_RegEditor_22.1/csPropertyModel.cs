@@ -131,22 +131,6 @@ namespace Property_RegEditor_22._1
         }
 
     }
-
-    /// <summary>
-    /// Used to set row editor
-    /// </summary>
-    public class RowEditorData
-    {
-        public BaseRow PropertyRow { get; set; }
-        public CustomEditorAttribute Editor { get; set; }
-
-        public RowEditorData(BaseRow propertyRow, CustomEditorAttribute rowEditor)
-        {
-            PropertyRow = propertyRow;
-            Editor = rowEditor;
-        }
-    }
-
 }
 
 

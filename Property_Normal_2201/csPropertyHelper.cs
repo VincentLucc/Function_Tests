@@ -36,8 +36,8 @@ namespace Property_Normal_221
         public csPropertyHelper(PropertyGridControl propertyGridControl)
         {
             propertyGrid = propertyGridControl;
+            propertyGrid.ActiveViewType = PropertyGridView.Office;
             propertyGrid.DataSourceChanged += PropertyGrid_DataSourceChanged;
-            InitProperty();
         }
 
 
@@ -258,12 +258,6 @@ namespace Property_Normal_221
 
 
  
-        public void InitProperty()
-        {
-            propertyGrid.ActiveViewType = PropertyGridView.Office;
-
-            
-        }
         /// <summary>
         /// Set row editor based on edit type
         /// </summary>

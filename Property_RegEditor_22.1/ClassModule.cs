@@ -80,18 +80,17 @@ namespace Property_RegEditor_22._1
         public CertificateBase Cert2 { get; set; }
 
         [CustomEditor(_editorType.ToggleSwitch)]
-        [Category("Test")]
-        [DisplayName("Toggle Switch"), Description("Description Method 2, manual address")]
+        [Category("Test"), DisplayName("Toggle Switch"), Description("Description Method 2, manual address")]
         public bool ToggleSwitch { get; set; }
 
-        [Category("Test")]
+        [Category("Test"), DisplayName("Check Box"), Description("Description Method 2, manual address")]
         public bool CheckBox { get; set; }
 
         /// <summary>
         /// Must be public to be able to display on property
         /// </summary>
         [CustomEditor(_editorType.ToggleSwitchList)]
-        [DisplayName("List"), Description("List Test")]
+        [Category("Test"), DisplayName("List"), Description("List Test")]
         [ExpandableRowSettings(false)] //Hide class root editor
     
         public bool[] List { get; set; }
