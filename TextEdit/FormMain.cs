@@ -22,5 +22,11 @@ namespace TextEdit
             var winRichEdit=new RichEditXMLForm();
             winRichEdit.ShowDialog();
         }
+
+        private void TextSelectionSimpleButton1_Click(object sender, EventArgs e)
+        {
+            var winRichEdit = new RichTextEditTextSelectForm();
+            winRichEdit.ShowDialog();
+        }
     }
 }

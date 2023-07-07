@@ -55,13 +55,13 @@ namespace Socket_Tool
             if (parentItem.Style != ElementStyle.Group) return;
             if (parentItem.Text == csGroup.TCPServer)
             {//Get ip endpoint
-                
+
             }
             if (parentItem.Text == csGroup.TCPClient)
             {
-                IPEndPoint.TryParse("",out IPEndPoint ip);
+                IPEndPoint.TryParse("", out IPEndPoint ip);
             }
- 
+
         }
 
         private void AccordionControl1_MouseClick(object sender, MouseEventArgs e)

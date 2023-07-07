@@ -79,6 +79,12 @@
     <Compile Include="RichEditXMLForm.Designer.cs">
       <DependentUpon>RichEditXMLForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RichTextEditTextSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RichTextEditTextSelectForm.Designer.cs">
+      <DependentUpon>RichTextEditTextSelectForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,6 +100,9 @@
     </Compile>
     <EmbeddedResource Include="RichEditXMLForm.resx">
       <DependentUpon>RichEditXMLForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RichTextEditTextSelectForm.resx">
+      <DependentUpon>RichTextEditTextSelectForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
