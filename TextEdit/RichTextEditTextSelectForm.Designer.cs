@@ -32,24 +32,26 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.FileLoadButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.FileLoadButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FileLoadButtonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FileLoadButtonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // richEditControl1
             // 
+            this.richEditControl1.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Draft;
+            this.richEditControl1.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
             this.richEditControl1.Location = new System.Drawing.Point(12, 36);
             this.richEditControl1.Name = "richEditControl1";
             this.richEditControl1.Options.DocumentSaveOptions.CurrentFormat = DevExpress.XtraRichEdit.DocumentFormat.PlainText;
@@ -59,6 +61,7 @@
             this.richEditControl1.Options.VerticalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Visible;
             this.richEditControl1.Size = new System.Drawing.Size(506, 207);
             this.richEditControl1.TabIndex = 0;
+            this.richEditControl1.Views.SimpleView.WordWrap = false;
             // 
             // gridControl1
             // 
@@ -87,6 +90,17 @@
             this.layoutControl1.Size = new System.Drawing.Size(530, 467);
             this.layoutControl1.TabIndex = 2;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // FileLoadButtonEdit
+            // 
+            this.FileLoadButtonEdit.Location = new System.Drawing.Point(70, 12);
+            this.FileLoadButtonEdit.Name = "FileLoadButtonEdit";
+            this.FileLoadButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.FileLoadButtonEdit.Size = new System.Drawing.Size(448, 20);
+            this.FileLoadButtonEdit.StyleController = this.layoutControl1;
+            this.FileLoadButtonEdit.TabIndex = 4;
+            this.FileLoadButtonEdit.EditValueChanged += new System.EventHandler(this.FileLoadButtonEdit_EditValueChanged);
             // 
             // Root
             // 
@@ -118,17 +132,6 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // FileLoadButtonEdit
-            // 
-            this.FileLoadButtonEdit.Location = new System.Drawing.Point(70, 12);
-            this.FileLoadButtonEdit.Name = "FileLoadButtonEdit";
-            this.FileLoadButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.FileLoadButtonEdit.Size = new System.Drawing.Size(448, 20);
-            this.FileLoadButtonEdit.StyleController = this.layoutControl1;
-            this.FileLoadButtonEdit.TabIndex = 4;
-            this.FileLoadButtonEdit.EditValueChanged += new System.EventHandler(this.FileLoadButtonEdit_EditValueChanged);
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.FileLoadButtonEdit;
@@ -151,10 +154,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FileLoadButtonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FileLoadButtonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
 
