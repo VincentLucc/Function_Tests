@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.6.33801.468
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColumnSelectionTest", "Test001\ColumnSelectionTest.csproj", "{BFD6EF80-2D59-4F13-985A-998D26D1D60C}"
 EndProject
@@ -61,7 +61,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLTests", "XMLTests\XMLTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dev_GaugeControl", "Dev_GaugeControl\Dev_GaugeControl.csproj", "{86013B4E-5DF4-4880-9D14-E541ADC6AA29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentManager", "DocumentManager\DocumentManager.csproj", "{28629751-1C8A-4670-8DA5-5EEA8F64535D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentManager_19.1", "DocumentManager\DocumentManager_19.1.csproj", "{28629751-1C8A-4670-8DA5-5EEA8F64535D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socket_TCP_UDP", "Socket_TCP_UDP\Socket_TCP_UDP.csproj", "{25C3C79E-C1D1-4555-8FC4-F3862B6F7858}"
 EndProject
