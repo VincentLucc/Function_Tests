@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using TreeList.Forms;
 
 namespace TreeList
 {
@@ -85,8 +86,13 @@ namespace TreeList
         private void bBindHierachicalData_Click(object sender, EventArgs e)
         {
             BindHierachicalData winData = new BindHierachicalData();
+            winData.ShowDialog();
+        }
 
-            winData.Show();
+        private void bCustomEditor_Click(object sender, EventArgs e)
+        {
+            TreeListCustomEditor treeListCustomEditor = new TreeListCustomEditor();
+            treeListCustomEditor.ShowDialog();
         }
     }
 }

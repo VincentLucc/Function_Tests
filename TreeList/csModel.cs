@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace TreeList
         public string name { get; set; }
         public int id { get; set; }
         public int age { get; set; }
+        public Image image { get; set; }
 
     }
 

@@ -43,6 +43,7 @@ namespace Dev_GridControl_19_1
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.bOfficeCompact = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -164,6 +165,7 @@ namespace Dev_GridControl_19_1
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.bOfficeCompact);
             this.groupControl2.Controls.Add(this.bTileView);
             this.groupControl2.Controls.Add(this.simpleButton3);
             this.groupControl2.Location = new System.Drawing.Point(174, 12);
@@ -194,6 +196,15 @@ namespace Dev_GridControl_19_1
             this.groupControl4.TabIndex = 13;
             this.groupControl4.Text = "groupControl4";
             // 
+            // bOfficeCompact
+            // 
+            this.bOfficeCompact.Location = new System.Drawing.Point(5, 80);
+            this.bOfficeCompact.Name = "bOfficeCompact";
+            this.bOfficeCompact.Size = new System.Drawing.Size(146, 23);
+            this.bOfficeCompact.TabIndex = 7;
+            this.bOfficeCompact.Text = "Tile VIew - Office Compact";
+            this.bOfficeCompact.Click += new System.EventHandler(this.bOfficeCompact_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,6 +215,7 @@ namespace Dev_GridControl_19_1
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -234,6 +246,7 @@ namespace Dev_GridControl_19_1
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.GroupControl groupControl4;
+        private DevExpress.XtraEditors.SimpleButton bOfficeCompact;
     }
 }
 

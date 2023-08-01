@@ -90,5 +90,13 @@ namespace Dev_GridControl_19_1
             var winTooltip = new FormToolTip();
             winTooltip.ShowDialog();
         }
+
+        private void bOfficeCompact_Click(object sender, EventArgs e)
+        {
+            using (TileView_OfficeCompact office=new TileView_OfficeCompact())
+            {
+                office.ShowDialog();
+            }
+        }
     }
 }

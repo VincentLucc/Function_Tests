@@ -42,6 +42,7 @@ namespace Dev_GridControl_19_1.Forms
             tileView1.ItemClick += TileView1_ItemClick;
 
             //Set bind elements in the title view to columns
+            
             (tileView1.TileTemplate[0] as TileViewItemElement).Column = tileView1.Columns[nameof(AlarmInfo.Alarm)];
             (tileView1.TileTemplate[1] as TileViewItemElement).Column = tileView1.Columns[nameof(AlarmInfo.DeviceName)];
             tileView1.ColumnSet.CheckedColumn = tileView1.Columns[nameof(AlarmInfo.Checked)]; //Set checked column
