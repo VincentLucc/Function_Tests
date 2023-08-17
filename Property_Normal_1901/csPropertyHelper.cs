@@ -277,6 +277,8 @@ namespace Property_Normal_Dev191
                 case EditorType.Number:
                     RepositoryItemTextEdit repositoryNumberEdit = new RepositoryItemTextEdit();
                     repositoryNumberEdit.Mask.UseMaskAsDisplayFormat = true;
+                    //Numeric mask can't block null, must add this
+                    repositoryNumberEdit.AllowNullInput = DefaultBoolean.False;
                     repositoryNumberEdit.Mask.MaskType = MaskType.Numeric;
                     repositoryNumberEdit.Mask.EditMask = string.IsNullOrWhiteSpace(editor.MaskString) ? EditMasks.DigitalValue5 : editor.MaskString;
                     repositoryNumberEdit.ValidateOnEnterKey = true;
