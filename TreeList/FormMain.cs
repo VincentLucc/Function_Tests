@@ -76,11 +76,8 @@ namespace TreeList
 
         private void bPartailModification_Click(object sender, EventArgs e)
         {
-
             PartialModification winPartial = new PartialModification();
-
             winPartial.Show();
-
         }
 
         private void bBindHierachicalData_Click(object sender, EventArgs e)

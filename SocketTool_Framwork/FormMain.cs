@@ -10,10 +10,9 @@ using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using DevExpress.XtraBars.Navigation;
-using Socket_Tool.Classes;
-using Socket_Tool.Forms;
+using SocketTool_Framework.Forms;
 
-namespace Socket_Tool
+namespace SocketTool_Framework
 {
     public partial class FormMain : DevExpress.XtraEditors.XtraForm
     {
@@ -59,7 +58,7 @@ namespace Socket_Tool
             }
             if (parentItem.Text == csGroup.TCPClient)
             {
-                IPEndPoint.TryParse("", out IPEndPoint ip);
+                //IPAddress.TryParse();
             }
 
         }

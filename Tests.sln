@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.6.33801.468
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColumnSelectionTest", "Test001\ColumnSelectionTest.csproj", "{BFD6EF80-2D59-4F13-985A-998D26D1D60C}"
 EndProject
@@ -63,7 +63,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dev_GaugeControl", "Dev_Gau
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentManager_19.1", "DocumentManager\DocumentManager_19.1.csproj", "{28629751-1C8A-4670-8DA5-5EEA8F64535D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socket_TCP_UDP", "Socket_TCP_UDP\Socket_TCP_UDP.csproj", "{25C3C79E-C1D1-4555-8FC4-F3862B6F7858}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socket_Tests", "Socket_TCP_UDP\Socket_Tests.csproj", "{25C3C79E-C1D1-4555-8FC4-F3862B6F7858}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTests", "JsonTests\JsonTests.csproj", "{9C51B5D2-E7CC-4147-B0D7-95A9095A945E}"
 EndProject
@@ -105,7 +105,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevCore31Test1", "DevCore31
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevCore6Test1", "DevCore6Test1\DevCore6Test1.csproj", "{6CD2A478-6592-4F91-8397-A5AFB5A058FA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Socket Tool", "Socket Tool\Socket Tool.csproj", "{12A8A404-D068-4B04-BBA9-C1AE08C05418}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Socket Tool.Net6", "Socket Tool\Socket Tool.Net6.csproj", "{12A8A404-D068-4B04-BBA9-C1AE08C05418}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevDispose", "DevDispose\DevDispose.csproj", "{0BADE6DD-2DF6-47F7-A967-675665D0E786}"
 EndProject
@@ -204,6 +204,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolTip", "ToolTip\ToolTip.csproj", "{F043E48D-05BC-47C6-8A09-4DD78EAD3D3E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextConvert", "TextConvert\TextConvert.csproj", "{530F4B91-A6AC-4358-97D4-509C92E237F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketTool_Framework", "SocketTool_Framwork\SocketTool_Framework.csproj", "{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1822,6 +1824,22 @@ Global
 		{530F4B91-A6AC-4358-97D4-509C92E237F4}.Release|x64.Build.0 = Release|Any CPU
 		{530F4B91-A6AC-4358-97D4-509C92E237F4}.Release|x86.ActiveCfg = Release|Any CPU
 		{530F4B91-A6AC-4358-97D4-509C92E237F4}.Release|x86.Build.0 = Release|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|arm64.Build.0 = Debug|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|x64.Build.0 = Debug|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|x86.Build.0 = Debug|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|arm64.ActiveCfg = Release|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|arm64.Build.0 = Release|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|x64.ActiveCfg = Release|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|x64.Build.0 = Release|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|x86.ActiveCfg = Release|Any CPU
+		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
