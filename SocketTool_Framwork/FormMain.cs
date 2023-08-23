@@ -105,7 +105,15 @@ namespace SocketTool_Framework
             else
             {
                 var parentItem = MenuAccordionControl.SelectedObject.OwnerElement;
-                return csGroup.GetType(parentItem.Text);
+                if (parentItem==null)
+                {
+                    return _itemType.None;
+                }
+                else
+                {
+                    return csGroup.GetType(parentItem.Text);
+                }
+
             }
         }
 
@@ -192,7 +200,9 @@ namespace SocketTool_Framework
                 //Force to refresh
                 MenuAccordionControl.SelectedElement = null;
                 //Update actual selected item
+                MenuAccordionControl.SelectedObjectChanged -= MenuAccordionControl_SelectedObjectChanged;
                 MenuAccordionControl.CustomSelectedItem(parentItem.Elements[iIndex - 1]);
+                MenuAccordionControl.SelectedObjectChanged += MenuAccordionControl_SelectedObjectChanged;
             }
             else
             {
@@ -223,7 +233,9 @@ namespace SocketTool_Framework
                 //Force to refresh
                 MenuAccordionControl.SelectedElement = null;
                 //Update actual selected item
+                MenuAccordionControl.SelectedObjectChanged -= MenuAccordionControl_SelectedObjectChanged;
                 MenuAccordionControl.CustomSelectedItem(parentItem.Elements[iIndex + 1]);
+                MenuAccordionControl.SelectedObjectChanged += MenuAccordionControl_SelectedObjectChanged;
             }
             else
             {
