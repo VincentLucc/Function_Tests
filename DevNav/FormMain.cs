@@ -139,5 +139,10 @@ public partial class FormMain : DevExpress.XtraEditors.XtraForm
         Debug.WriteLine(accordionControl1.LookAndFeel);
         accordionControl1.Refresh();
     }
+
+    private void accordionControlElement9_Click(object sender, EventArgs e)
+    {
+
+    }
 }
 

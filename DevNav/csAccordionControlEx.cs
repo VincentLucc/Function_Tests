@@ -60,17 +60,38 @@ namespace DevNav
                 if (item.Style != ElementStyle.Group) continue;
 
                 //Remove the default selection
-                SetSelectedObject(item);//trigger selection change event
-                item.Tag = MouseEventType.Click;
+                CustomSelectedItem(item);
+            }
+        }
 
-                if (clickedGroupElement != null && clickedGroupElement != item)
-                {
-                    clickedGroupElement.Tag = MouseEventType.Normal;
-                }
 
+        /// <summary>
+        /// Simulate a selection action
+        /// </summary>
+        /// <param name="item"></param>
+        public void CustomSelectedItem(AccordionControlElement item)
+        {
+
+            InvokeSelectedObject(item);//trigger selection change event
+            item.Tag = MouseEventType.Click;
+
+
+            if (clickedGroupElement != null && clickedGroupElement != item)
+            {
+                clickedGroupElement.Tag = MouseEventType.Normal;
+            }
+
+
+            if (item.Style == ElementStyle.Group)
+            {
                 this.SelectedElement = null;
                 clickedGroupElement = item;
             }
+            else if (item.Style == ElementStyle.Item)
+            {
+                this.SelectedElement = item;
+            }
+
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -99,7 +120,7 @@ namespace DevNav
             base.OnMouseUp(e);
         }
 
-        private void SetSelectedObject(AccordionControlElement element)
+        private void InvokeSelectedObject(AccordionControlElement element)
         {
             if (element == SelectedObject) return;
             SelectedObject = element;
@@ -112,21 +133,7 @@ namespace DevNav
             if (hitInfo.HitTest == AccordionControlHitTest.Item || hitInfo.HitTest == AccordionControlHitTest.Group)
             {
                 var element = hitInfo.ItemInfo.Element;
-                SetSelectedObject(element);//trigger selection change event
-                element.Tag = MouseEventType.Click;
-
-
-                if (clickedGroupElement != null && clickedGroupElement != element)
-                {
-                    clickedGroupElement.Tag = MouseEventType.Normal;
-                }
-
-
-                if (hitInfo.HitTest == AccordionControlHitTest.Group)
-                {
-                    this.SelectedElement = null;
-                    clickedGroupElement = element;
-                }
+                CustomSelectedItem(element);
             }
         }
 
@@ -146,6 +153,10 @@ namespace DevNav
                 e.DrawText();
                 e.Handled = true;
             }
+            else if (e.Element.Style == ElementStyle.Item)
+            {
+                string sElement = e.Element.Text;
+            }
         }
 
 
@@ -157,5 +168,13 @@ namespace DevNav
             Click
         }
 
+        private void InitializeComponent()
+        {
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            this.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            this.ResumeLayout(false);
+
+        }
     }
 }

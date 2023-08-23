@@ -36,8 +36,8 @@ namespace SocketTool_Framework
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonAdd = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonDel = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.moveUpButton = new DevExpress.XtraBars.BarButtonItem();
+            this.moveDownButton = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -97,8 +97,8 @@ namespace SocketTool_Framework
             this.ExitButton,
             this.barButtonAdd,
             this.barButtonDel,
-            this.barButtonItem1,
-            this.barButtonItem3,
+            this.moveUpButton,
+            this.moveDownButton,
             this.barButtonItem4,
             this.barButtonItem5});
             this.barManager1.MainMenu = this.bar2;
@@ -114,8 +114,8 @@ namespace SocketTool_Framework
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonAdd),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonDel),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.moveUpButton),
+            new DevExpress.XtraBars.LinkPersistInfo(this.moveDownButton),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
@@ -140,21 +140,24 @@ namespace SocketTool_Framework
             this.barButtonDel.Name = "barButtonDel";
             this.barButtonDel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonDel_ItemClick);
             // 
-            // barButtonItem1
+            // moveUpButton
             // 
-            this.barButtonItem1.Caption = "Move Up";
-            this.barButtonItem1.Id = 7;
-            this.barButtonItem1.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.moveup_16x16;
-            this.barButtonItem1.ImageOptions.LargeImage = global::SocketTool_Framework.Properties.Resources.moveup_32x32;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.moveUpButton.Caption = "Move Up";
+            this.moveUpButton.Id = 7;
+            this.moveUpButton.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.moveup_16x16;
+            this.moveUpButton.ImageOptions.LargeImage = global::SocketTool_Framework.Properties.Resources.moveup_32x32;
+            this.moveUpButton.Name = "moveUpButton";
+            this.moveUpButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.moveUpButton_ItemClick);
+            this.moveUpButton.ItemDoubleClick += new DevExpress.XtraBars.ItemClickEventHandler(this.moveUpButton_ItemDoubleClick);
             // 
-            // barButtonItem3
+            // moveDownButton
             // 
-            this.barButtonItem3.Caption = "Move Down";
-            this.barButtonItem3.Id = 8;
-            this.barButtonItem3.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.movedown_16x16;
-            this.barButtonItem3.ImageOptions.LargeImage = global::SocketTool_Framework.Properties.Resources.movedown_32x32;
-            this.barButtonItem3.Name = "barButtonItem3";
+            this.moveDownButton.Caption = "Move Down";
+            this.moveDownButton.Id = 8;
+            this.moveDownButton.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.movedown_16x16;
+            this.moveDownButton.ImageOptions.LargeImage = global::SocketTool_Framework.Properties.Resources.movedown_32x32;
+            this.moveDownButton.Name = "moveDownButton";
+            this.moveDownButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.moveDownButton_ItemClick);
             // 
             // barButtonItem4
             // 
@@ -476,8 +479,8 @@ namespace SocketTool_Framework
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
         private SplitContainerControl MainSplitContainerControl;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem moveUpButton;
+        private DevExpress.XtraBars.BarButtonItem moveDownButton;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
     }

@@ -50,13 +50,8 @@ namespace SocketTool_Framework
             MenuAccordionControl.SelectedObjectChanged += MenuAccordionControl_SelectedObjectChanged;
 
             //Load the configuration value
-            TCPServerAccordionControlElement.Elements.Clear();
-            foreach (var item in csConfigHelper.config.TCPServers)
-            {
-                var newElement = TCPServerAccordionControlElement.Elements.Add();
-                newElement.Style = ElementStyle.Item;
-                newElement.Text = item.GetDisplayName();
-            }
+            PopulateServerItems();
+
 
             //Load client
             TCPClientAccordionControlElement.Elements.Clear();
@@ -122,7 +117,7 @@ namespace SocketTool_Framework
 
         private void HelpButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (AboutDialog about=new AboutDialog())
+            using (AboutDialog about = new AboutDialog())
             {
                 about.ShowDialog();
             }
@@ -152,6 +147,7 @@ namespace SocketTool_Framework
 
         private void barButtonDel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (MenuAccordionControl.SelectedObject == null) return;
             if (MenuAccordionControl.SelectedObject.Style == ElementStyle.Group) return;
 
             var parentItem = MenuAccordionControl.SelectedObject.OwnerElement;
@@ -160,13 +156,89 @@ namespace SocketTool_Framework
             {
                 //Get index
                 int iIndex = parentItem.Elements.IndexOf(MenuAccordionControl.SelectedObject);
+                parentItem.Elements.RemoveAt(iIndex);
 
                 var newServer = tcpServers[iIndex];
- 
+                tcpServers.RemoveAt(iIndex);
+
+                newServer.StopServer();
             }
             else
             {
                 messageHelper.Info("Future");
+            }
+        }
+
+        private void moveUpButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MenuAccordionControl.SelectedObject == null) return;
+            if (MenuAccordionControl.SelectedObject.Style == ElementStyle.Group) return;
+
+            var parentItem = MenuAccordionControl.SelectedObject.OwnerElement;
+
+            if (parentItem.Text == csGroup.TCPServer)
+            {
+                //Get index
+                int iIndex = parentItem.Elements.IndexOf(MenuAccordionControl.SelectedObject);
+                if (iIndex == 0) return;
+
+                //Move the source data
+                var newServer = tcpServers[iIndex];
+                tcpServers.RemoveAt(iIndex);
+                tcpServers.Insert(iIndex - 1, newServer);
+
+                //Recreate Items
+                PopulateServerItems();
+                //Force to refresh
+                MenuAccordionControl.SelectedElement = null;
+                //Update actual selected item
+                MenuAccordionControl.CustomSelectedItem(parentItem.Elements[iIndex - 1]);
+            }
+            else
+            {
+                messageHelper.Info("Future");
+            }
+        }
+
+        private void moveDownButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MenuAccordionControl.SelectedObject == null) return;
+            if (MenuAccordionControl.SelectedObject.Style == ElementStyle.Group) return;
+
+            var parentItem = MenuAccordionControl.SelectedObject.OwnerElement;
+
+            if (parentItem.Text == csGroup.TCPServer)
+            {
+                //Get index
+                int iIndex = parentItem.Elements.IndexOf(MenuAccordionControl.SelectedObject);
+                if (iIndex == parentItem.Elements.Count - 1) return;
+
+                //Move the source data
+                var newServer = tcpServers[iIndex];
+                tcpServers.RemoveAt(iIndex);
+                tcpServers.Insert(iIndex + 1, newServer);
+
+                //Recreate Items
+                PopulateServerItems();
+                //Force to refresh
+                MenuAccordionControl.SelectedElement = null;
+                //Update actual selected item
+                MenuAccordionControl.CustomSelectedItem(parentItem.Elements[iIndex + 1]);
+            }
+            else
+            {
+                messageHelper.Info("Future");
+            }
+        }
+
+        public void PopulateServerItems()
+        {
+            TCPServerAccordionControlElement.Elements.Clear();
+            foreach (var item in csConfigHelper.config.TCPServers)
+            {
+                var newElement = TCPServerAccordionControlElement.Elements.Add();
+                newElement.Style = ElementStyle.Item;
+                newElement.Text = item.GetDisplayName();
             }
         }
 
@@ -181,5 +253,12 @@ namespace SocketTool_Framework
         {
 
         }
+
+        private void moveUpButton_ItemDoubleClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+
     }
 }
