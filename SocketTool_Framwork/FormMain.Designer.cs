@@ -36,6 +36,10 @@ namespace SocketTool_Framework
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonAdd = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonDel = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -92,9 +96,13 @@ namespace SocketTool_Framework
             this.barButtonItem2,
             this.ExitButton,
             this.barButtonAdd,
-            this.barButtonDel});
+            this.barButtonDel,
+            this.barButtonItem1,
+            this.barButtonItem3,
+            this.barButtonItem4,
+            this.barButtonItem5});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 7;
+            this.barManager1.MaxItemId = 11;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -105,7 +113,11 @@ namespace SocketTool_Framework
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonAdd),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonDel)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonDel),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.Text = "Tools";
@@ -127,6 +139,39 @@ namespace SocketTool_Framework
             this.barButtonDel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonDel.ImageOptions.LargeImage")));
             this.barButtonDel.Name = "barButtonDel";
             this.barButtonDel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonDel_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Move Up";
+            this.barButtonItem1.Id = 7;
+            this.barButtonItem1.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.moveup_16x16;
+            this.barButtonItem1.ImageOptions.LargeImage = global::SocketTool_Framework.Properties.Resources.moveup_32x32;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Move Down";
+            this.barButtonItem3.Id = 8;
+            this.barButtonItem3.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.movedown_16x16;
+            this.barButtonItem3.ImageOptions.LargeImage = global::SocketTool_Framework.Properties.Resources.movedown_32x32;
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Start ";
+            this.barButtonItem4.Id = 9;
+            this.barButtonItem4.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.play_16x16;
+            this.barButtonItem4.ImageOptions.LargeImage = global::SocketTool_Framework.Properties.Resources.play_32x32;
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Stop";
+            this.barButtonItem5.Id = 10;
+            this.barButtonItem5.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.stop_16x16;
+            this.barButtonItem5.ImageOptions.LargeImage = global::SocketTool_Framework.Properties.Resources.stop_32x32;
+            this.barButtonItem5.Name = "barButtonItem5";
             // 
             // bar2
             // 
@@ -201,46 +246,46 @@ namespace SocketTool_Framework
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(834, 71);
+            this.barDockControlTop.Size = new System.Drawing.Size(834, 61);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 494);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 500);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(834, 27);
+            this.barDockControlBottom.Size = new System.Drawing.Size(834, 25);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 71);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 61);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 423);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 439);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(834, 71);
+            this.barDockControlRight.Location = new System.Drawing.Point(834, 61);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 423);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 439);
             // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.MainSplitContainerControl);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 71);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 61);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(834, 423);
+            this.layoutControl1.Size = new System.Drawing.Size(834, 439);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // MainSplitContainerControl
             // 
-            this.MainSplitContainerControl.Location = new System.Drawing.Point(16, 16);
+            this.MainSplitContainerControl.Location = new System.Drawing.Point(12, 12);
             this.MainSplitContainerControl.Name = "MainSplitContainerControl";
             // 
             // MainSplitContainerControl.Panel1
@@ -251,15 +296,13 @@ namespace SocketTool_Framework
             // MainSplitContainerControl.Panel2
             // 
             this.MainSplitContainerControl.Panel2.Text = "Panel2";
-            this.MainSplitContainerControl.Size = new System.Drawing.Size(802, 391);
+            this.MainSplitContainerControl.Size = new System.Drawing.Size(810, 415);
             this.MainSplitContainerControl.SplitterPosition = 182;
             this.MainSplitContainerControl.TabIndex = 0;
             // 
             // MenuAccordionControl
             // 
             this.MenuAccordionControl.AllowItemSelection = true;
-            this.MenuAccordionControl.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.MenuAccordionControl.Appearance.AccordionControl.Options.UseBackColor = true;
             this.MenuAccordionControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MenuAccordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.TCPServerAccordionControlElement,
@@ -268,7 +311,7 @@ namespace SocketTool_Framework
             this.MenuAccordionControl.Name = "MenuAccordionControl";
             this.MenuAccordionControl.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.False;
             this.MenuAccordionControl.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Always;
-            this.MenuAccordionControl.Size = new System.Drawing.Size(182, 391);
+            this.MenuAccordionControl.Size = new System.Drawing.Size(182, 415);
             this.MenuAccordionControl.TabIndex = 4;
             this.MenuAccordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -281,7 +324,7 @@ namespace SocketTool_Framework
             this.accordionControlElement4});
             this.TCPServerAccordionControlElement.Expanded = true;
             this.TCPServerAccordionControlElement.Name = "TCPServerAccordionControlElement";
-            this.TCPServerAccordionControlElement.Tag = SocketTool_Framework.AccordionControlEx.MouseEventType.Click;
+            this.TCPServerAccordionControlElement.Tag = SocketTool_Framework.AccordionControlEx.MouseEventType.Normal;
             this.TCPServerAccordionControlElement.Text = "TCP Server";
             this.TCPServerAccordionControlElement.Click += new System.EventHandler(this.TCPServerAccordionControlElement_Click);
             // 
@@ -289,18 +332,21 @@ namespace SocketTool_Framework
             // 
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement1.Tag = SocketTool_Framework.AccordionControlEx.MouseEventType.Click;
             this.accordionControlElement1.Text = "Element1";
             // 
             // accordionControlElement2
             // 
             this.accordionControlElement2.Name = "accordionControlElement2";
             this.accordionControlElement2.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement2.Tag = SocketTool_Framework.AccordionControlEx.MouseEventType.Click;
             this.accordionControlElement2.Text = "Element2";
             // 
             // accordionControlElement3
             // 
             this.accordionControlElement3.Name = "accordionControlElement3";
             this.accordionControlElement3.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement3.Tag = SocketTool_Framework.AccordionControlEx.MouseEventType.Click;
             this.accordionControlElement3.Text = "Element3";
             // 
             // accordionControlElement4
@@ -330,6 +376,7 @@ namespace SocketTool_Framework
             // 
             this.accordionControlElement12.Name = "accordionControlElement12";
             this.accordionControlElement12.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement12.Tag = SocketTool_Framework.AccordionControlEx.MouseEventType.Click;
             this.accordionControlElement12.Text = "Element12";
             // 
             // accordionControlElement13
@@ -345,7 +392,7 @@ namespace SocketTool_Framework
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem3});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(834, 423);
+            this.Root.Size = new System.Drawing.Size(834, 439);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem3
@@ -353,7 +400,7 @@ namespace SocketTool_Framework
             this.layoutControlItem3.Control = this.MainSplitContainerControl;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(808, 397);
+            this.layoutControlItem3.Size = new System.Drawing.Size(814, 419);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -373,7 +420,7 @@ namespace SocketTool_Framework
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 521);
+            this.ClientSize = new System.Drawing.Size(834, 525);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -429,6 +476,10 @@ namespace SocketTool_Framework
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
         private SplitContainerControl MainSplitContainerControl;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
     }
 }
 

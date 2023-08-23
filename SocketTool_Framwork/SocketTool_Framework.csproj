@@ -195,6 +195,12 @@
     <Compile Include="FormMain.designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AboutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutDialog.designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormServerEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +220,9 @@
     </Compile>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormServerEdit.resx">
       <DependentUpon>FormServerEdit.cs</DependentUpon>
@@ -248,6 +257,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moveup_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moveup_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\movedown_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\movedown_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\DevExpress.Reporting.Core.22.1.9\build\DevExpress.Reporting.Core.targets" Condition="Exists('..\packages\DevExpress.Reporting.Core.22.1.9\build\DevExpress.Reporting.Core.targets')" />

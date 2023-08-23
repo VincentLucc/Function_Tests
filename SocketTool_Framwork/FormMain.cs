@@ -122,7 +122,10 @@ namespace SocketTool_Framework
 
         private void HelpButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            messageHelper.Info("Future");
+            using (AboutDialog about=new AboutDialog())
+            {
+                about.ShowDialog();
+            }
         }
 
         private void barButtonAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -174,6 +177,9 @@ namespace SocketTool_Framework
 
         }
 
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
 
+        }
     }
 }

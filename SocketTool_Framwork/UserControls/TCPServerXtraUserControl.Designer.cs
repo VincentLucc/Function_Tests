@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.StartButton = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.StartButton = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -67,12 +67,32 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(84, 12);
+            this.simpleButton2.MaximumSize = new System.Drawing.Size(68, 0);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(68, 22);
+            this.simpleButton2.StyleController = this.layoutControl1;
+            this.simpleButton2.TabIndex = 7;
+            this.simpleButton2.Text = "Stop";
+            // 
+            // StartButton
+            // 
+            this.StartButton.Location = new System.Drawing.Point(12, 12);
+            this.StartButton.MaximumSize = new System.Drawing.Size(68, 0);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(68, 22);
+            this.StartButton.StyleController = this.layoutControl1;
+            this.StartButton.TabIndex = 6;
+            this.StartButton.Text = "Start";
+            // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(16, 277);
+            this.gridControl1.Location = new System.Drawing.Point(12, 274);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(713, 231);
+            this.gridControl1.Size = new System.Drawing.Size(721, 238);
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -84,9 +104,9 @@
             // 
             // memoEdit1
             // 
-            this.memoEdit1.Location = new System.Drawing.Point(16, 69);
+            this.memoEdit1.Location = new System.Drawing.Point(12, 55);
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(713, 183);
+            this.memoEdit1.Size = new System.Drawing.Size(721, 198);
             this.memoEdit1.StyleController = this.layoutControl1;
             this.memoEdit1.TabIndex = 4;
             // 
@@ -107,9 +127,9 @@
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.memoEdit1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 34);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(719, 208);
+            this.layoutControlItem1.Size = new System.Drawing.Size(725, 219);
             this.layoutControlItem1.Text = "Send Message";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(93, 13);
@@ -117,48 +137,28 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.gridControl1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 242);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 245);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(719, 256);
+            this.layoutControlItem2.Size = new System.Drawing.Size(725, 259);
             this.layoutControlItem2.Text = "Received Message:";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(93, 13);
-            // 
-            // StartButton
-            // 
-            this.StartButton.Location = new System.Drawing.Point(16, 16);
-            this.StartButton.MaximumSize = new System.Drawing.Size(68, 0);
-            this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(68, 28);
-            this.StartButton.StyleController = this.layoutControl1;
-            this.StartButton.TabIndex = 6;
-            this.StartButton.Text = "Start";
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.StartButton;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(74, 34);
+            this.layoutControlItem3.Size = new System.Drawing.Size(72, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Location = new System.Drawing.Point(90, 16);
-            this.simpleButton2.MaximumSize = new System.Drawing.Size(68, 0);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(68, 28);
-            this.simpleButton2.StyleController = this.layoutControl1;
-            this.simpleButton2.TabIndex = 7;
-            this.simpleButton2.Text = "Stop";
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.simpleButton2;
-            this.layoutControlItem4.Location = new System.Drawing.Point(74, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(72, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(74, 34);
+            this.layoutControlItem4.Size = new System.Drawing.Size(72, 26);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 

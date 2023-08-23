@@ -54,9 +54,12 @@ namespace SocketTool_Framework
             if (this.Elements.Count == 0) return;
 
             //Force trigger the selection value to store the init value
-            var item = Elements[0];
-            if (item.Style == ElementStyle.Group)
+            for (int i = Elements.Count - 1; i > -1; i--)
             {
+                var item = Elements[i];
+                if (item.Style != ElementStyle.Group) continue;
+
+                //Remove the default selection
                 SetSelectedObject(item);//trigger selection change event
                 item.Tag = MouseEventType.Click;
 
@@ -154,5 +157,13 @@ namespace SocketTool_Framework
             Click
         }
 
+        private void InitializeComponent()
+        {
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            this.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            this.ResumeLayout(false);
+
+        }
     }
 }
