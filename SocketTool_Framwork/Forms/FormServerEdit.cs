@@ -90,6 +90,7 @@ namespace SocketTool_Framework.Forms
 
         private void bOK_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

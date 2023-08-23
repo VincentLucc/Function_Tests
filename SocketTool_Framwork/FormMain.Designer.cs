@@ -47,6 +47,7 @@ namespace SocketTool_Framework
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.MainSplitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.MenuAccordionControl = new SocketTool_Framework.AccordionControlEx();
             this.TCPServerAccordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -58,17 +59,20 @@ namespace SocketTool_Framework
             this.accordionControlElement12 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement13 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.accordionControlElement15 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement16 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainerControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainerControl.Panel1)).BeginInit();
+            this.MainSplitContainerControl.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainerControl.Panel2)).BeginInit();
+            this.MainSplitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MenuAccordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -108,7 +112,7 @@ namespace SocketTool_Framework
             // 
             // barButtonAdd
             // 
-            this.barButtonAdd.Caption = "barButtonAdd";
+            this.barButtonAdd.Caption = "Add";
             this.barButtonAdd.Id = 5;
             this.barButtonAdd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonAdd.ImageOptions.Image")));
             this.barButtonAdd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonAdd.ImageOptions.LargeImage")));
@@ -117,11 +121,12 @@ namespace SocketTool_Framework
             // 
             // barButtonDel
             // 
-            this.barButtonDel.Caption = "barButtonDel";
+            this.barButtonDel.Caption = "Delete";
             this.barButtonDel.Id = 6;
             this.barButtonDel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonDel.ImageOptions.Image")));
             this.barButtonDel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonDel.ImageOptions.LargeImage")));
             this.barButtonDel.Name = "barButtonDel";
+            this.barButtonDel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonDel_ItemClick);
             // 
             // bar2
             // 
@@ -224,7 +229,7 @@ namespace SocketTool_Framework
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.MenuAccordionControl);
+            this.layoutControl1.Controls.Add(this.MainSplitContainerControl);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 71);
             this.layoutControl1.Name = "layoutControl1";
@@ -233,20 +238,37 @@ namespace SocketTool_Framework
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // MainSplitContainerControl
+            // 
+            this.MainSplitContainerControl.Location = new System.Drawing.Point(16, 16);
+            this.MainSplitContainerControl.Name = "MainSplitContainerControl";
+            // 
+            // MainSplitContainerControl.Panel1
+            // 
+            this.MainSplitContainerControl.Panel1.Controls.Add(this.MenuAccordionControl);
+            this.MainSplitContainerControl.Panel1.Text = "Panel1";
+            // 
+            // MainSplitContainerControl.Panel2
+            // 
+            this.MainSplitContainerControl.Panel2.Text = "Panel2";
+            this.MainSplitContainerControl.Size = new System.Drawing.Size(802, 391);
+            this.MainSplitContainerControl.SplitterPosition = 182;
+            this.MainSplitContainerControl.TabIndex = 0;
+            // 
             // MenuAccordionControl
             // 
             this.MenuAccordionControl.AllowItemSelection = true;
             this.MenuAccordionControl.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.MenuAccordionControl.Appearance.AccordionControl.Options.UseBackColor = true;
+            this.MenuAccordionControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MenuAccordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.TCPServerAccordionControlElement,
             this.TCPClientAccordionControlElement});
-            this.MenuAccordionControl.Location = new System.Drawing.Point(16, 16);
+            this.MenuAccordionControl.Location = new System.Drawing.Point(0, 0);
             this.MenuAccordionControl.Name = "MenuAccordionControl";
             this.MenuAccordionControl.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.False;
             this.MenuAccordionControl.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Always;
-            this.MenuAccordionControl.Size = new System.Drawing.Size(218, 391);
-            this.MenuAccordionControl.StyleController = this.layoutControl1;
+            this.MenuAccordionControl.Size = new System.Drawing.Size(182, 391);
             this.MenuAccordionControl.TabIndex = 4;
             this.MenuAccordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -295,7 +317,7 @@ namespace SocketTool_Framework
             this.accordionControlElement13});
             this.TCPClientAccordionControlElement.Expanded = true;
             this.TCPClientAccordionControlElement.Name = "TCPClientAccordionControlElement";
-            this.TCPClientAccordionControlElement.Tag = SocketTool_Framework.AccordionControlEx.MouseEventType.Normal;
+            this.TCPClientAccordionControlElement.Tag = SocketTool_Framework.AccordionControlEx.MouseEventType.Click;
             this.TCPClientAccordionControlElement.Text = "TCP Client";
             // 
             // accordionControlElement11
@@ -321,28 +343,19 @@ namespace SocketTool_Framework
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
-            this.emptySpaceItem1});
+            this.layoutControlItem3});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(834, 423);
             this.Root.TextVisible = false;
             // 
-            // layoutControlItem1
+            // layoutControlItem3
             // 
-            this.layoutControlItem1.Control = this.MenuAccordionControl;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(224, 397);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(224, 0);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(584, 397);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.Control = this.MainSplitContainerControl;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(808, 397);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
             // 
             // accordionControlElement15
             // 
@@ -372,10 +385,14 @@ namespace SocketTool_Framework
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainerControl.Panel1)).EndInit();
+            this.MainSplitContainerControl.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainerControl.Panel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainSplitContainerControl)).EndInit();
+            this.MainSplitContainerControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MenuAccordionControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,18 +417,18 @@ namespace SocketTool_Framework
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private AccordionControlEx MenuAccordionControl;
         private DevExpress.XtraBars.Navigation.AccordionControlElement TCPServerAccordionControlElement;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement TCPClientAccordionControlElement;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement11;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement12;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement13;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement15;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement16;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
+        private SplitContainerControl MainSplitContainerControl;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
 }
 

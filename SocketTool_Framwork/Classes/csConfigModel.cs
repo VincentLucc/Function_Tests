@@ -10,12 +10,12 @@ namespace SocketTool_Framework
     [XmlRoot("Config")]
     public class csConfigModel
     {
-        public List<csTCPServerConfig> TCPServers { get; set; }
+        public List<csTCPServer> TCPServers { get; set; }
         
 
         public csConfigModel()
         {
-            TCPServers = new List<csTCPServerConfig>();
+            TCPServers = new List<csTCPServer>();
         }
     }
 }

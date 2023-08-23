@@ -8,33 +8,69 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using System.Text.RegularExpressions;
 
 namespace SocketTool_Framework
 {
+    [XmlRoot("Server Config")]
     public class csTCPServer
     {
-        //Flag
-        public bool m_bServerStartFlag = false; //Start/close server
 
-        //Server
+        public int Port { get; set; }
+
+        public string IPv4 { get; set; }
+
+        public const string IPV4Pattern = @"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+
+        /// <summary>
+        /// Start/close server
+        /// </summary>
+        [XmlIgnore]
+        public bool m_bServerStartFlag = false;
+
+        [XmlIgnore]
         public Socket socketServer;
 
         //clients
+        [XmlIgnore]
         public ConcurrentDictionary<string, Socket> ClientList = new ConcurrentDictionary<string, Socket>(); //Store socket 
+        [XmlIgnore]
         public ConcurrentDictionary<string, List<string>> ClientMessages = new ConcurrentDictionary<string, List<string>>(); //store message
 
+
         //Thread
+        [XmlIgnore]
         Thread tListen;  //Listen request
+        [XmlIgnore]
         Thread tKeep;  //Keep client alive
 
         /// <summary>
         /// Gap between each message
         /// </summary>
-        public int SendGap = 10;
+        public int SendGap { get; set; }
 
-        public class csTCPClient
+        public csTCPServer()
         {
+            SendGap = 10;
+        }
 
+        public csTCPServer(int iPort, string sIP = null)
+        {
+            Port = iPort;
+            IPv4 = sIP;
+        }
+
+        public string GetDisplayName()
+        {
+            if (string.IsNullOrWhiteSpace(IPv4))
+            {
+                return $"Local:{Port}";
+            }
+            else
+            {
+                return $"{IPv4}:{Port}";
+            }
         }
 
         /// <summary>
@@ -44,20 +80,43 @@ namespace SocketTool_Framework
         /// <param name="iPort"></param>
         /// <param name="sIP"></param>
         /// <returns></returns>
-        public bool StartServer(int iPort, string sIP = "0.0.0.0")
+        public bool StartServer(out string sMessage)
         {
-            //Init socket
+            //Init variables
+            sMessage = "";
+            bool useIPAddress = true; //Whether to use a specific ip address
             socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-            //Enable flag
             m_bServerStartFlag = true;
+
+            //Verify IP address
+            if (string.IsNullOrWhiteSpace(IPv4))
+            {
+                useIPAddress = false;
+            }
+            else
+            {
+                if (!Regex.IsMatch(IPv4, IPV4Pattern))
+                {
+                    sMessage = "Invalid IP Address.\r\n" + IPv4;
+                    return false;
+                }
+            }
 
             //Open port
             try
             {
-                IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(sIP), iPort);  //Get endpoints
+                IPEndPoint endPoint;
+                if (useIPAddress)
+                {
+                    endPoint = new IPEndPoint(IPAddress.Parse(IPv4), Port);  //Get endpoints
+                }
+                else
+                {
+                    endPoint = new IPEndPoint(IPAddress.Parse(IPv4), Port);  //Get endpoints
+                }
+
                 socketServer.Bind(endPoint);//Bind port
-                socketServer.Listen(iPort);//Start to listen
+                socketServer.Listen(Port);//Start to listen
 
                 //Listen thread
                 tListen = new Thread(ProcessListen);
@@ -77,6 +136,11 @@ namespace SocketTool_Framework
 
             //Pass all steps
             return true;
+        }
+
+        public void StopServer()
+        {
+
         }
 
         public void ProcessListen()
@@ -282,7 +346,7 @@ namespace SocketTool_Framework
         {
             //avoid none error, avoid multiple exec error.
             if (theSocket == null) return;
- 
+
             //Make sure socket has content
             if (!theSocket.Connected)
             {
@@ -310,6 +374,12 @@ namespace SocketTool_Framework
 
             //Try to remove message list
             ClientMessages.TryRemove(sRemote, out List<string> RemovedMessages);
+        }
+
+        public class ClientInfo
+        {
+            public Socket socket { get; set; }
+            public List<string> message { get; set; }
         }
     }
 }
