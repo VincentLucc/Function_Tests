@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DevNav
+namespace SocketTool_Framework
 {
 
     /// <summary>
@@ -47,7 +47,7 @@ namespace DevNav
         }
 
         /// <summary>
-        /// Fix the display issue when first load 
+        /// Fix the display issue when first load
         /// </summary>
         public void InitSelection()
         {

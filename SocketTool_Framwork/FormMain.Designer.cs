@@ -1,4 +1,6 @@
-﻿namespace SocketTool_Framework
+﻿using DevExpress.XtraEditors;
+
+namespace SocketTool_Framework
 {
     partial class FormMain
     {
@@ -28,301 +30,363 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
-            accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            accordionControlElement6 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            accordionControlElement7 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            accordionControlElement8 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            barManager1 = new DevExpress.XtraBars.BarManager(components);
-            bar1 = new DevExpress.XtraBars.Bar();
-            barButtonAdd = new DevExpress.XtraBars.BarButtonItem();
-            barButtonDel = new DevExpress.XtraBars.BarButtonItem();
-            bar2 = new DevExpress.XtraBars.Bar();
-            barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            bar3 = new DevExpress.XtraBars.Bar();
-            barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(components);
-            panel1 = new System.Windows.Forms.Panel();
-            layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            ((System.ComponentModel.ISupportInitialize)accordionControl1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)barManager1).BeginInit();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)layoutControl1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Root).BeginInit();
-            SuspendLayout();
-            // 
-            // accordionControl1
-            // 
-            accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { accordionControlElement1, accordionControlElement2 });
-            accordionControl1.Location = new System.Drawing.Point(0, 71);
-            accordionControl1.Name = "accordionControl1";
-            accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Fluent;
-            accordionControl1.Size = new System.Drawing.Size(203, 423);
-            accordionControl1.TabIndex = 2;
-            accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
-            // 
-            // accordionControlElement1
-            // 
-            accordionControlElement1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { accordionControlElement3, accordionControlElement4, accordionControlElement5 });
-            accordionControlElement1.Expanded = true;
-            accordionControlElement1.Name = "accordionControlElement1";
-            accordionControlElement1.Text = "TCP Server";
-            // 
-            // accordionControlElement3
-            // 
-            accordionControlElement3.Name = "accordionControlElement3";
-            accordionControlElement3.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            accordionControlElement3.Text = "192.168.0.1:1234";
-            // 
-            // accordionControlElement4
-            // 
-            accordionControlElement4.Name = "accordionControlElement4";
-            accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            accordionControlElement4.Text = "192.168.0.1:1234";
-            // 
-            // accordionControlElement5
-            // 
-            accordionControlElement5.Name = "accordionControlElement5";
-            accordionControlElement5.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            accordionControlElement5.Text = "192.168.0.1:1234";
-            // 
-            // accordionControlElement2
-            // 
-            accordionControlElement2.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { accordionControlElement6, accordionControlElement7, accordionControlElement8 });
-            accordionControlElement2.Expanded = true;
-            accordionControlElement2.Name = "accordionControlElement2";
-            accordionControlElement2.Text = "TCP Client";
-            // 
-            // accordionControlElement6
-            // 
-            accordionControlElement6.Name = "accordionControlElement6";
-            accordionControlElement6.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            accordionControlElement6.Text = "192.168.0.1:1234";
-            // 
-            // accordionControlElement7
-            // 
-            accordionControlElement7.Name = "accordionControlElement7";
-            accordionControlElement7.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            accordionControlElement7.Text = "192.168.0.1:1234";
-            // 
-            // accordionControlElement8
-            // 
-            accordionControlElement8.Name = "accordionControlElement8";
-            accordionControlElement8.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            accordionControlElement8.Text = "192.168.0.1:1234";
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barButtonAdd = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonDel = new DevExpress.XtraBars.BarButtonItem();
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.ExitButton = new DevExpress.XtraBars.BarButtonItem();
+            this.HelpButton = new DevExpress.XtraBars.BarButtonItem();
+            this.bar3 = new DevExpress.XtraBars.Bar();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.MenuAccordionControl = new SocketTool_Framework.AccordionControlEx();
+            this.TCPServerAccordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.TCPClientAccordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement11 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement12 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement13 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.accordionControlElement15 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement16 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MenuAccordionControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            this.SuspendLayout();
             // 
             // barManager1
             // 
-            barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] { bar1, bar2, bar3 });
-            barManager1.DockControls.Add(barDockControlTop);
-            barManager1.DockControls.Add(barDockControlBottom);
-            barManager1.DockControls.Add(barDockControlLeft);
-            barManager1.DockControls.Add(barDockControlRight);
-            barManager1.Form = this;
-            barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barSubItem1, barButtonItem1, barButtonItem2, barButtonItem3, barButtonAdd, barButtonDel });
-            barManager1.MainMenu = bar2;
-            barManager1.MaxItemId = 7;
-            barManager1.StatusBar = bar3;
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar1,
+            this.bar2,
+            this.bar3});
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barSubItem1,
+            this.HelpButton,
+            this.barButtonItem2,
+            this.ExitButton,
+            this.barButtonAdd,
+            this.barButtonDel});
+            this.barManager1.MainMenu = this.bar2;
+            this.barManager1.MaxItemId = 7;
+            this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
             // 
-            bar1.BarName = "Tools";
-            bar1.DockCol = 0;
-            bar1.DockRow = 1;
-            bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(barButtonAdd), new DevExpress.XtraBars.LinkPersistInfo(barButtonDel) });
-            bar1.Text = "Tools";
+            this.bar1.BarName = "Tools";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 1;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonAdd),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonDel)});
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DrawDragBorder = false;
+            this.bar1.Text = "Tools";
             // 
             // barButtonAdd
             // 
-            barButtonAdd.Caption = "barButtonAdd";
-            barButtonAdd.Id = 5;
-            barButtonAdd.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("barButtonAdd.ImageOptions.Image");
-            barButtonAdd.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("barButtonAdd.ImageOptions.LargeImage");
-            barButtonAdd.Name = "barButtonAdd";
-            barButtonAdd.ItemClick += barButtonAdd_ItemClick;
+            this.barButtonAdd.Caption = "barButtonAdd";
+            this.barButtonAdd.Id = 5;
+            this.barButtonAdd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonAdd.ImageOptions.Image")));
+            this.barButtonAdd.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonAdd.ImageOptions.LargeImage")));
+            this.barButtonAdd.Name = "barButtonAdd";
+            this.barButtonAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonAdd_ItemClick);
             // 
             // barButtonDel
             // 
-            barButtonDel.Caption = "barButtonDel";
-            barButtonDel.Id = 6;
-            barButtonDel.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("barButtonDel.ImageOptions.Image");
-            barButtonDel.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("barButtonDel.ImageOptions.LargeImage");
-            barButtonDel.Name = "barButtonDel";
+            this.barButtonDel.Caption = "barButtonDel";
+            this.barButtonDel.Id = 6;
+            this.barButtonDel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonDel.ImageOptions.Image")));
+            this.barButtonDel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonDel.ImageOptions.LargeImage")));
+            this.barButtonDel.Name = "barButtonDel";
             // 
             // bar2
             // 
-            bar2.BarName = "Main menu";
-            bar2.DockCol = 0;
-            bar2.DockRow = 0;
-            bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(barSubItem1), new DevExpress.XtraBars.LinkPersistInfo(barButtonItem1) });
-            bar2.OptionsBar.MultiLine = true;
-            bar2.OptionsBar.UseWholeRow = true;
-            bar2.Text = "Main menu";
+            this.bar2.BarName = "Main menu";
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.HelpButton)});
+            this.bar2.OptionsBar.AllowQuickCustomization = false;
+            this.bar2.OptionsBar.DrawBorder = false;
+            this.bar2.OptionsBar.DrawDragBorder = false;
+            this.bar2.OptionsBar.MultiLine = true;
+            this.bar2.OptionsBar.UseWholeRow = true;
+            this.bar2.Text = "Main menu";
             // 
             // barSubItem1
             // 
-            barSubItem1.Caption = "File";
-            barSubItem1.Id = 0;
-            barSubItem1.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("barSubItem1.ImageOptions.Image");
-            barSubItem1.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("barSubItem1.ImageOptions.LargeImage");
-            barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, barButtonItem2, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph), new DevExpress.XtraBars.LinkPersistInfo(barButtonItem3) });
-            barSubItem1.Name = "barSubItem1";
-            barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barSubItem1.Caption = "File";
+            this.barSubItem1.Id = 0;
+            this.barSubItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.Image")));
+            this.barSubItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.LargeImage")));
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem2, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExitButton)});
+            this.barSubItem1.Name = "barSubItem1";
+            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // barButtonItem2
             // 
-            barButtonItem2.Caption = "Open";
-            barButtonItem2.Id = 3;
-            barButtonItem2.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("barButtonItem2.ImageOptions.Image");
-            barButtonItem2.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("barButtonItem2.ImageOptions.LargeImage");
-            barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.Caption = "Open";
+            this.barButtonItem2.Id = 3;
+            this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.barButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.barButtonItem2.Name = "barButtonItem2";
             // 
-            // barButtonItem3
+            // ExitButton
             // 
-            barButtonItem3.Caption = "Exit";
-            barButtonItem3.Id = 4;
-            barButtonItem3.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("barButtonItem3.ImageOptions.Image");
-            barButtonItem3.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("barButtonItem3.ImageOptions.LargeImage");
-            barButtonItem3.Name = "barButtonItem3";
+            this.ExitButton.Caption = "Exit";
+            this.ExitButton.Id = 4;
+            this.ExitButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ExitButton.ImageOptions.Image")));
+            this.ExitButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("ExitButton.ImageOptions.LargeImage")));
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExitButton_ItemClick);
             // 
-            // barButtonItem1
+            // HelpButton
             // 
-            barButtonItem1.Caption = "Help";
-            barButtonItem1.Id = 1;
-            barButtonItem1.ImageOptions.Image = (System.Drawing.Image)resources.GetObject("barButtonItem1.ImageOptions.Image");
-            barButtonItem1.ImageOptions.LargeImage = (System.Drawing.Image)resources.GetObject("barButtonItem1.ImageOptions.LargeImage");
-            barButtonItem1.Name = "barButtonItem1";
-            barButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.HelpButton.Caption = "Help";
+            this.HelpButton.Id = 1;
+            this.HelpButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("HelpButton.ImageOptions.Image")));
+            this.HelpButton.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("HelpButton.ImageOptions.LargeImage")));
+            this.HelpButton.Name = "HelpButton";
+            this.HelpButton.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.HelpButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.HelpButton_ItemClick);
             // 
             // bar3
             // 
-            bar3.BarName = "Status bar";
-            bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            bar3.DockCol = 0;
-            bar3.DockRow = 0;
-            bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            bar3.OptionsBar.AllowQuickCustomization = false;
-            bar3.OptionsBar.DrawDragBorder = false;
-            bar3.OptionsBar.UseWholeRow = true;
-            bar3.Text = "Status bar";
+            this.bar3.BarName = "Status bar";
+            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.OptionsBar.UseWholeRow = true;
+            this.bar3.Text = "Status bar";
             // 
             // barDockControlTop
             // 
-            barDockControlTop.CausesValidation = false;
-            barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            barDockControlTop.Manager = barManager1;
-            barDockControlTop.Size = new System.Drawing.Size(834, 71);
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(834, 71);
             // 
             // barDockControlBottom
             // 
-            barDockControlBottom.CausesValidation = false;
-            barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            barDockControlBottom.Location = new System.Drawing.Point(0, 494);
-            barDockControlBottom.Manager = barManager1;
-            barDockControlBottom.Size = new System.Drawing.Size(834, 27);
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 494);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(834, 27);
             // 
             // barDockControlLeft
             // 
-            barDockControlLeft.CausesValidation = false;
-            barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            barDockControlLeft.Location = new System.Drawing.Point(0, 71);
-            barDockControlLeft.Manager = barManager1;
-            barDockControlLeft.Size = new System.Drawing.Size(0, 423);
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 71);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 423);
             // 
             // barDockControlRight
             // 
-            barDockControlRight.CausesValidation = false;
-            barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            barDockControlRight.Location = new System.Drawing.Point(834, 71);
-            barDockControlRight.Manager = barManager1;
-            barDockControlRight.Size = new System.Drawing.Size(0, 423);
-            // 
-            // defaultLookAndFeel1
-            // 
-            defaultLookAndFeel1.LookAndFeel.SkinName = "WXI";
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(layoutControl1);
-            panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            panel1.Location = new System.Drawing.Point(203, 71);
-            panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(631, 423);
-            panel1.TabIndex = 0;
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(834, 71);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 423);
             // 
             // layoutControl1
             // 
-            layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            layoutControl1.Location = new System.Drawing.Point(0, 0);
-            layoutControl1.Name = "layoutControl1";
-            layoutControl1.Root = Root;
-            layoutControl1.Size = new System.Drawing.Size(631, 423);
-            layoutControl1.TabIndex = 0;
-            layoutControl1.Text = "layoutControl1";
+            this.layoutControl1.Controls.Add(this.MenuAccordionControl);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(0, 71);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.Root = this.Root;
+            this.layoutControl1.Size = new System.Drawing.Size(834, 423);
+            this.layoutControl1.TabIndex = 0;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
+            // MenuAccordionControl
+            // 
+            this.MenuAccordionControl.AllowItemSelection = true;
+            this.MenuAccordionControl.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.MenuAccordionControl.Appearance.AccordionControl.Options.UseBackColor = true;
+            this.MenuAccordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.TCPServerAccordionControlElement,
+            this.TCPClientAccordionControlElement});
+            this.MenuAccordionControl.Location = new System.Drawing.Point(16, 16);
+            this.MenuAccordionControl.Name = "MenuAccordionControl";
+            this.MenuAccordionControl.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.False;
+            this.MenuAccordionControl.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Always;
+            this.MenuAccordionControl.Size = new System.Drawing.Size(218, 391);
+            this.MenuAccordionControl.StyleController = this.layoutControl1;
+            this.MenuAccordionControl.TabIndex = 4;
+            this.MenuAccordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
+            // 
+            // TCPServerAccordionControlElement
+            // 
+            this.TCPServerAccordionControlElement.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.accordionControlElement1,
+            this.accordionControlElement2,
+            this.accordionControlElement3,
+            this.accordionControlElement4});
+            this.TCPServerAccordionControlElement.Expanded = true;
+            this.TCPServerAccordionControlElement.Name = "TCPServerAccordionControlElement";
+            this.TCPServerAccordionControlElement.Tag = SocketTool_Framework.AccordionControlEx.MouseEventType.Click;
+            this.TCPServerAccordionControlElement.Text = "TCP Server";
+            this.TCPServerAccordionControlElement.Click += new System.EventHandler(this.TCPServerAccordionControlElement_Click);
+            // 
+            // accordionControlElement1
+            // 
+            this.accordionControlElement1.Name = "accordionControlElement1";
+            this.accordionControlElement1.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement1.Text = "Element1";
+            // 
+            // accordionControlElement2
+            // 
+            this.accordionControlElement2.Name = "accordionControlElement2";
+            this.accordionControlElement2.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement2.Text = "Element2";
+            // 
+            // accordionControlElement3
+            // 
+            this.accordionControlElement3.Name = "accordionControlElement3";
+            this.accordionControlElement3.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement3.Text = "Element3";
+            // 
+            // accordionControlElement4
+            // 
+            this.accordionControlElement4.Name = "accordionControlElement4";
+            this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement4.Text = "Element4";
+            // 
+            // TCPClientAccordionControlElement
+            // 
+            this.TCPClientAccordionControlElement.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.accordionControlElement11,
+            this.accordionControlElement12,
+            this.accordionControlElement13});
+            this.TCPClientAccordionControlElement.Expanded = true;
+            this.TCPClientAccordionControlElement.Name = "TCPClientAccordionControlElement";
+            this.TCPClientAccordionControlElement.Tag = SocketTool_Framework.AccordionControlEx.MouseEventType.Normal;
+            this.TCPClientAccordionControlElement.Text = "TCP Client";
+            // 
+            // accordionControlElement11
+            // 
+            this.accordionControlElement11.Name = "accordionControlElement11";
+            this.accordionControlElement11.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement11.Text = "Element11";
+            // 
+            // accordionControlElement12
+            // 
+            this.accordionControlElement12.Name = "accordionControlElement12";
+            this.accordionControlElement12.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement12.Text = "Element12";
+            // 
+            // accordionControlElement13
+            // 
+            this.accordionControlElement13.Name = "accordionControlElement13";
+            this.accordionControlElement13.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement13.Text = "Element13";
             // 
             // Root
             // 
-            Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            Root.GroupBordersVisible = false;
-            Root.Name = "Root";
-            Root.Size = new System.Drawing.Size(631, 423);
-            Root.TextVisible = false;
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.emptySpaceItem1});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(834, 423);
+            this.Root.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.MenuAccordionControl;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(224, 397);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(224, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(584, 397);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // accordionControlElement15
+            // 
+            this.accordionControlElement15.Name = "accordionControlElement15";
+            this.accordionControlElement15.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement15.Text = "Element15";
+            // 
+            // accordionControlElement16
+            // 
+            this.accordionControlElement16.Name = "accordionControlElement16";
+            this.accordionControlElement16.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement16.Text = "Element16";
             // 
             // FormMain
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(834, 521);
-            Controls.Add(panel1);
-            Controls.Add(accordionControl1);
-            Controls.Add(barDockControlLeft);
-            Controls.Add(barDockControlRight);
-            Controls.Add(barDockControlBottom);
-            Controls.Add(barDockControlTop);
-            IconOptions.LargeImage = (System.Drawing.Image)resources.GetObject("FormMain.IconOptions.LargeImage");
-            Name = "FormMain";
-            Text = "Socket Tool";
-            ((System.ComponentModel.ISupportInitialize)accordionControl1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)barManager1).EndInit();
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)layoutControl1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Root).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(834, 521);
+            this.Controls.Add(this.layoutControl1);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
+            this.IconOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("FormMain.IconOptions.LargeImage")));
+            this.Name = "FormMain";
+            this.Text = "Socket Tool";
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MenuAccordionControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
-        private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement5;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement6;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement7;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement8;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem HelpButton;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -331,11 +395,23 @@
         private DevExpress.XtraBars.BarButtonItem barButtonAdd;
         private DevExpress.XtraBars.BarButtonItem barButtonDel;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
-        private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraBars.BarButtonItem ExitButton;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private AccordionControlEx MenuAccordionControl;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement TCPServerAccordionControlElement;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement TCPClientAccordionControlElement;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement11;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement12;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement13;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement15;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement16;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement3;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
     }
 }
 

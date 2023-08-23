@@ -16,12 +16,14 @@ namespace SocketTool_Framework
 {
     public partial class FormMain : DevExpress.XtraEditors.XtraForm
     {
-        public SkinElement skinElement;
-        private AccordionControlElement clickedGroupElement;
-        public FormMain Instance;
 
-        //TCP Server collection
-        //Dictionary<IPEndPoint,> tcpServers = new Dictionary<IPEndPoint, >();
+        public FormMain Instance;
+        csDevMessage messageHelper;
+
+        /// <summary>
+        /// TCP Server collection
+        /// </summary>
+        Dictionary<csTCPServerConfig, csTCPServer> tcpServers = new Dictionary<csTCPServerConfig, csTCPServer>();
 
         public FormMain()
         {
@@ -32,90 +34,88 @@ namespace SocketTool_Framework
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            this.LookAndFeel.SetSkinStyle(SkinStyle.WXICompact, SkinSvgPalette.WXICompact.Clearness);
-
             //Init variables
-            //skinElement = SkinManager.GetSkinElement(SkinProductId.AccordionControl, UserLookAndFeel.Default, "Item");
-            skinElement = SkinManager.GetSkinElement(SkinProductId.AccordionControl, this.LookAndFeel, "Item");
+            messageHelper = new csDevMessage(this);
+            string sMessage = "";
+
+            if (!csConfigHelper.LoadOrCreateConfig(out sMessage))
+            {
+                messageHelper.Info(sMessage);
+                return;
+            }
 
             //Init according control
-            accordionControl1.AllowItemSelection = true;//Item can be selected
-            accordionControl1.ShowFilterControl = ShowFilterControl.Always; //Enable search function
-            accordionControl1.CustomDrawElement += AccordionControl1_CustomDrawElement;
-            accordionControl1.MouseClick += AccordionControl1_MouseClick;//Customize selection display
-            accordionControl1.SelectedElementChanged += AccordionControl1_SelectedElementChanged;//Show panel
+            MenuAccordionControl.InitSelection();//Fix the display issue
+            MenuAccordionControl.SelectedObjectChanged += MenuAccordionControl_SelectedObjectChanged;
         }
 
-        private void AccordionControl1_SelectedElementChanged(object sender, SelectedElementChangedEventArgs e)
+        private void MenuAccordionControl_SelectedObjectChanged(AccordionControlElement selectedElement)
         {
-            if (accordionControl1.SelectedElement == null) return;
-            if (accordionControl1.SelectedElement.Style == ElementStyle.Group) return;
-            var parentItem = accordionControl1.SelectedElement.OwnerElement;
+            if (MenuAccordionControl.SelectedObject == null) return;
+            if (MenuAccordionControl.SelectedObject.Style == ElementStyle.Group) return;
+            var parentItem = MenuAccordionControl.SelectedObject.OwnerElement;
             if (parentItem.Style != ElementStyle.Group) return;
+
+            //Get item index
+            int iIndex = parentItem.Elements.IndexOf(MenuAccordionControl.SelectedObject);
+
             if (parentItem.Text == csGroup.TCPServer)
             {//Get ip endpoint
+             //Get item index
 
             }
             if (parentItem.Text == csGroup.TCPClient)
             {
                 //IPAddress.TryParse();
             }
+        }
+
+        public void LoadConfigFile()
+        {
 
         }
 
-        private void AccordionControl1_MouseClick(object sender, MouseEventArgs e)
+        private _itemType GetCurrentGroup()
         {
-            var hitInfo = accordionControl1.CalcHitInfo(e.Location);
-            if (hitInfo.HitTest == AccordionControlHitTest.Item || hitInfo.HitTest == AccordionControlHitTest.Group)
+            if (MenuAccordionControl.SelectedObject == null) return _itemType.None;
+            if (MenuAccordionControl.SelectedObject.Style == ElementStyle.Group)
             {
-                var element = hitInfo.ItemInfo.Element;
-                element.Tag = EventType.Click;
-
-
-                if (clickedGroupElement != null && clickedGroupElement != element)
-                {
-                    clickedGroupElement.Tag = EventType.Normal;
-
-                }
-
-
-                if (hitInfo.HitTest == AccordionControlHitTest.Group)
-                {
-                    accordionControl1.SelectedElement = null;
-                    clickedGroupElement = element;
-                }
+                return csGroup.GetType(MenuAccordionControl.SelectedObject.Text);
+            }
+            else
+            {
+                var parentItem = MenuAccordionControl.SelectedObject.OwnerElement;
+                return csGroup.GetType(parentItem.Text);
             }
         }
 
-        private void AccordionControl1_CustomDrawElement(object sender, DevExpress.XtraBars.Navigation.CustomDrawElementEventArgs e)
+ 
+        private void ExitButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(e.Element.Tag is EventType))
-                return;
-
-            var eventType = (EventType)e.Element.Tag;
-
-            //Draw group element selection
-            if (e.Element.Style == ElementStyle.Group)
-            {
-                var info = new SkinElementInfo(skinElement, e.ObjectInfo.HeaderBounds) { Cache = e.Cache, ImageIndex = (int)eventType };
-                SkinElementPainter.Default.DrawObject(info);
-
-                e.DrawExpandCollapseButton();
-                e.DrawText();
-                e.Handled = true;
-            }
+            this.Close();
         }
 
-        private enum EventType
+        private void HelpButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Normal,
-            Hover,
-            Click
+            messageHelper.Info("Future");
         }
 
         private void barButtonAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FormServerEdit.ShowForm("New Any");
+            var type = GetCurrentGroup();
+            if (type == _itemType.TCPServer)
+            {
+                if (FormServerEdit.ShowForm("New Any") != DialogResult.OK) return;
+            }
+            else
+            {
+                messageHelper.Info("Future");
+            }
+        }
+
+        private void TCPServerAccordionControlElement_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

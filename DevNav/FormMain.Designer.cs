@@ -105,6 +105,9 @@ partial class FormMain
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.officeNavigationBar1 = new DevExpress.XtraBars.Navigation.OfficeNavigationBar();
+            this.navigationBarItem1 = new DevExpress.XtraBars.Navigation.NavigationBarItem();
+            this.navigationBarItem2 = new DevExpress.XtraBars.Navigation.NavigationBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -138,6 +141,7 @@ partial class FormMain
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // navBarControl1
@@ -482,7 +486,7 @@ partial class FormMain
             this.accordionControlElement11,
             this.accordionControlElement12});
             this.accordionControlElement9.Name = "accordionControlElement9";
-            this.accordionControlElement9.Tag = DevNav.AccordionControlEx.MouseEventType.Normal;
+            this.accordionControlElement9.Tag = DevNav.AccordionControlEx.MouseEventType.Click;
             this.accordionControlElement9.Text = "Element9";
             // 
             // accordionControlElement10
@@ -512,30 +516,32 @@ partial class FormMain
             this.accordionControlElement18});
             this.accordionControlElement13.Expanded = true;
             this.accordionControlElement13.Name = "accordionControlElement13";
-            this.accordionControlElement13.Tag = DevNav.AccordionControlEx.MouseEventType.Click;
+            this.accordionControlElement13.Tag = DevNav.AccordionControlEx.MouseEventType.Normal;
             this.accordionControlElement13.Text = "Element13";
             // 
             // accordionControlElement16
             // 
             this.accordionControlElement16.Name = "accordionControlElement16";
             this.accordionControlElement16.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement16.Tag = DevNav.AccordionControlEx.MouseEventType.Click;
             this.accordionControlElement16.Text = "Element16";
             // 
             // accordionControlElement17
             // 
             this.accordionControlElement17.Name = "accordionControlElement17";
             this.accordionControlElement17.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement17.Tag = DevNav.AccordionControlEx.MouseEventType.Click;
             this.accordionControlElement17.Text = "Element17";
             // 
             // accordionControlElement18
             // 
             this.accordionControlElement18.Name = "accordionControlElement18";
             this.accordionControlElement18.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement18.Tag = DevNav.AccordionControlEx.MouseEventType.Click;
             this.accordionControlElement18.Text = "Element18";
             // 
             // accordionControl1
             // 
-            this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1,
             this.accordionControlElement2});
@@ -814,6 +820,28 @@ partial class FormMain
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 509);
             // 
+            // officeNavigationBar1
+            // 
+            this.officeNavigationBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.officeNavigationBar1.Items.AddRange(new DevExpress.XtraBars.Navigation.NavigationBarItem[] {
+            this.navigationBarItem1,
+            this.navigationBarItem2});
+            this.officeNavigationBar1.Location = new System.Drawing.Point(1, 426);
+            this.officeNavigationBar1.Name = "officeNavigationBar1";
+            this.officeNavigationBar1.Size = new System.Drawing.Size(775, 50);
+            this.officeNavigationBar1.TabIndex = 3;
+            this.officeNavigationBar1.Text = "officeNavigationBar1";
+            // 
+            // navigationBarItem1
+            // 
+            this.navigationBarItem1.Name = "navigationBarItem1";
+            this.navigationBarItem1.Text = "Item1";
+            // 
+            // navigationBarItem2
+            // 
+            this.navigationBarItem2.Name = "navigationBarItem2";
+            this.navigationBarItem2.Text = "Item2";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -833,6 +861,7 @@ partial class FormMain
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabControl1.PerformLayout();
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
             this.layoutControl3.ResumeLayout(false);
@@ -861,6 +890,7 @@ partial class FormMain
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -940,6 +970,9 @@ partial class FormMain
     private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
     private DevExpress.XtraEditors.SimpleButton bTestAccordion1;
     private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+    private DevExpress.XtraBars.Navigation.OfficeNavigationBar officeNavigationBar1;
+    private DevExpress.XtraBars.Navigation.NavigationBarItem navigationBarItem1;
+    private DevExpress.XtraBars.Navigation.NavigationBarItem navigationBarItem2;
 }
 
 
