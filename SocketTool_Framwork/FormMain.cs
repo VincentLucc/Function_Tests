@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.LookAndFeel;
@@ -21,7 +23,7 @@ namespace SocketTool_Framework
         public FormMain Instance;
         csDevMessage messageHelper;
         List<csTCPServer> tcpServers;
-
+        bool bUpdateRecivedMessage = false;
         public FormMain()
         {
             InitializeComponent();
@@ -36,6 +38,8 @@ namespace SocketTool_Framework
         {
             //Init variables
             messageHelper = new csDevMessage(this);
+            csPublic.messageHelper = messageHelper;
+
             string sMessage = "";
 
             if (!csConfigHelper.LoadOrCreateConfig(out sMessage))
@@ -52,9 +56,14 @@ namespace SocketTool_Framework
             //Load the configuration value
             PopulateServerItems();
 
+            //Load version info
+            VersionStaticItem.Caption = "Version: " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
             //Load client
             TCPClientAccordionControlElement.Elements.Clear();
+
+            //Timer 
+            timer1.Start();
         }
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -83,6 +92,7 @@ namespace SocketTool_Framework
                 serverPanel.Dock = DockStyle.Fill;
                 MainSplitContainerControl.Panel2.Controls.Clear();
                 MainSplitContainerControl.Panel2.Controls.Add(serverPanel);
+                serverPanel.LoadConfig(csConfigHelper.config.TCPServers[iIndex]);
             }
             if (parentItem.Text == csGroup.TCPClient)
             {
@@ -105,7 +115,7 @@ namespace SocketTool_Framework
             else
             {
                 var parentItem = MenuAccordionControl.SelectedObject.OwnerElement;
-                if (parentItem==null)
+                if (parentItem == null)
                 {
                     return _itemType.None;
                 }
@@ -143,7 +153,7 @@ namespace SocketTool_Framework
                 var newElement = TCPServerAccordionControlElement.Elements.Add();
                 newElement.Style = ElementStyle.Item;
 
-                var newServer = new csTCPServer(instance.Port, instance.IPAddress);
+                var newServer = new csTCPServer(this, instance.Port, instance.IPAddress);
                 newElement.Text = newServer.GetDisplayName();
                 tcpServers.Add(newServer);
             }
@@ -153,7 +163,7 @@ namespace SocketTool_Framework
             }
         }
 
-        private void barButtonDel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private async void barButtonDel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (MenuAccordionControl.SelectedObject == null) return;
             if (MenuAccordionControl.SelectedObject.Style == ElementStyle.Group) return;
@@ -169,7 +179,7 @@ namespace SocketTool_Framework
                 var newServer = tcpServers[iIndex];
                 tcpServers.RemoveAt(iIndex);
 
-                newServer.StopServer();
+                await newServer.StopTCPServer();
             }
             else
             {
@@ -261,16 +271,118 @@ namespace SocketTool_Framework
 
         }
 
-        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
         private void moveUpButton_ItemDoubleClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
         }
 
+        private async void StopButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var currentItem = GetCurrentItem();
 
+
+            if (currentItem is csTCPServer)
+            {
+                await (currentItem as csTCPServer).StopTCPServer();
+
+            }
+        }
+
+        private async void StartButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var currentItem = GetCurrentItem();
+            string sMessage;
+
+            if (currentItem is csTCPServer)
+            {
+                var tcpServer = currentItem as csTCPServer;
+                if (!tcpServer.StartTCPServer(this, out sMessage))
+                {
+                    messageHelper.Info("Server start error.\r\n" + sMessage);
+                    await tcpServer.StopTCPServer();
+                    return;
+                }
+                tcpServer.ClientRequestReceived -= TcpServer_ClientRequestReceived;
+                tcpServer.ClientRequestReceived += TcpServer_ClientRequestReceived;
+            }
+        }
+
+        private void TcpServer_ClientRequestReceived(csTCPServer tcpServer, csTCPOperation operation)
+        {
+            //Notice to update the view
+            var currentItem = GetCurrentItem();
+            if (currentItem == tcpServer)
+            {
+                bUpdateRecivedMessage = true;
+            }
+
+        }
+
+        private object GetCurrentItem()
+        {
+            var controls = MainSplitContainerControl.Panel2.Controls;
+            if (controls.Count == 0) return null;
+            if (controls[0] is TCPServerXtraUserControl)
+            {
+                return (controls[0] as TCPServerXtraUserControl).server;
+            }
+            else return null;
+        }
+
+        private void UpdateTCPServerReceivedBox()
+        {
+            var controls = MainSplitContainerControl.Panel2.Controls;
+            if (controls.Count == 0) return;
+            if (controls[0] is TCPServerXtraUserControl)
+            {
+                (controls[0] as TCPServerXtraUserControl).UpdateReceivedBox();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                timer1.Enabled = false;
+
+                if (this == null || this.IsDisposed || this.Disposing) return;
+
+
+                var item = GetCurrentItem();
+                if (item is csTCPServer)
+                {
+                    var tcpServer = item as csTCPServer;
+                    if (tcpServer.IsRunning)
+                    {
+                        StartButtonItem.Enabled = false;
+                        StopButtonItem.Enabled = true;
+                    }
+                    else
+                    {
+                        StartButtonItem.Enabled = true;
+                        StopButtonItem.Enabled = false;
+                    }
+
+                    //Check if update if required
+                    if (bUpdateRecivedMessage)
+                    {
+                        UpdateTCPServerReceivedBox();
+                        bUpdateRecivedMessage = false;
+                    }
+                }
+                else
+                {
+                    StartButtonItem.Enabled = false;
+                    StopButtonItem.Enabled = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("timer1_Tick:\r\n" + ex.Message);
+            }
+
+            timer1.Enabled = true;
+        }
     }
 }

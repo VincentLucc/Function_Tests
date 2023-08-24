@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -9,6 +10,12 @@ namespace SocketTool_Framework
 {
     public class csPublic
     {
+
+        public static string TimeString => DateTime.Now.ToString("HH:mm:ss:fff");
+        public static string DateString => DateTime.Now.ToString("yyMMdd");
+
+        public static csDevMessage messageHelper;
+
         /// <summary>
         /// Get mac address info
         /// </summary>
@@ -30,6 +37,19 @@ namespace SocketTool_Framework
             }
 
             return sList;
+        }
+
+        /// <summary>
+        /// Used to reduce the traffic
+        /// </summary>
+        /// <param name="oItem"></param>
+        /// <returns></returns>
+        public static string SerializeObjectIgnoreNull(object oItem)
+        {
+            var jsonSetting = new JsonSerializerSettings();
+            jsonSetting.NullValueHandling = NullValueHandling.Ignore;
+            string sMessage = JsonConvert.SerializeObject(oItem, jsonSetting);
+            return sMessage;
         }
     }
 

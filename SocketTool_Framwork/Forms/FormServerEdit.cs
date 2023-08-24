@@ -65,8 +65,8 @@ namespace SocketTool_Framework.Forms
         {
             if (ip == null)
             {
-                IPAddress = "127.0.0.1";
-                Port = 0;
+                IPAddress = "0.0.0.0";
+                Port = 54321;
             }
             else
             {
