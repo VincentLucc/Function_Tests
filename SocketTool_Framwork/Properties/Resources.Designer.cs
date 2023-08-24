@@ -63,6 +63,36 @@ namespace SocketTool_Framework.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap additem_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("additem_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconsetredtoblack4_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("iconsetredtoblack4_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconsetsigns3_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("iconsetsigns3_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap movedown_16x16 {
             get {
                 object obj = ResourceManager.GetObject("movedown_16x16", resourceCulture);

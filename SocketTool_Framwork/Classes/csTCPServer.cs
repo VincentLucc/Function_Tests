@@ -54,9 +54,10 @@ namespace SocketTool_Framework
 
         /// <summary>
         /// Socket connectivity
+        /// Only indicate last record
         /// </summary>
         [XmlIgnore]
-        public bool IsConnected => socketServer == null ? false : socketServer.Connected;
+        public bool IsServerSocketConnected => socketServer == null ? false : socketServer.Connected;
 
         /// <summary>
         /// Store clients info <RemoteEndPoint,ClientInfo>

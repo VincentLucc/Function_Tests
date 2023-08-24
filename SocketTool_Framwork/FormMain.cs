@@ -152,6 +152,7 @@ namespace SocketTool_Framework
 
                 var newElement = TCPServerAccordionControlElement.Elements.Add();
                 newElement.Style = ElementStyle.Item;
+                newElement.Image = Properties.Resources.iconsetredtoblack4_16x16;
 
                 var newServer = new csTCPServer(this, instance.Port, instance.IPAddress);
                 newElement.Text = newServer.GetDisplayName();
@@ -264,6 +265,24 @@ namespace SocketTool_Framework
             }
         }
 
+        public void UpdateServerStatus()
+        {
+            for (int i = 0; i < tcpServers.Count; i++)
+            {
+                var tcpServer = tcpServers[i];
+                var serverItem = TCPServerAccordionControlElement.Elements[i];
+                if (tcpServer.IsRunning)
+                {
+                    serverItem.Image = Properties.Resources.iconsetsigns3_16x16;
+                }
+                else
+                {
+                    serverItem.Image = Properties.Resources.iconsetredtoblack4_16x16;
+                }
+                
+            }
+        }
+
 
 
         private void TCPServerAccordionControlElement_Click(object sender, EventArgs e)
@@ -347,6 +366,8 @@ namespace SocketTool_Framework
 
                 if (this == null || this.IsDisposed || this.Disposing) return;
 
+                //Server in the list
+                UpdateServerStatus();
 
                 var item = GetCurrentItem();
                 if (item is csTCPServer)

@@ -75,6 +75,7 @@ partial class FormMain
             this.accordionControlElement16 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement17 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement18 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement14 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -108,7 +109,6 @@ partial class FormMain
             this.officeNavigationBar1 = new DevExpress.XtraBars.Navigation.OfficeNavigationBar();
             this.navigationBarItem1 = new DevExpress.XtraBars.Navigation.NavigationBarItem();
             this.navigationBarItem2 = new DevExpress.XtraBars.Navigation.NavigationBarItem();
-            this.accordionControlElement14 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -543,6 +543,12 @@ partial class FormMain
             this.accordionControlElement18.Tag = DevNav.AccordionControlEx.MouseEventType.Click;
             this.accordionControlElement18.Text = "Element18";
             // 
+            // accordionControlElement14
+            // 
+            this.accordionControlElement14.Name = "accordionControlElement14";
+            this.accordionControlElement14.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement14.Text = "Element14";
+            // 
             // accordionControl1
             // 
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
@@ -564,8 +570,10 @@ partial class FormMain
             this.accordionControlElement4,
             this.accordionControlElement5});
             this.accordionControlElement1.Expanded = true;
+            this.accordionControlElement1.ImageOptions.Image = global::DevNav.Properties.Resources.boscheduler_16x16;
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "TCP Server";
+            this.accordionControlElement1.Click += new System.EventHandler(this.accordionControlElement1_Click);
             // 
             // accordionControlElement3
             // 
@@ -575,6 +583,7 @@ partial class FormMain
             // 
             // accordionControlElement4
             // 
+            this.accordionControlElement4.ImageOptions.Image = global::DevNav.Properties.Resources.through_16x16;
             this.accordionControlElement4.Name = "accordionControlElement4";
             this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement4.Text = "192.168.0.1:1234";
@@ -844,12 +853,6 @@ partial class FormMain
             // 
             this.navigationBarItem2.Name = "navigationBarItem2";
             this.navigationBarItem2.Text = "Item2";
-            // 
-            // accordionControlElement14
-            // 
-            this.accordionControlElement14.Name = "accordionControlElement14";
-            this.accordionControlElement14.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement14.Text = "Element14";
             // 
             // FormMain
             // 

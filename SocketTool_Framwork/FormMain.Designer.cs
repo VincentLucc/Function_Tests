@@ -66,6 +66,7 @@ namespace SocketTool_Framework
             this.accordionControlElement15 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement16 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -77,6 +78,7 @@ namespace SocketTool_Framework
             ((System.ComponentModel.ISupportInitialize)(this.MenuAccordionControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -311,7 +313,7 @@ namespace SocketTool_Framework
             this.accordionControlElement4});
             this.TCPServerAccordionControlElement.Expanded = true;
             this.TCPServerAccordionControlElement.Name = "TCPServerAccordionControlElement";
-            this.TCPServerAccordionControlElement.Tag = SocketTool_Framework.AccordionControlEx.MouseEventType.Normal;
+            this.TCPServerAccordionControlElement.Tag = SocketTool_Framework.AccordionControlEx.MouseEventType.Click;
             this.TCPServerAccordionControlElement.Text = "TCP Server";
             this.TCPServerAccordionControlElement.Click += new System.EventHandler(this.TCPServerAccordionControlElement_Click);
             // 
@@ -407,6 +409,13 @@ namespace SocketTool_Framework
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.Images.SetKeyName(0, "record_16x16.png");
+            this.imageCollection1.Images.SetKeyName(1, "iconsettrafficlights3_16x16.png");
+            this.imageCollection1.Images.SetKeyName(2, "iconsetredtoblack4_16x16.png");
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -431,6 +440,7 @@ namespace SocketTool_Framework
             ((System.ComponentModel.ISupportInitialize)(this.MenuAccordionControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -471,6 +481,7 @@ namespace SocketTool_Framework
         private DevExpress.XtraBars.BarButtonItem StopButtonItem;
         private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraBars.BarStaticItem VersionStaticItem;
+        private DevExpress.Utils.ImageCollection imageCollection1;
     }
 }
 
