@@ -611,7 +611,7 @@ namespace SocketTool_Framework
                         client.SendMessage(Message_LimitReached);
                     }
 
-                    Debug.WriteLine($"ProcessReceive.LimitReached{ClientLimit}:{sRemote}");
+                    Debug.WriteLine($"ProcessReceive.LimitReached({ClientLimit}):{sRemote}");
 
                     Thread.Sleep(100);
                     goto FinishUp;
@@ -794,13 +794,23 @@ namespace SocketTool_Framework
             {
                 if (IsJSONMessage)
                 {
+                    //Process in client thread
+                    //Code in here to handle non-conflict task
                     clientRequest = JsonConvert.DeserializeObject<csTCPRequest>(sMessage);
                     if (clientRequest == null) return;
 
-                    //Add to operation queue if required
+
+                    //Sent as queue to process in dedicated thread
+                    //For tasks require runs in order.
                 }
                 else
                 {
+                    //Process in client thread
+                    //Code in here to handle non-conflict task
+
+                    
+                    //Sent as queue to process in dedicated thread
+                    //For tasks require runs in order.
                     OperationQueueAdd(client, sMessage);
                 }
             }

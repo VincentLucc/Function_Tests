@@ -39,8 +39,6 @@ namespace SocketTool_Framework
             this.barButtonDel = new DevExpress.XtraBars.BarButtonItem();
             this.moveUpButton = new DevExpress.XtraBars.BarButtonItem();
             this.moveDownButton = new DevExpress.XtraBars.BarButtonItem();
-            this.StartButtonItem = new DevExpress.XtraBars.BarButtonItem();
-            this.StopButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.VersionStaticItem = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -99,8 +97,6 @@ namespace SocketTool_Framework
             this.barButtonDel,
             this.moveUpButton,
             this.moveDownButton,
-            this.StartButtonItem,
-            this.StopButtonItem,
             this.VersionStaticItem});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 12;
@@ -127,9 +123,7 @@ namespace SocketTool_Framework
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonAdd),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonDel),
             new DevExpress.XtraBars.LinkPersistInfo(this.moveUpButton),
-            new DevExpress.XtraBars.LinkPersistInfo(this.moveDownButton),
-            new DevExpress.XtraBars.LinkPersistInfo(this.StartButtonItem, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.StopButtonItem)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.moveDownButton)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawBorder = false;
             this.bar2.OptionsBar.DrawDragBorder = false;
@@ -173,24 +167,6 @@ namespace SocketTool_Framework
             this.moveDownButton.ImageOptions.LargeImage = global::SocketTool_Framework.Properties.Resources.movedown_32x32;
             this.moveDownButton.Name = "moveDownButton";
             this.moveDownButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.moveDownButton_ItemClick);
-            // 
-            // StartButtonItem
-            // 
-            this.StartButtonItem.Caption = "Start ";
-            this.StartButtonItem.Id = 9;
-            this.StartButtonItem.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.play_16x16;
-            this.StartButtonItem.ImageOptions.LargeImage = global::SocketTool_Framework.Properties.Resources.play_32x32;
-            this.StartButtonItem.Name = "StartButtonItem";
-            this.StartButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.StartButtonItem_ItemClick);
-            // 
-            // StopButtonItem
-            // 
-            this.StopButtonItem.Caption = "Stop";
-            this.StopButtonItem.Id = 10;
-            this.StopButtonItem.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.stop_16x16;
-            this.StopButtonItem.ImageOptions.LargeImage = global::SocketTool_Framework.Properties.Resources.stop_32x32;
-            this.StopButtonItem.Name = "StopButtonItem";
-            this.StopButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.StopButtonItem_ItemClick);
             // 
             // bar3
             // 
@@ -292,6 +268,8 @@ namespace SocketTool_Framework
             // MenuAccordionControl
             // 
             this.MenuAccordionControl.AllowItemSelection = true;
+            this.MenuAccordionControl.Appearance.AccordionControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.MenuAccordionControl.Appearance.AccordionControl.Options.UseBackColor = true;
             this.MenuAccordionControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MenuAccordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.TCPServerAccordionControlElement,
@@ -477,8 +455,6 @@ namespace SocketTool_Framework
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraBars.BarButtonItem moveUpButton;
         private DevExpress.XtraBars.BarButtonItem moveDownButton;
-        private DevExpress.XtraBars.BarButtonItem StartButtonItem;
-        private DevExpress.XtraBars.BarButtonItem StopButtonItem;
         private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraBars.BarStaticItem VersionStaticItem;
         private DevExpress.Utils.ImageCollection imageCollection1;

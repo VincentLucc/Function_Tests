@@ -273,13 +273,24 @@ namespace SocketTool_Framework
                 var serverItem = TCPServerAccordionControlElement.Elements[i];
                 if (tcpServer.IsRunning)
                 {
-                    serverItem.Image = Properties.Resources.iconsetsigns3_16x16;
+                    //Avoid flashing
+                    //csPublic.CompareBitmaps(serverItem.Image as Bitmap, Properties.Resources.iconsetsigns3_16x16);
+
+                    if (!csPublic.CompareBitmaps(serverItem.Image as Bitmap, Properties.Resources.iconsetsigns3_16x16))
+                    {
+                        serverItem.Image = Properties.Resources.iconsetsigns3_16x16;
+                    }
+
                 }
                 else
                 {
-                    serverItem.Image = Properties.Resources.iconsetredtoblack4_16x16;
+                    if (!csPublic.CompareBitmaps(serverItem.Image as Bitmap, Properties.Resources.iconsetredtoblack4_16x16))
+                    {
+                        serverItem.Image = Properties.Resources.iconsetredtoblack4_16x16;
+                    }
+
                 }
-                
+
             }
         }
 
@@ -295,47 +306,6 @@ namespace SocketTool_Framework
 
         }
 
-        private async void StopButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var currentItem = GetCurrentItem();
-
-
-            if (currentItem is csTCPServer)
-            {
-                await (currentItem as csTCPServer).StopTCPServer();
-
-            }
-        }
-
-        private async void StartButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var currentItem = GetCurrentItem();
-            string sMessage;
-
-            if (currentItem is csTCPServer)
-            {
-                var tcpServer = currentItem as csTCPServer;
-                if (!tcpServer.StartTCPServer(this, out sMessage))
-                {
-                    messageHelper.Info("Server start error.\r\n" + sMessage);
-                    await tcpServer.StopTCPServer();
-                    return;
-                }
-                tcpServer.ClientRequestReceived -= TcpServer_ClientRequestReceived;
-                tcpServer.ClientRequestReceived += TcpServer_ClientRequestReceived;
-            }
-        }
-
-        private void TcpServer_ClientRequestReceived(csTCPServer tcpServer, csTCPOperation operation)
-        {
-            //Notice to update the view
-            var currentItem = GetCurrentItem();
-            if (currentItem == tcpServer)
-            {
-                bUpdateRecivedMessage = true;
-            }
-
-        }
 
         private object GetCurrentItem()
         {
@@ -348,13 +318,14 @@ namespace SocketTool_Framework
             else return null;
         }
 
-        private void UpdateTCPServerReceivedBox()
+        private void UpdateTCPServerControl()
         {
             var controls = MainSplitContainerControl.Panel2.Controls;
             if (controls.Count == 0) return;
             if (controls[0] is TCPServerXtraUserControl)
             {
-                (controls[0] as TCPServerXtraUserControl).UpdateReceivedBox();
+                var tcpServerControl = controls[0] as TCPServerXtraUserControl;
+                tcpServerControl.UpdateUI();
             }
         }
 
@@ -368,35 +339,7 @@ namespace SocketTool_Framework
 
                 //Server in the list
                 UpdateServerStatus();
-
-                var item = GetCurrentItem();
-                if (item is csTCPServer)
-                {
-                    var tcpServer = item as csTCPServer;
-                    if (tcpServer.IsRunning)
-                    {
-                        StartButtonItem.Enabled = false;
-                        StopButtonItem.Enabled = true;
-                    }
-                    else
-                    {
-                        StartButtonItem.Enabled = true;
-                        StopButtonItem.Enabled = false;
-                    }
-
-                    //Check if update if required
-                    if (bUpdateRecivedMessage)
-                    {
-                        UpdateTCPServerReceivedBox();
-                        bUpdateRecivedMessage = false;
-                    }
-                }
-                else
-                {
-                    StartButtonItem.Enabled = false;
-                    StopButtonItem.Enabled = false;
-                }
-
+                UpdateTCPServerControl();
             }
             catch (Exception ex)
             {

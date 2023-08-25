@@ -15,6 +15,8 @@ namespace SocketTool_Framework.UserControls
     {
 
         public csTCPServer server;
+        bool bUpdateRecivedMessage;
+
         public TCPServerXtraUserControl()
         {
             InitializeComponent();
@@ -24,8 +26,8 @@ namespace SocketTool_Framework.UserControls
         {
             server = tcpServer;
             //Load the port
-            PortSpinEdit.EditValue = server.Port;
-            IPAddressTextEdit.Text = server.IPv4;
+            PortLabelControl.Text = server.Port.ToString();
+            IPv4LabelControl.Text = server.IPv4;
 
             //Force to load the data
             ReceivedGridControl.DataSource = server.ReceivedMessages;
@@ -44,19 +46,53 @@ namespace SocketTool_Framework.UserControls
 
         }
 
-        private void IPAddressTextEdit_EditValueChanged(object sender, EventArgs e)
+
+        public void UpdateUI()
         {
-            server.IPv4 = IPAddressTextEdit.Text;
+            if (bUpdateRecivedMessage)
+            {
+                ReceivedGridControl.RefreshDataSource();
+                bUpdateRecivedMessage = false;
+            }
+
+            
+            if (server.IsRunning)
+            {
+                StartButton.Enabled = false;
+                StopButton.Enabled = true;
+            }
+            else
+            {
+                StartButton.Enabled = true;
+                StopButton.Enabled = false;
+            }
         }
 
-        private void PortSpinEdit_EditValueChanged(object sender, EventArgs e)
+ 
+
+        private async void StartButton_Click(object sender, EventArgs e)
         {
-            server.Port = Convert.ToInt32(PortSpinEdit.EditValue);
+
+            if (!server.StartTCPServer(this, out string sMessage))
+            {
+                csPublic.messageHelper.Info("Server start error.\r\n" + sMessage);
+                await server.StopTCPServer();
+                return;
+            }
+            server.ClientRequestReceived -= TcpServer_ClientRequestReceived;
+            server.ClientRequestReceived += TcpServer_ClientRequestReceived;
         }
 
-        public void UpdateReceivedBox()
+        private async void StopButton_Click(object sender, EventArgs e)
         {
-            ReceivedGridControl.RefreshDataSource();
+            await server.StopTCPServer();
+        }
+
+        private void TcpServer_ClientRequestReceived(csTCPServer tcpServer, csTCPOperation operation)
+        {
+            //Notice to update the view
+            bUpdateRecivedMessage = true;
+
         }
     }
 
