@@ -32,6 +32,7 @@ namespace SocketTool_Framework
         /// </summary>
         public bool IsJSONMessage { get; set; }
 
+        public bool EnableWelcomeMessage { get; set; }
         public bool EnableStatusMessage { get; set; }
 
         public string Message_Welcome { get; set; }
@@ -179,8 +180,9 @@ namespace SocketTool_Framework
             lockReceivedMessages = new object();
 
             //Setup messages
+            EnableWelcomeMessage = true;
             EnableStatusMessage = true;
-            Message_Welcome = "Welcome";
+            Message_Welcome = "";//Use the default message
             Message_LimitReached = "Server Limit Reached.";
             Message_Ping = "Ping";
         }
@@ -373,7 +375,21 @@ namespace SocketTool_Framework
                     //Get socket
                     Socket socketClient = socketServer.Accept(); //Get client socket
                     string sRemote = socketClient.RemoteEndPoint.ToString();
-                    socketClient.Send(Encoding.UTF8.GetBytes(Message_Welcome + ":" + sRemote)); ;
+                    if (EnableWelcomeMessage)
+                    {
+                        string sWelcome = "";
+                        if (string.IsNullOrWhiteSpace(Message_Welcome))
+                        {
+                            sWelcome = $"Welcome:{sRemote}\r\n";
+                        }
+                        else
+                        {
+                            sWelcome = Message_Welcome;
+                        }
+
+                        socketClient.Send(Encoding.UTF8.GetBytes(sWelcome));
+                    }
+
 
                     //Set socket
                     socketClient.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
@@ -487,9 +503,9 @@ namespace SocketTool_Framework
                     string sMessage = $"{csPublic.TimeString} {operation.ClientInfo.RemoteEndPoint} : {operation.TextRequest}";
                     ReceivedMessages.Add(sMessage);
 
-                    if (ReceivedMessages.Count>1500)
+                    if (ReceivedMessages.Count > 1500)
                     {
-                        ReceivedMessages.RemoveRange(0,500);
+                        ReceivedMessages.RemoveRange(0, 500);
                     }
                 }
             }
@@ -808,7 +824,7 @@ namespace SocketTool_Framework
                     //Process in client thread
                     //Code in here to handle non-conflict task
 
-                    
+
                     //Sent as queue to process in dedicated thread
                     //For tasks require runs in order.
                     OperationQueueAdd(client, sMessage);
