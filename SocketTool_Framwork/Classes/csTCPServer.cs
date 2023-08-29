@@ -380,14 +380,15 @@ namespace SocketTool_Framework
                         string sWelcome = "";
                         if (string.IsNullOrWhiteSpace(Message_Welcome))
                         {
-                            sWelcome = $"Welcome:{sRemote}\r\n";
+                            sWelcome = $"Welcome:{sRemote}";
                         }
                         else
                         {
                             sWelcome = Message_Welcome;
                         }
 
-                        socketClient.Send(Encoding.UTF8.GetBytes(sWelcome));
+                        //Message can be connected
+                        socketClient.Send(Encoding.UTF8.GetBytes(sWelcome));                       
                     }
 
 
@@ -616,7 +617,8 @@ namespace SocketTool_Framework
                     Clients.AddOrUpdate(sRemote, client, (key, value) => client);
 
                     //Server OK command
-                    if (EnableStatusMessage) client.SendMessage("Ready to receive.");
+                    if (EnableStatusMessage) 
+                        client.SendMessage("Ready to receive.");
                     client.IsValid = true;
                 }
                 else
@@ -701,13 +703,17 @@ namespace SocketTool_Framework
             csTCPClientInfo client = (csTCPClientInfo)_client;
             string sRemote = "";
             string sMessage = "";
+            //Avoid sticky message when startup
+            Thread.Sleep(100);
 
             //Try to get socket information
             try
             {
                 sRemote = client.ClientSocket.RemoteEndPoint.ToString();
                 if (EnableStatusMessage)
+                {
                     client.SendMessage("Ready to send");
+                }                
             }
             catch (Exception e1)
             {

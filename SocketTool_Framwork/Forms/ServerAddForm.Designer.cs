@@ -1,6 +1,6 @@
 ﻿namespace SocketTool_Framework.Forms
 {
-    partial class FormServerEdit
+    partial class ServerAddForm
     {
         /// <summary>
         /// Required designer variable.
@@ -193,14 +193,14 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(80, 13);
             this.layoutControlItem1.TextToControlDistance = 5;
             // 
-            // FormServerEdit
+            // ServerAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(267, 258);
             this.Controls.Add(this.layoutControl1);
             this.IconOptions.ShowIcon = false;
-            this.Name = "FormServerEdit";
+            this.Name = "ServerAddForm";
             this.Text = "Add Client";
             this.Load += new System.EventHandler(this.FormServerAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();

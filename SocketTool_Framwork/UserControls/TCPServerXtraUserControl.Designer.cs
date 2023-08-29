@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TCPServerXtraUserControl));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.StopButton = new DevExpress.XtraEditors.SimpleButton();
             this.StartButton = new DevExpress.XtraEditors.SimpleButton();
@@ -50,6 +51,9 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.simpleSeparator2 = new DevExpress.XtraLayout.SimpleSeparator();
+            this.SettingsButton = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ReceivedGridControl)).BeginInit();
@@ -67,6 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -79,6 +85,7 @@
             this.layoutControl1.Controls.Add(this.ReceivedGridControl);
             this.layoutControl1.Controls.Add(this.SendMemoEdit);
             this.layoutControl1.Controls.Add(this.IPv4LabelControl);
+            this.layoutControl1.Controls.Add(this.SettingsButton);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -91,7 +98,7 @@
             // 
             this.StopButton.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.stop_16x161;
             this.StopButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.StopButton.Location = new System.Drawing.Point(44, 12);
+            this.StopButton.Location = new System.Drawing.Point(38, 12);
             this.StopButton.MaximumSize = new System.Drawing.Size(28, 0);
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(22, 22);
@@ -106,7 +113,7 @@
             this.StartButton.Location = new System.Drawing.Point(12, 12);
             this.StartButton.MaximumSize = new System.Drawing.Size(28, 0);
             this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(28, 22);
+            this.StartButton.Size = new System.Drawing.Size(22, 22);
             this.StartButton.StyleController = this.layoutControl1;
             this.StartButton.TabIndex = 15;
             this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
@@ -142,10 +149,10 @@
             // 
             // ReceivedGridControl
             // 
-            this.ReceivedGridControl.Location = new System.Drawing.Point(12, 162);
+            this.ReceivedGridControl.Location = new System.Drawing.Point(12, 154);
             this.ReceivedGridControl.MainView = this.ReceivedGridView;
             this.ReceivedGridControl.Name = "ReceivedGridControl";
-            this.ReceivedGridControl.Size = new System.Drawing.Size(579, 238);
+            this.ReceivedGridControl.Size = new System.Drawing.Size(579, 246);
             this.ReceivedGridControl.TabIndex = 5;
             this.ReceivedGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ReceivedGridView});
@@ -164,13 +171,13 @@
             // 
             this.SendMemoEdit.Location = new System.Drawing.Point(12, 65);
             this.SendMemoEdit.Name = "SendMemoEdit";
-            this.SendMemoEdit.Size = new System.Drawing.Size(579, 76);
+            this.SendMemoEdit.Size = new System.Drawing.Size(579, 68);
             this.SendMemoEdit.StyleController = this.layoutControl1;
             this.SendMemoEdit.TabIndex = 4;
             // 
             // IPv4LabelControl
             // 
-            this.IPv4LabelControl.Location = new System.Drawing.Point(498, 16);
+            this.IPv4LabelControl.Location = new System.Drawing.Point(497, 16);
             this.IPv4LabelControl.Name = "IPv4LabelControl";
             this.IPv4LabelControl.Size = new System.Drawing.Size(36, 13);
             this.IPv4LabelControl.StyleController = this.layoutControl1;
@@ -192,7 +199,9 @@
             this.layoutControlItem8,
             this.layoutControlItem5,
             this.emptySpaceItem1,
-            this.layoutControlItem6});
+            this.layoutControlItem6,
+            this.simpleSeparator2,
+            this.layoutControlItem9});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(603, 412);
             this.Root.TextVisible = false;
@@ -202,7 +211,7 @@
             this.layoutControlItem1.Control = this.SendMemoEdit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 53);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(583, 80);
+            this.layoutControlItem1.Size = new System.Drawing.Size(583, 72);
             this.layoutControlItem1.Text = "Send Message";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -211,9 +220,9 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.ReceivedGridControl;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 133);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 125);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(583, 259);
+            this.layoutControlItem2.Size = new System.Drawing.Size(583, 267);
             this.layoutControlItem2.Text = "Message Received:";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(93, 13);
@@ -270,7 +279,7 @@
             this.layoutControlItem8.Control = this.IPv4LabelControl;
             this.layoutControlItem8.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem8.CustomizationFormText = "Lable:";
-            this.layoutControlItem8.Location = new System.Drawing.Point(451, 0);
+            this.layoutControlItem8.Location = new System.Drawing.Point(450, 0);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(75, 26);
             this.layoutControlItem8.Text = "IPv4:";
@@ -283,26 +292,59 @@
             this.layoutControlItem5.Control = this.StartButton;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(32, 26);
+            this.layoutControlItem5.Size = new System.Drawing.Size(26, 26);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(58, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(82, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(393, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(368, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.StopButton;
-            this.layoutControlItem6.Location = new System.Drawing.Point(32, 0);
+            this.layoutControlItem6.Location = new System.Drawing.Point(26, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(26, 26);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
+            // 
+            // simpleSeparator2
+            // 
+            this.simpleSeparator2.AllowHotTrack = false;
+            this.simpleSeparator2.Location = new System.Drawing.Point(525, 0);
+            this.simpleSeparator2.Name = "simpleSeparator2";
+            this.simpleSeparator2.OptionsPrint.AppearanceItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.simpleSeparator2.OptionsPrint.AppearanceItem.Options.UseForeColor = true;
+            this.simpleSeparator2.Size = new System.Drawing.Size(1, 26);
+            // 
+            // SettingsButton
+            // 
+            this.SettingsButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("SettingsButton.ImageOptions.Image")));
+            this.SettingsButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.SettingsButton.Location = new System.Drawing.Point(64, 12);
+            this.SettingsButton.MaximumSize = new System.Drawing.Size(28, 0);
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.Size = new System.Drawing.Size(26, 22);
+            this.SettingsButton.StyleController = this.layoutControl1;
+            this.SettingsButton.TabIndex = 16;
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.SettingsButton;
+            this.layoutControlItem9.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem9.CustomizationFormText = "layoutControlItem6";
+            this.layoutControlItem9.Location = new System.Drawing.Point(52, 0);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(30, 26);
+            this.layoutControlItem9.Text = "layoutControlItem6";
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem9.TextVisible = false;
             // 
             // TCPServerXtraUserControl
             // 
@@ -328,6 +370,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -356,5 +400,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraEditors.SimpleButton StopButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraLayout.SimpleSeparator simpleSeparator2;
+        private DevExpress.XtraEditors.SimpleButton SettingsButton;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
     }
 }

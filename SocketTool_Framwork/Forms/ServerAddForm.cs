@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace SocketTool_Framework.Forms
 {
-    public partial class FormServerEdit : XtraForm
+    public partial class ServerAddForm : XtraForm
     {
-        public static FormServerEdit Instance;
+        public static ServerAddForm Instance;
 
         public string IPAddress { get; set; }
         public int Port { get; set; }
 
-        public FormServerEdit()
+        public ServerAddForm()
         {
             InitializeComponent();
             InitEvents();
@@ -46,7 +46,7 @@ namespace SocketTool_Framework.Forms
         {
             if (Instance == null)
             {
-                Instance = new FormServerEdit();
+                Instance = new ServerAddForm();
                 Instance.StartPosition = FormStartPosition.CenterParent;
             }
 

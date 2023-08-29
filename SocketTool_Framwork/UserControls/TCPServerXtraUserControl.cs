@@ -94,6 +94,11 @@ namespace SocketTool_Framework.UserControls
             bUpdateRecivedMessage = true;
 
         }
+
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

@@ -209,11 +209,17 @@
     <Compile Include="Forms\AboutDialog.designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormServerEdit.cs">
+    <Compile Include="Forms\ServerAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormServerEdit.Designer.cs">
-      <DependentUpon>FormServerEdit.cs</DependentUpon>
+    <Compile Include="Forms\ServerAddForm.Designer.cs">
+      <DependentUpon>ServerAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ServerConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ServerConfigForm.Designer.cs">
+      <DependentUpon>ServerConfigForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\XtraForm1.cs">
       <SubType>Form</SubType>
@@ -238,8 +244,11 @@
     <EmbeddedResource Include="Forms\AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormServerEdit.resx">
-      <DependentUpon>FormServerEdit.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ServerAddForm.resx">
+      <DependentUpon>ServerAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServerConfigForm.resx">
+      <DependentUpon>ServerConfigForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\XtraForm1.resx">
       <DependentUpon>XtraForm1.cs</DependentUpon>

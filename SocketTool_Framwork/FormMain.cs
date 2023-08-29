@@ -146,8 +146,8 @@ namespace SocketTool_Framework
             var type = GetCurrentGroup();
             if (type == _itemType.TCPServer)
             {
-                if (FormServerEdit.ShowForm("New Any") != DialogResult.OK) return;
-                var instance = FormServerEdit.Instance;
+                if (ServerAddForm.ShowForm("New Any") != DialogResult.OK) return;
+                var instance = ServerAddForm.Instance;
 
 
                 var newElement = TCPServerAccordionControlElement.Elements.Add();
