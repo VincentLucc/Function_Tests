@@ -41,27 +41,26 @@ namespace QuickTests
 
         public FormMain()
         {
+            this.Load += new System.EventHandler(this.FormMain_Load_1);
             InitializeComponent();
             InitVariabes();
             InitOperation();
         }
 
-
         /// <summary>
-        /// Not triggerring
+        /// IF this is not trigger, check if an "OnLoad" override method exist
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void Form1_Load(object sender, EventArgs e)
+        private void FormMain_Load_1(object sender, EventArgs e)
         {
-            await Task.Delay(1000);
             this.Visible = true;
-
 #if DEBUG
             //Not working in custom controls, only in forms
             IsDebug = true;
 #endif
         }
+ 
 
 
         private void InitVariabes()
@@ -70,10 +69,6 @@ namespace QuickTests
             csPublic.LED = new csLED(this, 1500, 4);
         }
 
-        private void InitCOntrols()
-        {
-
-        }
 
         private void InitOperation()
         {
@@ -127,15 +122,8 @@ namespace QuickTests
         }
 
 
-        private void Form1_Shown(object sender, EventArgs e)
-        {
-            this.Visible = false;
-        }
+ 
 
-        protected override void OnLoad(EventArgs eventArgs)
-        {
-            Debug.WriteLine("OnLoad Trigger");
-        }
 
 
         bool[] bitData = new bool[32];
@@ -686,7 +674,7 @@ namespace QuickTests
 
         private void FormMain_LoopEvent()
         {
-            Thread.Sleep(3500);
+            //Thread.Sleep(3500);
         }
 
         int iCount = 0;

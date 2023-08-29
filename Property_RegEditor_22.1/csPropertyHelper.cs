@@ -235,6 +235,25 @@ namespace Property_RegEditor_22._1
                         RegisterEditor(editorInfo.EditorType, toggleSwitch, true);
                     }
                     break;
+
+                case _editorType.MacList:
+                    if (UniqueEditors.ContainsKey(editorInfo.EditorType))
+                    {
+                        e.RepositoryItem = UniqueEditors[editorInfo.EditorType];
+                    }
+                    else
+                    {
+                        RepositoryItemLookUpEdit repositoryMacList = new RepositoryItemLookUpEdit();
+                        repositoryMacList.ShowFooter = false;//Hide "X" button in bottom
+                        repositoryMacList.DataSource = csPublic.GetMacAddress();
+                        repositoryMacList.TextEditStyle = TextEditStyles.Standard; //Enable user edit value
+                        repositoryMacList.DisplayMember = nameof(MacInfo.Name);
+                        repositoryMacList.ValueMember = nameof(MacInfo.Address);
+                        e.RepositoryItem = repositoryMacList;
+                        RegisterEditor(editorInfo.EditorType, repositoryMacList, true);
+                    }
+                    break;
+
                 default:
                     break;
             }

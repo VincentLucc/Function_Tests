@@ -105,6 +105,8 @@ namespace Property_RegEditor_22._1
         [Category("Test"), DisplayName("Ethernet Adapter"), Description("Ethernet Adapter Mac Address")]
         public string NetworkAdapter { get; set; }
 
+     
+
         public Student()
         {
             Cert = new Certificate();
@@ -160,7 +162,17 @@ namespace Property_RegEditor_22._1
         }
     }
 
+    public class MacInfo
+    {
+        public string Name { get; set; }
+        public string Address { get; set; }
 
+        public MacInfo(string sName, string sAddress)
+        {
+            Name = sName;
+            Address = sAddress;
+        }
+    }
 
 
 }

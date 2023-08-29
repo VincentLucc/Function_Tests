@@ -60,6 +60,7 @@
     <Compile Include="ClassModule.cs" />
     <Compile Include="csPropertyHelper.cs" />
     <Compile Include="csPropertyModel.cs" />
+    <Compile Include="csPublic.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

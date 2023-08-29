@@ -26,13 +26,20 @@ namespace ThreadingDelay
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
+        private void TaskDelayButton_Click(object sender, EventArgs e)
         {
             Thread t1 = new Thread(DoSomeTaskDelay);
+            t1.Name = "Task Delay";
             t1.Start();
         }
 
-
+        private void ThreadDelayButton_Click(object sender, EventArgs e)
+        {
+            Thread t2 = new Thread(DoSomeThreadSleep);
+            t2.Name = "Thread Delay";
+            t2.Start();
+        }
+ 
         private async void DoSomeTaskDelay()
         {
             stopwatch.Restart();
@@ -56,10 +63,6 @@ namespace ThreadingDelay
             Debug.WriteLine("DoSomeThreadSleep:" + stopwatch.ElapsedMilliseconds);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Thread t2 = new Thread(DoSomeThreadSleep);
-            t2.Start();
-        }
+
     }
 }
