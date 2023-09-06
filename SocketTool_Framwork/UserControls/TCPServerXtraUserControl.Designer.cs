@@ -39,6 +39,7 @@
             this.ReceivedGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.SendMemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.IPv4LabelControl = new DevExpress.XtraEditors.LabelControl();
+            this.SettingsButton = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -52,7 +53,6 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.simpleSeparator2 = new DevExpress.XtraLayout.SimpleSeparator();
-            this.SettingsButton = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -96,6 +96,7 @@
             // 
             // StopButton
             // 
+            this.StopButton.AllowFocus = false;
             this.StopButton.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.stop_16x161;
             this.StopButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.StopButton.Location = new System.Drawing.Point(38, 12);
@@ -108,6 +109,7 @@
             // 
             // StartButton
             // 
+            this.StartButton.AllowFocus = false;
             this.StartButton.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.play_16x161;
             this.StartButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.StartButton.Location = new System.Drawing.Point(12, 12);
@@ -138,6 +140,7 @@
             // 
             // SendButton
             // 
+            this.SendButton.AllowFocus = false;
             this.SendButton.Location = new System.Drawing.Point(491, 39);
             this.SendButton.MaximumSize = new System.Drawing.Size(100, 0);
             this.SendButton.Name = "SendButton";
@@ -161,7 +164,15 @@
             // 
             this.ReceivedGridView.GridControl = this.ReceivedGridControl;
             this.ReceivedGridView.Name = "ReceivedGridView";
+            this.ReceivedGridView.OptionsClipboard.AllowCopy = DevExpress.Utils.DefaultBoolean.True;
+            this.ReceivedGridView.OptionsClipboard.CopyCollapsedData = DevExpress.Utils.DefaultBoolean.True;
+            this.ReceivedGridView.OptionsClipboard.CopyColumnHeaders = DevExpress.Utils.DefaultBoolean.False;
+            this.ReceivedGridView.OptionsCustomization.AllowSort = false;
+            this.ReceivedGridView.OptionsFilter.AllowFilterEditor = false;
             this.ReceivedGridView.OptionsMenu.EnableGroupPanelMenu = false;
+            this.ReceivedGridView.OptionsSelection.MultiSelect = true;
+            this.ReceivedGridView.OptionsView.RowAutoHeight = true;
+            this.ReceivedGridView.OptionsView.ShowColumnHeaders = false;
             this.ReceivedGridView.OptionsView.ShowGroupPanel = false;
             this.ReceivedGridView.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
             this.ReceivedGridView.OptionsView.ShowIndicator = false;
@@ -183,6 +194,19 @@
             this.IPv4LabelControl.StyleController = this.layoutControl1;
             this.IPv4LabelControl.TabIndex = 14;
             this.IPv4LabelControl.Text = "0.0.0.0";
+            // 
+            // SettingsButton
+            // 
+            this.SettingsButton.AllowFocus = false;
+            this.SettingsButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("SettingsButton.ImageOptions.Image")));
+            this.SettingsButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.SettingsButton.Location = new System.Drawing.Point(64, 12);
+            this.SettingsButton.MaximumSize = new System.Drawing.Size(28, 0);
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.Size = new System.Drawing.Size(26, 22);
+            this.SettingsButton.StyleController = this.layoutControl1;
+            this.SettingsButton.TabIndex = 16;
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // Root
             // 
@@ -321,18 +345,6 @@
             this.simpleSeparator2.OptionsPrint.AppearanceItem.ForeColor = System.Drawing.SystemColors.Control;
             this.simpleSeparator2.OptionsPrint.AppearanceItem.Options.UseForeColor = true;
             this.simpleSeparator2.Size = new System.Drawing.Size(1, 26);
-            // 
-            // SettingsButton
-            // 
-            this.SettingsButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("SettingsButton.ImageOptions.Image")));
-            this.SettingsButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.SettingsButton.Location = new System.Drawing.Point(64, 12);
-            this.SettingsButton.MaximumSize = new System.Drawing.Size(28, 0);
-            this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(26, 22);
-            this.SettingsButton.StyleController = this.layoutControl1;
-            this.SettingsButton.TabIndex = 16;
-            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // layoutControlItem9
             // 

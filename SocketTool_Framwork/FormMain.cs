@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
@@ -90,9 +91,11 @@ namespace SocketTool_Framework
              //Show current server info
                 var serverPanel = new TCPServerXtraUserControl();
                 serverPanel.Dock = DockStyle.Fill;
+                messageHelper.ShowMainLoading();
                 MainSplitContainerControl.Panel2.Controls.Clear();
                 MainSplitContainerControl.Panel2.Controls.Add(serverPanel);
                 serverPanel.LoadConfig(csConfigHelper.config.TCPServers[iIndex]);
+                messageHelper.CloseLoadingForm();
             }
             if (parentItem.Text == csGroup.TCPClient)
             {
