@@ -20,7 +20,8 @@ namespace FileLoading
     {
 
 
-        public static string sMemoryName = "DeltaX_MemoryData";
+        public const string sMemoryName = "DeltaX_MemoryData";
+        public const string sMemoryReference = "DeltaX_MemoryReference";
 
         public MemoryMappedFile MappedFile;
 
@@ -119,7 +120,7 @@ namespace FileLoading
             //clear buffer
             if (ProcessedDataTable != null) ProcessedDataTable.Clear();
             if (ProcessedCollection != null) ProcessedCollection.Clear();
- 
+
             //Force to clear memory, must have to free
             //ProcessedData takes a lot of memory
             GC.Collect();
@@ -511,6 +512,46 @@ namespace FileLoading
             lProcessTime.Text += $"\r\nMemory time:{watch.ElapsedMilliseconds}";
             lMessage.Text = "Finished";
             this.Refresh();//Force UI to update  
+
+
+
+        }
+
+        private void bReadMemory_Click(object sender, EventArgs e)
+        {
+            List<string> lData = new List<string>();
+
+
+            try
+            {
+                using (MemoryMappedFile mmf = MemoryMappedFile.OpenExisting(sMemoryName))
+                {
+                    using (var accessor = mmf.CreateViewStream())
+                    {
+                        //ulong Length = accessor.SafeMemoryMappedViewHandle.ByteLength;
+
+                        //Read to list
+                        using (var reader = new StreamReader(accessor))
+                        {
+                            string slIne = null;
+                            while ((slIne = reader.ReadLine()) != null)
+                            {
+                                lData.Add(slIne);
+                            }
+                        }
+
+
+                        Debug.WriteLine("Read Data Lines:"+ lData.Count);
+
+ 
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception.\r\n" + ex.Message);
+                Debug.WriteLine("bReadMemory_Click:\r\n" + ex.Message);
+            }
 
 
 
