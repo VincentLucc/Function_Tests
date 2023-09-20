@@ -17,6 +17,7 @@ namespace SocketTool_Framework
         public static string DateString => DateTime.Now.ToString("yyMMdd");
 
         public static csDevMessage messageHelper;
+        public static FormMain winMain;
 
         /// <summary>
         /// Get mac address info

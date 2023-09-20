@@ -34,8 +34,8 @@ namespace SocketTool_Framework
         public bool UIExit => parentControl == null || parentControl.IsDisposed || parentControl.Disposing;
 
         [XmlIgnore]
-        public List<string> ReceivedMessages { get; set; }
-        public object lockReceivedMessages { get; set; }
+        public List<string> ReceivedMessages = new List<string>();
+        public object lockReceivedMessages = new object();
 
 
         public delegate void NewMessageAction(string sMessage);
@@ -43,7 +43,7 @@ namespace SocketTool_Framework
         public event NewMessageAction NewMessageReceived;
 
         public bool IsConnected => ClientSocket != null && ClientSocket.Connected;
-        
+
         /// <summary>
         /// Keep for xml serializer
         /// </summary>
@@ -58,7 +58,7 @@ namespace SocketTool_Framework
             ServerPort = iServerPort;
         }
 
-        private bool ConnectToServer(Control control)
+        public async Task<bool> ConnectToServer(Control control)
         {
 
             parentControl = control;
@@ -69,13 +69,15 @@ namespace SocketTool_Framework
                 //Init connection address
                 IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ServerIP), ServerPort);
 
+                //Clean start
+                await Disconnect();
 
                 //Create socket
-                CloseSocket();
                 ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-                ClientSocket.Connect(endPoint); //connect to server
+                //connect to server
+                ClientSocket.Connect(endPoint);
                 tReceive = new Thread(ProcessReceive);
+                tReceive.IsBackground = true; //Don't block the exit action
                 tReceive.Name = "Client Receive";
                 tReceive.Start();
 
@@ -90,7 +92,7 @@ namespace SocketTool_Framework
 
         public async Task Disconnect()
         {
-            CloseSocket();
+            csTCPModel.CloseSocket(ClientSocket) ;
             await csThreadHelper.WaitThreadClose(tReceive);
         }
 
@@ -119,24 +121,14 @@ namespace SocketTool_Framework
                 }
                 catch (Exception e)
                 {
-                    CloseSocket();
+                    csTCPModel.CloseSocket(ClientSocket);
                     Console.WriteLine("Method \"ProcessReceive\"\r\n" + e.Message);
                     return;
                 }
             }
         }
 
-        //socket close
-        private void CloseSocket()
-        {
-            if (ClientSocket != null)
-            {
-                //avoid none error
-                ClientSocket.Shutdown(SocketShutdown.Both);
-                ClientSocket.Close();
-                ClientSocket = null;
-            }
-        }
+  
 
         public void AddReceivedMessage(string sMessage, int iLimit = 1000)
         {
@@ -154,6 +146,26 @@ namespace SocketTool_Framework
         public string GetDisplayName()
         {
             return $"{ServerIP}:{ServerPort}";
+        }
+
+        public bool SendMessage(string sMessage)
+        {
+            try
+            {
+                if (ClientSocket == null) return false;
+                if (string.IsNullOrWhiteSpace(sMessage)) return false;
+
+                byte[] bData = Encoding.UTF8.GetBytes(sMessage);
+                ClientSocket.Send(bData);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"SendMessage.Exception:\r\n{ex.Message}");
+                return false;
+            }
+
+
         }
     }
 }

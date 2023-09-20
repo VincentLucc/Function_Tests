@@ -1,6 +1,6 @@
 ﻿namespace SocketTool_Framework.UserControls
 {
-    partial class TCPServerXtraUserControl
+    partial class TCPClientXtraUserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TCPServerXtraUserControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TCPClientXtraUserControl));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.StopButton = new DevExpress.XtraEditors.SimpleButton();
-            this.StartButton = new DevExpress.XtraEditors.SimpleButton();
+            this.DisconnectButton = new DevExpress.XtraEditors.SimpleButton();
+            this.ConnectButton = new DevExpress.XtraEditors.SimpleButton();
             this.PortLabelControl = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.SendButton = new DevExpress.XtraEditors.SimpleButton();
@@ -77,8 +77,8 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.StopButton);
-            this.layoutControl1.Controls.Add(this.StartButton);
+            this.layoutControl1.Controls.Add(this.DisconnectButton);
+            this.layoutControl1.Controls.Add(this.ConnectButton);
             this.layoutControl1.Controls.Add(this.PortLabelControl);
             this.layoutControl1.Controls.Add(this.labelControl1);
             this.layoutControl1.Controls.Add(this.SendButton);
@@ -94,35 +94,37 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // StopButton
+            // DisconnectButton
             // 
-            this.StopButton.AllowFocus = false;
-            this.StopButton.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            this.StopButton.Appearance.Options.UseBackColor = true;
-            this.StopButton.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.stop_16x161;
-            this.StopButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.StopButton.Location = new System.Drawing.Point(38, 12);
-            this.StopButton.MaximumSize = new System.Drawing.Size(28, 0);
-            this.StopButton.Name = "StopButton";
-            this.StopButton.Size = new System.Drawing.Size(22, 22);
-            this.StopButton.StyleController = this.layoutControl1;
-            this.StopButton.TabIndex = 16;
-            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
+            this.DisconnectButton.AllowFocus = false;
+            this.DisconnectButton.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.DisconnectButton.Appearance.Options.UseBackColor = true;
+            this.DisconnectButton.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.close_16x16;
+            this.DisconnectButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.DisconnectButton.Location = new System.Drawing.Point(44, 12);
+            this.DisconnectButton.MaximumSize = new System.Drawing.Size(28, 0);
+            this.DisconnectButton.Name = "DisconnectButton";
+            this.DisconnectButton.Size = new System.Drawing.Size(22, 22);
+            this.DisconnectButton.StyleController = this.layoutControl1;
+            this.DisconnectButton.TabIndex = 16;
+            this.DisconnectButton.Click += new System.EventHandler(this.DisconnectButton_Click);
             // 
-            // StartButton
+            // ConnectButton
             // 
-            this.StartButton.AllowFocus = false;
-            this.StartButton.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            this.StartButton.Appearance.Options.UseBackColor = true;
-            this.StartButton.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.play_16x161;
-            this.StartButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.StartButton.Location = new System.Drawing.Point(12, 12);
-            this.StartButton.MaximumSize = new System.Drawing.Size(28, 0);
-            this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(22, 22);
-            this.StartButton.StyleController = this.layoutControl1;
-            this.StartButton.TabIndex = 15;
-            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
+            this.ConnectButton.AllowFocus = false;
+            this.ConnectButton.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.ConnectButton.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.ConnectButton.Appearance.Options.UseBackColor = true;
+            this.ConnectButton.Appearance.Options.UseForeColor = true;
+            this.ConnectButton.ImageOptions.Image = global::SocketTool_Framework.Properties.Resources.connect_16x16;
+            this.ConnectButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.ConnectButton.Location = new System.Drawing.Point(12, 12);
+            this.ConnectButton.MaximumSize = new System.Drawing.Size(28, 0);
+            this.ConnectButton.Name = "ConnectButton";
+            this.ConnectButton.Size = new System.Drawing.Size(28, 22);
+            this.ConnectButton.StyleController = this.layoutControl1;
+            this.ConnectButton.TabIndex = 15;
+            this.ConnectButton.Click += new System.EventHandler(this.ConnectButton_Click);
             // 
             // PortLabelControl
             // 
@@ -206,7 +208,7 @@
             this.SettingsButton.Appearance.Options.UseBackColor = true;
             this.SettingsButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("SettingsButton.ImageOptions.Image")));
             this.SettingsButton.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.SettingsButton.Location = new System.Drawing.Point(64, 12);
+            this.SettingsButton.Location = new System.Drawing.Point(70, 12);
             this.SettingsButton.MaximumSize = new System.Drawing.Size(28, 0);
             this.SettingsButton.Name = "SettingsButton";
             this.SettingsButton.Size = new System.Drawing.Size(26, 22);
@@ -319,25 +321,25 @@
             // 
             // layoutControlItem5
             // 
-            this.layoutControlItem5.Control = this.StartButton;
+            this.layoutControlItem5.Control = this.ConnectButton;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(26, 26);
+            this.layoutControlItem5.Size = new System.Drawing.Size(32, 26);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(82, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(88, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(368, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(362, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem6
             // 
-            this.layoutControlItem6.Control = this.StopButton;
-            this.layoutControlItem6.Location = new System.Drawing.Point(26, 0);
+            this.layoutControlItem6.Control = this.DisconnectButton;
+            this.layoutControlItem6.Location = new System.Drawing.Point(32, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(26, 26);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
@@ -357,19 +359,19 @@
             this.layoutControlItem9.Control = this.SettingsButton;
             this.layoutControlItem9.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem9.CustomizationFormText = "layoutControlItem6";
-            this.layoutControlItem9.Location = new System.Drawing.Point(52, 0);
+            this.layoutControlItem9.Location = new System.Drawing.Point(58, 0);
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(30, 26);
             this.layoutControlItem9.Text = "layoutControlItem6";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
-            // TCPServerXtraUserControl
+            // TCPClientXtraUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.layoutControl1);
-            this.Name = "TCPServerXtraUserControl";
+            this.Name = "TCPClientXtraUserControl";
             this.Size = new System.Drawing.Size(603, 412);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -414,9 +416,9 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraEditors.LabelControl IPv4LabelControl;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
-        private DevExpress.XtraEditors.SimpleButton StartButton;
+        private DevExpress.XtraEditors.SimpleButton ConnectButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraEditors.SimpleButton StopButton;
+        private DevExpress.XtraEditors.SimpleButton DisconnectButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.SimpleSeparator simpleSeparator2;
         private DevExpress.XtraEditors.SimpleButton SettingsButton;

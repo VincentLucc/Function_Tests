@@ -25,7 +25,7 @@ namespace SocketTool_Framework
         csDevMessage messageHelper;
         List<csTCPServer> tcpServers;
         List<csTCPClient> tcpClients;
-        bool bUpdateRecivedMessage = false;
+ 
         public FormMain()
         {
             InitializeComponent();
@@ -41,6 +41,7 @@ namespace SocketTool_Framework
             //Init variables
             messageHelper = new csDevMessage(this);
             csPublic.messageHelper = messageHelper;
+            csPublic.winMain = this;
 
             string sMessage = "";
 
@@ -98,16 +99,17 @@ namespace SocketTool_Framework
             }
             if (parentItem.Text == csGroup.TCPClient)
             {
+                var clientPanel = new TCPClientXtraUserControl();
+                clientPanel.Dock = DockStyle.Fill;
                 messageHelper.ShowMainLoading();
                 MainSplitContainerControl.Panel2.Controls.Clear();
+                MainSplitContainerControl.Panel2.Controls.Add(clientPanel);
+                clientPanel.LoadConfig(csConfigHelper.config.TCPClients[iIndex]);
                 messageHelper.CloseLoadingForm();
             }
         }
 
-        public void LoadConfigFile()
-        {
-
-        }
+ 
 
         private _itemType GetCurrentGroup()
         {
@@ -268,12 +270,12 @@ namespace SocketTool_Framework
 
             var parentItem = MenuAccordionControl.SelectedObject.OwnerElement;
 
+            //Get index
+            int iIndex = parentItem.Elements.IndexOf(MenuAccordionControl.SelectedObject);
+            if (iIndex == parentItem.Elements.Count - 1) return;
+
             if (parentItem.Text == csGroup.TCPServer)
             {
-                //Get index
-                int iIndex = parentItem.Elements.IndexOf(MenuAccordionControl.SelectedObject);
-                if (iIndex == parentItem.Elements.Count - 1) return;
-
                 //Move the source data
                 var newServer = tcpServers[iIndex];
                 tcpServers.RemoveAt(iIndex);
@@ -288,11 +290,24 @@ namespace SocketTool_Framework
                 MenuAccordionControl.CustomSelectedItem(parentItem.Elements[iIndex + 1]);
                 MenuAccordionControl.SelectedObjectChanged += MenuAccordionControl_SelectedObjectChanged;
             }
-            else
+            else if (parentItem.Text == csGroup.TCPServer)
             {
+                //Move the source data
+                var newClient = tcpClients[iIndex];
+                tcpClients.RemoveAt(iIndex);
+                tcpClients.Insert(iIndex + 1, newClient);
+
+                //Recreate Items
                 PopulateClientItems();
-                messageHelper.Info("Future");
+
+                //Force to refresh
+                MenuAccordionControl.SelectedElement = null;
+                //Update actual selected item
+                MenuAccordionControl.SelectedObjectChanged -= MenuAccordionControl_SelectedObjectChanged;
+                MenuAccordionControl.CustomSelectedItem(parentItem.Elements[iIndex + 1]);
+                MenuAccordionControl.SelectedObjectChanged += MenuAccordionControl_SelectedObjectChanged;
             }
+ 
         }
 
         public void PopulateServerItems()
@@ -346,6 +361,35 @@ namespace SocketTool_Framework
             }
         }
 
+        public void UpdateClientStatus()
+        {
+            for (int i = 0; i < tcpClients.Count; i++)
+            {
+                var client = tcpClients[i];
+                var clientItem = TCPClientAccordionControlElement.Elements[i];
+                if (client.IsConnected)
+                {
+                    //Avoid flashing
+                    //csPublic.CompareBitmaps(serverItem.Image as Bitmap, Properties.Resources.iconsetsigns3_16x16);
+
+                    if (!csPublic.CompareBitmaps(clientItem.Image as Bitmap, Properties.Resources.iconsetsigns3_16x16))
+                    {
+                        clientItem.Image = Properties.Resources.iconsetsigns3_16x16;
+                    }
+
+                }
+                else
+                {
+                    if (!csPublic.CompareBitmaps(clientItem.Image as Bitmap, Properties.Resources.iconsetredtoblack4_16x16))
+                    {
+                        clientItem.Image = Properties.Resources.iconsetredtoblack4_16x16;
+                    }
+
+                }
+
+            }
+        }
+
 
 
         private void TCPServerAccordionControlElement_Click(object sender, EventArgs e)
@@ -370,7 +414,7 @@ namespace SocketTool_Framework
             else return null;
         }
 
-        private void UpdateTCPServerControl()
+        private void UpdateDetailInfoPanel()
         {
             var controls = MainSplitContainerControl.Panel2.Controls;
             if (controls.Count == 0) return;
@@ -378,6 +422,11 @@ namespace SocketTool_Framework
             {
                 var tcpServerControl = controls[0] as TCPServerXtraUserControl;
                 tcpServerControl.UpdateUI();
+            }
+            else if (controls[0] is TCPClientXtraUserControl)
+            {
+                var tcpClientControl = controls[0] as TCPClientXtraUserControl;
+                tcpClientControl.UpdateUI();
             }
         }
 
@@ -391,7 +440,8 @@ namespace SocketTool_Framework
 
                 //Server in the list
                 UpdateServerStatus();
-                UpdateTCPServerControl();
+                UpdateClientStatus();
+                UpdateDetailInfoPanel();
             }
             catch (Exception ex)
             {
