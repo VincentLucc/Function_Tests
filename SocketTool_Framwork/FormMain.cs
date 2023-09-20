@@ -24,6 +24,7 @@ namespace SocketTool_Framework
         public FormMain Instance;
         csDevMessage messageHelper;
         List<csTCPServer> tcpServers;
+        List<csTCPClient> tcpClients;
         bool bUpdateRecivedMessage = false;
         public FormMain()
         {
@@ -49,19 +50,17 @@ namespace SocketTool_Framework
                 return;
             }
             tcpServers = csConfigHelper.config.TCPServers;
-
+            tcpClients = csConfigHelper.config.TCPClients;
             //Init according control
             MenuAccordionControl.InitSelection();//Fix the display issue
             MenuAccordionControl.SelectedObjectChanged += MenuAccordionControl_SelectedObjectChanged;
 
             //Load the configuration value
             PopulateServerItems();
+            PopulateClientItems();
 
             //Load version info
             VersionStaticItem.Caption = "Version: " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
-            //Load client
-            TCPClientAccordionControlElement.Elements.Clear();
 
             //Timer 
             timer1.Start();
@@ -99,7 +98,9 @@ namespace SocketTool_Framework
             }
             if (parentItem.Text == csGroup.TCPClient)
             {
-                //IPAddress.TryParse();
+                messageHelper.ShowMainLoading();
+                MainSplitContainerControl.Panel2.Controls.Clear();
+                messageHelper.CloseLoadingForm();
             }
         }
 
@@ -161,10 +162,22 @@ namespace SocketTool_Framework
                 newElement.Text = newServer.GetDisplayName();
                 tcpServers.Add(newServer);
             }
-            else
+            else if (type == _itemType.TCPClient)
             {
-                messageHelper.Info("Future");
+                if (ServerAddForm.ShowForm("Remote Server") != DialogResult.OK) return;
+                var instance = ServerAddForm.Instance;
+
+                //Add to display
+                var newElement = TCPClientAccordionControlElement.Elements.Add();
+                newElement.Style = ElementStyle.Item;
+                newElement.Image = Properties.Resources.iconsetredtoblack4_16x16;
+
+                //Add config file
+                var newClient = new csTCPClient(this, instance.IPAddress, instance.Port);
+                newElement.Text = newClient.GetDisplayName();
+                tcpClients.Add(newClient);
             }
+ 
         }
 
         private async void barButtonDel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -187,7 +200,14 @@ namespace SocketTool_Framework
             }
             else
             {
-                messageHelper.Info("Future");
+                //Get index
+                int iIndex = parentItem.Elements.IndexOf(MenuAccordionControl.SelectedObject);
+                parentItem.Elements.RemoveAt(iIndex);
+
+                var client = tcpClients[iIndex];
+                tcpClients.RemoveAt(iIndex);
+
+                await client.Disconnect();
             }
         }
 
@@ -220,7 +240,24 @@ namespace SocketTool_Framework
             }
             else
             {
-                messageHelper.Info("Future");
+                //Get index
+                int iIndex = parentItem.Elements.IndexOf(MenuAccordionControl.SelectedObject);
+                if (iIndex == 0) return;
+
+                //Move the source data
+                var newServer = tcpClients[iIndex];
+                tcpClients.RemoveAt(iIndex);
+                tcpClients.Insert(iIndex - 1, newServer);
+
+                //Recreate Items
+                PopulateClientItems();
+
+                //Force to refresh
+                MenuAccordionControl.SelectedElement = null;
+                //Update actual selected item
+                MenuAccordionControl.SelectedObjectChanged -= MenuAccordionControl_SelectedObjectChanged;
+                MenuAccordionControl.CustomSelectedItem(parentItem.Elements[iIndex - 1]);
+                MenuAccordionControl.SelectedObjectChanged += MenuAccordionControl_SelectedObjectChanged;
             }
         }
 
@@ -253,6 +290,7 @@ namespace SocketTool_Framework
             }
             else
             {
+                PopulateClientItems();
                 messageHelper.Info("Future");
             }
         }
@@ -263,6 +301,17 @@ namespace SocketTool_Framework
             foreach (var item in csConfigHelper.config.TCPServers)
             {
                 var newElement = TCPServerAccordionControlElement.Elements.Add();
+                newElement.Style = ElementStyle.Item;
+                newElement.Text = item.GetDisplayName();
+            }
+        }
+
+        public void PopulateClientItems()
+        {
+            TCPClientAccordionControlElement.Elements.Clear();
+            foreach (var item in csConfigHelper.config.TCPClients)
+            {
+                var newElement = TCPClientAccordionControlElement.Elements.Add();
                 newElement.Style = ElementStyle.Item;
                 newElement.Text = item.GetDisplayName();
             }

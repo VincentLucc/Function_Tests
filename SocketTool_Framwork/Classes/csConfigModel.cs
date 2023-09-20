@@ -11,11 +11,12 @@ namespace SocketTool_Framework
     public class csConfigModel
     {
         public List<csTCPServer> TCPServers { get; set; }
-        
+        public List<csTCPClient> TCPClients { get; set; }
 
         public csConfigModel()
         {
             TCPServers = new List<csTCPServer>();
+            TCPClients = new List<csTCPClient>();
         }
     }
 }

@@ -194,8 +194,10 @@
     <Compile Include="Classes\csModel.cs" />
     <Compile Include="Classes\csPropertyHelper.cs" />
     <Compile Include="Classes\csPropertyModel.cs" />
+    <Compile Include="Classes\csTCPClient.cs" />
     <Compile Include="Classes\csTCPModel.cs" />
     <Compile Include="Classes\csTCPServer.cs" />
+    <Compile Include="Classes\csThreadHelper.cs" />
     <Compile Include="csPublic.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>

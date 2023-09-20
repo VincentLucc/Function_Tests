@@ -15,7 +15,7 @@ using Newtonsoft.Json;
 
 namespace SocketTool_Framework
 {
-    [XmlRoot("Server Config")]
+    [XmlType("TCP_Server")]
     public class csTCPServer
     {
 
@@ -242,16 +242,19 @@ namespace SocketTool_Framework
                 //Listen Thread: Accept new client
                 tListen = new Thread(ProcessListen);
                 tListen.IsBackground = true;
+                tListen.Name = "Listen";
                 tListen.Start();
 
                 //Operation thread: Process client request
                 tOperation = new Thread(ProcessRequestOperation);
                 tOperation.IsBackground = true;
+                tOperation.Name = "Operation Handle";
                 tOperation.Start();
 
                 //Broadcast thread: Client status update
                 tKeep = new Thread(ProcessBroadCast);
                 tKeep.IsBackground = true;
+                tKeep.Name = "Keep Alive";
                 tKeep.Start();
             }
             catch (Exception e)
@@ -272,9 +275,9 @@ namespace SocketTool_Framework
 
             //Make sure related threads all exit
             await Task.WhenAll(new Task[] {
-                WaitThreadClose(tListen, "Listen"),
-                WaitThreadClose(tOperation, "Operation Handle"),
-                WaitThreadClose(tKeep, "Keep Alive"),
+                csThreadHelper.WaitThreadClose(tListen),
+                csThreadHelper.WaitThreadClose(tOperation),
+                csThreadHelper.WaitThreadClose(tKeep),
             });
 
             Cleanup();
@@ -301,6 +304,7 @@ namespace SocketTool_Framework
 
             }
 
+ 
             stopwatch.Stop();
             Debug.WriteLine($"Close thread:{threadName}, Time {stopwatch.ElapsedMilliseconds}ms.");
         }
