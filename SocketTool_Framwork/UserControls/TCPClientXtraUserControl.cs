@@ -47,7 +47,6 @@ namespace SocketTool_Framework.UserControls
             }
 
             client.SendMessage(SendMemoEdit.Text);
-
         }
 
 
@@ -55,7 +54,10 @@ namespace SocketTool_Framework.UserControls
         {
             if (bUpdateRecivedMessage)
             {
-                ReceivedGridControl.RefreshDataSource();
+                lock (client.lockReceivedMessages)
+                {
+                    ReceivedGridControl.RefreshDataSource();
+                }        
                 bUpdateRecivedMessage = false;
             }
 

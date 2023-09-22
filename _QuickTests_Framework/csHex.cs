@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace QuickTests
+namespace _QuickTests_Framework
 {
     class csHex
     {

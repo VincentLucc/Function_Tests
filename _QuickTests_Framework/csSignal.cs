@@ -5,38 +5,46 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace QuickTests
+namespace _QuickTests_Framework
 {
-    public class csLED
+    public class FlashSignal
     {
         /// <summary>
-        /// Class enable/disable flag
+        /// ON/OFF status
         /// </summary>
-        private bool ClassEnable { get; set; }
-        public bool SignalState { get; set; }   //ON/OFF status
-        private int Interval { get; set; } //Interval for each gap
+        public bool State { get; set; }  
+        /// <summary>
+        /// Interval for each gap
+        /// </summary>
+        private int Interval { get; set; }
 
         /// <summary>
-        /// Division of the signal
+        /// Ratio signal in ON
         /// </summary>
-        private int Division { get; set; } 
+        private double SignalOnRatio { get; set; }
 
+        private int IntervalON => (int)(Interval * SignalOnRatio);
 
+        private int IntervalOFF => (int)(Interval * (1- SignalOnRatio));
+        /// <summary>
+        /// Used to mark trigger the action only once
+        /// </summary>
+        public bool ActionEnable { get; set; } 
 
         /// <summary>
-        /// Used to mark current LED states
+        /// Signal is enable or not
         /// </summary>
-        public bool LEDGreenState { get; set; } 
-        public bool LEDRedState { get; set; } 
+        private bool Enable { get; set; }  
 
         /// <summary>
         /// Signal loop thread
         /// </summary>
         private Thread tSignal { get; set; } 
+
         /// <summary>
         /// Watch used to count time
         /// </summary>
-        private Stopwatch Watch { get; set; } 
+        private Stopwatch Watch { get; set; } = new Stopwatch(); 
 
         /// <summary>
         /// Used to guaranty exit
@@ -45,24 +53,30 @@ namespace QuickTests
 
         private bool UIExit => ParentControl == null || ParentControl.IsDisposed || ParentControl.Disposing;
 
-        public csLED(Control control, int IntervalInMilliseconds,  int iDivision)
+        public FlashSignal(Control control, int IntervalInMilliseconds, double _onRatio =0.5)
         {
             //Init variables
             ParentControl = control;
-            Watch = new Stopwatch();
-            Division = iDivision;
-
-            //verify input
+         
+            //Verify input interval
             if (IntervalInMilliseconds <= 0)
             {
                 Exception e = new Exception("Invalid Interval Value.");
                 throw e;
             }
-            Interval = IntervalInMilliseconds / iDivision;
+            Interval = IntervalInMilliseconds;
 
-            //start counting thread
+            //Verify input ration
+            if (_onRatio>=1|| _onRatio<=0)
+            {
+                Exception e = new Exception("Invalid Ratio Value.");
+                throw e;
+            }
+            SignalOnRatio = _onRatio;
+
+            //Start counting thread
             tSignal = new Thread(ProcessSignal);
-            ClassEnable = true;
+            Enable = true;
             tSignal.IsBackground = true;
             tSignal.Start();
         }
@@ -72,24 +86,27 @@ namespace QuickTests
         /// </summary>
         private void ProcessSignal()
         {
-            while (ClassEnable)
+            while (Enable)
             {
                 //Auto exit
                 if (UIExit) return;
 
                 //On
-                SignalState = true;
-                DelayTimeWithExitFlag(Interval);
+                State = true;
+                DelayTimeWithExitFlag(IntervalON);
 
                 //Off
-                SignalState = false;
-                DelayTimeWithExitFlag(Interval*(Division-1));             
+                State = false;
+                DelayTimeWithExitFlag(IntervalOFF);
+
+                //Enable the action again
+                ActionEnable = true;
             }
         }
 
         public void Stop()
         {
-            ClassEnable = false;
+            Enable = false;
         }
 
         private void DelayTimeWithExitFlag(int ms)
@@ -100,7 +117,7 @@ namespace QuickTests
                 Thread.Sleep(5);
 
                 //Exist flag
-                if (!ClassEnable || UIExit) return;
+                if (!Enable || UIExit) return;
             }
         }
     }

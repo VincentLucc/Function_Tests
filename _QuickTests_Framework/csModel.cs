@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Text;
 
-namespace QuickTests
+namespace _QuickTests_Framework
 {
     class csModel
     {
@@ -24,10 +24,19 @@ namespace QuickTests
         public int SeatOrder { get; set; }
         public string Class { get; set; }
 
+        public string Message { get; set; }
+
+        public static string TestMessage = "'_QuickTests.exe' (CoreCLR: clrhost): Loaded 'C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\6.0.18\\System.Runtime.Numerics.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.";
         public string Grade { get; set; }
 
         [Browsable(false)]
         public static string StaticText = "500";
+
+        public string Text1 { get; set; }
+        public string Text2 { get; set; }
+        public string Text3 { get; set; }
+        public string Text4 { get; set; }
+        public string Text5 { get; set; }
 
         /// <summary>
         /// Virtual won't run
@@ -50,13 +59,13 @@ namespace QuickTests
             sNew.Name = Name;
             sNew.Description = Description;
             sNew.Class = Class;
-
+            sNew.Message = Message;
             return sNew;
         }
 
-        public Student( )
+        public Student()
         {
- 
+
         }
 
         public Student(int iID)
@@ -65,6 +74,7 @@ namespace QuickTests
             Name = "Stu_" + iID;
             Description = "Info_" + iID;
             Class = "Class_" + iID / 10;
+            Message = "'_QuickTests.exe' (CoreCLR: clrhost): Loaded 'C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\6.0.18\\System.Runtime.Numerics.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.";
         }
     }
 
@@ -130,7 +140,7 @@ namespace QuickTests
         DEF,
         [Description("GHJ DESC")]
         GHJ,
-        [Display(Name ="dfsdf")]
+        [Display(Name = "dfsdf")]
         MNX
     }
 
