@@ -127,17 +127,17 @@ namespace _QuickTests_Framework
                 Debug.WriteLine("Control+S");
             }
         }
- 
 
 
 
 
-        
 
- 
 
- 
- 
+
+
+
+
+
         private void DoSth(List<Student> students)
         {
             foreach (var student in students)
@@ -149,7 +149,7 @@ namespace _QuickTests_Framework
             students.Add(s);
         }
 
- 
+
         class A
         {
             public virtual int Hello()
@@ -174,11 +174,11 @@ namespace _QuickTests_Framework
             }
         }
 
- 
- 
 
 
- 
+
+
+
         private void SEvent_AgeChanged()
         {
             Debug.WriteLine($"Age changed to {sEvent.Age}");
@@ -191,10 +191,10 @@ namespace _QuickTests_Framework
             sEvent.Age = 123;
         }
 
- 
- 
 
- 
+
+
+
         private List<Student> CreateData(int iCount)
         {
             List<Student> slist = new List<Student>();
@@ -210,7 +210,7 @@ namespace _QuickTests_Framework
             return slist;
         }
 
- 
+
         private void DoChangeValue(object o1)
         {
             var s2 = (Student)o1;
@@ -223,28 +223,28 @@ namespace _QuickTests_Framework
             s2 = (Student)o1;
             s2.Age = 555;
         }
- 
+
         private void FormMain_LoopEvent()
         {
             //Thread.Sleep(3500);
         }
 
 
- 
 
 
 
- 
+
+
 
         private void FormMain_nullEvent()
         {
             Debug.WriteLine(csPublic.TimeString);
         }
 
- 
- 
 
- 
+
+
+
 
         private void PreparePerformanceData(bool withKey)
         {
@@ -397,7 +397,7 @@ namespace _QuickTests_Framework
             Debug.WriteLine($"Create data table record:{iRecordCount}, time:{watchPerformance.ElapsedMilliseconds}.");
         }
 
- 
+
 
 
         private void AddPerfData(AddDataType addType, bool bStaticEnumerator = false)
@@ -559,7 +559,7 @@ namespace _QuickTests_Framework
             Debug.WriteLine($"Add datatable record:{iAddCount}, Total:{dtPerformanceSource.Rows.Count}, time:{watchPerformance.ElapsedMilliseconds}.");
         }
 
- 
+
 
 
 
@@ -600,7 +600,7 @@ namespace _QuickTests_Framework
             Debug.WriteLine($"Remove (Queue-String) record:Total:{iTotal}, time:{watchPerformance.ElapsedMilliseconds}.");
         }
 
- 
+
 
         private void ModifyAllData()
         {
@@ -673,12 +673,12 @@ namespace _QuickTests_Framework
             Debug.WriteLine($"Mofify (Datatable Student) with Enum record:{enumRows.Count()}, time:{watchPerformance.ElapsedMilliseconds}.");
         }
 
- 
 
- 
- 
- 
- 
+
+
+
+
+
         private void bPrepareData_Click_1(object sender, EventArgs e)
         {
             PreparePerformanceData(false);
@@ -708,21 +708,24 @@ namespace _QuickTests_Framework
         {
             //Sort list students 
             watchPerformance.Restart();
-            var sortedListTudents = lStudents.OrderByDescending(a => a.Name).DistinctBy(a => a.Name);
+            //>net 6 extension method
+            //var sortedListTudents = lStudents.OrderByDescending(a => a.Name).DistinctBy(a => a.Value.Name);
+            //>net framwork method
+            var sortedListTudents = lStudents.OrderByDescending(a => a.Name).GroupBy(a => a.Name).Select(g => g.First());
             sortedListTudents = lStudents.OrderByDescending(a => a.Age);
             watchPerformance.Stop();
             Debug.WriteLine($"Sort list student record:{lStudents.Count}, Time:{watchPerformance.ElapsedMilliseconds}.");
 
             //Sort dictionary students 
             watchPerformance.Restart();
-            var sortedDictSTudents = DictStudentSource.OrderByDescending(a => a.Value.Name).DistinctBy(a => a.Value.Name);
+            var sortedDictSTudents = DictStudentSource.OrderByDescending(a => a.Value.Name).GroupBy(a => a.Value.Name).Select(g => g.First());
             sortedDictSTudents = DictStudentSource.OrderByDescending(a => a.Value.Age);
             watchPerformance.Stop();
             Debug.WriteLine($"Sort dictionary student record:{DictStudentSource.Count}, Time:{watchPerformance.ElapsedMilliseconds}.");
 
             //Sort datatable students 
             watchPerformance.Restart();
-            var sortedTableStudents = dtPerformanceSource.AsEnumerable().OrderBy(a => a.Field<int>(nameof(Student.Name))).DistinctBy(a => a.Field<int>(nameof(Student.Name))); ;
+            var sortedTableStudents = dtPerformanceSource.AsEnumerable().OrderBy(a => a.Field<int>(nameof(Student.Name))).GroupBy(a => a.Field<int>(nameof(Student.Name))).Select(g=>g.First());
             sortedTableStudents = dtPerformanceSource.AsEnumerable().OrderBy(a => a.Field<int>(nameof(Student.Age)));
             watchPerformance.Stop();
             Debug.WriteLine($"Sort datatable student record:{dtPerformanceSource.Rows.Count}, Time:{watchPerformance.ElapsedMilliseconds}.");
