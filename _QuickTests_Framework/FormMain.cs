@@ -358,6 +358,10 @@ namespace _QuickTests_Framework
             dtPerformanceSource.Columns.Add(nameof(Student.Text3), typeof(string));
             dtPerformanceSource.Columns.Add(nameof(Student.Text4), typeof(string));
             dtPerformanceSource.Columns.Add(nameof(Student.Text5), typeof(string));
+            for (int i = 1; i < 11; i++)
+            {
+                dtPerformanceSource.Columns.Add($"Ext{i}", typeof(string));
+            }
             if (withKey)
             {
                 //Primary key
@@ -385,11 +389,11 @@ namespace _QuickTests_Framework
                 dataRow[nameof(Student.Age)] = i;
                 dataRow[nameof(Student.Description)] = $"Record_{i}";
                 dataRow[nameof(Student.Message)] = Student.TestMessage;
-                dataRow[nameof(Student.Text1)] = Student.TestMessage;
-                dataRow[nameof(Student.Text2)] = Student.TestMessage;
-                dataRow[nameof(Student.Text3)] = Student.TestMessage;
-                dataRow[nameof(Student.Text4)] = Student.TestMessage;
-                dataRow[nameof(Student.Text5)] = Student.TestMessage;
+                dataRow[nameof(Student.Text1)] = Student.TestMessage + "1";
+                dataRow[nameof(Student.Text2)] = Student.TestMessage + "2";
+                dataRow[nameof(Student.Text3)] = Student.TestMessage + "3";
+                dataRow[nameof(Student.Text4)] = Student.TestMessage + "4";
+                dataRow[nameof(Student.Text5)] = Student.TestMessage + "5";
                 dtPerformanceSource.Rows.Add(dataRow);
             }
 
