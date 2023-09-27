@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Office;
+using DevExpress.XtraEditors;
+using DevExpress.XtraRichEdit;
 using DevExpress.XtraRichEdit.API.Native;
 using System;
 using System.Collections.Generic;
@@ -23,31 +25,45 @@ namespace TextEdit
 
         private void RichTextEditTextSelectForm_Load(object sender, EventArgs e)
         {
-
+ 
             string sTest = "CompositionDiagramControl_MouseDown\r\nThe thread 0x6e64 has exited with code 0 (0x0).\r\nThe thread 0x796c has exited with code 0 (0x0).\r\nThe thread 0x60e0 has exited with code 0 (0x0).\r\nThe thread 0x36b4 has exited with code 0 (0x0).\r\nThe thread 0xa58 has exited with code 0 (0x0).\r\nThe thread 0x2958 has exited with code 0 (0x0).\r\nThe thread 0x12ec has exited with code 0 (0x0).\r\nThe thread 0x73e4 has exited with code 0 (0x0).\r\nThe program '[32472] DeltaX_Tracker.exe' has exited with code -1 (0xffffffff).";
             var bTest = Encoding.UTF8.GetBytes(sTest);
             richEditControl1.LoadDocument(bTest);
+
+            //Use fixed width font
+            //Set font after document loaded
+            richEditControl1.Document.DefaultCharacterProperties.FontName = "Consolas";
+            richEditControl1.Document.DefaultCharacterProperties.FontSize = 10;
+            
+            //Show only top ruler
+            richEditControl1.Options.HorizontalRuler.Visibility = RichEditRulerVisibility.Visible;
+            richEditControl1.Options.VerticalRuler.Visibility = RichEditRulerVisibility.Hidden;
+            //Don't change tabs, used to mark the column position
+            richEditControl1.Options.HorizontalRuler.ShowTabs = true;
+            //Set ruler unit
+            richEditControl1.Unit=DocumentUnit.Point; 
+
+
             richEditControl1.ReadOnly = false;
      
             //Draft mode no dent
-            richEditControl1.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
+            richEditControl1.ActiveViewType = RichEditViewType.Simple;
             //Set width
-         
+            richEditControl1.Paint += RichEditControl1_Paint;
 
-            richEditControl1.Options.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Visible;
-            richEditControl1.Options.VerticalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Visible;
 
             richEditControl1.SelectionChanged += RichEditControl1_SelectionChanged;
 
             richEditControl1.CustomDrawActiveView += RichEditControl1_CustomDrawActiveView;
 
             FileLoadButtonEdit.Click += FileLoadButtonEdit_Click;
-
-
-
-
+ 
         }
 
+        private void RichEditControl1_Paint(object sender, PaintEventArgs e)
+        {
+   
+        }
 
         private void RichEditControl1_CustomDrawActiveView(object sender, DevExpress.XtraRichEdit.RichEditViewCustomDrawEventArgs e)
         {
