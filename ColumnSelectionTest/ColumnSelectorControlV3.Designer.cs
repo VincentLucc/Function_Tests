@@ -1,6 +1,6 @@
 ﻿namespace Test001
 {
-    partial class ColumnSelectorControlSingle
+    partial class ColumnSelectorControlV3
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // panelMain
@@ -41,12 +43,12 @@
             this.panelMain.Size = new System.Drawing.Size(392, 292);
             this.panelMain.TabIndex = 2;
             // 
-            // columnSelectorControl
+            // ColumnSelectorControlV3
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.panelMain);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "columnSelectorControl";
+            this.Name = "ColumnSelectorControlV3";
             this.Padding = new System.Windows.Forms.Padding(4);
             this.Size = new System.Drawing.Size(400, 300);
             this.ResumeLayout(false);
@@ -57,5 +59,6 @@
 
 
         private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

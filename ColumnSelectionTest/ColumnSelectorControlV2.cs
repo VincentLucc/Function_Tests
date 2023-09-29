@@ -18,7 +18,7 @@ namespace Test001
     /// 1. Call LoadFile method:            myControl.LoadFile(".\\demo.txt");
     /// 2. Set SelectedIndexes property:    myControl.SelectedIndexes = "0,5,10,20";
     /// </summary>
-    public partial class ColumnSelectorControlSingle : XtraUserControl
+    public partial class ColumnSelectorControlV2 : XtraUserControl
     {
         #region ColumnSelectorControlSingle_Properties
 
@@ -122,7 +122,7 @@ namespace Test001
         public EventHandler SelectionReady;
 
         #endregion ColumnSelectorControlSingle_Properties
-        public ColumnSelectorControlSingle()
+        public ColumnSelectorControlV2()
         {
             InitializeComponent();
             base.Font = new System.Drawing.Font("Consolas", m_FontSize, System.Drawing.FontStyle.Regular);
@@ -191,9 +191,38 @@ namespace Test001
             myRuler.Refresh();
         }
 
- 
 
 
+        /// <summary>
+        /// Returns a list with column start and stop coordinates. 
+        /// </summary>
+        public SelectionResult getSingleColumnCoords()
+        {
+            //Init reuslt
+            var result = new SelectionResult();
+
+            //Check size
+            if (myContent.DrawnPoints.Count == 0 || myContent.DrawnPoints.Count != 1)
+            {
+                result.IsSuccess = false;
+                result.Message = "Invalid selection.";
+                return result;
+            }
+
+            //Check start/end point
+            if (myContent.DrawnPoints[0][0] > -1 && myContent.DrawnPoints[0][1] > -1)
+            {
+                result.IsSuccess = true;
+                result.Selection = myContent.DrawnPoints;
+                return result;
+            }
+
+
+
+            //Operation fail
+            result.IsSuccess = false;
+            return result;
+        }
 
         /// <summary>
         /// To load the content of a sample text file
@@ -292,45 +321,9 @@ namespace Test001
             }
         }
 
-        /// <summary>
-        /// Returns a list with column start and stop coordinates. 
-        /// </summary>
-        public List<int[]> getColumnCoords()
-        {
-            return myContent.DrawnPoints;
-        }
 
 
-        /// <summary>
-        /// Returns a list with column start and stop coordinates. 
-        /// </summary>
-        public SelectionResult getSingleColumnCoords()
-        {
-            //Init reuslt
-            var result = new SelectionResult();
-
-            //Check size
-            if (myContent.DrawnPoints.Count == 0 || myContent.DrawnPoints.Count != 1)
-            {
-                result.IsSuccess = false;
-                result.Message = "Invalid selection.";
-                return result;
-            }
-
-            //Check start/end point
-            if (myContent.DrawnPoints[0][0] > -1 && myContent.DrawnPoints[0][1] > -1)
-            {
-                result.IsSuccess = true;
-                result.Selection = myContent.DrawnPoints;
-                return result;
-            }
-
-
-
-            //Operation fail
-            result.IsSuccess = false;
-            return result;
-        }
+ 
 
         /// <summary>
         /// Set the column coordinates
@@ -377,28 +370,8 @@ namespace Test001
         /// <summary>
         /// This is the child control class that displays the content of sample text/csv file
         /// </summary>
-        public class myContentControl : Label
+        internal class myContentControl : Label
         {
-            private ColumnSelectorControlSingle myParentControl;
-
-            internal Pen penMyMarker = Pens.Gray;
-
-            public myContentControl(ColumnSelectorControlSingle p)
-            {
-
-                if (p != null) myParentControl = p;
-                SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-                SetStyle(ControlStyles.CacheText, true); //Increase performance
-                //this.AutoScrollOffset = ScrollableControl.
-                base.BackColor = System.Drawing.SystemColors.Control;
-                base.ForeColor = System.Drawing.Color.Black;
-                this.Dock = System.Windows.Forms.DockStyle.Left;
-                base.Font = new System.Drawing.Font("Consolas", myParentControl.FontSize, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.Location = new System.Drawing.Point(0, 26);
-                this.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
-                this.Name = "myContent";
-                this.Size = new System.Drawing.Size(1, 1);
-            }
 
             /// <summary>
             /// Helps draw selected text colored areas.
@@ -417,6 +390,28 @@ namespace Test001
                 }
             }
 
+            private ColumnSelectorControlV2 myParentControl;
+
+            internal Pen penMyMarker = Pens.Gray;
+
+            public myContentControl(ColumnSelectorControlV2 p)
+            {
+
+                if (p != null) myParentControl = p;
+                SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+                SetStyle(ControlStyles.CacheText, true); //Increase performance
+                //this.AutoScrollOffset = ScrollableControl.
+                base.BackColor = System.Drawing.SystemColors.Control;
+                base.ForeColor = System.Drawing.Color.Black;
+                this.Dock = System.Windows.Forms.DockStyle.Left;
+                base.Font = new System.Drawing.Font("Consolas", myParentControl.FontSize, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.Location = new System.Drawing.Point(0, 26);
+                this.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+                this.Name = "myContent";
+                this.Size = new System.Drawing.Size(1, 1);
+            }
+
+ 
             /// <summary>
             /// Apply draw points to interface
             /// </summary>
@@ -524,7 +519,7 @@ namespace Test001
         /// </summary>
         internal class myRulerControl : System.Windows.Forms.Control
         {
-            public ColumnSelectorControlSingle myParentControl;
+            public ColumnSelectorControlV2 myParentControl;
 
             private MyMessageFilter msgFilter; //Filter and trigger mouse event
 
@@ -550,7 +545,7 @@ namespace Test001
 
             #endregion
 
-            public myRulerControl(ColumnSelectorControlSingle p)
+            public myRulerControl(ColumnSelectorControlV2 p)
             {
 
                 if (p != null) myParentControl = p;

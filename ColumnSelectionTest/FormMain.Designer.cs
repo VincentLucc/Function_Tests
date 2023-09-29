@@ -32,7 +32,7 @@ namespace Test001
             this.components = new System.ComponentModel.Container();
             this.DataFileFieldGridControl = new DevExpress.XtraGrid.GridControl();
             this.DataFileFieldGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.FileColumnSelector = new Test001.ColumnSelectorControlSingle();
+            this.FileColumnSelector = new Test001.ColumnSelectorControlV2();
             this.bShow = new DevExpress.XtraEditors.SimpleButton();
             this.pTable = new System.Windows.Forms.Panel();
             this.pControls = new System.Windows.Forms.Panel();
@@ -52,12 +52,15 @@ namespace Test001
             this.pSelection = new System.Windows.Forms.Panel();
             this.pBottom = new System.Windows.Forms.Panel();
             this.FieldContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.NewFieldDefaultSelectionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.NewCurrentSelectionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.NewFieldAfterCurrentMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.NewCurrentSelectionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.NewFieldDefaultSelectionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.ColumnSelector2TabPage = new DevExpress.XtraTab.XtraTabPage();
+            this.ColumnSelector3TabPage = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.DataFileFieldGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataFileFieldGridView)).BeginInit();
             this.pTable.SuspendLayout();
@@ -67,6 +70,9 @@ namespace Test001
             this.pSelection.SuspendLayout();
             this.pBottom.SuspendLayout();
             this.FieldContextMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            this.xtraTabControl1.SuspendLayout();
+            this.ColumnSelector2TabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // DataFileFieldGridControl
@@ -75,7 +81,7 @@ namespace Test001
             this.DataFileFieldGridControl.Location = new System.Drawing.Point(0, 0);
             this.DataFileFieldGridControl.MainView = this.DataFileFieldGridView;
             this.DataFileFieldGridControl.Name = "DataFileFieldGridControl";
-            this.DataFileFieldGridControl.Size = new System.Drawing.Size(408, 250);
+            this.DataFileFieldGridControl.Size = new System.Drawing.Size(406, 204);
             this.DataFileFieldGridControl.TabIndex = 0;
             this.DataFileFieldGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DataFileFieldGridView});
@@ -116,7 +122,7 @@ namespace Test001
             this.FileColumnSelector.MaxAllowedColumns = 32;
             this.FileColumnSelector.Name = "FileColumnSelector";
             this.FileColumnSelector.Padding = new System.Windows.Forms.Padding(4);
-            this.FileColumnSelector.Size = new System.Drawing.Size(611, 223);
+            this.FileColumnSelector.Size = new System.Drawing.Size(609, 246);
             this.FileColumnSelector.TabIndex = 1;
             this.FileColumnSelector.MouseDown += new System.Windows.Forms.MouseEventHandler(this.columnSelectorControl1_MouseDown);
             this.FileColumnSelector.MouseUp += new System.Windows.Forms.MouseEventHandler(this.columnSelectorControl1_MouseUp);
@@ -136,7 +142,7 @@ namespace Test001
             this.pTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pTable.Location = new System.Drawing.Point(203, 0);
             this.pTable.Name = "pTable";
-            this.pTable.Size = new System.Drawing.Size(408, 250);
+            this.pTable.Size = new System.Drawing.Size(406, 204);
             this.pTable.TabIndex = 5;
             // 
             // pControls
@@ -145,7 +151,7 @@ namespace Test001
             this.pControls.Dock = System.Windows.Forms.DockStyle.Left;
             this.pControls.Location = new System.Drawing.Point(0, 0);
             this.pControls.Name = "pControls";
-            this.pControls.Size = new System.Drawing.Size(203, 250);
+            this.pControls.Size = new System.Drawing.Size(203, 204);
             this.pControls.TabIndex = 8;
             // 
             // tableLayoutPanel1
@@ -171,13 +177,13 @@ namespace Test001
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.07238F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.07238F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.64149F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(203, 250);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(203, 204);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // bSort
             // 
             this.bSort.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bSort.Location = new System.Drawing.Point(125, 81);
+            this.bSort.Location = new System.Drawing.Point(125, 63);
             this.bSort.Name = "bSort";
             this.bSort.Size = new System.Drawing.Size(54, 23);
             this.bSort.TabIndex = 8;
@@ -187,7 +193,7 @@ namespace Test001
             // bDel
             // 
             this.bDel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bDel.Location = new System.Drawing.Point(23, 44);
+            this.bDel.Location = new System.Drawing.Point(23, 33);
             this.bDel.Name = "bDel";
             this.bDel.Size = new System.Drawing.Size(54, 23);
             this.bDel.TabIndex = 7;
@@ -197,7 +203,7 @@ namespace Test001
             // bClear
             // 
             this.bClear.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bClear.Location = new System.Drawing.Point(23, 81);
+            this.bClear.Location = new System.Drawing.Point(23, 63);
             this.bClear.Name = "bClear";
             this.bClear.Size = new System.Drawing.Size(54, 23);
             this.bClear.TabIndex = 3;
@@ -207,7 +213,7 @@ namespace Test001
             // bReload
             // 
             this.bReload.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bReload.Location = new System.Drawing.Point(125, 44);
+            this.bReload.Location = new System.Drawing.Point(125, 33);
             this.bReload.Name = "bReload";
             this.bReload.Size = new System.Drawing.Size(54, 23);
             this.bReload.TabIndex = 4;
@@ -217,7 +223,7 @@ namespace Test001
             // bAdd
             // 
             this.bAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bAdd.Location = new System.Drawing.Point(23, 7);
+            this.bAdd.Location = new System.Drawing.Point(23, 3);
             this.bAdd.Name = "bAdd";
             this.bAdd.Size = new System.Drawing.Size(54, 23);
             this.bAdd.TabIndex = 5;
@@ -227,7 +233,7 @@ namespace Test001
             // bModify
             // 
             this.bModify.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bModify.Location = new System.Drawing.Point(125, 7);
+            this.bModify.Location = new System.Drawing.Point(125, 3);
             this.bModify.Name = "bModify";
             this.bModify.Size = new System.Drawing.Size(54, 23);
             this.bModify.TabIndex = 6;
@@ -237,7 +243,7 @@ namespace Test001
             // bMoveUp
             // 
             this.bMoveUp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bMoveUp.Location = new System.Drawing.Point(116, 118);
+            this.bMoveUp.Location = new System.Drawing.Point(116, 93);
             this.bMoveUp.Name = "bMoveUp";
             this.bMoveUp.Size = new System.Drawing.Size(72, 23);
             this.bMoveUp.TabIndex = 9;
@@ -247,7 +253,7 @@ namespace Test001
             // bMoveDown
             // 
             this.bMoveDown.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bMoveDown.Location = new System.Drawing.Point(116, 155);
+            this.bMoveDown.Location = new System.Drawing.Point(116, 123);
             this.bMoveDown.Name = "bMoveDown";
             this.bMoveDown.Size = new System.Drawing.Size(72, 23);
             this.bMoveDown.TabIndex = 10;
@@ -261,9 +267,9 @@ namespace Test001
             this.pShow.Controls.Add(this.bTest);
             this.pShow.Controls.Add(this.bShow);
             this.pShow.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pShow.Location = new System.Drawing.Point(0, 223);
+            this.pShow.Location = new System.Drawing.Point(0, 450);
             this.pShow.Name = "pShow";
-            this.pShow.Size = new System.Drawing.Size(611, 36);
+            this.pShow.Size = new System.Drawing.Size(609, 36);
             this.pShow.TabIndex = 6;
             // 
             // simpleButton1
@@ -299,7 +305,7 @@ namespace Test001
             this.pSelection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pSelection.Location = new System.Drawing.Point(0, 0);
             this.pSelection.Name = "pSelection";
-            this.pSelection.Size = new System.Drawing.Size(611, 223);
+            this.pSelection.Size = new System.Drawing.Size(609, 246);
             this.pSelection.TabIndex = 7;
             // 
             // pBottom
@@ -307,9 +313,9 @@ namespace Test001
             this.pBottom.Controls.Add(this.pTable);
             this.pBottom.Controls.Add(this.pControls);
             this.pBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pBottom.Location = new System.Drawing.Point(0, 259);
+            this.pBottom.Location = new System.Drawing.Point(0, 246);
             this.pBottom.Name = "pBottom";
-            this.pBottom.Size = new System.Drawing.Size(611, 250);
+            this.pBottom.Size = new System.Drawing.Size(609, 204);
             this.pBottom.TabIndex = 2;
             this.pBottom.Visible = false;
             // 
@@ -323,31 +329,12 @@ namespace Test001
             this.toolStripSeparator3,
             this.NewFieldDefaultSelectionMenuItem});
             this.FieldContextMenuStrip.Name = "FieldContextMenuStrip";
-            this.FieldContextMenuStrip.Size = new System.Drawing.Size(215, 110);
-            // 
-            // NewFieldDefaultSelectionMenuItem
-            // 
-            this.NewFieldDefaultSelectionMenuItem.Name = "NewFieldDefaultSelectionMenuItem";
-            this.NewFieldDefaultSelectionMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.NewFieldDefaultSelectionMenuItem.Text = "Add with default selection";
-            this.NewFieldDefaultSelectionMenuItem.Click += new System.EventHandler(this.NewFieldDefaultSelectionMenuItem_Click);
+            this.FieldContextMenuStrip.Size = new System.Drawing.Size(215, 88);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(211, 6);
-            // 
-            // NewCurrentSelectionMenuItem
-            // 
-            this.NewCurrentSelectionMenuItem.Name = "NewCurrentSelectionMenuItem";
-            this.NewCurrentSelectionMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.NewCurrentSelectionMenuItem.Text = "Add with current selection";
-            this.NewCurrentSelectionMenuItem.Click += new System.EventHandler(this.NewCurrentSelectionMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(211, 6);
             // 
             // NewFieldAfterCurrentMenuItem
             // 
@@ -356,19 +343,63 @@ namespace Test001
             this.NewFieldAfterCurrentMenuItem.Text = "Add after current selection";
             this.NewFieldAfterCurrentMenuItem.Click += new System.EventHandler(this.NewFieldAfterCurrentMenuItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(211, 6);
+            // 
+            // NewCurrentSelectionMenuItem
+            // 
+            this.NewCurrentSelectionMenuItem.Name = "NewCurrentSelectionMenuItem";
+            this.NewCurrentSelectionMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.NewCurrentSelectionMenuItem.Text = "Add with current selection";
+            this.NewCurrentSelectionMenuItem.Click += new System.EventHandler(this.NewCurrentSelectionMenuItem_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(211, 6);
+            // 
+            // NewFieldDefaultSelectionMenuItem
+            // 
+            this.NewFieldDefaultSelectionMenuItem.Name = "NewFieldDefaultSelectionMenuItem";
+            this.NewFieldDefaultSelectionMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.NewFieldDefaultSelectionMenuItem.Text = "Add with default selection";
+            this.NewFieldDefaultSelectionMenuItem.Click += new System.EventHandler(this.NewFieldDefaultSelectionMenuItem_Click);
+            // 
+            // xtraTabControl1
+            // 
+            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControl1.Name = "xtraTabControl1";
+            this.xtraTabControl1.SelectedTabPage = this.ColumnSelector2TabPage;
+            this.xtraTabControl1.Size = new System.Drawing.Size(611, 509);
+            this.xtraTabControl1.TabIndex = 2;
+            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.ColumnSelector2TabPage,
+            this.ColumnSelector3TabPage});
+            // 
+            // ColumnSelector2TabPage
+            // 
+            this.ColumnSelector2TabPage.Controls.Add(this.pSelection);
+            this.ColumnSelector2TabPage.Controls.Add(this.pBottom);
+            this.ColumnSelector2TabPage.Controls.Add(this.pShow);
+            this.ColumnSelector2TabPage.Name = "ColumnSelector2TabPage";
+            this.ColumnSelector2TabPage.Size = new System.Drawing.Size(609, 486);
+            this.ColumnSelector2TabPage.Text = "Column Selector V2";
+            // 
+            // ColumnSelector3TabPage
+            // 
+            this.ColumnSelector3TabPage.Name = "ColumnSelector3TabPage";
+            this.ColumnSelector3TabPage.Size = new System.Drawing.Size(609, 486);
+            this.ColumnSelector3TabPage.Text = "Column Selector V3";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 509);
-            this.Controls.Add(this.pSelection);
-            this.Controls.Add(this.pShow);
-            this.Controls.Add(this.pBottom);
+            this.Controls.Add(this.xtraTabControl1);
             this.Name = "FormMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -381,6 +412,9 @@ namespace Test001
             this.pSelection.ResumeLayout(false);
             this.pBottom.ResumeLayout(false);
             this.FieldContextMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            this.xtraTabControl1.ResumeLayout(false);
+            this.ColumnSelector2TabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -389,7 +423,7 @@ namespace Test001
 
         private DevExpress.XtraGrid.GridControl DataFileFieldGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView DataFileFieldGridView;
-        private ColumnSelectorControlSingle FileColumnSelector;
+        private ColumnSelectorControlV2 FileColumnSelector;
         private System.Windows.Forms.Panel pTable;
         private DevExpress.XtraEditors.SimpleButton bClear;
         private DevExpress.XtraEditors.SimpleButton bReload;
@@ -415,6 +449,9 @@ namespace Test001
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem NewFieldAfterCurrentMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraTab.XtraTabPage ColumnSelector2TabPage;
+        private DevExpress.XtraTab.XtraTabPage ColumnSelector3TabPage;
     }
 }
 

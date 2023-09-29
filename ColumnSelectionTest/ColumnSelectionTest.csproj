@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Test001</RootNamespace>
     <AssemblyName>Test001</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,13 +55,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v19.1.Core, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 19.1\Components\Bin\Framework\DevExpress.Office.v19.1.Core.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v19.1.Core, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 19.1\Components\Bin\Framework\DevExpress.RichEdit.v19.1.Core.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Utils.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 19.1\Components\Bin\Framework\DevExpress.XtraRichEdit.v19.1.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.XtraTreeList.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -75,12 +88,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassPublic.cs" />
-    <Compile Include="ColumnSelectorControlSingle.cs">
+    <Compile Include="ColumnSelectorControlV3_Content.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ColumnSelectorControlSingle.Designer.cs">
-      <DependentUpon>ColumnSelectorControlSingle.cs</DependentUpon>
+    <Compile Include="csPublic.cs" />
+    <Compile Include="ColumnSelectorControlV3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColumnSelectorControlV3.Designer.cs">
+      <DependentUpon>ColumnSelectorControlV3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColumnSelectorControlV2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColumnSelectorControlV2.Designer.cs">
+      <DependentUpon>ColumnSelectorControlV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="csModels.cs" />
+    <Compile Include="ColumnSelectorControlV3_Ruler.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -108,6 +134,18 @@
     <Compile Include="ColumnSelectorControl.Designer.cs">
       <DependentUpon>ColumnSelectorControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="SelectorV3PageUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SelectorV3PageUserControl.Designer.cs">
+      <DependentUpon>SelectorV3PageUserControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ColumnSelectorControlV2.resx">
+      <DependentUpon>ColumnSelectorControlV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColumnSelectorControlV3.resx">
+      <DependentUpon>ColumnSelectorControlV3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,7 +164,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SelectorV3PageUserControl.resx">
+      <DependentUpon>SelectorV3PageUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -19,12 +19,12 @@ namespace Test001
 
         private void FormMapping_Load(object sender, EventArgs e)
         {
-            MappingGridControl.DataSource = ClassPublic.winMain.ColumnDefinition;
+            MappingGridControl.DataSource = csPublic.winMain.ColumnDefinition;
         }
 
         private void FormMapping_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ClassPublic.winMapping = null;
+            csPublic.winMapping = null;
         }
     }
 }

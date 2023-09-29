@@ -26,7 +26,7 @@ namespace Test001
 
             //string s = "abc";
             //string s3 = s.Substring(1, 5);
-            ClassPublic.winMain = this;
+            csPublic.winMain = this;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -38,6 +38,11 @@ namespace Test001
             InitCustomizedFixedWidthControl();
             //ShowMapForm();
             ShowTreeListForm();
+
+            //Show column selector V3
+            SelectorV3PageUserControl v3COntrol = new SelectorV3PageUserControl();
+            v3COntrol.Dock = DockStyle.Fill;
+            ColumnSelector3TabPage.Controls.Add(v3COntrol);
         }
 
         private void InitCustomizedFixedWidthControl()
@@ -55,7 +60,7 @@ namespace Test001
         private void SelectionReadyMethod(object sender, EventArgs e)
         {
             //Get event button
-            var eButton = (ColumnSelectorControlSingle.IndexCollectionChangeEventArgs)e;
+            var eButton = (ColumnSelectorControlV2.IndexCollectionChangeEventArgs)e;
             //Get current selected index
             int iIndex = DataFileFieldGridView.FocusedRowHandle;
 
@@ -147,7 +152,7 @@ namespace Test001
             }
 
             //Verify input
-            var result = ClassPublic.IntVerification(e.Value, 0, 10000);
+            var result = csPublic.IntVerification(e.Value, 0, 10000);
             if (!result.IsSuccess)
             {
                 MessageBox.Show($"Invalid input in row {iRow + 1}, column {sColumn}.\r\n" + result.Message);
@@ -259,7 +264,7 @@ namespace Test001
         private void bAdd_Click(object sender, EventArgs e)
         {
             //Set UI
-            FieldContextMenuStrip.Show(bAdd,new Point(bAdd.Width, 0));
+            FieldContextMenuStrip.Show(bAdd, new Point(bAdd.Width, 0));
 
             ////Directly add
             //DataFieldAddIndexRows();
@@ -342,7 +347,7 @@ namespace Test001
                     else if (selectedField != null)
                     {
                         newField.Position = selectedField.Position + selectedField.Length;
-                        newField.Length =1;
+                        newField.Length = 1;
                     }
                     //Use default value instead
                     else
@@ -356,16 +361,16 @@ namespace Test001
 
             //Add field to designated index
             int NewIndex = -1;
-            if (selectedIndex>-1)
+            if (selectedIndex > -1)
             {//current selection is valid, add after current selection
-                if (selectedIndex== dataSource.Count-1)
+                if (selectedIndex == dataSource.Count - 1)
                 {//Index in bottom, just add
                     dataSource.Add(newField);
                     NewIndex = dataSource.Count - 1;
                 }
                 else
                 {//Index in middle, insert
-                    dataSource.Insert(selectedIndex+1,newField);
+                    dataSource.Insert(selectedIndex + 1, newField);
                     NewIndex = selectedIndex + 1;
                 }
             }
@@ -666,21 +671,21 @@ namespace Test001
 
         private void ShowMapForm()
         {
-            if (ClassPublic.winMapping == null)
+            if (csPublic.winMapping == null)
             {
-                ClassPublic.winMapping = new FormMapping();
-                ClassPublic.winMapping.Show();
+                csPublic.winMapping = new FormMapping();
+                csPublic.winMapping.Show();
             }
         }
 
         private async void ShowTreeListForm()
         {
             await Task.Delay(100);
-            if (ClassPublic.winTree == null)
+            if (csPublic.winTree == null)
             {
-                ClassPublic.winTree = new FormTree();
-                ClassPublic.winTree.Show();
-                ClassPublic.winTree.BringToFront();
+                csPublic.winTree = new FormTree();
+                csPublic.winTree.Show();
+                csPublic.winTree.BringToFront();
             }
         }
 
@@ -699,6 +704,6 @@ namespace Test001
             DataFieldAddIndexRow(FieldAddType.AfterCurrentSelection);
         }
 
-   
+
     }
 }

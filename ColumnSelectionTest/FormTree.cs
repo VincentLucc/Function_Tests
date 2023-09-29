@@ -28,7 +28,7 @@ namespace Test001
 
             //Get data
             m_DataFileSetting = new DataFileSetting();
-            m_DataFileSetting.InputFields = ClassPublic.winMain.ColumnDefinition;
+            m_DataFileSetting.InputFields = csPublic.winMain.ColumnDefinition;
 
             //Set field config tree list
             InitFieldConfigTreeList();
@@ -202,7 +202,7 @@ namespace Test001
 
         private void FormTree_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ClassPublic.winTree = null;
+            csPublic.winTree = null;
         }
 
 

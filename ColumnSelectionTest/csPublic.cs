@@ -9,12 +9,13 @@ using System.Xml.Serialization;
 
 namespace Test001
 {
-    class ClassPublic
+    class csPublic
     {
         public static FormMapping winMapping;
         public static FormTree winTree;
         public static FormMain winMain;
 
+        public static string FakeText=  "CompositionDiagramControl_MouseDown\r\nThe thread 0x6e64 has exited with code 0 (0x0).\r\nThe thread 0x796c has exited with code 0 (0x0).\r\nThe thread 0x60e0 has exited with code 0 (0x0).\r\nThe thread 0x36b4 has exited with code 0 (0x0).\r\nThe thread 0xa58 has exited with code 0 (0x0).\r\nThe thread 0x2958 has exited with code 0 (0x0).\r\nThe thread 0x12ec has exited with code 0 (0x0).\r\nThe thread 0x73e4 has exited with code 0 (0x0).\r\nThe program '[32472] DeltaX_Tracker.exe' has exited with code -1 (0xffffffff).";
 
         /// <summary>
         /// Verify if object is a int value and if in range

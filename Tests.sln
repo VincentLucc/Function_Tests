@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.6.33801.468
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColumnSelectionTest", "Test001\ColumnSelectionTest.csproj", "{BFD6EF80-2D59-4F13-985A-998D26D1D60C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "DevTestProject\TestProject.csproj", "{5FCC38DC-749D-443E-BB35-6558DAAD7571}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabelStringTest", "LabelStringTest\LabelStringTest.csproj", "{093D4D2A-0018-4695-B082-E19347DC1D89}"
@@ -209,6 +207,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_QuickTests_Framework", "_Q
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptionPGP", "EncryptionPGP\EncryptionPGP.csproj", "{3BF147B0-6C34-4787-BC44-E22D39910E05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColumnSelectionTest", "ColumnSelectionTest\ColumnSelectionTest.csproj", "{BFD6EF80-2D59-4F13-985A-998D26D1D60C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -221,22 +221,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|arm64.Build.0 = Debug|Any CPU
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|x64.ActiveCfg = Debug|x64
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|x64.Build.0 = Debug|x64
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|x86.Build.0 = Debug|Any CPU
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|arm64.ActiveCfg = Release|Any CPU
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|arm64.Build.0 = Release|Any CPU
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|x64.ActiveCfg = Release|x64
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|x64.Build.0 = Release|x64
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|x86.ActiveCfg = Release|Any CPU
-		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|x86.Build.0 = Release|Any CPU
 		{5FCC38DC-749D-443E-BB35-6558DAAD7571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5FCC38DC-749D-443E-BB35-6558DAAD7571}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FCC38DC-749D-443E-BB35-6558DAAD7571}.Debug|arm64.ActiveCfg = Debug|Any CPU
@@ -1858,6 +1842,22 @@ Global
 		{3BF147B0-6C34-4787-BC44-E22D39910E05}.Release|x64.Build.0 = Release|Any CPU
 		{3BF147B0-6C34-4787-BC44-E22D39910E05}.Release|x86.ActiveCfg = Release|Any CPU
 		{3BF147B0-6C34-4787-BC44-E22D39910E05}.Release|x86.Build.0 = Release|Any CPU
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|arm64.Build.0 = Debug|Any CPU
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|x64.ActiveCfg = Debug|x64
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|x64.Build.0 = Debug|x64
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Debug|x86.Build.0 = Debug|Any CPU
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|arm64.ActiveCfg = Release|Any CPU
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|arm64.Build.0 = Release|Any CPU
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|x64.ActiveCfg = Release|x64
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|x64.Build.0 = Release|x64
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|x86.ActiveCfg = Release|Any CPU
+		{BFD6EF80-2D59-4F13-985A-998D26D1D60C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
