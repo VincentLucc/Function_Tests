@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace ScrollableControl
 {
-    public partial class Form1 : XtraForm
+    public partial class FormMain : XtraForm
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }

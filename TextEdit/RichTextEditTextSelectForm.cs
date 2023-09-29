@@ -48,6 +48,13 @@ namespace TextEdit
      
             //Draft mode no dent
             richEditControl1.ActiveViewType = RichEditViewType.Simple;
+            var simpleView = richEditControl1.ActiveView as SimpleView;
+            simpleView.Padding = new DevExpress.Portable.PortablePadding(0, 0, 0, 0);//Clean all indents
+            simpleView.WordWrap = false;//Disable word wrap
+
+            //Disable right click menu
+            richEditControl1.Options.Behavior.ShowPopupMenu = DocumentCapability.Disabled;
+
             //Set width
             richEditControl1.Paint += RichEditControl1_Paint;
 

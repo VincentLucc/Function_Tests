@@ -52,23 +52,24 @@
             // 
             this.richEditControl1.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Draft;
             this.richEditControl1.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
-            this.richEditControl1.Location = new System.Drawing.Point(16, 50);
+            this.richEditControl1.Location = new System.Drawing.Point(12, 36);
             this.richEditControl1.Name = "richEditControl1";
             this.richEditControl1.Options.DocumentSaveOptions.CurrentFormat = DevExpress.XtraRichEdit.DocumentFormat.PlainText;
             this.richEditControl1.Options.HorizontalRuler.ShowLeftIndent = false;
             this.richEditControl1.Options.HorizontalRuler.ShowRightIndent = false;
             this.richEditControl1.Options.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Visible;
             this.richEditControl1.Options.VerticalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
-            this.richEditControl1.Size = new System.Drawing.Size(498, 197);
+            this.richEditControl1.Size = new System.Drawing.Size(506, 207);
             this.richEditControl1.TabIndex = 0;
+            this.richEditControl1.Views.SimpleView.Padding = new DevExpress.Portable.PortablePadding(0);
             this.richEditControl1.Views.SimpleView.WordWrap = false;
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(16, 253);
+            this.gridControl1.Location = new System.Drawing.Point(12, 247);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(498, 198);
+            this.gridControl1.Size = new System.Drawing.Size(506, 208);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -93,11 +94,11 @@
             // 
             // FileLoadButtonEdit
             // 
-            this.FileLoadButtonEdit.Location = new System.Drawing.Point(78, 16);
+            this.FileLoadButtonEdit.Location = new System.Drawing.Point(70, 12);
             this.FileLoadButtonEdit.Name = "FileLoadButtonEdit";
             this.FileLoadButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.FileLoadButtonEdit.Size = new System.Drawing.Size(436, 28);
+            this.FileLoadButtonEdit.Size = new System.Drawing.Size(448, 20);
             this.FileLoadButtonEdit.StyleController = this.layoutControl1;
             this.FileLoadButtonEdit.TabIndex = 4;
             this.FileLoadButtonEdit.EditValueChanged += new System.EventHandler(this.FileLoadButtonEdit_EditValueChanged);
@@ -117,18 +118,18 @@
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.gridControl1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 237);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 235);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(504, 204);
+            this.layoutControlItem1.Size = new System.Drawing.Size(510, 212);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.richEditControl1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 34);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(504, 203);
+            this.layoutControlItem2.Size = new System.Drawing.Size(510, 211);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -137,7 +138,7 @@
             this.layoutControlItem3.Control = this.FileLoadButtonEdit;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(504, 34);
+            this.layoutControlItem3.Size = new System.Drawing.Size(510, 24);
             this.layoutControlItem3.Text = "Load File:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(46, 13);
             // 

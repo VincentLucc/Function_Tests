@@ -24,7 +24,6 @@ namespace Test001
         #region ColumnSelectorControlSingle_Properties
 
         private myRulerControl myRuler;
-        private myContentControl myContent;
         private string[] mylines;
 
         /// <summary>
@@ -80,8 +79,6 @@ namespace Test001
                     m_FontSize = value;
                     base.Font = new System.Drawing.Font("Consolas", m_FontSize, System.Drawing.FontStyle.Regular);
                     MeasureFontSize();
-                    myContent.Font = base.Font;
-                    myContent.Width = 8 + (iMaxLineLength + 1) * Convert.ToInt32(iCharWidth);
                     myRuler.Refresh();
                 }
             }
@@ -117,18 +114,104 @@ namespace Test001
         {
             InitializeComponent();
             base.Font = new Font("Consolas", m_FontSize, FontStyle.Regular);
-            this.panelMain.SuspendLayout();
-            myContent = new myContentControl(this);
-            myContent.MouseHover += MyContent_MouseHover;
-            toolTip1.SetToolTip(myContent, "");
+            ScrollableControl.SuspendLayout();
+
+            toolTip1.SetToolTip(ContentRichEditControl, "");
             myRuler = new myRulerControl(this);
             myRuler.IndexCollectionChanged += IndexCollectionChanged;
-            this.panelMain.Controls.Add(myContent);
-            this.panelMain.Controls.Add(myRuler);
-            this.panelMain.ResumeLayout(false);
-            this.panelMain.PerformLayout();
+           
+
+            InitTextEditControl();
+
+
+            RulerPanel.Controls.Add(myRuler);
+            ScrollableControl.ResumeLayout(false);
+            ScrollableControl.PerformLayout();
             MeasureFontSize();
         }
+
+        private void InitTextEditControl()
+        {
+
+            //Load fake data
+            LoadString(csPublic.FakeText);
+
+            //Setup font
+            Font = new Font("Consolas", m_FontSize, FontStyle.Regular);
+
+            //Setup layout
+            ContentRichEditControl.Width = 1000;
+            var simpleView = ContentRichEditControl.ActiveView as SimpleView;
+            simpleView.WordWrap = false;
+            simpleView.Padding = new Padding(0, 0, 0, 0);
+            ContentRichEditControl.DocumentLoaded += ContentRichEditControl_DocumentLoaded;
+
+            //Disable right click menu
+            ContentRichEditControl.Options.Behavior.ShowPopupMenu = DocumentCapability.Disabled;
+
+            //Draw text selection rectangle and ruler
+            ContentRichEditControl.CustomDrawActiveView += MyContentControl_CustomDrawActiveView;
+            this.MouseHover += ColumnSelectorControlV3_MouseHover;        
+        }
+
+        private void ContentRichEditControl_DocumentLoaded(object sender, EventArgs e)
+        {
+            ContentRichEditControl.Document.DefaultCharacterProperties.FontName = "Consolas";
+            ContentRichEditControl.Document.DefaultCharacterProperties.FontSize = m_FontSize;
+        }
+
+        private void ColumnSelectorControlV3_MouseHover(object sender, EventArgs e)
+        {
+            //Check if selection ready
+            var selection = GetSelection();
+            string sMessage = "";
+            if (selection != null)
+            {//Trigger selection ready event
+                sMessage = "Click mouse right button to cancel selection.";
+            }
+            else
+            {
+                sMessage = "Click ruler area to select a range.";
+            }
+            toolTip1.SetToolTip(ContentRichEditControl, sMessage);
+        }
+
+
+        /// <summary>
+        /// Draw selection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MyContentControl_CustomDrawActiveView(object sender, RichEditViewCustomDrawEventArgs e)
+        {
+            int count = Selections.Count;
+            if (count == 0 && count > 2) return;
+            //Range selected
+            if (count == 2)
+            {
+                int iStart = Selections.Min();
+                int iEnd = Selections.Max();
+                //Get actual draw position
+                DrawSelection(e, iStart, iEnd);
+            }
+        }
+
+
+        private void DrawSelection(RichEditViewCustomDrawEventArgs e, int iStart, int iEnd)
+        {
+            var posStart = ContentRichEditControl.Document.CreatePosition(iStart);
+            var posEnd = ContentRichEditControl.Document.CreatePosition(iEnd + 1);
+            var boundryStart = ContentRichEditControl.GetLayoutPhysicalBoundsFromPosition(posStart);
+            var boundryEnd = ContentRichEditControl.GetLayoutPhysicalBoundsFromPosition(posEnd);
+            int iXStart = boundryStart.X;
+            int iYStart = boundryStart.Y;
+            int iWidth = Math.Abs(boundryEnd.X - boundryStart.X);
+            int iHeight = 2000;
+            var rect = new Rectangle(iXStart, iYStart, iWidth, iHeight);
+            var color = Color.FromArgb(32, Color.Red);//Set to transparent color
+            e.Cache.FillRectangle(color, rect);
+        }
+
 
         public bool IsSelectionValid()
         {
@@ -147,21 +230,6 @@ namespace Test001
             return true;
         }
 
-        private void MyContent_MouseHover(object sender, EventArgs e)
-        {
-            //Check if selection ready
-            var selection = GetSelection();
-            string sMessage = "";
-            if (selection != null)
-            {//Trigger selection ready event
-                sMessage = "Click mouse right button to cancel selection.";
-            }
-            else
-            {
-                sMessage = "Click ruler area to select a range.";
-            }
-            toolTip1.SetToolTip(myContent, sMessage);
-        }
 
         /// <summary>
         /// Calculates the character size for current (fixed size) font of this control.
@@ -182,7 +250,7 @@ namespace Test001
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            ControlPaint.DrawBorder3D(e.Graphics, this.ClientRectangle, Border3DStyle.Etched);
+            //ControlPaint.DrawBorder3D(e.Graphics, this.ClientRectangle, Border3DStyle.Etched);
         }
 
         private void IndexCollectionChanged(object sender, IndexCollectionChangeEventArgs e)
@@ -214,7 +282,7 @@ namespace Test001
         private void UpdateView()
         {
             Selections.RemoveAll(i => i >= iMaxLineLength); // safety;
-            myContent.Invalidate();
+            ContentRichEditControl.Invalidate();
             myRuler.Refresh();
         }
 
@@ -243,12 +311,23 @@ namespace Test001
 
             //Update view
             Selections.RemoveAll(x => x >= iMaxLineLength);
-            myContent.Width = (iMaxLineLength + 1) * Convert.ToInt32(iCharWidth);
-            myContent.Height = 1000;
-            myContent.MinimumSize = new Size(myContent.Width, 1000);
-            myContent.Invalidate();
+            ContentRichEditControl.Height = 1000;
+            ContentRichEditControl.Invalidate();
             myRuler.Refresh();
-            myContent.Text = $"{sJobHeader}\r\n{sJobData}";
+            LoadString($"{sJobHeader}\r\n{sJobData}");
+        }
+
+
+        public void LoadString(string sText)
+        {
+            if (string.IsNullOrWhiteSpace(sText)) return;
+
+            byte[] bData = Encoding.UTF8.GetBytes(sText);
+            using (MemoryStream stream = new MemoryStream(bData))
+            {
+                ContentRichEditControl.LoadDocument(stream);
+            }
+
         }
 
 
@@ -306,13 +385,11 @@ namespace Test001
 
 
             Selections.RemoveAll(x => x >= iMaxLineLength);
-            myContent.Width = (iMaxLineLength + 1) * Convert.ToInt32(iCharWidth);
-            myContent.Height = 1000;
-            myContent.MinimumSize = new Size(myContent.Width, 1000);
-            myContent.Invalidate();
-            myRuler.Refresh();
-            myContent.Text = sBuilder.ToString();
 
+
+            ContentRichEditControl.Invalidate();
+            myRuler.Refresh();
+            LoadString(sBuilder.ToString());
         }
 
 
@@ -353,7 +430,9 @@ namespace Test001
         /// </summary>
         public void ClearColumnCoords()
         {
-            myContent.ClearDrawPoint();
+            Selections.Clear();
+            this.Invalidate(); //Redraw content area
+            myRuler.Refresh(); //re-draw ruler, must refresh to be effected
         }
 
 

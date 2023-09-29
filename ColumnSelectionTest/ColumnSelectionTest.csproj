@@ -88,9 +88,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColumnSelectorControlV3_Content.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="csPublic.cs" />
     <Compile Include="ColumnSelectorControlV3.cs">
       <SubType>UserControl</SubType>
