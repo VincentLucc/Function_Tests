@@ -48,24 +48,6 @@ namespace Test001
         private float m_FontSize = 12f;
 
 
-        private int m_MaxColumns = 32;
-        /// <summary>
-        /// Max indexes. Each data column is 2 indexes.
-        /// </summary>
-        public int MaxAllowedColumns
-        {
-            get
-            {
-                return m_MaxColumns;
-            }
-            set
-            {
-                m_MaxColumns = value;
-            }
-        }
-
-
-
         /// <summary>
         /// Longest row in the sample file, which is used to set the size of the content viewer
         /// </summary>
@@ -98,6 +80,8 @@ namespace Test001
         /// </summary>
         IOfficeScrollbar horizontalScrollBar;
 
+        public event EventHandler RangeSelected;
+
         public ColumnSelectorControlV3()
         {
             InitializeComponent();
@@ -109,16 +93,9 @@ namespace Test001
             InitTextEditControl();
             //RulerPanel.Controls.Add(myRuler);
 
-            //ScrollControl.Scroll += ScrollControl_Scroll;
-
-
             MeasureFontSize();
         }
 
-        private void ScrollControl_Scroll(object sender, XtraScrollEventArgs e)
-        {
-            Debug.WriteLine($"ScrollControl_Scroll:{e.NewValue}");
-        }
 
         private void InitTextEditControl()
         {
@@ -147,13 +124,59 @@ namespace Test001
             //Setup document
             ContentRichEditControl.DocumentLoaded += ContentRichEditControl_DocumentLoaded;
 
+
             //Disable right click menu
             ContentRichEditControl.Options.Behavior.ShowPopupMenu = DocumentCapability.Disabled;
 
             //Draw text selection rectangle and ruler
             ContentRichEditControl.CustomDrawActiveView += MyContentControl_CustomDrawActiveView;
+            //Move click
+            ContentRichEditControl.MouseClick += ContentRichEditControl_MouseClick;
+            ContentRichEditControl.MouseMove += ContentRichEditControl_MouseMove;
             //Show notice
             ContentRichEditControl.MouseHover += ContentRichEditControl_MouseHover;
+        }
+
+        private void ContentRichEditControl_MouseMove(object sender, MouseEventArgs e)
+        {
+            //Force cursor
+            ContentRichEditControl.Cursor = Cursors.Arrow;
+
+
+
+        }
+
+        private void ContentRichEditControl_MouseClick(object sender, MouseEventArgs e)
+        {
+            //Get selection
+            var posX = (e.X - StartIndent) / CharWidth;
+            Debug.WriteLine($"Click:{posX}");
+
+            //Add selection
+            if (e.Button == MouseButtons.Left)
+            {
+                if (Selections.Count < 2 && !Selections.Contains(posX))
+                {
+                    Selections.Add(posX);
+                    Selections.Sort();
+                }
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                if (Selections.Count > 0) Selections.Clear();
+            }
+
+
+            //Check result        
+            ContentRichEditControl.Invalidate();   //Force redraw
+            if (Selections.Count == 2) RangeSelected?.Invoke(null, null);
+
+        }
+
+        public void ClearSelection()
+        {
+            Selections.Clear();
+            ContentRichEditControl.Invalidate();
         }
 
         private void HorizontalScroll_Scroll(object sender, ScrollEventArgs e)
@@ -244,7 +267,7 @@ namespace Test001
                 int iStart = Selections.Min();
                 int iEnd = Selections.Max();
                 //Get actual draw position
-                DrawSelection(e, iStart, iEnd);
+                DrawContentSelection(e, iStart, iEnd);
             }
         }
 
@@ -254,56 +277,62 @@ namespace Test001
             if (!ContentRichEditControl.Visible) return;
             if (ContentRichEditControl.Width < 1 || ContentRichEditControl.Height < 1) return;
 
+            //Get layout info
+            List<PageLayoutInfo> pages = ContentRichEditControl.ActiveView.GetVisiblePageLayoutInfos();
+            var borderInfo = pages[0].Bounds;
+
             //Only paint visible area
-            int iStart = horizontalScrollBar.Value;
+            int iVisibleStart = Math.Abs(borderInfo.X);
             int iWidth = this.Width;
-             
 
             //Draw paint area
-            var rect = new Rectangle(iStart, -RulerHeight, iWidth, RulerHeight);
+            var rect = new Rectangle(iVisibleStart, -RulerHeight, iWidth, RulerHeight);
             var color = Color.WhiteSmoke;//Set to transparent color
             e.Cache.FillRectangle(color, rect);
 
             //Draw two lines
-            e.Cache.DrawLine(iStart, -RulerHeight, iStart + iWidth, -RulerHeight, Color.DarkGray, 2); //Draw top line
-            e.Cache.DrawLine(iStart, -1, iStart + iWidth, -1, Color.DarkGray, 2); //Draw bottom line
+            e.Cache.DrawLine(iVisibleStart, -RulerHeight, iVisibleStart + iWidth, -RulerHeight, Color.DarkGray, 2); //Draw top line
+            e.Cache.DrawLine(iVisibleStart, -1, iVisibleStart + iWidth, -1, Color.DarkGray, 2); //Draw bottom line
 
             //Check all points
-            for (int i = iStart; i < iStart + iWidth; i++)
+            for (int pageX = iVisibleStart; pageX < iVisibleStart + iWidth; pageX++)
             {
                 int iLineIndex = 0;
 
                 //Draw division lines
-                if (DivisionSub.Contains(i))
+                if (DivisionSub.Contains(pageX))
                 {
-                    iLineIndex = DivisionSub.IndexOf(i);
+                    iLineIndex = DivisionSub.IndexOf(pageX);
 
-                    if (!DivisionMain.Contains(i))
+                    if (!DivisionMain.Contains(pageX))
                     {
-                        e.Cache.DrawLine(i, -2, i, -10, Color.Black, 1);
+                        e.Cache.DrawLine(pageX, -2, pageX, -10, Color.Black, 1);
                     }
                 }
 
                 //Draw division text mark
-                if (DivisionMain.Contains(i))
+                if (DivisionMain.Contains(pageX))
                 {
                     //Draw higher line
-                    e.Cache.DrawLine(i, -1, i, -12, Color.Black, 2);
+                    e.Cache.DrawLine(pageX, -1, pageX, -12, Color.Black, 2);
 
                     //Draw text
-                    var textPoint = new Point(i - 4, -30);
+                    //Notice:
+                    //Line draw start point is based on whole page
+                    //But Text draw start point is based on current view!!!!
+                    //Get actual position in current view
+                    int iViewPortX = pageX - iVisibleStart;
+                    var textPoint = new Point(iViewPortX - 4, -30);
                     e.Cache.DrawString(iLineIndex.ToString(), this.Font, new SolidBrush(this.ForeColor), textPoint);
-
                 }
             }
 
+            //Draw selection
 
 
-            //var boundryStart = ContentRichEditControl.GetLayoutPhysicalBoundsFromPosition(iStart);
-            //var boundryEnd = ContentRichEditControl.GetLayoutPhysicalBoundsFromPosition(iStart+);
         }
 
-        private void DrawSelection(RichEditViewCustomDrawEventArgs e, int iStart, int iEnd)
+        private void DrawContentSelection(RichEditViewCustomDrawEventArgs e, int iStart, int iEnd)
         {
             var posStart = ContentRichEditControl.Document.CreatePosition(iStart);
             var posEnd = ContentRichEditControl.Document.CreatePosition(iEnd + 1);
@@ -718,7 +747,7 @@ namespace Test001
         }
         #endregion MyMessageFilter
 
-        #region Msg
+
         /// <summary>
         /// Reference
         /// https://docs.microsoft.com/en-us/windows/win32/inputdev/mouse-input-notifications
@@ -735,7 +764,7 @@ namespace Test001
             WM_RBUTTONDOWN = 0x0204, //Right mouse down
             WM_NCRBUTTONDOWN = 0x00A4 //Right mouse down in none-client area
         }
-        #endregion Msg
+
 
         /// <summary>
         /// Button type of the event

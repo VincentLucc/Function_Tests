@@ -64,6 +64,8 @@
             this.ContentRichEditControl.Name = "ContentRichEditControl";
             this.ContentRichEditControl.Options.HorizontalRuler.ShowTabs = false;
             this.ContentRichEditControl.Options.HorizontalRuler.Visibility = DevExpress.XtraRichEdit.RichEditRulerVisibility.Hidden;
+            this.ContentRichEditControl.ReadOnly = true;
+            this.ContentRichEditControl.ShowCaretInReadOnly = false;
             this.ContentRichEditControl.Size = new System.Drawing.Size(437, 353);
             this.ContentRichEditControl.TabIndex = 0;
             this.ContentRichEditControl.Text = "richEditControl1";
