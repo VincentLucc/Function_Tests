@@ -40,7 +40,7 @@ namespace Test001
             ShowTreeListForm();
 
             //Show column selector V3
-            SelectorV3PageUserControl v3COntrol = new SelectorV3PageUserControl();
+            ColumnSelectorControlV3 v3COntrol = new ColumnSelectorControlV3();
             v3COntrol.Dock = DockStyle.Fill;
             ColumnSelector3TabPage.Controls.Add(v3COntrol);
         }

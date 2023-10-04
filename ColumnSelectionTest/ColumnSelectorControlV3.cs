@@ -1,5 +1,8 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Office.Internal;
+using DevExpress.Office.Utils;
+using DevExpress.XtraEditors;
 using DevExpress.XtraRichEdit;
+using DevExpress.XtraRichEdit.Internal.PrintLayout;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +10,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -23,19 +27,9 @@ namespace Test001
     {
         #region ColumnSelectorControlSingle_Properties
 
-        private myRulerControl myRuler;
+        //private myRulerControl myRuler;
         private string[] mylines;
 
-        /// <summary>
-        /// Returns all the lines of the file.
-        /// </summary>
-        public string[] MyLines
-        {
-            get
-            {
-                return mylines;
-            }
-        }
         /// <summary>
         /// List of selected indexes in sample data, to build "SelectedIndexes" property.
         /// this list can be empty
@@ -50,39 +44,9 @@ namespace Test001
         /// </summary>
         internal int iCharWidth = 7;
         private float fCharWidth = 7f; // no use; just for debug
-        /// <summary>
-        /// Hides the Font property
-        /// </summary>
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public override Font Font
-        {
-            get { return base.Font; }
-            set { }
-        }
 
         private float m_FontSize = 12f;
 
-
-        /// <summary>
-        /// Set Font size, Font Family will be always Consolas
-        /// </summary>
-        public float FontSize
-        {
-            get
-            {
-                return m_FontSize;
-            }
-            set
-            {
-                if (m_FontSize != value)
-                {
-                    m_FontSize = value;
-                    base.Font = new System.Drawing.Font("Consolas", m_FontSize, System.Drawing.FontStyle.Regular);
-                    MeasureFontSize();
-                    myRuler.Refresh();
-                }
-            }
-        }
 
         private int m_MaxColumns = 32;
         /// <summary>
@@ -105,29 +69,55 @@ namespace Test001
         /// <summary>
         /// Longest row in the sample file, which is used to set the size of the content viewer
         /// </summary>
-        private int iMaxLineLength = 1;
+        private int MaxLineLength = 1;
 
         public EventHandler SelectionReady;
 
-        #endregion ColumnSelectorControlSingle_Properties
+
+
+        private int RulerHeight = 28;
+
+        private int CharWidth = 9;
+
+        /// <summary>
+        /// The indent of the ruler and text
+        /// </summary>
+        private int StartIndent = 5;
+
+        /// <summary>
+        /// Start point of the sub divisions
+        /// </summary>
+        public List<int> DivisionSub = new List<int>();
+        /// <summary>
+        /// Main division show text
+        /// </summary>
+        public List<int> DivisionMain = new List<int>();
+
+        /// <summary>
+        /// Read editcontrol's horizontal scroll bar
+        /// </summary>
+        IOfficeScrollbar horizontalScrollBar;
+
         public ColumnSelectorControlV3()
         {
             InitializeComponent();
             base.Font = new Font("Consolas", m_FontSize, FontStyle.Regular);
-            ScrollableControl.SuspendLayout();
-
             toolTip1.SetToolTip(ContentRichEditControl, "");
-            myRuler = new myRulerControl(this);
-            myRuler.IndexCollectionChanged += IndexCollectionChanged;
-           
 
+            //myRuler = new myRulerControl(this);
+            //myRuler.IndexCollectionChanged += IndexCollectionChanged;
             InitTextEditControl();
+            //RulerPanel.Controls.Add(myRuler);
+
+            //ScrollControl.Scroll += ScrollControl_Scroll;
 
 
-            RulerPanel.Controls.Add(myRuler);
-            ScrollableControl.ResumeLayout(false);
-            ScrollableControl.PerformLayout();
             MeasureFontSize();
+        }
+
+        private void ScrollControl_Scroll(object sender, XtraScrollEventArgs e)
+        {
+            Debug.WriteLine($"ScrollControl_Scroll:{e.NewValue}");
         }
 
         private void InitTextEditControl()
@@ -136,14 +126,25 @@ namespace Test001
             //Load fake data
             LoadString(csPublic.FakeText);
 
-            //Setup font
+            //Setup Text
             Font = new Font("Consolas", m_FontSize, FontStyle.Regular);
 
             //Setup layout
-            ContentRichEditControl.Width = 1000;
+            ContentRichEditControl.ActiveViewType = RichEditViewType.Simple;
+
+            //Setup the view
             var simpleView = ContentRichEditControl.ActiveView as SimpleView;
             simpleView.WordWrap = false;
-            simpleView.Padding = new Padding(0, 0, 0, 0);
+            simpleView.Padding = new Padding(0, RulerHeight, 0, 0);
+
+            //GET HORIZENTAL SCROLL
+            RichEditViewHorizontalScrollController horizontalScrollController = (RichEditViewHorizontalScrollController)ContentRichEditControl.ActiveView.GetType()
+                                                   .InvokeMember("HorizontalScrollController", BindingFlags.NonPublic | BindingFlags.GetProperty | BindingFlags.Instance, null, ContentRichEditControl.ActiveView, null);
+            horizontalScrollBar = horizontalScrollController.ScrollBar;
+            horizontalScrollBar.Scroll += HorizontalScroll_Scroll;
+
+
+            //Setup document
             ContentRichEditControl.DocumentLoaded += ContentRichEditControl_DocumentLoaded;
 
             //Disable right click menu
@@ -151,16 +152,16 @@ namespace Test001
 
             //Draw text selection rectangle and ruler
             ContentRichEditControl.CustomDrawActiveView += MyContentControl_CustomDrawActiveView;
-            this.MouseHover += ColumnSelectorControlV3_MouseHover;        
+            //Show notice
+            ContentRichEditControl.MouseHover += ContentRichEditControl_MouseHover;
         }
 
-        private void ContentRichEditControl_DocumentLoaded(object sender, EventArgs e)
+        private void HorizontalScroll_Scroll(object sender, ScrollEventArgs e)
         {
-            ContentRichEditControl.Document.DefaultCharacterProperties.FontName = "Consolas";
-            ContentRichEditControl.Document.DefaultCharacterProperties.FontSize = m_FontSize;
+            Debug.WriteLine("HorizontalScroll_Scroll");
         }
 
-        private void ColumnSelectorControlV3_MouseHover(object sender, EventArgs e)
+        private void ContentRichEditControl_MouseHover(object sender, EventArgs e)
         {
             //Check if selection ready
             var selection = GetSelection();
@@ -177,6 +178,52 @@ namespace Test001
         }
 
 
+
+
+        private void ContentRichEditControl_DocumentLoaded(object sender, EventArgs e)
+        {
+            ContentRichEditControl.Document.DefaultCharacterProperties.FontName = "Consolas";
+            ContentRichEditControl.Document.DefaultCharacterProperties.FontSize = m_FontSize;
+
+            //Get actual char width
+            if (ContentRichEditControl.Document.Length == 0)
+            {
+                CharWidth = 8; //Use default value
+            }
+            else
+            {
+                //Get actual char width
+                var posStart = ContentRichEditControl.Document.CreatePosition(0);
+                var boundryStart = ContentRichEditControl.GetLayoutPhysicalBoundsFromPosition(posStart);
+                CharWidth = boundryStart.Width;
+            }
+
+            //Get all division points
+            for (int i = 0; i < MaxLineLength; i++)
+            {
+                int iPoint = i * CharWidth + StartIndent;
+
+                //Add sub division
+                if (!DivisionSub.Contains(iPoint)) DivisionSub.Add(iPoint);
+
+                //Add main division
+                if (i % 10 == 0)
+                {
+                    if (!DivisionMain.Contains(iPoint))
+                    {
+                        DivisionMain.Add(iPoint);
+                    }
+
+                }
+            }
+
+
+        }
+
+
+
+
+
         /// <summary>
         /// Draw selection
         /// </summary>
@@ -184,6 +231,11 @@ namespace Test001
         /// <param name="e"></param>
         private void MyContentControl_CustomDrawActiveView(object sender, RichEditViewCustomDrawEventArgs e)
         {
+
+            //Always paint ruler
+            PaintRuler(e);
+
+            //Paint range
             int count = Selections.Count;
             if (count == 0 && count > 2) return;
             //Range selected
@@ -197,6 +249,60 @@ namespace Test001
         }
 
 
+        private void PaintRuler(RichEditViewCustomDrawEventArgs e)
+        {
+            if (!ContentRichEditControl.Visible) return;
+            if (ContentRichEditControl.Width < 1 || ContentRichEditControl.Height < 1) return;
+
+            //Only paint visible area
+            int iStart = horizontalScrollBar.Value;
+            int iWidth = this.Width;
+             
+
+            //Draw paint area
+            var rect = new Rectangle(iStart, -RulerHeight, iWidth, RulerHeight);
+            var color = Color.WhiteSmoke;//Set to transparent color
+            e.Cache.FillRectangle(color, rect);
+
+            //Draw two lines
+            e.Cache.DrawLine(iStart, -RulerHeight, iStart + iWidth, -RulerHeight, Color.DarkGray, 2); //Draw top line
+            e.Cache.DrawLine(iStart, -1, iStart + iWidth, -1, Color.DarkGray, 2); //Draw bottom line
+
+            //Check all points
+            for (int i = iStart; i < iStart + iWidth; i++)
+            {
+                int iLineIndex = 0;
+
+                //Draw division lines
+                if (DivisionSub.Contains(i))
+                {
+                    iLineIndex = DivisionSub.IndexOf(i);
+
+                    if (!DivisionMain.Contains(i))
+                    {
+                        e.Cache.DrawLine(i, -2, i, -10, Color.Black, 1);
+                    }
+                }
+
+                //Draw division text mark
+                if (DivisionMain.Contains(i))
+                {
+                    //Draw higher line
+                    e.Cache.DrawLine(i, -1, i, -12, Color.Black, 2);
+
+                    //Draw text
+                    var textPoint = new Point(i - 4, -30);
+                    e.Cache.DrawString(iLineIndex.ToString(), this.Font, new SolidBrush(this.ForeColor), textPoint);
+
+                }
+            }
+
+
+
+            //var boundryStart = ContentRichEditControl.GetLayoutPhysicalBoundsFromPosition(iStart);
+            //var boundryEnd = ContentRichEditControl.GetLayoutPhysicalBoundsFromPosition(iStart+);
+        }
+
         private void DrawSelection(RichEditViewCustomDrawEventArgs e, int iStart, int iEnd)
         {
             var posStart = ContentRichEditControl.Document.CreatePosition(iStart);
@@ -206,7 +312,7 @@ namespace Test001
             int iXStart = boundryStart.X;
             int iYStart = boundryStart.Y;
             int iWidth = Math.Abs(boundryEnd.X - boundryStart.X);
-            int iHeight = 2000;
+            int iHeight = 1000;
             var rect = new Rectangle(iXStart, iYStart, iWidth, iHeight);
             var color = Color.FromArgb(32, Color.Red);//Set to transparent color
             e.Cache.FillRectangle(color, rect);
@@ -247,11 +353,6 @@ namespace Test001
         }
 
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            //ControlPaint.DrawBorder3D(e.Graphics, this.ClientRectangle, Border3DStyle.Etched);
-        }
 
         private void IndexCollectionChanged(object sender, IndexCollectionChangeEventArgs e)
         {
@@ -281,9 +382,9 @@ namespace Test001
         /// </summary>
         private void UpdateView()
         {
-            Selections.RemoveAll(i => i >= iMaxLineLength); // safety;
+            Selections.RemoveAll(i => i >= MaxLineLength); // safety;
             ContentRichEditControl.Invalidate();
-            myRuler.Refresh();
+            //myRuler.Refresh();
         }
 
 
@@ -292,28 +393,28 @@ namespace Test001
         {
             //Init 
             mylines = new string[2];
-            iMaxLineLength = 0;
+            MaxLineLength = 0;
             int iLineCharLimit = 65535 / 9; //Ccontrol maximum width/char size
 
             //Job header
             string sJobHeader = sampleData.JobInfoHeader;
-            if (sJobHeader.Length > iMaxLineLength) iMaxLineLength = sJobHeader.Length + 1;
+            if (sJobHeader.Length > MaxLineLength) MaxLineLength = sJobHeader.Length + 1;
             //Limit line length
             if (sJobHeader.Length > iLineCharLimit) sJobHeader = sJobHeader.Substring(0, iLineCharLimit - 3) + "...";
             mylines[0] = sJobHeader;
 
             //Job data
             string sJobData = sampleData.JobInfoData;
-            if (sJobData.Length > iMaxLineLength) iMaxLineLength = sJobData.Length + 1;
+            if (sJobData.Length > MaxLineLength) MaxLineLength = sJobData.Length + 1;
             //Limit line length
             if (sJobData.Length > iLineCharLimit) sJobData = sJobData.Substring(0, iLineCharLimit - 3) + "...";
             mylines[1] = sJobData;
 
             //Update view
-            Selections.RemoveAll(x => x >= iMaxLineLength);
+            Selections.RemoveAll(x => x >= MaxLineLength);
             ContentRichEditControl.Height = 1000;
             ContentRichEditControl.Invalidate();
-            myRuler.Refresh();
+            //myRuler.Refresh();
             LoadString($"{sJobHeader}\r\n{sJobData}");
         }
 
@@ -321,6 +422,11 @@ namespace Test001
         public void LoadString(string sText)
         {
             if (string.IsNullOrWhiteSpace(sText)) return;
+
+            var options = sText.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+
+            //Get longest line
+            MaxLineLength = options.Max(a => a.Length);
 
             byte[] bData = Encoding.UTF8.GetBytes(sText);
             using (MemoryStream stream = new MemoryStream(bData))
@@ -334,12 +440,12 @@ namespace Test001
         public void LoadDataRows(csFileData sampleData)
         {
             //Initial varibales
-            iMaxLineLength = 1;
+            MaxLineLength = 1;
             int iRowCount = 20;
             mylines = new string[iRowCount];
             int[] maxTabAreas = new int[0];
             int counter = 0;
-            int iLineCharLimit = 65535 / 9; //Ccontrol maximum width/char size
+            int iLineCharLimit = 65535 / 9; //Control maximum width/char size
 
             StringBuilder sBuilder = new StringBuilder();
 
@@ -349,7 +455,7 @@ namespace Test001
                 string sHeader = sampleData.DataHeader;
 
                 //Record max length to adjust control width
-                if (sHeader.Length > iMaxLineLength) iMaxLineLength = sHeader.Length + 1;
+                if (sHeader.Length > MaxLineLength) MaxLineLength = sHeader.Length + 1;
 
                 //Limit line length
                 if (sampleData.DataHeader.Length > iLineCharLimit)
@@ -368,7 +474,7 @@ namespace Test001
             foreach (var item in sampleData.DataLines)
             {
                 //Record max length to adjust control width
-                if (item.Length > iMaxLineLength) iMaxLineLength = item.Length + 1;
+                if (item.Length > MaxLineLength) MaxLineLength = item.Length + 1;
 
                 //Limit line length
                 string sLine = item;
@@ -384,11 +490,11 @@ namespace Test001
             }
 
 
-            Selections.RemoveAll(x => x >= iMaxLineLength);
+            Selections.RemoveAll(x => x >= MaxLineLength);
 
 
             ContentRichEditControl.Invalidate();
-            myRuler.Refresh();
+            //myRuler.Refresh();
             LoadString(sBuilder.ToString());
         }
 
@@ -422,7 +528,7 @@ namespace Test001
         /// <param name="ColumnSelection"></param>
         public void SetColumnCoords(List<Tuple<SolidBrush, int, int>> ColumnSelection)
         {
-            myRuler.Refresh(); //Reload ruler marker
+            //myRuler.Refresh(); //Reload ruler marker
         }
 
         /// <summary>
@@ -432,12 +538,12 @@ namespace Test001
         {
             Selections.Clear();
             this.Invalidate(); //Redraw content area
-            myRuler.Refresh(); //re-draw ruler, must refresh to be effected
+            //myRuler.Refresh(); //re-draw ruler, must refresh to be effected
         }
 
 
 
-        #region MyMessageFilter
+
         /// <summary>
         /// Parsing application mouse event message
         /// This affect application performace 10-15% cpu

@@ -75,7 +75,9 @@
       <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 19.1\Components\Bin\Framework\DevExpress.XtraRichEdit.v19.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraTreeList.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v19.1, Version=19.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -131,12 +133,6 @@
     <Compile Include="ColumnSelectorControl.Designer.cs">
       <DependentUpon>ColumnSelectorControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="SelectorV3PageUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="SelectorV3PageUserControl.Designer.cs">
-      <DependentUpon>SelectorV3PageUserControl.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ColumnSelectorControlV2.resx">
       <DependentUpon>ColumnSelectorControlV2.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,9 +159,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SelectorV3PageUserControl.resx">
-      <DependentUpon>SelectorV3PageUserControl.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -19,7 +19,7 @@ namespace Test001
         {
             public ColumnSelectorControlV3 myParentControl;
 
-            private MyMessageFilter msgFilter; //Filter and trigger mouse event
+            //private MyMessageFilter msgFilter; //Filter and trigger mouse event
 
             private static Pen myDashPen;
             private Bitmap _Bitmap = null;
@@ -48,7 +48,7 @@ namespace Test001
 
                 if (p != null) myParentControl = p;
 
-                msgFilter = new MyMessageFilter(this);
+                //msgFilter = new MyMessageFilter(this);
                 AddMessageFilter();
                 SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
@@ -80,20 +80,20 @@ namespace Test001
 
             private void AddMessageFilter()
             {
-                try
-                {
-                    Application.AddMessageFilter(msgFilter);
-                }
-                catch { }
+                //try
+                //{
+                //    Application.AddMessageFilter(msgFilter);
+                //}
+                //catch { }
             }
 
             private void RemoveMessageFilter()
             {
-                try
-                {
-                    Application.RemoveMessageFilter(msgFilter);
-                }
-                catch { }
+                //try
+                //{
+                //    Application.RemoveMessageFilter(msgFilter);
+                //}
+                //catch { }
             }
 
             public void UpdateIndexes(MouseButtons OperationButton, int NewIndex = -1)
