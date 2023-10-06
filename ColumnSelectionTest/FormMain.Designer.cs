@@ -61,6 +61,15 @@ namespace Test001
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.ColumnSelector2TabPage = new DevExpress.XtraTab.XtraTabPage();
             this.ColumnSelector3TabPage = new DevExpress.XtraTab.XtraTabPage();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.Selector3ToggleSwitch = new DevExpress.XtraEditors.ToggleSwitch();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.pColumnSelector3 = new System.Windows.Forms.Panel();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.DataFileFieldGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataFileFieldGridView)).BeginInit();
             this.pTable.SuspendLayout();
@@ -73,6 +82,15 @@ namespace Test001
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.ColumnSelector2TabPage.SuspendLayout();
+            this.ColumnSelector3TabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Selector3ToggleSwitch.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // DataFileFieldGridControl
@@ -373,7 +391,7 @@ namespace Test001
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.ColumnSelector2TabPage;
-            this.xtraTabControl1.Size = new System.Drawing.Size(611, 509);
+            this.xtraTabControl1.Size = new System.Drawing.Size(750, 509);
             this.xtraTabControl1.TabIndex = 2;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.ColumnSelector2TabPage,
@@ -390,15 +408,104 @@ namespace Test001
             // 
             // ColumnSelector3TabPage
             // 
+            this.ColumnSelector3TabPage.Controls.Add(this.layoutControl1);
             this.ColumnSelector3TabPage.Name = "ColumnSelector3TabPage";
-            this.ColumnSelector3TabPage.Size = new System.Drawing.Size(609, 486);
+            this.ColumnSelector3TabPage.Size = new System.Drawing.Size(748, 486);
             this.ColumnSelector3TabPage.Text = "Column Selector V3";
+            // 
+            // layoutControl1
+            // 
+            this.layoutControl1.Controls.Add(this.pColumnSelector3);
+            this.layoutControl1.Controls.Add(this.Selector3ToggleSwitch);
+            this.layoutControl1.Controls.Add(this.simpleButton2);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.Root = this.Root;
+            this.layoutControl1.Size = new System.Drawing.Size(748, 486);
+            this.layoutControl1.TabIndex = 0;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.emptySpaceItem1,
+            this.layoutControlItem3,
+            this.layoutControlItem1,
+            this.layoutControlItem2});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(748, 486);
+            this.Root.Text = "Enable";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(12, 12);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(138, 22);
+            this.simpleButton2.StyleController = this.layoutControl1;
+            this.simpleButton2.TabIndex = 4;
+            this.simpleButton2.Text = "simpleButton2";
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.simpleButton2;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(142, 26);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 48);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(142, 418);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // Selector3ToggleSwitch
+            // 
+            this.Selector3ToggleSwitch.Location = new System.Drawing.Point(56, 38);
+            this.Selector3ToggleSwitch.Name = "Selector3ToggleSwitch";
+            this.Selector3ToggleSwitch.Properties.OffText = "Off";
+            this.Selector3ToggleSwitch.Properties.OnText = "On";
+            this.Selector3ToggleSwitch.Size = new System.Drawing.Size(94, 18);
+            this.Selector3ToggleSwitch.StyleController = this.layoutControl1;
+            this.Selector3ToggleSwitch.TabIndex = 5;
+            this.Selector3ToggleSwitch.Toggled += new System.EventHandler(this.Selector3ToggleSwitch_Toggled);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.Selector3ToggleSwitch;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(142, 22);
+            this.layoutControlItem2.Text = "Enable";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(32, 13);
+            // 
+            // pColumnSelector3
+            // 
+            this.pColumnSelector3.Location = new System.Drawing.Point(154, 12);
+            this.pColumnSelector3.Name = "pColumnSelector3";
+            this.pColumnSelector3.Size = new System.Drawing.Size(582, 462);
+            this.pColumnSelector3.TabIndex = 6;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.pColumnSelector3;
+            this.layoutControlItem3.Location = new System.Drawing.Point(142, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(586, 466);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(611, 509);
+            this.ClientSize = new System.Drawing.Size(750, 509);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "FormMain";
             this.Text = "Form1";
@@ -415,6 +522,15 @@ namespace Test001
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.ColumnSelector2TabPage.ResumeLayout(false);
+            this.ColumnSelector3TabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Selector3ToggleSwitch.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -452,6 +568,15 @@ namespace Test001
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage ColumnSelector2TabPage;
         private DevExpress.XtraTab.XtraTabPage ColumnSelector3TabPage;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private System.Windows.Forms.Panel pColumnSelector3;
+        private DevExpress.XtraEditors.ToggleSwitch Selector3ToggleSwitch;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
 }
 

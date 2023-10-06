@@ -47,10 +47,6 @@ namespace Test001
         /// </summary>
         private int MaxLineLength = 1;
 
-        public EventHandler SelectionReady;
-
-
-
         private int RulerHeight = 28;
 
         private int CharWidth = 9;
@@ -59,6 +55,7 @@ namespace Test001
         /// The indent of the ruler and text
         /// </summary>
         private int StartIndent = 5;
+        private int EndIndent = 5;
 
         /// <summary>
         /// Start point of the sub divisions
@@ -71,6 +68,8 @@ namespace Test001
 
 
         public event EventHandler RangeSelected;
+
+        public event EventHandler SelectionChanged;
 
         /// <summary>
         /// Transparent gray color
@@ -100,7 +99,6 @@ namespace Test001
 
         private void InitTextEditControl()
         {
-
             //Load fake data
             LoadString(csPublic.FakeText);
 
@@ -113,7 +111,7 @@ namespace Test001
             //Setup the view
             var simpleView = ContentRichEditControl.ActiveView as SimpleView;
             simpleView.WordWrap = false;
-            simpleView.Padding = new Padding(StartIndent, RulerHeight, 0, 0);
+            simpleView.Padding = new Padding(StartIndent, RulerHeight, EndIndent, 0);
 
             //Setup document
             ContentRichEditControl.DocumentLoaded += ContentRichEditControl_DocumentLoaded;
@@ -123,11 +121,28 @@ namespace Test001
 
             //Draw text selection rectangle and ruler
             ContentRichEditControl.CustomDrawActiveView += MyContentControl_CustomDrawActiveView;
+
             //Move click
             ContentRichEditControl.MouseClick += ContentRichEditControl_MouseClick;
             ContentRichEditControl.MouseMove += ContentRichEditControl_MouseMove;
+
+
             //Show notice
             ContentRichEditControl.MouseHover += ContentRichEditControl_MouseHover;
+
+            //Disable buildin text selection
+            ContentRichEditControl.SelectionChanged += ContentRichEditControl_SelectionChanged;
+        }
+
+        private void ContentRichEditControl_SelectionChanged(object sender, EventArgs e)
+        {//Force to select nothing
+            try
+            {
+                var myStart = ContentRichEditControl.Document.CreatePosition(0);
+                var myRange = ContentRichEditControl.Document.CreateRange(myStart, 0);
+                ContentRichEditControl.Document.Selection = myRange;
+            }
+            catch { }
         }
 
         private void ContentRichEditControl_MouseMove(object sender, MouseEventArgs e)
@@ -137,7 +152,7 @@ namespace Test001
 
             //Only paint visible area, get start point
             int iVisibleStart = GetVisibleStart();
-            var newPosition = (e.X + iVisibleStart - StartIndent) / CharWidth;
+            var newPosition = (e.X + iVisibleStart + ContentRichEditControl.Left) / CharWidth;
             Debug.WriteLine($"Current Row:{newPosition}");
 
             //Only paint when position changed
@@ -166,7 +181,7 @@ namespace Test001
             //Get selection
             //Get current display boundary
             int iVisibleStart = GetVisibleStart();
-            var posX = (e.X + iVisibleStart - StartIndent) / CharWidth;
+            var posX = (e.X + iVisibleStart + ContentRichEditControl.Left) / CharWidth;
             Debug.WriteLine($"Click:{posX}");
 
             //Add selection
@@ -176,18 +191,23 @@ namespace Test001
                 {
                     Selections.Add(posX);
                     Selections.Sort();
+                    SelectionChanged?.Invoke(null, null);
+                    ContentRichEditControl.Invalidate();
                 }
             }
             else if (e.Button == MouseButtons.Right)
             {
-                if (Selections.Count > 0) Selections.Clear();
+                if (Selections.Count > 0)
+                {
+                    Selections.Clear();
+                    SelectionChanged?.Invoke(null, null);
+                    ContentRichEditControl.Invalidate();
+                }
             }
 
-
-            //Check result        
-            ContentRichEditControl.Invalidate();   //Force redraw
-            if (Selections.Count == 2) RangeSelected?.Invoke(null, null);
-
+            //Push result        
+            if (Selections.Count == 2)
+                RangeSelected?.Invoke(null, null);
         }
 
         public void ClearSelection()
@@ -237,7 +257,7 @@ namespace Test001
             }
 
             //Get all division points
-            for (int i = 0; i < MaxLineLength; i++)
+            for (int i = 0; i <= MaxLineLength; i++)
             {
                 int iPoint = i * CharWidth;
 
@@ -321,7 +341,7 @@ namespace Test001
 
                         if (!DivisionMain.Contains(pageX))
                         {
-                            e.Cache.DrawLine(pageX, -2, pageX, -10, Color.Black, 1);
+                            e.Cache.DrawLine(pageX, -2, pageX, -8, Color.Black, 1);
                         }
                     }
 
@@ -332,7 +352,7 @@ namespace Test001
                         e.Cache.DrawLine(pageX, -1, pageX, -13, Color.Black, 1);
 
                         //Draw text
-                        int iViewPortX = pageX - iVisibleStart;
+                        int iViewPortX = pageX - iVisibleStart - StartIndent;
                         string sText = iLineIndex.ToString();
                         var textPoint = new Point(iViewPortX - (CharWidth * sText.Length / 2), -30);
                         e.Cache.DrawString(sText, this.Font, brushForeColor, textPoint);
@@ -354,7 +374,10 @@ namespace Test001
             try
             {
                 //Draw current mouse position mark
-                if (DivisionSub.Count > 0 && MouseCharPosition < DivisionSub.Count)
+                if (DivisionSub.Count > 0 &&
+                    MouseCharPosition > -1 &&
+                    MouseCharPosition < DivisionSub.Count &&
+                    this.Enabled)
                 {
                     int iDrawPosition = DivisionSub[MouseCharPosition];
 
@@ -382,20 +405,22 @@ namespace Test001
             {
                 Debug.WriteLine("ColumnSelector.DrawMarks:\r\n" + ex.Message);
             }
- 
+
         }
 
         private void DrawContentSelection(RichEditViewCustomDrawEventArgs e, int iStart, int iEnd)
         {
-            var posStart = ContentRichEditControl.Document.CreatePosition(iStart);
-            var posEnd = ContentRichEditControl.Document.CreatePosition(iEnd);
-            var boundryStart = ContentRichEditControl.GetLayoutPhysicalBoundsFromPosition(posStart);
-            var boundryEnd = ContentRichEditControl.GetLayoutPhysicalBoundsFromPosition(posEnd);
-            int iXStart = boundryStart.X;
-            int iYStart = boundryStart.Y;
-            int iWidth = Math.Abs(boundryEnd.X - boundryStart.X);
+            //Verification
+            if (DivisionSub.Count <= iStart || DivisionSub.Count <= iEnd) return;
+            int xStart = DivisionSub[iStart];
+            int xEnd = DivisionSub[iEnd];
+
+            //Get X axis start point and range
+            int iWidth = Math.Abs(xEnd - xStart);
             int iHeight = ContentRichEditControl.Height;
-            var rect = new Rectangle(iXStart, iYStart, iWidth, iHeight);
+
+            //Draw selection area
+            var rect = new Rectangle(xStart, 0, iWidth, iHeight);
             var color = Color.FromArgb(32, Color.Red);//Set to transparent color
             e.Cache.FillRectangle(color, rect);
         }

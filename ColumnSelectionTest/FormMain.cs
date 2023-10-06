@@ -42,7 +42,7 @@ namespace Test001
             //Show column selector V3
             ColumnSelectorControlV3 v3COntrol = new ColumnSelectorControlV3();
             v3COntrol.Dock = DockStyle.Fill;
-            ColumnSelector3TabPage.Controls.Add(v3COntrol);
+            pColumnSelector3.Controls.Add(v3COntrol);
         }
 
         private void InitCustomizedFixedWidthControl()
@@ -704,6 +704,9 @@ namespace Test001
             DataFieldAddIndexRow(FieldAddType.AfterCurrentSelection);
         }
 
-
+        private void Selector3ToggleSwitch_Toggled(object sender, EventArgs e)
+        {
+            pColumnSelector3.Enabled = !pColumnSelector3.Enabled;
+        }
     }
 }
