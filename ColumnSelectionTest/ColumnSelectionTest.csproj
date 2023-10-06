@@ -104,9 +104,6 @@
       <DependentUpon>ColumnSelectorControlV2.cs</DependentUpon>
     </Compile>
     <Compile Include="csModels.cs" />
-    <Compile Include="ColumnSelectorControlV3_Ruler.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>

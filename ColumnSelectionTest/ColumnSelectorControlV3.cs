@@ -25,10 +25,7 @@ namespace Test001
     /// </summary>
     public partial class ColumnSelectorControlV3 : XtraUserControl
     {
-        #region ColumnSelectorControlSingle_Properties
-
-        //private myRulerControl myRuler;
-        private string[] mylines;
+        private string[] DataRows;
 
         /// <summary>
         /// List of selected indexes in sample data, to build "SelectedIndexes" property.
@@ -42,13 +39,7 @@ namespace Test001
 
         const string strMarkerChar = "▼";
 
-        /// <summary>
-        /// Width of a character in pixels from the fixed size Font used for this control (Default: Consolas)
-        /// </summary>
-        internal int iCharWidth = 7;
-        private float fCharWidth = 7f; // no use; just for debug
-
-        private float m_FontSize = 12f;
+        private float FontSize = 12f;
 
 
         /// <summary>
@@ -91,7 +82,7 @@ namespace Test001
         public ColumnSelectorControlV3()
         {
             InitializeComponent();
-            base.Font = new Font("Consolas", m_FontSize, FontStyle.Regular);
+            base.Font = new Font("Consolas", FontSize, FontStyle.Regular);
             toolTip1.SetToolTip(ContentRichEditControl, "");
 
             //Init variables
@@ -102,12 +93,8 @@ namespace Test001
             penDashGray = new Pen(Color.Gray, 1);
             penDashGray.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
 
-            //myRuler = new myRulerControl(this);
-            //myRuler.IndexCollectionChanged += IndexCollectionChanged;
-            InitTextEditControl();
-            //RulerPanel.Controls.Add(myRuler);
 
-            MeasureFontSize();
+            InitTextEditControl();
         }
 
 
@@ -118,7 +105,7 @@ namespace Test001
             LoadString(csPublic.FakeText);
 
             //Setup Text
-            Font = new Font("Consolas", m_FontSize, FontStyle.Regular);
+            Font = new Font("Consolas", FontSize, FontStyle.Regular);
 
             //Setup layout
             ContentRichEditControl.ActiveViewType = RichEditViewType.Simple;
@@ -126,11 +113,10 @@ namespace Test001
             //Setup the view
             var simpleView = ContentRichEditControl.ActiveView as SimpleView;
             simpleView.WordWrap = false;
-            simpleView.Padding = new Padding(0, RulerHeight, 0, 0);
+            simpleView.Padding = new Padding(StartIndent, RulerHeight, 0, 0);
 
             //Setup document
             ContentRichEditControl.DocumentLoaded += ContentRichEditControl_DocumentLoaded;
-
 
             //Disable right click menu
             ContentRichEditControl.Options.Behavior.ShowPopupMenu = DocumentCapability.Disabled;
@@ -170,7 +156,7 @@ namespace Test001
             List<PageLayoutInfo> pages = ContentRichEditControl.ActiveView.GetVisiblePageLayoutInfos();
             var borderInfo = pages[0].Bounds;
             //Only paint visible area, get start point
-            int iVisibleStart = Math.Abs(borderInfo.X);
+            int iVisibleStart = -borderInfo.X;
 
             return iVisibleStart;
         }
@@ -235,7 +221,7 @@ namespace Test001
         private void ContentRichEditControl_DocumentLoaded(object sender, EventArgs e)
         {
             ContentRichEditControl.Document.DefaultCharacterProperties.FontName = "Consolas";
-            ContentRichEditControl.Document.DefaultCharacterProperties.FontSize = m_FontSize;
+            ContentRichEditControl.Document.DefaultCharacterProperties.FontSize = FontSize;
 
             //Get actual char width
             if (ContentRichEditControl.Document.Length == 0)
@@ -283,12 +269,8 @@ namespace Test001
         /// <param name="e"></param>
         private void MyContentControl_CustomDrawActiveView(object sender, RichEditViewCustomDrawEventArgs e)
         {
-            //Get layout info
-            List<PageLayoutInfo> pages = ContentRichEditControl.ActiveView.GetVisiblePageLayoutInfos();
-            var borderInfo = pages[0].Bounds;
-
             //Only paint visible area, get start point
-            int iVisibleStart = Math.Abs(borderInfo.X);
+            int iVisibleStart = GetVisibleStart();
 
             PaintRuler(e, iVisibleStart);
             PaintContentArea(e, iVisibleStart);
@@ -312,81 +294,95 @@ namespace Test001
 
         private void PaintRuler(RichEditViewCustomDrawEventArgs e, int iVisibleStart)
         {
-            if (!ContentRichEditControl.Visible) return;
-            if (ContentRichEditControl.Width < 1 || ContentRichEditControl.Height < 1) return;
-
-
-            //Draw paint area
-            int iWidth = ContentRichEditControl.Width;
-            var rect = new Rectangle(iVisibleStart, -RulerHeight, iWidth, RulerHeight);
-            var color = Color.WhiteSmoke;//Set to transparent color
-            e.Cache.FillRectangle(color, rect);
-
-            //Draw two lines
-            e.Cache.DrawLine(iVisibleStart, -RulerHeight, iVisibleStart + iWidth, -RulerHeight, Color.DarkGray, 2); //Draw top line
-            e.Cache.DrawLine(iVisibleStart, -1, iVisibleStart + iWidth, -1, Color.DarkGray, 2); //Draw bottom line
-
-            //Check all saved division points
-            for (int pageX = iVisibleStart; pageX < iVisibleStart + iWidth; pageX++)
+            try
             {
-                int iLineIndex = 0;
+                if (!ContentRichEditControl.Visible) return;
+                if (ContentRichEditControl.Width < 1 || ContentRichEditControl.Height < 1) return;
 
-                //Draw division lines
-                if (DivisionSub.Contains(pageX))
+                //Draw paint area
+                int iWidth = ContentRichEditControl.Width;
+                var rect = new Rectangle(iVisibleStart, -RulerHeight, iWidth, RulerHeight);
+                var color = Color.WhiteSmoke;//Set to transparent color
+                e.Cache.FillRectangle(color, rect);
+
+                //Draw two lines
+                e.Cache.DrawLine(iVisibleStart, -RulerHeight, iVisibleStart + iWidth, -RulerHeight, Color.DarkGray, 2); //Draw top line
+                e.Cache.DrawLine(iVisibleStart, -1, iVisibleStart + iWidth, -1, Color.DarkGray, 2); //Draw bottom line
+
+                //Check all saved division points
+                for (int pageX = iVisibleStart; pageX < iVisibleStart + iWidth; pageX++)
                 {
-                    iLineIndex = DivisionSub.IndexOf(pageX);
+                    int iLineIndex = 0;
 
-                    if (!DivisionMain.Contains(pageX))
+                    //Draw division lines
+                    if (DivisionSub.Contains(pageX))
                     {
-                        e.Cache.DrawLine(pageX, -2, pageX, -10, Color.Black, 1);
+                        iLineIndex = DivisionSub.IndexOf(pageX);
+
+                        if (!DivisionMain.Contains(pageX))
+                        {
+                            e.Cache.DrawLine(pageX, -2, pageX, -10, Color.Black, 1);
+                        }
+                    }
+
+                    //Draw division text mark
+                    if (DivisionMain.Contains(pageX))
+                    {
+                        //Draw higher line
+                        e.Cache.DrawLine(pageX, -1, pageX, -13, Color.Black, 1);
+
+                        //Draw text
+                        int iViewPortX = pageX - iVisibleStart;
+                        string sText = iLineIndex.ToString();
+                        var textPoint = new Point(iViewPortX - (CharWidth * sText.Length / 2), -30);
+                        e.Cache.DrawString(sText, this.Font, brushForeColor, textPoint);
                     }
                 }
 
-                //Draw division text mark
-                if (DivisionMain.Contains(pageX))
-                {
-                    //Draw higher line
-                    e.Cache.DrawLine(pageX, -1, pageX, -13, Color.Black, 1);
-
-                    //Draw text
-                    int iViewPortX = pageX - iVisibleStart;
-                    string sText = iLineIndex.ToString();
-                    var textPoint = new Point(iViewPortX - (CharWidth * sText.Length / 2), -30);
-                    e.Cache.DrawString(sText, this.Font, brushForeColor, textPoint);
-                }
+                //Draw saved slection marks and current mouse position
+                DrawMarks(e, iVisibleStart);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("ColumnSelector.PaintRuler.Exception:\r\n" + ex.Message);
             }
 
-            //Draw saved slection marks and current mouse position
-            DrawMarks(e, iVisibleStart);
         }
 
         private void DrawMarks(RichEditViewCustomDrawEventArgs e, int iVisibleStart)
         {
-            //Draw current mouse position mark
-            if (DivisionSub.Count > 0 && MouseCharPosition < DivisionSub.Count)
+            try
             {
-                int iDrawPosition = DivisionSub[MouseCharPosition];
+                //Draw current mouse position mark
+                if (DivisionSub.Count > 0 && MouseCharPosition < DivisionSub.Count)
+                {
+                    int iDrawPosition = DivisionSub[MouseCharPosition];
 
-                //Text x axis start from current view port
-                //Line x axis start from 0
-                var markTextPoint = new Point(iDrawPosition - CharWidth / 2 - iVisibleStart, -16);
-                e.Cache.DrawString(strMarkerChar, this.Font, brushGrayTrans, markTextPoint);
+                    //Text x axis start from current view port
+                    //Line x axis start from 0
+                    var markTextPoint = new Point(iDrawPosition - CharWidth / 2 - iVisibleStart - StartIndent, -16);
+                    e.Cache.DrawString(strMarkerChar, this.Font, brushGrayTrans, markTextPoint);
 
-                //Draw vertical dash line
-                e.Cache.DrawLine(penDashGray, new Point(iDrawPosition, 0), new Point(iDrawPosition, this.Height));
+                    //Draw vertical dash line
+                    e.Cache.DrawLine(penDashGray, new Point(iDrawPosition, 0), new Point(iDrawPosition, this.Height));
+                }
+
+
+                //Draw current selection markers
+                foreach (var item in Selections)
+                {
+                    //Verification
+                    if (DivisionSub.Count < 0 || MouseCharPosition >= DivisionSub.Count) continue;
+                    int iDrawPosition = DivisionSub[item];
+                    var markTextPoint = new Point(iDrawPosition - CharWidth / 2 - iVisibleStart - StartIndent, -16);
+                    e.Cache.DrawString(strMarkerChar, this.Font, brushForeColor, markTextPoint);
+                }
             }
-
-
-            //Draw current selection markers
-            foreach (var item in Selections)
+            catch (Exception ex)
             {
-                //Verification
-                if (DivisionSub.Count < 0 || MouseCharPosition >= DivisionSub.Count) continue;
-                int iDrawPosition = DivisionSub[item];
-                var markTextPoint = new Point(iDrawPosition - CharWidth / 2 - iVisibleStart, -16);
-                e.Cache.DrawString(strMarkerChar, this.Font, brushForeColor, markTextPoint);
+                Debug.WriteLine("ColumnSelector.DrawMarks:\r\n" + ex.Message);
             }
-
+ 
         }
 
         private void DrawContentSelection(RichEditViewCustomDrawEventArgs e, int iStart, int iEnd)
@@ -423,62 +419,10 @@ namespace Test001
         }
 
 
-        /// <summary>
-        /// Calculates the character size for current (fixed size) font of this control.
-        /// </summary>
-        private void MeasureFontSize()
-        {
-            using (Bitmap b1 = new Bitmap(100, 100))
-            {
-                using (Graphics g = Graphics.FromImage(b1))
-                {
-                    fCharWidth = g.MeasureString(strMarkerChar, base.Font, new Size(100, 100), StringFormat.GenericTypographic).Width;
-                    iCharWidth = Convert.ToInt32(Math.Round(fCharWidth + .25f, 0));
-                }
-            }
-        }
-
-
-
-        private void IndexCollectionChanged(object sender, IndexCollectionChangeEventArgs e)
-        {
-            //Check if right mouse clicked
-            if (e.Button == MouseButtons.Right)
-            {
-                Selections.Clear();
-                UpdateView();
-                return;
-            }
-
-            UpdateView(); //Update view before trigger operation
-
-            //Check if selection ready
-            var updateResult = GetSelection();
-            if (updateResult != null)
-            {//Trigger selection ready event
-                if (SelectionReady != null)
-                {
-                    SelectionReady(this, e);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Refresh UI display
-        /// </summary>
-        private void UpdateView()
-        {
-            Selections.RemoveAll(i => i >= MaxLineLength); // safety;
-            ContentRichEditControl.Invalidate();
-            //myRuler.Refresh();
-        }
-
-
-
         public void LoadJobInfoRows(csFileData sampleData)
         {
             //Init 
-            mylines = new string[2];
+            DataRows = new string[2];
             MaxLineLength = 0;
             int iLineCharLimit = 65535 / 9; //Ccontrol maximum width/char size
 
@@ -487,14 +431,14 @@ namespace Test001
             if (sJobHeader.Length > MaxLineLength) MaxLineLength = sJobHeader.Length + 1;
             //Limit line length
             if (sJobHeader.Length > iLineCharLimit) sJobHeader = sJobHeader.Substring(0, iLineCharLimit - 3) + "...";
-            mylines[0] = sJobHeader;
+            DataRows[0] = sJobHeader;
 
             //Job data
             string sJobData = sampleData.JobInfoData;
             if (sJobData.Length > MaxLineLength) MaxLineLength = sJobData.Length + 1;
             //Limit line length
             if (sJobData.Length > iLineCharLimit) sJobData = sJobData.Substring(0, iLineCharLimit - 3) + "...";
-            mylines[1] = sJobData;
+            DataRows[1] = sJobData;
 
             //Update view
             Selections.RemoveAll(x => x >= MaxLineLength);
@@ -528,7 +472,7 @@ namespace Test001
             //Initial varibales
             MaxLineLength = 1;
             int iRowCount = 20;
-            mylines = new string[iRowCount];
+            DataRows = new string[iRowCount];
             int[] maxTabAreas = new int[0];
             int counter = 0;
             int iLineCharLimit = 65535 / 9; //Control maximum width/char size
@@ -551,7 +495,7 @@ namespace Test001
 
                 //Add to display
                 sBuilder.AppendLine(sHeader);
-                mylines[counter] = sHeader;
+                DataRows[counter] = sHeader;
                 counter++;
             }
 
@@ -570,7 +514,7 @@ namespace Test001
                 }
 
                 //Add to display
-                mylines[counter] = sLine;
+                DataRows[counter] = sLine;
                 sBuilder.AppendLine(sLine);
                 counter++;
             }
@@ -626,214 +570,5 @@ namespace Test001
             this.Invalidate(); //Redraw content area
             //myRuler.Refresh(); //re-draw ruler, must refresh to be effected
         }
-
-
-
-
-        /// <summary>
-        /// Parsing application mouse event message
-        /// This affect application performace 10-15% cpu
-        /// </summary>
-        class MyMessageFilter : IMessageFilter
-        {
-            myRulerControl myRuler;
-
-            public MyMessageFilter(myRulerControl ruler)
-            {
-                this.myRuler = ruler;
-            }
-
-            public bool PreFilterMessage(ref Message m)
-            {
-                try
-                {
-                    //Enable check
-                    if (!myRuler.Enabled)
-                    {
-                        return false;
-                    }
-
-                    //Mouse move
-                    if (m.Msg == (int)Msg.WM_MOUSEMOVE)
-                    {
-                        if (myRuler.IsDisposed) return false;
-
-                        Point pointScreen = Control.MousePosition;
-                        Point pointClientOrigin = myRuler.PointToScreen(Point.Empty);
-                        int X = pointScreen.X - pointClientOrigin.X;
-                        int Y = pointScreen.Y - pointClientOrigin.Y;
-
-                        myRuler._bDrawMark = true;
-                        myRuler._bDrawMark = (pointScreen.X >= pointClientOrigin.X) && (pointScreen.X <= pointClientOrigin.X + myRuler.Width);
-
-                        if (myRuler._bDrawMark)
-                        {
-                            X = pointScreen.X - pointClientOrigin.X;
-                            Y = pointScreen.Y - pointClientOrigin.Y;
-                            myRuler._iMousePosition = X;
-                        }
-                        else
-                        {
-                            myRuler._iMousePosition = -1;
-                        }
-
-                        PaintEventArgs e = null;
-                        try
-                        {
-                            e = new PaintEventArgs(myRuler.CreateGraphics(), myRuler.ClientRectangle);
-                            myRuler.onPaint(e);
-
-                        }
-                        finally
-                        {
-                            e.Graphics.Dispose();
-                        }
-                    }
-
-                    //Mouse leave
-                    if ((m.Msg == (int)Msg.WM_MOUSELEAVE) ||
-                        (m.Msg == (int)Msg.WM_NCMOUSELEAVE))
-                    {
-                        if (myRuler.IsDisposed) return false;
-
-                        myRuler._bDrawMark = false;
-                        myRuler._bDragged = false;
-                        myRuler._iMouseDownMousePosition = -1;
-                        myRuler._iDraggedIndex = -1;
-                        myRuler._iDroppedIndex = -1;
-                        PaintEventArgs paintArgs = null;
-                        try
-                        {
-                            paintArgs = new PaintEventArgs(myRuler.CreateGraphics(), myRuler.ClientRectangle);
-                            myRuler.onPaint(paintArgs);
-                        }
-                        finally
-                        {
-                            paintArgs.Graphics.Dispose();
-                        }
-                    }
-
-                    //Mouse left button down
-                    if (m.Msg == (int)Msg.WM_LBUTTONDOWN)
-                    {
-                        if (myRuler.IsDisposed) return false;
-
-                        Point pointScreen = Control.MousePosition;
-                        Point pointClientOrigin = myRuler.PointToScreen(Point.Empty);
-                        int X = pointScreen.X - pointClientOrigin.X;
-                        int Y = pointScreen.Y - pointClientOrigin.Y;
-                        if (myRuler.ClientRectangle.Contains(new Point(X, Y)))
-                        {
-                            myRuler._iMouseDownMousePosition = X;
-                            int index = Convert.ToInt32(Math.Round((float)(X - myRuler.myParentControl.iCharWidth / 2) / myRuler.myParentControl.iCharWidth));
-                            if (myRuler.myParentControl.Selections.Contains(index))
-                            {
-                                myRuler._iDraggedIndex = index;
-                            }
-
-                            if (myRuler._iDraggedIndex > -1 && myRuler.myParentControl.Selections.Count % 2 == 0)
-                            {
-                                myRuler._bDragged = true;
-                            }
-                            else
-                            {
-                                myRuler._bDragged = false;
-                            }
-                            myRuler.UpdateIndexes(MouseButtons.Left, index);
-                        }
-                    }
-
-                    //Mouse left button up
-                    if (m.Msg == (int)Msg.WM_LBUTTONUP)
-                    {
-                        if (myRuler.IsDisposed) return false;
-
-                        Point pointScreen = Control.MousePosition;
-                        Point pointClientOrigin = myRuler.PointToScreen(Point.Empty);
-                        int X = pointScreen.X - pointClientOrigin.X;
-                        int Y = pointScreen.Y - pointClientOrigin.Y;
-
-                        myRuler._iDroppedIndex = Convert.ToInt32(Math.Round((float)(X - myRuler.myParentControl.iCharWidth / 2) / myRuler.myParentControl.iCharWidth));
-
-                        if ((myRuler._iDraggedIndex > -1) && myRuler.ClientRectangle.Contains(new Point(X, Y)))
-                        {
-                            if ((myRuler._iDraggedIndex != myRuler._iDroppedIndex) && myRuler.myParentControl.Selections.Count % 2 == 0)
-                            {
-                                myRuler._bDragged = true;
-                            }
-                            else
-                            {
-                                myRuler._bDragged = false;
-                            }
-                            myRuler.UpdateIndexes(MouseButtons.Left, myRuler._iDroppedIndex);
-                        }
-
-                        myRuler._bDragged = false;
-                        myRuler._bDrawMark = true;
-                        myRuler._iMouseDownMousePosition = -1;
-                        myRuler._iDraggedIndex = -1;
-                        myRuler._iDroppedIndex = -1;
-                    }
-
-                    //If right mouse down
-                    if (m.Msg == (int)Msg.WM_RBUTTONDOWN || m.Msg == (int)Msg.WM_NCRBUTTONDOWN)
-                    {
-                        //Right mouse click operation
-                        myRuler.UpdateIndexes(MouseButtons.Right, -2);
-                    }
-
-
-                    //Mouse up in nonclient area
-                    if (m.Msg == (int)Msg.WM_NCLBUTTONUP)
-                    {
-                        myRuler._bDragged = false;
-                        myRuler._bDrawMark = true;
-                        myRuler._iMouseDownMousePosition = -1;
-                        myRuler._iDraggedIndex = -1;
-                        myRuler._iDroppedIndex = -1;
-                    }
-                }
-
-                catch (Exception e)
-                {
-                    Debug.WriteLine("ColumnSelectorControlSingle.PreFilterMessage:\r\n" + e.Message);
-                }
-
-                return false;  // Whether or not the message is filtered
-            }
-        }
-        #endregion MyMessageFilter
-
-
-        /// <summary>
-        /// Reference
-        /// https://docs.microsoft.com/en-us/windows/win32/inputdev/mouse-input-notifications
-        /// </summary>
-        internal enum Msg
-        {
-            WM_MOUSEMOVE = 0x0200, //Mouse move
-            WM_LBUTTONDOWN = 0x201, //Mouse left button down
-            WM_LBUTTONUP = 0x202,  //mouse left button up
-            WM_MOUSELEAVE = 0x02A3, //mouse leave
-            WM_NCMOUSELEAVE = 0x02A2, //None-client area (Titlebar, menue bar, frame) mouse leave
-            WM_NCLBUTTONUP = 0xA2, //None-client area button up
-            WM_NCLBUTTONDOWN = 0xA1, //none client area button down
-            WM_RBUTTONDOWN = 0x0204, //Right mouse down
-            WM_NCRBUTTONDOWN = 0x00A4 //Right mouse down in none-client area
-        }
-
-
-        /// <summary>
-        /// Button type of the event
-        /// </summary>
-        public class IndexCollectionChangeEventArgs : EventArgs
-        {
-            public MouseButtons Button;
-            public IndexCollectionChangeEventArgs(MouseButtons _button) : base()
-            {
-                this.Button = _button;
-            }
-        }
     }
-
 }
