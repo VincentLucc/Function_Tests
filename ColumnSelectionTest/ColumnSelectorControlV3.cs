@@ -79,12 +79,6 @@ namespace Test001
         public List<int> DivisionMain = new List<int>();
 
 
-
-        /// <summary>
-        /// Read editcontrol's horizontal scroll bar
-        /// </summary>
-        IOfficeScrollbar horizontalScrollBar;
-
         public event EventHandler RangeSelected;
 
         /// <summary>
@@ -132,14 +126,7 @@ namespace Test001
             //Setup the view
             var simpleView = ContentRichEditControl.ActiveView as SimpleView;
             simpleView.WordWrap = false;
-            simpleView.Padding = new Padding(StartIndent, RulerHeight, 0, 0);
-
-            //GET HORIZENTAL SCROLL
-            RichEditViewHorizontalScrollController horizontalScrollController = (RichEditViewHorizontalScrollController)ContentRichEditControl.ActiveView.GetType()
-                                                   .InvokeMember("HorizontalScrollController", BindingFlags.NonPublic | BindingFlags.GetProperty | BindingFlags.Instance, null, ContentRichEditControl.ActiveView, null);
-            horizontalScrollBar = horizontalScrollController.ScrollBar;
-            horizontalScrollBar.Scroll += HorizontalScroll_Scroll;
-
+            simpleView.Padding = new Padding(0, RulerHeight, 0, 0);
 
             //Setup document
             ContentRichEditControl.DocumentLoaded += ContentRichEditControl_DocumentLoaded;
@@ -162,8 +149,10 @@ namespace Test001
             //Force cursor
             ContentRichEditControl.Cursor = Cursors.Arrow;
 
-            //Get mouse X-axis position inside the text editor
-            var newPosition = (e.X - StartIndent) / CharWidth;
+            //Only paint visible area, get start point
+            int iVisibleStart = GetVisibleStart();
+            var newPosition = (e.X + iVisibleStart - StartIndent) / CharWidth;
+            Debug.WriteLine($"Current Row:{newPosition}");
 
             //Only paint when position changed
             if (newPosition != MouseCharPosition)
@@ -174,10 +163,24 @@ namespace Test001
 
         }
 
+        private int GetVisibleStart()
+        {
+            //Get current display boundary
+            //Get layout info
+            List<PageLayoutInfo> pages = ContentRichEditControl.ActiveView.GetVisiblePageLayoutInfos();
+            var borderInfo = pages[0].Bounds;
+            //Only paint visible area, get start point
+            int iVisibleStart = Math.Abs(borderInfo.X);
+
+            return iVisibleStart;
+        }
+
         private void ContentRichEditControl_MouseClick(object sender, MouseEventArgs e)
         {
             //Get selection
-            var posX = (e.X - StartIndent) / CharWidth;
+            //Get current display boundary
+            int iVisibleStart = GetVisibleStart();
+            var posX = (e.X + iVisibleStart - StartIndent) / CharWidth;
             Debug.WriteLine($"Click:{posX}");
 
             //Add selection
@@ -207,10 +210,6 @@ namespace Test001
             ContentRichEditControl.Invalidate();
         }
 
-        private void HorizontalScroll_Scroll(object sender, ScrollEventArgs e)
-        {
-            Debug.WriteLine("HorizontalScroll_Scroll");
-        }
 
         private void ContentRichEditControl_MouseHover(object sender, EventArgs e)
         {
@@ -289,7 +288,7 @@ namespace Test001
             var borderInfo = pages[0].Bounds;
 
             //Only paint visible area, get start point
-            int iVisibleStart = Math.Abs(borderInfo.X) - StartIndent;
+            int iVisibleStart = Math.Abs(borderInfo.X);
 
             PaintRuler(e, iVisibleStart);
             PaintContentArea(e, iVisibleStart);
@@ -297,12 +296,6 @@ namespace Test001
 
         private void PaintContentArea(RichEditViewCustomDrawEventArgs e, int iVisibleStart)
         {
-            //Variables
-            int iMouseX = MouseCharPosition * CharWidth;
-
-            //Draw vertical dash line to indicate current mouse position
-            e.Cache.DrawLine(penDashGray, new Point(iMouseX + iVisibleStart, 0), new Point(iMouseX + iVisibleStart, this.Height));
-
             //Paint range
             int count = Selections.Count;
             if (count == 0 && count > 2) return;
@@ -333,7 +326,7 @@ namespace Test001
             e.Cache.DrawLine(iVisibleStart, -RulerHeight, iVisibleStart + iWidth, -RulerHeight, Color.DarkGray, 2); //Draw top line
             e.Cache.DrawLine(iVisibleStart, -1, iVisibleStart + iWidth, -1, Color.DarkGray, 2); //Draw bottom line
 
-            //Check all saved marker points
+            //Check all saved division points
             for (int pageX = iVisibleStart; pageX < iVisibleStart + iWidth; pageX++)
             {
                 int iLineIndex = 0;
@@ -363,23 +356,37 @@ namespace Test001
                 }
             }
 
-            //Draw current mouse position marker
-            //Convert mouse position to actual text draw point
-            int iMouseX = MouseCharPosition * CharWidth;
-            int iMouseX_Text = iMouseX - StartIndent + 1; //Adjust marker text position
-            var markTextPoint = new Point(iMouseX_Text, -16);
-            e.Cache.DrawString(strMarkerChar, this.Font, brushGrayTrans, markTextPoint);
+            //Draw saved slection marks and current mouse position
+            DrawMarks(e, iVisibleStart);
+        }
 
-            //Draw vertical dash line
-            e.Cache.DrawLine(penDashGray, new Point(iMouseX + iVisibleStart, 0), new Point(iMouseX + iVisibleStart, this.Height));
+        private void DrawMarks(RichEditViewCustomDrawEventArgs e, int iVisibleStart)
+        {
+            //Draw current mouse position mark
+            if (DivisionSub.Count > 0 && MouseCharPosition < DivisionSub.Count)
+            {
+                int iDrawPosition = DivisionSub[MouseCharPosition];
+
+                //Text x axis start from current view port
+                //Line x axis start from 0
+                var markTextPoint = new Point(iDrawPosition - CharWidth / 2 - iVisibleStart, -16);
+                e.Cache.DrawString(strMarkerChar, this.Font, brushGrayTrans, markTextPoint);
+
+                //Draw vertical dash line
+                e.Cache.DrawLine(penDashGray, new Point(iDrawPosition, 0), new Point(iDrawPosition, this.Height));
+            }
+
 
             //Draw current selection markers
             foreach (var item in Selections)
             {
-                int iSelectX = item * CharWidth + iVisibleStart - StartIndent + 1;
-                var selectedMarkTextPoint = new Point(iSelectX, -16);
-                e.Cache.DrawString(strMarkerChar, this.Font, brushForeColor, selectedMarkTextPoint);
+                //Verification
+                if (DivisionSub.Count < 0 || MouseCharPosition >= DivisionSub.Count) continue;
+                int iDrawPosition = DivisionSub[item];
+                var markTextPoint = new Point(iDrawPosition - CharWidth / 2 - iVisibleStart, -16);
+                e.Cache.DrawString(strMarkerChar, this.Font, brushForeColor, markTextPoint);
             }
+
         }
 
         private void DrawContentSelection(RichEditViewCustomDrawEventArgs e, int iStart, int iEnd)
