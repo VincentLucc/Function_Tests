@@ -130,6 +130,7 @@
     <Compile Include="ColumnSelectorControl.Designer.cs">
       <DependentUpon>ColumnSelectorControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="RichEditControlEx.cs" />
     <EmbeddedResource Include="ColumnSelectorControlV2.resx">
       <DependentUpon>ColumnSelectorControlV2.cs</DependentUpon>
     </EmbeddedResource>

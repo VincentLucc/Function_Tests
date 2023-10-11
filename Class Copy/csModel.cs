@@ -21,9 +21,12 @@ namespace Class_Copy
 
         public List<Sub1> ListSub { get; set; }
 
+        public EnumTest Test01 { get; set; }
+
         public Test1()
         {
             Sub1 = new Sub1();
+            Test01 = EnumTest.Level3;
         }
 
     }
@@ -41,6 +44,8 @@ namespace Class_Copy
         public List<string> ListString { get; set; }
 
         public List<Sub2> ListSub { get; set; }
+
+        public EnumTest Test01 { get; set; }
     }
 
     public class Sub1
@@ -59,5 +64,14 @@ namespace Class_Copy
             ABC = DateTime.Now.ToString();
             A03 = DateTime.Now.ToString();
         }
+    }
+
+    public enum EnumTest
+    {
+        Level1=1, 
+        Level2=2, 
+        Level3=3, 
+        Level4=4, 
+        Level5=5,
     }
 }

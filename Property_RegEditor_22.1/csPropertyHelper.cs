@@ -1,5 +1,4 @@
-﻿using DevExpress.Utils;
-using DevExpress.XtraEditors.Controls;
+﻿using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Mask;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraVerticalGrid;
@@ -9,12 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using DevExpress.XtraEditors;
-using System.Windows.Forms;
-using System.Net.NetworkInformation;
 using DevExpress.XtraVerticalGrid.Events;
 
 namespace Property_RegEditor_22._1

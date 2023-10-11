@@ -29,6 +29,7 @@ namespace Class_Copy
             };
             abc1.Sub1 = new Sub2 { A03 = "a03", ABC = "abc" };
             abc1.ListString = new List<string>() { "a", "b", "c", "d" };
+            abc1.Test01 = EnumTest.Level2;
             abc1.ListSub = new List<Sub2>() { new Sub2(), new Sub2() };
 
             abc.CopyValues(abc1);

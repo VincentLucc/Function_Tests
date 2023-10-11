@@ -138,11 +138,17 @@ namespace Test001
         {//Force to select nothing
             try
             {
-                var myStart = ContentRichEditControl.Document.CreatePosition(0);
-                var myRange = ContentRichEditControl.Document.CreateRange(myStart, 0);
-                ContentRichEditControl.Document.Selection = myRange;
+                if (ContentRichEditControl.Document.Length > 0)
+                {
+                    var myStart = ContentRichEditControl.Document.CreatePosition(0);
+                    var myRange = ContentRichEditControl.Document.CreateRange(myStart, 0);
+                    ContentRichEditControl.Document.Selection = myRange;
+                }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("ContentRichEditControl_SelectionChanged:\r\n" + ex.Message);
+            }
         }
 
         private void ContentRichEditControl_MouseMove(object sender, MouseEventArgs e)
@@ -213,6 +219,7 @@ namespace Test001
         public void ClearSelection()
         {
             Selections.Clear();
+            SelectionChanged?.Invoke(null, null);
             ContentRichEditControl.Invalidate();
         }
 
