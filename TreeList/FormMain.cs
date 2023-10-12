@@ -91,5 +91,11 @@ namespace TreeList
             TreeListCustomEditor treeListCustomEditor = new TreeListCustomEditor();
             treeListCustomEditor.ShowDialog();
         }
+
+        private void UnBoundButton_Click(object sender, EventArgs e)
+        {
+            UnBoundForm unbound = new UnBoundForm();
+            unbound.ShowDialog();
+        }
     }
 }

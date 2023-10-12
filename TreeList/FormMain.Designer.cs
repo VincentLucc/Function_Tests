@@ -33,15 +33,16 @@ namespace TreeList
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
+            this.bCustomEditor = new DevExpress.XtraEditors.SimpleButton();
             this.bBindHierachicalData = new DevExpress.XtraEditors.SimpleButton();
             this.bPartailModification = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.bDirectlyAdd = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
@@ -49,12 +50,13 @@ namespace TreeList
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.bCustomEditor = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.UnBoundButton = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -65,20 +67,21 @@ namespace TreeList
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -104,6 +107,7 @@ namespace TreeList
             // 
             // layoutControl3
             // 
+            this.layoutControl3.Controls.Add(this.UnBoundButton);
             this.layoutControl3.Controls.Add(this.bCustomEditor);
             this.layoutControl3.Controls.Add(this.bBindHierachicalData);
             this.layoutControl3.Controls.Add(this.bPartailModification);
@@ -114,6 +118,16 @@ namespace TreeList
             this.layoutControl3.Size = new System.Drawing.Size(353, 382);
             this.layoutControl3.TabIndex = 0;
             this.layoutControl3.Text = "layoutControl3";
+            // 
+            // bCustomEditor
+            // 
+            this.bCustomEditor.Location = new System.Drawing.Point(12, 64);
+            this.bCustomEditor.Name = "bCustomEditor";
+            this.bCustomEditor.Size = new System.Drawing.Size(329, 22);
+            this.bCustomEditor.StyleController = this.layoutControl3;
+            this.bCustomEditor.TabIndex = 6;
+            this.bCustomEditor.Text = "Tree List Custom Editor";
+            this.bCustomEditor.Click += new System.EventHandler(this.bCustomEditor_Click);
             // 
             // bBindHierachicalData
             // 
@@ -143,7 +157,8 @@ namespace TreeList
             this.layoutControlItem7,
             this.emptySpaceItem1,
             this.layoutControlItem8,
-            this.layoutControlItem9});
+            this.layoutControlItem9,
+            this.layoutControlItem10});
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(353, 382);
             this.layoutControlGroup2.TextVisible = false;
@@ -160,9 +175,9 @@ namespace TreeList
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 78);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 104);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(333, 284);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(333, 258);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem8
@@ -173,6 +188,15 @@ namespace TreeList
             this.layoutControlItem8.Size = new System.Drawing.Size(333, 26);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.bCustomEditor;
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 52);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(333, 26);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem9.TextVisible = false;
             // 
             // groupControl1
             // 
@@ -196,15 +220,6 @@ namespace TreeList
             this.layoutControl2.Size = new System.Drawing.Size(305, 382);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
-            // 
-            // memoEdit1
-            // 
-            this.memoEdit1.EditValue = "dfsdfsfdsfdsfdsfdsfsdfds";
-            this.memoEdit1.Location = new System.Drawing.Point(12, 90);
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(281, 280);
-            this.memoEdit1.StyleController = this.layoutControl2;
-            this.memoEdit1.TabIndex = 14;
             // 
             // simpleButton2
             // 
@@ -276,15 +291,6 @@ namespace TreeList
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.memoEdit1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 78);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(285, 284);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
-            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -314,24 +320,42 @@ namespace TreeList
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // bCustomEditor
+            // UnBoundButton
             // 
-            this.bCustomEditor.Location = new System.Drawing.Point(12, 64);
-            this.bCustomEditor.Name = "bCustomEditor";
-            this.bCustomEditor.Size = new System.Drawing.Size(329, 22);
-            this.bCustomEditor.StyleController = this.layoutControl3;
-            this.bCustomEditor.TabIndex = 6;
-            this.bCustomEditor.Text = "Tree List Custom Editor";
-            this.bCustomEditor.Click += new System.EventHandler(this.bCustomEditor_Click);
+            this.UnBoundButton.Location = new System.Drawing.Point(12, 90);
+            this.UnBoundButton.Name = "UnBoundButton";
+            this.UnBoundButton.Size = new System.Drawing.Size(329, 22);
+            this.UnBoundButton.StyleController = this.layoutControl3;
+            this.UnBoundButton.TabIndex = 7;
+            this.UnBoundButton.Text = "Unbound Mode";
+            this.UnBoundButton.Click += new System.EventHandler(this.UnBoundButton_Click);
             // 
-            // layoutControlItem9
+            // layoutControlItem10
             // 
-            this.layoutControlItem9.Control = this.bCustomEditor;
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 52);
-            this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(333, 26);
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem9.TextVisible = false;
+            this.layoutControlItem10.Control = this.UnBoundButton;
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 78);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(333, 26);
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem10.TextVisible = false;
+            // 
+            // memoEdit1
+            // 
+            this.memoEdit1.EditValue = "dfsdfsfdsfdsfdsfdsfsdfds";
+            this.memoEdit1.Location = new System.Drawing.Point(12, 90);
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Size = new System.Drawing.Size(281, 280);
+            this.memoEdit1.StyleController = this.layoutControl2;
+            this.memoEdit1.TabIndex = 14;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.memoEdit1;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 78);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(285, 284);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
             // 
             // FormMain
             // 
@@ -353,20 +377,21 @@ namespace TreeList
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -398,6 +423,8 @@ namespace TreeList
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private SimpleButton bCustomEditor;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+        private SimpleButton UnBoundButton;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
     }
 }
 
