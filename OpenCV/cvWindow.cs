@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZXing;
 
 namespace OpenCV_Sharp4
 {
@@ -16,13 +17,33 @@ namespace OpenCV_Sharp4
 
         public PictureBox DisplayWindow;
 
-        public Mat viewImage;
+        public cvView View;
 
         public int iRotate;
 
         public cvWindow(PictureBox pictureBox)
         {
             DisplayWindow = pictureBox;
+            View = new cvView();
+        }
+
+        public void DisplayView()
+        {
+            if (View == null) return;
+
+            foreach (var item in View.Marks)
+            {
+                Cv2.Circle(View.viewImage, item, 10, Scalar.Green, 3, LineTypes.Link4);
+            }
+
+            Cv2.Line(View.viewImage, 0, 0, 100, 100, Scalar.Red);
+
+            DisplayImage(View.viewImage);
+        }
+
+        public void SetViewImage(Mat viewImage)
+        {
+            View.SetViewImage(viewImage);
         }
 
         public Mat OpenImage(out string sMessage)
@@ -36,7 +57,9 @@ namespace OpenCV_Sharp4
                 {
                     string sFile = dialog.FileName;
                     var imageRead = Cv2.ImRead(sFile, ImreadModes.AnyColor);
-                    SetViewImage(imageRead);
+                    var barcodeBitmap = (Bitmap)Bitmap.FromFile(sFile);
+
+                    DisplayImage(imageRead);
                     return imageRead;
                 }
                 else
@@ -57,7 +80,7 @@ namespace OpenCV_Sharp4
             try
             {
                 if (input == null) return null;
-                
+
                 RotateFlags rotateFlag;
                 if (iDegree == 90)
                 {
@@ -95,7 +118,6 @@ namespace OpenCV_Sharp4
                 // mat 转 bitmap
                 Bitmap bitmap = BitmapConverter.ToBitmap(input);
                 DisplayWindow.Image = bitmap;
-                SetViewImage(input);
             }
             catch (Exception ex)
             {
@@ -104,16 +126,6 @@ namespace OpenCV_Sharp4
 
         }
 
-        private  void SetViewImage(Mat inputImage)
-        {
-            if (inputImage == null) return;
-            
-            if (viewImage != null)
-            {
-                viewImage.Dispose();
-                viewImage = null;
-            }
-            viewImage = inputImage.Clone();
-        }
+
     }
 }

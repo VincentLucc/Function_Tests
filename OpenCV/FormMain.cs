@@ -127,11 +127,20 @@ namespace OpenCV_Sharp4
                     if (sMesage != null) messageHelper.Info(sMesage);
                     return;
                 }
+
+                //Save source image
                 csConfigureHelper.Inspection.SetSourceImage(image);
 
                 //Rotate image
                 var imageRotate = cvWidnow.RotateImage(image, csConfigureHelper.Inspection.Rotate);
-                cvWidnow.DisplayImage(imageRotate);
+
+                //Runs operations
+                csConfigureHelper.Inspection.RunProduction(imageRotate);
+
+                //Inspection view will be re-created again when run operations
+                cvWidnow.View = csConfigureHelper.Inspection.View;
+
+                cvWidnow.DisplayView();
 
                 //Clean up
                 image?.Dispose();
@@ -146,6 +155,28 @@ namespace OpenCV_Sharp4
         private void CloseBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
+        }
+
+        private void BarCodeBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (SettingsForm settings=new SettingsForm(csConfigureHelper.Inspection.Barcode))
+            {
+                settings.Text = "Barcode Settings";
+                settings.ShowDialog();
+            }
+        }
+
+        private void RerunBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //Rotate image
+            var imageRotate = cvWidnow.RotateImage(csConfigureHelper.Inspection.sourceImage, 
+                csConfigureHelper.Inspection.Rotate);
+
+            //Runs operations
+            csConfigureHelper.Inspection.RunProduction(imageRotate);
+
+            cvWidnow.View= csConfigureHelper.Inspection.View;
+            cvWidnow.DisplayView();
         }
     }
 }

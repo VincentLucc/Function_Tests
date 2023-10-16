@@ -38,6 +38,8 @@
             this.bZoomIn = new DevExpress.XtraBars.BarButtonItem();
             this.bZoomOut = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.BarCodeBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.RerunBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.FileBarSubItem = new DevExpress.XtraBars.BarSubItem();
             this.OpenBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
@@ -83,9 +85,11 @@
             this.barButtonItem2,
             this.FileBarSubItem,
             this.OpenBarButtonItem,
-            this.CloseBarButtonItem});
+            this.CloseBarButtonItem,
+            this.BarCodeBarButtonItem,
+            this.RerunBarButtonItem});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 12;
+            this.barManager1.MaxItemId = 14;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1});
             this.barManager1.StatusBar = this.bar3;
@@ -102,7 +106,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bScreenShot, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.bZoomIn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.bZoomOut),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RerunBarButtonItem, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.BarCodeBarButtonItem)});
             this.bar1.Text = "Tools";
             // 
             // bOpen
@@ -160,6 +166,24 @@
             this.barButtonItem2.ImageOptions.Image = global::OpenCV_Sharp4.Properties.Resources.zoom100percent_16x16;
             this.barButtonItem2.ImageOptions.LargeImage = global::OpenCV_Sharp4.Properties.Resources.zoom100percent_32x32;
             this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // BarCodeBarButtonItem
+            // 
+            this.BarCodeBarButtonItem.Caption = "BarCode";
+            this.BarCodeBarButtonItem.Id = 12;
+            this.BarCodeBarButtonItem.ImageOptions.Image = global::OpenCV_Sharp4.Properties.Resources.barcode_16x16;
+            this.BarCodeBarButtonItem.ImageOptions.LargeImage = global::OpenCV_Sharp4.Properties.Resources.barcode_32x32;
+            this.BarCodeBarButtonItem.Name = "BarCodeBarButtonItem";
+            this.BarCodeBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarCodeBarButtonItem_ItemClick);
+            // 
+            // RerunBarButtonItem
+            // 
+            this.RerunBarButtonItem.Caption = "Re-Run";
+            this.RerunBarButtonItem.Id = 13;
+            this.RerunBarButtonItem.ImageOptions.Image = global::OpenCV_Sharp4.Properties.Resources.reset_16x16;
+            this.RerunBarButtonItem.ImageOptions.LargeImage = global::OpenCV_Sharp4.Properties.Resources.reset_32x32;
+            this.RerunBarButtonItem.Name = "RerunBarButtonItem";
+            this.RerunBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RerunBarButtonItem_ItemClick);
             // 
             // bar2
             // 
@@ -350,6 +374,8 @@
         private DevExpress.XtraBars.BarSubItem FileBarSubItem;
         private DevExpress.XtraBars.BarButtonItem OpenBarButtonItem;
         private DevExpress.XtraBars.BarButtonItem CloseBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem BarCodeBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem RerunBarButtonItem;
     }
 }
 
