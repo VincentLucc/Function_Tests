@@ -1,6 +1,6 @@
 ﻿namespace OpenCV_Sharp4
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,13 @@
             this.cbRotate = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.bScreenShot = new DevExpress.XtraBars.BarButtonItem();
+            this.bZoomIn = new DevExpress.XtraBars.BarButtonItem();
+            this.bZoomOut = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.FileBarSubItem = new DevExpress.XtraBars.BarSubItem();
+            this.OpenBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.CloseBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -45,6 +51,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -52,6 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -68,9 +77,15 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bOpen,
             this.cbRotate,
-            this.bScreenShot});
+            this.bScreenShot,
+            this.bZoomIn,
+            this.bZoomOut,
+            this.barButtonItem2,
+            this.FileBarSubItem,
+            this.OpenBarButtonItem,
+            this.CloseBarButtonItem});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 4;
+            this.barManager1.MaxItemId = 12;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1});
             this.barManager1.StatusBar = this.bar3;
@@ -83,14 +98,19 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bOpen),
-            new DevExpress.XtraBars.LinkPersistInfo(this.cbRotate),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bScreenShot)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.cbRotate, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bScreenShot, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bZoomIn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bZoomOut),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.bar1.Text = "Tools";
             // 
             // bOpen
             // 
             this.bOpen.Caption = "Open";
             this.bOpen.Id = 0;
+            this.bOpen.ImageOptions.Image = global::OpenCV_Sharp4.Properties.Resources.loadfrom_16x16;
+            this.bOpen.ImageOptions.LargeImage = global::OpenCV_Sharp4.Properties.Resources.loadfrom_32x32;
             this.bOpen.Name = "bOpen";
             this.bOpen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bOpen_ItemClick);
             // 
@@ -117,16 +137,69 @@
             this.bScreenShot.Name = "bScreenShot";
             this.bScreenShot.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bScreenShot_ItemClick);
             // 
+            // bZoomIn
+            // 
+            this.bZoomIn.Caption = "Zoom In";
+            this.bZoomIn.Id = 4;
+            this.bZoomIn.ImageOptions.Image = global::OpenCV_Sharp4.Properties.Resources.zoomin_16x16;
+            this.bZoomIn.ImageOptions.LargeImage = global::OpenCV_Sharp4.Properties.Resources.zoomin_32x32;
+            this.bZoomIn.Name = "bZoomIn";
+            // 
+            // bZoomOut
+            // 
+            this.bZoomOut.Caption = "Zoom Out";
+            this.bZoomOut.Id = 5;
+            this.bZoomOut.ImageOptions.Image = global::OpenCV_Sharp4.Properties.Resources.zoomout_16x16;
+            this.bZoomOut.ImageOptions.LargeImage = global::OpenCV_Sharp4.Properties.Resources.zoomout_32x32;
+            this.bZoomOut.Name = "bZoomOut";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Zoom Reset";
+            this.barButtonItem2.Id = 6;
+            this.barButtonItem2.ImageOptions.Image = global::OpenCV_Sharp4.Properties.Resources.zoom100percent_16x16;
+            this.barButtonItem2.ImageOptions.LargeImage = global::OpenCV_Sharp4.Properties.Resources.zoom100percent_32x32;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
             this.bar2.DockCol = 0;
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.FileBarSubItem)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
+            // 
+            // FileBarSubItem
+            // 
+            this.FileBarSubItem.Caption = "File";
+            this.FileBarSubItem.Id = 9;
+            this.FileBarSubItem.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.OpenBarButtonItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CloseBarButtonItem)});
+            this.FileBarSubItem.Name = "FileBarSubItem";
+            // 
+            // OpenBarButtonItem
+            // 
+            this.OpenBarButtonItem.Caption = "Open";
+            this.OpenBarButtonItem.Id = 10;
+            this.OpenBarButtonItem.ImageOptions.Image = global::OpenCV_Sharp4.Properties.Resources.open_16x16;
+            this.OpenBarButtonItem.ImageOptions.LargeImage = global::OpenCV_Sharp4.Properties.Resources.open_32x32;
+            this.OpenBarButtonItem.Name = "OpenBarButtonItem";
+            this.OpenBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.OpenBarButtonItem_ItemClick);
+            // 
+            // CloseBarButtonItem
+            // 
+            this.CloseBarButtonItem.Caption = "Close";
+            this.CloseBarButtonItem.Id = 11;
+            this.CloseBarButtonItem.ImageOptions.Image = global::OpenCV_Sharp4.Properties.Resources.cancel_16x16;
+            this.CloseBarButtonItem.ImageOptions.LargeImage = global::OpenCV_Sharp4.Properties.Resources.cancel_32x32;
+            this.CloseBarButtonItem.Name = "CloseBarButtonItem";
+            this.CloseBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CloseBarButtonItem_ItemClick);
             // 
             // bar3
             // 
@@ -146,7 +219,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(634, 44);
+            this.barDockControlTop.Size = new System.Drawing.Size(634, 52);
             // 
             // barDockControlBottom
             // 
@@ -160,26 +233,26 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 44);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 52);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 370);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 362);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(634, 44);
+            this.barDockControlRight.Location = new System.Drawing.Point(634, 52);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 370);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 362);
             // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.pictureBox1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 44);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 52);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(634, 370);
+            this.layoutControl1.Size = new System.Drawing.Size(634, 362);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -187,7 +260,7 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(12, 28);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(610, 330);
+            this.pictureBox1.Size = new System.Drawing.Size(610, 322);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -199,7 +272,7 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(634, 370);
+            this.Root.Size = new System.Drawing.Size(634, 362);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -207,12 +280,25 @@
             this.layoutControlItem1.Control = this.pictureBox1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(614, 350);
+            this.layoutControlItem1.Size = new System.Drawing.Size(614, 342);
             this.layoutControlItem1.Text = "Test View";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(46, 13);
             // 
-            // Form1
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Zoom In";
+            this.barButtonItem1.Id = 4;
+            this.barButtonItem1.ImageOptions.Image = global::OpenCV_Sharp4.Properties.Resources.zoomin_16x16;
+            this.barButtonItem1.ImageOptions.LargeImage = global::OpenCV_Sharp4.Properties.Resources.zoomin_32x32;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // popupMenu1
+            // 
+            this.popupMenu1.Manager = this.barManager1;
+            this.popupMenu1.Name = "popupMenu1";
+            // 
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -222,8 +308,8 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "FormMain";
+            this.Text = "Home";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
@@ -232,6 +318,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,6 +342,14 @@
         private DevExpress.XtraBars.BarEditItem cbRotate;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraBars.BarButtonItem bScreenShot;
+        private DevExpress.XtraBars.BarButtonItem bZoomIn;
+        private DevExpress.XtraBars.BarButtonItem bZoomOut;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.BarSubItem FileBarSubItem;
+        private DevExpress.XtraBars.BarButtonItem OpenBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem CloseBarButtonItem;
     }
 }
 
