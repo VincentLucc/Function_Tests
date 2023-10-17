@@ -54,6 +54,7 @@ namespace OpenCV_Sharp4
  
 
             Barcode.Inspect(this);
+            Barcode.InspectIronBarCode(this);
         }
 
     }
