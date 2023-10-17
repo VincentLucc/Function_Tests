@@ -97,5 +97,13 @@ namespace TreeList
             UnBoundForm unbound = new UnBoundForm();
             unbound.ShowDialog();
         }
+
+        private void bDesignerLogic_Click(object sender, EventArgs e)
+        {
+            using (TreeListDesigner form=new TreeListDesigner())
+            {
+                form.ShowDialog();
+            }
+        }
     }
 }
