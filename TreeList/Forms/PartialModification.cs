@@ -29,12 +29,13 @@ namespace TreeList
         {
             treeList1.KeyFieldName = nameof(StudentTree.TreeID);
             treeList1.ParentFieldName = nameof(StudentTree.TreeParentID);
+            long initTime = DateTime.Now.Ticks;
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 30; i++)
             {
                 var sItem = new StudentTree()
                 {
-                    TreeID = i,
+                    TreeID = initTime + i,
                     TreeParentID = -1,
                     Icon = imageCollection1.Images[0],
                     name = $"S_{i}"
@@ -51,11 +52,11 @@ namespace TreeList
             if (treeList1.FocusedNode != null)
             {
                 //Get node parent
-                var parentID = (int)treeList1.FocusedNode.GetValue(nameof(StudentTree.TreeID));
+                var parentID = (long)treeList1.FocusedNode.GetValue(nameof(StudentTree.TreeID));
 
                 var newItem = new StudentTree()
                 {
-                    TreeID = students.Count,
+                    TreeID = DateTime.Now.Ticks,
                     TreeParentID = parentID,
                     Icon = imageCollection1.Images[0],
                     name = $"Add_{students.Count}"
@@ -68,17 +69,17 @@ namespace TreeList
 
         }
 
- 
+
         private void AddNode_Click(object sender, EventArgs e)
         {
             if (treeList1.FocusedNode != null)
             {
                 //Get node parent
-                var parentID = (int)treeList1.FocusedNode.GetValue(nameof(StudentTree.TreeID));
+                var parentID = (long)treeList1.FocusedNode.GetValue(nameof(StudentTree.TreeID));
 
                 var newItem = new StudentTree()
                 {
-                    TreeID = students.Count,
+                    TreeID = DateTime.Now.Ticks,
                     TreeParentID = parentID,
                     Icon = imageCollection1.Images[0],
                     name = $"Add_{students.Count}"
@@ -88,7 +89,7 @@ namespace TreeList
                 //treeList1.FocusedNode.Nodes.Add(newItem);
                 var nodeValues = new object[] { newItem.TreeID, newItem.TreeParentID, newItem.Icon, newItem.name, newItem.id, newItem.age }; //Tree node only accept this
                 //treeList1.AppendNode(nodeValues, treeList1.FocusedNode);//Same effects
-                treeList1.FocusedNode.Nodes.Add(nodeValues);                
+                treeList1.FocusedNode.Nodes.Add(nodeValues);
             }
 
         }
@@ -99,14 +100,14 @@ namespace TreeList
     {
 
         [Display(AutoGenerateField = false)]
-        public int TreeID { get; set; }
+        public long TreeID { get; set; }
 
 
         /// <summary>
         /// -1 is root object
         /// </summary>
         [Display(AutoGenerateField = false)]
-        public int TreeParentID { get; set; }
+        public long TreeParentID { get; set; }
 
         public Image Icon { get; set; }
 

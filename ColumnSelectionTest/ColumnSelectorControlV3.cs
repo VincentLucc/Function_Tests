@@ -72,6 +72,16 @@ namespace Test001
         public event EventHandler SelectionChanged;
 
         /// <summary>
+        /// User manually cleared the selection
+        /// </summary>
+        public event SelectionClearAction SelectionCleared;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="isMouseClear">User clicked button or cleared by program</param>
+        public delegate void SelectionClearAction(rangeClearSource clearSource);
+
+        /// <summary>
         /// Transparent gray color
         /// </summary>
         private SolidBrush brushGrayTrans;
@@ -205,9 +215,7 @@ namespace Test001
             {
                 if (Selections.Count > 0)
                 {
-                    Selections.Clear();
-                    SelectionChanged?.Invoke(null, null);
-                    ContentRichEditControl.Invalidate();
+                    ClearSelection(rangeClearSource.UserAction);
                 }
             }
 
@@ -216,11 +224,12 @@ namespace Test001
                 RangeSelected?.Invoke(null, null);
         }
 
-        public void ClearSelection()
+        public void ClearSelection(rangeClearSource clearSource = rangeClearSource.Code)
         {
             Selections.Clear();
             SelectionChanged?.Invoke(null, null);
-            ContentRichEditControl.Invalidate();
+            SelectionCleared?.Invoke(clearSource);
+            ContentRichEditControl.Invalidate();         
         }
 
 
@@ -584,14 +593,7 @@ namespace Test001
             return Selections;
         }
 
-        /// <summary>
-        /// Set the column coordinates
-        /// </summary>
-        /// <param name="ColumnSelection"></param>
-        public void SetColumnCoords(List<Tuple<SolidBrush, int, int>> ColumnSelection)
-        {
-            //myRuler.Refresh(); //Reload ruler marker
-        }
+ 
 
         /// <summary>
         /// Clear selected points.
@@ -601,6 +603,12 @@ namespace Test001
             Selections.Clear();
             this.Invalidate(); //Redraw content area
             //myRuler.Refresh(); //re-draw ruler, must refresh to be effected
+        }
+
+        public enum rangeClearSource
+        {
+            Code,
+            UserAction
         }
     }
 }
