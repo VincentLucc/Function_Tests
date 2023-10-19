@@ -41,16 +41,12 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.MainPanel = new System.Windows.Forms.Panel();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
@@ -156,26 +152,14 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.treeList1);
+            this.layoutControl1.Controls.Add(this.MainPanel);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 59);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
             this.layoutControl1.Size = new System.Drawing.Size(669, 287);
-            this.layoutControl1.TabIndex = 4;
+            this.layoutControl1.TabIndex = 9;
             this.layoutControl1.Text = "layoutControl1";
-            // 
-            // treeList1
-            // 
-            this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.treeListColumn1,
-            this.treeListColumn2,
-            this.treeListColumn3});
-            this.treeList1.Location = new System.Drawing.Point(12, 12);
-            this.treeList1.MenuManager = this.barManager1;
-            this.treeList1.Name = "treeList1";
-            this.treeList1.Size = new System.Drawing.Size(645, 263);
-            this.treeList1.TabIndex = 4;
             // 
             // Root
             // 
@@ -187,38 +171,21 @@
             this.Root.Size = new System.Drawing.Size(669, 287);
             this.Root.TextVisible = false;
             // 
+            // MainPanel
+            // 
+            this.MainPanel.Location = new System.Drawing.Point(12, 12);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(645, 263);
+            this.MainPanel.TabIndex = 4;
+            // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.treeList1;
+            this.layoutControlItem1.Control = this.MainPanel;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(649, 267);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
-            // treeListColumn1
-            // 
-            this.treeListColumn1.Caption = "Catagory";
-            this.treeListColumn1.FieldName = "Catagory";
-            this.treeListColumn1.Name = "treeListColumn1";
-            this.treeListColumn1.Visible = true;
-            this.treeListColumn1.VisibleIndex = 0;
-            // 
-            // treeListColumn2
-            // 
-            this.treeListColumn2.Caption = "Period";
-            this.treeListColumn2.FieldName = "Period";
-            this.treeListColumn2.Name = "treeListColumn2";
-            this.treeListColumn2.Visible = true;
-            this.treeListColumn2.VisibleIndex = 1;
-            // 
-            // treeListColumn3
-            // 
-            this.treeListColumn3.Caption = "Count";
-            this.treeListColumn3.FieldName = "Count";
-            this.treeListColumn3.Name = "treeListColumn3";
-            this.treeListColumn3.Visible = true;
-            this.treeListColumn3.VisibleIndex = 2;
             // 
             // MainForm
             // 
@@ -232,11 +199,12 @@
             this.Controls.Add(this.barDockControlTop);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("MainForm.IconOptions.Image")));
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
@@ -254,14 +222,11 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraTreeList.TreeList treeList1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private System.Windows.Forms.Panel MainPanel;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
     }
 }
