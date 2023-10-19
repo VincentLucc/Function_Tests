@@ -2,10 +2,12 @@
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraTreeList;
+using DevExpress.XtraTreeList.Nodes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -43,7 +45,7 @@ namespace UsageLog.UserControls
                     UniqueID = lTick + i,
                     ParentID = -1,
                     Catagory = $"Category{(i + 1).ToString("d2")}",
-                    Desription = "",
+                    Description = "",
                     Value = i,
                     RecordType = _recordType.Catagory
                 };
@@ -62,6 +64,17 @@ namespace UsageLog.UserControls
             treeList1.CustomNodeCellEdit += TreeList1_CustomNodeCellEdit;
             treeList1.CustomColumnDisplayText += TreeList1_CustomColumnDisplayText;
             treeList1.ShowingEditor += TreeList1_ShowingEditor;
+            treeList1.CustomDrawNodeCell += TreeList1_CustomDrawNodeCell;
+        }
+
+        /// <summary>
+        /// Paint the item type icon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TreeList1_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
+        {
+             
         }
 
         /// <summary>
@@ -100,7 +113,7 @@ namespace UsageLog.UserControls
             var record = (csRecord)treeList1.GetDataRecordByNode(curNode);
             using (AddForm add = new AddForm(record.UniqueID))
             {
-                if (add.ShowDialog()==DialogResult.OK)
+                if (add.ShowDialog() == DialogResult.OK)
                 {
                     records.Add(add.Record);
                     if (!curNode.Expanded) curNode.Expand();
@@ -115,14 +128,50 @@ namespace UsageLog.UserControls
         /// <param name="e"></param>
         private void TreeList1_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
         {
-            if (e.Column.FieldName == nameof(csRecord.Time))
+            try
             {
+                if (e.Node == null) return;
                 var record = (csRecord)treeList1.GetDataRecordByNode(e.Node);
-                if (record.RecordType == _recordType.Catagory)
+
+                if (e.Column.FieldName == nameof(csRecord.Time))
                 {
-                    e.DisplayText = "";
+                    if (record.RecordType == _recordType.Catagory)
+                    {
+                        e.DisplayText = "";
+                    }
+                }
+                else if (e.Column.FieldName == nameof(csRecord.Value))
+                {
+                    if (record.RecordType == _recordType.Catagory)
+                    {
+                        e.DisplayText = GetNoteTotalValue(e.Node).ToString("F2");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("RecordsUserControl.TreeList1_CustomColumnDisplayText:\r\n" + ex.ToString());
+            }
+
+        }
+
+        private double GetNoteTotalValue(TreeListNode treeNode)
+        {
+            //Get total value
+            double dTotal = 0;
+            foreach (TreeListNode subNode in treeNode.Nodes)
+            {
+                var subRecord = (csRecord)treeList1.GetDataRecordByNode(subNode);
+                if (subRecord.RecordType == _recordType.Catagory)
+                {
+                    dTotal += GetNoteTotalValue(subNode);
+                }
+                else if (subRecord.RecordType == _recordType.Item)
+                {
+                    dTotal += subRecord.Value;
+                }
+            }
+            return dTotal;
         }
 
         /// <summary>

@@ -50,31 +50,41 @@ namespace UsageLog
             }
             else if (Record.RecordType == _recordType.Item)
             {
-                ValuelayoutControlItem.Visibility= LayoutVisibility.Always;
+                ValuelayoutControlItem.Visibility = LayoutVisibility.Always;
             }
-          
+
         }
 
         private void TypeLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
-           
+
             if (TypeLookUpEdit.EditValue is _recordType)
             {
                 var recordType = (_recordType)TypeLookUpEdit.EditValue;
-                Record.RecordType= recordType;
+                Record.RecordType = recordType;
                 UpdateVisibility();
             }
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            this.DialogResult= DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
         private void catagoryTextEdit_EditValueChanged(object sender, EventArgs e)
         {
             Record.Catagory = catagoryTextEdit.Text;
+        }
+
+        private void ValueSpinEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            Record.Value = (double)ValueSpinEdit.Value;
+        }
+
+        private void DescriptionTextEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            Record.Description = DescriptionTextEdit.Text;
         }
     }
 }

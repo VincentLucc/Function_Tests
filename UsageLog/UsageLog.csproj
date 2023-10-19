@@ -129,6 +129,47 @@
   <ItemGroup>
     <None Include="Resources\addgroupheader_32x32.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\open_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveto_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveto_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveandnew_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveandnew_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveto_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveto_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveandnew_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveandnew_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_32x32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
