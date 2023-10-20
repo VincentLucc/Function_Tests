@@ -29,7 +29,7 @@ namespace UsageLog
         /// If con
         /// </summary>
         public string Catagory { get; set; }
-        public string Description { get; set; }
+
 
         public double Value { get; set; }
 
@@ -39,7 +39,13 @@ namespace UsageLog
         /// <summary>
         /// When is this event happens
         /// </summary>
+        [Browsable(false)]
         public DateTimeOffset Time { get; set; }
+
+        [DisplayName("Time"),XmlIgnore]
+        public DateTime LocalTime => Time.ToLocalTime().DateTime;
+
+        public string Description { get; set; }
     }
 
 

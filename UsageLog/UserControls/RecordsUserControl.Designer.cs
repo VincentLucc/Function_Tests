@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecordsUserControl));
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.NodeStateImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NodeStateImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // treeList1
@@ -44,6 +48,7 @@
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.Location = new System.Drawing.Point(0, 0);
             this.treeList1.Name = "treeList1";
+            this.treeList1.OptionsView.ShowIndicator = false;
             this.treeList1.Size = new System.Drawing.Size(430, 329);
             this.treeList1.TabIndex = 5;
             // 
@@ -71,6 +76,12 @@
             this.treeListColumn3.Visible = true;
             this.treeListColumn3.VisibleIndex = 2;
             // 
+            // NodeStateImageCollection
+            // 
+            this.NodeStateImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("NodeStateImageCollection.ImageStream")));
+            this.NodeStateImageCollection.Images.SetKeyName(0, "spreadsheetgroup_16x16.png");
+            this.NodeStateImageCollection.Images.SetKeyName(1, "new_16x16.png");
+            // 
             // RecordsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -79,6 +90,7 @@
             this.Name = "RecordsUserControl";
             this.Size = new System.Drawing.Size(430, 329);
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NodeStateImageCollection)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -89,5 +101,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
+        private DevExpress.Utils.ImageCollection NodeStateImageCollection;
     }
 }

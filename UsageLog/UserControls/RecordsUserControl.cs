@@ -60,11 +60,27 @@ namespace UsageLog.UserControls
             treeList1.PopulateColumns();
             treeList1.KeyFieldName = nameof(csRecord.UniqueID);
             treeList1.ParentFieldName = nameof(csRecord.ParentID);
+            treeList1.StateImageList = NodeStateImageCollection;
 
             treeList1.CustomNodeCellEdit += TreeList1_CustomNodeCellEdit;
             treeList1.CustomColumnDisplayText += TreeList1_CustomColumnDisplayText;
             treeList1.ShowingEditor += TreeList1_ShowingEditor;
+            treeList1.GetStateImage += TreeList1_GetStateImage;
             treeList1.CustomDrawNodeCell += TreeList1_CustomDrawNodeCell;
+        }
+
+        private void TreeList1_GetStateImage(object sender, GetStateImageEventArgs e)
+        {
+            if (e.Node == null) return;
+            var record = (csRecord)treeList1.GetDataRecordByNode(e.Node);
+            if (record.RecordType==_recordType.Catagory)
+            {
+                e.NodeImageIndex = 0;
+            }
+            else if (record.RecordType==_recordType.Item)
+            {
+                e.NodeImageIndex = 1;
+            }
         }
 
         /// <summary>
@@ -138,6 +154,15 @@ namespace UsageLog.UserControls
                     if (record.RecordType == _recordType.Catagory)
                     {
                         e.DisplayText = "";
+                    }
+                    else if (record.RecordType == _recordType.Item)
+                    {//Show local time
+                        if (e.Value is DateTimeOffset)
+                        {
+                            var timeOffset = (DateTimeOffset)e.Value;
+                            var timeLocal = timeOffset.ToLocalTime();
+                            e.DisplayText = timeLocal.ToString();
+                        }
                     }
                 }
                 else if (e.Column.FieldName == nameof(csRecord.Value))
