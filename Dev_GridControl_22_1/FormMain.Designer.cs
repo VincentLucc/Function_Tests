@@ -45,10 +45,11 @@ namespace Dev_GridControl_22_1
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.bUpdateListSource = new DevExpress.XtraEditors.SimpleButton();
             this.bFilterButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
-            this.bUpdateListSource = new DevExpress.XtraEditors.SimpleButton();
+            this.WinExplorerSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -180,6 +181,7 @@ namespace Dev_GridControl_22_1
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.WinExplorerSimpleButton);
             this.groupControl1.Controls.Add(this.simpleButton1);
             this.groupControl1.Controls.Add(this.simpleButton3);
             this.groupControl1.Controls.Add(this.bTileView);
@@ -224,6 +226,15 @@ namespace Dev_GridControl_22_1
             this.groupControl4.TabIndex = 15;
             this.groupControl4.Text = "Special Functions";
             // 
+            // bUpdateListSource
+            // 
+            this.bUpdateListSource.Location = new System.Drawing.Point(5, 142);
+            this.bUpdateListSource.Name = "bUpdateListSource";
+            this.bUpdateListSource.Size = new System.Drawing.Size(148, 23);
+            this.bUpdateListSource.TabIndex = 13;
+            this.bUpdateListSource.Text = "Updates - List Binding ";
+            this.bUpdateListSource.Click += new System.EventHandler(this.bUpdateListSource_Click);
+            // 
             // bFilterButton
             // 
             this.bFilterButton.Location = new System.Drawing.Point(119, 26);
@@ -252,14 +263,14 @@ namespace Dev_GridControl_22_1
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Text = "Application Test";
             // 
-            // bUpdateListSource
+            // WinExplorerSimpleButton
             // 
-            this.bUpdateListSource.Location = new System.Drawing.Point(5, 142);
-            this.bUpdateListSource.Name = "bUpdateListSource";
-            this.bUpdateListSource.Size = new System.Drawing.Size(148, 23);
-            this.bUpdateListSource.TabIndex = 13;
-            this.bUpdateListSource.Text = "Updates - List Binding ";
-            this.bUpdateListSource.Click += new System.EventHandler(this.bUpdateListSource_Click);
+            this.WinExplorerSimpleButton.Location = new System.Drawing.Point(5, 109);
+            this.WinExplorerSimpleButton.Name = "WinExplorerSimpleButton";
+            this.WinExplorerSimpleButton.Size = new System.Drawing.Size(109, 23);
+            this.WinExplorerSimpleButton.TabIndex = 7;
+            this.WinExplorerSimpleButton.Text = "Win Explorer View";
+            this.WinExplorerSimpleButton.Click += new System.EventHandler(this.WinExplorerSimpleButton_Click);
             // 
             // FormMain
             // 
@@ -310,6 +321,7 @@ namespace Dev_GridControl_22_1
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton bFilterButton;
         private DevExpress.XtraEditors.SimpleButton bUpdateListSource;
+        private DevExpress.XtraEditors.SimpleButton WinExplorerSimpleButton;
     }
 }
 

@@ -127,5 +127,11 @@ namespace Dev_GridControl_22_1
             var winList = new FormUpdate_List();
             winList.ShowDialog();
         }
+
+        private void WinExplorerSimpleButton_Click(object sender, EventArgs e)
+        {
+            var ExplorerView = new WinExplorerViewForm();
+            ExplorerView.ShowDialog();
+        }
     }
 }

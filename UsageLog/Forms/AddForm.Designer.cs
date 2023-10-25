@@ -29,29 +29,29 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.catagoryTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.ValueSpinEdit = new DevExpress.XtraEditors.SpinEdit();
-            this.DescriptionTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.TypeLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.OKButton = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.catagoryTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ValueSpinEdit = new DevExpress.XtraEditors.SpinEdit();
+            this.DescriptionTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.TypeLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.ValuelayoutControlItem = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.catagoryTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ValueSpinEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TypeLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catagoryTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValueSpinEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TypeLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValuelayoutControlItem)).BeginInit();
@@ -72,53 +72,6 @@
             this.layoutControl1.Size = new System.Drawing.Size(321, 283);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
-            // 
-            // catagoryTextEdit
-            // 
-            this.catagoryTextEdit.Location = new System.Drawing.Point(81, 64);
-            this.catagoryTextEdit.Name = "catagoryTextEdit";
-            this.catagoryTextEdit.Size = new System.Drawing.Size(228, 22);
-            this.catagoryTextEdit.StyleController = this.layoutControl1;
-            this.catagoryTextEdit.TabIndex = 8;
-            this.catagoryTextEdit.EditValueChanged += new System.EventHandler(this.catagoryTextEdit_EditValueChanged);
-            // 
-            // ValueSpinEdit
-            // 
-            this.ValueSpinEdit.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.ValueSpinEdit.Location = new System.Drawing.Point(81, 90);
-            this.ValueSpinEdit.Name = "ValueSpinEdit";
-            this.ValueSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ValueSpinEdit.Size = new System.Drawing.Size(228, 22);
-            this.ValueSpinEdit.StyleController = this.layoutControl1;
-            this.ValueSpinEdit.TabIndex = 7;
-            this.ValueSpinEdit.EditValueChanged += new System.EventHandler(this.ValueSpinEdit_EditValueChanged);
-            // 
-            // DescriptionTextEdit
-            // 
-            this.DescriptionTextEdit.Location = new System.Drawing.Point(81, 38);
-            this.DescriptionTextEdit.Name = "DescriptionTextEdit";
-            this.DescriptionTextEdit.Size = new System.Drawing.Size(228, 22);
-            this.DescriptionTextEdit.StyleController = this.layoutControl1;
-            this.DescriptionTextEdit.TabIndex = 6;
-            this.DescriptionTextEdit.EditValueChanged += new System.EventHandler(this.DescriptionTextEdit_EditValueChanged);
-            // 
-            // TypeLookUpEdit
-            // 
-            this.TypeLookUpEdit.Location = new System.Drawing.Point(81, 12);
-            this.TypeLookUpEdit.Name = "TypeLookUpEdit";
-            this.TypeLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.TypeLookUpEdit.Properties.DropDownRows = 2;
-            this.TypeLookUpEdit.Properties.NullText = "";
-            this.TypeLookUpEdit.Properties.ShowFooter = false;
-            this.TypeLookUpEdit.Size = new System.Drawing.Size(228, 22);
-            this.TypeLookUpEdit.StyleController = this.layoutControl1;
-            this.TypeLookUpEdit.TabIndex = 5;
             // 
             // OKButton
             // 
@@ -172,6 +125,53 @@
             this.emptySpaceItem2.Size = new System.Drawing.Size(197, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // catagoryTextEdit
+            // 
+            this.catagoryTextEdit.Location = new System.Drawing.Point(81, 64);
+            this.catagoryTextEdit.Name = "catagoryTextEdit";
+            this.catagoryTextEdit.Size = new System.Drawing.Size(228, 22);
+            this.catagoryTextEdit.StyleController = this.layoutControl1;
+            this.catagoryTextEdit.TabIndex = 8;
+            this.catagoryTextEdit.EditValueChanged += new System.EventHandler(this.catagoryTextEdit_EditValueChanged);
+            // 
+            // ValueSpinEdit
+            // 
+            this.ValueSpinEdit.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.ValueSpinEdit.Location = new System.Drawing.Point(81, 90);
+            this.ValueSpinEdit.Name = "ValueSpinEdit";
+            this.ValueSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ValueSpinEdit.Size = new System.Drawing.Size(228, 22);
+            this.ValueSpinEdit.StyleController = this.layoutControl1;
+            this.ValueSpinEdit.TabIndex = 7;
+            this.ValueSpinEdit.EditValueChanged += new System.EventHandler(this.ValueSpinEdit_EditValueChanged);
+            // 
+            // DescriptionTextEdit
+            // 
+            this.DescriptionTextEdit.Location = new System.Drawing.Point(81, 38);
+            this.DescriptionTextEdit.Name = "DescriptionTextEdit";
+            this.DescriptionTextEdit.Size = new System.Drawing.Size(228, 22);
+            this.DescriptionTextEdit.StyleController = this.layoutControl1;
+            this.DescriptionTextEdit.TabIndex = 6;
+            this.DescriptionTextEdit.EditValueChanged += new System.EventHandler(this.DescriptionTextEdit_EditValueChanged);
+            // 
+            // TypeLookUpEdit
+            // 
+            this.TypeLookUpEdit.Location = new System.Drawing.Point(81, 12);
+            this.TypeLookUpEdit.Name = "TypeLookUpEdit";
+            this.TypeLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TypeLookUpEdit.Properties.DropDownRows = 2;
+            this.TypeLookUpEdit.Properties.NullText = "";
+            this.TypeLookUpEdit.Properties.ShowFooter = false;
+            this.TypeLookUpEdit.Size = new System.Drawing.Size(228, 22);
+            this.TypeLookUpEdit.StyleController = this.layoutControl1;
+            this.TypeLookUpEdit.TabIndex = 5;
+            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.TypeLookUpEdit;
@@ -221,14 +221,14 @@
             this.Load += new System.EventHandler(this.AddForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.catagoryTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ValueSpinEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TypeLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catagoryTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValueSpinEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TypeLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValuelayoutControlItem)).EndInit();
