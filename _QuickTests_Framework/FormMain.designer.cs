@@ -118,6 +118,11 @@ namespace _QuickTests_Framework
             this.tbPlain = new System.Windows.Forms.RichTextBox();
             this.bEncryptionInit = new System.Windows.Forms.Button();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.bPrepareReal = new System.Windows.Forms.Button();
+            this.bCalFloat = new System.Windows.Forms.Button();
+            this.bCalDouble = new System.Windows.Forms.Button();
+            this.bCalDecimals = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -137,6 +142,7 @@ namespace _QuickTests_Framework
             this.panel2.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // bThreadSleep
@@ -900,6 +906,7 @@ namespace _QuickTests_Framework
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.groupBox10);
             this.panel2.Controls.Add(this.richTextBox1);
             this.panel2.Controls.Add(this.groupBox9);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1069,6 +1076,59 @@ namespace _QuickTests_Framework
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick_1);
             // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.bCalDecimals);
+            this.groupBox10.Controls.Add(this.bCalDouble);
+            this.groupBox10.Controls.Add(this.bCalFloat);
+            this.groupBox10.Controls.Add(this.bPrepareReal);
+            this.groupBox10.Location = new System.Drawing.Point(184, 3);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(126, 199);
+            this.groupBox10.TabIndex = 2;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Real Values";
+            // 
+            // bPrepareReal
+            // 
+            this.bPrepareReal.Location = new System.Drawing.Point(6, 19);
+            this.bPrepareReal.Name = "bPrepareReal";
+            this.bPrepareReal.Size = new System.Drawing.Size(81, 23);
+            this.bPrepareReal.TabIndex = 0;
+            this.bPrepareReal.Text = "Prepare Data";
+            this.bPrepareReal.UseVisualStyleBackColor = true;
+            this.bPrepareReal.Click += new System.EventHandler(this.bPrepareReal_Click);
+            // 
+            // bCalFloat
+            // 
+            this.bCalFloat.Location = new System.Drawing.Point(7, 44);
+            this.bCalFloat.Name = "bCalFloat";
+            this.bCalFloat.Size = new System.Drawing.Size(92, 23);
+            this.bCalFloat.TabIndex = 1;
+            this.bCalFloat.Text = "Calculate Float";
+            this.bCalFloat.UseVisualStyleBackColor = true;
+            this.bCalFloat.Click += new System.EventHandler(this.bCalFloat_Click);
+            // 
+            // bCalDouble
+            // 
+            this.bCalDouble.Location = new System.Drawing.Point(7, 73);
+            this.bCalDouble.Name = "bCalDouble";
+            this.bCalDouble.Size = new System.Drawing.Size(103, 23);
+            this.bCalDouble.TabIndex = 2;
+            this.bCalDouble.Text = "Calculate Double";
+            this.bCalDouble.UseVisualStyleBackColor = true;
+            this.bCalDouble.Click += new System.EventHandler(this.bCalDouble_Click);
+            // 
+            // bCalDecimals
+            // 
+            this.bCalDecimals.Location = new System.Drawing.Point(6, 102);
+            this.bCalDecimals.Name = "bCalDecimals";
+            this.bCalDecimals.Size = new System.Drawing.Size(114, 23);
+            this.bCalDecimals.TabIndex = 3;
+            this.bCalDecimals.Text = "Calculate Decimals";
+            this.bCalDecimals.UseVisualStyleBackColor = true;
+            this.bCalDecimals.Click += new System.EventHandler(this.bCalDecimals_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1099,6 +1159,7 @@ namespace _QuickTests_Framework
             this.panel2.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1193,6 +1254,11 @@ namespace _QuickTests_Framework
         private System.Windows.Forms.Button bEncrypt;
         private System.Windows.Forms.RichTextBox tbPlain;
         private System.Windows.Forms.Button bRemoveData;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Button bCalDouble;
+        private System.Windows.Forms.Button bCalFloat;
+        private System.Windows.Forms.Button bPrepareReal;
+        private System.Windows.Forms.Button bCalDecimals;
     }
 }
 

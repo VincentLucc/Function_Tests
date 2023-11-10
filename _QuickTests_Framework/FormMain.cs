@@ -43,6 +43,10 @@ namespace _QuickTests_Framework
 
         StudentEvent sEvent = new StudentEvent();
 
+        List<float> CalFloats = new List<float>();
+        List<double> CalDoubles = new List<double>();
+        List<decimal> CalDecimals=new List<decimal>();
+
         public FormMain()
         {
             this.Load += new System.EventHandler(this.FormMain_Load_1);
@@ -1380,6 +1384,138 @@ namespace _QuickTests_Framework
             Debug.WriteLine(TimeStringDebug + ":" + iCount++);
 
             IsTimerLooping = false;
+        }
+
+        private void bPrepareReal_Click(object sender, EventArgs e)
+        {
+            int iStart = 10000;
+            int iCount = 5000000;
+            richTextBox1.AppendText("Prepapring\r\n");
+            //Prepare floats
+            CalFloats.Clear();
+            CalDoubles.Clear();
+            CalDecimals.Clear();
+            for (int i = 0; i < iCount; i++)
+            {
+                float fValue = iStart + i;
+                CalFloats.Add(fValue);
+
+                double dValue= iStart + i;
+                CalDoubles.Add(dValue);
+
+                decimal decValue = iStart + i;
+                CalDecimals.Add(decValue);
+            }
+
+            richTextBox1.AppendText("Prepapred\r\n");
+        }
+
+        private void bCalFloat_Click(object sender, EventArgs e)
+        {
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            stopwatch.Start();
+            float fResult = 0;
+            int iOperation = 0;
+            for (int i = 0; i < CalFloats.Count; i++)
+            {
+                float fCurrent= CalFloats[i];
+                if (iOperation==0)
+                {
+                    fResult += fCurrent;
+                }
+                else if (iOperation == 1)
+                {
+                    fResult-= fCurrent;
+                }
+                else if (iOperation == 2)
+                {
+                    fResult = fResult * (fCurrent / 100);
+                }
+                else if (iOperation == 3)
+                {
+                    fResult = fResult / (fCurrent / 100);
+                }
+
+                //Prepre next
+                iOperation += 1;
+                if (iOperation > 3) iOperation = 0;
+            }
+
+            stopwatch.Stop();
+
+            Debug.WriteLine($"Calculate floats value: time({stopwatch.ElapsedMilliseconds}ms), result({fResult})");
+        }
+
+        private void bCalDouble_Click(object sender, EventArgs e)
+        {
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            stopwatch.Start();
+            double dResult = 0;
+            int iOperation = 0;
+            for (int i = 0; i < CalDoubles.Count; i++)
+            {
+                double dCurrent = CalDoubles[i];
+                if (iOperation == 0)
+                {
+                    dResult += dCurrent;
+                }
+                else if (iOperation == 1)
+                {
+                    dResult -= dCurrent;
+                }
+                else if (iOperation == 2)
+                {
+                    dResult = dResult * (dCurrent / 100);
+                }
+                else if (iOperation == 3)
+                {
+                    dResult = dResult / (dCurrent / 100);
+                }
+
+                //Prepre next
+                iOperation += 1;
+                if (iOperation > 3) iOperation = 0;
+            }
+
+            stopwatch.Stop();
+
+            Debug.WriteLine($"Calculate doubles value: time({stopwatch.ElapsedMilliseconds}ms), result({dResult})");
+        }
+
+        private void bCalDecimals_Click(object sender, EventArgs e)
+        {
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            stopwatch.Start();
+            decimal dResult = 0;
+            int iOperation = 0;
+            for (int i = 0; i < CalDecimals.Count; i++)
+            {
+                decimal dCurrent = CalDecimals[i];
+                if (iOperation == 0)
+                {
+                    dResult += dCurrent;
+                }
+                else if (iOperation == 1)
+                {
+                    dResult -= dCurrent;
+                }
+                else if (iOperation == 2)
+                {
+                    dResult = dResult * (dCurrent / 100);
+                }
+                else if (iOperation == 3)
+                {
+                    dResult = dResult / (dCurrent / 100);
+                }
+
+                //Prepre next
+                iOperation += 1;
+                if (iOperation > 3) iOperation = 0;
+            }
+
+            stopwatch.Stop();
+
+            Debug.WriteLine($"Calculate decimals value: time({stopwatch.ElapsedMilliseconds}ms), result({dResult})");
         }
     }
 
