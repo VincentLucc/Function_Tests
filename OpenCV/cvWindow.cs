@@ -41,9 +41,24 @@ namespace OpenCV_Sharp4
             DisplayImage(View.viewImage);
         }
 
+
+
         public void SetViewImage(Mat viewImage)
         {
             View.SetViewImage(viewImage);
+        }
+
+
+        public void ZoomIn()
+        {
+            if (View == null) return;
+            if (View.viewImage == null) return;
+
+
+
+            
+
+
         }
 
         public Mat OpenImage(out string sMessage)

@@ -5,13 +5,14 @@
     <ProjectGuid>54b720e2-57ba-43ec-9652-2c097905f3c9</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>OdooCall.py</StartupFile>
+    <StartupFile>QuickTest.py</StartupFile>
     <SearchPath>Lib</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>PythonApplication_3.7</Name>
     <RootNamespace>PythonApplication</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <InterpreterId>MSBuild|env39x64|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,10 +23,23 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BarCode.py" />
     <Compile Include="OdooCall.py" />
+    <Compile Include="QuickTest.py" />
     <Compile Include="xml_rpc.py">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env39x64\">
+      <Id>env39x64</Id>
+      <Version>3.9</Version>
+      <Description>env39x64 (Python 3.9 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

@@ -129,26 +129,32 @@ namespace OpenCV_Sharp4
                 }
 
                 //Save source image
+                messageHelper.ShowMainLoading();
                 csConfigureHelper.Inspection.SetSourceImage(image);
 
                 //Rotate image
+                messageHelper.ShowMainLoading("Rotate Image...");
                 var imageRotate = cvWidnow.RotateImage(image, csConfigureHelper.Inspection.Rotate);
 
                 //Runs operations
+                messageHelper.ShowMainLoading("Process Image...");
                 csConfigureHelper.Inspection.RunProduction(imageRotate);
 
                 //Inspection view will be re-created again when run operations
                 cvWidnow.View = csConfigureHelper.Inspection.View;
 
+                messageHelper.ShowMainLoading("Display Image...");
                 cvWidnow.DisplayView();
 
                 //Clean up
                 image?.Dispose();
                 imageRotate?.Dispose();
+                messageHelper.CloseForm();
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
+                messageHelper.Info(ex.Message);
             }
         }
 
@@ -173,10 +179,15 @@ namespace OpenCV_Sharp4
                 csConfigureHelper.Inspection.Rotate);
 
             //Runs operations
+            messageHelper.ShowMainLoading("Process Image...");
             csConfigureHelper.Inspection.RunProduction(imageRotate);
 
+            messageHelper.ShowMainLoading("Display Image...");
             cvWidnow.View= csConfigureHelper.Inspection.View;
             cvWidnow.DisplayView();
+
+            //Finish up
+            messageHelper.CloseForm();
         }
     }
 }
