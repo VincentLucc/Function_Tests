@@ -42,6 +42,7 @@ namespace Dev_GridControl_22_1
             this.button2 = new System.Windows.Forms.Button();
             this.bRowSelection = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.WinExplorerSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
@@ -49,7 +50,6 @@ namespace Dev_GridControl_22_1
             this.bFilterButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
-            this.WinExplorerSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -191,6 +191,15 @@ namespace Dev_GridControl_22_1
             this.groupControl1.TabIndex = 12;
             this.groupControl1.Text = "Views";
             // 
+            // WinExplorerSimpleButton
+            // 
+            this.WinExplorerSimpleButton.Location = new System.Drawing.Point(5, 109);
+            this.WinExplorerSimpleButton.Name = "WinExplorerSimpleButton";
+            this.WinExplorerSimpleButton.Size = new System.Drawing.Size(109, 23);
+            this.WinExplorerSimpleButton.TabIndex = 7;
+            this.WinExplorerSimpleButton.Text = "Win Explorer View";
+            this.WinExplorerSimpleButton.Click += new System.EventHandler(this.WinExplorerSimpleButton_Click);
+            // 
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.bSizeCompare);
@@ -263,20 +272,11 @@ namespace Dev_GridControl_22_1
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Text = "Application Test";
             // 
-            // WinExplorerSimpleButton
-            // 
-            this.WinExplorerSimpleButton.Location = new System.Drawing.Point(5, 109);
-            this.WinExplorerSimpleButton.Name = "WinExplorerSimpleButton";
-            this.WinExplorerSimpleButton.Size = new System.Drawing.Size(109, 23);
-            this.WinExplorerSimpleButton.TabIndex = 7;
-            this.WinExplorerSimpleButton.Text = "Win Explorer View";
-            this.WinExplorerSimpleButton.Click += new System.EventHandler(this.WinExplorerSimpleButton_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 452);
             this.Controls.Add(this.groupControl5);
             this.Controls.Add(this.groupControl4);
             this.Controls.Add(this.groupControl3);
