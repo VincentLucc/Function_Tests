@@ -71,7 +71,7 @@ namespace OpenCV_Sharp4
             {
                 var bitMap = BitmapConverter.ToBitmap(inspection.sourceImage);
                 var codeResults = IronBarCode.BarcodeReader.Read(bitMap);
-
+                
 
                 if (codeResults == null || codeResults.Count() == 0)
                 {
