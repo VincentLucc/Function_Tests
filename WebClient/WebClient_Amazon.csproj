@@ -40,11 +40,15 @@
     <Reference Include="DevExpress.Utils.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,9 +61,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="csAPIModel.cs" />
-    <Compile Include="csDevMessage.cs" />
-    <Compile Include="csHttpHelper.cs" />
+    <Compile Include="Classes\csAPIModel.cs" />
+    <Compile Include="Classes\csConfigModel.cs" />
+    <Compile Include="Classes\csConfiguartionHelper.cs" />
+    <Compile Include="Classes\csDevMessage.cs" />
+    <Compile Include="Classes\csPropertyHelper.cs" />
+    <Compile Include="Classes\csPropertyModel.cs" />
+    <Compile Include="Forms\GtinManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GtinManager.Designer.cs">
+      <DependentUpon>GtinManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MainForm.cs">
@@ -68,6 +81,15 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SettingsXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsXtraForm.Designer.cs">
+      <DependentUpon>SettingsXtraForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\GtinManager.resx">
+      <DependentUpon>GtinManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,7 +102,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Forms\SettingsXtraForm.resx">
+      <DependentUpon>SettingsXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -96,10 +122,49 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\_CommonCode_Framework\_CommonCode_Framework.csproj">
-      <Project>{925b87b3-c48d-414a-9d9a-e74147a67868}</Project>
-      <Name>_CommonCode_Framework</Name>
-    </ProjectReference>
+    <None Include="Resources\properties_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\properties_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\namemanager_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\namemanager_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boorderitem_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconsettrafficlights3_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconsettrafficlights3_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconsetredtoblack4_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconsetredtoblack4_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solidbluedatabar_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solidbluedatabar_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
