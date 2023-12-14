@@ -179,7 +179,7 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(518, 43);
             this.layoutControlItem3.Text = "Client ID:";
             this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(74, 13);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(125, 13);
             // 
             // emptySpaceItem1
             // 
@@ -197,7 +197,7 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(518, 136);
             this.layoutControlItem4.Text = "Client Secrest:";
             this.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(74, 13);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(125, 13);
             // 
             // simpleSeparator1
             // 
@@ -212,9 +212,9 @@
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(518, 43);
-            this.layoutControlItem5.Text = "Check Interval:";
+            this.layoutControlItem5.Text = "Check Interval (Seconds):";
             this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(74, 13);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(125, 13);
             // 
             // OKButton
             // 

@@ -64,9 +64,16 @@
     <Compile Include="Classes\csAPIModel.cs" />
     <Compile Include="Classes\csConfigModel.cs" />
     <Compile Include="Classes\csConfiguartionHelper.cs" />
+    <Compile Include="Classes\csCopyHelper.cs" />
     <Compile Include="Classes\csDevMessage.cs" />
     <Compile Include="Classes\csPropertyHelper.cs" />
     <Compile Include="Classes\csPropertyModel.cs" />
+    <Compile Include="Forms\GTINEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GTINEditForm.Designer.cs">
+      <DependentUpon>GTINEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GtinManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +94,9 @@
     <Compile Include="Forms\SettingsXtraForm.Designer.cs">
       <DependentUpon>SettingsXtraForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\GTINEditForm.resx">
+      <DependentUpon>GTINEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GtinManager.resx">
       <DependentUpon>GtinManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +175,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\home_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_16x162.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_32x322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editname_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editname_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -30,6 +31,8 @@ namespace WebClient
     [XmlType("GTIN")]
     public class csGTINConfig
     {
+        public string ProductName { get; set; }
+
         public string Description { get; set; }
 
         /// <summary>
@@ -50,8 +53,8 @@ namespace WebClient
         /// <summary>
         /// Number of the code to request
         /// </summary>
-        
-        public int NumberOfCodes { get; set; }
+
+        public int ReserveAmount { get; set; }
 
         /// <summary>
         /// Memory usage only
@@ -59,8 +62,19 @@ namespace WebClient
         [XmlIgnore]
         public _codeStatus Status { get; set; }
 
-        [XmlIgnore, Browsable(false)]
-        public DateTime LastAttempt { get; set; }
+
+        public bool IsGTINEqual(string NewGTIN)
+        {
+            if (string.IsNullOrWhiteSpace(NewGTIN))
+            {
+                return NewGTIN == GTIN;
+            }
+            else
+            {//Ignore case
+                return NewGTIN.ToUpper() == GTIN.ToUpper();
+            }
+
+        }
     }
 
     public enum _codeStatus
@@ -69,9 +83,11 @@ namespace WebClient
         /// 
         /// </summary>
         Standby = 0,
-        Requested = 1,
-        Received = 2,
-        Recorded = 3
+        Requesting = 10,
+        Requested = 11,
+        Receiving = 20,
+        Received = 21,
+        Recorded = 30
     }
 
 }

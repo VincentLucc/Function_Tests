@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -28,7 +29,10 @@ namespace WebClient
         /// </summary>
         public static csCheckJob_Response Job_Response { get; set; }
 
-
+        /// <summary>
+        /// Record the time when last request happens
+        /// </summary>
+        public static DateTime LastAttempt { get; set; }
 
         public static async Task<bool> Login()
         {
@@ -56,6 +60,7 @@ namespace WebClient
                 concent.Add("client_secret", csConfigureHelper.config.ClientSecret);
 
                 //Login
+                LastAttempt = DateTime.Now;
                 var response = await client.PostAsync(sLoginUrl, new FormUrlEncodedContent(concent));
                 var responseString = await response.Content.ReadAsStringAsync();
 
@@ -85,7 +90,7 @@ namespace WebClient
             }
         }
 
-        public static async Task<bool> RequestCode(string sGTIN,int iCount)
+        public static async Task<bool> RequestCode(csGTINConfig gtinInfo)
         {
             JobID = "";
 
@@ -93,10 +98,23 @@ namespace WebClient
             {
 
                 //Check login
-                if (loginInfo==null)
+                if (loginInfo == null)
                 {
                     Debug.WriteLine("Login Check Fail.");
                     return false;
+                }
+
+                //Check auto fetch
+                if (!gtinInfo.AutoFetch)
+                {
+                    gtinInfo.Status = _codeStatus.Standby;
+                    return false;
+                }
+
+                //Check wether already requested
+                if (gtinInfo.Status == _codeStatus.Requested)
+                {
+                    return await CheckCodeReady();
                 }
 
                 string sUrl = "https://sudd5dkvre.execute-api.us-east-1.amazonaws.com/v1/v1.2/serial/sgtin";
@@ -106,36 +124,39 @@ namespace WebClient
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue(loginInfo.token_type, loginInfo.access_token);
 
                 //Setup content
-                csRequestCode_RequestContent requestContent = new csRequestCode_RequestContent(sGTIN, iCount);
-                string sContent=JsonConvert.SerializeObject(requestContent);
+                csRequestCode_RequestContent requestContent = new csRequestCode_RequestContent(gtinInfo.GTIN, gtinInfo.ReserveAmount);
+                string sContent = JsonConvert.SerializeObject(requestContent);
                 //string sContent = @"{\"gtin\": \"00726587397509\",\"count\": 100000 \}";
                 requestMessage.Content = new StringContent(sContent, Encoding.UTF8, "application/json");
 
                 //Request
+                LastAttempt = DateTime.Now;
                 var response = await client.SendAsync(requestMessage);
                 string sMessage = await response.Content.ReadAsStringAsync();
-                if (response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
-                    //URL of the result
-                    //Response location:"https://api.transparency.com/serial/job/CG7630487977880917835"
-                    string sLocationUrl = response.Headers.Location.AbsoluteUri;
-                    if (response.Headers.Location.Segments.Length == 4)
-                    {
-                        JobID = response.Headers.Location.Segments[3];
-                    }
-
-                    //Check job ID
-                    if (string.IsNullOrWhiteSpace(JobID))
-                    {
-                        Debug.WriteLine("Empty Job ID");
-                        return false;
-                    }
-                    return true;
-                }
-                else
-                {
+                    Debug.WriteLine($"GTIN ({gtinInfo.GTIN}): Fail");
                     return false;
                 }
+
+
+                //URL of the result
+                //Response location:"https://api.transparency.com/serial/job/CG7630487977880917835"
+                string sLocationUrl = response.Headers.Location.AbsoluteUri;
+                if (response.Headers.Location.Segments.Length == 4)
+                {
+                    JobID = response.Headers.Location.Segments[3];
+                }
+
+                //Check job ID
+                if (string.IsNullOrWhiteSpace(JobID))
+                {
+                    Debug.WriteLine("Empty Job ID");
+                    return false;
+                }
+                return true;
+
+
             }
             catch (Exception ex)
             {
@@ -167,6 +188,7 @@ namespace WebClient
 
 
                 //Request
+                LastAttempt = DateTime.Now;
                 var response = await client.SendAsync(requestMessage);
                 string sMessage = await response.Content.ReadAsStringAsync();
                 if (!response.IsSuccessStatusCode)

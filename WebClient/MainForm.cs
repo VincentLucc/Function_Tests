@@ -14,6 +14,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WebClient.Classes;
+using WebClient.Forms;
 
 namespace WebClient
 {
@@ -79,6 +81,13 @@ namespace WebClient
             {
                 Thread.Sleep(100);
 
+                //Check time interval
+                var interval = DateTime.Now - csAPIHelper.LastAttempt;
+                if (interval < new TimeSpan(0, 0, 0, 0, csConfigureHelper.config.CheckInverval * 1000))
+                {
+                    continue;
+                }
+
                 try
                 {
 
@@ -92,7 +101,7 @@ namespace WebClient
                     for (int i = 0; i < csConfigureHelper.config.GTINs.Count; i++)
                     {
                         var gtin = csConfigureHelper.config.GTINs[i];
-                        await csAPIHelper.RequestCode(gtin.GTIN, gtin.NumberOfCodes);
+                        await csAPIHelper.RequestCode(gtin);
                     }
 
                 }
@@ -107,33 +116,7 @@ namespace WebClient
             Debug.WriteLine("ProcessOperation.End");
         }
 
-        private async void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //WebRequest_Post(null,null,out string sData,out string sMsg);
-
-            if (!await csAPIHelper.Login())
-            {
-                messageHelper.Info("Login Fail.");
-            }
-
-        }
-
-        private async void RequestButton_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (!await csAPIHelper.RequestCode("00726587397509", 100))
-            {
-                messageHelper.Info("Request Fail.");
-            }
-        }
-
-        private async void bCheckReady_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (!await csAPIHelper.CheckCodeReady())
-            {
-                messageHelper.Info("Not Ready.");
-            }
-
-        }
+ 
 
         private void SettingsButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -176,9 +159,69 @@ namespace WebClient
             timer1.Enabled = true;
         }
 
-        private void AddButtonItem_ItemClick(object sender, ItemClickEventArgs e)
+
+
+        private void AddButtonItem_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            using (GTINEditForm gtinEdit = new GTINEditForm(null))
+            {
+                if (gtinEdit.ShowDialog() == DialogResult.OK)
+                {
+                    //Verify duplication
+                    var duplicatedGTIN = csConfigureHelper.config.GTINs.FirstOrDefault(g => g.IsGTINEqual(gtinEdit.GTINInfo.GTIN));
+                    if (duplicatedGTIN == null)
+                    {
+                        csConfigureHelper.config.GTINs.Add(gtinEdit.GTINInfo);
+                    }
+                    else
+                    {
+                        messageHelper.Info("Deuplicated GTIN.");
+                    }
+
+                }
+            }
+        }
+
+        private void DeleteButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
 
+        }
+
+        private void EditButtonItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            int iHandle = StatusGridView.FocusedRowHandle;
+            if (iHandle < 0)
+            {
+                messageHelper.Info("Please select a valid record.");
+                return;
+            }
+
+            int iSourceIndex = StatusGridView.GetDataSourceRowIndex(iHandle);
+            var targetGTIN = csConfigureHelper.config.GTINs[iSourceIndex];
+
+            using (GTINEditForm gtinEdit = new GTINEditForm(targetGTIN))
+            {
+                if (gtinEdit.ShowDialog() == DialogResult.OK)
+                {
+                    //Check whether gtin changed
+                    if (gtinEdit.GTINInfo.IsGTINEqual(targetGTIN.GTIN))
+                    {//Unchanged, directly apply
+                        targetGTIN.CopyValues(gtinEdit.GTINInfo);
+                    }
+                    else
+                    {//GTIN changed, must verify duplication
+                        var duplicatedGTIN = csConfigureHelper.config.GTINs.FirstOrDefault(g => g.IsGTINEqual(gtinEdit.GTINInfo.GTIN));
+                        if (duplicatedGTIN == null)
+                        {//Load edited value
+                            targetGTIN.CopyValues(gtinEdit.GTINInfo);
+                        }
+                        else
+                        {
+                            messageHelper.Info("Deuplicated GTIN.");
+                        }
+                    }
+                }
+            }
         }
     }
 }
