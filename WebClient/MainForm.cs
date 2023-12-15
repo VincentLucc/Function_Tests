@@ -29,7 +29,7 @@ namespace WebClient
         /// </summary>
         Image iconRed = Properties.Resources.iconsetredtoblack4_16x16;
         Image iconGreen = Properties.Resources.iconsettrafficlights3_16x16;
-
+        bool gridUpdateRequired = false;
         public MainForm()
         {
             InitializeComponent();
@@ -101,7 +101,17 @@ namespace WebClient
                     for (int i = 0; i < csConfigureHelper.config.GTINs.Count; i++)
                     {
                         var gtin = csConfigureHelper.config.GTINs[i];
-                        await csAPIHelper.RequestCode(gtin);
+                        if (string.IsNullOrWhiteSpace(gtin.JobID))
+                        {
+                            await csAPIHelper.RequestCode(gtin);
+                         
+                        }
+                        else
+                        {
+                            await csAPIHelper.CheckCodeReady(gtin);
+                        }
+                        //Notify ui update
+                        gridUpdateRequired = true;
                     }
 
                 }
@@ -116,7 +126,7 @@ namespace WebClient
             Debug.WriteLine("ProcessOperation.End");
         }
 
- 
+
 
         private void SettingsButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -148,6 +158,12 @@ namespace WebClient
                 else
                 {
                     StatusButtonItem.ImageOptions.Image = iconGreen;
+                }
+
+                if (gridUpdateRequired)
+                {
+                    StatusGridControl.RefreshDataSource();
+                    gridUpdateRequired = false;
                 }
             }
             catch (Exception ex)

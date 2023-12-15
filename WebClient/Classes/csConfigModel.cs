@@ -62,6 +62,18 @@ namespace WebClient
         [XmlIgnore]
         public _codeStatus Status { get; set; }
 
+        /// <summary>
+        /// Memory usage only, used to get response from server
+        /// 
+        /// </summary>
+        [Browsable(false)]
+        public string JobID { get; set; }
+
+        /// <summary>
+        /// Store the response message of current job
+        /// </summary>
+        [Browsable(false)]
+        public csCheckJob_Response Job_Response { get; set; }
 
         public bool IsGTINEqual(string NewGTIN)
         {
@@ -75,19 +87,48 @@ namespace WebClient
             }
 
         }
+
+
     }
 
     public enum _codeStatus
     {
         /// <summary>
-        /// 
+        /// Task not running
         /// </summary>
         Standby = 0,
-        Requesting = 10,
-        Requested = 11,
-        Receiving = 20,
-        Received = 21,
-        Recorded = 30
+        /// <summary>
+        /// Sending code request
+        /// </summary>
+        Requesting = 11,
+        /// <summary>
+        /// Code request sent
+        /// </summary>
+        Requested = 12,
+        /// <summary>
+        /// Checking to see whether code is ready
+        /// </summary>
+        Checking = 21,
+        /// <summary>
+        /// Indicate remote server is processing
+        /// </summary>
+        Processing = 22,
+        /// <summary>
+        /// Receiving data from server
+        /// </summary>
+        Receiving = 31,
+        /// <summary>
+        /// Data is received successfuling
+        /// </summary>
+        Received = 32,
+        /// <summary>
+        /// Recording data to disk
+        /// </summary>
+        Recording = 41,
+        /// <summary>
+        /// Data recorded to disk
+        /// </summary>
+        Recorded = 42
     }
 
 }

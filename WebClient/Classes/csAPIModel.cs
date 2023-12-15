@@ -24,10 +24,7 @@ namespace WebClient
         public static csLoginInfo loginInfo { get; set; }
         public static string JobID { get; set; }
 
-        /// <summary>
-        /// Store the response message of current job
-        /// </summary>
-        public static csCheckJob_Response Job_Response { get; set; }
+
 
         /// <summary>
         /// Record the time when last request happens
@@ -96,6 +93,12 @@ namespace WebClient
 
             try
             {
+                //Check auto fetch
+                if (!gtinInfo.AutoFetch)
+                {
+                    gtinInfo.Status = _codeStatus.Standby;
+                    return false;
+                }
 
                 //Check login
                 if (loginInfo == null)
@@ -104,19 +107,7 @@ namespace WebClient
                     return false;
                 }
 
-                //Check auto fetch
-                if (!gtinInfo.AutoFetch)
-                {
-                    gtinInfo.Status = _codeStatus.Standby;
-                    return false;
-                }
-
-                //Check wether already requested
-                if (gtinInfo.Status == _codeStatus.Requested)
-                {
-                    return await CheckCodeReady();
-                }
-
+                gtinInfo.Status = _codeStatus.Requesting;
                 string sUrl = "https://sudd5dkvre.execute-api.us-east-1.amazonaws.com/v1/v1.2/serial/sgtin";
                 HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, sUrl);
 
@@ -141,6 +132,7 @@ namespace WebClient
 
 
                 //URL of the result
+                gtinInfo.Status = _codeStatus.Recorded;
                 //Response location:"https://api.transparency.com/serial/job/CG7630487977880917835"
                 string sLocationUrl = response.Headers.Location.AbsoluteUri;
                 if (response.Headers.Location.Segments.Length == 4)
@@ -165,10 +157,25 @@ namespace WebClient
             }
         }
 
-        public static async Task<bool> CheckCodeReady()
+        public static async Task<bool> CheckCodeReady(csGTINConfig gtinInfo)
         {
+            //Check auto fetch
+            if (!gtinInfo.AutoFetch)
+            {
+                gtinInfo.Status = _codeStatus.Standby;
+                return false;
+            }
+
+            //Check login
+            gtinInfo.Status = _codeStatus.Checking;
+            if (loginInfo == null)
+            {
+                Debug.WriteLine("Login Check Fail.");
+                return false;
+            }
+
             //Check job ID
-            if (string.IsNullOrWhiteSpace(JobID))
+            if (string.IsNullOrWhiteSpace(gtinInfo.JobID))
             {
                 Debug.WriteLine("Empty Job ID");
                 return false;
@@ -179,7 +186,7 @@ namespace WebClient
             try
             {
                 string sUrl = "https://sudd5dkvre.execute-api.us-east-1.amazonaws.com/v1/v1.2/serial/job/";
-                sUrl += JobID;
+                sUrl += gtinInfo.JobID;
                 HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, sUrl);
 
                 //Setup header
@@ -206,18 +213,20 @@ namespace WebClient
                 }
 
                 //Get response message
-                Job_Response = null;
-                Job_Response = JsonConvert.DeserializeObject<csCheckJob_Response>(sMessage);
+                gtinInfo.Job_Response = null;
+                gtinInfo.Job_Response = JsonConvert.DeserializeObject<csCheckJob_Response>(sMessage);
 
-                if (Job_Response.status.ToUpper() == "COMPLETED")
+                if (gtinInfo.Job_Response.status.ToUpper() == "COMPLETED")
                 {
-                    Debug.WriteLine($"Sucess:\r\n {Job_Response.url}");
-                    await GetCode();
+                    gtinInfo.Status = _codeStatus.Receiving;
+                    Debug.WriteLine($"Sucess:\r\n {gtinInfo.Job_Response.url}");
+                    await GetCode(gtinInfo);
                     return true;
                 }
-                else if (Job_Response.status.ToUpper() == "IN_PROGRESS" || Job_Response.status.ToUpper() == "PROCESSING")
+                else if (gtinInfo.Job_Response.status.ToUpper() == "IN_PROGRESS" || gtinInfo.Job_Response.status.ToUpper() == "PROCESSING")
                 {
                     Debug.WriteLine($"Processing...");
+                    gtinInfo.Status = _codeStatus.Processing;
                     return false;
                 }
                 else
@@ -235,9 +244,9 @@ namespace WebClient
 
         }
 
-        public static async Task GetCode()
+        public static async Task GetCode(csGTINConfig gtinInfo)
         {
-            string sUrl = Job_Response.url;
+            string sUrl = gtinInfo.Job_Response.url;
 
             try
             {
@@ -245,6 +254,13 @@ namespace WebClient
                 var response = await client.GetAsync(sUrl);
                 var responseString = await response.Content.ReadAsStringAsync();
                 var finalData = JsonConvert.DeserializeObject<csFinalData>(responseString);
+                gtinInfo.Status = _codeStatus.Received;
+
+                //Verify target
+                if (true)
+                {
+
+                }
             }
             catch (Exception ex)
             {
