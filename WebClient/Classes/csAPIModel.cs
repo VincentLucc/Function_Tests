@@ -276,7 +276,7 @@ namespace WebClient
                 //Write to database
                 foreach (var item in finalData.codesList)
                 {
-                    if (!csSQLHelper.AddRecords(item, out string sMessage))
+                    if (!csSQLHelper.AddRecords(gtinInfo, item, out string sMessage))
                     {
                         Debug.WriteLine($"Write record error: {sMessage}.");
                         return;

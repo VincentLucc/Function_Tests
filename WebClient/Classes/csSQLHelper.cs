@@ -64,6 +64,7 @@ namespace WebClient
                     string sCommand = @"
                     CREATE TABLE ""RequestList"" (
 	                ""RecordID""	INTEGER NOT NULL,
+	                ""JobID"" TEXT,
 	                ""TypeOfCodes""	TEXT,
 	                ""Time""	NUMERIC,
 	                ""BrandIdentifier""	TEXT,
@@ -148,7 +149,7 @@ namespace WebClient
             return true;
         }
 
-        public static bool AddRecords(csCodeInfo codeInfo, out string sMessage)
+        public static bool AddRecords(csGTINConfig gtinInfo, csCodeInfo codeInfo, out string sMessage)
         {
             sMessage = "";
             try
@@ -160,7 +161,8 @@ namespace WebClient
                     using (var tran = con.BeginTransaction())
                     {
                         //Insert to record list
-                        string sInsert = $"insert into RequestList(TypeOfCodes,Time,BrandIdentifier,Gtin,Sku) Values(" +
+                        string sInsert = $"insert into RequestList(JobID,TypeOfCodes,Time,BrandIdentifier,Gtin,Sku) Values(" +
+                            $"'{gtinInfo.JobID}'," +
                             $"@{nameof(csCodeInfo.typeOfCodes)}," +
                             $"@{nameof(csCodeInfo.time)}," +
                             $"@{nameof(csCodeInfo.brandIdentifier)}," +

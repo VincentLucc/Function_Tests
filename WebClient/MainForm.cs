@@ -34,7 +34,7 @@ namespace WebClient
         {
             InitializeComponent();
             this.FormClosed += MainForm_FormClosed;
-
+            StatusGridView.DoubleClick += StatusGridView_DoubleClick;
         }
 
 
@@ -64,6 +64,8 @@ namespace WebClient
                     return;
                 }
             }
+
+           
 
 
             //UI Update
@@ -157,13 +159,7 @@ namespace WebClient
             }
         }
 
-        private void GtinManagerButton_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            using (GtinManager gtinManager = new GtinManager())
-            {
-                gtinManager.ShowDialog();
-            }
-        }
+ 
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -224,12 +220,25 @@ namespace WebClient
 
         }
 
+        private void StatusGridView_DoubleClick(object sender, EventArgs e)
+        {
+            EditGTINAction(showMessage: false);
+        }
+
+
+
         private void EditButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
+            EditGTINAction(showMessage:true);
+        }
+
+        private void EditGTINAction(bool showMessage)
+        {
             int iHandle = StatusGridView.FocusedRowHandle;
-            if (iHandle < 0)
+
+            if (iHandle < 0 )
             {
-                messageHelper.Info("Please select a valid record.");
+                if (showMessage) messageHelper.Info("Please select a valid record.");
                 return;
             }
 
