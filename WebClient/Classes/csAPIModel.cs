@@ -15,6 +15,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using WebClient.Classes;
 
 namespace WebClient
 {
@@ -22,8 +23,6 @@ namespace WebClient
     {
         public static HttpClient client = new HttpClient();
         public static csLoginInfo loginInfo { get; set; }
-        public static string JobID { get; set; }
-
 
 
         /// <summary>
@@ -72,11 +71,11 @@ namespace WebClient
                 //Always show errors
                 if (!string.IsNullOrWhiteSpace(loginInfo.error))
                 {
-                    Debug.WriteLine($"Error:{loginInfo.error}");
+                    Debug.WriteLine($"{csPublic.DebugTimeString} Error:{loginInfo.error}");
                 }
 
                 if (string.IsNullOrWhiteSpace(loginInfo.access_token)) return false;
-                Debug.WriteLine($"Login Success({watch.ElapsedMilliseconds}ms):{loginInfo.access_token}");
+                Debug.WriteLine($"{csPublic.DebugTimeString} Login Success({watch.ElapsedMilliseconds}ms):{loginInfo.access_token}");
                 return true;
             }
             catch (Exception ex)
@@ -89,10 +88,11 @@ namespace WebClient
 
         public static async Task<bool> RequestCode(csGTINConfig gtinInfo)
         {
-            JobID = "";
 
             try
             {
+                gtinInfo.JobID = null;
+
                 //Check auto fetch
                 if (!gtinInfo.AutoFetch)
                 {
@@ -114,8 +114,19 @@ namespace WebClient
                 //Setup header
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue(loginInfo.token_type, loginInfo.access_token);
 
+                //Get request number
+                int iCount = 1;
+                if (gtinInfo.QueueAmount< gtinInfo.LimitPerRequest)
+                {
+                    iCount = gtinInfo.QueueAmount;
+                }
+                else
+                {
+                    iCount = gtinInfo.LimitPerRequest;
+                }
+
                 //Setup content
-                csRequestCode_RequestContent requestContent = new csRequestCode_RequestContent(gtinInfo.GTIN, gtinInfo.ReserveAmount);
+                csRequestCode_RequestContent requestContent = new csRequestCode_RequestContent(gtinInfo.GTIN, iCount);
                 string sContent = JsonConvert.SerializeObject(requestContent);
                 //string sContent = @"{\"gtin\": \"00726587397509\",\"count\": 100000 \}";
                 requestMessage.Content = new StringContent(sContent, Encoding.UTF8, "application/json");
@@ -132,18 +143,19 @@ namespace WebClient
 
 
                 //URL of the result
-                gtinInfo.Status = _codeStatus.Recorded;
+                gtinInfo.Status = _codeStatus.Requested;
                 //Response location:"https://api.transparency.com/serial/job/CG7630487977880917835"
                 string sLocationUrl = response.Headers.Location.AbsoluteUri;
                 if (response.Headers.Location.Segments.Length == 4)
                 {
-                    JobID = response.Headers.Location.Segments[3];
+                    gtinInfo.JobID = response.Headers.Location.Segments[3];
                 }
 
                 //Check job ID
-                if (string.IsNullOrWhiteSpace(JobID))
+                if (string.IsNullOrWhiteSpace(gtinInfo.JobID))
                 {
                     Debug.WriteLine("Empty Job ID");
+                    gtinInfo.JobID = null;
                     return false;
                 }
                 return true;
@@ -170,14 +182,14 @@ namespace WebClient
             gtinInfo.Status = _codeStatus.Checking;
             if (loginInfo == null)
             {
-                Debug.WriteLine("Login Check Fail.");
+                Debug.WriteLine($"{csPublic.DebugTimeString} Login Check Fail.");
                 return false;
             }
 
             //Check job ID
             if (string.IsNullOrWhiteSpace(gtinInfo.JobID))
             {
-                Debug.WriteLine("Empty Job ID");
+                Debug.WriteLine($"{csPublic.DebugTimeString} Empty Job ID");
                 return false;
             }
 
@@ -200,7 +212,7 @@ namespace WebClient
                 string sMessage = await response.Content.ReadAsStringAsync();
                 if (!response.IsSuccessStatusCode)
                 {
-                    Debug.WriteLine($"Server response not OK...");
+                    Debug.WriteLine($"{csPublic.DebugTimeString} Server response not OK...");
                     return false;
                 }
 
@@ -208,7 +220,7 @@ namespace WebClient
                 //Check response message
                 if (string.IsNullOrWhiteSpace(sMessage))
                 {
-                    Debug.WriteLine("Empty result.");
+                    Debug.WriteLine($"{csPublic.DebugTimeString} Empty result.");
                     return false;
                 }
 
@@ -219,19 +231,19 @@ namespace WebClient
                 if (gtinInfo.Job_Response.status.ToUpper() == "COMPLETED")
                 {
                     gtinInfo.Status = _codeStatus.Receiving;
-                    Debug.WriteLine($"Sucess:\r\n {gtinInfo.Job_Response.url}");
-                    await GetCode(gtinInfo);
+                    Debug.WriteLine($"{csPublic.DebugTimeString} Sucess:\r\n {gtinInfo.Job_Response.url}");
+                    await ProcessCode(gtinInfo);
                     return true;
                 }
                 else if (gtinInfo.Job_Response.status.ToUpper() == "IN_PROGRESS" || gtinInfo.Job_Response.status.ToUpper() == "PROCESSING")
                 {
-                    Debug.WriteLine($"Processing...");
-                    gtinInfo.Status = _codeStatus.Processing;
+                    Debug.WriteLine($"{csPublic.DebugTimeString} Processing...");
+                    gtinInfo.Status = _codeStatus.Waiting;
                     return false;
                 }
                 else
                 {
-                    Debug.WriteLine($"Undefined...");
+                    Debug.WriteLine($"{csPublic.DebugTimeString} Undefined...");
                     return false;
                 }
 
@@ -244,7 +256,7 @@ namespace WebClient
 
         }
 
-        public static async Task GetCode(csGTINConfig gtinInfo)
+        public static async Task ProcessCode(csGTINConfig gtinInfo)
         {
             string sUrl = gtinInfo.Job_Response.url;
 
@@ -255,12 +267,24 @@ namespace WebClient
                 var responseString = await response.Content.ReadAsStringAsync();
                 var finalData = JsonConvert.DeserializeObject<csFinalData>(responseString);
                 gtinInfo.Status = _codeStatus.Received;
-
-                //Verify target
-                if (true)
+                if (finalData == null)
                 {
-
+                    Debug.WriteLine("ProcessCode: Empty Record.");
+                    return;
                 }
+
+                //Write to database
+                foreach (var item in finalData.codesList)
+                {
+                    if (!csSQLHelper.AddRecords(item, out string sMessage))
+                    {
+                        Debug.WriteLine($"Write record error: {sMessage}.");
+                        return;
+                    }
+                }
+
+                //When write success, clear the job ID
+                gtinInfo.JobID = null;
             }
             catch (Exception ex)
             {
@@ -348,7 +372,13 @@ namespace WebClient
         public string brandIdentifier { get; set; }
         public string gtin { get; set; }
         public string sku { get; set; }
+        public DateTime time { get; set; }
         public List<string> Codes { get; set; }
+
+        public csCodeInfo()
+        {
+            time = DateTime.Now;
+        }
     }
 
 

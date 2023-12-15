@@ -49,12 +49,22 @@ namespace WebClient
         /// Number of the code for each request
         /// </summary>
         [Browsable(false)]
-        public int NumberPerRequest { get; set; }
+        public int LimitPerRequest { get; set; }
         /// <summary>
         /// Number of the code to request
         /// </summary>
+        [DisplayName("Target Count")]
+        public int ReserveTarget { get; set; }
 
-        public int ReserveAmount { get; set; }
+        /// <summary>
+        /// Number of code already have
+        /// </summary>
+        [DisplayName("Storage Count")]
+        public int CurrentStorage { get; set; }
+
+        [XmlIgnore]
+        [Browsable(false)]
+        public int QueueAmount => ReserveTarget - CurrentStorage;
 
         /// <summary>
         /// Memory usage only
@@ -89,6 +99,11 @@ namespace WebClient
         }
 
 
+        public csGTINConfig()
+        {
+            LimitPerRequest = 100;
+        }
+
     }
 
     public enum _codeStatus
@@ -112,7 +127,7 @@ namespace WebClient
         /// <summary>
         /// Indicate remote server is processing
         /// </summary>
-        Processing = 22,
+        Waiting = 22,
         /// <summary>
         /// Receiving data from server
         /// </summary>

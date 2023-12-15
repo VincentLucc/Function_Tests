@@ -55,6 +55,16 @@ namespace WebClient
             StatusGridControl.DataSource = csConfigureHelper.config.GTINs;
             StatusGridView.PopulateColumns();
 
+            //Verify database existance
+            if (!csSQLHelper.Exist())
+            {
+                if (!csSQLHelper.CreateDataBase(out sMessage))
+                {
+                    messageHelper.Info(sMessage);
+                    return;
+                }
+            }
+
 
             //UI Update
             timer1.Start();
@@ -101,10 +111,21 @@ namespace WebClient
                     for (int i = 0; i < csConfigureHelper.config.GTINs.Count; i++)
                     {
                         var gtin = csConfigureHelper.config.GTINs[i];
+
+                        //Check number of ready codes
+                        if (!csSQLHelper.CheckGTINStorage(gtin, out string sMessage))
+                        {
+                            Debug.WriteLine("Error");
+                            gridUpdateRequired = true;
+                            continue;
+                        }
+
+                        //Check current
+                        if (gtin.QueueAmount < 1) continue;
+            
                         if (string.IsNullOrWhiteSpace(gtin.JobID))
                         {
                             await csAPIHelper.RequestCode(gtin);
-                         
                         }
                         else
                         {

@@ -44,7 +44,8 @@ namespace WebClient.Forms
             GTINTextEdit.Text = GTINInfo.GTIN;
             DescriptionTextEdit.Text = GTINInfo.Description;
             AutoReserveToggleSwitch.IsOn = GTINInfo.AutoFetch;
-            ReserveSpinEdit.Value = GTINInfo.ReserveAmount;
+            ReserveSpinEdit.Value = GTINInfo.ReserveTarget;
+            LimitSpinEdit.Value = GTINInfo.LimitPerRequest;
 
             //finish up
             isLoad = true;
@@ -53,7 +54,13 @@ namespace WebClient.Forms
         private void ReserveSpinEdit_EditValueChanged(object sender, EventArgs e)
         {
             if (!isLoad) return;
-            GTINInfo.ReserveAmount = (int)ReserveSpinEdit.Value;
+            GTINInfo.ReserveTarget = (int)ReserveSpinEdit.Value;
+        }
+
+        private void LimitSpinEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!isLoad) return;
+            GTINInfo.LimitPerRequest = (int)LimitSpinEdit.Value;
         }
 
         private void AutoReserveToggleSwitch_Toggled(object sender, EventArgs e)
@@ -100,5 +107,7 @@ namespace WebClient.Forms
         {
             this.Close();
         }
+
+
     }
 }

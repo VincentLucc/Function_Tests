@@ -215,6 +215,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Camera Parameters", "Camera
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClient_Amazon", "WebClient\WebClient_Amazon.csproj", "{41160B2A-22E1-41B0-B588-D40E4D3BDCD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database_SQLlite_EntityFramework", "Database_Sqlite_EntityFramework\Database_SQLlite_EntityFramework.csproj", "{38092474-566B-44F9-B1B3-F06E49109B76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1912,6 +1914,22 @@ Global
 		{41160B2A-22E1-41B0-B588-D40E4D3BDCD2}.Release|x64.Build.0 = Release|Any CPU
 		{41160B2A-22E1-41B0-B588-D40E4D3BDCD2}.Release|x86.ActiveCfg = Release|Any CPU
 		{41160B2A-22E1-41B0-B588-D40E4D3BDCD2}.Release|x86.Build.0 = Release|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Debug|arm64.Build.0 = Debug|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Debug|x64.Build.0 = Debug|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Debug|x86.Build.0 = Debug|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Release|arm64.ActiveCfg = Release|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Release|arm64.Build.0 = Release|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Release|x64.ActiveCfg = Release|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Release|x64.Build.0 = Release|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Release|x86.ActiveCfg = Release|Any CPU
+		{38092474-566B-44F9-B1B3-F06E49109B76}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
