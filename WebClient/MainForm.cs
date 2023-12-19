@@ -104,12 +104,8 @@ namespace WebClient
                 {
 
                     //Check login
-                    if (!await csAPIHelper.Login())
-                    {
-                        continue;
-                    }
-
-
+                    if (!await csAPIHelper.Login()) continue;
+ 
                     for (int i = 0; i < csConfigureHelper.config.GTINs.Count; i++)
                     {
                         var gtin = csConfigureHelper.config.GTINs[i];
