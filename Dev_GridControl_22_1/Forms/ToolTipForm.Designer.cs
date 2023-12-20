@@ -1,6 +1,6 @@
 ﻿namespace Dev_GridControl_22_1.Forms
 {
-    partial class FormToolTip
+    partial class ToolTipForm
     {
         /// <summary>
         /// Required designer variable.

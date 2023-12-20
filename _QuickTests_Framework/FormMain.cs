@@ -14,6 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using _CommonCode_Framework;
+using DevExpress.XtraScheduler;
 
 namespace _QuickTests_Framework
 {
@@ -45,7 +46,7 @@ namespace _QuickTests_Framework
 
         List<float> CalFloats = new List<float>();
         List<double> CalDoubles = new List<double>();
-        List<decimal> CalDecimals=new List<decimal>();
+        List<decimal> CalDecimals = new List<decimal>();
 
         public FormMain()
         {
@@ -733,7 +734,7 @@ namespace _QuickTests_Framework
 
             //Sort datatable students 
             watchPerformance.Restart();
-            var sortedTableStudents = dtPerformanceSource.AsEnumerable().OrderBy(a => a.Field<int>(nameof(Student.Name))).GroupBy(a => a.Field<int>(nameof(Student.Name))).Select(g=>g.First());
+            var sortedTableStudents = dtPerformanceSource.AsEnumerable().OrderBy(a => a.Field<int>(nameof(Student.Name))).GroupBy(a => a.Field<int>(nameof(Student.Name))).Select(g => g.First());
             sortedTableStudents = dtPerformanceSource.AsEnumerable().OrderBy(a => a.Field<int>(nameof(Student.Age)));
             watchPerformance.Stop();
             Debug.WriteLine($"Sort datatable student record:{dtPerformanceSource.Rows.Count}, Time:{watchPerformance.ElapsedMilliseconds}.");
@@ -1400,7 +1401,7 @@ namespace _QuickTests_Framework
                 float fValue = iStart + i;
                 CalFloats.Add(fValue);
 
-                double dValue= iStart + i;
+                double dValue = iStart + i;
                 CalDoubles.Add(dValue);
 
                 decimal decValue = iStart + i;
@@ -1418,14 +1419,14 @@ namespace _QuickTests_Framework
             int iOperation = 0;
             for (int i = 0; i < CalFloats.Count; i++)
             {
-                float fCurrent= CalFloats[i];
-                if (iOperation==0)
+                float fCurrent = CalFloats[i];
+                if (iOperation == 0)
                 {
                     fResult += fCurrent;
                 }
                 else if (iOperation == 1)
                 {
-                    fResult-= fCurrent;
+                    fResult -= fCurrent;
                 }
                 else if (iOperation == 2)
                 {
@@ -1516,6 +1517,66 @@ namespace _QuickTests_Framework
             stopwatch.Stop();
 
             Debug.WriteLine($"Calculate decimals value: time({stopwatch.ElapsedMilliseconds}ms), result({dResult})");
+        }
+
+        private void bEnumMultipleValues_Click(object sender, EventArgs e)
+        {
+            _weekDays Test1 = _weekDays.Monday | _weekDays.Tuesday;
+            _weekDays Test2 = _weekDays.Tuesday;
+            //False
+            if (Test2.HasFlag(Test1)) { }
+
+            //True
+            if (Test1.HasFlag(Test2)) { }
+
+            
+        }
+
+        private void GetNextWeekDay(_weekDays daySelections)
+        {
+            var day = FormatWeekDayFromSystem2DevExpress(DateTime.Now.DayOfWeek);
+
+            for (int i = 0; i < 7; i++)
+            {
+
+            }
+
+            var allDays=new List<DayOfWeek>() { DayOfWeek.Sunday, 
+                DayOfWeek.Monday, 
+                DayOfWeek.Tuesday, 
+                DayOfWeek.Wednesday, 
+                DayOfWeek.Thursday, 
+                DayOfWeek.Friday, 
+                DayOfWeek.Saturday};
+            //foreach (var item in collection)
+            //{
+
+            //}
+
+
+        }
+
+        private WeekDays FormatWeekDayFromSystem2DevExpress(DayOfWeek dayOfWeek)
+        {
+            switch (dayOfWeek)
+            {
+                case DayOfWeek.Sunday:
+                    return WeekDays.Sunday;
+                case DayOfWeek.Monday:
+                    return WeekDays.Monday;
+                case DayOfWeek.Tuesday:
+                    return WeekDays.Tuesday;
+                case DayOfWeek.Wednesday:
+                    return WeekDays.Wednesday;
+                case DayOfWeek.Thursday:
+                    return WeekDays.Thursday;
+                case DayOfWeek.Friday:
+                    return WeekDays.Friday;
+                case DayOfWeek.Saturday:
+                    return WeekDays.Saturday;
+                default:
+                    return WeekDays.Sunday;
+            }
         }
     }
 

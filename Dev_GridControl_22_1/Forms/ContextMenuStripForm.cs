@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace Dev_GridControl_22_1.Forms
 {
-    public partial class FormToolTip : XtraForm
+    public partial class ContextMenuStripForm : XtraForm
     {
-        public FormToolTip()
+        public ContextMenuStripForm()
         {
             InitializeComponent();
         }
@@ -57,6 +57,11 @@ namespace Dev_GridControl_22_1.Forms
 
             //Display tooltip
             if (info != null) e.Info = info;
+        }
+
+        private void CancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Close();
         }
     }
 }

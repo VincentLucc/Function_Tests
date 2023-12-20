@@ -50,6 +50,7 @@ namespace Dev_GridControl_22_1
             this.bFilterButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.bContextMenuStrip = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -223,6 +224,7 @@ namespace Dev_GridControl_22_1
             // 
             // groupControl4
             // 
+            this.groupControl4.Controls.Add(this.bContextMenuStrip);
             this.groupControl4.Controls.Add(this.bUpdateListSource);
             this.groupControl4.Controls.Add(this.bFilterButton);
             this.groupControl4.Controls.Add(this.simpleButton4);
@@ -246,7 +248,7 @@ namespace Dev_GridControl_22_1
             // 
             // bFilterButton
             // 
-            this.bFilterButton.Location = new System.Drawing.Point(119, 26);
+            this.bFilterButton.Location = new System.Drawing.Point(5, 171);
             this.bFilterButton.Name = "bFilterButton";
             this.bFilterButton.Size = new System.Drawing.Size(109, 23);
             this.bFilterButton.TabIndex = 7;
@@ -271,6 +273,16 @@ namespace Dev_GridControl_22_1
             this.groupControl5.Size = new System.Drawing.Size(200, 206);
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Text = "Application Test";
+            // 
+            // bContextMenuStrip
+            // 
+            this.bContextMenuStrip.Location = new System.Drawing.Point(120, 26);
+            this.bContextMenuStrip.Name = "bContextMenuStrip";
+            this.bContextMenuStrip.Size = new System.Drawing.Size(109, 23);
+            this.bContextMenuStrip.TabIndex = 14;
+            this.bContextMenuStrip.Text = "Context Menu Strip";
+            this.bContextMenuStrip.UseVisualStyleBackColor = true;
+            this.bContextMenuStrip.Click += new System.EventHandler(this.bContextMenuStrip_Click);
             // 
             // FormMain
             // 
@@ -322,6 +334,7 @@ namespace Dev_GridControl_22_1
         private DevExpress.XtraEditors.SimpleButton bFilterButton;
         private DevExpress.XtraEditors.SimpleButton bUpdateListSource;
         private DevExpress.XtraEditors.SimpleButton WinExplorerSimpleButton;
+        private System.Windows.Forms.Button bContextMenuStrip;
     }
 }
 

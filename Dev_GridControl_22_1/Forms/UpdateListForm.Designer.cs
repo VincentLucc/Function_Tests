@@ -1,7 +1,7 @@
 ﻿
 namespace Dev_GridControl_22_1.Forms
 {
-    partial class FormUpdate_List
+    partial class UpdateListForm
     {
         /// <summary>
         /// Required designer variable.

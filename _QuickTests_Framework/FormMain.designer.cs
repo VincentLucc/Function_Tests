@@ -84,7 +84,6 @@ namespace _QuickTests_Framework
             this.bCollection2LIstObjectChanges = new System.Windows.Forms.Button();
             this.bSpeed = new System.Windows.Forms.Button();
             this.bList = new System.Windows.Forms.Button();
-            this.bEnumTest = new System.Windows.Forms.Button();
             this.bUpdateOne = new System.Windows.Forms.Button();
             this.bListTake = new System.Windows.Forms.Button();
             this.bListSkip = new System.Windows.Forms.Button();
@@ -102,6 +101,11 @@ namespace _QuickTests_Framework
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.bCalDecimals = new System.Windows.Forms.Button();
+            this.bCalDouble = new System.Windows.Forms.Button();
+            this.bCalFloat = new System.Windows.Forms.Button();
+            this.bPrepareReal = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.bRemoveData = new System.Windows.Forms.Button();
@@ -118,11 +122,7 @@ namespace _QuickTests_Framework
             this.tbPlain = new System.Windows.Forms.RichTextBox();
             this.bEncryptionInit = new System.Windows.Forms.Button();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.bPrepareReal = new System.Windows.Forms.Button();
-            this.bCalFloat = new System.Windows.Forms.Button();
-            this.bCalDouble = new System.Windows.Forms.Button();
-            this.bCalDecimals = new System.Windows.Forms.Button();
+            this.bEnumMultipleValues = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -140,9 +140,9 @@ namespace _QuickTests_Framework
             this.tabPage4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // bThreadSleep
@@ -339,6 +339,7 @@ namespace _QuickTests_Framework
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.bEnumMultipleValues);
             this.groupBox5.Controls.Add(this.bEnumGetDesc);
             this.groupBox5.Location = new System.Drawing.Point(387, 204);
             this.groupBox5.Name = "groupBox5";
@@ -614,7 +615,6 @@ namespace _QuickTests_Framework
             this.tabPage1.Controls.Add(this.bCollection2LIstObjectChanges);
             this.tabPage1.Controls.Add(this.bSpeed);
             this.tabPage1.Controls.Add(this.bList);
-            this.tabPage1.Controls.Add(this.bEnumTest);
             this.tabPage1.Controls.Add(this.bUpdateOne);
             this.tabPage1.Controls.Add(this.bListTake);
             this.tabPage1.Controls.Add(this.bListSkip);
@@ -708,7 +708,7 @@ namespace _QuickTests_Framework
             // 
             // bSpeed
             // 
-            this.bSpeed.Location = new System.Drawing.Point(297, 16);
+            this.bSpeed.Location = new System.Drawing.Point(219, 15);
             this.bSpeed.Name = "bSpeed";
             this.bSpeed.Size = new System.Drawing.Size(64, 20);
             this.bSpeed.TabIndex = 6;
@@ -725,16 +725,6 @@ namespace _QuickTests_Framework
             this.bList.Text = "List";
             this.bList.UseVisualStyleBackColor = true;
             this.bList.Click += new System.EventHandler(this.bList_Click);
-            // 
-            // bEnumTest
-            // 
-            this.bEnumTest.Location = new System.Drawing.Point(227, 15);
-            this.bEnumTest.Name = "bEnumTest";
-            this.bEnumTest.Size = new System.Drawing.Size(64, 20);
-            this.bEnumTest.TabIndex = 4;
-            this.bEnumTest.Text = "Enum Test";
-            this.bEnumTest.UseVisualStyleBackColor = true;
-            this.bEnumTest.Click += new System.EventHandler(this.bEnumTest_Click_1);
             // 
             // bUpdateOne
             // 
@@ -915,6 +905,59 @@ namespace _QuickTests_Framework
             this.panel2.Size = new System.Drawing.Size(678, 364);
             this.panel2.TabIndex = 1;
             // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.bCalDecimals);
+            this.groupBox10.Controls.Add(this.bCalDouble);
+            this.groupBox10.Controls.Add(this.bCalFloat);
+            this.groupBox10.Controls.Add(this.bPrepareReal);
+            this.groupBox10.Location = new System.Drawing.Point(184, 3);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(126, 199);
+            this.groupBox10.TabIndex = 2;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Real Values";
+            // 
+            // bCalDecimals
+            // 
+            this.bCalDecimals.Location = new System.Drawing.Point(6, 102);
+            this.bCalDecimals.Name = "bCalDecimals";
+            this.bCalDecimals.Size = new System.Drawing.Size(114, 23);
+            this.bCalDecimals.TabIndex = 3;
+            this.bCalDecimals.Text = "Calculate Decimals";
+            this.bCalDecimals.UseVisualStyleBackColor = true;
+            this.bCalDecimals.Click += new System.EventHandler(this.bCalDecimals_Click);
+            // 
+            // bCalDouble
+            // 
+            this.bCalDouble.Location = new System.Drawing.Point(7, 73);
+            this.bCalDouble.Name = "bCalDouble";
+            this.bCalDouble.Size = new System.Drawing.Size(103, 23);
+            this.bCalDouble.TabIndex = 2;
+            this.bCalDouble.Text = "Calculate Double";
+            this.bCalDouble.UseVisualStyleBackColor = true;
+            this.bCalDouble.Click += new System.EventHandler(this.bCalDouble_Click);
+            // 
+            // bCalFloat
+            // 
+            this.bCalFloat.Location = new System.Drawing.Point(7, 44);
+            this.bCalFloat.Name = "bCalFloat";
+            this.bCalFloat.Size = new System.Drawing.Size(92, 23);
+            this.bCalFloat.TabIndex = 1;
+            this.bCalFloat.Text = "Calculate Float";
+            this.bCalFloat.UseVisualStyleBackColor = true;
+            this.bCalFloat.Click += new System.EventHandler(this.bCalFloat_Click);
+            // 
+            // bPrepareReal
+            // 
+            this.bPrepareReal.Location = new System.Drawing.Point(6, 19);
+            this.bPrepareReal.Name = "bPrepareReal";
+            this.bPrepareReal.Size = new System.Drawing.Size(81, 23);
+            this.bPrepareReal.TabIndex = 0;
+            this.bPrepareReal.Text = "Prepare Data";
+            this.bPrepareReal.UseVisualStyleBackColor = true;
+            this.bPrepareReal.Click += new System.EventHandler(this.bPrepareReal_Click);
+            // 
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -1076,58 +1119,15 @@ namespace _QuickTests_Framework
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick_1);
             // 
-            // groupBox10
+            // bEnumMultipleValues
             // 
-            this.groupBox10.Controls.Add(this.bCalDecimals);
-            this.groupBox10.Controls.Add(this.bCalDouble);
-            this.groupBox10.Controls.Add(this.bCalFloat);
-            this.groupBox10.Controls.Add(this.bPrepareReal);
-            this.groupBox10.Location = new System.Drawing.Point(184, 3);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(126, 199);
-            this.groupBox10.TabIndex = 2;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Real Values";
-            // 
-            // bPrepareReal
-            // 
-            this.bPrepareReal.Location = new System.Drawing.Point(6, 19);
-            this.bPrepareReal.Name = "bPrepareReal";
-            this.bPrepareReal.Size = new System.Drawing.Size(81, 23);
-            this.bPrepareReal.TabIndex = 0;
-            this.bPrepareReal.Text = "Prepare Data";
-            this.bPrepareReal.UseVisualStyleBackColor = true;
-            this.bPrepareReal.Click += new System.EventHandler(this.bPrepareReal_Click);
-            // 
-            // bCalFloat
-            // 
-            this.bCalFloat.Location = new System.Drawing.Point(7, 44);
-            this.bCalFloat.Name = "bCalFloat";
-            this.bCalFloat.Size = new System.Drawing.Size(92, 23);
-            this.bCalFloat.TabIndex = 1;
-            this.bCalFloat.Text = "Calculate Float";
-            this.bCalFloat.UseVisualStyleBackColor = true;
-            this.bCalFloat.Click += new System.EventHandler(this.bCalFloat_Click);
-            // 
-            // bCalDouble
-            // 
-            this.bCalDouble.Location = new System.Drawing.Point(7, 73);
-            this.bCalDouble.Name = "bCalDouble";
-            this.bCalDouble.Size = new System.Drawing.Size(103, 23);
-            this.bCalDouble.TabIndex = 2;
-            this.bCalDouble.Text = "Calculate Double";
-            this.bCalDouble.UseVisualStyleBackColor = true;
-            this.bCalDouble.Click += new System.EventHandler(this.bCalDouble_Click);
-            // 
-            // bCalDecimals
-            // 
-            this.bCalDecimals.Location = new System.Drawing.Point(6, 102);
-            this.bCalDecimals.Name = "bCalDecimals";
-            this.bCalDecimals.Size = new System.Drawing.Size(114, 23);
-            this.bCalDecimals.TabIndex = 3;
-            this.bCalDecimals.Text = "Calculate Decimals";
-            this.bCalDecimals.UseVisualStyleBackColor = true;
-            this.bCalDecimals.Click += new System.EventHandler(this.bCalDecimals_Click);
+            this.bEnumMultipleValues.Location = new System.Drawing.Point(5, 45);
+            this.bEnumMultipleValues.Name = "bEnumMultipleValues";
+            this.bEnumMultipleValues.Size = new System.Drawing.Size(92, 20);
+            this.bEnumMultipleValues.TabIndex = 1;
+            this.bEnumMultipleValues.Text = "Multiple Values";
+            this.bEnumMultipleValues.UseVisualStyleBackColor = true;
+            this.bEnumMultipleValues.Click += new System.EventHandler(this.bEnumMultipleValues_Click);
             // 
             // FormMain
             // 
@@ -1157,9 +1157,9 @@ namespace _QuickTests_Framework
             this.tabPage4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1192,7 +1192,6 @@ namespace _QuickTests_Framework
         private System.Windows.Forms.Button bListTake;
         private System.Windows.Forms.Button bUpdateOne;
         private System.Windows.Forms.Button bFloat;
-        private System.Windows.Forms.Button bEnumTest;
         private System.Windows.Forms.Button bList;
         private System.Windows.Forms.Button bSpeed;
         private System.Windows.Forms.Button bIntShift;
@@ -1259,6 +1258,7 @@ namespace _QuickTests_Framework
         private System.Windows.Forms.Button bCalFloat;
         private System.Windows.Forms.Button bPrepareReal;
         private System.Windows.Forms.Button bCalDecimals;
+        private System.Windows.Forms.Button bEnumMultipleValues;
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿namespace Dev_GridControl_22_1.Forms
 {
-    partial class FormUpdate_DataTable
+    partial class UpdateDataTableForm
     {
         /// <summary>
         /// Required designer variable.

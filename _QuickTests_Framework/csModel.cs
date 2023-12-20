@@ -151,4 +151,24 @@ namespace _QuickTests_Framework
         Append,
         Insert
     }
+
+    /// <summary>
+    /// Must use [flags]
+    /// 0b 二进制
+    /// 0x 16进制
+    /// </summary>
+    [Flags]
+    public enum _weekDays
+    {
+        Monday = 0b00000001,
+        Tuesday = 0b00000010,
+        Wednesday = 0b00000100,
+        Thursday = 0b00001000,
+        Friday = 0b00010000,
+        Saturday = 0b00100000,
+        Sunday = 0b01000000,
+        WeekendDays = 0b01100000,
+        WorkDays = 0b00011111
+    }
+
 }

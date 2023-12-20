@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Dev_GridControl_22_1.Forms
 {
-    public partial class FormUpdate_DataTable : DevExpress.XtraEditors.XtraForm
+    public partial class UpdateDataTableForm : DevExpress.XtraEditors.XtraForm
     {
 
         public DataTable dtData { get; set; }
-        public FormUpdate_DataTable()
+        public UpdateDataTableForm()
         {
             InitializeComponent();
         }

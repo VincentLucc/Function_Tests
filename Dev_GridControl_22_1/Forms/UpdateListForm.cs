@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace Dev_GridControl_22_1.Forms
 {
-    public partial class FormUpdate_List : DevExpress.XtraEditors.XtraForm
+    public partial class UpdateListForm : DevExpress.XtraEditors.XtraForm
     {
 
         List<Student> students = new List<Student>();
 
-        public FormUpdate_List()
+        public UpdateListForm()
         {
             InitializeComponent();
         }
