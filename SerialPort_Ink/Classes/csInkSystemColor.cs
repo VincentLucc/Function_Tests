@@ -218,15 +218,12 @@ namespace SerialPort_Ink
                 while (Port.BytesToRead > 0)
                 {
                     byte[] buffer = new byte[Port.BytesToRead]; //define a buffer
-                    Port.Read(buffer, 0, Port.BytesToRead); //read data to buffer
+                    Port.Read(buffer, 0, buffer.Length); //read data to buffer
                     ResultList.AddRange(buffer); //Add buffer to result
 
                     //Auto break when size too long
-                    if (ResultList.Count > 10000)
-                    {
-                        break;
-                    }
-
+                    if (ResultList.Count > 10000) break;
+ 
                     //This is needed to receive full message
                     //Adjust this value for specific device
                     // 15ms is tested to be threshold of the muscle motor, use 20ms to gave more overhead.

@@ -33,6 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.Desktop.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v22.1.Core, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,25 +51,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Dev_SplitContainerControl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Dev_SplitContainerControl.Designer.cs">
+      <DependentUpon>Dev_SplitContainerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="Dev_SplitterControl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Dev_SplitterControl.Designer.cs">
+      <DependentUpon>Dev_SplitterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_SplitContainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_SplitContainer.Designer.cs">
+      <DependentUpon>Form_SplitContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_TableLayoutPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_TableLayoutPanel.Designer.cs">
+      <DependentUpon>Form_TableLayoutPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Dev_SplitContainerControl.resx">
+      <DependentUpon>Dev_SplitContainerControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="Dev_SplitterControl.resx">
+      <DependentUpon>Dev_SplitterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_SplitContainer.resx">
+      <DependentUpon>Form_SplitContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_TableLayoutPanel.resx">
+      <DependentUpon>Form_TableLayoutPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

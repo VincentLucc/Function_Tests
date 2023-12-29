@@ -1,7 +1,7 @@
 ﻿
 namespace SplitContainer
 {
-    partial class Form1
+    partial class Form_SplitContainer
     {
         /// <summary>
         /// Required designer variable.

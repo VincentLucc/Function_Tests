@@ -26,12 +26,16 @@ namespace DevMessage
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;//user can't operate the form
             UIHelper.ShowMainLoading("Please wait.");
             await Task.Delay(2000);
             UIHelper.CloseLoadingForm();
+            UIHelper.ShowInfo("abc.123","Title 01");
             UIHelper.ShowMainLoading();
+           
             await Task.Delay(1000);
             UIHelper.CloseLoadingForm();
+            this.Enabled = true;
         }
 
         private void bShowInfo2_Click(object sender, EventArgs e)
