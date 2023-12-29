@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="csClasses.cs" />
     <Compile Include="csEnumHelper.cs" />
     <Compile Include="csHex.cs" />
     <Compile Include="csLED.cs" />

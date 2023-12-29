@@ -83,7 +83,6 @@ namespace DevMessage
                 messageHelper.InfoAsyncNoRepeat("Task test");
             });
             Debug.WriteLine("Message Shown");
-
         }
     }
 }
