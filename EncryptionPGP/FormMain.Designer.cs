@@ -30,50 +30,54 @@
         {
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.CheckTabPage = new DevExpress.XtraTab.XtraTabPage();
-            this.CreateTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.FilePathButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
+            this.PasswordTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.CheckButton = new DevExpress.XtraEditors.SimpleButton();
+            this.PrivateKeyButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.PublickKeyButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.PrivateKeyButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.CheckButton = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.PasswordTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.CreateTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.CreateButton = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.KeysButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
+            this.CreateButton = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.CheckTabPage.SuspendLayout();
-            this.CreateTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FilePathButtonEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PasswordTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PrivateKeyButtonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PublickKeyButtonEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PrivateKeyButtonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PasswordTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            this.CreateTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.KeysButtonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KeysButtonEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,15 +100,9 @@
             this.CheckTabPage.Size = new System.Drawing.Size(574, 359);
             this.CheckTabPage.Text = "Check";
             // 
-            // CreateTabPage
-            // 
-            this.CreateTabPage.Controls.Add(this.layoutControl2);
-            this.CreateTabPage.Name = "CreateTabPage";
-            this.CreateTabPage.Size = new System.Drawing.Size(574, 359);
-            this.CreateTabPage.Text = "Create";
-            // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.FilePathButtonEdit);
             this.layoutControl1.Controls.Add(this.PasswordTextEdit);
             this.layoutControl1.Controls.Add(this.CheckButton);
             this.layoutControl1.Controls.Add(this.PrivateKeyButtonEdit);
@@ -117,20 +115,50 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // Root
+            // FilePathButtonEdit
             // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
-            this.emptySpaceItem1,
-            this.layoutControlItem2,
-            this.layoutControlItem3,
-            this.emptySpaceItem2,
-            this.layoutControlItem4});
-            this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(574, 359);
-            this.Root.TextVisible = false;
+            this.FilePathButtonEdit.Location = new System.Drawing.Point(88, 118);
+            this.FilePathButtonEdit.Name = "FilePathButtonEdit";
+            this.FilePathButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.FilePathButtonEdit.Size = new System.Drawing.Size(470, 28);
+            this.FilePathButtonEdit.StyleController = this.layoutControl1;
+            this.FilePathButtonEdit.TabIndex = 8;
+            this.FilePathButtonEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.FilePathButtonEdit_ButtonClick);
+            this.FilePathButtonEdit.EditValueChanged += new System.EventHandler(this.FilePathButtonEdit_EditValueChanged);
+            // 
+            // PasswordTextEdit
+            // 
+            this.PasswordTextEdit.Location = new System.Drawing.Point(88, 84);
+            this.PasswordTextEdit.Name = "PasswordTextEdit";
+            this.PasswordTextEdit.Size = new System.Drawing.Size(470, 28);
+            this.PasswordTextEdit.StyleController = this.layoutControl1;
+            this.PasswordTextEdit.TabIndex = 7;
+            this.PasswordTextEdit.EditValueChanged += new System.EventHandler(this.PasswordTextEdit_EditValueChanged);
+            // 
+            // CheckButton
+            // 
+            this.CheckButton.Location = new System.Drawing.Point(458, 315);
+            this.CheckButton.MaximumSize = new System.Drawing.Size(100, 0);
+            this.CheckButton.MinimumSize = new System.Drawing.Size(100, 0);
+            this.CheckButton.Name = "CheckButton";
+            this.CheckButton.Size = new System.Drawing.Size(100, 28);
+            this.CheckButton.StyleController = this.layoutControl1;
+            this.CheckButton.TabIndex = 6;
+            this.CheckButton.Text = "Check";
+            this.CheckButton.Click += new System.EventHandler(this.CheckButton_Click);
+            // 
+            // PrivateKeyButtonEdit
+            // 
+            this.PrivateKeyButtonEdit.Location = new System.Drawing.Point(88, 50);
+            this.PrivateKeyButtonEdit.Name = "PrivateKeyButtonEdit";
+            this.PrivateKeyButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.PrivateKeyButtonEdit.Size = new System.Drawing.Size(470, 28);
+            this.PrivateKeyButtonEdit.StyleController = this.layoutControl1;
+            this.PrivateKeyButtonEdit.TabIndex = 5;
+            this.PrivateKeyButtonEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PrivateKeyButtonEdit_ButtonClick);
+            this.PrivateKeyButtonEdit.EditValueChanged += new System.EventHandler(this.PrivateKeyButtonEdit_EditValueChanged);
             // 
             // PublickKeyButtonEdit
             // 
@@ -145,6 +173,22 @@
             this.PublickKeyButtonEdit.EditValueChanged += new System.EventHandler(this.PublickKeyButtonEdit_EditValueChanged);
             this.PublickKeyButtonEdit.Click += new System.EventHandler(this.PublickKeyButtonEdit_Click);
             // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.emptySpaceItem1,
+            this.layoutControlItem2,
+            this.layoutControlItem3,
+            this.emptySpaceItem2,
+            this.layoutControlItem4,
+            this.layoutControlItem7});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(574, 359);
+            this.Root.TextVisible = false;
+            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.PublickKeyButtonEdit;
@@ -157,21 +201,10 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 102);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 136);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(548, 197);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(548, 163);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // PrivateKeyButtonEdit
-            // 
-            this.PrivateKeyButtonEdit.Location = new System.Drawing.Point(88, 50);
-            this.PrivateKeyButtonEdit.Name = "PrivateKeyButtonEdit";
-            this.PrivateKeyButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.PrivateKeyButtonEdit.Size = new System.Drawing.Size(470, 28);
-            this.PrivateKeyButtonEdit.StyleController = this.layoutControl1;
-            this.PrivateKeyButtonEdit.TabIndex = 5;
-            this.PrivateKeyButtonEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PrivateKeyButtonEdit_ButtonClick);
             // 
             // layoutControlItem2
             // 
@@ -181,18 +214,6 @@
             this.layoutControlItem2.Size = new System.Drawing.Size(548, 34);
             this.layoutControlItem2.Text = "PrivateKey:";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(56, 13);
-            // 
-            // CheckButton
-            // 
-            this.CheckButton.Location = new System.Drawing.Point(458, 315);
-            this.CheckButton.MaximumSize = new System.Drawing.Size(100, 0);
-            this.CheckButton.MinimumSize = new System.Drawing.Size(100, 0);
-            this.CheckButton.Name = "CheckButton";
-            this.CheckButton.Size = new System.Drawing.Size(100, 28);
-            this.CheckButton.StyleController = this.layoutControl1;
-            this.CheckButton.TabIndex = 6;
-            this.CheckButton.Text = "Check";
-            this.CheckButton.Click += new System.EventHandler(this.CheckButton_Click);
             // 
             // layoutControlItem3
             // 
@@ -211,14 +232,6 @@
             this.emptySpaceItem2.Size = new System.Drawing.Size(442, 34);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // PasswordTextEdit
-            // 
-            this.PasswordTextEdit.Location = new System.Drawing.Point(88, 84);
-            this.PasswordTextEdit.Name = "PasswordTextEdit";
-            this.PasswordTextEdit.Size = new System.Drawing.Size(470, 28);
-            this.PasswordTextEdit.StyleController = this.layoutControl1;
-            this.PasswordTextEdit.TabIndex = 7;
-            // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.PasswordTextEdit;
@@ -227,6 +240,22 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(548, 34);
             this.layoutControlItem4.Text = "Password:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(56, 13);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.FilePathButtonEdit;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 102);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(548, 34);
+            this.layoutControlItem7.Text = "File Path:";
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(56, 13);
+            // 
+            // CreateTabPage
+            // 
+            this.CreateTabPage.Controls.Add(this.layoutControl2);
+            this.CreateTabPage.Name = "CreateTabPage";
+            this.CreateTabPage.Size = new System.Drawing.Size(574, 359);
+            this.CreateTabPage.Text = "Create";
             // 
             // layoutControl2
             // 
@@ -239,6 +268,30 @@
             this.layoutControl2.Size = new System.Drawing.Size(574, 359);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
+            // 
+            // KeysButtonEdit
+            // 
+            this.KeysButtonEdit.Location = new System.Drawing.Point(92, 16);
+            this.KeysButtonEdit.Name = "KeysButtonEdit";
+            this.KeysButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.KeysButtonEdit.Size = new System.Drawing.Size(466, 28);
+            this.KeysButtonEdit.StyleController = this.layoutControl2;
+            this.KeysButtonEdit.TabIndex = 5;
+            this.KeysButtonEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.KeysButtonEdit_ButtonClick);
+            this.KeysButtonEdit.EditValueChanged += new System.EventHandler(this.KeysButtonEdit_EditValueChanged);
+            // 
+            // CreateButton
+            // 
+            this.CreateButton.Location = new System.Drawing.Point(458, 315);
+            this.CreateButton.MaximumSize = new System.Drawing.Size(100, 0);
+            this.CreateButton.MinimumSize = new System.Drawing.Size(100, 0);
+            this.CreateButton.Name = "CreateButton";
+            this.CreateButton.Size = new System.Drawing.Size(100, 28);
+            this.CreateButton.StyleController = this.layoutControl2;
+            this.CreateButton.TabIndex = 4;
+            this.CreateButton.Text = "Create";
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // layoutControlGroup1
             // 
@@ -253,18 +306,6 @@
             this.layoutControlGroup1.Size = new System.Drawing.Size(574, 359);
             this.layoutControlGroup1.TextVisible = false;
             // 
-            // CreateButton
-            // 
-            this.CreateButton.Location = new System.Drawing.Point(458, 315);
-            this.CreateButton.MaximumSize = new System.Drawing.Size(100, 0);
-            this.CreateButton.MinimumSize = new System.Drawing.Size(100, 0);
-            this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(100, 28);
-            this.CreateButton.StyleController = this.layoutControl2;
-            this.CreateButton.TabIndex = 4;
-            this.CreateButton.Text = "Create";
-            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
-            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.CreateButton;
@@ -274,14 +315,6 @@
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
-            // emptySpaceItem3
-            // 
-            this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 34);
-            this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(548, 265);
-            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // emptySpaceItem4
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
@@ -290,16 +323,13 @@
             this.emptySpaceItem4.Size = new System.Drawing.Size(442, 34);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // KeysButtonEdit
+            // emptySpaceItem3
             // 
-            this.KeysButtonEdit.Location = new System.Drawing.Point(92, 16);
-            this.KeysButtonEdit.Name = "KeysButtonEdit";
-            this.KeysButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.KeysButtonEdit.Size = new System.Drawing.Size(466, 28);
-            this.KeysButtonEdit.StyleController = this.layoutControl2;
-            this.KeysButtonEdit.TabIndex = 5;
-            this.KeysButtonEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.KeysButtonEdit_ButtonClick);
+            this.emptySpaceItem3.AllowHotTrack = false;
+            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 34);
+            this.emptySpaceItem3.Name = "emptySpaceItem3";
+            this.emptySpaceItem3.Size = new System.Drawing.Size(548, 265);
+            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem6
             // 
@@ -317,31 +347,34 @@
             this.ClientSize = new System.Drawing.Size(576, 390);
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.CheckTabPage.ResumeLayout(false);
-            this.CreateTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FilePathButtonEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PasswordTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PrivateKeyButtonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PublickKeyButtonEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PrivateKeyButtonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PasswordTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            this.CreateTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.KeysButtonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KeysButtonEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
 
@@ -372,6 +405,8 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
         private DevExpress.XtraEditors.ButtonEdit KeysButtonEdit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraEditors.ButtonEdit FilePathButtonEdit;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
     }
 }
 

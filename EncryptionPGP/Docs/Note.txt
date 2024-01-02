@@ -1,0 +1,14 @@
+
+>>>General
+# File sample 
+"190991-003.txt.gpg"
+
+>>>Decryption
+Requirements:
+# Public Key
+# Private Key
+# Password: Required Password
+
+>>>Encryption
+
+

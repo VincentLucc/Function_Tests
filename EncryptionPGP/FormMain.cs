@@ -15,6 +15,9 @@ namespace EncryptionPGP
     {
         public string sMessage;
 
+        csDevMessage messageHelper;
+
+        private bool isLoad;
         public FormMain()
         {
             InitializeComponent();
@@ -23,18 +26,39 @@ namespace EncryptionPGP
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            csConfigHelper.Save(out string sMessage);
+            if (isLoad)
+            {
+                if (!csConfigHelper.Save(out string sMessage))
+                {
+                    messageHelper.Info(sMessage);
+                }
+            }
+
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            csConfigHelper.LoadOrCreateConfig(out string sMessage);
+            //Init
+            messageHelper = new csDevMessage(this);
 
+            if (!csConfigHelper.LoadOrCreateConfig(out string sMessage))
+            {
+                messageHelper.Info(sMessage);
+                this.Close();
+                return;
+            }
+
+            //Decryption page
             PublickKeyButtonEdit.Text = csConfigHelper.Config.PublicKeyPath;
             PrivateKeyButtonEdit.Text = csConfigHelper.Config.PrivateKeyPath;
-            PasswordTextEdit.Text= csConfigHelper.Config.Password;
-            KeysButtonEdit.Text= csConfigHelper.Config.KeysFolder;
+            PasswordTextEdit.Text = csConfigHelper.Config.Password;
+            FilePathButtonEdit.Text = csConfigHelper.Config.DecryptFilePath;
 
+            //Encryption page
+            KeysButtonEdit.Text = csConfigHelper.Config.NewKeysFolder;
+
+            //Finish
+            isLoad = true;
         }
 
         private void CheckButton_Click(object sender, EventArgs e)
@@ -44,7 +68,7 @@ namespace EncryptionPGP
 
         private void PublickKeyButtonEdit_EditValueChanged(object sender, EventArgs e)
         {
-
+            csConfigHelper.Config.PublicKeyPath = PublickKeyButtonEdit.Text;
         }
 
         private void PublickKeyButtonEdit_Click(object sender, EventArgs e)
@@ -88,6 +112,38 @@ namespace EncryptionPGP
                     KeysButtonEdit.Text = dialog.SelectedPath;
                 }
             }
+        }
+
+        private void PrivateKeyButtonEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            csConfigHelper.Config.PrivateKeyPath = PrivateKeyButtonEdit.Text;
+        }
+
+        private void PasswordTextEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            csConfigHelper.Config.Password = PasswordTextEdit.Text;
+        }
+
+
+        private void FilePathButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            using (XtraOpenFileDialog dialog = new XtraOpenFileDialog())
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    FilePathButtonEdit.Text = dialog.FileName;
+                }
+            }
+        }
+
+        private void FilePathButtonEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            csConfigHelper.Config.DecryptFilePath = FilePathButtonEdit.Text;
+        }
+
+        private void KeysButtonEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            csConfigHelper.Config.NewKeysFolder = KeysButtonEdit.Text;
         }
     }
 }
