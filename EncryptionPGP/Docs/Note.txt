@@ -14,5 +14,8 @@ Requirements:
 # Password: Required Password
 
 >>>Encryption
-
+# ASCII armored
+The armored text output is printable ASCII text.
+The armored text file is 30% larger than the raw byte data.
+The decryption result is the same.
 

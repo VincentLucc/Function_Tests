@@ -23,7 +23,12 @@ namespace EncryptionPGP
         /// <summary>
         /// Password to decrypt the file
         /// </summary>
-        public string Password { get; set; }
+        public string PasswordDecryption { get; set; }
+        
+        /// <summary>
+        /// Password used to encrypt the file
+        /// </summary>
+        public string PasswordEncryption { get; set; }
 
         /// <summary>
         /// File to check
@@ -35,7 +40,8 @@ namespace EncryptionPGP
             NewKeysFolder = "";
             PublicKeyPath = "";
             PrivateKeyPath = "";
-            Password = "";
+            PasswordDecryption = "";
+            PasswordEncryption = "";
         }
     }
 }

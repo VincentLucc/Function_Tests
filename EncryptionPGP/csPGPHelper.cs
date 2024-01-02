@@ -20,13 +20,13 @@ namespace EncryptionPGP
     /// <summary>
     /// Data file result
     /// </summary>
-    public class csEncryptionPGP
+    public class csPGPHelper
     {
-        public byte[] fileBytes;
+        public static byte[] fileBytes;
 
-        public string PlainText;
+        public static string PlainText;
 
-        public GeneralResult DecryptionProcedure(string sFilePath)
+        public static GeneralResult DecryptFile(string sFilePath)
         {
             var result = new GeneralResult();
             fileBytes = null;
@@ -47,7 +47,7 @@ namespace EncryptionPGP
 
             //Get cetificate
             csPGPCertificate cetificate = new csPGPCertificate();
- 
+
             //Load keys
             var certResult = cetificate.LoadConfig(csConfigHelper.Config);
             if (!certResult.IsSuccess)
@@ -73,6 +73,8 @@ namespace EncryptionPGP
                     }
 
                 }
+
+
 
                 //Decryption finished
                 if (fileBytes != null && fileBytes.Length > 0)
@@ -102,17 +104,45 @@ namespace EncryptionPGP
         }
 
 
-     
+        public static GeneralResult EncryptFile(csConfig config)
+        {
+            var result = new GeneralResult();
+           
+
+            if (string.IsNullOrWhiteSpace(config.DecryptFilePath))
+            {
+                result.Message = "Empty file path.";
+                return result;
+            }
+
+            if (!File.Exists(config.DecryptFilePath))
+            {
+                result.Message = "File is not exist.";
+                return result;
+            }
+
+            try
+            {
+                //Get the file name
+                string sPublicPath= csConfigHelper.Config.PublicKeyPath;
+                string sPrivatePath= csConfigHelper.Config.PrivateKeyPath;
+                string sOutput = config.DecryptFilePath + ".gpg";
+                //Armored file means change text to readable ascii text
+                //Use the raw text mode
+                PGPDecrypt.EncryptAndSign(config.DecryptFilePath, sOutput, sPublicPath, sPrivatePath, config.PasswordEncryption, false);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                result.Message = ex.Message;
+                return result;
+            }
 
 
-
- 
-
-
-
-
-
-
+            //Pass all steps
+            result.IsSuccess = true;
+            return result;
+        }
 
     }
 

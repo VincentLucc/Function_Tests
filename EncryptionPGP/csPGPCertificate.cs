@@ -41,14 +41,14 @@ namespace EncryptionPGP
             GeneralResult result = new GeneralResult();
 
             //Check if password alread entered
-            if (string.IsNullOrWhiteSpace(config.Password))
+            if (string.IsNullOrWhiteSpace(config.PasswordDecryption))
             {
                 result.Message = "Password is empty.";
                 return result;
             }
 
             //Check keys
-            if (!PGP.Keys.PGPEncryptionKeys.IsValidPassphrase(config.PublicKeyPath, config.PrivateKeyPath, config.Password))
+            if (!PGP.Keys.PGPEncryptionKeys.IsValidPassphrase(config.PublicKeyPath, config.PrivateKeyPath, config.PasswordDecryption))
             {
                 result.Message = "Invalid passphrase.";
                 return result;
@@ -56,7 +56,7 @@ namespace EncryptionPGP
 
             PublicKey = PGP.Certificate.PGPCertificate.GetKeyString(config.PublicKeyPath);
             PrivateKey = PGP.Certificate.PGPCertificate.GetKeyString(config.PrivateKeyPath);
-            Passphrase = config.Password;
+            Passphrase = config.PasswordDecryption;
 
             result.IsSuccess = true;
             return result;
