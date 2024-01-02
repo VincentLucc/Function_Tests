@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraGrid;
 using Org.BouncyCastle.Utilities.IO;
+using PGP.Certificate;
 using PGP.PGPDecryption;
 using System;
 using System.Collections.Generic;
@@ -104,10 +105,52 @@ namespace EncryptionPGP
         }
 
 
+        public static GeneralResult CreateKeyFiles(csConfig config)
+        {
+            var result = new GeneralResult();
+
+            try
+            {
+                //Check Folder
+                if (!Directory.Exists(config.NewKeysFolder))
+                {
+                    result.Message = "Folder not exist.";
+                    return result;
+                }
+
+
+                //Check Password
+                if (string.IsNullOrWhiteSpace(config.PasswordEncryption))
+                {
+                    result.Message = "Password is empty.";
+                    return result;
+                }
+
+                string sPublic = config.NewKeysFolder + "\\PublicKey.asc";
+                string sPrivate = config.NewKeysFolder + "\\PrivateKey.asc";
+
+                if (!PGPCertificate.GenerateKey(config.NewKeysFolder, config.PasswordEncryption, sPublic, sPrivate))
+                {
+                    result.Message = "Create key error.";
+                    return result;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+                return result;
+            }
+
+            //Pass all steps
+            result.IsSuccess = true;
+            return result;
+        }
+
         public static GeneralResult EncryptFile(csConfig config)
         {
             var result = new GeneralResult();
-           
+
 
             if (string.IsNullOrWhiteSpace(config.DecryptFilePath))
             {
@@ -124,12 +167,14 @@ namespace EncryptionPGP
             try
             {
                 //Get the file name
-                string sPublicPath= csConfigHelper.Config.PublicKeyPath;
-                string sPrivatePath= csConfigHelper.Config.PrivateKeyPath;
+                string sPublicPath = csConfigHelper.Config.PublicKeyPath;
+                string sPrivatePath = csConfigHelper.Config.PrivateKeyPath;
                 string sOutput = config.DecryptFilePath + ".gpg";
                 //Armored file means change text to readable ascii text
                 //Use the raw text mode
                 PGPDecrypt.EncryptAndSign(config.DecryptFilePath, sOutput, sPublicPath, sPrivatePath, config.PasswordEncryption, false);
+
+
             }
             catch (Exception ex)
             {

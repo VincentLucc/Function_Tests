@@ -9,9 +9,9 @@ BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll
 
 >>>Decryption
 Requirements:
-# Public Key
-# Private Key
-# Password: Required Password
+# Public Key: File encryption
+# Private Key: File decryption
+# Password: Used to create the private key and decryption
 
 >>>Encryption
 # ASCII armored

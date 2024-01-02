@@ -126,7 +126,15 @@ namespace EncryptionPGP
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-
+            var result = csPGPHelper.CreateKeyFiles(csConfigHelper.Config);
+            if (result.IsSuccess)
+            {
+                messageHelper.Info("Success!");
+            }
+            else
+            {
+                messageHelper.Info(result.Message);
+            }
         }
 
         private void KeysButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
