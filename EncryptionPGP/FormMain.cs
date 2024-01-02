@@ -63,6 +63,31 @@ namespace EncryptionPGP
 
         private void CheckButton_Click(object sender, EventArgs e)
         {
+            csEncryptionPGP encryptionPGP = new csEncryptionPGP();
+            string sFile = csConfigHelper.Config.DecryptFilePath;
+            var decResult = encryptionPGP.DecryptionProcedure(sFile);
+            int iLengthLimit = 9999;
+
+            if (!decResult.IsSuccess)
+            {
+                memoEdit1.Text = "";
+                messageHelper.Info(decResult.Message);
+                return;
+            }
+
+            //Load result
+            if (encryptionPGP.PlainText == null)
+            {
+                memoEdit1.Text = "";
+            }
+            else
+            {
+                if (encryptionPGP.PlainText.Length > iLengthLimit)
+                    memoEdit1.Text = encryptionPGP.PlainText.Substring(0, iLengthLimit);
+                else
+                    memoEdit1.Text = encryptionPGP.PlainText;
+            }
+
 
         }
 
@@ -144,6 +169,11 @@ namespace EncryptionPGP
         private void KeysButtonEdit_EditValueChanged(object sender, EventArgs e)
         {
             csConfigHelper.Config.NewKeysFolder = KeysButtonEdit.Text;
+        }
+
+        private void createFileButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Org.BouncyCastle.Math.EC.ECCurve;
 using System.Xml.Serialization;
 using System.Windows.Forms;
 
