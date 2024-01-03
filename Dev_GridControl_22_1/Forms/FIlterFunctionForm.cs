@@ -34,7 +34,8 @@ namespace Dev_GridControl_22_1.Forms
             }
 
             gridControl1.DataSource = students;
-            gridView1.OptionsFind.AlwaysVisible = true; //Show filter button
+            //This option is different from the filter function
+            gridView1.OptionsFind.AlwaysVisible = true; //Show the find panel
 
             //Find mode: default <10,000, auto, >10,000 manual
             //gridView1.OptionsFind.FindMode = FindMode.FindClick;

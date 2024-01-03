@@ -114,7 +114,7 @@ namespace EncryptionPGP
                 //Check Folder
                 if (!Directory.Exists(config.NewKeysFolder))
                 {
-                    result.Message = "Folder not exist.";
+                    result.Message = "The folder doesn't exist.";
                     return result;
                 }
 
@@ -154,13 +154,13 @@ namespace EncryptionPGP
 
             if (string.IsNullOrWhiteSpace(config.DecryptFilePath))
             {
-                result.Message = "Empty file path.";
+                result.Message = "The file path is empty.";
                 return result;
             }
 
             if (!File.Exists(config.DecryptFilePath))
             {
-                result.Message = "File is not exist.";
+                result.Message = "The file doesn't exist.";
                 return result;
             }
 
