@@ -9,8 +9,8 @@ BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll
 
 >>>Decryption
 Requirements:
-# Public Key: File encryption
-# Private Key: File decryption
+# Public Key: File encryption/decryption
+# Private Key: File decryption (Not required for encryption if sign not required)
 # Password: Used to create the private key and decryption
 
 >>>Encryption

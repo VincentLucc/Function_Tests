@@ -47,6 +47,7 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.EncryptionTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.EncryptionFileButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.EncrptionPassTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.FileEncryptionButton = new DevExpress.XtraEditors.SimpleButton();
             this.KeysButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
@@ -58,7 +59,6 @@
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.DecryptionFileButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -81,6 +81,7 @@
             this.EncryptionTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EncryptionFileButtonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EncrptionPassTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KeysButtonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -90,7 +91,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DecryptionFileButtonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             this.SuspendLayout();
             // 
@@ -283,7 +283,7 @@
             // 
             // layoutControl2
             // 
-            this.layoutControl2.Controls.Add(this.DecryptionFileButtonEdit);
+            this.layoutControl2.Controls.Add(this.EncryptionFileButtonEdit);
             this.layoutControl2.Controls.Add(this.EncrptionPassTextEdit);
             this.layoutControl2.Controls.Add(this.FileEncryptionButton);
             this.layoutControl2.Controls.Add(this.KeysButtonEdit);
@@ -296,11 +296,23 @@
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
+            // EncryptionFileButtonEdit
+            // 
+            this.EncryptionFileButtonEdit.Location = new System.Drawing.Point(164, 84);
+            this.EncryptionFileButtonEdit.Name = "EncryptionFileButtonEdit";
+            this.EncryptionFileButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.EncryptionFileButtonEdit.Size = new System.Drawing.Size(513, 28);
+            this.EncryptionFileButtonEdit.StyleController = this.layoutControl2;
+            this.EncryptionFileButtonEdit.TabIndex = 9;
+            this.EncryptionFileButtonEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.EncryptionFileButtonEdit_ButtonClick);
+            this.EncryptionFileButtonEdit.EditValueChanged += new System.EventHandler(this.EncryptionFileButtonEdit_EditValueChanged);
+            // 
             // EncrptionPassTextEdit
             // 
-            this.EncrptionPassTextEdit.Location = new System.Drawing.Point(136, 50);
+            this.EncrptionPassTextEdit.Location = new System.Drawing.Point(164, 50);
             this.EncrptionPassTextEdit.Name = "EncrptionPassTextEdit";
-            this.EncrptionPassTextEdit.Size = new System.Drawing.Size(541, 28);
+            this.EncrptionPassTextEdit.Size = new System.Drawing.Size(513, 28);
             this.EncrptionPassTextEdit.StyleController = this.layoutControl2;
             this.EncrptionPassTextEdit.TabIndex = 8;
             this.EncrptionPassTextEdit.EditValueChanged += new System.EventHandler(this.SavePassTextEdit_EditValueChanged);
@@ -319,11 +331,11 @@
             // 
             // KeysButtonEdit
             // 
-            this.KeysButtonEdit.Location = new System.Drawing.Point(136, 16);
+            this.KeysButtonEdit.Location = new System.Drawing.Point(164, 16);
             this.KeysButtonEdit.Name = "KeysButtonEdit";
             this.KeysButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.KeysButtonEdit.Size = new System.Drawing.Size(541, 28);
+            this.KeysButtonEdit.Size = new System.Drawing.Size(513, 28);
             this.KeysButtonEdit.StyleController = this.layoutControl2;
             this.KeysButtonEdit.TabIndex = 5;
             this.KeysButtonEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.KeysButtonEdit_ButtonClick);
@@ -381,7 +393,7 @@
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(667, 34);
             this.layoutControlItem6.Text = "Keys Folder:";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(104, 13);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(132, 13);
             // 
             // layoutControlItem9
             // 
@@ -407,28 +419,16 @@
             this.layoutControlItem10.Name = "layoutControlItem10";
             this.layoutControlItem10.Size = new System.Drawing.Size(667, 34);
             this.layoutControlItem10.Text = "Encryption Password:";
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(104, 13);
-            // 
-            // DecryptionFileButtonEdit
-            // 
-            this.DecryptionFileButtonEdit.Location = new System.Drawing.Point(136, 84);
-            this.DecryptionFileButtonEdit.Name = "DecryptionFileButtonEdit";
-            this.DecryptionFileButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.DecryptionFileButtonEdit.Size = new System.Drawing.Size(541, 28);
-            this.DecryptionFileButtonEdit.StyleController = this.layoutControl2;
-            this.DecryptionFileButtonEdit.TabIndex = 9;
-            this.DecryptionFileButtonEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.DecryptionFileButtonEdit_ButtonClick);
-            this.DecryptionFileButtonEdit.EditValueChanged += new System.EventHandler(this.DecryptionFileButtonEdit_EditValueChanged);
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(132, 13);
             // 
             // layoutControlItem11
             // 
-            this.layoutControlItem11.Control = this.DecryptionFileButtonEdit;
+            this.layoutControlItem11.Control = this.EncryptionFileButtonEdit;
             this.layoutControlItem11.Location = new System.Drawing.Point(0, 68);
             this.layoutControlItem11.Name = "layoutControlItem11";
             this.layoutControlItem11.Size = new System.Drawing.Size(667, 34);
-            this.layoutControlItem11.Text = "Decryption File:";
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(104, 13);
+            this.layoutControlItem11.Text = "Encryption File (Plain Text):";
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(132, 13);
             // 
             // FormMain
             // 
@@ -461,6 +461,7 @@
             this.EncryptionTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.EncryptionFileButtonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EncrptionPassTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KeysButtonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -470,7 +471,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DecryptionFileButtonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             this.ResumeLayout(false);
 
@@ -508,7 +508,7 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraEditors.TextEdit EncrptionPassTextEdit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
-        private DevExpress.XtraEditors.ButtonEdit DecryptionFileButtonEdit;
+        private DevExpress.XtraEditors.ButtonEdit EncryptionFileButtonEdit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
     }
 }

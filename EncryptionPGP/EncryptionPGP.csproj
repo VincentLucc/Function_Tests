@@ -103,9 +103,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Docs\EncrtptedFileSample\190991-003.txt.gpg" />
-    <None Include="Docs\PGP Key\PacksmartPrivate.asc" />
-    <None Include="Docs\PGP Key\PacksmartPublic.asc" />
+    <None Include="Docs\Samples\NewKeys.zip" />
+    <None Include="Docs\Samples\Test01.txt.gpg" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -121,11 +120,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Docs\Samples\ReadMe.txt" />
     <Content Include="Docs\Note.txt" />
-    <Content Include="Docs\PGP Key\keypass.txt" />
     <Content Include="Docs\Libs\PGPEncryption.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Docs\Samples\Test01.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

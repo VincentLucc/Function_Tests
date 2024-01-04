@@ -35,6 +35,11 @@ namespace EncryptionPGP
         /// </summary>
         public string DecryptFilePath { get; set; }
 
+        /// <summary>
+        /// File to encrytption
+        /// </summary>
+        public string EncryptionFilePath { get; set; }
+
         public csConfig() 
         {
             NewKeysFolder = "";

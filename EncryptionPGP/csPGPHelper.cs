@@ -152,13 +152,13 @@ namespace EncryptionPGP
             var result = new GeneralResult();
 
 
-            if (string.IsNullOrWhiteSpace(config.DecryptFilePath))
+            if (string.IsNullOrWhiteSpace(config.EncryptionFilePath))
             {
                 result.Message = "The file path is empty.";
                 return result;
             }
 
-            if (!File.Exists(config.DecryptFilePath))
+            if (!File.Exists(config.EncryptionFilePath))
             {
                 result.Message = "The file doesn't exist.";
                 return result;
@@ -169,10 +169,10 @@ namespace EncryptionPGP
                 //Get the file name
                 string sPublicPath = csConfigHelper.Config.PublicKeyPath;
                 string sPrivatePath = csConfigHelper.Config.PrivateKeyPath;
-                string sOutput = config.DecryptFilePath + ".gpg";
+                string sOutput = config.EncryptionFilePath + ".gpg";
                 //Armored file means change text to readable ascii text
                 //Use the raw text mode
-                PGPDecrypt.EncryptAndSign(config.DecryptFilePath, sOutput, sPublicPath, sPrivatePath, config.PasswordEncryption, false);
+                PGPDecrypt.EncryptAndSign(config.EncryptionFilePath, sOutput, sPublicPath, sPrivatePath, config.PasswordEncryption, false);
 
 
             }

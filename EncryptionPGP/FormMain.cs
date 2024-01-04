@@ -57,7 +57,7 @@ namespace EncryptionPGP
             //Encryption page
             KeysButtonEdit.Text = csConfigHelper.Config.NewKeysFolder;
             EncrptionPassTextEdit.Text = csConfigHelper.Config.PasswordEncryption;
-            DecryptionFileButtonEdit.Text = csConfigHelper.Config.DecryptFilePath;
+            EncryptionFileButtonEdit.Text = csConfigHelper.Config.EncryptionFilePath;
 
             //Finish
             isLoad = true;
@@ -201,20 +201,22 @@ namespace EncryptionPGP
             csConfigHelper.Config.PasswordEncryption = EncrptionPassTextEdit.Text;
         }
 
-        private void DecryptionFileButtonEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            csConfigHelper.Config.DecryptFilePath = DecryptionFileButtonEdit.Text;
-        }
+ 
 
-        private void DecryptionFileButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void EncryptionFileButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             using (XtraOpenFileDialog dialog = new XtraOpenFileDialog())
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    DecryptionFileButtonEdit.Text = dialog.FileName;
+                    EncryptionFileButtonEdit.Text = dialog.FileName;
                 }
             }
+        }
+
+        private void EncryptionFileButtonEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            csConfigHelper.Config.EncryptionFilePath = EncryptionFileButtonEdit.Text;
         }
     }
 }
