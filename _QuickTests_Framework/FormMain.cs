@@ -1529,7 +1529,7 @@ namespace _QuickTests_Framework
             //True
             if (Test1.HasFlag(Test2)) { }
 
-            
+
         }
 
         private void GetNextWeekDay(_weekDays daySelections)
@@ -1541,12 +1541,12 @@ namespace _QuickTests_Framework
 
             }
 
-            var allDays=new List<DayOfWeek>() { DayOfWeek.Sunday, 
-                DayOfWeek.Monday, 
-                DayOfWeek.Tuesday, 
-                DayOfWeek.Wednesday, 
-                DayOfWeek.Thursday, 
-                DayOfWeek.Friday, 
+            var allDays = new List<DayOfWeek>() { DayOfWeek.Sunday,
+                DayOfWeek.Monday,
+                DayOfWeek.Tuesday,
+                DayOfWeek.Wednesday,
+                DayOfWeek.Thursday,
+                DayOfWeek.Friday,
                 DayOfWeek.Saturday};
             //foreach (var item in collection)
             //{
@@ -1577,6 +1577,27 @@ namespace _QuickTests_Framework
                 default:
                     return WeekDays.Sunday;
             }
+        }
+
+        private void bVirtualMethod_Click(object sender, EventArgs e)
+        {
+            csEmployee Employee = new csEmployee();
+            Employee.Draw1();
+
+            csDeveloper developer = new csDeveloper();
+            developer.Draw1();
+            developer.Draw2();
+
+            List<csEmployee> list = new List<csEmployee>();
+            list.Add(Employee);
+            list.Add(developer);
+            foreach (var item in list)
+            {
+                item.Draw1();
+                item.Draw2();
+            }
+
+
         }
     }
 

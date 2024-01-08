@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _CommonCode_Framework;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace _QuickTests_Framework
     {
         public string Name { get; set; }
 
-        public csShape() 
+        public csShape()
         {
             Name = string.Empty;
         }
@@ -43,7 +44,7 @@ namespace _QuickTests_Framework
     /// <summary>
     /// 抽象类：使用
     /// </summary>
-    public class csRectangle : csShape 
+    public class csRectangle : csShape
     {
 
         public override void Draw()
@@ -72,10 +73,53 @@ namespace _QuickTests_Framework
     /// </summary>
     public class csApple : Fruit
     {
-        public void Draw() 
+        public void Draw()
         {
 
         }
+
+
     }
+
+    /// <summary>
+    /// 虚方法
+    /// </summary>
+    public class csEmployee
+    {
+        public virtual void Draw1()
+        {
+            Debug.WriteLine("Virtual Base 1");
+        }
+
+        /// <summary>
+        /// 可以不使用
+        /// </summary>
+        public virtual void Draw2()
+        {
+            Debug.WriteLine("Virtual Base 2");
+        }
+    }
+
+    public class csDeveloper : csEmployee
+    {
+        public override void Draw1()
+        {
+            Debug.WriteLine("Virtual Developer 1");
+        }
+
+        /// <summary>
+        /// Use new can have different method parameters
+        /// If call a new method without specify the class type, will use base class method.
+        /// If call a override method without specify the class type, will try to call the sub class method instead.
+        /// </summary>
+        public new void Draw2()
+        {
+            Debug.WriteLine("Virtual New Developer 1");
+        }
+
+    }
+
+
+
 
 }

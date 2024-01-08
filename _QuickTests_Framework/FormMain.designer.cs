@@ -48,6 +48,7 @@ namespace _QuickTests_Framework
             this.bClassStatic = new System.Windows.Forms.Button();
             this.bReference = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.bEnumMultipleValues = new System.Windows.Forms.Button();
             this.bEnumGetDesc = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.bDeepCopyByProperty = new System.Windows.Forms.Button();
@@ -122,7 +123,7 @@ namespace _QuickTests_Framework
             this.tbPlain = new System.Windows.Forms.RichTextBox();
             this.bEncryptionInit = new System.Windows.Forms.Button();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
-            this.bEnumMultipleValues = new System.Windows.Forms.Button();
+            this.bVirtualMethod = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -309,8 +310,9 @@ namespace _QuickTests_Framework
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.bVirtualMethod);
             this.groupBox8.Controls.Add(this.bClassStatic);
-            this.groupBox8.Location = new System.Drawing.Point(387, 118);
+            this.groupBox8.Location = new System.Drawing.Point(210, 232);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(171, 87);
             this.groupBox8.TabIndex = 22;
@@ -341,12 +343,22 @@ namespace _QuickTests_Framework
             // 
             this.groupBox5.Controls.Add(this.bEnumMultipleValues);
             this.groupBox5.Controls.Add(this.bEnumGetDesc);
-            this.groupBox5.Location = new System.Drawing.Point(387, 204);
+            this.groupBox5.Location = new System.Drawing.Point(406, 232);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(171, 87);
             this.groupBox5.TabIndex = 19;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Enum";
+            // 
+            // bEnumMultipleValues
+            // 
+            this.bEnumMultipleValues.Location = new System.Drawing.Point(5, 45);
+            this.bEnumMultipleValues.Name = "bEnumMultipleValues";
+            this.bEnumMultipleValues.Size = new System.Drawing.Size(92, 20);
+            this.bEnumMultipleValues.TabIndex = 1;
+            this.bEnumMultipleValues.Text = "Multiple Values";
+            this.bEnumMultipleValues.UseVisualStyleBackColor = true;
+            this.bEnumMultipleValues.Click += new System.EventHandler(this.bEnumMultipleValues_Click);
             // 
             // bEnumGetDesc
             // 
@@ -362,7 +374,7 @@ namespace _QuickTests_Framework
             // 
             this.groupBox4.Controls.Add(this.bDeepCopyByProperty);
             this.groupBox4.Controls.Add(this.bDeepCopySerialization);
-            this.groupBox4.Location = new System.Drawing.Point(18, 223);
+            this.groupBox4.Location = new System.Drawing.Point(18, 232);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(171, 87);
             this.groupBox4.TabIndex = 18;
@@ -393,9 +405,9 @@ namespace _QuickTests_Framework
             // 
             this.groupBox3.Controls.Add(this.bSubString);
             this.groupBox3.Controls.Add(this.bStringSplit);
-            this.groupBox3.Location = new System.Drawing.Point(18, 127);
+            this.groupBox3.Location = new System.Drawing.Point(18, 140);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(134, 87);
+            this.groupBox3.Size = new System.Drawing.Size(171, 86);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "String";
@@ -913,7 +925,7 @@ namespace _QuickTests_Framework
             this.groupBox10.Controls.Add(this.bPrepareReal);
             this.groupBox10.Location = new System.Drawing.Point(184, 3);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(126, 199);
+            this.groupBox10.Size = new System.Drawing.Size(155, 199);
             this.groupBox10.TabIndex = 2;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Real Values";
@@ -1119,15 +1131,15 @@ namespace _QuickTests_Framework
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick_1);
             // 
-            // bEnumMultipleValues
+            // bVirtualMethod
             // 
-            this.bEnumMultipleValues.Location = new System.Drawing.Point(5, 45);
-            this.bEnumMultipleValues.Name = "bEnumMultipleValues";
-            this.bEnumMultipleValues.Size = new System.Drawing.Size(92, 20);
-            this.bEnumMultipleValues.TabIndex = 1;
-            this.bEnumMultipleValues.Text = "Multiple Values";
-            this.bEnumMultipleValues.UseVisualStyleBackColor = true;
-            this.bEnumMultipleValues.Click += new System.EventHandler(this.bEnumMultipleValues_Click);
+            this.bVirtualMethod.Location = new System.Drawing.Point(8, 45);
+            this.bVirtualMethod.Name = "bVirtualMethod";
+            this.bVirtualMethod.Size = new System.Drawing.Size(115, 23);
+            this.bVirtualMethod.TabIndex = 22;
+            this.bVirtualMethod.Text = "Virtual Method";
+            this.bVirtualMethod.UseVisualStyleBackColor = true;
+            this.bVirtualMethod.Click += new System.EventHandler(this.bVirtualMethod_Click);
             // 
             // FormMain
             // 
@@ -1259,6 +1271,7 @@ namespace _QuickTests_Framework
         private System.Windows.Forms.Button bPrepareReal;
         private System.Windows.Forms.Button bCalDecimals;
         private System.Windows.Forms.Button bEnumMultipleValues;
+        private System.Windows.Forms.Button bVirtualMethod;
     }
 }
 
