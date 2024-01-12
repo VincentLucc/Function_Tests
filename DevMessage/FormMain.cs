@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,11 +14,11 @@ using System.Windows.Forms;
 
 namespace DevMessage
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
         csDevMessage messageHelper;
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
             csPublic.formMain = this;
@@ -30,9 +31,9 @@ namespace DevMessage
             UIHelper.ShowMainLoading("Please wait.");
             await Task.Delay(2000);
             UIHelper.CloseLoadingForm();
-            UIHelper.ShowInfo("abc.123","Title 01");
+            UIHelper.ShowInfo("abc.123", "Title 01");
             UIHelper.ShowMainLoading();
-           
+
             await Task.Delay(1000);
             UIHelper.CloseLoadingForm();
             this.Enabled = true;
@@ -74,7 +75,7 @@ namespace DevMessage
             await Task.Delay(500);//wait for message box
             messageHelper.InfoAsyncNoRepeat("Async Test 2");
             Debug.WriteLine("Message Shown");
-            Task.Run(() =>
+            await Task.Run(() =>
             {
                 while (messageHelper.IsMessageBoxExist)
                 {
@@ -83,6 +84,37 @@ namespace DevMessage
                 messageHelper.InfoAsyncNoRepeat("Task test");
             });
             Debug.WriteLine("Message Shown");
+        }
+
+        private async void bSHowOverLay_Click(object sender, EventArgs e)
+        {
+            var overLayHandler = messageHelper.ShowCustomOverLay("Overlay Test");
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            while (stopwatch.ElapsedMilliseconds < 5000)
+            {
+                await Task.Delay(100);
+                overLayHandler.customPainter.sMessage = csPublic.timeString;
+            }
+            overLayHandler.Close();
+        }
+
+        private async void bSplashDefault_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(this, typeof(SplashScreen1), true, false, false);
+            this.Enabled = false;
+            await Task.Delay(2000);
+            SplashScreenManager.CloseForm();
+            this.Enabled = true;
+        }
+
+        private async void bSplashCustom_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(this, typeof(CustomSplashScreen), true, false, false);
+            this.Enabled = false;
+            await Task.Delay(2000);
+            SplashScreenManager.CloseForm();
+            this.Enabled = true;
         }
     }
 }

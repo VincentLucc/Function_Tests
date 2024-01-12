@@ -157,18 +157,35 @@ public class csDevMessage
         return result;
     }
 
-    public IOverlaySplashScreenHandle ShowCustomOverLay(string sMessage)
+    public csOverLayHandle ShowCustomOverLay(string sMessage)
     {
-        var handle = SplashScreenManager.ShowOverlayForm(ParentForm, customPainter: new CustomOverlayPainter(sMessage));
+        csOverLayHandle handle = new csOverLayHandle();
+        handle.customPainter = new CustomOverlayPainter(sMessage);
+        handle.Hanlder = SplashScreenManager.ShowOverlayForm(ParentForm, customPainter: handle.customPainter);
         return handle;
     }
+}
+
+public class csOverLayHandle
+{
+    public IOverlaySplashScreenHandle Hanlder { get; set; }
+    public CustomOverlayPainter customPainter { get; set; }
+
+
+    public void Close()
+    {
+        Hanlder.Close();
+    }
+
+
+
 }
 
 public class CustomOverlayPainter : OverlayWindowPainterBase
 {
     // Defines the string’s font.
     private Font drawFont;
-    string sMessage;
+    public string sMessage;
 
     public CustomOverlayPainter(string sInput)
     {
@@ -180,8 +197,7 @@ public class CustomOverlayPainter : OverlayWindowPainterBase
     {
 
         //Specify the string that will be drawn on the Overlay Form instead of the wait indicator.
-        String drawString = sMessage;
-        string sLongLine = LongestLine(drawString);
+        string sLongLine = LongestLine(sMessage);
 
         //Get the system's black brush.
         Brush drawBrush = Brushes.Black;
@@ -201,7 +217,7 @@ public class CustomOverlayPainter : OverlayWindowPainterBase
             bounds.Top + bounds.Height / 2 - textSize.Height / 2 + 80
             );
         //Draw the string on the screen.
-        cache.DrawString(drawString, drawFont, drawBrush, drawPoint);
+        cache.DrawString(sMessage, drawFont, drawBrush, drawPoint);
     }
 
     private string LongestLine(string sInput)
