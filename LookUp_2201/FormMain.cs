@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors.Controls;
 
 namespace LookUpEdit_2201
 {
@@ -45,12 +46,39 @@ namespace LookUpEdit_2201
             InitCustomDrawLookupEdit();
             InitImageLookupEdit();
             InitCustomImageLookupEdit();
+            InitButtonLookupEdit();
 
             //Search lookup
             searchLookUpEdit1.Properties.DataSource = sList;
 
             //Grid lookup control
             GridLookupEditInit();
+        }
+
+
+        private void InitButtonLookupEdit()
+        { //Normal lookup
+            ButtonsLookUpEdit.Properties.DataSource = sList;
+            ButtonsLookUpEdit.EditValue = sEdit;
+            ButtonsLookUpEdit.Properties.DropDownRows = sList.Count < 7 ? sList.Count: 7;
+            ButtonsLookUpEdit.Properties.ShowHeader = false;
+            ButtonsLookUpEdit.Properties.ShowFooter = false;
+            ButtonsLookUpEdit.Properties.TextEditStyle = TextEditStyles.DisableTextEditor;//Enable edit
+            ButtonsLookUpEdit.Properties.AcceptEditorTextAsNewValue = DefaultBoolean.True;
+            ButtonsLookUpEdit.Properties.ActionButtonIndex = 0;//The default drop list action trigger button
+            ButtonsLookUpEdit.ButtonClick += ButtonsLookUpEdit_ButtonClick;
+        }
+
+        private void ButtonsLookUpEdit_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if (e.Button.Kind == ButtonPredefines.Plus)
+            {
+                MessageBox.Show("Plus");
+            }
+            else if (e.Button.Kind == ButtonPredefines.Delete)
+            {
+                MessageBox.Show("Delete");
+            }
         }
 
         private void InitCustomImageLookupEdit()

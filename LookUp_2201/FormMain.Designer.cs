@@ -38,6 +38,7 @@ namespace LookUpEdit_2201
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.ImageCustomLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.ImageLookupEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -45,6 +46,7 @@ namespace LookUpEdit_2201
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gbTop = new System.Windows.Forms.GroupBox();
             this.gbCenter = new System.Windows.Forms.GroupBox();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
@@ -64,11 +66,12 @@ namespace LookUpEdit_2201
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.ImageCustomLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ButtonsLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageCustomLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageLookupEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -76,6 +79,7 @@ namespace LookUpEdit_2201
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.gbTop.SuspendLayout();
             this.gbCenter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
@@ -97,8 +101,8 @@ namespace LookUpEdit_2201
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImageCustomLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ButtonsLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
             // lookUpEdit1
@@ -107,13 +111,14 @@ namespace LookUpEdit_2201
             this.lookUpEdit1.Name = "lookUpEdit1";
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Size = new System.Drawing.Size(376, 20);
+            this.lookUpEdit1.Size = new System.Drawing.Size(245, 20);
             this.lookUpEdit1.StyleController = this.layoutControl2;
             this.lookUpEdit1.TabIndex = 0;
             this.lookUpEdit1.EditValueChanged += new System.EventHandler(this.lookUpEdit1_EditValueChanged);
             // 
             // layoutControl2
             // 
+            this.layoutControl2.Controls.Add(this.ButtonsLookUpEdit);
             this.layoutControl2.Controls.Add(this.ImageCustomLookUpEdit);
             this.layoutControl2.Controls.Add(this.ImageLookupEdit);
             this.layoutControl2.Controls.Add(this.lookUpEdit2);
@@ -122,9 +127,19 @@ namespace LookUpEdit_2201
             this.layoutControl2.Location = new System.Drawing.Point(3, 17);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup1;
-            this.layoutControl2.Size = new System.Drawing.Size(589, 148);
+            this.layoutControl2.Size = new System.Drawing.Size(458, 234);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
+            // 
+            // ImageCustomLookUpEdit
+            // 
+            this.ImageCustomLookUpEdit.Location = new System.Drawing.Point(201, 84);
+            this.ImageCustomLookUpEdit.Name = "ImageCustomLookUpEdit";
+            this.ImageCustomLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ImageCustomLookUpEdit.Size = new System.Drawing.Size(245, 20);
+            this.ImageCustomLookUpEdit.StyleController = this.layoutControl2;
+            this.ImageCustomLookUpEdit.TabIndex = 5;
             // 
             // ImageLookupEdit
             // 
@@ -132,7 +147,7 @@ namespace LookUpEdit_2201
             this.ImageLookupEdit.Name = "ImageLookupEdit";
             this.ImageLookupEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ImageLookupEdit.Size = new System.Drawing.Size(376, 20);
+            this.ImageLookupEdit.Size = new System.Drawing.Size(245, 20);
             this.ImageLookupEdit.StyleController = this.layoutControl2;
             this.ImageLookupEdit.TabIndex = 4;
             this.ImageLookupEdit.EditValueChanged += new System.EventHandler(this.ImageLookupEdit_EditValueChanged);
@@ -143,7 +158,7 @@ namespace LookUpEdit_2201
             this.lookUpEdit2.Name = "lookUpEdit2";
             this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit2.Size = new System.Drawing.Size(376, 20);
+            this.lookUpEdit2.Size = new System.Drawing.Size(245, 20);
             this.lookUpEdit2.StyleController = this.layoutControl2;
             this.lookUpEdit2.TabIndex = 3;
             // 
@@ -156,9 +171,10 @@ namespace LookUpEdit_2201
             this.emptySpaceItem2,
             this.layoutControlItem3,
             this.layoutControlItem6,
-            this.layoutControlItem7});
+            this.layoutControlItem7,
+            this.layoutControlItem8});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(589, 148);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(458, 234);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem2
@@ -166,16 +182,16 @@ namespace LookUpEdit_2201
             this.layoutControlItem2.Control = this.lookUpEdit1;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(569, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(438, 24);
             this.layoutControlItem2.Text = "Regular";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(177, 13);
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 96);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 120);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(569, 32);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(438, 94);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem3
@@ -183,7 +199,7 @@ namespace LookUpEdit_2201
             this.layoutControlItem3.Control = this.lookUpEdit2;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(569, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(438, 24);
             this.layoutControlItem3.Text = "Customized draw row (List<string>):";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(177, 13);
             // 
@@ -192,9 +208,18 @@ namespace LookUpEdit_2201
             this.layoutControlItem6.Control = this.ImageLookupEdit;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(569, 24);
+            this.layoutControlItem6.Size = new System.Drawing.Size(438, 24);
             this.layoutControlItem6.Text = "Image Lookup List<Class>";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(177, 13);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.ImageCustomLookUpEdit;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(438, 24);
+            this.layoutControlItem7.Text = "Image Custom Grid List<Class>";
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(177, 13);
             // 
             // gbTop
             // 
@@ -202,7 +227,7 @@ namespace LookUpEdit_2201
             this.gbTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbTop.Location = new System.Drawing.Point(0, 0);
             this.gbTop.Name = "gbTop";
-            this.gbTop.Size = new System.Drawing.Size(595, 168);
+            this.gbTop.Size = new System.Drawing.Size(464, 254);
             this.gbTop.TabIndex = 5;
             this.gbTop.TabStop = false;
             this.gbTop.Text = "LookupEdit";
@@ -211,9 +236,9 @@ namespace LookUpEdit_2201
             // 
             this.gbCenter.Controls.Add(this.layoutControl3);
             this.gbCenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbCenter.Location = new System.Drawing.Point(0, 168);
+            this.gbCenter.Location = new System.Drawing.Point(0, 254);
             this.gbCenter.Name = "gbCenter";
-            this.gbCenter.Size = new System.Drawing.Size(595, 111);
+            this.gbCenter.Size = new System.Drawing.Size(464, 111);
             this.gbCenter.TabIndex = 6;
             this.gbCenter.TabStop = false;
             this.gbCenter.Text = "Search Lookup edit";
@@ -225,7 +250,7 @@ namespace LookUpEdit_2201
             this.layoutControl3.Location = new System.Drawing.Point(3, 17);
             this.layoutControl3.Name = "layoutControl3";
             this.layoutControl3.Root = this.layoutControlGroup2;
-            this.layoutControl3.Size = new System.Drawing.Size(589, 91);
+            this.layoutControl3.Size = new System.Drawing.Size(458, 91);
             this.layoutControl3.TabIndex = 0;
             this.layoutControl3.Text = "layoutControl3";
             // 
@@ -236,7 +261,7 @@ namespace LookUpEdit_2201
             this.searchLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.searchLookUpEdit1.Properties.PopupView = this.searchLookUpEdit1View;
-            this.searchLookUpEdit1.Size = new System.Drawing.Size(516, 20);
+            this.searchLookUpEdit1.Size = new System.Drawing.Size(385, 20);
             this.searchLookUpEdit1.StyleController = this.layoutControl3;
             this.searchLookUpEdit1.TabIndex = 0;
             // 
@@ -255,7 +280,7 @@ namespace LookUpEdit_2201
             this.layoutControlItem4,
             this.emptySpaceItem3});
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(589, 91);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(458, 91);
             this.layoutControlGroup2.TextVisible = false;
             // 
             // layoutControlItem4
@@ -263,7 +288,7 @@ namespace LookUpEdit_2201
             this.layoutControlItem4.Control = this.searchLookUpEdit1;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(569, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(438, 24);
             this.layoutControlItem4.Text = "General";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(37, 13);
             // 
@@ -272,16 +297,16 @@ namespace LookUpEdit_2201
             this.emptySpaceItem3.AllowHotTrack = false;
             this.emptySpaceItem3.Location = new System.Drawing.Point(0, 24);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(569, 47);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(438, 47);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // gbBottom
             // 
             this.gbBottom.Controls.Add(this.layoutControl1);
             this.gbBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gbBottom.Location = new System.Drawing.Point(0, 279);
+            this.gbBottom.Location = new System.Drawing.Point(0, 365);
             this.gbBottom.Name = "gbBottom";
-            this.gbBottom.Size = new System.Drawing.Size(595, 152);
+            this.gbBottom.Size = new System.Drawing.Size(464, 152);
             this.gbBottom.TabIndex = 7;
             this.gbBottom.TabStop = false;
             this.gbBottom.Text = "Grid Lookup Edit";
@@ -294,7 +319,7 @@ namespace LookUpEdit_2201
             this.layoutControl1.Location = new System.Drawing.Point(3, 17);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(589, 132);
+            this.layoutControl1.Size = new System.Drawing.Size(458, 132);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -305,7 +330,7 @@ namespace LookUpEdit_2201
             this.gridLookUpEditCustomized.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.gridLookUpEditCustomized.Properties.PopupView = this.gridLookUpEdit2View;
-            this.gridLookUpEditCustomized.Size = new System.Drawing.Size(488, 20);
+            this.gridLookUpEditCustomized.Size = new System.Drawing.Size(357, 20);
             this.gridLookUpEditCustomized.StyleController = this.layoutControl1;
             this.gridLookUpEditCustomized.TabIndex = 5;
             // 
@@ -323,7 +348,7 @@ namespace LookUpEdit_2201
             this.gridLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.gridLookUpEdit1.Properties.PopupView = this.gridLookUpEdit1View;
-            this.gridLookUpEdit1.Size = new System.Drawing.Size(488, 20);
+            this.gridLookUpEdit1.Size = new System.Drawing.Size(357, 20);
             this.gridLookUpEdit1.StyleController = this.layoutControl1;
             this.gridLookUpEdit1.TabIndex = 4;
             // 
@@ -343,7 +368,7 @@ namespace LookUpEdit_2201
             this.emptySpaceItem1,
             this.layoutControlItem5});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(589, 132);
+            this.Root.Size = new System.Drawing.Size(458, 132);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -351,7 +376,7 @@ namespace LookUpEdit_2201
             this.layoutControlItem1.Control = this.gridLookUpEdit1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(569, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(438, 24);
             this.layoutControlItem1.Text = "Normal:";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(65, 13);
             // 
@@ -360,7 +385,7 @@ namespace LookUpEdit_2201
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 48);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(569, 64);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(438, 64);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem5
@@ -369,7 +394,7 @@ namespace LookUpEdit_2201
             this.layoutControlItem5.CustomizationFormText = "Property Set:";
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(569, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(438, 24);
             this.layoutControlItem5.Text = "Property Set:";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(65, 13);
             // 
@@ -383,30 +408,32 @@ namespace LookUpEdit_2201
             this.imageCollection1.Images.SetKeyName(4, "convert_16x16.png");
             this.imageCollection1.Images.SetKeyName(5, "updownbarsnone_16x16.png");
             // 
-            // ImageCustomLookUpEdit
+            // ButtonsLookUpEdit
             // 
-            this.ImageCustomLookUpEdit.Location = new System.Drawing.Point(201, 84);
-            this.ImageCustomLookUpEdit.Name = "ImageCustomLookUpEdit";
-            this.ImageCustomLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ImageCustomLookUpEdit.Size = new System.Drawing.Size(376, 20);
-            this.ImageCustomLookUpEdit.StyleController = this.layoutControl2;
-            this.ImageCustomLookUpEdit.TabIndex = 5;
+            this.ButtonsLookUpEdit.Location = new System.Drawing.Point(201, 108);
+            this.ButtonsLookUpEdit.Name = "ButtonsLookUpEdit";
+            this.ButtonsLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
+            this.ButtonsLookUpEdit.Size = new System.Drawing.Size(245, 20);
+            this.ButtonsLookUpEdit.StyleController = this.layoutControl2;
+            this.ButtonsLookUpEdit.TabIndex = 6;
             // 
-            // layoutControlItem7
+            // layoutControlItem8
             // 
-            this.layoutControlItem7.Control = this.ImageCustomLookUpEdit;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 72);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(569, 24);
-            this.layoutControlItem7.Text = "Image Custom Grid List<Class>";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(177, 13);
+            this.layoutControlItem8.Control = this.ButtonsLookUpEdit;
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 96);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(438, 24);
+            this.layoutControlItem8.Text = "Lookup with Buttons";
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(177, 13);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 431);
+            this.ClientSize = new System.Drawing.Size(464, 517);
             this.Controls.Add(this.gbCenter);
             this.Controls.Add(this.gbTop);
             this.Controls.Add(this.gbBottom);
@@ -416,6 +443,7 @@ namespace LookUpEdit_2201
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ImageCustomLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageLookupEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -423,6 +451,7 @@ namespace LookUpEdit_2201
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.gbTop.ResumeLayout(false);
             this.gbCenter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
@@ -444,8 +473,8 @@ namespace LookUpEdit_2201
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImageCustomLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ButtonsLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -482,6 +511,8 @@ namespace LookUpEdit_2201
         private ImageCollection imageCollection1;
         private LookUpEdit ImageCustomLookUpEdit;
         private LayoutControlItem layoutControlItem7;
+        private LookUpEdit ButtonsLookUpEdit;
+        private LayoutControlItem layoutControlItem8;
     }
 }
 

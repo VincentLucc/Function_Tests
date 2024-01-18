@@ -27,6 +27,11 @@ namespace TreeList
 
         private void InitEvnets()
         {
+            //This doesn't work
+            //Use the "TreeList1_CustomColumnDisplayText" instead
+            //treeList1.PopulateColumns();
+            //treeList1.Columns[nameof(csTreeItem.Icon)].Width = 50;
+
             //Show hide columns, don't use custom style event (Won't trigger)
             treeList1.CustomColumnDisplayText += TreeList1_CustomColumnDisplayText; ;
         }
@@ -77,16 +82,11 @@ namespace TreeList
             treeList1.ChildListFieldName = nameof(csTreeItem.SubItems);
             treeList1.DataSource = TreeItems;
 
-
-
             //Custom view settings
             treeList1.OptionsView.ShowVertLines = false;
             treeList1.OptionsView.ShowHorzLines = false;
             treeList1.OptionsView.ShowIndicator = false;
             treeList1.OptionsView.ShowColumns = false;
-
-
-
         }
 
 
