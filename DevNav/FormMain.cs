@@ -68,7 +68,6 @@ public partial class FormMain : DevExpress.XtraEditors.XtraForm
         DevExpress.LookAndFeel.LookAndFeelHelper.ForceDefaultLookAndFeelChanged();
         accordionControl1.Refresh();
  
-
         //Init customized accordiion control
         //Add group
         var groupCategory = new AccordionControlElement() { Text = "Category", Style = ElementStyle.Group, Expanded = true };
@@ -79,7 +78,12 @@ public partial class FormMain : DevExpress.XtraEditors.XtraForm
         var elementProductionSettings = new AccordionControlElement() { Text = "Test Object 2", Style = ElementStyle.Item, Tag = null };
         groupCategory.Elements.Add(elementProductionSettings);
 
+        InitEditAccordingControl();
+    }
 
+    private void InitEditAccordingControl()
+    {
+         
     }
 
     private void AccordionControlEx1_SelectedObjectChanged(AccordionControlElement selectedElement)
