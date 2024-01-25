@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="csConfigModel.cs" />
+    <Compile Include="csConfigureHelper.cs" />
     <Compile Include="csInk.cs" />
     <Compile Include="csPublic.cs" />
     <Compile Include="csXML.cs" />

@@ -13,15 +13,43 @@ namespace XMLTests
 {
     public partial class Form1 : Form
     {
+        public bool isFormLoad = false;
+
         public Form1()
         {
             InitializeComponent();
+            InitEvents();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void InitEvents()
         {
-          
+            this.FormClosed += Form1_FormClosed;
+        }
 
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {//INit
+            string sMessage = "";
+            if (!csConfigureHelper.LoadOrCreateConfig(out sMessage))
+            {
+                MessageBox.Show(sMessage);
+                return;
+            }
+
+            //Complete
+            isFormLoad = false;
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            string sMessage = "";
+
+            if (!csConfigureHelper.SaveConfig(out sMessage))
+            {
+                MessageBox.Show(sMessage);
+                return;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -55,12 +83,12 @@ namespace XMLTests
                 inkSys.DeviceCollection.Add(device);
             }
 
-            csXML.WriteXML(inkSys, typeof(InkSysConfig),csPublic.FilePath+@"\ink.xml");
+            csXML.WriteXML(csPublic.FilePath + @"\ink.xml", inkSys);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            csXML.WriteXML(null, typeof(InkSysConfig), csPublic.FilePath + @"\ink.xml");
+            //csXML.WriteXML(csPublic.FilePath + @"\ink.xml", inkSysConfig);
         }
     }
 }

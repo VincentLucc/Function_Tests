@@ -41,6 +41,11 @@ namespace XMLTests
             public string Name;
             [XmlAttribute]
             public List<int> Description;
+
+            public ModelInfo() 
+            {
+
+            }
         }
     }
 
@@ -58,6 +63,11 @@ namespace XMLTests
         /// Degass function visibility
         /// </summary>
         public bool DegassFuntion { get; set; }
+
+        public InkDeviceConfig()
+        {
+
+        }
     }
 
     /// <summary>
