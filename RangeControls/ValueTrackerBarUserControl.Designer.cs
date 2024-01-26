@@ -29,24 +29,24 @@
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.trackBarControl1 = new DevExpress.XtraEditors.TrackBarControl();
-            this.ValueTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.ValueLayoutControlItem = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ValueCalcEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.ValueLayoutControlItem = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarControl1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ValueTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ValueLayoutControlItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValueCalcEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValueLayoutControlItem)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.ValueCalcEdit);
             this.layoutControl1.Controls.Add(this.trackBarControl1);
-            this.layoutControl1.Controls.Add(this.ValueTextEdit);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -68,35 +68,16 @@
             this.trackBarControl1.TabIndex = 5;
             this.trackBarControl1.EditValueChanged += new System.EventHandler(this.trackBarControl1_EditValueChanged);
             // 
-            // ValueTextEdit
-            // 
-            this.ValueTextEdit.Location = new System.Drawing.Point(54, 12);
-            this.ValueTextEdit.Name = "ValueTextEdit";
-            this.ValueTextEdit.Size = new System.Drawing.Size(162, 20);
-            this.ValueTextEdit.StyleController = this.layoutControl1;
-            this.ValueTextEdit.TabIndex = 4;
-            this.ValueTextEdit.EditValueChanged += new System.EventHandler(this.ValueTextEdit_EditValueChanged);
-            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.ValueLayoutControlItem,
-            this.layoutControlItem1});
+            this.layoutControlItem1,
+            this.ValueLayoutControlItem});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(228, 93);
             this.Root.TextVisible = false;
-            // 
-            // ValueLayoutControlItem
-            // 
-            this.ValueLayoutControlItem.Control = this.ValueTextEdit;
-            this.ValueLayoutControlItem.CustomizationFormText = "Value:";
-            this.ValueLayoutControlItem.Location = new System.Drawing.Point(0, 0);
-            this.ValueLayoutControlItem.Name = "ValueLayoutControlItem";
-            this.ValueLayoutControlItem.Size = new System.Drawing.Size(208, 24);
-            this.ValueLayoutControlItem.Text = "Value:";
-            this.ValueLayoutControlItem.TextSize = new System.Drawing.Size(30, 13);
             // 
             // layoutControlItem1
             // 
@@ -106,6 +87,26 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(208, 49);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
+            // 
+            // ValueCalcEdit
+            // 
+            this.ValueCalcEdit.Location = new System.Drawing.Point(54, 12);
+            this.ValueCalcEdit.Name = "ValueCalcEdit";
+            this.ValueCalcEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ValueCalcEdit.Size = new System.Drawing.Size(162, 20);
+            this.ValueCalcEdit.StyleController = this.layoutControl1;
+            this.ValueCalcEdit.TabIndex = 6;
+            this.ValueCalcEdit.EditValueChanged += new System.EventHandler(this.ValueCalcEdit_EditValueChanged);
+            // 
+            // ValueLayoutControlItem
+            // 
+            this.ValueLayoutControlItem.Control = this.ValueCalcEdit;
+            this.ValueLayoutControlItem.Location = new System.Drawing.Point(0, 0);
+            this.ValueLayoutControlItem.Name = "ValueLayoutControlItem";
+            this.ValueLayoutControlItem.Size = new System.Drawing.Size(208, 24);
+            this.ValueLayoutControlItem.Text = "Value:";
+            this.ValueLayoutControlItem.TextSize = new System.Drawing.Size(30, 13);
             // 
             // ValueTrackerBarUserControl
             // 
@@ -118,10 +119,10 @@
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarControl1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ValueTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ValueLayoutControlItem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValueCalcEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValueLayoutControlItem)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -131,8 +132,8 @@
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         public DevExpress.XtraEditors.TrackBarControl trackBarControl1;
-        private DevExpress.XtraEditors.TextEdit ValueTextEdit;
-        private DevExpress.XtraLayout.LayoutControlItem ValueLayoutControlItem;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-    }
+    private DevExpress.XtraEditors.CalcEdit ValueCalcEdit;
+    private DevExpress.XtraLayout.LayoutControlItem ValueLayoutControlItem;
+}
 

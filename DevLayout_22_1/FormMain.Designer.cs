@@ -453,7 +453,7 @@ namespace DevLayout_22_1
             this.tabNavigationPage1.Name = "tabNavigationPage1";
             this.tabNavigationPage1.PageText = "Tests";
             this.tabNavigationPage1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabNavigationPage1.Size = new System.Drawing.Size(786, 421);
+            this.tabNavigationPage1.Size = new System.Drawing.Size(786, 410);
             // 
             // TestPageLayoutControl
             // 
@@ -468,7 +468,7 @@ namespace DevLayout_22_1
             this.TestPageLayoutControl.Location = new System.Drawing.Point(0, 0);
             this.TestPageLayoutControl.Name = "TestPageLayoutControl";
             this.TestPageLayoutControl.Root = this.layoutControlGroup4;
-            this.TestPageLayoutControl.Size = new System.Drawing.Size(786, 421);
+            this.TestPageLayoutControl.Size = new System.Drawing.Size(786, 410);
             this.TestPageLayoutControl.TabIndex = 0;
             this.TestPageLayoutControl.Text = "layoutControl1";
             // 
@@ -697,7 +697,7 @@ namespace DevLayout_22_1
             this.layoutControlItem2,
             this.layoutControlItem3});
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(786, 421);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(786, 410);
             this.layoutControlGroup4.TextVisible = false;
             // 
             // layoutControlItem13
@@ -715,7 +715,7 @@ namespace DevLayout_22_1
             this.emptySpaceItem3.AllowHotTrack = false;
             this.emptySpaceItem3.Location = new System.Drawing.Point(0, 169);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(766, 232);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(766, 221);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem14
@@ -791,7 +791,7 @@ namespace DevLayout_22_1
             this.tabNavigationPage2.Caption = "Page2";
             this.tabNavigationPage2.Controls.Add(this.layoutControl1);
             this.tabNavigationPage2.Name = "tabNavigationPage2";
-            this.tabNavigationPage2.Size = new System.Drawing.Size(786, 421);
+            this.tabNavigationPage2.Size = new System.Drawing.Size(786, 410);
             // 
             // layoutControl1
             // 
@@ -801,7 +801,7 @@ namespace DevLayout_22_1
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup6;
-            this.layoutControl1.Size = new System.Drawing.Size(786, 421);
+            this.layoutControl1.Size = new System.Drawing.Size(786, 410);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -832,7 +832,7 @@ namespace DevLayout_22_1
             this.layoutControlItem15,
             this.emptySpaceItem6});
             this.layoutControlGroup6.Name = "layoutControlGroup6";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(786, 421);
+            this.layoutControlGroup6.Size = new System.Drawing.Size(786, 410);
             this.layoutControlGroup6.TextVisible = false;
             // 
             // layoutControlItem12
@@ -856,7 +856,7 @@ namespace DevLayout_22_1
             this.emptySpaceItem6.AllowHotTrack = false;
             this.emptySpaceItem6.Location = new System.Drawing.Point(0, 48);
             this.emptySpaceItem6.Name = "emptySpaceItem6";
-            this.emptySpaceItem6.Size = new System.Drawing.Size(766, 353);
+            this.emptySpaceItem6.Size = new System.Drawing.Size(766, 342);
             this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
             // 
             // tabNavigationPage3
@@ -865,7 +865,7 @@ namespace DevLayout_22_1
             this.tabNavigationPage3.Controls.Add(this.panelControl2);
             this.tabNavigationPage3.Controls.Add(this.panelControl1);
             this.tabNavigationPage3.Name = "tabNavigationPage3";
-            this.tabNavigationPage3.Size = new System.Drawing.Size(786, 421);
+            this.tabNavigationPage3.Size = new System.Drawing.Size(786, 410);
             // 
             // panelControl2
             // 
@@ -873,7 +873,7 @@ namespace DevLayout_22_1
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelControl2.Location = new System.Drawing.Point(456, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(330, 421);
+            this.panelControl2.Size = new System.Drawing.Size(330, 410);
             this.panelControl2.TabIndex = 2;
             // 
             // layoutControl3
@@ -889,7 +889,7 @@ namespace DevLayout_22_1
             this.layoutControl3.Location = new System.Drawing.Point(2, 2);
             this.layoutControl3.Name = "layoutControl3";
             this.layoutControl3.Root = this.layoutControlGroup8;
-            this.layoutControl3.Size = new System.Drawing.Size(326, 417);
+            this.layoutControl3.Size = new System.Drawing.Size(326, 406);
             this.layoutControl3.TabIndex = 0;
             this.layoutControl3.Text = "layoutControl3";
             // 
@@ -989,14 +989,14 @@ namespace DevLayout_22_1
             rowDefinition2.SizeType = System.Windows.Forms.SizeType.AutoSize;
             rowDefinition3.Height = 17D;
             rowDefinition3.SizeType = System.Windows.Forms.SizeType.AutoSize;
-            rowDefinition4.Height = 346D;
+            rowDefinition4.Height = 318D;
             rowDefinition4.SizeType = System.Windows.Forms.SizeType.AutoSize;
             this.layoutControlGroup8.OptionsTableLayoutGroup.RowDefinitions.AddRange(new DevExpress.XtraLayout.RowDefinition[] {
             rowDefinition1,
             rowDefinition2,
             rowDefinition3,
             rowDefinition4});
-            this.layoutControlGroup8.Size = new System.Drawing.Size(426, 417);
+            this.layoutControlGroup8.Size = new System.Drawing.Size(426, 389);
             this.layoutControlGroup8.TextVisible = false;
             // 
             // layoutControlItem22
@@ -1045,7 +1045,7 @@ namespace DevLayout_22_1
             this.layoutControlItem26.Name = "layoutControlItem26";
             this.layoutControlItem26.OptionsTableLayoutItem.ColumnIndex = 1;
             this.layoutControlItem26.OptionsTableLayoutItem.RowIndex = 3;
-            this.layoutControlItem26.Size = new System.Drawing.Size(113, 346);
+            this.layoutControlItem26.Size = new System.Drawing.Size(113, 318);
             this.layoutControlItem26.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem26.TextVisible = false;
             // 
@@ -1077,7 +1077,7 @@ namespace DevLayout_22_1
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(284, 421);
+            this.panelControl1.Size = new System.Drawing.Size(284, 410);
             this.panelControl1.TabIndex = 1;
             // 
             // layoutControl2
@@ -1091,7 +1091,7 @@ namespace DevLayout_22_1
             this.layoutControl2.Location = new System.Drawing.Point(2, 2);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup7;
-            this.layoutControl2.Size = new System.Drawing.Size(280, 417);
+            this.layoutControl2.Size = new System.Drawing.Size(280, 406);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
@@ -1101,7 +1101,7 @@ namespace DevLayout_22_1
             this.memoEdit1.MenuManager = this.barManager1;
             this.memoEdit1.Name = "memoEdit1";
             this.memoEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.memoEdit1.Size = new System.Drawing.Size(256, 258);
+            this.memoEdit1.Size = new System.Drawing.Size(256, 247);
             this.memoEdit1.StyleController = this.layoutControl2;
             this.memoEdit1.TabIndex = 8;
             // 
@@ -1116,7 +1116,7 @@ namespace DevLayout_22_1
             // 
             // textEdit7
             // 
-            this.textEdit7.Location = new System.Drawing.Point(133, 385);
+            this.textEdit7.Location = new System.Drawing.Point(133, 374);
             this.textEdit7.MenuManager = this.barManager1;
             this.textEdit7.Name = "textEdit7";
             this.textEdit7.Size = new System.Drawing.Size(135, 20);
@@ -1125,7 +1125,7 @@ namespace DevLayout_22_1
             // 
             // textEdit6
             // 
-            this.textEdit6.Location = new System.Drawing.Point(133, 331);
+            this.textEdit6.Location = new System.Drawing.Point(133, 320);
             this.textEdit6.MenuManager = this.barManager1;
             this.textEdit6.MinimumSize = new System.Drawing.Size(0, 50);
             this.textEdit6.Name = "textEdit6";
@@ -1153,7 +1153,7 @@ namespace DevLayout_22_1
             this.layoutControlItem19,
             this.layoutControlItem30});
             this.layoutControlGroup7.Name = "layoutControlGroup7";
-            this.layoutControlGroup7.Size = new System.Drawing.Size(280, 417);
+            this.layoutControlGroup7.Size = new System.Drawing.Size(280, 406);
             // 
             // layoutControlItem18
             // 
@@ -1166,7 +1166,7 @@ namespace DevLayout_22_1
             // layoutControlItem20
             // 
             this.layoutControlItem20.Control = this.textEdit7;
-            this.layoutControlItem20.Location = new System.Drawing.Point(0, 373);
+            this.layoutControlItem20.Location = new System.Drawing.Point(0, 362);
             this.layoutControlItem20.Name = "layoutControlItem20";
             this.layoutControlItem20.Size = new System.Drawing.Size(260, 24);
             this.layoutControlItem20.TextSize = new System.Drawing.Size(109, 13);
@@ -1184,7 +1184,7 @@ namespace DevLayout_22_1
             // layoutControlItem19
             // 
             this.layoutControlItem19.Control = this.textEdit6;
-            this.layoutControlItem19.Location = new System.Drawing.Point(0, 319);
+            this.layoutControlItem19.Location = new System.Drawing.Point(0, 308);
             this.layoutControlItem19.Name = "layoutControlItem19";
             this.layoutControlItem19.Size = new System.Drawing.Size(260, 54);
             this.layoutControlItem19.TextSize = new System.Drawing.Size(109, 13);
@@ -1194,7 +1194,7 @@ namespace DevLayout_22_1
             this.layoutControlItem30.Control = this.memoEdit1;
             this.layoutControlItem30.Location = new System.Drawing.Point(0, 57);
             this.layoutControlItem30.Name = "layoutControlItem30";
-            this.layoutControlItem30.Size = new System.Drawing.Size(260, 262);
+            this.layoutControlItem30.Size = new System.Drawing.Size(260, 251);
             this.layoutControlItem30.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem30.TextVisible = false;
             // 
@@ -1203,7 +1203,7 @@ namespace DevLayout_22_1
             this.tabNavigationPage4.Caption = "Layout Test2";
             this.tabNavigationPage4.Controls.Add(this.layoutControl4);
             this.tabNavigationPage4.Name = "tabNavigationPage4";
-            this.tabNavigationPage4.Size = new System.Drawing.Size(786, 421);
+            this.tabNavigationPage4.Size = new System.Drawing.Size(786, 410);
             // 
             // layoutControl4
             // 
@@ -1212,7 +1212,7 @@ namespace DevLayout_22_1
             this.layoutControl4.Location = new System.Drawing.Point(0, 0);
             this.layoutControl4.Name = "layoutControl4";
             this.layoutControl4.Root = this.layoutControlGroup9;
-            this.layoutControl4.Size = new System.Drawing.Size(786, 421);
+            this.layoutControl4.Size = new System.Drawing.Size(786, 410);
             this.layoutControl4.TabIndex = 0;
             this.layoutControl4.Text = "layoutControl4";
             // 
@@ -1228,7 +1228,7 @@ namespace DevLayout_22_1
             // splitContainerControl1.Panel2
             // 
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(752, 397);
+            this.splitContainerControl1.Size = new System.Drawing.Size(752, 386);
             this.splitContainerControl1.TabIndex = 4;
             // 
             // layoutControlGroup9
@@ -1239,7 +1239,7 @@ namespace DevLayout_22_1
             this.splitterItem1,
             this.layoutControlItem29});
             this.layoutControlGroup9.Name = "layoutControlGroup9";
-            this.layoutControlGroup9.Size = new System.Drawing.Size(786, 421);
+            this.layoutControlGroup9.Size = new System.Drawing.Size(786, 410);
             this.layoutControlGroup9.TextVisible = false;
             // 
             // splitterItem1
@@ -1247,14 +1247,14 @@ namespace DevLayout_22_1
             this.splitterItem1.AllowHotTrack = true;
             this.splitterItem1.Location = new System.Drawing.Point(0, 0);
             this.splitterItem1.Name = "splitterItem1";
-            this.splitterItem1.Size = new System.Drawing.Size(10, 401);
+            this.splitterItem1.Size = new System.Drawing.Size(10, 390);
             // 
             // layoutControlItem29
             // 
             this.layoutControlItem29.Control = this.splitContainerControl1;
             this.layoutControlItem29.Location = new System.Drawing.Point(10, 0);
             this.layoutControlItem29.Name = "layoutControlItem29";
-            this.layoutControlItem29.Size = new System.Drawing.Size(756, 401);
+            this.layoutControlItem29.Size = new System.Drawing.Size(756, 390);
             this.layoutControlItem29.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem29.TextVisible = false;
             // 

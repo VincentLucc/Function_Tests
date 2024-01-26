@@ -30,7 +30,7 @@ namespace RangeControls
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.RangeControlRange rangeControlRange1 = new DevExpress.XtraEditors.RangeControlRange();
+            DevExpress.XtraEditors.RangeControlRange rangeControlRange3 = new DevExpress.XtraEditors.RangeControlRange();
             DevExpress.XtraEditors.Repository.TrackBarLabel trackBarLabel1 = new DevExpress.XtraEditors.Repository.TrackBarLabel();
             DevExpress.XtraEditors.Repository.TrackBarLabel trackBarLabel2 = new DevExpress.XtraEditors.Repository.TrackBarLabel();
             DevExpress.XtraEditors.Repository.TrackBarLabel trackBarLabel3 = new DevExpress.XtraEditors.Repository.TrackBarLabel();
@@ -67,10 +67,19 @@ namespace RangeControls
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControl6 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.trackBarControl1 = new DevExpress.XtraEditors.TrackBarControl();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.zoomTrackBarControl1 = new DevExpress.XtraEditors.ZoomTrackBarControl();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.rangeControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericChartRangeControlClient1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl5)).BeginInit();
@@ -100,10 +109,23 @@ namespace RangeControls
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).BeginInit();
+            this.layoutControl6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zoomTrackBarControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zoomTrackBarControl1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             this.SuspendLayout();
             // 
             // rangeControl2
@@ -111,10 +133,10 @@ namespace RangeControls
             this.rangeControl2.Client = this.numericChartRangeControlClient1;
             this.rangeControl2.Location = new System.Drawing.Point(12, 28);
             this.rangeControl2.Name = "rangeControl2";
-            rangeControlRange1.Maximum = 9D;
-            rangeControlRange1.Minimum = 0D;
-            rangeControlRange1.Owner = this.rangeControl2;
-            this.rangeControl2.SelectedRange = rangeControlRange1;
+            rangeControlRange3.Maximum = 9D;
+            rangeControlRange3.Minimum = 0D;
+            rangeControlRange3.Owner = this.rangeControl2;
+            this.rangeControl2.SelectedRange = rangeControlRange3;
             this.rangeControl2.Size = new System.Drawing.Size(783, 400);
             this.rangeControl2.StyleController = this.layoutControl5;
             this.rangeControl2.TabIndex = 4;
@@ -201,7 +223,7 @@ namespace RangeControls
             this.rangeUserControl1.iMinValue = 0;
             this.rangeUserControl1.Location = new System.Drawing.Point(12, 130);
             this.rangeUserControl1.Name = "rangeUserControl1";
-            this.rangeUserControl1.Size = new System.Drawing.Size(783, 141);
+            this.rangeUserControl1.Size = new System.Drawing.Size(783, 128);
             this.rangeUserControl1.TabIndex = 6;
             // 
             // rangeTrackBarControl1
@@ -278,9 +300,9 @@ namespace RangeControls
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 263);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 250);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(787, 157);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(787, 170);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem2
@@ -288,7 +310,7 @@ namespace RangeControls
             this.layoutControlItem2.Control = this.rangeUserControl1;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 102);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(787, 161);
+            this.layoutControlItem2.Size = new System.Drawing.Size(787, 148);
             this.layoutControlItem2.Text = "Customized Range Trackerbar control";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(180, 13);
@@ -302,6 +324,7 @@ namespace RangeControls
             // 
             // layoutControl3
             // 
+            this.layoutControl3.Controls.Add(this.groupControl1);
             this.layoutControl3.Controls.Add(this.valueTrackerBarUserControl1);
             this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl3.Location = new System.Drawing.Point(0, 0);
@@ -315,7 +338,7 @@ namespace RangeControls
             // 
             this.valueTrackerBarUserControl1.Location = new System.Drawing.Point(12, 12);
             this.valueTrackerBarUserControl1.Name = "valueTrackerBarUserControl1";
-            this.valueTrackerBarUserControl1.Size = new System.Drawing.Size(783, 140);
+            this.valueTrackerBarUserControl1.Size = new System.Drawing.Size(783, 98);
             this.valueTrackerBarUserControl1.TabIndex = 7;
             // 
             // layoutControlGroup2
@@ -324,7 +347,8 @@ namespace RangeControls
             this.layoutControlGroup2.GroupBordersVisible = false;
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem3,
-            this.emptySpaceItem2});
+            this.emptySpaceItem2,
+            this.layoutControlItem7});
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(807, 440);
             this.layoutControlGroup2.TextVisible = false;
@@ -334,16 +358,16 @@ namespace RangeControls
             this.layoutControlItem3.Control = this.valueTrackerBarUserControl1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(787, 144);
+            this.layoutControlItem3.Size = new System.Drawing.Size(787, 102);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 144);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(393, 102);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(787, 276);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(394, 318);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // xtraTabPage3
@@ -380,6 +404,13 @@ namespace RangeControls
             this.layoutControl4.Size = new System.Drawing.Size(180, 120);
             this.layoutControl4.TabIndex = 0;
             // 
+            // layoutControlGroup5
+            // 
+            this.layoutControlGroup5.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup5.GroupBordersVisible = false;
+            this.layoutControlGroup5.Name = "layoutControlGroup5";
+            this.layoutControlGroup5.Size = new System.Drawing.Size(180, 120);
+            // 
             // layoutControlGroup3
             // 
             this.layoutControlGroup3.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -407,12 +438,89 @@ namespace RangeControls
             this.emptySpaceItem3.Size = new System.Drawing.Size(787, 218);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // layoutControlGroup5
+            // groupControl1
             // 
-            this.layoutControlGroup5.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup5.GroupBordersVisible = false;
-            this.layoutControlGroup5.Name = "layoutControlGroup5";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(180, 120);
+            this.groupControl1.Controls.Add(this.layoutControl6);
+            this.groupControl1.Location = new System.Drawing.Point(12, 114);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(389, 314);
+            this.groupControl1.TabIndex = 8;
+            this.groupControl1.Text = "Decimal Tracker Bar";
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.groupControl1;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 102);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(393, 318);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
+            // 
+            // layoutControl6
+            // 
+            this.layoutControl6.Controls.Add(this.zoomTrackBarControl1);
+            this.layoutControl6.Controls.Add(this.trackBarControl1);
+            this.layoutControl6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl6.Location = new System.Drawing.Point(2, 23);
+            this.layoutControl6.Name = "layoutControl6";
+            this.layoutControl6.Root = this.layoutControlGroup6;
+            this.layoutControl6.Size = new System.Drawing.Size(385, 289);
+            this.layoutControl6.TabIndex = 0;
+            this.layoutControl6.Text = "layoutControl6";
+            // 
+            // layoutControlGroup6
+            // 
+            this.layoutControlGroup6.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup6.GroupBordersVisible = false;
+            this.layoutControlGroup6.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem8,
+            this.emptySpaceItem4,
+            this.layoutControlItem9});
+            this.layoutControlGroup6.Name = "layoutControlGroup6";
+            this.layoutControlGroup6.Size = new System.Drawing.Size(385, 289);
+            this.layoutControlGroup6.TextVisible = false;
+            // 
+            // trackBarControl1
+            // 
+            this.trackBarControl1.Location = new System.Drawing.Point(117, 12);
+            this.trackBarControl1.Name = "trackBarControl1";
+            this.trackBarControl1.Properties.LabelAppearance.Options.UseTextOptions = true;
+            this.trackBarControl1.Properties.LabelAppearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.trackBarControl1.Size = new System.Drawing.Size(256, 45);
+            this.trackBarControl1.StyleController = this.layoutControl6;
+            this.trackBarControl1.TabIndex = 4;
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.trackBarControl1;
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(365, 49);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(93, 13);
+            // 
+            // emptySpaceItem4
+            // 
+            this.emptySpaceItem4.AllowHotTrack = false;
+            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 66);
+            this.emptySpaceItem4.Name = "emptySpaceItem4";
+            this.emptySpaceItem4.Size = new System.Drawing.Size(365, 203);
+            this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // zoomTrackBarControl1
+            // 
+            this.zoomTrackBarControl1.Location = new System.Drawing.Point(117, 61);
+            this.zoomTrackBarControl1.Name = "zoomTrackBarControl1";
+            this.zoomTrackBarControl1.Size = new System.Drawing.Size(256, 16);
+            this.zoomTrackBarControl1.StyleController = this.layoutControl6;
+            this.zoomTrackBarControl1.TabIndex = 5;
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.zoomTrackBarControl1;
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 49);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(365, 17);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(93, 13);
             // 
             // FormMain
             // 
@@ -452,10 +560,23 @@ namespace RangeControls
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).EndInit();
+            this.layoutControl6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zoomTrackBarControl1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zoomTrackBarControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -492,6 +613,15 @@ namespace RangeControls
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private NumericChartRangeControlClient numericChartRangeControlClient1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
+        private GroupControl groupControl1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraLayout.LayoutControl layoutControl6;
+        private ZoomTrackBarControl zoomTrackBarControl1;
+        private TrackBarControl trackBarControl1;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup6;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
     }
 }
 

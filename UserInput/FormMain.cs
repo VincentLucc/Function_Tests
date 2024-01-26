@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace UserInput
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -23,6 +23,20 @@ namespace UserInput
             TestButtonEdit.EditValue = 100;//Current value
             TestButtonEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             TestButtonEdit.ButtonClick += TestButtonEdit_ButtonClick;
+
+            InitCalcEdit();
+        }
+
+        private void InitCalcEdit()
+        {
+            //Allow only int
+            IntCalcEdit.Properties.Precision = 0;
+            IntCalcEdit.Properties.EditMask = "###,###,###,##0";
+            IntCalcEdit.Properties.UseMaskAsDisplayFormat = true;
+            IntCalcEdit.Value = 0;
+
+            //Allow decimal
+            DecimalCalcEdit.Value = 0;
         }
 
         private void TestButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
