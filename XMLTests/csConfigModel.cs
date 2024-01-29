@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Xml.Serialization;
 
 public class csConfigModel
 {
     public int iValue1 { get; set; }
-    public string sValue1 { get; set; }
+    public string sValue1 => "Value won't be serialized";
 
     private string _sValue2;
     public string sValue2 
@@ -18,9 +18,15 @@ public class csConfigModel
         set { _sValue2 = value; } 
     }
 
+ 
+    public string sValue3
+    {
+        get { return "Value3"; }
+        set { }//Empty "set" makes sure the property will be serialized 
+    }
+
     public csConfigModel() 
     {
         iValue1 = 1;
-        sValue1 = "s1";
     }
 }
