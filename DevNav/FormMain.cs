@@ -83,7 +83,9 @@ public partial class FormMain : DevExpress.XtraEditors.XtraForm
 
     private void InitEditAccordingControl()
     {
-         
+        //Show more then one group when expand
+        EditAccordionControl.ExpandElementMode = ExpandElementMode.Multiple;
+
     }
 
     private void AccordionControlEx1_SelectedObjectChanged(AccordionControlElement selectedElement)

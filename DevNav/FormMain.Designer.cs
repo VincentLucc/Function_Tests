@@ -90,8 +90,13 @@ partial class FormMain
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.EditAccordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
+            this.accordionContentContainer1 = new DevExpress.XtraBars.Navigation.AccordionContentContainer();
+            this.layoutControl6 = new DevExpress.XtraLayout.LayoutControl();
+            this.toggleSwitch1 = new DevExpress.XtraEditors.ToggleSwitch();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -106,22 +111,34 @@ partial class FormMain
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.accordionContentContainer2 = new DevExpress.XtraBars.Navigation.AccordionContentContainer();
+            this.layoutControl7 = new DevExpress.XtraLayout.LayoutControl();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem6 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.accordionControlElement24 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement15 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.officeNavigationBar1 = new DevExpress.XtraBars.Navigation.OfficeNavigationBar();
             this.navigationBarItem1 = new DevExpress.XtraBars.Navigation.NavigationBarItem();
             this.navigationBarItem2 = new DevExpress.XtraBars.Navigation.NavigationBarItem();
-            this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
-            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.EditAccordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.accordionControlElement15 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.accordionControlElement19 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement20 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement21 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElement22 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -152,18 +169,37 @@ partial class FormMain
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar1)).BeginInit();
             this.xtraTabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EditAccordionControl)).BeginInit();
+            this.EditAccordionControl.SuspendLayout();
+            this.accordionContentContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).BeginInit();
+            this.layoutControl6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            this.accordionContentContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl7)).BeginInit();
+            this.layoutControl7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // navBarControl1
@@ -692,24 +728,78 @@ partial class FormMain
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
-            // Root
+            // xtraTabPage4
             // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem6});
-            this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(809, 509);
-            this.Root.TextVisible = false;
+            this.xtraTabPage4.Controls.Add(this.layoutControl2);
+            this.xtraTabPage4.Name = "xtraTabPage4";
+            this.xtraTabPage4.Size = new System.Drawing.Size(775, 446);
+            this.xtraTabPage4.Text = "Accordion Control Edit";
             // 
-            // layoutControlItem6
+            // layoutControl2
             // 
-            this.layoutControlItem6.Control = this.xtraTabControl1;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(783, 483);
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextVisible = false;
+            this.layoutControl2.Controls.Add(this.simpleButton1);
+            this.layoutControl2.Controls.Add(this.EditAccordionControl);
+            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl2.Name = "layoutControl2";
+            this.layoutControl2.Root = this.layoutControlGroup1;
+            this.layoutControl2.Size = new System.Drawing.Size(775, 446);
+            this.layoutControl2.TabIndex = 0;
+            this.layoutControl2.Text = "layoutControl2";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(683, 16);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(76, 28);
+            this.simpleButton1.StyleController = this.layoutControl2;
+            this.simpleButton1.TabIndex = 9;
+            this.simpleButton1.Text = "simpleButton1";
+            // 
+            // EditAccordionControl
+            // 
+            this.EditAccordionControl.Controls.Add(this.accordionContentContainer1);
+            this.EditAccordionControl.Controls.Add(this.accordionContentContainer2);
+            this.EditAccordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.accordionControlElement24,
+            this.accordionControlElement15});
+            this.EditAccordionControl.ExpandElementMode = DevExpress.XtraBars.Navigation.ExpandElementMode.Multiple;
+            this.EditAccordionControl.Location = new System.Drawing.Point(16, 16);
+            this.EditAccordionControl.Name = "EditAccordionControl";
+            this.EditAccordionControl.Size = new System.Drawing.Size(327, 414);
+            this.EditAccordionControl.StyleController = this.layoutControl2;
+            this.EditAccordionControl.TabIndex = 4;
+            // 
+            // accordionContentContainer1
+            // 
+            this.accordionContentContainer1.Controls.Add(this.layoutControl6);
+            this.accordionContentContainer1.Name = "accordionContentContainer1";
+            this.accordionContentContainer1.Size = new System.Drawing.Size(278, 134);
+            this.accordionContentContainer1.TabIndex = 1;
+            // 
+            // layoutControl6
+            // 
+            this.layoutControl6.Controls.Add(this.toggleSwitch1);
+            this.layoutControl6.Controls.Add(this.textEdit1);
+            this.layoutControl6.Controls.Add(this.simpleButton2);
+            this.layoutControl6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl6.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl6.Name = "layoutControl6";
+            this.layoutControl6.Root = this.layoutControlGroup5;
+            this.layoutControl6.Size = new System.Drawing.Size(278, 134);
+            this.layoutControl6.TabIndex = 0;
+            this.layoutControl6.Text = "layoutControl6";
+            // 
+            // toggleSwitch1
+            // 
+            this.toggleSwitch1.Location = new System.Drawing.Point(16, 84);
+            this.toggleSwitch1.MenuManager = this.barManager1;
+            this.toggleSwitch1.Name = "toggleSwitch1";
+            this.toggleSwitch1.Properties.OffText = "Off";
+            this.toggleSwitch1.Properties.OnText = "On";
+            this.toggleSwitch1.Size = new System.Drawing.Size(246, 24);
+            this.toggleSwitch1.StyleController = this.layoutControl6;
+            this.toggleSwitch1.TabIndex = 6;
             // 
             // barManager1
             // 
@@ -854,46 +944,186 @@ partial class FormMain
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 509);
             // 
-            // officeNavigationBar1
+            // textEdit1
             // 
-            this.officeNavigationBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.officeNavigationBar1.Items.AddRange(new DevExpress.XtraBars.Navigation.NavigationBarItem[] {
-            this.navigationBarItem1,
-            this.navigationBarItem2});
-            this.officeNavigationBar1.Location = new System.Drawing.Point(1, 426);
-            this.officeNavigationBar1.Name = "officeNavigationBar1";
-            this.officeNavigationBar1.Size = new System.Drawing.Size(775, 46);
-            this.officeNavigationBar1.TabIndex = 3;
-            this.officeNavigationBar1.Text = "officeNavigationBar1";
+            this.textEdit1.Location = new System.Drawing.Point(131, 16);
+            this.textEdit1.MenuManager = this.barManager1;
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(131, 28);
+            this.textEdit1.StyleController = this.layoutControl6;
+            this.textEdit1.TabIndex = 5;
             // 
-            // navigationBarItem1
+            // simpleButton2
             // 
-            this.navigationBarItem1.Name = "navigationBarItem1";
-            this.navigationBarItem1.Text = "Item1";
+            this.simpleButton2.Location = new System.Drawing.Point(16, 50);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(246, 28);
+            this.simpleButton2.StyleController = this.layoutControl6;
+            this.simpleButton2.TabIndex = 4;
+            this.simpleButton2.Text = "simpleButton2";
             // 
-            // navigationBarItem2
+            // layoutControlGroup5
             // 
-            this.navigationBarItem2.Name = "navigationBarItem2";
-            this.navigationBarItem2.Text = "Item2";
+            this.layoutControlGroup5.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup5.GroupBordersVisible = false;
+            this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem10,
+            this.emptySpaceItem5,
+            this.layoutControlItem11,
+            this.layoutControlItem12});
+            this.layoutControlGroup5.Name = "layoutControlGroup5";
+            this.layoutControlGroup5.Size = new System.Drawing.Size(278, 134);
+            this.layoutControlGroup5.TextVisible = false;
             // 
-            // xtraTabPage4
+            // layoutControlItem10
             // 
-            this.xtraTabPage4.Controls.Add(this.layoutControl2);
-            this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(775, 446);
-            this.xtraTabPage4.Text = "Accordion Control Edit";
+            this.layoutControlItem10.Control = this.simpleButton2;
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 34);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(252, 34);
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem10.TextVisible = false;
             // 
-            // layoutControl2
+            // emptySpaceItem5
             // 
-            this.layoutControl2.Controls.Add(this.simpleButton1);
-            this.layoutControl2.Controls.Add(this.EditAccordionControl);
-            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl2.Name = "layoutControl2";
-            this.layoutControl2.Root = this.layoutControlGroup1;
-            this.layoutControl2.Size = new System.Drawing.Size(775, 446);
-            this.layoutControl2.TabIndex = 0;
-            this.layoutControl2.Text = "layoutControl2";
+            this.emptySpaceItem5.AllowHotTrack = false;
+            this.emptySpaceItem5.Location = new System.Drawing.Point(0, 98);
+            this.emptySpaceItem5.Name = "emptySpaceItem5";
+            this.emptySpaceItem5.Size = new System.Drawing.Size(252, 10);
+            this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem11
+            // 
+            this.layoutControlItem11.Control = this.textEdit1;
+            this.layoutControlItem11.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Size = new System.Drawing.Size(252, 34);
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(99, 13);
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.Control = this.toggleSwitch1;
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 68);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Size = new System.Drawing.Size(252, 30);
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem12.TextVisible = false;
+            // 
+            // accordionContentContainer2
+            // 
+            this.accordionContentContainer2.Controls.Add(this.layoutControl7);
+            this.accordionContentContainer2.Name = "accordionContentContainer2";
+            this.accordionContentContainer2.Size = new System.Drawing.Size(278, 138);
+            this.accordionContentContainer2.TabIndex = 3;
+            // 
+            // layoutControl7
+            // 
+            this.layoutControl7.Controls.Add(this.simpleButton5);
+            this.layoutControl7.Controls.Add(this.simpleButton4);
+            this.layoutControl7.Controls.Add(this.simpleButton3);
+            this.layoutControl7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl7.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl7.Name = "layoutControl7";
+            this.layoutControl7.Root = this.layoutControlGroup6;
+            this.layoutControl7.Size = new System.Drawing.Size(278, 138);
+            this.layoutControl7.TabIndex = 0;
+            this.layoutControl7.Text = "layoutControl7";
+            // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Location = new System.Drawing.Point(16, 84);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(246, 28);
+            this.simpleButton5.StyleController = this.layoutControl7;
+            this.simpleButton5.TabIndex = 6;
+            this.simpleButton5.Text = "simpleButton5";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Location = new System.Drawing.Point(16, 50);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(246, 28);
+            this.simpleButton4.StyleController = this.layoutControl7;
+            this.simpleButton4.TabIndex = 5;
+            this.simpleButton4.Text = "simpleButton4";
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Location = new System.Drawing.Point(16, 16);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(246, 28);
+            this.simpleButton3.StyleController = this.layoutControl7;
+            this.simpleButton3.TabIndex = 4;
+            this.simpleButton3.Text = "simpleButton3";
+            // 
+            // layoutControlGroup6
+            // 
+            this.layoutControlGroup6.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup6.GroupBordersVisible = false;
+            this.layoutControlGroup6.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem13,
+            this.emptySpaceItem6,
+            this.layoutControlItem14,
+            this.layoutControlItem15});
+            this.layoutControlGroup6.Name = "layoutControlGroup6";
+            this.layoutControlGroup6.Size = new System.Drawing.Size(278, 138);
+            this.layoutControlGroup6.TextVisible = false;
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.Control = this.simpleButton3;
+            this.layoutControlItem13.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(252, 34);
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem13.TextVisible = false;
+            // 
+            // emptySpaceItem6
+            // 
+            this.emptySpaceItem6.AllowHotTrack = false;
+            this.emptySpaceItem6.Location = new System.Drawing.Point(0, 102);
+            this.emptySpaceItem6.Name = "emptySpaceItem6";
+            this.emptySpaceItem6.Size = new System.Drawing.Size(252, 10);
+            this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem14
+            // 
+            this.layoutControlItem14.Control = this.simpleButton4;
+            this.layoutControlItem14.Location = new System.Drawing.Point(0, 34);
+            this.layoutControlItem14.Name = "layoutControlItem14";
+            this.layoutControlItem14.Size = new System.Drawing.Size(252, 34);
+            this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem14.TextVisible = false;
+            // 
+            // layoutControlItem15
+            // 
+            this.layoutControlItem15.Control = this.simpleButton5;
+            this.layoutControlItem15.Location = new System.Drawing.Point(0, 68);
+            this.layoutControlItem15.Name = "layoutControlItem15";
+            this.layoutControlItem15.Size = new System.Drawing.Size(252, 34);
+            this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem15.TextVisible = false;
+            // 
+            // accordionControlElement24
+            // 
+            this.accordionControlElement24.ContentContainer = this.accordionContentContainer1;
+            this.accordionControlElement24.Expanded = true;
+            this.accordionControlElement24.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons)});
+            this.accordionControlElement24.Name = "accordionControlElement24";
+            this.accordionControlElement24.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement24.Text = "Type 1";
+            // 
+            // accordionControlElement15
+            // 
+            this.accordionControlElement15.ContentContainer = this.accordionContentContainer2;
+            this.accordionControlElement15.Expanded = true;
+            this.accordionControlElement15.Name = "accordionControlElement15";
+            this.accordionControlElement15.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement15.Text = "Type 2";
             // 
             // layoutControlGroup1
             // 
@@ -907,44 +1137,14 @@ partial class FormMain
             this.layoutControlGroup1.Size = new System.Drawing.Size(775, 446);
             this.layoutControlGroup1.TextVisible = false;
             // 
-            // EditAccordionControl
-            // 
-            this.EditAccordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement15,
-            this.accordionControlElement19,
-            this.accordionControlElement20,
-            this.accordionControlElement21});
-            this.EditAccordionControl.Location = new System.Drawing.Point(16, 16);
-            this.EditAccordionControl.Name = "EditAccordionControl";
-            this.EditAccordionControl.Size = new System.Drawing.Size(274, 414);
-            this.EditAccordionControl.StyleController = this.layoutControl2;
-            this.EditAccordionControl.TabIndex = 4;
-            // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.EditAccordionControl;
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(280, 420);
+            this.layoutControlItem8.Size = new System.Drawing.Size(333, 420);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
-            // 
-            // accordionControlElement15
-            // 
-            this.accordionControlElement15.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElement22});
-            this.accordionControlElement15.Expanded = true;
-            this.accordionControlElement15.Name = "accordionControlElement15";
-            this.accordionControlElement15.Text = "Element15";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Location = new System.Drawing.Point(683, 16);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(76, 28);
-            this.simpleButton1.StyleController = this.layoutControl2;
-            this.simpleButton1.TabIndex = 9;
-            this.simpleButton1.Text = "simpleButton1";
             // 
             // layoutControlItem9
             // 
@@ -958,32 +1158,51 @@ partial class FormMain
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(280, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(333, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(387, 420);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(334, 420);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // accordionControlElement19
+            // Root
             // 
-            this.accordionControlElement19.Name = "accordionControlElement19";
-            this.accordionControlElement19.Text = "Element19";
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem6});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(809, 509);
+            this.Root.TextVisible = false;
             // 
-            // accordionControlElement20
+            // layoutControlItem6
             // 
-            this.accordionControlElement20.Name = "accordionControlElement20";
-            this.accordionControlElement20.Text = "Element20";
+            this.layoutControlItem6.Control = this.xtraTabControl1;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(783, 483);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
             // 
-            // accordionControlElement21
+            // officeNavigationBar1
             // 
-            this.accordionControlElement21.Name = "accordionControlElement21";
-            this.accordionControlElement21.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement21.Text = "Element21";
+            this.officeNavigationBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.officeNavigationBar1.Items.AddRange(new DevExpress.XtraBars.Navigation.NavigationBarItem[] {
+            this.navigationBarItem1,
+            this.navigationBarItem2});
+            this.officeNavigationBar1.Location = new System.Drawing.Point(1, 426);
+            this.officeNavigationBar1.Name = "officeNavigationBar1";
+            this.officeNavigationBar1.Size = new System.Drawing.Size(775, 50);
+            this.officeNavigationBar1.TabIndex = 3;
+            this.officeNavigationBar1.Text = "officeNavigationBar1";
             // 
-            // accordionControlElement22
+            // navigationBarItem1
             // 
-            this.accordionControlElement22.Name = "accordionControlElement22";
-            this.accordionControlElement22.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement22.Text = "Element22";
+            this.navigationBarItem1.Name = "navigationBarItem1";
+            this.navigationBarItem1.Text = "Item1";
+            // 
+            // navigationBarItem2
+            // 
+            this.navigationBarItem2.Name = "navigationBarItem2";
+            this.navigationBarItem2.Text = "Item2";
             // 
             // FormMain
             // 
@@ -1029,18 +1248,37 @@ partial class FormMain
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar1)).EndInit();
             this.xtraTabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EditAccordionControl)).EndInit();
+            this.EditAccordionControl.ResumeLayout(false);
+            this.accordionContentContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl6)).EndInit();
+            this.layoutControl6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            this.accordionContentContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl7)).EndInit();
+            this.layoutControl7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1129,14 +1367,31 @@ partial class FormMain
     private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
     private DevExpress.XtraEditors.SimpleButton simpleButton1;
     private DevExpress.XtraBars.Navigation.AccordionControl EditAccordionControl;
-    private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement15;
     private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
     private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
     private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
-    private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement22;
-    private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement19;
-    private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement20;
-    private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement21;
+    private DevExpress.XtraBars.Navigation.AccordionContentContainer accordionContentContainer1;
+    private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement24;
+    private DevExpress.XtraLayout.LayoutControl layoutControl6;
+    private DevExpress.XtraEditors.TextEdit textEdit1;
+    private DevExpress.XtraEditors.SimpleButton simpleButton2;
+    private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
+    private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
+    private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem5;
+    private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
+    private DevExpress.XtraEditors.ToggleSwitch toggleSwitch1;
+    private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
+    private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement15;
+    private DevExpress.XtraBars.Navigation.AccordionContentContainer accordionContentContainer2;
+    private DevExpress.XtraLayout.LayoutControl layoutControl7;
+    private DevExpress.XtraEditors.SimpleButton simpleButton5;
+    private DevExpress.XtraEditors.SimpleButton simpleButton4;
+    private DevExpress.XtraEditors.SimpleButton simpleButton3;
+    private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup6;
+    private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
+    private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem6;
+    private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
+    private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
 }
 
 
