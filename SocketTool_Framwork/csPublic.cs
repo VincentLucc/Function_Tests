@@ -14,6 +14,7 @@ namespace SocketTool_Framework
     {
 
         public static string TimeString => DateTime.Now.ToString("HH:mm:ss:fff");
+        public static string TimeStringFormat = "HH:mm:ss.fff";
         public static string DateString => DateTime.Now.ToString("yyMMdd");
 
         public static csDevMessage messageHelper;

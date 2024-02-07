@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,13 @@ namespace SocketTool_Framework.UserControls
         public TCPServerXtraUserControl()
         {
             InitializeComponent();
+            Disposed += TCPServerXtraUserControl_Disposed;
+        }
+
+        private void TCPServerXtraUserControl_Disposed(object sender, EventArgs e)
+        {
+            server.ClientRequestReceived -= TcpServer_ClientRequestReceived;
+            server = null;
         }
 
         public void LoadConfig(csTCPServer tcpServer)
@@ -30,8 +38,27 @@ namespace SocketTool_Framework.UserControls
             IPv4LabelControl.Text = server.IPv4;
 
             //Force to load the data
-            ReceivedGridControl.DataSource = server.ReceivedMessages;
-            ReceivedGridView.PopulateColumns();
+            ReceivedGridView.Columns.Clear();
+            var colRec = ReceivedGridView.Columns.AddField(nameof(csRecClinetMessage.RecTime));
+            colRec.Width = 80;
+            var colClient = ReceivedGridView.Columns.AddField(nameof(csRecClinetMessage.Client));
+            colClient.Width = 100;
+            var colMessage = ReceivedGridView.Columns.AddField(nameof(csRecClinetMessage.Message));
+            ReceivedGridControl.DataSource = server.RequestHistory;
+            ReceivedGridView.CustomColumnDisplayText += ReceivedGridView_CustomColumnDisplayText;
+
+            //Reload the events
+            server.ClientRequestReceived -= TcpServer_ClientRequestReceived;
+            server.ClientRequestReceived += TcpServer_ClientRequestReceived;
+        }
+
+        private void ReceivedGridView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Value is DateTime)
+            {
+                var time = (DateTime)e.Value;
+                e.DisplayText = time.ToString(csPublic.TimeStringFormat);
+            }
         }
 
         private void SendButton_Click(object sender, EventArgs e)
@@ -51,11 +78,12 @@ namespace SocketTool_Framework.UserControls
         {
             if (bUpdateRecivedMessage)
             {
+                Debug.WriteLine("Update Grid");
                 ReceivedGridControl.RefreshDataSource();
                 bUpdateRecivedMessage = false;
             }
 
-            
+
             if (server.IsRunning)
             {
                 StartButton.Enabled = false;
@@ -68,7 +96,7 @@ namespace SocketTool_Framework.UserControls
             }
         }
 
- 
+
 
         private async void StartButton_Click(object sender, EventArgs e)
         {
@@ -79,8 +107,6 @@ namespace SocketTool_Framework.UserControls
                 await server.StopTCPServer();
                 return;
             }
-            server.ClientRequestReceived -= TcpServer_ClientRequestReceived;
-            server.ClientRequestReceived += TcpServer_ClientRequestReceived;
         }
 
         private async void StopButton_Click(object sender, EventArgs e)
@@ -92,6 +118,7 @@ namespace SocketTool_Framework.UserControls
         {
             //Notice to update the view
             bUpdateRecivedMessage = true;
+            Debug.WriteLine("bUpdateRecivedMessage:True");
 
         }
 

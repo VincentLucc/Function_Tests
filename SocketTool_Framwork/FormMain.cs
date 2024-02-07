@@ -92,23 +92,32 @@ namespace SocketTool_Framework
                 var serverPanel = new TCPServerXtraUserControl();
                 serverPanel.Dock = DockStyle.Fill;
                 messageHelper.ShowMainLoading();
-                MainSplitContainerControl.Panel2.Controls.Clear();
-                MainSplitContainerControl.Panel2.Controls.Add(serverPanel);
+                UpdatePanelDisplay(serverPanel);
                 serverPanel.LoadConfig(csConfigHelper.config.TCPServers[iIndex]);
-                messageHelper.CloseLoadingForm();
+                messageHelper.CloseForm();
             }
             if (parentItem.Text == csGroup.TCPClient)
             {
                 var clientPanel = new TCPClientXtraUserControl();
                 clientPanel.Dock = DockStyle.Fill;
                 messageHelper.ShowMainLoading();
-                MainSplitContainerControl.Panel2.Controls.Clear();
-                MainSplitContainerControl.Panel2.Controls.Add(clientPanel);
+                UpdatePanelDisplay(clientPanel);
                 clientPanel.LoadConfig(csConfigHelper.config.TCPClients[iIndex]);
-                messageHelper.CloseLoadingForm();
+                messageHelper.CloseForm();
             }
         }
 
+        private void UpdatePanelDisplay(Control control)
+        {
+            //Cleanup
+            foreach (UserControl item in MainSplitContainerControl.Panel2.Controls)
+            {
+                item.Dispose();
+            }
+
+            MainSplitContainerControl.Panel2.Controls.Clear();
+            MainSplitContainerControl.Panel2.Controls.Add(control);
+        }
  
 
         private _itemType GetCurrentGroup()

@@ -70,7 +70,7 @@ namespace SocketTool_Framework
         /// Use an seperated buffer to keep data even when tcp client is closed
         /// </summary>
         [XmlIgnore]
-        public List<string> ReceivedMessages { get; set; }
+        public List<csRecClinetMessage> RequestHistory { get; set; }
         public object lockReceivedMessages { get; set; }
 
         /// <summary>
@@ -78,12 +78,13 @@ namespace SocketTool_Framework
         /// </summary>
         public int ClientLimit { get; set; }
 
-        [XmlIgnore]
+
         /// <summary>
         /// Client requests
         /// Allow only one thread process the client request at the same time
         /// This can avoid server side action conflict
         /// </summary>
+        [XmlIgnore]
         public List<csTCPOperation> OperationQueue { get; set; }
         [XmlIgnore]
         public object LockOperationQueue { get; set; }
@@ -176,7 +177,7 @@ namespace SocketTool_Framework
             UdpMessages = new ConcurrentQueue<string>();
             IPv4 = "0.0.0.0";
             Port = 54321;
-            ReceivedMessages = new List<string>();
+            RequestHistory = new List<csRecClinetMessage>();
             lockReceivedMessages = new object();
 
             //Setup messages
@@ -304,7 +305,7 @@ namespace SocketTool_Framework
 
             }
 
- 
+
             stopwatch.Stop();
             Debug.WriteLine($"Close thread:{threadName}, Time {stopwatch.ElapsedMilliseconds}ms.");
         }
@@ -392,7 +393,7 @@ namespace SocketTool_Framework
                         }
 
                         //Message can be connected
-                        socketClient.Send(Encoding.UTF8.GetBytes(sWelcome));                       
+                        socketClient.Send(Encoding.UTF8.GetBytes(sWelcome));
                     }
 
 
@@ -506,11 +507,13 @@ namespace SocketTool_Framework
                 lock (lockReceivedMessages)
                 {
                     string sMessage = $"{csPublic.TimeString} {operation.ClientInfo.RemoteEndPoint} : {operation.TextRequest}";
-                    ReceivedMessages.Add(sMessage);
 
-                    if (ReceivedMessages.Count > 1500)
+                    //Add to history for display purpose
+                    RequestHistory.Add(new csRecClinetMessage(operation));
+
+                    if (RequestHistory.Count > 1500)
                     {
-                        ReceivedMessages.RemoveRange(0, 500);
+                        RequestHistory.RemoveRange(0, 500);
                     }
                 }
             }
@@ -621,7 +624,7 @@ namespace SocketTool_Framework
                     Clients.AddOrUpdate(sRemote, client, (key, value) => client);
 
                     //Server OK command
-                    if (EnableStatusMessage) 
+                    if (EnableStatusMessage)
                         client.SendMessage("Ready to receive.");
                     client.IsValid = true;
                 }
@@ -717,7 +720,7 @@ namespace SocketTool_Framework
                 if (EnableStatusMessage)
                 {
                     client.SendMessage("Ready to send");
-                }                
+                }
             }
             catch (Exception e1)
             {

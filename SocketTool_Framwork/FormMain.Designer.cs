@@ -262,7 +262,7 @@ namespace SocketTool_Framework
             // 
             this.MainSplitContainerControl.Panel2.Text = "Panel2";
             this.MainSplitContainerControl.Size = new System.Drawing.Size(810, 417);
-            this.MainSplitContainerControl.SplitterPosition = 182;
+            this.MainSplitContainerControl.SplitterPosition = 208;
             this.MainSplitContainerControl.TabIndex = 0;
             // 
             // MenuAccordionControl
@@ -278,7 +278,7 @@ namespace SocketTool_Framework
             this.MenuAccordionControl.Name = "MenuAccordionControl";
             this.MenuAccordionControl.OptionsMinimizing.AllowMinimizeMode = DevExpress.Utils.DefaultBoolean.False;
             this.MenuAccordionControl.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Always;
-            this.MenuAccordionControl.Size = new System.Drawing.Size(182, 417);
+            this.MenuAccordionControl.Size = new System.Drawing.Size(208, 417);
             this.MenuAccordionControl.TabIndex = 4;
             this.MenuAccordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 

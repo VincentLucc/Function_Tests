@@ -34,7 +34,7 @@ namespace SocketTool_Framework
         public bool UIExit => parentControl == null || parentControl.IsDisposed || parentControl.Disposing;
 
         [XmlIgnore]
-        public List<string> ReceivedMessages = new List<string>();
+        public List<csRecMessage> ReceivedMessages = new List<csRecMessage>();
         public object lockReceivedMessages = new object();
 
 
@@ -114,7 +114,7 @@ namespace SocketTool_Framework
 
                     //Check received data
                     string sData = Encoding.UTF8.GetString(Buffer, 0, receiveLength);
-                    Console.WriteLine("Server_" + DateTime.Now.ToString() + ":\r\n" + sData); //For test only
+                    Console.WriteLine($"{csPublic.TimeString}(From Server):{sData}"); //For test only
                     AddReceivedMessage(sData);
                     NewMessageReceived?.Invoke(sData);
 
@@ -139,7 +139,7 @@ namespace SocketTool_Framework
                     ReceivedMessages.RemoveRange(0, ReceivedMessages.Count - iLimit);
                 }
 
-                ReceivedMessages.Add(sMessage);
+                ReceivedMessages.Add(new csRecMessage(sMessage));
             }
         }
 

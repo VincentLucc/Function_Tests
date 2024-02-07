@@ -7,6 +7,8 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Windows.Media.Animation;
 
 namespace SocketTool_Framework
 {
@@ -54,6 +56,35 @@ namespace SocketTool_Framework
                 Debug.WriteLine("csTCPModel.IsConnected:\r\n" + ex.Message);
                 return false;
             }
+        }
+    }
+
+    public class csRecMessage
+    {
+        public DateTime RecTime { get; set; }
+
+        public string Message { get; set; }
+
+        public csRecMessage()
+        {
+
+        }
+
+        public csRecMessage(string sMessage)
+        {
+            RecTime = DateTime.Now;
+            Message = sMessage;
+        }
+    }
+
+    public class csRecClinetMessage : csRecMessage
+    {
+        public string Client { get; set; }
+        public csRecClinetMessage(csTCPOperation operation)
+        {
+            Client = operation.ClientInfo.RemoteEndPoint;
+            RecTime = operation.CreateTime;
+            Message = operation.TextRequest;
         }
     }
 

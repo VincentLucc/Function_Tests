@@ -1,8 +1,10 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Columns;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -30,11 +32,39 @@ namespace SocketTool_Framework.UserControls
             IPv4LabelControl.Text = client.ServerIP;
 
             //Force to load the data
+            ReceivedGridView.CustomColumnDisplayText += ReceivedGridView_CustomColumnDisplayText;
             lock (client.lockReceivedMessages)
             {
                 ReceivedGridControl.DataSource = client.ReceivedMessages;
-            }         
+            }
             ReceivedGridView.PopulateColumns();
+            foreach (GridColumn col in ReceivedGridView.Columns)
+            {
+                col.OptionsColumn.AllowEdit = false;
+                if (col.FieldName== nameof(csRecMessage.RecTime))
+                {
+                    col.Width = 80;
+                }
+            }
+
+
+        }
+
+        private void ReceivedGridView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            try
+            {
+                if (e.Value is DateTime)
+                {
+                    var time= (DateTime)e.Value;
+                    e.DisplayText = time.ToString(csPublic.TimeStringFormat);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"TCPClientXtraUserControl.ReceivedGridView_CustomColumnDisplayText.Exception:\r\n{ex.Message}");
+            }
+
         }
 
         private void SendButton_Click(object sender, EventArgs e)
@@ -57,11 +87,11 @@ namespace SocketTool_Framework.UserControls
                 lock (client.lockReceivedMessages)
                 {
                     ReceivedGridControl.RefreshDataSource();
-                }        
+                }
                 bUpdateRecivedMessage = false;
             }
 
-            
+
             if (client.IsConnected)
             {
                 ConnectButton.Enabled = false;
@@ -74,18 +104,18 @@ namespace SocketTool_Framework.UserControls
             }
         }
 
- 
 
- 
+
+
 
         private void Client_NewMessageReceived(string sMessage)
         {
             bUpdateRecivedMessage = true;
         }
 
- 
 
-     
+
+
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
@@ -99,6 +129,8 @@ namespace SocketTool_Framework.UserControls
 
         private async void ConnectButton_Click(object sender, EventArgs e)
         {
+            csPublic.messageHelper.ShowMainLoading("Connecting");
+
             if (!await client.ConnectToServer(csPublic.winMain))
             {
                 csPublic.messageHelper.Info("Can't connect to server.");
@@ -107,6 +139,7 @@ namespace SocketTool_Framework.UserControls
             }
             client.NewMessageReceived -= Client_NewMessageReceived;
             client.NewMessageReceived += Client_NewMessageReceived;
+            csPublic.messageHelper.CloseForm();
         }
     }
 
