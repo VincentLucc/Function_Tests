@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using DevExpress.XtraBars.Navigation;
+using SocketTool_Framework.Classes;
 using SocketTool_Framework.Forms;
 using SocketTool_Framework.UserControls;
 
@@ -23,9 +24,10 @@ namespace SocketTool_Framework
 
         public FormMain Instance;
         csDevMessage messageHelper;
+        BindingList<csTreeListItem> treeListItems;
         List<csTCPServer> tcpServers;
         List<csTCPClient> tcpClients;
- 
+
         public FormMain()
         {
             InitializeComponent();
@@ -45,6 +47,7 @@ namespace SocketTool_Framework
 
             string sMessage = "";
 
+            //Read configuration
             if (!csConfigHelper.LoadOrCreateConfig(out sMessage))
             {
                 messageHelper.Info(sMessage);
@@ -52,13 +55,14 @@ namespace SocketTool_Framework
             }
             tcpServers = csConfigHelper.config.TCPServers;
             tcpClients = csConfigHelper.config.TCPClients;
+
+            //Load the configuration to control
+            PopulateServerItems();
+            PopulateClientItems();
+
             //Init according control
             MenuAccordionControl.InitSelection();//Fix the display issue
             MenuAccordionControl.SelectedObjectChanged += MenuAccordionControl_SelectedObjectChanged;
-
-            //Load the configuration value
-            PopulateServerItems();
-            PopulateClientItems();
 
             //Load version info
             VersionStaticItem.Caption = "Version: " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -82,28 +86,28 @@ namespace SocketTool_Framework
             var parentItem = MenuAccordionControl.SelectedObject.OwnerElement;
             if (parentItem.Style != ElementStyle.Group) return;
 
-            //Get item index
-            int iIndex = parentItem.Elements.IndexOf(MenuAccordionControl.SelectedObject);
-
-            if (parentItem.Text == csGroup.TCPServer)
-            {//Get ip endpoint
-             //Get item index
-             //Show current server info
-                var serverPanel = new TCPServerXtraUserControl();
-                serverPanel.Dock = DockStyle.Fill;
-                messageHelper.ShowMainLoading();
-                UpdatePanelDisplay(serverPanel);
-                serverPanel.LoadConfig(csConfigHelper.config.TCPServers[iIndex]);
-                messageHelper.CloseForm();
-            }
-            if (parentItem.Text == csGroup.TCPClient)
+            //Use customize item to get the tagExt value
+            if (MenuAccordionControl.SelectedObject is AccordionControlElementEx)
             {
-                var clientPanel = new TCPClientXtraUserControl();
-                clientPanel.Dock = DockStyle.Fill;
-                messageHelper.ShowMainLoading();
-                UpdatePanelDisplay(clientPanel);
-                clientPanel.LoadConfig(csConfigHelper.config.TCPClients[iIndex]);
-                messageHelper.CloseForm();
+                var selection = MenuAccordionControl.SelectedObject as AccordionControlElementEx;
+                if (selection.TagExt is csTCPServer)
+                {//Show current server info
+                    var serverPanel = new TCPServerXtraUserControl();
+                    serverPanel.Dock = DockStyle.Fill;
+                    messageHelper.ShowMainLoading();
+                    UpdatePanelDisplay(serverPanel);
+                    serverPanel.LoadConfig((csTCPServer)selection.TagExt);
+                    messageHelper.CloseForm();
+                }
+                else if (selection.TagExt is csTCPClient)
+                {
+                    var clientPanel = new TCPClientXtraUserControl();
+                    clientPanel.Dock = DockStyle.Fill;
+                    messageHelper.ShowMainLoading();
+                    UpdatePanelDisplay(clientPanel);
+                    clientPanel.LoadConfig((csTCPClient)selection.TagExt);
+                    messageHelper.CloseForm();
+                }
             }
         }
 
@@ -118,7 +122,7 @@ namespace SocketTool_Framework
             MainSplitContainerControl.Panel2.Controls.Clear();
             MainSplitContainerControl.Panel2.Controls.Add(control);
         }
- 
+
 
         private _itemType GetCurrentGroup()
         {
@@ -188,7 +192,7 @@ namespace SocketTool_Framework
                 newElement.Text = newClient.GetDisplayName();
                 tcpClients.Add(newClient);
             }
- 
+
         }
 
         private async void barButtonDel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -316,7 +320,7 @@ namespace SocketTool_Framework
                 MenuAccordionControl.CustomSelectedItem(parentItem.Elements[iIndex + 1]);
                 MenuAccordionControl.SelectedObjectChanged += MenuAccordionControl_SelectedObjectChanged;
             }
- 
+
         }
 
         public void PopulateServerItems()
@@ -324,9 +328,12 @@ namespace SocketTool_Framework
             TCPServerAccordionControlElement.Elements.Clear();
             foreach (var item in csConfigHelper.config.TCPServers)
             {
-                var newElement = TCPServerAccordionControlElement.Elements.Add();
+                var newElement = new AccordionControlElementEx();
+                TCPServerAccordionControlElement.Elements.Add(newElement);
                 newElement.Style = ElementStyle.Item;
                 newElement.Text = item.GetDisplayName();
+                //Tag property is already used by the internal UI control
+                newElement.TagExt = item;
             }
         }
 
@@ -335,9 +342,12 @@ namespace SocketTool_Framework
             TCPClientAccordionControlElement.Elements.Clear();
             foreach (var item in csConfigHelper.config.TCPClients)
             {
-                var newElement = TCPClientAccordionControlElement.Elements.Add();
+                var newElement = new AccordionControlElementEx();
+                TCPClientAccordionControlElement.Elements.Add(newElement);
                 newElement.Style = ElementStyle.Item;
                 newElement.Text = item.GetDisplayName();
+                //Tag property is already used by the internal UI control
+                newElement.TagExt = item;
             }
         }
 

@@ -71,7 +71,7 @@ namespace SocketTool_Framework
         /// <param name="item"></param>
         public void CustomSelectedItem(AccordionControlElement item)
         {
- 
+
             InvokeSelectedObject(item);//trigger selection change event
             item.Tag = MouseEventType.Click;
 
@@ -82,7 +82,7 @@ namespace SocketTool_Framework
             }
 
 
-            if (item.Style==ElementStyle.Group)
+            if (item.Style == ElementStyle.Group)
             {
                 this.SelectedElement = null;
                 clickedGroupElement = item;
@@ -91,7 +91,7 @@ namespace SocketTool_Framework
             {
                 this.SelectedElement = item;
             }
- 
+
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -176,5 +176,17 @@ namespace SocketTool_Framework
             this.ResumeLayout(false);
 
         }
+
+
     }
+
+    public class AccordionControlElementEx : AccordionControlElement
+    {
+        /// <summary>
+        /// Default tag is already been used, add extra tag to store required info
+        /// </summary>
+        public object TagExt { get; set; }
+    }
+
+
 }

@@ -199,6 +199,7 @@
     <Compile Include="Classes\csTCPModel.cs" />
     <Compile Include="Classes\csTCPServer.cs" />
     <Compile Include="Classes\csThreadHelper.cs" />
+    <Compile Include="Classes\csTreeListItem.cs" />
     <Compile Include="csPublic.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>

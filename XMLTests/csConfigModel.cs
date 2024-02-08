@@ -44,5 +44,6 @@ public enum types
     type1,
     [XmlEnum("2")]
     type2,
-    type3,
+    //Value won't change, will store "type3"
+    type3 = 100,
 }
