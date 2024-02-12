@@ -197,8 +197,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolTip", "ToolTip\ToolTip.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextConvert", "TextConvert\TextConvert.csproj", "{530F4B91-A6AC-4358-97D4-509C92E237F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketTool_Framework", "SocketTool_Framwork\SocketTool_Framework.csproj", "{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dev_Grid_CustomFilter_V22.1", "Dev_Grid_CustomFilter_V22.1\Dev_Grid_CustomFilter_V22.1.csproj", "{4D59B6DA-AA1E-4E20-B7BE-986DBAF1342C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_QuickTests_Framework", "_QuickTests_Framework\_QuickTests_Framework.csproj", "{EE05E4A7-1CCA-471B-B4B4-EF352E3EB6E7}"
@@ -1768,22 +1766,6 @@ Global
 		{530F4B91-A6AC-4358-97D4-509C92E237F4}.Release|x64.Build.0 = Release|Any CPU
 		{530F4B91-A6AC-4358-97D4-509C92E237F4}.Release|x86.ActiveCfg = Release|Any CPU
 		{530F4B91-A6AC-4358-97D4-509C92E237F4}.Release|x86.Build.0 = Release|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|arm64.Build.0 = Debug|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|x64.Build.0 = Debug|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Debug|x86.Build.0 = Debug|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|arm64.ActiveCfg = Release|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|arm64.Build.0 = Release|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|x64.ActiveCfg = Release|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|x64.Build.0 = Release|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|x86.ActiveCfg = Release|Any CPU
-		{3BA607AA-2EB5-447F-BDFE-A8687FE46E7A}.Release|x86.Build.0 = Release|Any CPU
 		{4D59B6DA-AA1E-4E20-B7BE-986DBAF1342C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4D59B6DA-AA1E-4E20-B7BE-986DBAF1342C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D59B6DA-AA1E-4E20-B7BE-986DBAF1342C}.Debug|arm64.ActiveCfg = Debug|Any CPU
