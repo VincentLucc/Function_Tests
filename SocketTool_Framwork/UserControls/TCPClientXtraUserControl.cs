@@ -44,6 +44,7 @@ namespace SocketTool_Framework.UserControls
                 if (col.FieldName== nameof(csRecMessage.RecTime))
                 {
                     col.Width = 80;
+                    col.MaxWidth = 100;
                 }
             }
 
@@ -87,6 +88,7 @@ namespace SocketTool_Framework.UserControls
                 lock (client.lockReceivedMessages)
                 {
                     ReceivedGridControl.RefreshDataSource();
+                    ReceivedGridView.MoveLast();
                 }
                 bUpdateRecivedMessage = false;
             }
