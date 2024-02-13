@@ -139,5 +139,11 @@ namespace Dev_GridControl_22_1
             var menuStrip = new ContextMenuStripForm();
             menuStrip.ShowDialog();
         }
+
+        private void bCustomColumn_Click(object sender, EventArgs e)
+        {
+            var form = new CustomColumns();
+            form.ShowDialog();
+        }
     }
 }

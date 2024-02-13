@@ -203,6 +203,12 @@
     <Compile Include="Forms\CustomBindingEditForm.Designer.cs">
       <DependentUpon>CustomBindingEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CustomColumns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomColumns.Designer.cs">
+      <DependentUpon>CustomColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CustomEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,6 +303,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomBindingEditForm.resx">
       <DependentUpon>CustomBindingEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomColumns.resx">
+      <DependentUpon>CustomColumns.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomEditor.resx">
       <DependentUpon>CustomEditor.cs</DependentUpon>

@@ -46,11 +46,13 @@ namespace Dev_GridControl_22_1
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.bContextMenuStrip = new System.Windows.Forms.Button();
             this.bUpdateListSource = new DevExpress.XtraEditors.SimpleButton();
             this.bFilterButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
-            this.bContextMenuStrip = new System.Windows.Forms.Button();
+            this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
+            this.bCustomColumn = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -61,6 +63,8 @@ namespace Dev_GridControl_22_1
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
+            this.groupControl6.SuspendLayout();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -207,7 +211,7 @@ namespace Dev_GridControl_22_1
             this.groupControl2.Controls.Add(this.bBigDataUpdate);
             this.groupControl2.Location = new System.Drawing.Point(199, 7);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(223, 206);
+            this.groupControl2.Size = new System.Drawing.Size(236, 206);
             this.groupControl2.TabIndex = 13;
             this.groupControl2.Text = "Performance";
             // 
@@ -233,9 +237,19 @@ namespace Dev_GridControl_22_1
             this.groupControl4.Controls.Add(this.simpleButton2);
             this.groupControl4.Location = new System.Drawing.Point(199, 227);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(307, 206);
+            this.groupControl4.Size = new System.Drawing.Size(236, 206);
             this.groupControl4.TabIndex = 15;
             this.groupControl4.Text = "Special Functions";
+            // 
+            // bContextMenuStrip
+            // 
+            this.bContextMenuStrip.Location = new System.Drawing.Point(120, 26);
+            this.bContextMenuStrip.Name = "bContextMenuStrip";
+            this.bContextMenuStrip.Size = new System.Drawing.Size(109, 23);
+            this.bContextMenuStrip.TabIndex = 14;
+            this.bContextMenuStrip.Text = "Context Menu Strip";
+            this.bContextMenuStrip.UseVisualStyleBackColor = true;
+            this.bContextMenuStrip.Click += new System.EventHandler(this.bContextMenuStrip_Click);
             // 
             // bUpdateListSource
             // 
@@ -268,33 +282,44 @@ namespace Dev_GridControl_22_1
             // groupControl5
             // 
             this.groupControl5.Controls.Add(this.bRejectReasons);
-            this.groupControl5.Location = new System.Drawing.Point(428, 7);
+            this.groupControl5.Location = new System.Drawing.Point(441, 7);
             this.groupControl5.Name = "groupControl5";
             this.groupControl5.Size = new System.Drawing.Size(200, 206);
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Text = "Application Test";
             // 
-            // bContextMenuStrip
+            // groupControl6
             // 
-            this.bContextMenuStrip.Location = new System.Drawing.Point(120, 26);
-            this.bContextMenuStrip.Name = "bContextMenuStrip";
-            this.bContextMenuStrip.Size = new System.Drawing.Size(109, 23);
-            this.bContextMenuStrip.TabIndex = 14;
-            this.bContextMenuStrip.Text = "Context Menu Strip";
-            this.bContextMenuStrip.UseVisualStyleBackColor = true;
-            this.bContextMenuStrip.Click += new System.EventHandler(this.bContextMenuStrip_Click);
+            this.groupControl6.Controls.Add(this.bCustomColumn);
+            this.groupControl6.Location = new System.Drawing.Point(441, 227);
+            this.groupControl6.Name = "groupControl6";
+            this.groupControl6.Size = new System.Drawing.Size(200, 200);
+            this.groupControl6.TabIndex = 17;
+            this.groupControl6.Text = "Data Source";
+            // 
+            // bCustomColumn
+            // 
+            this.bCustomColumn.Location = new System.Drawing.Point(5, 26);
+            this.bCustomColumn.Name = "bCustomColumn";
+            this.bCustomColumn.Size = new System.Drawing.Size(109, 23);
+            this.bCustomColumn.TabIndex = 8;
+            this.bCustomColumn.Text = "Custom Column";
+            this.bCustomColumn.ToolTip = "Web Style Row Display";
+            this.bCustomColumn.Click += new System.EventHandler(this.bCustomColumn_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 452);
+            this.ClientSize = new System.Drawing.Size(670, 447);
+            this.Controls.Add(this.groupControl6);
             this.Controls.Add(this.groupControl5);
             this.Controls.Add(this.groupControl4);
             this.Controls.Add(this.groupControl3);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -307,6 +332,8 @@ namespace Dev_GridControl_22_1
             this.groupControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).EndInit();
+            this.groupControl6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -335,6 +362,8 @@ namespace Dev_GridControl_22_1
         private DevExpress.XtraEditors.SimpleButton bUpdateListSource;
         private DevExpress.XtraEditors.SimpleButton WinExplorerSimpleButton;
         private System.Windows.Forms.Button bContextMenuStrip;
+        private DevExpress.XtraEditors.GroupControl groupControl6;
+        private DevExpress.XtraEditors.SimpleButton bCustomColumn;
     }
 }
 

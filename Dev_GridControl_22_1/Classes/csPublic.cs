@@ -51,6 +51,31 @@ namespace Dev_GridControl_22_1
             View.Appearance.GroupFooter.TextOptions.HAlignment = alignmentGroup;//Center the display
         }
 
-   
+
+
+        public static List<Student> CreateStudents(int iCount = 100, int iClassSize = 10)
+        {
+            int iClassID = 0;
+            List<Student> list = new List<Student>();
+            for (int iStu = 0; iStu < iCount; iStu++)
+            {
+                for (int iSub = 0; iSub < iClassSize; iSub++)
+                {
+                    Student student = new Student()
+                    {
+                        Age = 10 + iStu,
+                        Name = $"Stu_{iStu.ToString("d3")}",
+                        Class = $"Cls_{iClassID.ToString("d2")}"
+                    };
+
+                    list.Add(student);
+                }
+
+
+                iClassID += 1;
+            }
+
+            return list;
+        }
     }
 }
