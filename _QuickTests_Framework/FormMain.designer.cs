@@ -45,6 +45,7 @@ namespace _QuickTests_Framework
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.bVirtualMethod = new System.Windows.Forms.Button();
             this.bClassStatic = new System.Windows.Forms.Button();
             this.bReference = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -123,7 +124,7 @@ namespace _QuickTests_Framework
             this.tbPlain = new System.Windows.Forms.RichTextBox();
             this.bEncryptionInit = new System.Windows.Forms.Button();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
-            this.bVirtualMethod = new System.Windows.Forms.Button();
+            this.bMethodRef = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -284,6 +285,7 @@ namespace _QuickTests_Framework
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.bMethodRef);
             this.tabGeneral.Controls.Add(this.groupBox8);
             this.tabGeneral.Controls.Add(this.bReference);
             this.tabGeneral.Controls.Add(this.groupBox5);
@@ -318,6 +320,16 @@ namespace _QuickTests_Framework
             this.groupBox8.TabIndex = 22;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Class";
+            // 
+            // bVirtualMethod
+            // 
+            this.bVirtualMethod.Location = new System.Drawing.Point(8, 45);
+            this.bVirtualMethod.Name = "bVirtualMethod";
+            this.bVirtualMethod.Size = new System.Drawing.Size(115, 23);
+            this.bVirtualMethod.TabIndex = 22;
+            this.bVirtualMethod.Text = "Virtual Method";
+            this.bVirtualMethod.UseVisualStyleBackColor = true;
+            this.bVirtualMethod.Click += new System.EventHandler(this.bVirtualMethod_Click);
             // 
             // bClassStatic
             // 
@@ -1131,15 +1143,15 @@ namespace _QuickTests_Framework
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick_1);
             // 
-            // bVirtualMethod
+            // bMethodRef
             // 
-            this.bVirtualMethod.Location = new System.Drawing.Point(8, 45);
-            this.bVirtualMethod.Name = "bVirtualMethod";
-            this.bVirtualMethod.Size = new System.Drawing.Size(115, 23);
-            this.bVirtualMethod.TabIndex = 22;
-            this.bVirtualMethod.Text = "Virtual Method";
-            this.bVirtualMethod.UseVisualStyleBackColor = true;
-            this.bVirtualMethod.Click += new System.EventHandler(this.bVirtualMethod_Click);
+            this.bMethodRef.Location = new System.Drawing.Point(18, 52);
+            this.bMethodRef.Name = "bMethodRef";
+            this.bMethodRef.Size = new System.Drawing.Size(124, 20);
+            this.bMethodRef.TabIndex = 23;
+            this.bMethodRef.Text = "Method Params: Ref";
+            this.bMethodRef.UseVisualStyleBackColor = true;
+            this.bMethodRef.Click += new System.EventHandler(this.bMethodRef_Click);
             // 
             // FormMain
             // 
@@ -1272,6 +1284,7 @@ namespace _QuickTests_Framework
         private System.Windows.Forms.Button bCalDecimals;
         private System.Windows.Forms.Button bEnumMultipleValues;
         private System.Windows.Forms.Button bVirtualMethod;
+        private System.Windows.Forms.Button bMethodRef;
     }
 }
 

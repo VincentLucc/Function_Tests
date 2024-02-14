@@ -1599,6 +1599,25 @@ namespace _QuickTests_Framework
 
 
         }
+
+        private void bMethodRef_Click(object sender, EventArgs e)
+        {
+            Student student1 = new Student() { Name="Stu01"};
+            Student student2 = new Student() { Name="Stu02"};
+
+            Clear(student1); //Value exist
+            Clear(ref student2); //Value equals null
+        }
+
+        private void Clear(Student student)
+        {
+            student = null;
+        }
+
+        private void Clear(ref Student student)
+        {
+            student = null;
+        }
     }
 
 
