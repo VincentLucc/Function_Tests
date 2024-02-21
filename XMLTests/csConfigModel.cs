@@ -29,13 +29,41 @@ public class csConfigModel
     public types typeValue2 { get; set; }
     public types typeValue3 { get; set; }
 
+ 
+    public _type1 TestType1 { get; set; }
+    public _type2 TestType2 { get; set; }
+
     public csConfigModel()
     {
         iValue1 = 1;
+        //直接存值： <TestType1>AB CD</TestType1>
+        TestType1 = _type1.AB | _type1.CD;
+        //存取替代值： <TestType2>1 2</TestType2>
+        TestType2 = _type2.AB | _type2.CD;
         typeValue1 = types.type1;
         typeValue2 = types.type2;
         typeValue3 = types.type3;
     }
+}
+
+
+[Flags]
+public enum _type1
+{
+    AB = 0b00000001,
+    CD = 0b00000010,
+    EF = 0b00000100,
+}
+
+[Flags]
+public enum _type2
+{
+    [XmlEnum("1")]
+    AB = 0b00000001,
+    [XmlEnum("2")]
+    CD = 0b00000010,
+    [XmlEnum("3")]
+    EF = 0b00000100,
 }
 
 public enum types

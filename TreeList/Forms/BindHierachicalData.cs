@@ -25,36 +25,6 @@ namespace TreeList
             InitEvnets();
         }
 
-        private void InitEvnets()
-        {
-            //This doesn't work
-            //Use the "TreeList1_CustomColumnDisplayText" instead
-            //treeList1.PopulateColumns();
-            //treeList1.Columns[nameof(csTreeItem.Icon)].Width = 50;
-
-            //Show hide columns, don't use custom style event (Won't trigger)
-            treeList1.CustomColumnDisplayText += TreeList1_CustomColumnDisplayText; ;
-        }
-
-        private void TreeList1_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
-        {
-            string sName = e.Column.FieldName;
-
-            if (sName == (nameof(csTreeItem.Tag)))
-            {
-                e.Column.Visible = false;
-            }
-            else if (sName == (nameof(csTreeItem.Name)))
-            {
-                e.Column.OptionsColumn.AllowEdit = false;
-            }
-            else if (sName == (nameof(csTreeItem.Icon)))
-            {
-                e.Column.Width = 32;
-            }
-
-        }
-
         private void BindHierachicalData_Load(object sender, EventArgs e)
         {
             csUIHelper.InitTreeList(treeList1);
@@ -88,6 +58,38 @@ namespace TreeList
             treeList1.OptionsView.ShowIndicator = false;
             treeList1.OptionsView.ShowColumns = false;
         }
+
+        private void InitEvnets()
+        {
+            //This doesn't work
+            //Use the "TreeList1_CustomColumnDisplayText" instead
+            //treeList1.PopulateColumns();
+            //treeList1.Columns[nameof(csTreeItem.Icon)].Width = 50;
+
+            //Show hide columns, don't use custom style event (Won't trigger)
+            treeList1.CustomColumnDisplayText += TreeList1_CustomColumnDisplayText; ;
+        }
+
+        private void TreeList1_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
+        {
+            string sName = e.Column.FieldName;
+
+            if (sName == (nameof(csTreeItem.Tag)))
+            {
+                e.Column.Visible = false;
+            }
+            else if (sName == (nameof(csTreeItem.Name)))
+            {
+                e.Column.OptionsColumn.AllowEdit = false;
+            }
+            else if (sName == (nameof(csTreeItem.Icon)))
+            {
+                e.Column.Width = 32;
+            }
+
+        }
+
+    
 
 
 
