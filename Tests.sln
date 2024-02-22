@@ -49,7 +49,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPort_Ink_19.1", "Seri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevChartControl", "ChartControl\DevChartControl.csproj", "{16CBBD4F-0983-412D-A6C9-87D439E970D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInput", "UserInput\UserInput.csproj", "{B38924AC-31F7-4217-BF8A-EB6B728E6565}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInput_22.1", "UserInput\UserInput_22.1.csproj", "{B38924AC-31F7-4217-BF8A-EB6B728E6565}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HMI", "HMI\HMI.csproj", "{68D04E8F-189D-4D39-922C-DC629F2BA60E}"
 EndProject
@@ -113,7 +113,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormDrag", "FormDrag\FormDr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrollableControl", "ScrollableControl\ScrollableControl.csproj", "{D3C7DA1C-D285-4217-9413-F358C4CEB2A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RangeControls", "RangeControls\RangeControls.csproj", "{DA8F7BDF-CA33-41C2-AE42-B8AC0C4C0D62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RangeControls_22.1", "RangeControls\RangeControls_22.1.csproj", "{DA8F7BDF-CA33-41C2-AE42-B8AC0C4C0D62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeList_22.1", "TreeList\TreeList_22.1.csproj", "{C9408985-E92D-4E94-9592-7763615AF606}"
 EndProject
@@ -145,7 +145,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadingDelay", "Threading
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListBox", "ListBox\ListBox.csproj", "{B9B3A243-F28D-45AA-A9EB-CC19888D3819}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextEdit", "TextEdit\TextEdit.csproj", "{0001B185-7F0F-4B91-AD72-B93595C6E032}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextEdit_22.1", "TextEdit\TextEdit_22.1.csproj", "{0001B185-7F0F-4B91-AD72-B93595C6E032}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditButton", "EditButton\EditButton.csproj", "{5B9764C9-D731-4815-95DD-CEFFD9C8B139}"
 EndProject
@@ -205,11 +205,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptionPGP", "Encryption
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColumnSelectionTest", "ColumnSelectionTest\ColumnSelectionTest.csproj", "{BFD6EF80-2D59-4F13-985A-998D26D1D60C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsageLog", "UsageLog\UsageLog.csproj", "{8FF22E49-FFE4-44C9-9C4A-C52230DBFA9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsageLog_22.1", "UsageLog\UsageLog_22.1.csproj", "{8FF22E49-FFE4-44C9-9C4A-C52230DBFA9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Camera Parameters", "Camera Parameters\Camera Parameters.csproj", "{D5B17C59-B02F-4470-9380-3C7A0EABC24D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClient_Amazon", "WebClient\WebClient_Amazon.csproj", "{41160B2A-22E1-41B0-B588-D40E4D3BDCD2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClient_Amazon_22.1", "WebClient\WebClient_Amazon_22.1.csproj", "{41160B2A-22E1-41B0-B588-D40E4D3BDCD2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database_SQLlite_EntityFramework", "Database_Sqlite_EntityFramework\Database_SQLlite_EntityFramework.csproj", "{38092474-566B-44F9-B1B3-F06E49109B76}"
 EndProject

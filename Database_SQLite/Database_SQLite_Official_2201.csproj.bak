@@ -45,9 +45,9 @@
     <Reference Include="DevExpress.XtraEditors.v22.1" />
     <Reference Include="DevExpress.Printing.v22.1.Core" />
     <Reference Include="DevExpress.Drawing.v22.1" />
-    <Reference Include="DevExpress.XtraGrid.v22.1, Version=22.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v22.1, Version=22.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v22.1, Version=22.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Eagle, Version=1.0.8369.11942, Culture=neutral, PublicKeyToken=29c6297630be05eb, processorArchitecture=MSIL">
       <HintPath>..\packages\Eagle.CLRv4.Core.1.0.8369.11942\lib\net40\Eagle.dll</HintPath>
     </Reference>

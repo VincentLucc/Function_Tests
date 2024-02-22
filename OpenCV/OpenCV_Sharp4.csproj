@@ -47,9 +47,9 @@
     <Reference Include="DevExpress.XtraEditors.v22.1" />
     <Reference Include="DevExpress.Printing.v22.1.Core" />
     <Reference Include="DevExpress.Drawing.v22.1" />
-    <Reference Include="DevExpress.XtraLayout.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraVerticalGrid.v22.1, Version=22.1.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="IronBarCode, Version=2023.10.0.1, Culture=neutral, PublicKeyToken=b971bb3971bdf306, processorArchitecture=MSIL">
       <HintPath>..\packages\BarCode.2023.10.1\lib\netstandard2.0\IronBarCode.dll</HintPath>
     </Reference>
