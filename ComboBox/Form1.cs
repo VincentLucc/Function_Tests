@@ -1,9 +1,11 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Charts.Native;
+using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -74,7 +76,19 @@ namespace ComboBox
             icbTest2.Properties.NullText = "";
 
             InitCustomTextImageComboBox();
+            InitEnumCheckedComboBoxEdit();
+        }
 
+        private void InitEnumCheckedComboBoxEdit()
+        {
+            EnumCheckedComboBoxEdit.Properties.Items.Clear();
+            EnumCheckedComboBoxEdit.Properties.Items.AddRange(new CheckedListBoxItem[] { 
+            new CheckedListBoxItem(_type2.AB,EnumHelper<_type2>.GetDisplayValue(_type2.AB),CheckState.Checked),
+            new CheckedListBoxItem(_type2.CD,EnumHelper<_type2>.GetDisplayValue(_type2.CD),CheckState.Checked),
+            new CheckedListBoxItem(_type2.EF,EnumHelper<_type2>.GetDisplayValue(_type2.EF),CheckState.Checked),        
+            });
+
+           
         }
 
         private void InitCustomTextImageComboBox()
@@ -157,6 +171,17 @@ namespace ComboBox
         private void ComboBoxEditCustomized_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkedComboBoxEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EnumCheckedComboBoxEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            object oValue= EnumCheckedComboBoxEdit.EditValue;
+            Debug.WriteLine(oValue.GetType().ToString());
         }
     }
 }

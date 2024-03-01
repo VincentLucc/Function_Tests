@@ -35,6 +35,7 @@ namespace ComboBox
             this.bUpdate = new System.Windows.Forms.Button();
             this.icbTest = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.checkedComboBoxEdit1 = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.CustomTextImageComboBoxEdit = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.ComboBoxEditCustomized = new DevExpress.XtraEditors.ComboBoxEdit();
             this.icbTest2 = new DevExpress.XtraEditors.ImageComboBoxEdit();
@@ -46,14 +47,16 @@ namespace ComboBox
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkedComboBoxEdit1 = new DevExpress.XtraEditors.CheckedComboBoxEdit();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.EnumCheckedComboBoxEdit = new DevExpress.XtraEditors.CheckedComboBoxEdit();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.icbTest.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomTextImageComboBoxEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxEditCustomized.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icbTest2.Properties)).BeginInit();
@@ -65,11 +68,12 @@ namespace ComboBox
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EnumCheckedComboBoxEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // cbTest01
@@ -102,6 +106,7 @@ namespace ComboBox
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.EnumCheckedComboBoxEdit);
             this.layoutControl1.Controls.Add(this.checkedComboBoxEdit1);
             this.layoutControl1.Controls.Add(this.CustomTextImageComboBoxEdit);
             this.layoutControl1.Controls.Add(this.ComboBoxEditCustomized);
@@ -115,6 +120,23 @@ namespace ComboBox
             this.layoutControl1.Size = new System.Drawing.Size(504, 227);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // checkedComboBoxEdit1
+            // 
+            this.checkedComboBoxEdit1.EditValue = "";
+            this.checkedComboBoxEdit1.Location = new System.Drawing.Point(191, 132);
+            this.checkedComboBoxEdit1.Name = "checkedComboBoxEdit1";
+            this.checkedComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.checkedComboBoxEdit1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.CheckedListBoxItem[] {
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("1"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("2"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("3"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem("4")});
+            this.checkedComboBoxEdit1.Size = new System.Drawing.Size(301, 20);
+            this.checkedComboBoxEdit1.StyleController = this.layoutControl1;
+            this.checkedComboBoxEdit1.TabIndex = 8;
+            this.checkedComboBoxEdit1.EditValueChanged += new System.EventHandler(this.checkedComboBoxEdit1_EditValueChanged);
             // 
             // CustomTextImageComboBoxEdit
             // 
@@ -168,7 +190,8 @@ namespace ComboBox
             this.layoutControlItem3,
             this.layoutControlItem4,
             this.layoutControlItem5,
-            this.layoutControlItem6});
+            this.layoutControlItem6,
+            this.layoutControlItem7});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(504, 227);
             this.Root.TextVisible = false;
@@ -185,9 +208,9 @@ namespace ComboBox
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 144);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 168);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(484, 63);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(484, 39);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem2
@@ -226,6 +249,15 @@ namespace ComboBox
             this.layoutControlItem5.Text = "imageComboBox CustomDIsplayText";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(176, 13);
             // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.checkedComboBoxEdit1;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(484, 24);
+            this.layoutControlItem6.Text = "Checked CombBox";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(176, 13);
+            // 
             // imageCollection1
             // 
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
@@ -255,30 +287,31 @@ namespace ComboBox
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "WinForm";
             // 
-            // checkedComboBoxEdit1
+            // EnumCheckedComboBoxEdit
             // 
-            this.checkedComboBoxEdit1.EditValue = "";
-            this.checkedComboBoxEdit1.Location = new System.Drawing.Point(191, 132);
-            this.checkedComboBoxEdit1.Name = "checkedComboBoxEdit1";
-            this.checkedComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.EnumCheckedComboBoxEdit.EditValue = "";
+            this.EnumCheckedComboBoxEdit.Location = new System.Drawing.Point(191, 156);
+            this.EnumCheckedComboBoxEdit.Name = "EnumCheckedComboBoxEdit";
+            this.EnumCheckedComboBoxEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.checkedComboBoxEdit1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.CheckedListBoxItem[] {
+            this.EnumCheckedComboBoxEdit.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.CheckedListBoxItem[] {
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem("1"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem("2"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem("3"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem("4")});
-            this.checkedComboBoxEdit1.Size = new System.Drawing.Size(301, 20);
-            this.checkedComboBoxEdit1.StyleController = this.layoutControl1;
-            this.checkedComboBoxEdit1.TabIndex = 8;
+            this.EnumCheckedComboBoxEdit.Size = new System.Drawing.Size(301, 20);
+            this.EnumCheckedComboBoxEdit.StyleController = this.layoutControl1;
+            this.EnumCheckedComboBoxEdit.TabIndex = 9;
+            this.EnumCheckedComboBoxEdit.EditValueChanged += new System.EventHandler(this.EnumCheckedComboBoxEdit_EditValueChanged);
             // 
-            // layoutControlItem6
+            // layoutControlItem7
             // 
-            this.layoutControlItem6.Control = this.checkedComboBoxEdit1;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 120);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(484, 24);
-            this.layoutControlItem6.Text = "Checked CombBox";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(176, 13);
+            this.layoutControlItem7.Control = this.EnumCheckedComboBoxEdit;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 144);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(484, 24);
+            this.layoutControlItem7.Text = "Checked ComboBox With Enum";
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(176, 13);
             // 
             // Form1
             // 
@@ -293,6 +326,7 @@ namespace ComboBox
             ((System.ComponentModel.ISupportInitialize)(this.icbTest.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomTextImageComboBoxEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxEditCustomized.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icbTest2.Properties)).EndInit();
@@ -304,11 +338,12 @@ namespace ComboBox
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EnumCheckedComboBoxEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -335,6 +370,8 @@ namespace ComboBox
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraEditors.CheckedComboBoxEdit EnumCheckedComboBoxEdit;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
     }
 }
 

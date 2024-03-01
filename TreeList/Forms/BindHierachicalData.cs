@@ -57,6 +57,9 @@ namespace TreeList
             treeList1.OptionsView.ShowHorzLines = false;
             treeList1.OptionsView.ShowIndicator = false;
             treeList1.OptionsView.ShowColumns = false;
+
+
+
         }
 
         private void InitEvnets()
@@ -68,6 +71,19 @@ namespace TreeList
 
             //Show hide columns, don't use custom style event (Won't trigger)
             treeList1.CustomColumnDisplayText += TreeList1_CustomColumnDisplayText; ;
+
+            treeList1.CustomDrawNodeCell += TreeList1_CustomDrawNodeCell;
+            treeList1.CustomDrawNodeImages += TreeList1_CustomDrawNodeImages;
+        }
+
+        private void TreeList1_CustomDrawNodeImages(object sender, CustomDrawNodeImagesEventArgs e)
+        {
+             
+        }
+
+        private void TreeList1_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
+        {
+            
         }
 
         private void TreeList1_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
