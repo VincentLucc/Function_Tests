@@ -52,6 +52,16 @@ namespace TreeList
             treeList1.ChildListFieldName = nameof(csTreeItem.SubItems);
             treeList1.DataSource = TreeItems;
 
+            //Set the image source
+            //# Select Image (1st)
+            //# State image (2nd)
+            var sizeImage = imageCollection1.Images[0];
+            //Must set the source to a image collection to trigger node image display
+            treeList1.SelectImageList = imageCollection1;
+            //Set 2nd image
+            //treeList1.StateImageList = imageCollection1;
+
+
             //Custom view settings
             treeList1.OptionsView.ShowVertLines = false;
             treeList1.OptionsView.ShowHorzLines = false;
@@ -72,18 +82,56 @@ namespace TreeList
             //Show hide columns, don't use custom style event (Won't trigger)
             treeList1.CustomColumnDisplayText += TreeList1_CustomColumnDisplayText; ;
 
+            treeList1.GetSelectImage += TreeList1_GetSelectImage;
+            treeList1.GetStateImage += TreeList1_GetStateImage;
             treeList1.CustomDrawNodeCell += TreeList1_CustomDrawNodeCell;
             treeList1.CustomDrawNodeImages += TreeList1_CustomDrawNodeImages;
         }
 
+        /// <summary>
+        /// 2nd position image
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TreeList1_GetStateImage(object sender, GetStateImageEventArgs e)
+        {
+            //e.NodeImageIndex = -1;
+        }
+
+        /// <summary>
+        /// First position image
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TreeList1_GetSelectImage(object sender, GetSelectImageEventArgs e)
+        {
+            //e.NodeImageIndex = -1;
+        }
+
+        /// <summary>
+        /// Include the select image and the state image
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TreeList1_CustomDrawNodeImages(object sender, CustomDrawNodeImagesEventArgs e)
         {
-             
+            var imgObject = e.Node.GetValue(nameof(csTreeItem.Icon));
+            var nodeImage = imgObject as Image;
+            if (nodeImage == null) return;
+ 
+            var brush = e.Cache.GetSolidBrush(Color.Orange);
+            //State image area
+            e.Cache.DrawImage(nodeImage, e.SelectRect);
+            //Select image area
+            e.Cache.FillRectangle(brush, e.StateRect);
+
+            //
+            e.DefaultDraw();
         }
 
         private void TreeList1_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
         {
-            
+
         }
 
         private void TreeList1_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
@@ -105,7 +153,7 @@ namespace TreeList
 
         }
 
-    
+
 
 
 
@@ -129,14 +177,14 @@ namespace TreeList
             }
             else if (iLevel == 1)
             {
-                var parentNode = treeList1.FocusedNode.ParentNode;        
+                var parentNode = treeList1.FocusedNode.ParentNode;
                 if (parentNode == null) return;
                 var parentRecord = (csTreeItem)treeList1.GetDataRecordByNode(parentNode);
                 int iCount = treeList1.FocusedNode.ParentNode.Nodes.Count;
 
                 var newItem = new csTreeItem()
                 {
-                    Name = $"Folder_{iCount+1}",
+                    Name = $"Folder_{iCount + 1}",
                     Icon = imageCollection1.Images[0], //Folder
                 };
                 parentRecord.SubItems.Add(newItem);
@@ -146,7 +194,7 @@ namespace TreeList
                 //DO nothing
             }
 
-  
+
         }
 
 
@@ -164,7 +212,7 @@ namespace TreeList
 
             //Add root
             if (iLevel == 0)
-            {          
+            {
                 var newItem = new csTreeItem()
                 {
                     Name = $"Folder_{iCount + 1}",
@@ -200,7 +248,7 @@ namespace TreeList
     public class csTreeItem : INotifyPropertyChanged
     {
 
-        public Image Icon { get; set; }
+
 
         private string _name;
         public string Name
@@ -216,7 +264,7 @@ namespace TreeList
             }
         }
 
-
+        public Image Icon { get; set; }
         /// <summary>
         /// Item type
         /// </summary>
