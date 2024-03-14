@@ -45,6 +45,7 @@ namespace Dev_GridControl_22_1
                 RowView.Name = $"ABC_{0 + i}";
                 RowView.CustomCellColor = "ABC_123";
                 RowView.GridLookup = "TestLookup";
+                RowView.FunctionDisplay = $"{i}";
                 TemplateListBuffer.Add(RowView);
 
             }
@@ -78,11 +79,12 @@ namespace Dev_GridControl_22_1
             TemplateGridControl.PreviewKeyDown += TemplateGridControl_PreviewKeyDown;
             TemplateGridView.RowCellStyle += TemplateGridView_RowCellStyle;
             TemplateGridView.ValidatingEditor += TemplateGridView_ValidatingEditor;
-            
+
 
 
             //Create ImageComboEdit
-            var comboBoxEdit = InitImageComboBoxEditor();
+            var selectionComboBoxEdit = InitSelectionImageComboBoxEditor();
+            var displayComboBoxEdit = InitDisplayImageComboBoxEditor();
 
             //Set custom editor
             var buttonEditor = InitButtonEdit();
@@ -102,9 +104,13 @@ namespace Dev_GridControl_22_1
 
                 }
                 //ComboBox Edit
-                else if (e.Column.FieldName == nameof(DataRowView.Function))
+                else if (e.Column.FieldName == nameof(DataRowView.FunctionSelection))
                 {
-                    e.RepositoryItem = comboBoxEdit;
+                    e.RepositoryItem = selectionComboBoxEdit;
+                }
+                else if (e.Column.FieldName == nameof(DataRowView.FunctionDisplay))
+                {
+                    e.RepositoryItem = displayComboBoxEdit;
                 }
                 else if (e.Column.FieldName == nameof(DataRowView.Enable))
                 {
@@ -254,7 +260,7 @@ namespace Dev_GridControl_22_1
             TemplateGridControl.RefreshDataSource();
         }
 
-        private RepositoryItemImageComboBox InitImageComboBoxEditor()
+        private RepositoryItemImageComboBox InitSelectionImageComboBoxEditor()
         {
             //Set combo box editor
             RepositoryItemImageComboBox templateSelectionComboBox = new RepositoryItemImageComboBox();
@@ -278,10 +284,7 @@ namespace Dev_GridControl_22_1
 
             templateSelectionComboBox.CustomDrawButton += TemplateSelectionComboBox_CustomDrawButton;
 
-            //Enable custom display
-            //var button = (RepositoryItemButtonEdit)templateSelectionComboBox;
-            //button.Tag = templateSelectionComboBox;
-            //button.CustomDrawButton += Button_CustomDrawButton;
+ 
 
 
             //Set combobox event
@@ -292,23 +295,55 @@ namespace Dev_GridControl_22_1
             return templateSelectionComboBox;
         }
 
+        private RepositoryItemImageComboBox InitDisplayImageComboBoxEditor()
+        {
+            //Set combo box editor
+            RepositoryItemImageComboBox templateSelectionComboBox = new RepositoryItemImageComboBox();
+            templateSelectionComboBox.Items.Clear();
+            templateSelectionComboBox.SmallImages = imageCollection1;
+
+            //Prepre item
+            ImageComboBoxItem item = new ImageComboBoxItem();
+            item.Description = $"Test"; //Display Value
+            item.Value = item.Description; //Must have, actual value
+            item.ImageIndex = -1;
+            templateSelectionComboBox.Items.Add(item);
+           
+
+            //Draw the drop down button
+            templateSelectionComboBox.CustomDrawButton += TemplateSelectionComboBox_CustomDrawButton1;
+
+            //Draw the text area
+            templateSelectionComboBox.DrawItem += TemplateSelectionComboBox_DrawItem;
+
+            return templateSelectionComboBox;
+        }
+
+        private void TemplateSelectionComboBox_DrawItem(object sender, ListBoxDrawItemEventArgs e)
+        {
+            var image = imageCollection1.Images[0];
+            e.Cache.DrawImage(image, e.Bounds.X, e.Bounds.Y + 8, image.Size.Width, image.Size.Height);
+
+        }
+
+        private void TemplateSelectionComboBox_CustomDrawButton1(object sender, CustomDrawButtonEventArgs e)
+        {
+            var comboBox = sender as RepositoryItemImageComboBox;
+
+            var areaButton = e.Bounds;
+            var newFont = new Font(new FontFamily("Arial"), 8, FontStyle.Regular);
+            var image = imageCollection1.Images[0];
+            e.Graphics.DrawImage(image, e.Bounds.X, e.Bounds.Y+8, image.Size.Width, image.Size.Height);
+            e.Handled = true;
+        }
+
         private void TemplateSelectionComboBox_CustomDrawButton(object sender, CustomDrawButtonEventArgs e)
         {
             var comboBox = sender as RepositoryItemImageComboBox;
 
             var areaButton = e.Bounds;
             var newFont = new Font(new FontFamily("Arial"), 8, FontStyle.Regular);
-
             e.Graphics.DrawString("ABC", newFont, new SolidBrush(Color.Black), areaButton.Location.X - 50, areaButton.Location.Y + 10);
-        }
-
-        private void Button_CustomDrawButton(object sender, CustomDrawButtonEventArgs e)
-        {
-            var buttonEdit = sender as RepositoryItemButtonEdit;
-            var areaButton = e.Bounds;
-            var newFont = new Font(new FontFamily("Arial"), 8, FontStyle.Regular);
-
-            e.Graphics.DrawString("123", newFont, new SolidBrush(Color.Black), areaButton.Location);
         }
 
 
@@ -356,7 +391,7 @@ namespace Dev_GridControl_22_1
         {
             DataRowView rowView = new DataRowView();
             rowView.Name = $"Type{selectedItem.ImageIndex + 1}";
-            rowView.Function = selectedItem.Value.ToString();
+            rowView.FunctionSelection = selectedItem.Value.ToString();
             return rowView;
         }
 
@@ -410,8 +445,11 @@ namespace Dev_GridControl_22_1
 
             public string CustomCellColor { get; set; }
 
-            [DisplayName("Function ImageComboBox")]
-            public string Function { get; set; }
+            [DisplayName("Function_Selection")]
+            public string FunctionSelection { get; set; }
+
+            [DisplayName("Function_Display")]
+            public string FunctionDisplay { get; set; }
 
             [DisplayName("Enable Switch")]
             public bool Enable { get; set; }

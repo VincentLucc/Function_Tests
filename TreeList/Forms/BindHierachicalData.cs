@@ -17,7 +17,7 @@ namespace TreeList
     public partial class BindHierachicalData : DevExpress.XtraEditors.XtraForm
     {
 
-        public BindingList<csTreeItem> TreeItems = new BindingList<csTreeItem>();
+        public List<csTreeItem> TreeItems = new List<csTreeItem>();
 
         public BindHierachicalData()
         {
@@ -95,7 +95,7 @@ namespace TreeList
         /// <param name="e"></param>
         private void TreeList1_GetStateImage(object sender, GetStateImageEventArgs e)
         {
-            //e.NodeImageIndex = -1;
+            e.Node.StateImageIndex = -1;
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace TreeList
         /// <param name="e"></param>
         private void TreeList1_GetSelectImage(object sender, GetSelectImageEventArgs e)
         {
-            //e.NodeImageIndex = -1;
+           e.Node.SelectImageIndex = -1;
         }
 
         /// <summary>
@@ -125,8 +125,10 @@ namespace TreeList
             //Select image area
             e.Cache.FillRectangle(brush, e.StateRect);
 
+            //Avoid default draw
+            e.Handled = true;
             //
-            e.DefaultDraw();
+            //e.DefaultDraw();
         }
 
         private void TreeList1_CustomDrawNodeCell(object sender, CustomDrawNodeCellEventArgs e)
@@ -264,6 +266,7 @@ namespace TreeList
             }
         }
 
+        [Browsable(false)]
         public Image Icon { get; set; }
         /// <summary>
         /// Item type
@@ -278,9 +281,9 @@ namespace TreeList
             SubItems = new BindingList<csTreeItem>();
         }
 
-        // This method is called by the Set accessor of each property.
-        // The CallerMemberName attribute that is applied to the optional propertyName
-        // parameter causes the property name of the caller to be substituted as an argument.
+        //This method is called by the Set accessor of each property.
+        //The CallerMemberName attribute that is applied to the optional propertyName
+        //parameter causes the property name of the caller to be substituted as an argument.
         public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
