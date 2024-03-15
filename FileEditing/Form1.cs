@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -68,7 +69,7 @@ namespace FileEditing
             var data = Encoding.UTF8.GetBytes(sTest);
             FileOnHold.SetLength(data.Length);//Must have, otherwise, file may contain extra content!!!
             FileOnHold.Write(data, 0, data.Length);
-           
+
 
             //var file = File.Open(sFilePath, FileMode.Append);
             //string sApend = "Apend1,Apend2";
@@ -85,12 +86,27 @@ namespace FileEditing
         private void bFileInfo_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            if (fileDialog.ShowDialog()==DialogResult.OK)
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 string sFileName = fileDialog.FileName;
                 var fileInfo = new FileInfo(sFileName);
-                
+
             }
         }
-    }
+
+        private void bFolderPermission_Click(object sender, EventArgs e)
+        {
+
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                if (folderBrowserDialog.ShowDialog() != DialogResult.OK) return;
+                string sFOlder = folderBrowserDialog.SelectedPath;
+                var permissionInfo = csPermission.GetDirectoryPermission(sFOlder);
+                string sMessage = $"Can Read:{permissionInfo.CanRead}\r\nCan Write:{permissionInfo.CanWrite}\r\nError Free:{permissionInfo.AllPropertyLoaded}";
+                MessageBox.Show(sMessage);
+            }
+        }
+
+        
+
 }

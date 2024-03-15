@@ -40,6 +40,7 @@ namespace ImageEdit
                 ImageCollection.Add(sPropertyName, Properties.Resources.About_32x32);
                 return ImageCollection[sPropertyName];
             }
+            //Use SkiaSharp
             else if (sPropertyName == nameof(DemoSVG32))
             {
                 var svg = new SkiaSharp.Extended.Svg.SKSvg();
@@ -63,6 +64,7 @@ namespace ImageEdit
                     return ImageCollection[sPropertyName];
                 }
             }
+            //Use SVG.Net
             else if (sPropertyName == nameof(DemoSVG64))
             {
 

@@ -68,20 +68,28 @@ namespace Dev_GridControl_22_1
             TemplateGridView.OptionsView.ShowButtonMode = ShowButtonModeEnum.ShowAlways; //Always show button
 
             //Set column
-            TemplateGridView.Columns[iCMDColumn].Caption = sCommandCaption;
-            TemplateGridView.Columns[iCMDColumn].MaxWidth = 160;
-            TemplateGridView.Columns[iCMDColumn].Visible = true; //Must have to be seen
+            var colComamnd = TemplateGridView.Columns[iCMDColumn];
+            colComamnd.Caption = sCommandCaption;
+            colComamnd.MinWidth = 100;
+            colComamnd.MaxWidth = 260;
+            colComamnd.Visible = true; //Must have to be seen
             TemplateGridView.OptionsCustomization.AllowFilter = false;
             TemplateGridView.OptionsCustomization.AllowSort = false;
 
+
+            CustomEditors();
 
             //Preview keydown
             TemplateGridControl.PreviewKeyDown += TemplateGridControl_PreviewKeyDown;
             TemplateGridView.RowCellStyle += TemplateGridView_RowCellStyle;
             TemplateGridView.ValidatingEditor += TemplateGridView_ValidatingEditor;
+            
+
+        }
 
 
-
+        private void CustomEditors()
+        {
             //Create ImageComboEdit
             var selectionComboBoxEdit = InitSelectionImageComboBoxEditor();
             var displayComboBoxEdit = InitDisplayImageComboBoxEditor();
@@ -95,11 +103,23 @@ namespace Dev_GridControl_22_1
             //Set gridlookupedit
             var gridLookup = InitGridLookupEdit();
 
-
             TemplateGridView.CustomRowCellEdit += (s, e) =>
             {
                 if (e.Column.Caption == sCommandCaption)
                 {
+                    int iOrder = e.RowHandle % 2;
+
+                    //Image changes, don't use this method!!!
+                    if (iOrder == 0)
+                    {
+                        buttonEditor.Buttons[1].ImageOptions.SvgImage = Properties.Resources.demo_01;
+                    }
+                    else if (iOrder == 1)
+                    {
+                        buttonEditor.Buttons[1].ImageOptions.SvgImage = Properties.Resources.open;
+                    }
+
+
                     e.RepositoryItem = buttonEditor;
 
                 }
@@ -121,8 +141,8 @@ namespace Dev_GridControl_22_1
                     e.RepositoryItem = gridLookup;
                 }
             };
-
         }
+
 
         private void TemplateGridView_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
         {
@@ -224,6 +244,8 @@ namespace Dev_GridControl_22_1
                 {
                     e.Appearance.ForeColor = Color.Green;
                 }
+
+                
             }
         }
 
@@ -284,7 +306,7 @@ namespace Dev_GridControl_22_1
 
             templateSelectionComboBox.CustomDrawButton += TemplateSelectionComboBox_CustomDrawButton;
 
- 
+
 
 
             //Set combobox event
@@ -308,7 +330,7 @@ namespace Dev_GridControl_22_1
             item.Value = item.Description; //Must have, actual value
             item.ImageIndex = -1;
             templateSelectionComboBox.Items.Add(item);
-           
+
 
             //Draw the drop down button
             templateSelectionComboBox.CustomDrawButton += TemplateSelectionComboBox_CustomDrawButton1;
@@ -333,7 +355,7 @@ namespace Dev_GridControl_22_1
             var areaButton = e.Bounds;
             var newFont = new Font(new FontFamily("Arial"), 8, FontStyle.Regular);
             var image = imageCollection1.Images[0];
-            e.Graphics.DrawImage(image, e.Bounds.X, e.Bounds.Y+8, image.Size.Width, image.Size.Height);
+            e.Graphics.DrawImage(image, e.Bounds.X, e.Bounds.Y + 8, image.Size.Width, image.Size.Height);
             e.Handled = true;
         }
 
@@ -416,8 +438,8 @@ namespace Dev_GridControl_22_1
             buttonEditor.Buttons[1].ImageOptions.SvgImage = Properties.Resources.open;
             buttonEditor.Buttons[0].Appearance.ForeColor = Color.Green;
             buttonEditor.Buttons[1].Appearance.ForeColor = Color.Red;
-            buttonEditor.Buttons[0].ImageOptions.Location = ImageLocation.MiddleRight;//Make sure to show text
-            buttonEditor.Buttons[1].ImageOptions.Location = ImageLocation.MiddleRight;
+            buttonEditor.Buttons[0].ImageOptions.Location = ImageLocation.MiddleLeft;//Make sure to show text
+            buttonEditor.Buttons[1].ImageOptions.Location = ImageLocation.MiddleLeft;
             buttonEditor.Buttons[0].Click += CustomEditorButton1_Click;
             buttonEditor.Buttons[1].Click += CustomEditorButton2_Click;
             buttonEditor.TextEditStyle = TextEditStyles.HideTextEditor; //Only display button
