@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace FileEditing
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
         string sFilePath = csPublic.AppPath + @"\test.txt";
         FileStream FileOnHold;
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -107,6 +107,6 @@ namespace FileEditing
             }
         }
 
-        
 
+    }
 }

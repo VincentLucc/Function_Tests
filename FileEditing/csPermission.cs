@@ -12,10 +12,10 @@ namespace FileEditing
     public class csPermission
     {
         /// <summary>
-        /// Set to one when the property is assigned.
+        /// Set to true when the property is assigned.
         /// When 
         /// </summary>
-        public bool[] PropertyInit = new bool[2];
+        private bool[] PropertyInit = new bool[2];
         public bool AllPropertyLoaded => IsAllPropertyLoaded();
 
         private bool _canRead;
