@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Property_NoAutoValidate_Dev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperationBlock", "Timer\OperationBlock.csproj", "{D061F609-2042-4806-9674-900E8F45A974}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevMessage", "DevMessage\DevMessage.csproj", "{A00A359A-B002-47B2-922C-C6F82A2319F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevMessage_2201", "DevMessage\DevMessage_2201.csproj", "{A00A359A-B002-47B2-922C-C6F82A2319F9}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonApplication_3.7", "PythonApplication\PythonApplication_3.7.pyproj", "{54B720E2-57BA-43EC-9652-2C097905F3C9}"
 EndProject

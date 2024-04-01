@@ -57,10 +57,15 @@ namespace DevMessage
         private async void simpleButton1_Click(object sender, EventArgs e)
         {
             messageHelper.ShowMainLoading("Please wait.");
+            
+            //Block user action
+            this.Enabled = false;
+
             await Task.Delay(2000);
             UIHelper.CloseLoadingForm();
             messageHelper.ShowMainLoading();
             await Task.Delay(1000);
+            this.Enabled = true;
             messageHelper.CloseLoadingForm();
         }
 
@@ -115,6 +120,12 @@ namespace DevMessage
             await Task.Delay(2000);
             SplashScreenManager.CloseForm();
             this.Enabled = true;
+        }
+
+        private void bWaitWIthBlock_Click(object sender, EventArgs e)
+        {
+            var task1 = Task.Delay(2000);
+            WaitTaskDialog.WaitTask(task1);
         }
     }
 }

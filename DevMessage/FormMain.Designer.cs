@@ -37,14 +37,16 @@ namespace DevMessage
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bSplashCustom = new System.Windows.Forms.Button();
+            this.bSplashDefault = new System.Windows.Forms.Button();
             this.bSHowOverLay = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bWaitWIthBlock = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.ucMessage1 = new DevMessage.ucMessage();
-            this.bSplashDefault = new System.Windows.Forms.Button();
-            this.bSplashCustom = new System.Windows.Forms.Button();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -137,6 +139,26 @@ namespace DevMessage
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "UI Helper";
             // 
+            // bSplashCustom
+            // 
+            this.bSplashCustom.Location = new System.Drawing.Point(6, 165);
+            this.bSplashCustom.Name = "bSplashCustom";
+            this.bSplashCustom.Size = new System.Drawing.Size(133, 23);
+            this.bSplashCustom.TabIndex = 5;
+            this.bSplashCustom.Text = "Show Splash (Custom)";
+            this.bSplashCustom.UseVisualStyleBackColor = true;
+            this.bSplashCustom.Click += new System.EventHandler(this.bSplashCustom_Click);
+            // 
+            // bSplashDefault
+            // 
+            this.bSplashDefault.Location = new System.Drawing.Point(6, 136);
+            this.bSplashDefault.Name = "bSplashDefault";
+            this.bSplashDefault.Size = new System.Drawing.Size(133, 23);
+            this.bSplashDefault.TabIndex = 4;
+            this.bSplashDefault.Text = "Show Splash (Default)";
+            this.bSplashDefault.UseVisualStyleBackColor = true;
+            this.bSplashDefault.Click += new System.EventHandler(this.bSplashDefault_Click);
+            // 
             // bSHowOverLay
             // 
             this.bSHowOverLay.Location = new System.Drawing.Point(6, 107);
@@ -149,6 +171,8 @@ namespace DevMessage
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.simpleButton3);
+            this.groupBox1.Controls.Add(this.bWaitWIthBlock);
             this.groupBox1.Controls.Add(this.simpleButton2);
             this.groupBox1.Controls.Add(this.simpleButton1);
             this.groupBox1.Location = new System.Drawing.Point(323, 3);
@@ -157,6 +181,15 @@ namespace DevMessage
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "csDevMessage";
+            // 
+            // bWaitWIthBlock
+            // 
+            this.bWaitWIthBlock.Location = new System.Drawing.Point(6, 78);
+            this.bWaitWIthBlock.Name = "bWaitWIthBlock";
+            this.bWaitWIthBlock.Size = new System.Drawing.Size(130, 23);
+            this.bWaitWIthBlock.TabIndex = 6;
+            this.bWaitWIthBlock.Text = "Show Blocked Waiting";
+            this.bWaitWIthBlock.Click += new System.EventHandler(this.bWaitWIthBlock_Click);
             // 
             // simpleButton2
             // 
@@ -192,25 +225,13 @@ namespace DevMessage
             this.ucMessage1.TabIndex = 0;
             this.ucMessage1.Load += new System.EventHandler(this.ucMessage1_Load);
             // 
-            // bSplashDefault
+            // simpleButton3
             // 
-            this.bSplashDefault.Location = new System.Drawing.Point(6, 136);
-            this.bSplashDefault.Name = "bSplashDefault";
-            this.bSplashDefault.Size = new System.Drawing.Size(133, 23);
-            this.bSplashDefault.TabIndex = 4;
-            this.bSplashDefault.Text = "Show Splash (Default)";
-            this.bSplashDefault.UseVisualStyleBackColor = true;
-            this.bSplashDefault.Click += new System.EventHandler(this.bSplashDefault_Click);
-            // 
-            // bSplashCustom
-            // 
-            this.bSplashCustom.Location = new System.Drawing.Point(6, 165);
-            this.bSplashCustom.Name = "bSplashCustom";
-            this.bSplashCustom.Size = new System.Drawing.Size(133, 23);
-            this.bSplashCustom.TabIndex = 5;
-            this.bSplashCustom.Text = "Show Splash (Custom)";
-            this.bSplashCustom.UseVisualStyleBackColor = true;
-            this.bSplashCustom.Click += new System.EventHandler(this.bSplashCustom_Click);
+            this.simpleButton3.Location = new System.Drawing.Point(142, 20);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(130, 23);
+            this.simpleButton3.TabIndex = 7;
+            this.simpleButton3.Text = "Show Loading Intance";
             // 
             // FormMain
             // 
@@ -249,6 +270,8 @@ namespace DevMessage
         private System.Windows.Forms.Button bSHowOverLay;
         private System.Windows.Forms.Button bSplashDefault;
         private System.Windows.Forms.Button bSplashCustom;
+        private DevExpress.XtraEditors.SimpleButton bWaitWIthBlock;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
     }
 }
 
