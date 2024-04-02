@@ -46,7 +46,6 @@ namespace DevMessage
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.ucMessage1 = new DevMessage.ucMessage();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -171,7 +170,6 @@ namespace DevMessage
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.simpleButton3);
             this.groupBox1.Controls.Add(this.bWaitWIthBlock);
             this.groupBox1.Controls.Add(this.simpleButton2);
             this.groupBox1.Controls.Add(this.simpleButton1);
@@ -225,14 +223,6 @@ namespace DevMessage
             this.ucMessage1.TabIndex = 0;
             this.ucMessage1.Load += new System.EventHandler(this.ucMessage1_Load);
             // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Location = new System.Drawing.Point(142, 20);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(130, 23);
-            this.simpleButton3.TabIndex = 7;
-            this.simpleButton3.Text = "Show Loading Intance";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,7 +261,6 @@ namespace DevMessage
         private System.Windows.Forms.Button bSplashDefault;
         private System.Windows.Forms.Button bSplashCustom;
         private DevExpress.XtraEditors.SimpleButton bWaitWIthBlock;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
     }
 }
 

@@ -126,6 +126,8 @@ namespace DevMessage
         {
             var task1 = Task.Delay(2000);
             WaitTaskDialog.WaitTask(task1);
+            var task2 = Task.Delay(2000);
+            WaitTaskDialog.WaitTask(task2, "Message is message.","Title Area");
         }
     }
 }
