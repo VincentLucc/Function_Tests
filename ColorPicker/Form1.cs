@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,15 @@ namespace ColorPicker
 
         private void colorEdit1_EditValueChanged(object sender, EventArgs e)
         {
-            var value= colorEdit1.EditValue;
-            var vType= value.GetType();
-            
+            var value = colorEdit1.EditValue;
+            var vType = value.GetType();
+        }
+
+        private void colorPickEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            //Get the color value
+            var color = colorPickEdit1.Color;
+            Debug.WriteLine($"Color Changed:");
         }
     }
 }
