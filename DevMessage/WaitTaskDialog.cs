@@ -53,13 +53,24 @@ namespace DevMessage
         }
 
 
+        public static object WaitTask<T>(Task<T> _task, string sMessage = null, string sTitle = null)
+        {
+            using (WaitTaskDialog waitDialog = new WaitTaskDialog(_task))
+            {
+                if (!string.IsNullOrWhiteSpace(sTitle)) waitDialog.SetCaption(sTitle);
+                if (!string.IsNullOrWhiteSpace(sMessage)) waitDialog.SetDescription(sMessage);
+                waitDialog.ShowDialog();
+                return _task.Result;
+            }
+        }
+
         public static void WaitTask(Task _task, string sMessage = null, string sTitle = null)
         {
-            using (WaitTaskDialog waitTask = new WaitTaskDialog(_task))
+            using (WaitTaskDialog waitDialog = new WaitTaskDialog(_task))
             {
-                if (!string.IsNullOrWhiteSpace(sTitle)) waitTask.SetCaption(sTitle);
-                if (!string.IsNullOrWhiteSpace(sMessage)) waitTask.SetDescription(sMessage);
-                waitTask.ShowDialog();
+                if (!string.IsNullOrWhiteSpace(sTitle)) waitDialog.SetCaption(sTitle);
+                if (!string.IsNullOrWhiteSpace(sMessage)) waitDialog.SetDescription(sMessage);
+                waitDialog.ShowDialog();
             }
         }
 
