@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,8 @@ namespace DevMessage
     {
         Task waitTask;
         Timer timer = new Timer();
-
+        Stopwatch stopwatch = new Stopwatch();
+        static WaitTaskDialog instance;
 
 
 
@@ -44,41 +46,51 @@ namespace DevMessage
 
         private void WaitForm1_Load(object sender, EventArgs e)
         {
+            InitVariables();
             InitControl();
 
             //Init timer
-            timer.Interval = 100;
+            timer.Interval = 20;
             timer.Tick += Timer_Tick;
             timer.Start();
         }
 
-
-        public static object WaitTask<T>(Task<T> _task, string sMessage = null, string sTitle = null)
+        private void InitVariables()
         {
-            using (WaitTaskDialog waitDialog = new WaitTaskDialog(_task))
+            stopwatch.Restart();
+        }
+
+        private void InitControl()
+        {
+            this.progressPanel1.AutoHeight = true;
+        }
+
+        public static T WaitTask<T>(Task<T> _task, string sMessage = null, string sTitle = null)
+        {
+            using (instance = new WaitTaskDialog(_task))
             {
-                if (!string.IsNullOrWhiteSpace(sTitle)) waitDialog.SetCaption(sTitle);
-                if (!string.IsNullOrWhiteSpace(sMessage)) waitDialog.SetDescription(sMessage);
-                waitDialog.ShowDialog();
+                UpdateMessage(sMessage, sTitle);
+                instance.ShowDialog();
                 return _task.Result;
             }
         }
 
         public static void WaitTask(Task _task, string sMessage = null, string sTitle = null)
         {
-            using (WaitTaskDialog waitDialog = new WaitTaskDialog(_task))
+            using (instance = new WaitTaskDialog(_task))
             {
-                if (!string.IsNullOrWhiteSpace(sTitle)) waitDialog.SetCaption(sTitle);
-                if (!string.IsNullOrWhiteSpace(sMessage)) waitDialog.SetDescription(sMessage);
-                waitDialog.ShowDialog();
+                UpdateMessage(sMessage, sTitle);
+                instance.ShowDialog();
             }
         }
 
-
-        private void InitControl()
+        public static void UpdateMessage(string sMessage, string sTitle = null)
         {
-            this.progressPanel1.AutoHeight = true;
+            if (!string.IsNullOrWhiteSpace(sTitle)) instance.SetCaption(sTitle);
+            if (!string.IsNullOrWhiteSpace(sMessage)) instance.SetDescription(sMessage);
         }
+
+
 
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -87,7 +99,10 @@ namespace DevMessage
 
             if (waitTask == null || waitTask.IsCompleted)
             {
+                stopwatch.Stop();
+                Debug.WriteLine($"Task Complete: {stopwatch.ElapsedMilliseconds}ms");
                 this.Close();
+              
                 return;
             }
 
@@ -118,6 +133,7 @@ namespace DevMessage
 
         public enum WaitFormCommand
         {
+
         }
     }
 }

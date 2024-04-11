@@ -46,6 +46,7 @@ namespace DevMessage
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.ucMessage1 = new DevMessage.ucMessage();
+            this.UpdateBlockedWaitingButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -170,6 +171,7 @@ namespace DevMessage
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.UpdateBlockedWaitingButton);
             this.groupBox1.Controls.Add(this.bWaitWIthBlock);
             this.groupBox1.Controls.Add(this.simpleButton2);
             this.groupBox1.Controls.Add(this.simpleButton1);
@@ -223,6 +225,15 @@ namespace DevMessage
             this.ucMessage1.TabIndex = 0;
             this.ucMessage1.Load += new System.EventHandler(this.ucMessage1_Load);
             // 
+            // UpdateBlockedWaitingButton
+            // 
+            this.UpdateBlockedWaitingButton.Location = new System.Drawing.Point(6, 107);
+            this.UpdateBlockedWaitingButton.Name = "UpdateBlockedWaitingButton";
+            this.UpdateBlockedWaitingButton.Size = new System.Drawing.Size(130, 23);
+            this.UpdateBlockedWaitingButton.TabIndex = 7;
+            this.UpdateBlockedWaitingButton.Text = "Update Blocked Waiting";
+            this.UpdateBlockedWaitingButton.Click += new System.EventHandler(this.UpdateBlockedWaitingButton_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,6 +272,7 @@ namespace DevMessage
         private System.Windows.Forms.Button bSplashDefault;
         private System.Windows.Forms.Button bSplashCustom;
         private DevExpress.XtraEditors.SimpleButton bWaitWIthBlock;
+        private DevExpress.XtraEditors.SimpleButton UpdateBlockedWaitingButton;
     }
 }
 

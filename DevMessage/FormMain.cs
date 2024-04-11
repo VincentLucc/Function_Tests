@@ -57,7 +57,7 @@ namespace DevMessage
         private async void simpleButton1_Click(object sender, EventArgs e)
         {
             messageHelper.ShowMainLoading("Please wait.");
-            
+
             //Block user action
             this.Enabled = false;
 
@@ -127,7 +127,25 @@ namespace DevMessage
             var task1 = Task.Delay(2000);
             WaitTaskDialog.WaitTask(task1);
             var task2 = Task.Delay(2000);
-            WaitTaskDialog.WaitTask(task2, "Message is message.","Title Area");
+            WaitTaskDialog.WaitTask(task2, "Message is message.", "Title Area");
+        }
+
+        private void UpdateBlockedWaitingButton_Click(object sender, EventArgs e)
+        {
+            bool bResult = WaitTaskDialog.WaitTask(UpdateAction());
+        }
+
+
+        private async Task<bool> UpdateAction()
+        {
+            await Task.Delay(1500);
+            WaitTaskDialog.UpdateMessage("This is a test.");
+            for (int i = 0; i < 100000; i++)
+            {
+                //await Task.Delay(1);
+                WaitTaskDialog.UpdateMessage(DateTime.Now.ToLongTimeString());
+            }
+            return true;
         }
     }
 }
