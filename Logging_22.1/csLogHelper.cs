@@ -119,14 +119,17 @@ namespace Logging_22._1
                     lock (lockLocalLogs)
                     {
                         unSavedLogs = LocalLogs.Where(l => !l.IsSaved).ToList();
-                        if (unSavedLogs == null || unSavedLogs.Count < 1) continue;
                     }
+                    if (unSavedLogs == null || unSavedLogs.Count < 1) continue;
 
                     //Check if last log exist
                     sFileName = GetLastLogFileName(out string sDate);
                     sFilePath = LogFolder + sFileName;
                     if (string.IsNullOrWhiteSpace(sFileName))
                     {
+                        //Check folder
+                        if (!Directory.Exists(LogFolder)) Directory.CreateDirectory(LogFolder);
+
                         //Create log file
                         sFilePath = LogFolder + $"{PreFix}{DateString}.log";
                         var fs = File.Create(sFilePath);

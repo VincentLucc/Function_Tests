@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="csDebugListener.cs" />
-    <Compile Include="csLogging.cs" />
+    <Compile Include="csLogHelper.cs" />
     <Compile Include="csLogModel.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

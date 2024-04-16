@@ -35,7 +35,8 @@ namespace Logging_22._1
 
         private void CreateDebugtButton_Click(object sender, EventArgs e)
         {
-            Debug.WriteLine("Test message");
+            Debug.WriteLine("Debug message");
+            Trace.WriteLine("Trace message");
         }
 
         private void createLogButton_Click(object sender, EventArgs e)

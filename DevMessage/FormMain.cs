@@ -142,7 +142,7 @@ namespace DevMessage
             WaitTaskDialog.UpdateMessage("This is a test.");
             for (int i = 0; i < 100000; i++)
             {
-                //await Task.Delay(1);
+                await Task.Delay(1);
                 WaitTaskDialog.UpdateMessage(DateTime.Now.ToLongTimeString());
             }
             return true;
