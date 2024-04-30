@@ -35,14 +35,24 @@ namespace Hardware
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bMotherBoard = new System.Windows.Forms.Button();
             this.bHardDrive = new System.Windows.Forms.Button();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.ResultMemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ResultMemoEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(6, 19);
+            this.button1.Location = new System.Drawing.Point(5, 90);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(118, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Get Mac";
             this.button1.UseVisualStyleBackColor = true;
@@ -67,7 +77,6 @@ namespace Hardware
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.cbMac);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -78,7 +87,7 @@ namespace Hardware
             // 
             // bMotherBoard
             // 
-            this.bMotherBoard.Location = new System.Drawing.Point(12, 137);
+            this.bMotherBoard.Location = new System.Drawing.Point(5, 32);
             this.bMotherBoard.Name = "bMotherBoard";
             this.bMotherBoard.Size = new System.Drawing.Size(118, 23);
             this.bMotherBoard.TabIndex = 4;
@@ -88,7 +97,7 @@ namespace Hardware
             // 
             // bHardDrive
             // 
-            this.bHardDrive.Location = new System.Drawing.Point(12, 166);
+            this.bHardDrive.Location = new System.Drawing.Point(5, 61);
             this.bHardDrive.Name = "bHardDrive";
             this.bHardDrive.Size = new System.Drawing.Size(118, 23);
             this.bHardDrive.TabIndex = 5;
@@ -96,19 +105,63 @@ namespace Hardware
             this.bHardDrive.UseVisualStyleBackColor = true;
             this.bHardDrive.Click += new System.EventHandler(this.bHardDrive_Click);
             // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.button1);
+            this.groupControl1.Controls.Add(this.bHardDrive);
+            this.groupControl1.Controls.Add(this.bMotherBoard);
+            this.groupControl1.Location = new System.Drawing.Point(12, 125);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(349, 201);
+            this.groupControl1.TabIndex = 6;
+            this.groupControl1.Text = "groupControl1";
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Location = new System.Drawing.Point(409, 69);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(369, 201);
+            this.groupControl2.TabIndex = 7;
+            this.groupControl2.Text = "groupControl2";
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.Controls.Add(this.ResultMemoEdit);
+            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupControl3.Location = new System.Drawing.Point(0, 332);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(800, 118);
+            this.groupControl3.TabIndex = 8;
+            this.groupControl3.Text = "Message";
+            // 
+            // ResultMemoEdit
+            // 
+            this.ResultMemoEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ResultMemoEdit.Location = new System.Drawing.Point(2, 23);
+            this.ResultMemoEdit.Name = "ResultMemoEdit";
+            this.ResultMemoEdit.Size = new System.Drawing.Size(796, 93);
+            this.ResultMemoEdit.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.bHardDrive);
-            this.Controls.Add(this.bMotherBoard);
+            this.Controls.Add(this.groupControl3);
+            this.Controls.Add(this.groupControl2);
+            this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bAssemblyInfo);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ResultMemoEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -121,6 +174,10 @@ namespace Hardware
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button bMotherBoard;
         private System.Windows.Forms.Button bHardDrive;
+        private GroupControl groupControl1;
+        private GroupControl groupControl2;
+        private GroupControl groupControl3;
+        private MemoEdit ResultMemoEdit;
     }
 }
 

@@ -30,11 +30,11 @@ namespace ChartControl
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.AreaSeriesView areaSeriesView1 = new DevExpress.XtraCharts.AreaSeriesView();
-            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.XYDiagram xyDiagram5 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series5 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.AreaSeriesView areaSeriesView3 = new DevExpress.XtraCharts.AreaSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram6 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series6 = new DevExpress.XtraCharts.Series();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.MainTabPage = new DevExpress.XtraTab.XtraTabPage();
@@ -52,17 +52,19 @@ namespace ChartControl
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.TimelineTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.CameraLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.RotateChartButton = new DevExpress.XtraEditors.SimpleButton();
             this.ProcessTimeChartButton = new DevExpress.XtraEditors.SimpleButton();
             this.TimeChartControl = new DevExpress.XtraCharts.ChartControl();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.RotateChartButton = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.CameraLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.SeriesSpinEdit = new DevExpress.XtraEditors.SpinEdit();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.MainTabPage.SuspendLayout();
@@ -70,9 +72,9 @@ namespace ChartControl
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HistoChartControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(areaSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(areaSeriesView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -82,16 +84,18 @@ namespace ChartControl
             this.TimelineTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CameraLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeChartControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CameraLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SeriesSpinEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -120,18 +124,19 @@ namespace ChartControl
             // 
             this.MainTabPage.Controls.Add(this.simpleButton1);
             this.MainTabPage.Name = "MainTabPage";
-            this.MainTabPage.Size = new System.Drawing.Size(798, 427);
+            this.MainTabPage.Size = new System.Drawing.Size(798, 426);
             this.MainTabPage.Text = "Main Page";
             // 
             // HistogramTabPage
             // 
             this.HistogramTabPage.Controls.Add(this.layoutControl1);
             this.HistogramTabPage.Name = "HistogramTabPage";
-            this.HistogramTabPage.Size = new System.Drawing.Size(798, 427);
+            this.HistogramTabPage.Size = new System.Drawing.Size(798, 426);
             this.HistogramTabPage.Text = "Histogram";
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.SeriesSpinEdit);
             this.layoutControl1.Controls.Add(this.simpleButton3);
             this.layoutControl1.Controls.Add(this.simpleButton2);
             this.layoutControl1.Controls.Add(this.bHisto);
@@ -140,7 +145,7 @@ namespace ChartControl
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(798, 427);
+            this.layoutControl1.Size = new System.Drawing.Size(798, 426);
             this.layoutControl1.TabIndex = 1;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -182,22 +187,22 @@ namespace ChartControl
             // 
             // HistoChartControl
             // 
-            xyDiagram1.AxisX.DateTimeScaleOptions.ScaleMode = DevExpress.XtraCharts.ScaleMode.Continuous;
-            xyDiagram1.AxisX.TimeSpanScaleOptions.ScaleMode = DevExpress.XtraCharts.ScaleMode.Continuous;
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisX.WholeRange.EndSideMargin = 0D;
-            xyDiagram1.AxisX.WholeRange.StartSideMargin = 0D;
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            this.HistoChartControl.Diagram = xyDiagram1;
+            xyDiagram5.AxisX.DateTimeScaleOptions.ScaleMode = DevExpress.XtraCharts.ScaleMode.Continuous;
+            xyDiagram5.AxisX.TimeSpanScaleOptions.ScaleMode = DevExpress.XtraCharts.ScaleMode.Continuous;
+            xyDiagram5.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram5.AxisX.WholeRange.EndSideMargin = 0D;
+            xyDiagram5.AxisX.WholeRange.StartSideMargin = 0D;
+            xyDiagram5.AxisY.VisibleInPanesSerializable = "-1";
+            this.HistoChartControl.Diagram = xyDiagram5;
             this.HistoChartControl.Location = new System.Drawing.Point(12, 38);
             this.HistoChartControl.Name = "HistoChartControl";
-            series1.Name = "Series 1";
-            areaSeriesView1.EmptyPointOptions.FillStyle.FillMode = DevExpress.XtraCharts.FillMode.Solid;
-            areaSeriesView1.Transparency = ((byte)(0));
-            series1.View = areaSeriesView1;
+            series5.Name = "Series 1";
+            areaSeriesView3.EmptyPointOptions.FillStyle.FillMode = DevExpress.XtraCharts.FillMode.Solid;
+            areaSeriesView3.Transparency = ((byte)(0));
+            series5.View = areaSeriesView3;
             this.HistoChartControl.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1};
-            this.HistoChartControl.Size = new System.Drawing.Size(774, 377);
+        series5};
+            this.HistoChartControl.Size = new System.Drawing.Size(774, 376);
             this.HistoChartControl.TabIndex = 0;
             // 
             // Root
@@ -209,9 +214,10 @@ namespace ChartControl
             this.layoutControlItem2,
             this.emptySpaceItem1,
             this.layoutControlItem3,
-            this.layoutControlItem4});
+            this.layoutControlItem4,
+            this.layoutControlItem10});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(798, 427);
+            this.Root.Size = new System.Drawing.Size(798, 426);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -219,7 +225,7 @@ namespace ChartControl
             this.layoutControlItem1.Control = this.HistoChartControl;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(778, 381);
+            this.layoutControlItem1.Size = new System.Drawing.Size(778, 380);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -235,9 +241,9 @@ namespace ChartControl
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(252, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(450, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(526, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(328, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem3
@@ -262,7 +268,7 @@ namespace ChartControl
             // 
             this.TimelineTabPage.Controls.Add(this.layoutControl2);
             this.TimelineTabPage.Name = "TimelineTabPage";
-            this.TimelineTabPage.Size = new System.Drawing.Size(798, 427);
+            this.TimelineTabPage.Size = new System.Drawing.Size(798, 426);
             this.TimelineTabPage.Text = "Process Time";
             // 
             // layoutControl2
@@ -275,9 +281,32 @@ namespace ChartControl
             this.layoutControl2.Location = new System.Drawing.Point(0, 0);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup1;
-            this.layoutControl2.Size = new System.Drawing.Size(798, 427);
+            this.layoutControl2.Size = new System.Drawing.Size(798, 426);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
+            // 
+            // CameraLookUpEdit
+            // 
+            this.CameraLookUpEdit.Location = new System.Drawing.Point(269, 12);
+            this.CameraLookUpEdit.Name = "CameraLookUpEdit";
+            this.CameraLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CameraLookUpEdit.Size = new System.Drawing.Size(232, 22);
+            this.CameraLookUpEdit.StyleController = this.layoutControl2;
+            this.CameraLookUpEdit.TabIndex = 7;
+            this.CameraLookUpEdit.EditValueChanged += new System.EventHandler(this.CameraLookUpEdit_EditValueChanged);
+            // 
+            // RotateChartButton
+            // 
+            this.RotateChartButton.Location = new System.Drawing.Point(116, 12);
+            this.RotateChartButton.MaximumSize = new System.Drawing.Size(100, 0);
+            this.RotateChartButton.MinimumSize = new System.Drawing.Size(100, 0);
+            this.RotateChartButton.Name = "RotateChartButton";
+            this.RotateChartButton.Size = new System.Drawing.Size(100, 22);
+            this.RotateChartButton.StyleController = this.layoutControl2;
+            this.RotateChartButton.TabIndex = 6;
+            this.RotateChartButton.Text = "Rotate Chart";
+            this.RotateChartButton.Click += new System.EventHandler(this.RotateChartButton_Click);
             // 
             // ProcessTimeChartButton
             // 
@@ -293,15 +322,15 @@ namespace ChartControl
             // 
             // TimeChartControl
             // 
-            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
-            this.TimeChartControl.Diagram = xyDiagram2;
+            xyDiagram6.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram6.AxisY.VisibleInPanesSerializable = "-1";
+            this.TimeChartControl.Diagram = xyDiagram6;
             this.TimeChartControl.Location = new System.Drawing.Point(12, 38);
             this.TimeChartControl.Name = "TimeChartControl";
-            series2.Name = "Series 1";
+            series6.Name = "Series 1";
             this.TimeChartControl.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series2};
-            this.TimeChartControl.Size = new System.Drawing.Size(774, 377);
+        series6};
+            this.TimeChartControl.Size = new System.Drawing.Size(774, 376);
             this.TimeChartControl.TabIndex = 4;
             // 
             // layoutControlGroup1
@@ -315,7 +344,7 @@ namespace ChartControl
             this.layoutControlItem8,
             this.emptySpaceItem2});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(798, 427);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(798, 426);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem5
@@ -323,7 +352,7 @@ namespace ChartControl
             this.layoutControlItem5.Control = this.TimeChartControl;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(778, 381);
+            this.layoutControlItem5.Size = new System.Drawing.Size(778, 380);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
@@ -336,22 +365,6 @@ namespace ChartControl
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // RotateChartButton
-            // 
-            this.RotateChartButton.Location = new System.Drawing.Point(116, 12);
-            this.RotateChartButton.MaximumSize = new System.Drawing.Size(100, 0);
-            this.RotateChartButton.MinimumSize = new System.Drawing.Size(100, 0);
-            this.RotateChartButton.Name = "RotateChartButton";
-            this.RotateChartButton.Size = new System.Drawing.Size(100, 22);
-            this.RotateChartButton.StyleController = this.layoutControl2;
-            this.RotateChartButton.TabIndex = 6;
-            this.RotateChartButton.Text = "Rotate Chart";
-            this.RotateChartButton.Click += new System.EventHandler(this.RotateChartButton_Click);
-            // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.RotateChartButton;
@@ -360,17 +373,6 @@ namespace ChartControl
             this.layoutControlItem7.Size = new System.Drawing.Size(104, 26);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
-            // 
-            // CameraLookUpEdit
-            // 
-            this.CameraLookUpEdit.Location = new System.Drawing.Point(269, 12);
-            this.CameraLookUpEdit.Name = "CameraLookUpEdit";
-            this.CameraLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CameraLookUpEdit.Size = new System.Drawing.Size(232, 20);
-            this.CameraLookUpEdit.StyleController = this.layoutControl2;
-            this.CameraLookUpEdit.TabIndex = 7;
-            this.CameraLookUpEdit.EditValueChanged += new System.EventHandler(this.CameraLookUpEdit_EditValueChanged);
             // 
             // layoutControlItem8
             // 
@@ -389,6 +391,45 @@ namespace ChartControl
             this.emptySpaceItem2.Size = new System.Drawing.Size(285, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // SeriesSpinEdit
+            // 
+            this.SeriesSpinEdit.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SeriesSpinEdit.Location = new System.Drawing.Point(309, 12);
+            this.SeriesSpinEdit.Name = "SeriesSpinEdit";
+            this.SeriesSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.SeriesSpinEdit.Properties.MaxValue = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.SeriesSpinEdit.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SeriesSpinEdit.Size = new System.Drawing.Size(149, 22);
+            this.SeriesSpinEdit.StyleController = this.layoutControl1;
+            this.SeriesSpinEdit.TabIndex = 8;
+            this.SeriesSpinEdit.EditValueChanged += new System.EventHandler(this.SeriesSpinEdit_EditValueChanged);
+            // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.Control = this.SeriesSpinEdit;
+            this.layoutControlItem10.Location = new System.Drawing.Point(252, 0);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(198, 26);
+            this.layoutControlItem10.Text = "Series:";
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(33, 13);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,9 +446,9 @@ namespace ChartControl
             this.HistogramTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(areaSeriesView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(areaSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HistoChartControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -418,16 +459,18 @@ namespace ChartControl
             this.TimelineTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CameraLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeChartControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CameraLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SeriesSpinEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -462,6 +505,8 @@ namespace ChartControl
         private DevExpress.XtraEditors.LookUpEdit CameraLookUpEdit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraEditors.SpinEdit SeriesSpinEdit;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
     }
 }
 

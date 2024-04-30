@@ -40,34 +40,69 @@ namespace ChartControl
 
         private void bHisto_Click(object sender, EventArgs e)
         {
+            //Init chart control
             HistoChartControl.Series.Clear();
-            //Hide legend
             HistoChartControl.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
-
-            var dataSeries = new DevExpress.XtraCharts.Series("Histogram", ViewType.Area);
-            dataSeries.ArgumentScaleType = ScaleType.Numerical;
-            dataSeries.ValueScaleType = ScaleType.Numerical;
-
-            //Add data
-            dataSeries.Points.AddRange(CreateFakeGrayPoints().ToArray());
+            HistoChartControl.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.False;
 
 
+            AddHistoSeries();
+            //Diagram only valid when series added
+            InitHiistoChartDiagram();
+        }
 
-            //Add to generate the diagram
-            HistoChartControl.Series.Add(dataSeries);
-
-
+        private void InitHiistoChartDiagram()
+        {
             //Fix the range (Can still show value out side range)
             //This is just a proximate range, use custom label instead
             var xyDiagram = HistoChartControl.Diagram as XYDiagram;
             //xyDiagram.AxisX.WholeRange.MinValue = 0;
             //xyDiagram.AxisX.WholeRange.MaxValue = 255;
 
-            //Add 
+            //Setup X Axis
+            //Add labels
             xyDiagram.AxisX.CustomLabels.Clear();
             for (int i = 0; i <= 255; i += 15)
             {
                 xyDiagram.AxisX.CustomLabels.Add(new CustomAxisLabel(i.ToString(), i));
+            }
+
+            //Setup Y Axis
+            xyDiagram.AxisY.GridLines.Visible = false;//Hide 
+            xyDiagram.AxisY.NumericScaleOptions.IntervalOptions.DivisionMode = IntervalDivisionMode.Count;
+            xyDiagram.AxisY.NumericScaleOptions.IntervalOptions.Count = 5;
+        }
+
+        private void AddHistoSeries()
+        {
+            int iCount = (int)SeriesSpinEdit.Value;
+            for (int i = 0; i < iCount; i++)
+            {
+                //Don't use spine/spinearea since it might create negative Y axis values
+                var dataSeries = new DevExpress.XtraCharts.Series("Histogram", ViewType.Area);
+                dataSeries.ArgumentScaleType = ScaleType.Numerical;
+                dataSeries.ValueScaleType = ScaleType.Numerical;
+
+                //Setup color
+                if (i == 0)
+                {
+                    dataSeries.View.Color = iCount > 1 ? Color.Brown : Color.Red;
+                }
+                else if (i == 1)
+                {
+                    dataSeries.View.Color = Color.Green;
+                }
+                else if (i == 2)
+                {
+                    dataSeries.View.Color = Color.Blue;
+                }
+
+                //Add data
+                dataSeries.Points.AddRange(CreateFakeGrayPoints().ToArray());
+
+                //Add to generate the diagram
+                HistoChartControl.Series.Add(dataSeries);
+
 
             }
         }
@@ -90,8 +125,13 @@ namespace ChartControl
         {
             if (HistoChartControl.Series.Count == 0) return;
             HistoChartControl.SuspendLayout();
-            HistoChartControl.Series[0].Points.Clear();
-            HistoChartControl.Series[0].Points.AddRange(CreateFakeGrayPoints().ToArray());
+
+            foreach (Series item in HistoChartControl.Series)
+            {
+                item.Points.Clear();
+                item.Points.AddRange(CreateFakeGrayPoints().ToArray());
+            }
+
             HistoChartControl.ResumeLayout();
         }
 
@@ -176,7 +216,7 @@ namespace ChartControl
 
             AddSeries();
             AddSeries();
- 
+
             //Change the text format 
             //Default: 2024-04-16 9:53:51 AM
             //Set argument
@@ -219,7 +259,7 @@ namespace ChartControl
             //Create series
             var dataSeries1 = new Series("Processing Time", ViewType.Bar);
             dataSeries1.Name = $"Time:{DateTime.Now}";
-            
+
             //Set to numeric to count one by one instead of based on the time line
             dataSeries1.ArgumentScaleType = ScaleType.Qualitative;
             dataSeries1.ValueScaleType = ScaleType.Numerical; //Y Axis
@@ -254,6 +294,11 @@ namespace ChartControl
         }
 
         private void CameraLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SeriesSpinEdit_EditValueChanged(object sender, EventArgs e)
         {
 
         }

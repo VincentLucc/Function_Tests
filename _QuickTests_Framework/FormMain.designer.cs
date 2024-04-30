@@ -44,6 +44,7 @@ namespace _QuickTests_Framework
             this.bEventsInit = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.bMethodRef = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.bVirtualMethod = new System.Windows.Forms.Button();
             this.bClassStatic = new System.Windows.Forms.Button();
@@ -124,7 +125,7 @@ namespace _QuickTests_Framework
             this.tbPlain = new System.Windows.Forms.RichTextBox();
             this.bEncryptionInit = new System.Windows.Forms.Button();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
-            this.bMethodRef = new System.Windows.Forms.Button();
+            this.bSortChar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -309,6 +310,16 @@ namespace _QuickTests_Framework
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // bMethodRef
+            // 
+            this.bMethodRef.Location = new System.Drawing.Point(18, 52);
+            this.bMethodRef.Name = "bMethodRef";
+            this.bMethodRef.Size = new System.Drawing.Size(124, 20);
+            this.bMethodRef.TabIndex = 23;
+            this.bMethodRef.Text = "Method Params: Ref";
+            this.bMethodRef.UseVisualStyleBackColor = true;
+            this.bMethodRef.Click += new System.EventHandler(this.bMethodRef_Click);
             // 
             // groupBox8
             // 
@@ -782,6 +793,7 @@ namespace _QuickTests_Framework
             // 
             // tabPageLINQ
             // 
+            this.tabPageLINQ.Controls.Add(this.bSortChar);
             this.tabPageLINQ.Controls.Add(this.bLinqSOrt);
             this.tabPageLINQ.Controls.Add(this.bListUniqueCheck);
             this.tabPageLINQ.Controls.Add(this.bFirstOrDefault);
@@ -1143,15 +1155,15 @@ namespace _QuickTests_Framework
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick_1);
             // 
-            // bMethodRef
+            // bSortChar
             // 
-            this.bMethodRef.Location = new System.Drawing.Point(18, 52);
-            this.bMethodRef.Name = "bMethodRef";
-            this.bMethodRef.Size = new System.Drawing.Size(124, 20);
-            this.bMethodRef.TabIndex = 23;
-            this.bMethodRef.Text = "Method Params: Ref";
-            this.bMethodRef.UseVisualStyleBackColor = true;
-            this.bMethodRef.Click += new System.EventHandler(this.bMethodRef_Click);
+            this.bSortChar.Location = new System.Drawing.Point(8, 82);
+            this.bSortChar.Name = "bSortChar";
+            this.bSortChar.Size = new System.Drawing.Size(124, 20);
+            this.bSortChar.TabIndex = 3;
+            this.bSortChar.Text = "Sort AlphaNumeric";
+            this.bSortChar.UseVisualStyleBackColor = true;
+            this.bSortChar.Click += new System.EventHandler(this.bSortChar_Click);
             // 
             // FormMain
             // 
@@ -1285,6 +1297,7 @@ namespace _QuickTests_Framework
         private System.Windows.Forms.Button bEnumMultipleValues;
         private System.Windows.Forms.Button bVirtualMethod;
         private System.Windows.Forms.Button bMethodRef;
+        private System.Windows.Forms.Button bSortChar;
     }
 }
 

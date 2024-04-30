@@ -1602,8 +1602,8 @@ namespace _QuickTests_Framework
 
         private void bMethodRef_Click(object sender, EventArgs e)
         {
-            Student student1 = new Student() { Name="Stu01"};
-            Student student2 = new Student() { Name="Stu02"};
+            Student student1 = new Student() { Name = "Stu01" };
+            Student student2 = new Student() { Name = "Stu02" };
 
             Clear(student1); //Value exist
             Clear(ref student2); //Value equals null
@@ -1617,6 +1617,12 @@ namespace _QuickTests_Framework
         private void Clear(ref Student student)
         {
             student = null;
+        }
+
+        private void bSortChar_Click(object sender, EventArgs e)
+        {
+            List<string> values = new List<string>() { "ABC12EF10", "ABC12EF11", "ABC10EF12", "ABC10EF13", "ABC09EF15" };
+            values.Sort();
         }
     }
 

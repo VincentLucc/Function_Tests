@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.6.33801.468
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "DevTestProject\TestProject.csproj", "{5FCC38DC-749D-443E-BB35-6558DAAD7571}"
 EndProject
@@ -47,7 +47,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WizardControl", "WizardCont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPort_Ink_19.1", "SerialPort_Ink\SerialPort_Ink_19.1.csproj", "{E2C158D1-C04F-40B2-B550-1BBF3E7DCF22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevChartControl", "ChartControl\DevChartControl.csproj", "{16CBBD4F-0983-412D-A6C9-87D439E970D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevChartControl_22_1", "ChartControl\DevChartControl_22_1.csproj", "{16CBBD4F-0983-412D-A6C9-87D439E970D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInput_22.1", "UserInput\UserInput_22.1.csproj", "{B38924AC-31F7-4217-BF8A-EB6B728E6565}"
 EndProject
