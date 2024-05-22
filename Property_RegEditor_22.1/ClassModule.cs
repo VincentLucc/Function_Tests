@@ -73,10 +73,12 @@ namespace Property_RegEditor_22._1
 
         [TypeConverter(typeof(ExpandableObjectConverter))] //Show sub class properties
         [ExpandableRowSettings(false)] //Hide class root editor
+        [Category("Cert")]
         public Certificate Cert { get; set; }
 
         [TypeConverter(typeof(ExpandableObjectConverter))] //Show sub class properties
         [ExpandableRowSettings(false)] //Hide class root editor
+        [Category("Cert")]
         public CertificateBase Cert2 { get; set; }
 
         [CustomEditor(_editorType.ToggleSwitch)]
@@ -105,7 +107,11 @@ namespace Property_RegEditor_22._1
         [Category("Test"), DisplayName("Ethernet Adapter"), Description("Ethernet Adapter Mac Address")]
         public string NetworkAdapter { get; set; }
 
-     
+        [CustomEditor(_editorType.GridControlPanel)]
+        [Category("Test"), DisplayName("Grid Control Panel"), Description("Grid Control Panel")]
+        public string GridPanel { get; set; }
+
+
 
         public Student()
         {

@@ -55,7 +55,8 @@ namespace Property_RegEditor_22._1
         ButtonEditHide,
         ToggleSwitch,
         ToggleSwitchList,
-        MacList
+        MacList,
+        GridControlPanel
     }
 
     /// <summary>

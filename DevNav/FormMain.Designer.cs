@@ -139,6 +139,11 @@ partial class FormMain
             this.officeNavigationBar1 = new DevExpress.XtraBars.Navigation.OfficeNavigationBar();
             this.navigationBarItem1 = new DevExpress.XtraBars.Navigation.NavigationBarItem();
             this.navigationBarItem2 = new DevExpress.XtraBars.Navigation.NavigationBarItem();
+            this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
+            this.layoutControl8 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.windowsUIButtonPanel1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
+            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -200,6 +205,11 @@ partial class FormMain
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar1)).BeginInit();
+            this.xtraTabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl8)).BeginInit();
+            this.layoutControl8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             this.SuspendLayout();
             // 
             // navBarControl1
@@ -288,7 +298,8 @@ partial class FormMain
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3,
-            this.xtraTabPage4});
+            this.xtraTabPage4,
+            this.xtraTabPage5});
             // 
             // xtraTabPage1
             // 
@@ -1190,7 +1201,7 @@ partial class FormMain
             this.navigationBarItem2});
             this.officeNavigationBar1.Location = new System.Drawing.Point(1, 426);
             this.officeNavigationBar1.Name = "officeNavigationBar1";
-            this.officeNavigationBar1.Size = new System.Drawing.Size(775, 50);
+            this.officeNavigationBar1.Size = new System.Drawing.Size(775, 46);
             this.officeNavigationBar1.TabIndex = 3;
             this.officeNavigationBar1.Text = "officeNavigationBar1";
             // 
@@ -1203,6 +1214,55 @@ partial class FormMain
             // 
             this.navigationBarItem2.Name = "navigationBarItem2";
             this.navigationBarItem2.Text = "Item2";
+            // 
+            // xtraTabPage5
+            // 
+            this.xtraTabPage5.Controls.Add(this.layoutControl8);
+            this.xtraTabPage5.Name = "xtraTabPage5";
+            this.xtraTabPage5.Size = new System.Drawing.Size(775, 446);
+            this.xtraTabPage5.Text = "Button Panel";
+            // 
+            // layoutControl8
+            // 
+            this.layoutControl8.Controls.Add(this.windowsUIButtonPanel1);
+            this.layoutControl8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl8.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl8.Name = "layoutControl8";
+            this.layoutControl8.Root = this.layoutControlGroup7;
+            this.layoutControl8.Size = new System.Drawing.Size(775, 446);
+            this.layoutControl8.TabIndex = 0;
+            this.layoutControl8.Text = "layoutControl8";
+            // 
+            // layoutControlGroup7
+            // 
+            this.layoutControlGroup7.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup7.GroupBordersVisible = false;
+            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem16});
+            this.layoutControlGroup7.Name = "layoutControlGroup7";
+            this.layoutControlGroup7.Size = new System.Drawing.Size(775, 446);
+            this.layoutControlGroup7.TextVisible = false;
+            // 
+            // windowsUIButtonPanel1
+            // 
+            this.windowsUIButtonPanel1.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton(),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton(),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton()});
+            this.windowsUIButtonPanel1.Location = new System.Drawing.Point(16, 16);
+            this.windowsUIButtonPanel1.Name = "windowsUIButtonPanel1";
+            this.windowsUIButtonPanel1.Size = new System.Drawing.Size(743, 55);
+            this.windowsUIButtonPanel1.TabIndex = 4;
+            this.windowsUIButtonPanel1.Text = "windowsUIButtonPanel1";
+            // 
+            // layoutControlItem16
+            // 
+            this.layoutControlItem16.Control = this.windowsUIButtonPanel1;
+            this.layoutControlItem16.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem16.Name = "layoutControlItem16";
+            this.layoutControlItem16.Size = new System.Drawing.Size(749, 420);
+            this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem16.TextVisible = false;
             // 
             // FormMain
             // 
@@ -1279,6 +1339,11 @@ partial class FormMain
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar1)).EndInit();
+            this.xtraTabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl8)).EndInit();
+            this.layoutControl8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1392,6 +1457,11 @@ partial class FormMain
     private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem6;
     private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
     private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
+    private XtraTabPage xtraTabPage5;
+    private DevExpress.XtraLayout.LayoutControl layoutControl8;
+    private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIButtonPanel1;
+    private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup7;
+    private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
 }
 
 

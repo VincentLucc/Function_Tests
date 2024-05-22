@@ -1,12 +1,10 @@
-﻿using DevExpress.LookAndFeel;
-using DevExpress.Skins;
-using DevExpress.UserSkins;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Property_RegEditor_22._1
+namespace CountFPS
 {
     static class Program
     {
@@ -18,7 +16,7 @@ namespace Property_RegEditor_22._1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Application.Run(new Form1());
         }
     }
 }

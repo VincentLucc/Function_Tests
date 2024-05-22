@@ -10,6 +10,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using DevExpress.XtraVerticalGrid.Events;
+using DevExpress.XtraEditors.CustomEditor;
+using DevExpress.XtraVerticalGrid.Native;
+using static DevExpress.XtraBars.Customization.Helpers.DesignTimeManager.DesignTimeCreateItemMenu;
+using DevExpress.Utils;
+using System.IO.Ports;
 
 namespace Property_RegEditor_22._1
 {
@@ -60,18 +65,69 @@ namespace Property_RegEditor_22._1
         private void PropertyGrid_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             //Update row visibility
-            if (e.Row is PGridBooleanEditorRow)
+            if (IsRefreshRequired(e.Row))
             {
                 ReloadAll();
             }
         }
 
+        /// <summary>
+        /// Check if update the property view is required
+        /// </summary>
+        /// <param name="editRow"></param>
+        /// <returns></returns>
+        public bool IsRefreshRequired(BaseRow editRow)
+        {
+            var propName = editRow.Properties.FieldName;
+
+            //Type change, list change, visible properties which needs to be refreshed
+            if (editRow is PGridEnumEditorRow ||
+                editRow is PGridBooleanEditorRow) //Partial text match
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private void PropertyGrid_CustomRecordCellEdit(object sender, GetCustomRowCellEditEventArgs e)
         {
             //Get current editor info
+            if (!IsRowValid(e.Row)) return;
             var editorInfo = GetEditorInfo(e.Row, propertyGrid.SelectedObject);
-            if (editorInfo == null) return;
+            if (editorInfo == null) goto FinishUp;
+   
+            SetRowEditor(e, editorInfo);
 
+            CustomSettingRowEditor?.Invoke(e, editorInfo);
+
+            //Update view
+            FinishUp:
+            SetRowLayout(e.Row, editorInfo);
+        }
+
+        private bool IsRowValid(BaseRow row)
+        {
+            if (row == null) return false;
+
+            //Empry row is required!!! used for class name display
+            //if (BaseRow is CategoryRow || BaseRow is PGridEmptyRow) continue;
+            if (row is CategoryRow) return false;
+
+            //Remove devexpress specific row
+            string sRowName = row.Properties.FieldName;
+            if (sRowName == "Appearance.Options") return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Set row editor based on edit type
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="editor"></param>
+        private void SetRowEditor(GetCustomRowCellEditEventArgs e, CustomEditorAttribute editorInfo)
+        {
             //Set editor based on type
             switch (editorInfo.EditorType)
             {
@@ -216,7 +272,7 @@ namespace Property_RegEditor_22._1
                     else
                     {
                         e.Row.Properties.Caption = $"Device {editorInfo.IntValue + 1}";
-                    }           
+                    }
                     if (UniqueEditors.ContainsKey(editorInfo.EditorType))
                     {
                         e.RepositoryItem = UniqueEditors[editorInfo.EditorType];
@@ -247,18 +303,44 @@ namespace Property_RegEditor_22._1
                         RegisterEditor(editorInfo.EditorType, repositoryMacList, true);
                     }
                     break;
+                case _editorType.GridControlPanel:
+                    e.Row.Properties.ShowCaption = false;
+                    var rowType = e.Row.GetType();
+                    PGridTextEditorRow editorRow = e.Row as PGridTextEditorRow;
+                    if (editorRow == null) break;
+
+                    editorRow.EditorAlignment = EditorAlignment.Default;
+                    editorRow.EditorPosition = EditorPosition.BeforeCaption;
+                    var headerRect = editorRow.HeaderInfo.HeaderCellsRect;
+                    editorRow.HeaderInfo.HeaderRect = new System.Drawing.Rectangle(200, headerRect.Y, 1, headerRect.Height);
+
+
+
+
+
+                    e.Row.Height = 100;
+                    var padding = e.Row.Properties.Padding;
+                    if (UniqueEditors.ContainsKey(editorInfo.EditorType))
+                    {
+                        e.RepositoryItem = UniqueEditors[editorInfo.EditorType];
+                    }
+                    else
+                    {
+                        RepositoryItemAnyControl anyControl = new RepositoryItemAnyControl();
+                        RepositoryAnyUserControl userControlTest = new RepositoryAnyUserControl();
+                        anyControl.Control = userControlTest;
+                        e.RepositoryItem = anyControl;
+                        RegisterEditor(editorInfo.EditorType, anyControl, true);
+                    }
+                    break;
 
                 default:
                     break;
             }
-
-            CustomSettingRowEditor?.Invoke(e, editorInfo);
-
-            //Update view
-            SetRowLayout(e.Row, editorInfo);
         }
 
 
+ 
         private void PropertyGrid_DataSourceChanged(object sender, EventArgs e)
         {
             ReloadAll();
@@ -298,7 +380,7 @@ namespace Property_RegEditor_22._1
             //Prepare variable
             var student = propertyGrid.SelectedObject as Student;
             string sName = row.Properties.FieldName;
-            if (sName==nameof(Student.List))
+            if (sName == nameof(Student.List))
             {
                 row.Visible = student.CheckBox;
             }
