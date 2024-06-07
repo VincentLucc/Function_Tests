@@ -364,6 +364,19 @@ namespace Property_RegEditor_22._1
             }
 
             propertyGrid.EndUpdate();
+            CalRowHeight();
+        }
+
+        private void CalRowHeight()
+        {
+            //Cal row height
+            int iHeight = 20;
+        
+            foreach (var row in propertyGrid.Rows)
+            {
+                iHeight += (propertyGrid.ViewInfo.GetVisibleRowHeight(row) + 1);
+            }
+            Trace.WriteLine($"PropertyGrid.RowsHeight:{iHeight}");
         }
 
         private void SetRowLayout(BaseRow row, CustomEditorAttribute editor)

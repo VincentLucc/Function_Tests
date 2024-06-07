@@ -62,9 +62,9 @@
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.CreateDebugtButton);
-            this.groupControl2.Location = new System.Drawing.Point(244, 12);
+            this.groupControl2.Location = new System.Drawing.Point(246, 16);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(544, 426);
+            this.groupControl2.Size = new System.Drawing.Size(538, 418);
             this.groupControl2.TabIndex = 5;
             this.groupControl2.Text = "groupControl2";
             // 
@@ -80,9 +80,9 @@
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.createLogButton);
-            this.groupControl1.Location = new System.Drawing.Point(12, 12);
+            this.groupControl1.Location = new System.Drawing.Point(16, 16);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(228, 426);
+            this.groupControl1.Size = new System.Drawing.Size(224, 418);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Logging Class";
             // 
@@ -111,16 +111,16 @@
             this.layoutControlItem1.Control = this.groupControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(232, 430);
+            this.layoutControlItem1.Size = new System.Drawing.Size(230, 424);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.groupControl2;
-            this.layoutControlItem2.Location = new System.Drawing.Point(232, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(230, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(548, 430);
+            this.layoutControlItem2.Size = new System.Drawing.Size(544, 424);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 

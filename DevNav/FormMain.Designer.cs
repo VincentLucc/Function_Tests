@@ -42,7 +42,7 @@ partial class FormMain
             this.navBarItem5 = new DevExpress.XtraNavBar.NavBarItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.NavBarDefaultTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
             this.CustomNavBarControl = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
@@ -134,22 +134,49 @@ partial class FormMain
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
+            this.layoutControl8 = new DevExpress.XtraLayout.LayoutControl();
+            this.windowsUIButtonPanel1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
+            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.NavBarStyleTabPage = new DevExpress.XtraTab.XtraTabPage();
+            this.navBarControl2 = new DevExpress.XtraNavBar.NavBarControl();
+            this.navBarGroup4 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarGroupControlContainer1 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
+            this.layoutControl9 = new DevExpress.XtraLayout.LayoutControl();
+            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.toggleSwitch2 = new DevExpress.XtraEditors.ToggleSwitch();
+            this.layoutControlGroup8 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.navBarGroupControlContainer2 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
+            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.toggleSwitch3 = new DevExpress.XtraEditors.ToggleSwitch();
+            this.navBarGroupControlContainer3 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
+            this.navBarGroupControlContainer4 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
+            this.navBarGroupControlContainer5 = new DevExpress.XtraNavBar.NavBarGroupControlContainer();
+            this.navBarGroup5 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarGroup6 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarGroup7 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarGroup8 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItem11 = new DevExpress.XtraNavBar.NavBarItem();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.officeNavigationBar1 = new DevExpress.XtraBars.Navigation.OfficeNavigationBar();
             this.navigationBarItem1 = new DevExpress.XtraBars.Navigation.NavigationBarItem();
             this.navigationBarItem2 = new DevExpress.XtraBars.Navigation.NavigationBarItem();
-            this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
-            this.layoutControl8 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.windowsUIButtonPanel1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
-            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
-            this.xtraTabPage1.SuspendLayout();
+            this.NavBarDefaultTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
             this.layoutControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomNavBarControl)).BeginInit();
@@ -202,14 +229,32 @@ partial class FormMain
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar1)).BeginInit();
             this.xtraTabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl8)).BeginInit();
             this.layoutControl8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
+            this.NavBarStyleTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.navBarControl2)).BeginInit();
+            this.navBarControl2.SuspendLayout();
+            this.navBarGroupControlContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl9)).BeginInit();
+            this.layoutControl9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
+            this.navBarGroupControlContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // navBarControl1
@@ -291,22 +336,23 @@ partial class FormMain
             // 
             this.xtraTabControl1.Location = new System.Drawing.Point(16, 16);
             this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
+            this.xtraTabControl1.SelectedTabPage = this.NavBarDefaultTabPage;
             this.xtraTabControl1.Size = new System.Drawing.Size(777, 477);
             this.xtraTabControl1.TabIndex = 8;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage1,
+            this.NavBarDefaultTabPage,
+            this.NavBarStyleTabPage,
             this.xtraTabPage2,
             this.xtraTabPage3,
             this.xtraTabPage4,
             this.xtraTabPage5});
             // 
-            // xtraTabPage1
+            // NavBarDefaultTabPage
             // 
-            this.xtraTabPage1.Controls.Add(this.layoutControl3);
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(775, 446);
-            this.xtraTabPage1.Text = "NavBarControl";
+            this.NavBarDefaultTabPage.Controls.Add(this.layoutControl3);
+            this.NavBarDefaultTabPage.Name = "NavBarDefaultTabPage";
+            this.NavBarDefaultTabPage.Size = new System.Drawing.Size(775, 446);
+            this.NavBarDefaultTabPage.Text = "NavBarControl";
             // 
             // layoutControl3
             // 
@@ -1174,6 +1220,299 @@ partial class FormMain
             this.emptySpaceItem1.Size = new System.Drawing.Size(334, 420);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // xtraTabPage5
+            // 
+            this.xtraTabPage5.Controls.Add(this.layoutControl8);
+            this.xtraTabPage5.Name = "xtraTabPage5";
+            this.xtraTabPage5.Size = new System.Drawing.Size(775, 446);
+            this.xtraTabPage5.Text = "Button Panel";
+            // 
+            // layoutControl8
+            // 
+            this.layoutControl8.Controls.Add(this.windowsUIButtonPanel1);
+            this.layoutControl8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl8.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl8.Name = "layoutControl8";
+            this.layoutControl8.Root = this.layoutControlGroup7;
+            this.layoutControl8.Size = new System.Drawing.Size(775, 446);
+            this.layoutControl8.TabIndex = 0;
+            this.layoutControl8.Text = "layoutControl8";
+            // 
+            // windowsUIButtonPanel1
+            // 
+            this.windowsUIButtonPanel1.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton(),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton(),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton()});
+            this.windowsUIButtonPanel1.Location = new System.Drawing.Point(16, 16);
+            this.windowsUIButtonPanel1.Name = "windowsUIButtonPanel1";
+            this.windowsUIButtonPanel1.Size = new System.Drawing.Size(743, 55);
+            this.windowsUIButtonPanel1.TabIndex = 4;
+            this.windowsUIButtonPanel1.Text = "windowsUIButtonPanel1";
+            // 
+            // layoutControlGroup7
+            // 
+            this.layoutControlGroup7.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup7.GroupBordersVisible = false;
+            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem16});
+            this.layoutControlGroup7.Name = "layoutControlGroup7";
+            this.layoutControlGroup7.Size = new System.Drawing.Size(775, 446);
+            this.layoutControlGroup7.TextVisible = false;
+            // 
+            // layoutControlItem16
+            // 
+            this.layoutControlItem16.Control = this.windowsUIButtonPanel1;
+            this.layoutControlItem16.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem16.Name = "layoutControlItem16";
+            this.layoutControlItem16.Size = new System.Drawing.Size(749, 420);
+            this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem16.TextVisible = false;
+            // 
+            // NavBarStyleTabPage
+            // 
+            this.NavBarStyleTabPage.Controls.Add(this.groupControl1);
+            this.NavBarStyleTabPage.Name = "NavBarStyleTabPage";
+            this.NavBarStyleTabPage.Size = new System.Drawing.Size(775, 446);
+            this.NavBarStyleTabPage.Text = "Nav Bar Style";
+            // 
+            // navBarControl2
+            // 
+            this.navBarControl2.ActiveGroup = this.navBarGroup4;
+            this.navBarControl2.Controls.Add(this.navBarGroupControlContainer1);
+            this.navBarControl2.Controls.Add(this.navBarGroupControlContainer2);
+            this.navBarControl2.Controls.Add(this.navBarGroupControlContainer3);
+            this.navBarControl2.Controls.Add(this.navBarGroupControlContainer4);
+            this.navBarControl2.Controls.Add(this.navBarGroupControlContainer5);
+            this.navBarControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.navBarControl2.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
+            this.navBarGroup4,
+            this.navBarGroup5,
+            this.navBarGroup6,
+            this.navBarGroup7,
+            this.navBarGroup8});
+            this.navBarControl2.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
+            this.navBarItem11});
+            this.navBarControl2.Location = new System.Drawing.Point(2, 29);
+            this.navBarControl2.Name = "navBarControl2";
+            this.navBarControl2.OptionsNavPane.ExpandedWidth = 212;
+            this.navBarControl2.Size = new System.Drawing.Size(212, 415);
+            this.navBarControl2.TabIndex = 0;
+            this.navBarControl2.Text = "navBarControl2";
+            // 
+            // navBarGroup4
+            // 
+            this.navBarGroup4.Caption = "navBarGroup4";
+            this.navBarGroup4.ControlContainer = this.navBarGroupControlContainer1;
+            this.navBarGroup4.Expanded = true;
+            this.navBarGroup4.GroupClientHeight = 80;
+            this.navBarGroup4.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
+            this.navBarGroup4.Name = "navBarGroup4";
+            // 
+            // navBarGroupControlContainer1
+            // 
+            this.navBarGroupControlContainer1.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.navBarGroupControlContainer1.Appearance.Options.UseBackColor = true;
+            this.navBarGroupControlContainer1.Controls.Add(this.layoutControl9);
+            this.navBarGroupControlContainer1.Name = "navBarGroupControlContainer1";
+            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(204, 80);
+            this.navBarGroupControlContainer1.TabIndex = 0;
+            // 
+            // layoutControl9
+            // 
+            this.layoutControl9.Controls.Add(this.textEdit2);
+            this.layoutControl9.Controls.Add(this.toggleSwitch2);
+            this.layoutControl9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl9.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl9.Name = "layoutControl9";
+            this.layoutControl9.Root = this.layoutControlGroup8;
+            this.layoutControl9.Size = new System.Drawing.Size(204, 80);
+            this.layoutControl9.TabIndex = 0;
+            this.layoutControl9.Text = "layoutControl9";
+            // 
+            // textEdit2
+            // 
+            this.textEdit2.Location = new System.Drawing.Point(131, 46);
+            this.textEdit2.MenuManager = this.barManager1;
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Size = new System.Drawing.Size(50, 28);
+            this.textEdit2.StyleController = this.layoutControl9;
+            this.textEdit2.TabIndex = 5;
+            // 
+            // toggleSwitch2
+            // 
+            this.toggleSwitch2.Location = new System.Drawing.Point(16, 16);
+            this.toggleSwitch2.MenuManager = this.barManager1;
+            this.toggleSwitch2.Name = "toggleSwitch2";
+            this.toggleSwitch2.Properties.OffText = "Off";
+            this.toggleSwitch2.Properties.OnText = "On";
+            this.toggleSwitch2.Size = new System.Drawing.Size(175, 24);
+            this.toggleSwitch2.StyleController = this.layoutControl9;
+            this.toggleSwitch2.TabIndex = 4;
+            // 
+            // layoutControlGroup8
+            // 
+            this.layoutControlGroup8.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup8.GroupBordersVisible = false;
+            this.layoutControlGroup8.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem17,
+            this.emptySpaceItem7,
+            this.layoutControlItem18});
+            this.layoutControlGroup8.Name = "layoutControlGroup8";
+            this.layoutControlGroup8.Size = new System.Drawing.Size(207, 90);
+            this.layoutControlGroup8.TextVisible = false;
+            // 
+            // layoutControlItem17
+            // 
+            this.layoutControlItem17.Control = this.toggleSwitch2;
+            this.layoutControlItem17.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem17.Name = "layoutControlItem17";
+            this.layoutControlItem17.Size = new System.Drawing.Size(181, 30);
+            this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem17.TextVisible = false;
+            // 
+            // emptySpaceItem7
+            // 
+            this.emptySpaceItem7.AllowHotTrack = false;
+            this.emptySpaceItem7.Location = new System.Drawing.Point(171, 30);
+            this.emptySpaceItem7.Name = "emptySpaceItem7";
+            this.emptySpaceItem7.Size = new System.Drawing.Size(10, 34);
+            this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem18
+            // 
+            this.layoutControlItem18.Control = this.textEdit2;
+            this.layoutControlItem18.Location = new System.Drawing.Point(0, 30);
+            this.layoutControlItem18.Name = "layoutControlItem18";
+            this.layoutControlItem18.Size = new System.Drawing.Size(171, 34);
+            this.layoutControlItem18.TextSize = new System.Drawing.Size(99, 13);
+            // 
+            // navBarGroupControlContainer2
+            // 
+            this.navBarGroupControlContainer2.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.navBarGroupControlContainer2.Appearance.Options.UseBackColor = true;
+            this.navBarGroupControlContainer2.Controls.Add(this.textEdit4);
+            this.navBarGroupControlContainer2.Controls.Add(this.labelControl3);
+            this.navBarGroupControlContainer2.Controls.Add(this.labelControl2);
+            this.navBarGroupControlContainer2.Controls.Add(this.textEdit3);
+            this.navBarGroupControlContainer2.Controls.Add(this.labelControl1);
+            this.navBarGroupControlContainer2.Controls.Add(this.toggleSwitch3);
+            this.navBarGroupControlContainer2.Name = "navBarGroupControlContainer2";
+            this.navBarGroupControlContainer2.Size = new System.Drawing.Size(204, 114);
+            this.navBarGroupControlContainer2.TabIndex = 1;
+            // 
+            // textEdit4
+            // 
+            this.textEdit4.Location = new System.Drawing.Point(85, 67);
+            this.textEdit4.MenuManager = this.barManager1;
+            this.textEdit4.Name = "textEdit4";
+            this.textEdit4.Size = new System.Drawing.Size(96, 28);
+            this.textEdit4.TabIndex = 5;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(16, 74);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(63, 13);
+            this.labelControl3.TabIndex = 4;
+            this.labelControl3.Text = "labelControl3";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(16, 40);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(63, 13);
+            this.labelControl2.TabIndex = 3;
+            this.labelControl2.Text = "labelControl2";
+            // 
+            // textEdit3
+            // 
+            this.textEdit3.Location = new System.Drawing.Point(86, 33);
+            this.textEdit3.MenuManager = this.barManager1;
+            this.textEdit3.Name = "textEdit3";
+            this.textEdit3.Size = new System.Drawing.Size(95, 28);
+            this.textEdit3.TabIndex = 2;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(16, 8);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(63, 13);
+            this.labelControl1.TabIndex = 1;
+            this.labelControl1.Text = "labelControl1";
+            // 
+            // toggleSwitch3
+            // 
+            this.toggleSwitch3.Location = new System.Drawing.Point(86, 3);
+            this.toggleSwitch3.MenuManager = this.barManager1;
+            this.toggleSwitch3.Name = "toggleSwitch3";
+            this.toggleSwitch3.Properties.OffText = "Off";
+            this.toggleSwitch3.Properties.OnText = "On";
+            this.toggleSwitch3.Size = new System.Drawing.Size(95, 24);
+            this.toggleSwitch3.TabIndex = 0;
+            // 
+            // navBarGroupControlContainer3
+            // 
+            this.navBarGroupControlContainer3.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.navBarGroupControlContainer3.Appearance.Options.UseBackColor = true;
+            this.navBarGroupControlContainer3.Name = "navBarGroupControlContainer3";
+            this.navBarGroupControlContainer3.Size = new System.Drawing.Size(188, 80);
+            this.navBarGroupControlContainer3.TabIndex = 2;
+            // 
+            // navBarGroupControlContainer4
+            // 
+            this.navBarGroupControlContainer4.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.navBarGroupControlContainer4.Appearance.Options.UseBackColor = true;
+            this.navBarGroupControlContainer4.Name = "navBarGroupControlContainer4";
+            this.navBarGroupControlContainer4.Size = new System.Drawing.Size(188, 80);
+            this.navBarGroupControlContainer4.TabIndex = 3;
+            // 
+            // navBarGroupControlContainer5
+            // 
+            this.navBarGroupControlContainer5.Appearance.BackColor = System.Drawing.SystemColors.Control;
+            this.navBarGroupControlContainer5.Appearance.Options.UseBackColor = true;
+            this.navBarGroupControlContainer5.Name = "navBarGroupControlContainer5";
+            this.navBarGroupControlContainer5.Size = new System.Drawing.Size(188, 80);
+            this.navBarGroupControlContainer5.TabIndex = 4;
+            // 
+            // navBarGroup5
+            // 
+            this.navBarGroup5.Caption = "navBarGroup5";
+            this.navBarGroup5.ControlContainer = this.navBarGroupControlContainer2;
+            this.navBarGroup5.Expanded = true;
+            this.navBarGroup5.GroupClientHeight = 114;
+            this.navBarGroup5.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
+            this.navBarGroup5.Name = "navBarGroup5";
+            // 
+            // navBarGroup6
+            // 
+            this.navBarGroup6.Caption = "navBarGroup6";
+            this.navBarGroup6.ControlContainer = this.navBarGroupControlContainer3;
+            this.navBarGroup6.GroupClientHeight = 80;
+            this.navBarGroup6.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
+            this.navBarGroup6.Name = "navBarGroup6";
+            // 
+            // navBarGroup7
+            // 
+            this.navBarGroup7.Caption = "navBarGroup7";
+            this.navBarGroup7.ControlContainer = this.navBarGroupControlContainer4;
+            this.navBarGroup7.GroupClientHeight = 80;
+            this.navBarGroup7.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
+            this.navBarGroup7.Name = "navBarGroup7";
+            // 
+            // navBarGroup8
+            // 
+            this.navBarGroup8.Caption = "navBarGroup8";
+            this.navBarGroup8.ControlContainer = this.navBarGroupControlContainer5;
+            this.navBarGroup8.GroupClientHeight = 80;
+            this.navBarGroup8.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer;
+            this.navBarGroup8.Name = "navBarGroup8";
+            // 
+            // navBarItem11
+            // 
+            this.navBarItem11.Caption = "navBarItem11";
+            this.navBarItem11.Name = "navBarItem11";
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -1201,7 +1540,7 @@ partial class FormMain
             this.navigationBarItem2});
             this.officeNavigationBar1.Location = new System.Drawing.Point(1, 426);
             this.officeNavigationBar1.Name = "officeNavigationBar1";
-            this.officeNavigationBar1.Size = new System.Drawing.Size(775, 46);
+            this.officeNavigationBar1.Size = new System.Drawing.Size(775, 50);
             this.officeNavigationBar1.TabIndex = 3;
             this.officeNavigationBar1.Text = "officeNavigationBar1";
             // 
@@ -1215,54 +1554,15 @@ partial class FormMain
             this.navigationBarItem2.Name = "navigationBarItem2";
             this.navigationBarItem2.Text = "Item2";
             // 
-            // xtraTabPage5
+            // groupControl1
             // 
-            this.xtraTabPage5.Controls.Add(this.layoutControl8);
-            this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(775, 446);
-            this.xtraTabPage5.Text = "Button Panel";
-            // 
-            // layoutControl8
-            // 
-            this.layoutControl8.Controls.Add(this.windowsUIButtonPanel1);
-            this.layoutControl8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl8.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl8.Name = "layoutControl8";
-            this.layoutControl8.Root = this.layoutControlGroup7;
-            this.layoutControl8.Size = new System.Drawing.Size(775, 446);
-            this.layoutControl8.TabIndex = 0;
-            this.layoutControl8.Text = "layoutControl8";
-            // 
-            // layoutControlGroup7
-            // 
-            this.layoutControlGroup7.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup7.GroupBordersVisible = false;
-            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem16});
-            this.layoutControlGroup7.Name = "layoutControlGroup7";
-            this.layoutControlGroup7.Size = new System.Drawing.Size(775, 446);
-            this.layoutControlGroup7.TextVisible = false;
-            // 
-            // windowsUIButtonPanel1
-            // 
-            this.windowsUIButtonPanel1.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton(),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton(),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton()});
-            this.windowsUIButtonPanel1.Location = new System.Drawing.Point(16, 16);
-            this.windowsUIButtonPanel1.Name = "windowsUIButtonPanel1";
-            this.windowsUIButtonPanel1.Size = new System.Drawing.Size(743, 55);
-            this.windowsUIButtonPanel1.TabIndex = 4;
-            this.windowsUIButtonPanel1.Text = "windowsUIButtonPanel1";
-            // 
-            // layoutControlItem16
-            // 
-            this.layoutControlItem16.Control = this.windowsUIButtonPanel1;
-            this.layoutControlItem16.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(749, 420);
-            this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem16.TextVisible = false;
+            this.groupControl1.Controls.Add(this.navBarControl2);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(216, 446);
+            this.groupControl1.TabIndex = 1;
+            this.groupControl1.Text = "Default_GroupContainer";
             // 
             // FormMain
             // 
@@ -1283,7 +1583,7 @@ partial class FormMain
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
-            this.xtraTabPage1.ResumeLayout(false);
+            this.NavBarDefaultTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
             this.layoutControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CustomNavBarControl)).EndInit();
@@ -1336,14 +1636,33 @@ partial class FormMain
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar1)).EndInit();
             this.xtraTabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl8)).EndInit();
             this.layoutControl8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
+            this.NavBarStyleTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.navBarControl2)).EndInit();
+            this.navBarControl2.ResumeLayout(false);
+            this.navBarGroupControlContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl9)).EndInit();
+            this.layoutControl9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
+            this.navBarGroupControlContainer2.ResumeLayout(false);
+            this.navBarGroupControlContainer2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.officeNavigationBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1395,7 +1714,7 @@ partial class FormMain
     private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement17;
     private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement18;
     private XtraTabControl xtraTabControl1;
-    private XtraTabPage xtraTabPage1;
+    private XtraTabPage NavBarDefaultTabPage;
     private XtraTabPage xtraTabPage2;
     private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     private DevExpress.XtraLayout.LayoutControl layoutControl3;
@@ -1462,6 +1781,33 @@ partial class FormMain
     private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIButtonPanel1;
     private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup7;
     private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
+    private XtraTabPage NavBarStyleTabPage;
+    private DevExpress.XtraNavBar.NavBarControl navBarControl2;
+    private DevExpress.XtraNavBar.NavBarGroup navBarGroup4;
+    private DevExpress.XtraNavBar.NavBarGroupControlContainer navBarGroupControlContainer1;
+    private DevExpress.XtraLayout.LayoutControl layoutControl9;
+    private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup8;
+    private DevExpress.XtraNavBar.NavBarGroupControlContainer navBarGroupControlContainer2;
+    private DevExpress.XtraNavBar.NavBarGroupControlContainer navBarGroupControlContainer3;
+    private DevExpress.XtraNavBar.NavBarGroupControlContainer navBarGroupControlContainer4;
+    private DevExpress.XtraNavBar.NavBarGroupControlContainer navBarGroupControlContainer5;
+    private DevExpress.XtraNavBar.NavBarGroup navBarGroup5;
+    private DevExpress.XtraNavBar.NavBarGroup navBarGroup6;
+    private DevExpress.XtraNavBar.NavBarGroup navBarGroup7;
+    private DevExpress.XtraNavBar.NavBarGroup navBarGroup8;
+    private DevExpress.XtraNavBar.NavBarItem navBarItem11;
+    private DevExpress.XtraEditors.TextEdit textEdit2;
+    private DevExpress.XtraEditors.ToggleSwitch toggleSwitch2;
+    private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
+    private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem7;
+    private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
+    private DevExpress.XtraEditors.TextEdit textEdit4;
+    private DevExpress.XtraEditors.LabelControl labelControl3;
+    private DevExpress.XtraEditors.LabelControl labelControl2;
+    private DevExpress.XtraEditors.TextEdit textEdit3;
+    private DevExpress.XtraEditors.LabelControl labelControl1;
+    private DevExpress.XtraEditors.ToggleSwitch toggleSwitch3;
+    private DevExpress.XtraEditors.GroupControl groupControl1;
 }
 
 

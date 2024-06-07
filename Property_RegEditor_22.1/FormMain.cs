@@ -41,6 +41,7 @@ namespace Property_RegEditor_22._1
             CustomPropertyGridControl.TabIndexChanged += CustomPropertyGridControl_TabIndexChanged;//Doesn't trigger when tab changed
             CustomPropertyGridControl.TabStopChanged += CustomPropertyGridControl_TabStopChanged;//Doesn't trigger when tab changed
             CustomPropertyGridControl.SelectedTabChanged += CustomPropertyGridControl_SelectedTabChanged;
+            
             //Init tabs 
             var generalTab = CustomPropertyGridControl.Tabs[0];
             generalTab.CategoryNames.Add("Test");
@@ -76,6 +77,7 @@ namespace Property_RegEditor_22._1
         {
             if (CustomPropertyGridControl.SelectedObject is Student)
             {
+ 
                 var stu = CustomPropertyGridControl.SelectedObject as Student;
                 if (stu == null) return;
 
