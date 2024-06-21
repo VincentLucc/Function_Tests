@@ -13,7 +13,7 @@ namespace Performance
 {
     public partial class FormMain : XtraForm
     {
-        csCPUTest cpuTest=new csCPUTest();
+        csCPUTest cpuTest = new csCPUTest();
         public FormMain()
         {
             InitializeComponent();
@@ -31,7 +31,14 @@ namespace Performance
 
         private void cpuOverAllButton_Click(object sender, EventArgs e)
         {
-            cpuTest.TestCPUPerf();
+            double dResult = cpuTest.TestCPUPerSingle();
+            ResultMemoEdit.AppendText($"Single:{dResult.ToString("n0")}\r\n");
+        }
+
+        private async void CPUPerMultiButton_Click(object sender, EventArgs e)
+        {
+            double dResult = await cpuTest.TestCPUPerMulti();
+            ResultMemoEdit.AppendText($"Multiple:{dResult.ToString("n0")}\r\n");
         }
     }
 }

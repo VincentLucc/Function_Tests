@@ -4,6 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Management;
+using DevExpress.Internal.WinApi.Windows.UI.Notifications;
+using DevExpress.Utils;
+using System.Reflection;
 
 namespace Performance
 {
@@ -56,7 +60,11 @@ namespace Performance
             return watch.Elapsed;
         }
 
-        public double TestCPUPerf()
+        /// <summary>
+        /// SIngle thread performance testing
+        /// </summary>
+        /// <returns></returns>
+        public double GetCPUPerfAll()
         {
             Trace.WriteLine($"---CPU overall started");
             double dIntResult = TestIntProcess(19999);
@@ -65,6 +73,87 @@ namespace Performance
             double dTotal = dIntResult + dFloatResult;
             Trace.WriteLine($"CPU overall score:{dTotal.ToString("n")}");
             return dTotal;
+        }
+
+
+        public double TestCPUPerSingle()
+        {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            var dResult = GetCPUPerfAllTimeout(watch, 10000);
+            watch.Stop();
+            Trace.WriteLine($"CPU Perf. Single({watch.Elapsed.TotalMilliseconds.ToString("n0")}ms):{dResult.ToString("n0")}");
+            return dResult;
+        }
+        public async Task<double> TestCPUPerMulti()
+        {
+            //Init
+            int iCPUCount = Environment.ProcessorCount; //CPU logical processors
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            List<Task<double>> taskList = new List<Task<double>>();
+            List<double> Scores = new List<double>();
+
+            //Run tasks
+            taskList.Clear();
+            for (int i = 0; i < iCPUCount; i++)
+            {//Run the task at least 10 seconds
+                taskList.Add(Task.Run(() => GetCPUPerfAllTimeout(watch, 10000)));
+            }
+            double[] results = await Task.WhenAll(taskList);
+            double dResult = results.Sum();
+
+            //Result
+            StringBuilder builder = new StringBuilder();
+            builder.Append($"CPU Multiple Threads({taskList.Count},{watch.Elapsed.TotalMilliseconds.ToString("n0")}ms):");
+            builder.Append($"{dResult.ToString("n0")}-->");
+            for (int i = 0; i < results.Length; i++)
+            {
+                if (i == 0) builder.Append($"{results[i].ToString("n0")}");
+                else builder.Append($", {results[i].ToString("n0")}");
+            }
+
+            Trace.WriteLine(builder.ToString());
+            return dResult;
+        }
+
+        /// <summary>
+        /// Get the cpu performance with multiple attempt which will last at least certain period
+        /// </summary>
+        /// <param name="watch"></param>
+        /// <param name="iTimeout"></param>
+        /// <returns></returns>
+        public double GetCPUPerfAllTimeout(Stopwatch watch, int iTimeout)
+        {
+            List<double> results = new List<double>();
+
+            RunOnce:
+            double dScore = GetCPUPerfAll();
+            results.Add(dScore);
+            if (watch.ElapsedMilliseconds < iTimeout) goto RunOnce;
+            double dScoreFinal = results.Average();
+            
+            //Prepare display
+            StringBuilder builder = new StringBuilder();
+            builder.Append($"GetCPUPerfAllTimeout({results.Count}): {dScoreFinal},  Values:");
+            for (int i = 0; i < results.Count; i++)
+            {
+                if (i == 0) builder.Append($"{results[i].ToString("n0")}");
+                else builder.Append($", {results[i].ToString("n0")}");
+            }
+            Trace.WriteLine(builder.ToString());
+            return dScoreFinal;
+        }
+
+        public int GetNumberOfCores()
+        {
+            var coreCount = 0;
+            const string wmiQuery = "Select * from Win32_Processor";
+            foreach (var item in new ManagementObjectSearcher(wmiQuery).Get())
+            {
+                coreCount += int.Parse(item["NumberOfCores"].ToString());
+            }
+            return coreCount;
         }
 
         public double TestIntProcess(int iLoopCount = 9999)
