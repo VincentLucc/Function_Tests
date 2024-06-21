@@ -67,5 +67,13 @@ namespace DevLayout_22_1
             formGenerated.StartPosition = FormStartPosition.CenterScreen;
             formGenerated.ShowDialog();
         }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            layoutControlItem11.Visibility = layoutControlItem11.Visibility == 
+                DevExpress.XtraLayout.Utils.LayoutVisibility.Always ? 
+                DevExpress.XtraLayout.Utils.LayoutVisibility.Never : 
+                DevExpress.XtraLayout.Utils.LayoutVisibility.Always;
+        }
     }
 }
