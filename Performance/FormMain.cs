@@ -21,9 +21,17 @@ namespace Performance
 
         private void CPUIntButton_Click(object sender, EventArgs e)
         {
-            cpuTest.TestInt(19999);
+            cpuTest.TestIntProcess(19999);
         }
 
+        private void DoubleButton_Click(object sender, EventArgs e)
+        {
+            cpuTest.TestDoubleProcess(19999);
+        }
 
+        private void cpuOverAllButton_Click(object sender, EventArgs e)
+        {
+            cpuTest.TestCPUPerf();
+        }
     }
 }
