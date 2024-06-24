@@ -446,6 +446,9 @@ namespace _CommonCode_Framework
             return Encoding.ASCII.GetString(bData);
         }
 
+        /// <summary>
+        /// 0 looks like Q
+        /// </summary>
         public static List<char> Base36Chars = new List<char> {
             '0','1','2','3','4', '5', '6', '7', '8', '9',
             'A','B','C','D','E', 'F', 'G', 'H', 'I', 'J',
