@@ -79,6 +79,7 @@ namespace RangeControls
             for (int i = 0; i < 10; i++)
             {
                 var rangeItem1 = new csRangeTimeItem(DateTime.Now.AddMinutes(i), i, 0);
+
                 timePoints.Add(rangeItem1);
 
                 //Add series two
@@ -95,6 +96,7 @@ namespace RangeControls
             dateTimeAreaView.Color = Color.Transparent;//Hide chart line
             dateTimeAreaView.MarkerSize = 10;
             dateTimeAreaView.MarkerColor = Color.Red;
+            
             dateTimeChartRangeControlClient1.DataProvider.TemplateView = dateTimeAreaView;
 
 
@@ -104,9 +106,16 @@ namespace RangeControls
             dateTimeChartRangeControlClient1.DataProvider.SeriesDataMember = nameof(csRangeTimeItem.SeriesIndex);
             //Ref:https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings
             dateTimeChartRangeControlClient1.GridOptions.LabelFormat = "HH':'mm':'ss";
+            
 
             //Must assign before custom series
             dateTimeChartRangeControlClient1.DataProvider.DataSource = timePoints;
+
+            //Set X axis grid line gap
+            dateTimeChartRangeControlClient1.GridOptions.GridSpacing = 2;//Unit in min
+            dateTimeChartRangeControlClient1.GridOptions.SnapSpacing = 0.1;
+
+            //Set Y axis range
 
             //Force range
             dateTimeChartRangeControlClient1.Range.Auto = false;
@@ -114,6 +123,7 @@ namespace RangeControls
             dateTimeChartRangeControlClient1.Range.Min = DateTime.Now.AddMinutes(-10);
             dateTimeChartRangeControlClient1.CustomizeSeries -= DateTimeChartRangeControlClient1_CustomizeSeries;
             dateTimeChartRangeControlClient1.CustomizeSeries += DateTimeChartRangeControlClient1_CustomizeSeries;
+            
         }
 
 

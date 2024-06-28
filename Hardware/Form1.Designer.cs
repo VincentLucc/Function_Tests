@@ -1,4 +1,6 @@
 ﻿
+using DevExpress.XtraEditors;
+
 namespace Hardware
 {
     partial class Form1
