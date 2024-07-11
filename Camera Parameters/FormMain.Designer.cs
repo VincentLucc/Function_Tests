@@ -35,7 +35,7 @@
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.contentPanel = new System.Windows.Forms.Panel();
+            this.contentPanel = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,8 +47,7 @@
             this.accordionControlElement4});
             this.accordionControl1.Location = new System.Drawing.Point(0, 0);
             this.accordionControl1.Name = "accordionControl1";
-            this.accordionControl1.OptionsMinimizing.State = DevExpress.XtraBars.Navigation.AccordionControlState.Minimized;
-            this.accordionControl1.Size = new System.Drawing.Size(49, 466);
+            this.accordionControl1.Size = new System.Drawing.Size(250, 464);
             this.accordionControl1.TabIndex = 5;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -60,6 +59,7 @@
             this.accordionControlElement1.Expanded = true;
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "General";
+            this.accordionControlElement1.Click += new System.EventHandler(this.accordionControlElement1_Click);
             // 
             // accordionControlElement2
             // 
@@ -91,9 +91,9 @@
             // 
             this.contentPanel.BackColor = System.Drawing.Color.White;
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(49, 0);
+            this.contentPanel.Location = new System.Drawing.Point(250, 0);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(749, 466);
+            this.contentPanel.Size = new System.Drawing.Size(548, 464);
             this.contentPanel.TabIndex = 6;
             // 
             // FormMain
@@ -102,7 +102,7 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 466);
+            this.ClientSize = new System.Drawing.Size(798, 464);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.accordionControl1);
             this.IconOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("FormMain.IconOptions.LargeImage")));
@@ -116,7 +116,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel contentPanel;
+        private DevExpress.XtraEditors.PanelControl contentPanel;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement2;

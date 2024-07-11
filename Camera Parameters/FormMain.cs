@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Camera_Parameters.UserControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,12 +36,7 @@ namespace Camera_Parameters
                 return;
             }
 
-
-            this.contentPanel.Controls.Clear();
-            var calPage = new CalUserControl();
-            calPage.Dock = DockStyle.Fill;
-            this.contentPanel.Controls.Add(calPage);
-
+            InitControls();
 
             //Fisnish
             isFormLoad = true;
@@ -56,6 +52,27 @@ namespace Camera_Parameters
                     return;
                 }              
             }
+
+           
+        }
+
+        private void InitControls()
+        {
+            //this.contentPanel.Controls.Clear();
+            //var calPage = new CalUserControl();
+            //calPage.Dock = DockStyle.Fill;
+            //this.contentPanel.Controls.Add(calPage);
+
+
+            contentPanel.Controls.Clear();
+            var func = new Func1UserControl();
+            func.Dock = DockStyle.Fill;
+            contentPanel.Controls.Add(func);
+        }
+
+        private void accordionControlElement1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
