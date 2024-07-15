@@ -37,6 +37,7 @@
             this.accordionControlElement5 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.contentPanel = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contentPanel)).BeginInit();
             this.SuspendLayout();
             // 
             // accordionControl1
@@ -89,7 +90,8 @@
             // 
             // contentPanel
             // 
-            this.contentPanel.BackColor = System.Drawing.Color.White;
+            this.contentPanel.Appearance.BackColor = System.Drawing.Color.White;
+            this.contentPanel.Appearance.Options.UseBackColor = true;
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contentPanel.Location = new System.Drawing.Point(250, 0);
             this.contentPanel.Name = "contentPanel";
@@ -106,11 +108,14 @@
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.accordionControl1);
             this.IconOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("FormMain.IconOptions.LargeImage")));
+            this.LookAndFeel.SkinName = "WXI";
+            this.LookAndFeel.UseDefaultLookAndFeel = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cemera Tool";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contentPanel)).EndInit();
             this.ResumeLayout(false);
 
         }

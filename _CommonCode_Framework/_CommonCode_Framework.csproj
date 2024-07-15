@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="csEncryption.cs" />
     <Compile Include="csEnumHelper.cs" />
+    <Compile Include="csGeoInfo.cs" />
     <Compile Include="csHex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
