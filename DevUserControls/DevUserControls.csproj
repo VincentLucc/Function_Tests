@@ -4,11 +4,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D5B17C59-B02F-4470-9380-3C7A0EABC24D}</ProjectGuid>
+    <ProjectGuid>{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Camera_Parameters</RootNamespace>
-    <AssemblyName>Camera Parameters</AssemblyName>
+    <RootNamespace>DevUserControls</RootNamespace>
+    <AssemblyName>DevUserControls</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -36,7 +36,6 @@
     <Reference Include="DevExpress.Data.Desktop.v22.1" />
     <Reference Include="DevExpress.Data.v22.1" />
     <Reference Include="DevExpress.Utils.v22.1" />
-    <Reference Include="DevExpress.XtraBars.v22.1" />
     <Reference Include="DevExpress.Sparkline.v22.1.Core" />
     <Reference Include="DevExpress.XtraEditors.v22.1" />
     <Reference Include="DevExpress.Printing.v22.1.Core" />
@@ -56,41 +55,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UserControls\CalUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\CalUserControl.Designer.cs">
-      <DependentUpon>CalUserControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="csConfigModel.cs" />
-    <Compile Include="csConfigureHelper.cs" />
-    <Compile Include="csDevMessage.cs" />
-    <Compile Include="csResolution.cs" />
-    <Compile Include="FormMain.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\ConversionUserControl.cs">
+    <Compile Include="Test01UserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ConversionUserControl.Designer.cs">
-      <DependentUpon>ConversionUserControl.cs</DependentUpon>
+    <Compile Include="Test01UserControl.Designer.cs">
+      <DependentUpon>Test01UserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Func1UserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\Func1UserControl.Designer.cs">
-      <DependentUpon>Func1UserControl.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="UserControls\CalUserControl.resx">
-      <DependentUpon>CalUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -102,11 +82,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\ConversionUserControl.resx">
-      <DependentUpon>ConversionUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Func1UserControl.resx">
-      <DependentUpon>Func1UserControl.cs</DependentUpon>
+    <EmbeddedResource Include="Test01UserControl.resx">
+      <DependentUpon>Test01UserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -119,7 +96,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

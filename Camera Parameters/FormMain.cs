@@ -92,6 +92,11 @@ namespace Camera_Parameters
             elementFunc1.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             elementFunc1.Tag = new Func1UserControl();
 
+            var elementUnit = groupGeneral.Elements.Add();
+            elementUnit.Text = "Unit Conversion";
+            elementUnit.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            elementUnit.Tag = new ConversionUserControl();
+
             //Force trigger once
             SelectionChangeAction();
 
@@ -114,12 +119,9 @@ namespace Camera_Parameters
 
             contentPanel.Controls.Clear();
             var userControl = selection.Tag as XtraUserControl;
-            userControl.Dock = DockStyle.Fill;
-            userControl.LookAndFeel.UseDefaultLookAndFeel = false;
-            userControl.LookAndFeel.Assign(this.LookAndFeel);
-            userControl.LookAndFeel.UseDefaultLookAndFeel = true;
+            userControl.Dock = DockStyle.Fill;        
             contentPanel.Controls.Add(userControl);
-
+            //userControl.LookAndFeel.UseDefaultLookAndFeel = true;
 
         }
 

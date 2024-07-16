@@ -229,6 +229,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Performance_2201", "Perform
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseHelper", "LicenseHelper\LicenseHelper.csproj", "{F5F01E0F-529C-4219-A8C3-E1837D25B6F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevUserControls", "DevUserControls\DevUserControls.csproj", "{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -2038,6 +2040,22 @@ Global
 		{F5F01E0F-529C-4219-A8C3-E1837D25B6F0}.Release|x64.Build.0 = Release|Any CPU
 		{F5F01E0F-529C-4219-A8C3-E1837D25B6F0}.Release|x86.ActiveCfg = Release|Any CPU
 		{F5F01E0F-529C-4219-A8C3-E1837D25B6F0}.Release|x86.Build.0 = Release|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Debug|arm64.Build.0 = Debug|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Debug|x64.Build.0 = Debug|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Debug|x86.Build.0 = Debug|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Release|arm64.ActiveCfg = Release|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Release|arm64.Build.0 = Release|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Release|x64.ActiveCfg = Release|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Release|x64.Build.0 = Release|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Release|x86.ActiveCfg = Release|Any CPU
+		{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

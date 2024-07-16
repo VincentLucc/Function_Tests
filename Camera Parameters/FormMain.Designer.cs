@@ -48,7 +48,7 @@
             this.accordionControlElement4});
             this.accordionControl1.Location = new System.Drawing.Point(0, 0);
             this.accordionControl1.Name = "accordionControl1";
-            this.accordionControl1.Size = new System.Drawing.Size(250, 464);
+            this.accordionControl1.Size = new System.Drawing.Size(248, 464);
             this.accordionControl1.TabIndex = 5;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -90,29 +90,29 @@
             // 
             // contentPanel
             // 
-            this.contentPanel.Appearance.BackColor = System.Drawing.Color.White;
+            this.contentPanel.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.contentPanel.Appearance.Options.UseBackColor = true;
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(250, 0);
+            this.contentPanel.Location = new System.Drawing.Point(248, 0);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(548, 464);
+            this.contentPanel.Size = new System.Drawing.Size(550, 464);
             this.contentPanel.TabIndex = 6;
             // 
             // FormMain
             // 
-            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(91)))), ((int)(((byte)(135)))));
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.Appearance.ForeColor = System.Drawing.Color.Transparent;
             this.Appearance.Options.UseBackColor = true;
+            this.Appearance.Options.UseForeColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 464);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.accordionControl1);
             this.IconOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("FormMain.IconOptions.LargeImage")));
-            this.LookAndFeel.SkinName = "WXI";
-            this.LookAndFeel.UseDefaultLookAndFeel = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cemera Tool";
+            this.Text = "Camera Tool";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contentPanel)).EndInit();
