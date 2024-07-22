@@ -1319,7 +1319,7 @@ namespace _QuickTests_Framework
             Student s2 = new Student();
             Student.StaticText = "600";
             s2 = s1;
-
+            s1 = new Student() { Name = "sss" };
             if (s2 == s1)
             {
                 Debug.WriteLine("Do Sth");

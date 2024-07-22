@@ -32,14 +32,17 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.CreateIDButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
+            this.LicenseStaticItem = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.LicenseStaticItem = new DevExpress.XtraBars.BarStaticItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.CreateIDButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,9 +59,12 @@
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.LicenseStaticItem,
-            this.CreateIDButtonItem});
+            this.CreateIDButtonItem,
+            this.barButtonItem1,
+            this.barButtonItem2,
+            this.barButtonItem3});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 3;
+            this.barManager1.MaxItemId = 6;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -76,10 +82,20 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.CreateIDButtonItem)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.CreateIDButtonItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
+            // 
+            // CreateIDButtonItem
+            // 
+            this.CreateIDButtonItem.Caption = "CreateID";
+            this.CreateIDButtonItem.Id = 2;
+            this.CreateIDButtonItem.Name = "CreateIDButtonItem";
+            this.CreateIDButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CreateIDButtonItem_ItemClick);
             // 
             // bar3
             // 
@@ -94,6 +110,12 @@
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Status bar";
+            // 
+            // LicenseStaticItem
+            // 
+            this.LicenseStaticItem.Caption = "N/A";
+            this.LicenseStaticItem.Id = 1;
+            this.LicenseStaticItem.Name = "LicenseStaticItem";
             // 
             // barDockControlTop
             // 
@@ -127,22 +149,30 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 348);
             // 
-            // LicenseStaticItem
-            // 
-            this.LicenseStaticItem.Caption = "N/A";
-            this.LicenseStaticItem.Id = 1;
-            this.LicenseStaticItem.Name = "LicenseStaticItem";
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // CreateIDButtonItem
+            // barButtonItem1
             // 
-            this.CreateIDButtonItem.Caption = "CreateID";
-            this.CreateIDButtonItem.Id = 2;
-            this.CreateIDButtonItem.Name = "CreateIDButtonItem";
-            this.CreateIDButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CreateIDButtonItem_ItemClick);
+            this.barButtonItem1.Caption = "gET cpu id";
+            this.barButtonItem1.Id = 3;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Get UUID";
+            this.barButtonItem2.Id = 4;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Get System ID";
+            this.barButtonItem3.Id = 5;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // FormMain
             // 
@@ -174,6 +204,9 @@
         private DevExpress.XtraBars.BarStaticItem LicenseStaticItem;
         private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraBars.BarButtonItem CreateIDButtonItem;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }
 

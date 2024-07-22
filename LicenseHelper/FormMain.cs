@@ -71,5 +71,24 @@ namespace LicenseHelper
             var sDisk = csSystemInfo.FirstHardDriveID;
             licenseHelper.CreateLicense( sDisk );
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var sCPUID = csSystemInfo.GetCPUId();
+            Trace.WriteLine(sCPUID);
+  
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var sUUID = csSystemInfo.GetUUID();
+            Trace.WriteLine(sUUID);
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var sSysID = csSystemInfo.GetSystemID();
+            Trace.WriteLine(sSysID);
+        }
     }
 }
