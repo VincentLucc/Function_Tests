@@ -26,7 +26,7 @@ namespace DateTimeProject
             //08:51:51:096:Ticks: 638134303110961384
             //08:51:51:096:Ticks: 638134303110961384
 
-            List<string> sList= new List<string>();
+            List<string> sList = new List<string>();
 
             for (int i = 0; i < 1000; i++)
             {
@@ -39,6 +39,16 @@ namespace DateTimeProject
             {
                 Debug.WriteLine(item);
             }
+        }
+
+        private void TimeTicksButton_Click(object sender, EventArgs e)
+        {
+            //Show min and max time range
+            long lValueMin = DateTime.MinValue.Ticks;
+            long lValueMax = DateTime.MaxValue.Ticks;
+            DateTime dTimeMin = new DateTime(lValueMin);
+            DateTime dTimeMax = new DateTime(lValueMax);
+            Trace.WriteLine($"Min:{dTimeMin}, Max:{dTimeMax}");
         }
     }
 }
