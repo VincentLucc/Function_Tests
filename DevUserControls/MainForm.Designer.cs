@@ -75,6 +75,7 @@
             this.lookUpEdit1.Size = new System.Drawing.Size(93, 28);
             this.lookUpEdit1.StyleController = this.layoutControl1;
             this.lookUpEdit1.TabIndex = 4;
+            this.lookUpEdit1.EditValueChanged += new System.EventHandler(this.lookUpEdit1_EditValueChanged);
             // 
             // Root
             // 

@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace DevUserControls
 {
-    public partial class Test01UserControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class View2LayoutInheritUserControl : DevExpress.XtraEditors.XtraUserControl
     {
-        public Test01UserControl()
+        public View2LayoutInheritUserControl()
         {
             InitializeComponent();
         }

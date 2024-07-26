@@ -4,11 +4,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E4F0B8F7-56E8-4401-AEFE-C950A87DFCEB}</ProjectGuid>
+    <ProjectGuid>{F32BE9B0-2697-4222-8613-FB343C59FF57}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DevUserControls</RootNamespace>
-    <AssemblyName>DevUserControls</AssemblyName>
+    <RootNamespace>NetworkInfo</RootNamespace>
+    <AssemblyName>NetworkInfo</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -37,12 +37,10 @@
     <Reference Include="DevExpress.Data.v22.1" />
     <Reference Include="DevExpress.Utils.v22.1" />
     <Reference Include="DevExpress.Sparkline.v22.1.Core" />
+    <Reference Include="DevExpress.XtraBars.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v22.1" />
     <Reference Include="DevExpress.Printing.v22.1.Core" />
     <Reference Include="DevExpress.Drawing.v22.1" />
-    <Reference Include="DevExpress.XtraGrid.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,51 +53,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="csModel.cs" />
-    <Compile Include="csPublic.cs" />
-    <Compile Include="SubGridUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="SubGridUserControl.Designer.cs">
-      <DependentUpon>SubGridUserControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SubLayoutGroupUserControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="SubLayoutGroupUserControl.Designer.cs">
-      <DependentUpon>SubLayoutGroupUserControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View2LayoutInheritUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View2LayoutInheritUserControl.Designer.cs">
-      <DependentUpon>View2LayoutInheritUserControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View01UserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View01UserControl.Designer.cs">
-      <DependentUpon>View01UserControl.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="SubGridUserControl.resx">
-      <DependentUpon>SubGridUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SubLayoutGroupUserControl.resx">
-      <DependentUpon>SubLayoutGroupUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View2LayoutInheritUserControl.resx">
-      <DependentUpon>View2LayoutInheritUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -111,9 +74,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View01UserControl.resx">
-      <DependentUpon>View01UserControl.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
