@@ -235,6 +235,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkInfo", "NetworkInfo\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlignUserControlWPF", "DevAlignUserControl\AlignUserControlWPF.csproj", "{2525AD73-3A30-4961-84C5-2F7A194BBDD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextModifier", "TextModifier\TextModifier.csproj", "{BED596C7-3E3D-4C51-BED4-171932FE6F67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -2092,6 +2094,22 @@ Global
 		{2525AD73-3A30-4961-84C5-2F7A194BBDD1}.Release|x64.Build.0 = Release|Any CPU
 		{2525AD73-3A30-4961-84C5-2F7A194BBDD1}.Release|x86.ActiveCfg = Release|Any CPU
 		{2525AD73-3A30-4961-84C5-2F7A194BBDD1}.Release|x86.Build.0 = Release|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Debug|arm64.Build.0 = Debug|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Debug|x64.Build.0 = Debug|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Debug|x86.Build.0 = Debug|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Release|arm64.ActiveCfg = Release|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Release|arm64.Build.0 = Release|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Release|x64.ActiveCfg = Release|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Release|x64.Build.0 = Release|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Release|x86.ActiveCfg = Release|Any CPU
+		{BED596C7-3E3D-4C51-BED4-171932FE6F67}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

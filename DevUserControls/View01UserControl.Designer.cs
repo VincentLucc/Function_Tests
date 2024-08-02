@@ -34,6 +34,8 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
+            this.ABC01buttonEdit = new DevExpress.XtraEditors.ButtonEdit();
+            this.ABC02ButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -41,8 +43,6 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ABC02ButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
-            this.ABC01buttonEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -50,6 +50,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ABC01buttonEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ABC02ButtonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
@@ -57,8 +59,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ABC02ButtonEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ABC01buttonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
@@ -129,6 +129,28 @@
             this.spinEdit1.StyleController = this.layoutControl1;
             this.spinEdit1.TabIndex = 7;
             // 
+            // ABC01buttonEdit
+            // 
+            this.ABC01buttonEdit.Location = new System.Drawing.Point(125, 153);
+            this.ABC01buttonEdit.Name = "ABC01buttonEdit";
+            this.ABC01buttonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(),
+            new DevExpress.XtraEditors.Controls.EditorButton(),
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.ABC01buttonEdit.Size = new System.Drawing.Size(151, 28);
+            this.ABC01buttonEdit.StyleController = this.layoutControl1;
+            this.ABC01buttonEdit.TabIndex = 8;
+            // 
+            // ABC02ButtonEdit
+            // 
+            this.ABC02ButtonEdit.Location = new System.Drawing.Point(125, 187);
+            this.ABC02ButtonEdit.Name = "ABC02ButtonEdit";
+            this.ABC02ButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.ABC02ButtonEdit.Size = new System.Drawing.Size(151, 28);
+            this.ABC02ButtonEdit.StyleController = this.layoutControl1;
+            this.ABC02ButtonEdit.TabIndex = 9;
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -196,26 +218,6 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(258, 34);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(93, 13);
             // 
-            // ABC02ButtonEdit
-            // 
-            this.ABC02ButtonEdit.Location = new System.Drawing.Point(125, 187);
-            this.ABC02ButtonEdit.Name = "ABC02ButtonEdit";
-            this.ABC02ButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.ABC02ButtonEdit.Size = new System.Drawing.Size(151, 28);
-            this.ABC02ButtonEdit.TabIndex = 9;
-            // 
-            // ABC01buttonEdit
-            // 
-            this.ABC01buttonEdit.Location = new System.Drawing.Point(125, 153);
-            this.ABC01buttonEdit.Name = "ABC01buttonEdit";
-            this.ABC01buttonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(),
-            new DevExpress.XtraEditors.Controls.EditorButton(),
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.ABC01buttonEdit.Size = new System.Drawing.Size(151, 28);
-            this.ABC01buttonEdit.TabIndex = 8;
-            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.ABC01buttonEdit;
@@ -235,7 +237,6 @@
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 171);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(266, 34);
-            this.layoutControlItem6.Text = "layoutControlItem6";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(93, 13);
             // 
             // View01UserControl
@@ -250,6 +251,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ABC01buttonEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ABC02ButtonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
@@ -257,8 +260,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ABC02ButtonEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ABC01buttonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
