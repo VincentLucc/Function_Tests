@@ -46,6 +46,8 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splitterItem1 = new DevExpress.XtraLayout.SplitterItem();
+            this.largeTextUserControl1 = new TextModifier.LargeTextUserControl();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -55,6 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -147,6 +150,7 @@
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.largeTextUserControl1);
             this.layoutControl1.Controls.Add(this.richEditControl1);
             this.layoutControl1.Controls.Add(this.gridControl1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -162,19 +166,22 @@
             this.richEditControl1.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
             this.richEditControl1.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
             this.richEditControl1.Location = new System.Drawing.Point(16, 35);
+            this.richEditControl1.LookAndFeel.SkinName = "WXI";
+            this.richEditControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.richEditControl1.MenuManager = this.barManager1;
             this.richEditControl1.Name = "richEditControl1";
             this.richEditControl1.Options.DocumentSaveOptions.CurrentFormat = DevExpress.XtraRichEdit.DocumentFormat.PlainText;
-            this.richEditControl1.Size = new System.Drawing.Size(766, 188);
+            this.richEditControl1.Size = new System.Drawing.Size(380, 145);
             this.richEditControl1.TabIndex = 5;
+            this.richEditControl1.Views.SimpleView.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(16, 245);
+            this.gridControl1.Location = new System.Drawing.Point(16, 202);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(766, 211);
+            this.gridControl1.Size = new System.Drawing.Size(766, 254);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -191,7 +198,8 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem2,
-            this.splitterItem1});
+            this.splitterItem1,
+            this.layoutControlItem3});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(798, 472);
             this.Root.TextVisible = false;
@@ -199,9 +207,9 @@
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.gridControl1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 229);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 186);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(772, 217);
+            this.layoutControlItem1.Size = new System.Drawing.Size(772, 260);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -210,7 +218,7 @@
             this.layoutControlItem2.Control = this.richEditControl1;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(772, 213);
+            this.layoutControlItem2.Size = new System.Drawing.Size(386, 170);
             this.layoutControlItem2.Text = "Original Text:";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(65, 13);
@@ -218,9 +226,25 @@
             // splitterItem1
             // 
             this.splitterItem1.AllowHotTrack = true;
-            this.splitterItem1.Location = new System.Drawing.Point(0, 213);
+            this.splitterItem1.Location = new System.Drawing.Point(0, 170);
             this.splitterItem1.Name = "splitterItem1";
             this.splitterItem1.Size = new System.Drawing.Size(772, 16);
+            // 
+            // largeTextUserControl1
+            // 
+            this.largeTextUserControl1.Location = new System.Drawing.Point(402, 16);
+            this.largeTextUserControl1.Name = "largeTextUserControl1";
+            this.largeTextUserControl1.Size = new System.Drawing.Size(380, 164);
+            this.largeTextUserControl1.TabIndex = 6;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.largeTextUserControl1;
+            this.layoutControlItem3.Location = new System.Drawing.Point(386, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(386, 170);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
             // 
             // FormMain
             // 
@@ -245,6 +269,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,6 +294,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.SplitterItem splitterItem1;
         private DevExpress.XtraBars.BarButtonItem OpenBarButtonItem;
+        private LargeTextUserControl largeTextUserControl1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
 }
 
