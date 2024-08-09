@@ -38,6 +38,15 @@ namespace _QuickTest_Framwork472
             Debug.WriteLine("Dosth in Base.");
         }
 
+        public virtual void DoSth2()
+        {
+            Debug.WriteLine("Dosth in Base2.");
+        }
+
+    
+ 
+
+
         public void DoSthReal()
         {
             Debug.WriteLine("Dosth in Base.");
@@ -68,13 +77,20 @@ namespace _QuickTest_Framwork472
         }
     }
 
-    public class StudentOverWrite : Student
+
+    
+
+    public abstract class StudentOverWrite : Student
     {
         public override void DoSth()
         {
             Debug.WriteLine("Dosth in StudentOverWrite.");
         }
+
+        public abstract void DoSth3();
     }
+
+  
 
     public class StudentNew : Student
     {

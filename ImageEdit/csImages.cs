@@ -81,5 +81,10 @@ namespace ImageEdit
 
             return null;
         }
+
+        public static void ReadImage(string sFileName)
+        {
+
+        }
     }
 }
