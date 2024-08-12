@@ -1,0 +1,13 @@
+<?xml version='1.0'?>
+<Obfuscator>
+	<Var name="InPath" value=".\Input" />
+	<Var name="OutPath" value=".\Output" />
+	<Var name="KeepPublicApi" value="false" />
+	<Var name="HidePrivateApi" value="true" />
+	<Module file="$(InPath)\XMLTests.exe">
+		<SkipType name="csConfigModel" skipFields="true" skipProperties="true" />
+		<SkipType name="subClass" skipFields="true" skipProperties="true" />
+		<SkipType name="XMLTests.ParentClass" skipFields="true" skipProperties="true" />
+	</Module>
+	<!--<Module file="$(InPath)\BasicExampleLibrary.dll" />-->
+</Obfuscator>

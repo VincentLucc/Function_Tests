@@ -1,0 +1,19 @@
+>>> KeepPublicApi  (false)
+Can't load the xml file after this settings to false
+Must exclude xml file class and any subclass
+	<SkipType name="csConfigModel" />
+	<SkipType name="subClass" />
+
+>>> Skip not working
+# The skip must be added under the module
+
+	<Module file="$(InPath)\XMLTests.exe">
+		<SkipType name="csConfigModel" skipFields="true" skipProperties="true" />
+		<SkipType name="subClass" skipFields="true" skipProperties="true" />
+	</Module>
+
+# The skipFields & skipProperties must be set
+If not set, it will only rename the class name
+
+>>>Parent class
+可以只skip parent class 然后保持继承Class被加密

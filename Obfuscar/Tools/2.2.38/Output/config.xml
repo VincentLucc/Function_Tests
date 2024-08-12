@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<csConfigModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <iValue1>1</iValue1>
+  <sValue2>Test01</sValue2>
+  <sValue3>Value3</sValue3>
+  <typeValue1>1</typeValue1>
+  <typeValue2>2</typeValue2>
+  <typeValue3>B</typeValue3>
+  <TestType1>A a</TestType1>
+  <TestType2>1 2</TestType2>
+  <SubItem>
+    <StringA>a</StringA>
+    <StringB>b</StringB>
+  </SubItem>
+  <ParentItem>
+    <ParentInt1>1</ParentInt1>
+    <ParentInt2>2</ParentInt2>
+  </ParentItem>
+</csConfigModel>

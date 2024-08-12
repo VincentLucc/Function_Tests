@@ -1,0 +1,302 @@
+Renamed Types:
+
+[XMLTests]_type1 -> [XMLTests]A.A
+{
+	_type1 [XMLTests]_type1 _type1::AB -> A
+	_type1 [XMLTests]_type1 _type1::CD -> a
+	_type1 [XMLTests]_type1 _type1::EF -> B
+
+	System.Int32 [XMLTests]System.Int32 _type1::value__ skipped:  special name
+}
+
+[XMLTests]_type2 -> [XMLTests]A.a
+{
+	_type2 [XMLTests]_type2 _type2::AB -> A
+	_type2 [XMLTests]_type2 _type2::CD -> a
+	_type2 [XMLTests]_type2 _type2::EF -> B
+
+	System.Int32 [XMLTests]System.Int32 _type2::value__ skipped:  special name
+}
+
+[XMLTests]types -> [XMLTests]A.B
+{
+	types [XMLTests]types types::type1 -> A
+	types [XMLTests]types types::type2 -> a
+	types [XMLTests]types types::type3 -> B
+
+	System.Int32 [XMLTests]System.Int32 types::value__ skipped:  special name
+}
+
+[XMLTests]csConfigureHelper -> [XMLTests]A.b
+{
+	[XMLTests]csConfigureHelper::get_config[0]( ) -> A
+	[XMLTests]csConfigureHelper::set_config[1]( [XMLTests]csConfigModel ) -> A
+	[XMLTests]csConfigureHelper::LoadConfig[1]( [mscorlib]System.String& ) -> A
+	[XMLTests]csConfigureHelper::SaveConfig[1]( [mscorlib]System.String& ) -> a
+	[XMLTests]csConfigureHelper::LoadOrCreateConfig[1]( [mscorlib]System.String& ) -> B
+
+	[XMLTests]csConfigureHelper::.ctor[0]( ) skipped:  special name
+	[XMLTests]csConfigureHelper::.cctor[0]( ) skipped:  special name
+
+	csConfigModel [XMLTests]csConfigModel csConfigureHelper::<config>k__BackingField -> A
+	System.String [XMLTests]System.String csConfigureHelper::ConfigPath -> A
+
+	csConfigModel [XMLTests]csConfigModel csConfigureHelper::config -> dropped
+}
+
+[XMLTests]XMLTests.InkSysConfig -> [XMLTests]A.C
+{
+	[XMLTests]XMLTests.InkSysConfig::get_CommInterface[0]( ) -> A
+	[XMLTests]XMLTests.InkSysConfig::set_CommInterface[1]( [XMLTests]XMLTests._commInterfaces ) -> A
+	[XMLTests]XMLTests.InkSysConfig::get_IPAddress[0]( ) -> a
+	[XMLTests]XMLTests.InkSysConfig::set_IPAddress[1]( [mscorlib]System.String ) -> A
+	[XMLTests]XMLTests.InkSysConfig::get_COMPortName[0]( ) -> B
+	[XMLTests]XMLTests.InkSysConfig::set_COMPortName[1]( [mscorlib]System.String ) -> a
+	[XMLTests]XMLTests.InkSysConfig::get_DeviceCollection[0]( ) -> b
+	[XMLTests]XMLTests.InkSysConfig::set_DeviceCollection[1]( [mscorlib]System.Collections.Generic.List`1<[XMLTests]XMLTests.InkDeviceConfig> ) -> A
+
+	[XMLTests]XMLTests.InkSysConfig::.ctor[0]( ) skipped:  special name
+
+	XMLTests._commInterfaces [XMLTests]XMLTests._commInterfaces XMLTests.InkSysConfig::<CommInterface>k__BackingField -> A
+	System.String [XMLTests]System.String XMLTests.InkSysConfig::<IPAddress>k__BackingField -> A
+	System.String [XMLTests]System.String XMLTests.InkSysConfig::<COMPortName>k__BackingField -> a
+	System.Collections.Generic.List`1<XMLTests.InkDeviceConfig> [XMLTests]System.Collections.Generic.List`1<XMLTests.InkDeviceConfig> XMLTests.InkSysConfig::<DeviceCollection>k__BackingField -> A
+	System.Collections.Generic.List`1<XMLTests.InkSysConfig/ModelInfo> [XMLTests]System.Collections.Generic.List`1<XMLTests.InkSysConfig/ModelInfo> XMLTests.InkSysConfig::ABC -> A
+
+	XMLTests._commInterfaces [XMLTests]XMLTests._commInterfaces XMLTests.InkSysConfig::CommInterface -> dropped
+	System.String [XMLTests]System.String XMLTests.InkSysConfig::IPAddress -> dropped
+	System.String [XMLTests]System.String XMLTests.InkSysConfig::COMPortName -> dropped
+	System.Collections.Generic.List`1<XMLTests.InkDeviceConfig> [XMLTests]System.Collections.Generic.List`1<XMLTests.InkDeviceConfig> XMLTests.InkSysConfig::DeviceCollection -> dropped
+}
+
+[XMLTests]XMLTests.InkDeviceConfig -> [XMLTests]A.c
+{
+	[XMLTests]XMLTests.InkDeviceConfig::get_Name[0]( ) -> A
+	[XMLTests]XMLTests.InkDeviceConfig::set_Name[1]( [mscorlib]System.String ) -> A
+	[XMLTests]XMLTests.InkDeviceConfig::get_NetworkID[0]( ) -> a
+	[XMLTests]XMLTests.InkDeviceConfig::set_NetworkID[1]( [mscorlib]System.Int32 ) -> A
+	[XMLTests]XMLTests.InkDeviceConfig::get_Type[0]( ) -> B
+	[XMLTests]XMLTests.InkDeviceConfig::set_Type[1]( [XMLTests]XMLTests._inkSysType ) -> A
+	[XMLTests]XMLTests.InkDeviceConfig::get_HeaterFuntion[0]( ) -> b
+	[XMLTests]XMLTests.InkDeviceConfig::set_HeaterFuntion[1]( [mscorlib]System.Boolean ) -> A
+	[XMLTests]XMLTests.InkDeviceConfig::get_DegassFuntion[0]( ) -> C
+	[XMLTests]XMLTests.InkDeviceConfig::set_DegassFuntion[1]( [mscorlib]System.Boolean ) -> a
+
+	[XMLTests]XMLTests.InkDeviceConfig::.ctor[0]( ) skipped:  special name
+
+	System.String [XMLTests]System.String XMLTests.InkDeviceConfig::<Name>k__BackingField -> A
+	System.Int32 [XMLTests]System.Int32 XMLTests.InkDeviceConfig::<NetworkID>k__BackingField -> A
+	XMLTests._inkSysType [XMLTests]XMLTests._inkSysType XMLTests.InkDeviceConfig::<Type>k__BackingField -> A
+	System.Boolean [XMLTests]System.Boolean XMLTests.InkDeviceConfig::<HeaterFuntion>k__BackingField -> A
+	System.Boolean [XMLTests]System.Boolean XMLTests.InkDeviceConfig::<DegassFuntion>k__BackingField -> a
+
+	System.String [XMLTests]System.String XMLTests.InkDeviceConfig::Name -> dropped
+	System.Int32 [XMLTests]System.Int32 XMLTests.InkDeviceConfig::NetworkID -> dropped
+	XMLTests._inkSysType [XMLTests]XMLTests._inkSysType XMLTests.InkDeviceConfig::Type -> dropped
+	System.Boolean [XMLTests]System.Boolean XMLTests.InkDeviceConfig::HeaterFuntion -> dropped
+	System.Boolean [XMLTests]System.Boolean XMLTests.InkDeviceConfig::DegassFuntion -> dropped
+}
+
+[XMLTests]XMLTests._inkSysType -> [XMLTests]A.D
+{
+	XMLTests._inkSysType [XMLTests]XMLTests._inkSysType XMLTests._inkSysType::Regular -> A
+	XMLTests._inkSysType [XMLTests]XMLTests._inkSysType XMLTests._inkSysType::Recirculating -> a
+
+	System.Int32 [XMLTests]System.Int32 XMLTests._inkSysType::value__ skipped:  special name
+}
+
+[XMLTests]XMLTests._commInterfaces -> [XMLTests]A.d
+{
+	XMLTests._commInterfaces [XMLTests]XMLTests._commInterfaces XMLTests._commInterfaces::Ethernet -> A
+	XMLTests._commInterfaces [XMLTests]XMLTests._commInterfaces XMLTests._commInterfaces::Serial -> a
+
+	System.Int32 [XMLTests]System.Int32 XMLTests._commInterfaces::value__ skipped:  special name
+}
+
+[XMLTests]XMLTests.Form1 -> [XMLTests]A.F
+{
+	[XMLTests]XMLTests.Form1::InitEvents[0]( ) -> A
+	[XMLTests]XMLTests.Form1::Form1_Load[2]( [mscorlib]System.Object, [mscorlib]System.EventArgs ) -> A
+	[XMLTests]XMLTests.Form1::Form1_FormClosed[2]( [mscorlib]System.Object, [System.Windows.Forms]System.Windows.Forms.FormClosedEventArgs ) -> A
+	[XMLTests]XMLTests.Form1::button1_Click[2]( [mscorlib]System.Object, [mscorlib]System.EventArgs ) -> a
+	[XMLTests]XMLTests.Form1::Form1_FormClosing[2]( [mscorlib]System.Object, [System.Windows.Forms]System.Windows.Forms.FormClosingEventArgs ) -> A
+	[XMLTests]XMLTests.Form1::InitializeComponent[0]( ) -> a
+
+	[XMLTests]XMLTests.Form1::.ctor[0]( ) skipped:  special name
+	[XMLTests]XMLTests.Form1::Dispose[1]( [mscorlib]System.Boolean ) skipped:  external base class or interface
+
+	System.Boolean [XMLTests]System.Boolean XMLTests.Form1::isFormLoad -> A
+	System.ComponentModel.IContainer [XMLTests]System.ComponentModel.IContainer XMLTests.Form1::components -> A
+	System.Windows.Forms.Button [XMLTests]System.Windows.Forms.Button XMLTests.Form1::button1 -> A
+}
+
+[XMLTests]XMLTests.Properties.Resources -> [XMLTests]A.G
+{
+	[XMLTests]XMLTests.Properties.Resources::get_ResourceManager[0]( ) -> A
+	[XMLTests]XMLTests.Properties.Resources::get_Culture[0]( ) -> a
+	[XMLTests]XMLTests.Properties.Resources::set_Culture[1]( [mscorlib]System.Globalization.CultureInfo ) -> A
+
+	[XMLTests]XMLTests.Properties.Resources::.ctor[0]( ) skipped:  special name
+
+	System.Resources.ResourceManager [XMLTests]System.Resources.ResourceManager XMLTests.Properties.Resources::resourceMan -> A
+	System.Globalization.CultureInfo [XMLTests]System.Globalization.CultureInfo XMLTests.Properties.Resources::resourceCulture -> A
+
+	System.Resources.ResourceManager [XMLTests]System.Resources.ResourceManager XMLTests.Properties.Resources::ResourceManager -> A
+	System.Globalization.CultureInfo [XMLTests]System.Globalization.CultureInfo XMLTests.Properties.Resources::Culture -> a
+}
+
+[XMLTests]XMLTests.Properties.Settings -> [XMLTests]A.g
+{
+	[XMLTests]XMLTests.Properties.Settings::get_Default[0]( ) -> A
+
+	[XMLTests]XMLTests.Properties.Settings::.ctor[0]( ) skipped:  special name
+	[XMLTests]XMLTests.Properties.Settings::.cctor[0]( ) skipped:  special name
+
+	XMLTests.Properties.Settings [XMLTests]XMLTests.Properties.Settings XMLTests.Properties.Settings::defaultInstance -> A
+
+	XMLTests.Properties.Settings [XMLTests]XMLTests.Properties.Settings XMLTests.Properties.Settings::Default -> dropped
+}
+
+[XMLTests]XMLTests.InkSysConfig/ModelInfo -> [XMLTests]A.C/A
+{
+
+	[XMLTests]XMLTests.InkSysConfig/ModelInfo::.ctor[0]( ) skipped:  special name
+
+	System.String [XMLTests]System.String XMLTests.InkSysConfig/ModelInfo::Name -> A
+	System.Collections.Generic.List`1<System.Int32> [XMLTests]System.Collections.Generic.List`1<System.Int32> XMLTests.InkSysConfig/ModelInfo::Description -> A
+}
+
+[XMLTests]XMLTests.ChildClass1 -> [XMLTests]A.h
+{
+	[XMLTests]XMLTests.ChildClass1::get_ChildInt1[0]( ) -> A
+	[XMLTests]XMLTests.ChildClass1::set_ChildInt1[1]( [mscorlib]System.Int32 ) -> A
+	[XMLTests]XMLTests.ChildClass1::get_ChildInt2[0]( ) -> a
+	[XMLTests]XMLTests.ChildClass1::set_ChildInt2[1]( [mscorlib]System.Int32 ) -> a
+
+	[XMLTests]XMLTests.ChildClass1::.ctor[0]( ) skipped:  special name
+
+	System.Int32 [XMLTests]System.Int32 XMLTests.ChildClass1::<ChildInt1>k__BackingField -> A
+	System.Int32 [XMLTests]System.Int32 XMLTests.ChildClass1::<ChildInt2>k__BackingField -> a
+
+	System.Int32 [XMLTests]System.Int32 XMLTests.ChildClass1::ChildInt1 -> dropped
+	System.Int32 [XMLTests]System.Int32 XMLTests.ChildClass1::ChildInt2 -> dropped
+}
+
+[XMLTests]XMLTests.csPublic -> [XMLTests]A.E
+{
+	[XMLTests]XMLTests.csPublic::get_FilePath[0]( ) -> A
+
+	[XMLTests]XMLTests.csPublic::.ctor[0]( ) skipped:  special name
+
+	System.String [XMLTests]System.String XMLTests.csPublic::FilePath -> dropped
+}
+
+[XMLTests]XMLTests.csXML -> [XMLTests]A.e
+{
+	[XMLTests]XMLTests.csXML::ReadXML[3]( [mscorlib]System.Type, [mscorlib]System.String, [mscorlib]System.Object& ) -> A
+	[XMLTests]XMLTests.csXML::WriteXML[2]( [mscorlib]System.String, [mscorlib]System.Object ) -> A
+
+	[XMLTests]XMLTests.csXML::.ctor[0]( ) skipped:  special name
+}
+
+[XMLTests]XMLTests.Program -> [XMLTests]A.f
+{
+	[XMLTests]XMLTests.Program::Main[0]( ) -> A
+}
+
+Skipped Types:
+
+[XMLTests]csConfigModel skipped:  type rule in configuration
+{
+
+	[XMLTests]csConfigModel::get_iValue1[0]( ) skipped:  skip by property
+	[XMLTests]csConfigModel::set_iValue1[1]( [mscorlib]System.Int32 ) skipped:  skip by property
+	[XMLTests]csConfigModel::get_sValue1[0]( ) skipped:  skip by property
+	[XMLTests]csConfigModel::get_sValue2[0]( ) skipped:  skip by property
+	[XMLTests]csConfigModel::set_sValue2[1]( [mscorlib]System.String ) skipped:  skip by property
+	[XMLTests]csConfigModel::get_sValue3[0]( ) skipped:  skip by property
+	[XMLTests]csConfigModel::set_sValue3[1]( [mscorlib]System.String ) skipped:  skip by property
+	[XMLTests]csConfigModel::get_typeValue1[0]( ) skipped:  skip by property
+	[XMLTests]csConfigModel::set_typeValue1[1]( [XMLTests]types ) skipped:  skip by property
+	[XMLTests]csConfigModel::get_typeValue2[0]( ) skipped:  skip by property
+	[XMLTests]csConfigModel::set_typeValue2[1]( [XMLTests]types ) skipped:  skip by property
+	[XMLTests]csConfigModel::get_typeValue3[0]( ) skipped:  skip by property
+	[XMLTests]csConfigModel::set_typeValue3[1]( [XMLTests]types ) skipped:  skip by property
+	[XMLTests]csConfigModel::get_TestType1[0]( ) skipped:  skip by property
+	[XMLTests]csConfigModel::set_TestType1[1]( [XMLTests]_type1 ) skipped:  skip by property
+	[XMLTests]csConfigModel::get_TestType2[0]( ) skipped:  skip by property
+	[XMLTests]csConfigModel::set_TestType2[1]( [XMLTests]_type2 ) skipped:  skip by property
+	[XMLTests]csConfigModel::get_SubItem[0]( ) skipped:  skip by property
+	[XMLTests]csConfigModel::set_SubItem[1]( [XMLTests]subClass ) skipped:  skip by property
+	[XMLTests]csConfigModel::get_ParentItem[0]( ) skipped:  skip by property
+	[XMLTests]csConfigModel::set_ParentItem[1]( [XMLTests]XMLTests.ParentClass ) skipped:  skip by property
+	[XMLTests]csConfigModel::.ctor[0]( ) skipped:  special name
+
+
+	System.Int32 [XMLTests]System.Int32 csConfigModel::<iValue1>k__BackingField skipped:  type rule in configuration
+	System.String [XMLTests]System.String csConfigModel::_sValue2 skipped:  type rule in configuration
+	types [XMLTests]types csConfigModel::<typeValue1>k__BackingField skipped:  type rule in configuration
+	types [XMLTests]types csConfigModel::<typeValue2>k__BackingField skipped:  type rule in configuration
+	types [XMLTests]types csConfigModel::<typeValue3>k__BackingField skipped:  type rule in configuration
+	_type1 [XMLTests]_type1 csConfigModel::<TestType1>k__BackingField skipped:  type rule in configuration
+	_type2 [XMLTests]_type2 csConfigModel::<TestType2>k__BackingField skipped:  type rule in configuration
+	subClass [XMLTests]subClass csConfigModel::<SubItem>k__BackingField skipped:  type rule in configuration
+	XMLTests.ParentClass [XMLTests]XMLTests.ParentClass csConfigModel::<ParentItem>k__BackingField skipped:  type rule in configuration
+
+
+	System.Int32 [XMLTests]System.Int32 csConfigModel::iValue1 skipped:  type rule in configuration
+	System.String [XMLTests]System.String csConfigModel::sValue1 skipped:  type rule in configuration
+	System.String [XMLTests]System.String csConfigModel::sValue2 skipped:  type rule in configuration
+	System.String [XMLTests]System.String csConfigModel::sValue3 skipped:  type rule in configuration
+	types [XMLTests]types csConfigModel::typeValue1 skipped:  type rule in configuration
+	types [XMLTests]types csConfigModel::typeValue2 skipped:  type rule in configuration
+	types [XMLTests]types csConfigModel::typeValue3 skipped:  type rule in configuration
+	_type1 [XMLTests]_type1 csConfigModel::TestType1 skipped:  type rule in configuration
+	_type2 [XMLTests]_type2 csConfigModel::TestType2 skipped:  type rule in configuration
+	subClass [XMLTests]subClass csConfigModel::SubItem skipped:  type rule in configuration
+	XMLTests.ParentClass [XMLTests]XMLTests.ParentClass csConfigModel::ParentItem skipped:  type rule in configuration
+}
+
+[XMLTests]subClass skipped:  type rule in configuration
+{
+
+	[XMLTests]subClass::get_StringA[0]( ) skipped:  skip by property
+	[XMLTests]subClass::set_StringA[1]( [mscorlib]System.String ) skipped:  skip by property
+	[XMLTests]subClass::get_StringB[0]( ) skipped:  skip by property
+	[XMLTests]subClass::set_StringB[1]( [mscorlib]System.String ) skipped:  skip by property
+	[XMLTests]subClass::.ctor[0]( ) skipped:  special name
+
+
+	System.String [XMLTests]System.String subClass::<StringA>k__BackingField skipped:  type rule in configuration
+	System.String [XMLTests]System.String subClass::<StringB>k__BackingField skipped:  type rule in configuration
+
+
+	System.String [XMLTests]System.String subClass::StringA skipped:  type rule in configuration
+	System.String [XMLTests]System.String subClass::StringB skipped:  type rule in configuration
+}
+
+[XMLTests]XMLTests.ParentClass skipped:  type rule in configuration
+{
+
+	[XMLTests]XMLTests.ParentClass::get_ParentInt1[0]( ) skipped:  skip by property
+	[XMLTests]XMLTests.ParentClass::set_ParentInt1[1]( [mscorlib]System.Int32 ) skipped:  skip by property
+	[XMLTests]XMLTests.ParentClass::get_ParentInt2[0]( ) skipped:  skip by property
+	[XMLTests]XMLTests.ParentClass::set_ParentInt2[1]( [mscorlib]System.Int32 ) skipped:  skip by property
+	[XMLTests]XMLTests.ParentClass::.ctor[0]( ) skipped:  special name
+
+
+	System.Int32 [XMLTests]System.Int32 XMLTests.ParentClass::<ParentInt1>k__BackingField skipped:  type rule in configuration
+	System.Int32 [XMLTests]System.Int32 XMLTests.ParentClass::<ParentInt2>k__BackingField skipped:  type rule in configuration
+
+
+	System.Int32 [XMLTests]System.Int32 XMLTests.ParentClass::ParentInt1 skipped:  type rule in configuration
+	System.Int32 [XMLTests]System.Int32 XMLTests.ParentClass::ParentInt2 skipped:  type rule in configuration
+}
+
+Renamed Resources:
+
+XMLTests.Form1.resources -> A.F.resources
+XMLTests.Properties.Resources.resources -> A.G.resources
+
+Skipped Resources:
+

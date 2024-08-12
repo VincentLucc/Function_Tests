@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using XMLTests;
 
 public class csConfigModel
 {
@@ -33,6 +34,10 @@ public class csConfigModel
     public _type1 TestType1 { get; set; }
     public _type2 TestType2 { get; set; }
 
+    public subClass SubItem { get; set; }
+
+    public ParentClass ParentItem { get; set; }
+
     public csConfigModel()
     {
         iValue1 = 1;
@@ -43,9 +48,24 @@ public class csConfigModel
         typeValue1 = types.type1;
         typeValue2 = types.type2;
         typeValue3 = types.type3;
+
+        SubItem = new subClass();
+        ParentItem=new ParentClass();
     }
 }
 
+public class subClass
+{
+    public string StringA { get; set; }
+
+    public string StringB { get; set; }
+
+    public subClass()
+    {
+        StringA= "a";
+        StringB= "b";
+    }
+}
 
 [Flags]
 public enum _type1

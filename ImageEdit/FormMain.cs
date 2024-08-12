@@ -14,13 +14,13 @@ using System.Windows.Forms;
 
 namespace ImageEdit
 {
-    public partial class Form1 : DevExpress.XtraEditors.XtraForm
+    public partial class FormMain : DevExpress.XtraEditors.XtraForm
     {
 
         MagickImage magickImage;
         MagickFormat saveFormat = MagickFormat.Bmp;
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
