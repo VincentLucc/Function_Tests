@@ -193,6 +193,28 @@ namespace Performance
             return watch.Elapsed;
         }
 
+        public TimeSpan TestFloatAction(float fLoopCount = 9999)
+        {
+            //Init 
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            float fValue = 0;
+            float dBase = 0.6180339887f;
+            //Cal result
+            for (float i = dBase; i < fLoopCount; i++)
+            {
+                for (float j = dBase; j < fLoopCount; j++)
+                {
+                    fValue += i * j;
+                }
+            }
+
+            watch.Stop();
+            string sMessage = $"Float Result({watch.Elapsed.TotalMilliseconds.ToString("f1")}ms/{fLoopCount}):{fValue.ToString("n0")}";
+            Trace.WriteLine(sMessage);
+            return watch.Elapsed;
+        }
+
     }
 
     public enum _cpuTestType

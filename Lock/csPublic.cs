@@ -9,6 +9,6 @@ namespace Lock
 {
    public class csPublic
     {
-        public static Form1 winMain;
+        public static FormMain winMain;
     }
 }

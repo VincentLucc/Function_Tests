@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Lock
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
         System.Windows.Forms.Timer tTest1;
         OperationBlock.LoopBlocker timerBlocker;
@@ -20,7 +20,7 @@ namespace Lock
         public static bool IsBusy { get; private set; }
         public static string WorkingON { get; private set; }
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -102,9 +102,9 @@ namespace Lock
             Stopwatch watch = new Stopwatch();
             long[] spans = new long[10];
             watch.Start();
-            DoSthAsync();
+            await DoSthAsync();
             spans[0] = watch.ElapsedMilliseconds;
-            
+
             await WaitForBlockAsync();
             DoSth();
             spans[1] = watch.ElapsedMilliseconds;
@@ -123,7 +123,7 @@ namespace Lock
                 {
                     for (int j = 0; j < 30; j++)
                     {
-                      Task.Delay(10);
+                        Task.Delay(10);
                     }
 
                     Debug.WriteLine(i + 1);
@@ -169,6 +169,22 @@ namespace Lock
         private void tsMainTimer_Toggled(object sender, EventArgs e)
         {
             timerBlocker.EnableBlock = !tsMainTimer.IsOn;
+        }
+
+
+        private async void MutexButton_Click(object sender, EventArgs e)
+        {
+            Mutex mutex = new Mutex(true, "Test");
+            Trace.WriteLine("Mutex Try Enter");
+            mutex.WaitOne();
+            Trace.WriteLine("Mutex Enter");
+            await Task.Delay(2000);
+            mutex.ReleaseMutex();
+            Trace.WriteLine("Mutex Exit");
+
+
+
+
         }
     }
 }

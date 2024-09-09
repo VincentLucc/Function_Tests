@@ -40,5 +40,10 @@ namespace Performance
             double dResult = await cpuTest.TestCPUPerMulti();
             ResultMemoEdit.AppendText($"Multiple:{dResult.ToString("n0")}\r\n");
         }
+
+        private void FloatButton_Click(object sender, EventArgs e)
+        {
+            cpuTest.TestFloatAction(19999);
+        }
     }
 }
