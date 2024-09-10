@@ -79,5 +79,15 @@ namespace ImageEdit.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage zoom_in {
+            get {
+                object obj = ResourceManager.GetObject("zoom-in", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
     }
 }
