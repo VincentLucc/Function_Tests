@@ -30,16 +30,17 @@ namespace ChartControl
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraCharts.XYDiagram xyDiagram5 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series5 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.AreaSeriesView areaSeriesView3 = new DevExpress.XtraCharts.AreaSeriesView();
-            DevExpress.XtraCharts.XYDiagram xyDiagram6 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series6 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.AreaSeriesView areaSeriesView1 = new DevExpress.XtraCharts.AreaSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.MainTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.HistogramTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.SeriesSpinEdit = new DevExpress.XtraEditors.SpinEdit();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.bHisto = new DevExpress.XtraEditors.SimpleButton();
@@ -50,6 +51,7 @@ namespace ChartControl
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.TimelineTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.CameraLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
@@ -63,39 +65,37 @@ namespace ChartControl
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.SeriesSpinEdit = new DevExpress.XtraEditors.SpinEdit();
-            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.MainTabPage.SuspendLayout();
             this.HistogramTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SeriesSpinEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HistoChartControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(areaSeriesView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(areaSeriesView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             this.TimelineTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CameraLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeChartControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SeriesSpinEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -149,6 +149,32 @@ namespace ChartControl
             this.layoutControl1.TabIndex = 1;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // SeriesSpinEdit
+            // 
+            this.SeriesSpinEdit.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SeriesSpinEdit.Location = new System.Drawing.Point(309, 12);
+            this.SeriesSpinEdit.Name = "SeriesSpinEdit";
+            this.SeriesSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.SeriesSpinEdit.Properties.MaxValue = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.SeriesSpinEdit.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SeriesSpinEdit.Size = new System.Drawing.Size(149, 22);
+            this.SeriesSpinEdit.StyleController = this.layoutControl1;
+            this.SeriesSpinEdit.TabIndex = 8;
+            this.SeriesSpinEdit.EditValueChanged += new System.EventHandler(this.SeriesSpinEdit_EditValueChanged);
+            // 
             // simpleButton3
             // 
             this.simpleButton3.Location = new System.Drawing.Point(180, 12);
@@ -187,21 +213,21 @@ namespace ChartControl
             // 
             // HistoChartControl
             // 
-            xyDiagram5.AxisX.DateTimeScaleOptions.ScaleMode = DevExpress.XtraCharts.ScaleMode.Continuous;
-            xyDiagram5.AxisX.TimeSpanScaleOptions.ScaleMode = DevExpress.XtraCharts.ScaleMode.Continuous;
-            xyDiagram5.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram5.AxisX.WholeRange.EndSideMargin = 0D;
-            xyDiagram5.AxisX.WholeRange.StartSideMargin = 0D;
-            xyDiagram5.AxisY.VisibleInPanesSerializable = "-1";
-            this.HistoChartControl.Diagram = xyDiagram5;
+            xyDiagram1.AxisX.DateTimeScaleOptions.ScaleMode = DevExpress.XtraCharts.ScaleMode.Continuous;
+            xyDiagram1.AxisX.TimeSpanScaleOptions.ScaleMode = DevExpress.XtraCharts.ScaleMode.Continuous;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisX.WholeRange.EndSideMargin = 0D;
+            xyDiagram1.AxisX.WholeRange.StartSideMargin = 0D;
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.HistoChartControl.Diagram = xyDiagram1;
             this.HistoChartControl.Location = new System.Drawing.Point(12, 38);
             this.HistoChartControl.Name = "HistoChartControl";
-            series5.Name = "Series 1";
-            areaSeriesView3.EmptyPointOptions.FillStyle.FillMode = DevExpress.XtraCharts.FillMode.Solid;
-            areaSeriesView3.Transparency = ((byte)(0));
-            series5.View = areaSeriesView3;
+            series1.Name = "Series 1";
+            areaSeriesView1.EmptyPointOptions.FillStyle.FillMode = DevExpress.XtraCharts.FillMode.Solid;
+            areaSeriesView1.Transparency = ((byte)(0));
+            series1.View = areaSeriesView1;
             this.HistoChartControl.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series5};
+        series1};
             this.HistoChartControl.Size = new System.Drawing.Size(774, 376);
             this.HistoChartControl.TabIndex = 0;
             // 
@@ -264,6 +290,15 @@ namespace ChartControl
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
+            // layoutControlItem10
+            // 
+            this.layoutControlItem10.Control = this.SeriesSpinEdit;
+            this.layoutControlItem10.Location = new System.Drawing.Point(252, 0);
+            this.layoutControlItem10.Name = "layoutControlItem10";
+            this.layoutControlItem10.Size = new System.Drawing.Size(198, 26);
+            this.layoutControlItem10.Text = "Series:";
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(33, 13);
+            // 
             // TimelineTabPage
             // 
             this.TimelineTabPage.Controls.Add(this.layoutControl2);
@@ -322,14 +357,14 @@ namespace ChartControl
             // 
             // TimeChartControl
             // 
-            xyDiagram6.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram6.AxisY.VisibleInPanesSerializable = "-1";
-            this.TimeChartControl.Diagram = xyDiagram6;
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.TimeChartControl.Diagram = xyDiagram2;
             this.TimeChartControl.Location = new System.Drawing.Point(12, 38);
             this.TimeChartControl.Name = "TimeChartControl";
-            series6.Name = "Series 1";
+            series2.Name = "Series 1";
             this.TimeChartControl.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series6};
+        series2};
             this.TimeChartControl.Size = new System.Drawing.Size(774, 376);
             this.TimeChartControl.TabIndex = 4;
             // 
@@ -395,41 +430,6 @@ namespace ChartControl
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // SeriesSpinEdit
-            // 
-            this.SeriesSpinEdit.EditValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.SeriesSpinEdit.Location = new System.Drawing.Point(309, 12);
-            this.SeriesSpinEdit.Name = "SeriesSpinEdit";
-            this.SeriesSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.SeriesSpinEdit.Properties.MaxValue = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.SeriesSpinEdit.Properties.MinValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.SeriesSpinEdit.Size = new System.Drawing.Size(149, 22);
-            this.SeriesSpinEdit.StyleController = this.layoutControl1;
-            this.SeriesSpinEdit.TabIndex = 8;
-            this.SeriesSpinEdit.EditValueChanged += new System.EventHandler(this.SeriesSpinEdit_EditValueChanged);
-            // 
-            // layoutControlItem10
-            // 
-            this.layoutControlItem10.Control = this.SeriesSpinEdit;
-            this.layoutControlItem10.Location = new System.Drawing.Point(252, 0);
-            this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(198, 26);
-            this.layoutControlItem10.Text = "Series:";
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(33, 13);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -446,9 +446,10 @@ namespace ChartControl
             this.HistogramTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(areaSeriesView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SeriesSpinEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(areaSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HistoChartControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -456,12 +457,13 @@ namespace ChartControl
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             this.TimelineTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CameraLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeChartControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
@@ -469,8 +471,6 @@ namespace ChartControl
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SeriesSpinEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             this.ResumeLayout(false);
 
         }
