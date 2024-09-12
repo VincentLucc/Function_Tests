@@ -25,6 +25,12 @@ namespace _QuickTests_Framework
 
         public static csLED LED;
 
+        public static double CheckNull(this csEmployee employee)
+        {
+            if (employee == null) return -1;
+            return 1;
+        }
+
         public static bool IsValidPath(string path)
         {
             try

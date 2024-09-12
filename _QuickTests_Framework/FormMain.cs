@@ -1624,6 +1624,14 @@ namespace _QuickTests_Framework
             List<string> values = new List<string>() { "ABC12EF10", "ABC12EF11", "ABC10EF12", "ABC10EF13", "ABC09EF15" };
             values.Sort();
         }
+
+        private void bSelfNullMethod_Click(object sender, EventArgs e)
+        {
+
+            //Works, can accept null
+            csEmployee employee = null;
+            double dValue = employee.CheckNull();
+        }
     }
 
 

@@ -91,6 +91,7 @@ namespace _QuickTests_Framework
             this.bListTake = new System.Windows.Forms.Button();
             this.bListSkip = new System.Windows.Forms.Button();
             this.tabPageLINQ = new System.Windows.Forms.TabPage();
+            this.bSortChar = new System.Windows.Forms.Button();
             this.bLinqSOrt = new System.Windows.Forms.Button();
             this.bListUniqueCheck = new System.Windows.Forms.Button();
             this.bFirstOrDefault = new System.Windows.Forms.Button();
@@ -125,7 +126,7 @@ namespace _QuickTests_Framework
             this.tbPlain = new System.Windows.Forms.RichTextBox();
             this.bEncryptionInit = new System.Windows.Forms.Button();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
-            this.bSortChar = new System.Windows.Forms.Button();
+            this.bSelfNullMethod = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -323,11 +324,12 @@ namespace _QuickTests_Framework
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.bSelfNullMethod);
             this.groupBox8.Controls.Add(this.bVirtualMethod);
             this.groupBox8.Controls.Add(this.bClassStatic);
             this.groupBox8.Location = new System.Drawing.Point(210, 232);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(171, 87);
+            this.groupBox8.Size = new System.Drawing.Size(171, 104);
             this.groupBox8.TabIndex = 22;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Class";
@@ -368,7 +370,7 @@ namespace _QuickTests_Framework
             this.groupBox5.Controls.Add(this.bEnumGetDesc);
             this.groupBox5.Location = new System.Drawing.Point(406, 232);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(171, 87);
+            this.groupBox5.Size = new System.Drawing.Size(171, 104);
             this.groupBox5.TabIndex = 19;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Enum";
@@ -399,7 +401,7 @@ namespace _QuickTests_Framework
             this.groupBox4.Controls.Add(this.bDeepCopySerialization);
             this.groupBox4.Location = new System.Drawing.Point(18, 232);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(171, 87);
+            this.groupBox4.Size = new System.Drawing.Size(171, 104);
             this.groupBox4.TabIndex = 18;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Deep Copy";
@@ -805,6 +807,16 @@ namespace _QuickTests_Framework
             this.tabPageLINQ.Text = "LINQ";
             this.tabPageLINQ.UseVisualStyleBackColor = true;
             // 
+            // bSortChar
+            // 
+            this.bSortChar.Location = new System.Drawing.Point(8, 82);
+            this.bSortChar.Name = "bSortChar";
+            this.bSortChar.Size = new System.Drawing.Size(124, 20);
+            this.bSortChar.TabIndex = 3;
+            this.bSortChar.Text = "Sort AlphaNumeric";
+            this.bSortChar.UseVisualStyleBackColor = true;
+            this.bSortChar.Click += new System.EventHandler(this.bSortChar_Click);
+            // 
             // bLinqSOrt
             // 
             this.bLinqSOrt.Location = new System.Drawing.Point(8, 56);
@@ -1155,15 +1167,15 @@ namespace _QuickTests_Framework
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick_1);
             // 
-            // bSortChar
+            // bSelfNullMethod
             // 
-            this.bSortChar.Location = new System.Drawing.Point(8, 82);
-            this.bSortChar.Name = "bSortChar";
-            this.bSortChar.Size = new System.Drawing.Size(124, 20);
-            this.bSortChar.TabIndex = 3;
-            this.bSortChar.Text = "Sort AlphaNumeric";
-            this.bSortChar.UseVisualStyleBackColor = true;
-            this.bSortChar.Click += new System.EventHandler(this.bSortChar_Click);
+            this.bSelfNullMethod.Location = new System.Drawing.Point(8, 74);
+            this.bSelfNullMethod.Name = "bSelfNullMethod";
+            this.bSelfNullMethod.Size = new System.Drawing.Size(115, 23);
+            this.bSelfNullMethod.TabIndex = 24;
+            this.bSelfNullMethod.Text = "Self Null Method";
+            this.bSelfNullMethod.UseVisualStyleBackColor = true;
+            this.bSelfNullMethod.Click += new System.EventHandler(this.bSelfNullMethod_Click);
             // 
             // FormMain
             // 
@@ -1298,6 +1310,7 @@ namespace _QuickTests_Framework
         private System.Windows.Forms.Button bVirtualMethod;
         private System.Windows.Forms.Button bMethodRef;
         private System.Windows.Forms.Button bSortChar;
+        private System.Windows.Forms.Button bSelfNullMethod;
     }
 }
 
