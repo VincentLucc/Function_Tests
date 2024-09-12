@@ -44,10 +44,21 @@ namespace ImageEdit
             //Magick Image
             magicKFOrmatlookUpEdit.Properties.DataSource = Enum.GetValues(typeof(MagickFormat));
             magicKFOrmatlookUpEdit.EditValue = MagickFormat.Bmp;
+            magicKFOrmatlookUpEdit.Properties.ShowFooter = false;
+            magicKFOrmatlookUpEdit.CustomDisplayText += MagicKFOrmatlookUpEdit_CustomDisplayText;
             magicKFOrmatlookUpEdit.EditValueChanged += MagicKFOrmatlookUpEdit_EditValueChanged;
             buttonEdit1.Click += ButtonEdit1_Click;
 
             LoadImages();
+        }
+
+        private void MagicKFOrmatlookUpEdit_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
+        {
+            if (e.Value is MagickFormat)
+            {
+                string sDisplay = ((MagickFormat)magicKFOrmatlookUpEdit.EditValue).ToString();
+                e.DisplayText = $"*.{sDisplay}";
+            }
         }
 
         private void MagicKFOrmatlookUpEdit_EditValueChanged(object sender, EventArgs e)
