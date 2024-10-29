@@ -71,6 +71,8 @@ namespace ImageEdit
 
         private void ButtonEdit1_Click(object sender, EventArgs e)
         {
+            
+            
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 if (ofd.ShowDialog() != DialogResult.OK) return;

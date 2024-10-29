@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DevExpress.Utils.Extensions;
 
 namespace DevRibbon
 {
@@ -40,7 +41,13 @@ namespace DevRibbon
 
             }
 
+            //this.GetCaptionHeight();
+            //this.CalcCaptionHeight();
+        }
 
+        protected override int CalcCaptionHeight()
+        {
+            return this.FormPainter == null || this.Ribbon == null || !this.Ribbon.Visible && this.IsMdiChild || !this.Ribbon.ViewInfo.IsAllowCaption ? 0 : this.Ribbon.ViewInfo.Caption.CalcCaptionHeight();
         }
 
         private void BarButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

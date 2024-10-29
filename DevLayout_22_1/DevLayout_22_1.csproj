@@ -169,6 +169,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\csDevUIHelper.cs" />
     <Compile Include="Classes\csPublic.cs" />
     <Compile Include="Controls\ucGridDemo.cs">
       <SubType>UserControl</SubType>
