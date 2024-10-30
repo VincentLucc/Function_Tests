@@ -86,37 +86,90 @@ namespace _QuickTests_Framework
     /// </summary>
     public class csEmployee
     {
-        public virtual void Draw1()
+        public string NormalNewProperty { get; set; }= "csEmployee.Normal-New";
+
+        public string NormalNewProperty_Call = "csEmployee.Normal-New-Call";
+
+        public virtual string VirtualNewProperty { get; set; }= "csEmployee.Virtual-New";
+
+        /// <summary>
+        /// Allow new property contains get method
+        /// </summary>
+        public virtual string VirtualNewProperty_Call { get; set; } = "csEmployee.Virtual-New-Call";
+
+        /// <summary>
+        /// Not allowed!!!
+        /// </summary>
+        //public string NormalOverrideProperty { get; set; } = "csEmployee.Normal-Override";
+
+        public virtual string VirtualOverrideProperty { get; set; } = "csEmployee.Virtual-Override";
+
+        public void Show_Normal_New()
         {
-            Debug.WriteLine("Virtual Base 1");
+            Debug.WriteLine("Employee: Normal Base Method");
+        }
+
+        public virtual void Show_Virtual_New()
+        {
+            Debug.WriteLine("Employee: Virtual Base Method");
         }
 
         /// <summary>
         /// 可以不使用
         /// </summary>
-        public virtual void Draw2()
+        public virtual void Show_Virtual_OverRide()
         {
-            Debug.WriteLine("Virtual Base 2");
+            Debug.WriteLine("Employee: Override Base");
+        }
+
+        /// <summary>
+        /// Not allowed
+        /// </summary>
+        public  void Show_Normal_OverRide()
+        {
+            Debug.WriteLine("Employee: Normal base override");
         }
     }
 
     public class csDeveloper : csEmployee
     {
-        public override void Draw1()
+
+        public new string NormalNewProperty = "csDeveloper.Normal-New";
+
+        public new string NormalNewProperty_Call = "csDeveloper.Normal-New-Call";
+
+        public new string VirtualNewProperty { get; set; } = "csDeveloper.Virtual-New";
+
+        //public override string NormalOverrideProperty { get; set; } = "csDeveloper.Normal-Override";
+
+        public override string VirtualOverrideProperty { get; set; } = "csDeveloper.Virtual-Override";
+
+        public new string VirtualNewProperty_Call
         {
-            Debug.WriteLine("Virtual Developer 1");
+            get { return "csDeveloper.Virtual-New-Call"; }
+        }
+
+        public new void Show_Normal_New()
+        {
+            Debug.WriteLine("Developer: New method");
+        }
+
+ 
+        public new void Show_Virtual_New()
+        {
+            Debug.WriteLine("Developer: Virtual Method");
         }
 
         /// <summary>
-        /// Use new can have different method parameters
-        /// If call a new method without specify the class type, will use base class method.
-        /// If call a override method without specify the class type, will try to call the sub class method instead.
+        /// 可以不使用
         /// </summary>
-        public new void Draw2()
+        public override void Show_Virtual_OverRide()
         {
-            Debug.WriteLine("Virtual New Developer 1");
+            Debug.WriteLine("Developer: Override inherit!");
         }
 
+
+ 
     }
 
 

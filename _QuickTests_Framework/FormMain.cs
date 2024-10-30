@@ -1581,20 +1581,49 @@ namespace _QuickTests_Framework
 
         private void bVirtualMethod_Click(object sender, EventArgs e)
         {
+            //Call from base
             csEmployee Employee = new csEmployee();
-            Employee.Draw1();
+            Employee.Show_Normal_New();
+            Employee.Show_Virtual_New();
+            Employee.Show_Virtual_OverRide();
+            Employee.Show_Normal_OverRide();
 
+            //Call from inherit class
             csDeveloper developer = new csDeveloper();
-            developer.Draw1();
-            developer.Draw2();
+            developer.Show_Normal_New();
+            developer.Show_Virtual_New();
+            developer.Show_Virtual_OverRide();
+            developer.Show_Normal_OverRide();
+            //Get property values
+            string childValue = $"Child Values: [" +
+                                $"NormalNewProperty:{developer.NormalNewProperty}, " +
+                                $"NormalNewProperty_Call:{developer.NormalNewProperty_Call}, " +
+                                $"VirtualNewProperty:{developer.VirtualNewProperty}, " +
+                                $"VirtualNewProperty_Call:{developer.VirtualNewProperty_Call}, " +
+                                $"VirtualOverrideProperty:{developer.VirtualOverrideProperty}, " +
+                                $"]";
+            Trace.WriteLine(childValue);
 
+            //Class from base again
             List<csEmployee> list = new List<csEmployee>();
             list.Add(Employee);
             list.Add(developer);
-            foreach (var item in list)
+            foreach (csEmployee item in list)
             {
-                item.Draw1();
-                item.Draw2();
+                item.Show_Normal_New();
+                item.Show_Virtual_New();
+                item.Show_Virtual_OverRide();
+                item.Show_Normal_OverRide();
+
+                //Get property values
+                string sPropertyValues = $"Base Call Values: [" +
+                                         $"NormalNewProperty:{item.NormalNewProperty}, " +
+                                         $"NormalNewProperty_Call:{item.NormalNewProperty_Call}, " +
+                                         $"VirtualNewProperty:{item.VirtualNewProperty}, " +
+                                         $"VirtualNewProperty_Call:{item.VirtualNewProperty_Call}, " +
+                                         $"VirtualOverrideProperty:{item.VirtualOverrideProperty}" +
+                                         $"]";
+                Trace.WriteLine(sPropertyValues);
             }
 
 
