@@ -50,5 +50,11 @@ namespace DateTimeProject
             DateTime dTimeMax = new DateTime(lValueMax);
             Trace.WriteLine($"Min:{dTimeMin}, Max:{dTimeMax}");
         }
+
+        private void TimeOperationButton_Click(object sender, EventArgs e)
+        {
+            var timeSpan= DateTime.Now- DateTime.Now.AddHours(1);
+            var timeLeft=timeSpan.TotalSeconds;
+        }
     }
 }

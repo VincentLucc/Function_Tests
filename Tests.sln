@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.6.33801.468
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35325.158
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "DevTestProject\TestProject.csproj", "{5FCC38DC-749D-443E-BB35-6558DAAD7571}"
 EndProject
@@ -252,6 +252,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringBuilder", "StringBuilder\StringBuilder.csproj", "{FA255879-C0DA-4C1B-B43F-A4A20E456C62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Click_2201", "Click_2201\Click_2201.csproj", "{EEB0DBB5-0095-49FB-9027-67E2285D6B99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dev_Theme_Fluent_22.1", "Dev_Theme\Dev_Theme_Fluent_22.1.csproj", "{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -2254,6 +2256,22 @@ Global
 		{EEB0DBB5-0095-49FB-9027-67E2285D6B99}.Release|x64.Build.0 = Release|Any CPU
 		{EEB0DBB5-0095-49FB-9027-67E2285D6B99}.Release|x86.ActiveCfg = Release|Any CPU
 		{EEB0DBB5-0095-49FB-9027-67E2285D6B99}.Release|x86.Build.0 = Release|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Debug|arm64.Build.0 = Debug|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Debug|x64.Build.0 = Debug|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Debug|x86.Build.0 = Debug|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Release|arm64.ActiveCfg = Release|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Release|arm64.Build.0 = Release|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Release|x64.ActiveCfg = Release|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Release|x64.Build.0 = Release|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Release|x86.ActiveCfg = Release|Any CPU
+		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

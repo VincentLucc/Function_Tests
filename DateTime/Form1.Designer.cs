@@ -30,6 +30,7 @@
         {
             this.bTimeGap = new System.Windows.Forms.Button();
             this.TimeTicksButton = new System.Windows.Forms.Button();
+            this.TimeOperationButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bTimeGap
@@ -52,11 +53,22 @@
             this.TimeTicksButton.UseVisualStyleBackColor = true;
             this.TimeTicksButton.Click += new System.EventHandler(this.TimeTicksButton_Click);
             // 
+            // TimeOperationButton
+            // 
+            this.TimeOperationButton.Location = new System.Drawing.Point(44, 127);
+            this.TimeOperationButton.Name = "TimeOperationButton";
+            this.TimeOperationButton.Size = new System.Drawing.Size(93, 23);
+            this.TimeOperationButton.TabIndex = 2;
+            this.TimeOperationButton.Text = "Time Operation";
+            this.TimeOperationButton.UseVisualStyleBackColor = true;
+            this.TimeOperationButton.Click += new System.EventHandler(this.TimeOperationButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TimeOperationButton);
             this.Controls.Add(this.TimeTicksButton);
             this.Controls.Add(this.bTimeGap);
             this.Name = "Form1";
@@ -69,6 +81,7 @@
 
         private System.Windows.Forms.Button bTimeGap;
         private System.Windows.Forms.Button TimeTicksButton;
+        private System.Windows.Forms.Button TimeOperationButton;
     }
 }
 
