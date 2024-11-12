@@ -6,135 +6,175 @@ using System.Threading.Tasks;
 
 namespace DirectXForm_2201
 {
- 
-        class csFPSHelper
+
+    class csFPSHelper
+    {
+
+        private object LockFPSRecords = new object();
+
+        private List<DateTime> FPSRecords = new List<DateTime>();
+
+        private List<TimeSpan> UpdatePeriods = new List<TimeSpan>();
+
+        /// <summary>
+        /// Reduce this number can increase performance
+        /// </summary>
+        private int MaximumRecordCount = 200;
+
+
+        /// <summary>
+        /// Scan range in milliseconds used to smooth the output in certain time
+        /// </summary>
+        private int ScanSmoothRange = 2000;
+
+        /// <summary>
+        /// Handle condition for slow FPS
+        /// </summary>
+        private int MaximumDetectionRange = 20000;
+
+
+        public csFPSHelper(int iScanRange, int iMaximumDetectionRange, int iMaximumRecordCount = 200)
         {
+            SetParams(iScanRange, iMaximumDetectionRange, iMaximumRecordCount);
+        }
+ 
+        public void SetParams(int iSmoothRange, int iMaximumDetectionRange, int iMaximumRecordCount = 200)
+        {
+            ScanSmoothRange = iSmoothRange;
+            MaximumDetectionRange = iMaximumDetectionRange;
+            MaximumRecordCount = iMaximumRecordCount;
+        }
 
-
-            private List<DateTime> FPSRecords = new List<DateTime>();
-
-            /// <summary>
-            /// Reduce this number can increase performance
-            /// </summary>
-
-            private int MaximumRecordCount = 200;
-
-            private object LockFPSRecords = new object();
-
-            /// <summary>
-            /// Scan range in milliseconds used to smooth the output in certain time
-            /// </summary>
-            private int ScanSmoothRange = 2000;
-
-            /// <summary>
-            /// Handle condition for slow FPS
-            /// </summary>
-            private int MaximumDetectionRange = 20000;
-
-
-            public csFPSHelper(int iScanRange, int iMaximumDetectionRange, int iMaximumRecordCount = 200)
+        public double GetMaxDuration()
+        {
+            lock (LockFPSRecords)
             {
-                SetParams(iScanRange, iMaximumDetectionRange, iMaximumRecordCount);
+                if (UpdatePeriods.Count == 0) return -1;
+                double dValue = UpdatePeriods.Select(t => t.TotalMilliseconds).Max();
+                return dValue;
             }
+        }
 
-
-            public void SetParams(int iSmoothRange, int iMaximumDetectionRange, int iMaximumRecordCount = 200)
+        public double GetAverageDuration()
+        {
+            lock (LockFPSRecords)
             {
-                ScanSmoothRange = iSmoothRange;
-                MaximumDetectionRange = iMaximumDetectionRange;
-                MaximumRecordCount = iMaximumRecordCount;
+                if (UpdatePeriods.Count == 0) return -1;
+                double dValue = UpdatePeriods.Select(t => t.TotalMilliseconds).Average();
+                return dValue;
             }
+        }
 
-            public void AddRecord()
+        public void AddRecord(TimeSpan period)
+        {
+            AddRecord();
+
+            lock (LockFPSRecords)
             {
-                lock (LockFPSRecords)
+                if (UpdatePeriods.Count > MaximumRecordCount)
                 {
-                    if (FPSRecords.Count > MaximumRecordCount)
+                    if (UpdatePeriods.Count > 10)
                     {
-                        //Reduce remove action counts
-                        if (FPSRecords.Count > 10)
-                        {
-                            int iRemove = FPSRecords.Count / 5;
-                            FPSRecords.RemoveRange(0, iRemove);
-                        }
-                        else FPSRecords.RemoveAt(0);
+                        int iRemove = UpdatePeriods.Count / 5;
+                        UpdatePeriods.RemoveRange(0, iRemove);
                     }
-
-                    FPSRecords.Add(DateTime.Now);
+                    else UpdatePeriods.RemoveAt(0);
                 }
+
+                UpdatePeriods.Add(period);
             }
+        }
 
-
-
-            public double GetFPS()
+        public void AddRecord()
+        {
+            lock (LockFPSRecords)
             {
-                double dFPS = 0;//Init FPS
-                                //Try to get at least 5 records
-                int iMinimumCount = 5;
-
-
-                var smoothTimeLimit = DateTime.Now.AddMilliseconds(-ScanSmoothRange);
-                var maximumRangeLimit = DateTime.Now.AddMilliseconds(-MaximumDetectionRange);
-                //Get number of images captured within last 1 second
-                lock (LockFPSRecords)
+                if (FPSRecords.Count > MaximumRecordCount)
                 {
-                    //Check count, mininum 2 records required for fps counting
-                    if (FPSRecords.Count < 2) return 0;
-
-                    //Get scan interval
-                    List<TimeSpan> scanIntervals = new List<TimeSpan>();
-                    //When not enough samples detected in the inspection range
-                    for (int i = FPSRecords.Count - 1; i > 0; i--)
+                    //Reduce remove action counts
+                    if (FPSRecords.Count > 10)
                     {
-                        var tNow = FPSRecords[i];
-                        var tLast = FPSRecords[i - 1];
-                        var gap = tNow - tLast;
+                        int iRemove = FPSRecords.Count / 5;
+                        FPSRecords.RemoveRange(0, iRemove);
+                    }
+                    else FPSRecords.RemoveAt(0);
+                }
 
-                        //When sample within the check range, continue adding sample
-                        if (tLast < smoothTimeLimit)
-                        {
-                            //When records outside the averaging calc range
-                            //Only include into the result when the record count smaller than minimum requirement (Low FPS condition)
-                            //The records also must within the muximum detection range
-                            if (scanIntervals.Count >= iMinimumCount || tLast < maximumRangeLimit) break;
-                        }
+                FPSRecords.Add(DateTime.Now);
+            }
+        }
 
-                        //Add sample
-                        scanIntervals.Add(gap);
+
+
+        public double GetFPS()
+        {
+            double dFPS = 0;//Init FPS
+                            //Try to get at least 5 records
+            int iMinimumCount = 5;
+
+
+            var smoothTimeLimit = DateTime.Now.AddMilliseconds(-ScanSmoothRange);
+            var maximumRangeLimit = DateTime.Now.AddMilliseconds(-MaximumDetectionRange);
+            //Get number of images captured within last 1 second
+            lock (LockFPSRecords)
+            {
+                //Check count, mininum 2 records required for fps counting
+                if (FPSRecords.Count < 2) return 0;
+
+                //Get scan interval
+                List<TimeSpan> scanIntervals = new List<TimeSpan>();
+                //When not enough samples detected in the inspection range
+                for (int i = FPSRecords.Count - 1; i > 0; i--)
+                {
+                    var tNow = FPSRecords[i];
+                    var tLast = FPSRecords[i - 1];
+                    var gap = tNow - tLast;
+
+                    //When sample within the check range, continue adding sample
+                    if (tLast < smoothTimeLimit)
+                    {
+                        //When records outside the averaging calc range
+                        //Only include into the result when the record count smaller than minimum requirement (Low FPS condition)
+                        //The records also must within the muximum detection range
+                        if (scanIntervals.Count >= iMinimumCount || tLast < maximumRangeLimit) break;
                     }
 
-                    if (scanIntervals.Count == 0) return 0;
+                    //Add sample
+                    scanIntervals.Add(gap);
+                }
 
-                    //Get average gap time
-                    var dTicks = scanIntervals.Average(a => a.Ticks);
-                    var avgGap = TimeSpan.FromTicks(Convert.ToInt64(dTicks));
+                if (scanIntervals.Count == 0) return 0;
 
-                    //If last record within the smooth range, value can be directly used
-                    if (FPSRecords[FPSRecords.Count - 1] > smoothTimeLimit)
-                    {
+                //Get average gap time
+                var dTicks = scanIntervals.Average(a => a.Ticks);
+                var avgGap = TimeSpan.FromTicks(Convert.ToInt64(dTicks));
+
+                //If last record within the smooth range, value can be directly used
+                if (FPSRecords[FPSRecords.Count - 1] > smoothTimeLimit)
+                {
+                    dFPS = 1.0 / avgGap.TotalSeconds;
+                }
+                else
+                {//When the last record outside the smooth range
+                    var lastRecordGap = DateTime.Now - FPSRecords[FPSRecords.Count - 1];
+                    if (lastRecordGap < avgGap)
+                    {//This condition, the average value is more accurate
                         dFPS = 1.0 / avgGap.TotalSeconds;
                     }
                     else
-                    {//When the last record outside the smooth range
-                        var lastRecordGap = DateTime.Now - FPSRecords[FPSRecords.Count - 1];
-                        if (lastRecordGap < avgGap)
-                        {//This condition, the average value is more accurate
-                            dFPS = 1.0 / avgGap.TotalSeconds;
-                        }
-                        else
-                        {//Include the most recent record
-                            scanIntervals.Add(lastRecordGap);
-                            //Get average gap time
-                            dTicks = scanIntervals.Average(a => a.Ticks);
-                            avgGap = TimeSpan.FromTicks(Convert.ToInt64(dTicks));
-                            dFPS = 1.0 / avgGap.TotalSeconds;
+                    {//Include the most recent record
+                        scanIntervals.Add(lastRecordGap);
+                        //Get average gap time
+                        dTicks = scanIntervals.Average(a => a.Ticks);
+                        avgGap = TimeSpan.FromTicks(Convert.ToInt64(dTicks));
+                        dFPS = 1.0 / avgGap.TotalSeconds;
 
-                        }
                     }
                 }
-
-                return dFPS;
             }
-        
+
+            return dFPS;
+        }
+
     }
 }

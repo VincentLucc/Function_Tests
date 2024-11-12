@@ -13,6 +13,7 @@ namespace DirectXForm_2201
     public partial class MainForm : DevExpress.XtraEditors.DirectXForm
     {
         csFPSHelper fpsHelper;
+        Stopwatch watch = new Stopwatch();
 
         public MainForm()
         {
@@ -52,14 +53,15 @@ namespace DirectXForm_2201
             try
             {
                 timer1.Enabled = true;
+                watch.Restart();
 
                 var items = diagramControl1.Items.Count;
 
                 diagramControl1.Refresh();
-                fpsHelper.AddRecord();
+                fpsHelper.AddRecord(watch.Elapsed);
 
-                FPSStaticItem.Caption= $"FPS:{fpsHelper.GetFPS().ToString("f1")}";
-
+                FPSStaticItem.Caption = $"FPS:{fpsHelper.GetFPS().ToString("f1")}";
+                DurationButtonItem.Caption = $"Duration:[Avg:{fpsHelper.GetAverageDuration().ToString("f1")}, Max:{fpsHelper.GetMaxDuration().ToString("f1")}]";
             }
             catch (Exception ex)
             {
