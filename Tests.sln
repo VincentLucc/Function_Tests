@@ -177,7 +177,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database_SQLite_MS_Normal",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database_SQLite_Official_Dapper", "Database_SQLite_Official_Dapper\Database_SQLite_Official_Dapper.csproj", "{096EFED9-F3C0-428A-9B7D-C2029D8131F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagramTests", "Diagram\DiagramTests.csproj", "{D3CAD4F6-8E90-42F2-B8F6-A571B74C714D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagramTests_2201", "Diagram\DiagramTests_2201.csproj", "{D3CAD4F6-8E90-42F2-B8F6-A571B74C714D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCV_Sharp4", "OpenCV\OpenCV_Sharp4.csproj", "{B3BCF34A-7115-47AB-8A36-E7D928F33AA3}"
 EndProject
@@ -254,6 +254,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Click_2201", "Click_2201\Click_2201.csproj", "{EEB0DBB5-0095-49FB-9027-67E2285D6B99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dev_Theme_Fluent_22.1", "Dev_Theme\Dev_Theme_Fluent_22.1.csproj", "{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectXForm_2201", "DirectXForm_2201\DirectXForm_2201.csproj", "{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -2272,6 +2274,22 @@ Global
 		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Release|x64.Build.0 = Release|Any CPU
 		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Release|x86.ActiveCfg = Release|Any CPU
 		{1BDAD18D-CC1F-4813-BAD2-0913D2C60505}.Release|x86.Build.0 = Release|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Debug|arm64.Build.0 = Debug|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Debug|x64.Build.0 = Debug|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Debug|x86.Build.0 = Debug|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Release|arm64.ActiveCfg = Release|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Release|arm64.Build.0 = Release|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Release|x64.ActiveCfg = Release|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Release|x64.Build.0 = Release|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Release|x86.ActiveCfg = Release|Any CPU
+		{118D9A55-AD7A-4879-89B4-F4BC5AEA9ECC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

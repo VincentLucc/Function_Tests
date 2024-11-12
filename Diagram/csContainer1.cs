@@ -13,6 +13,8 @@ namespace DiagramDemo
 {
     public class Container1 : DiagramContainer
     {
+        private DevExpress.XtraCharts.Sankey.SankeyDiagramControl sankeyDiagramControl1;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -75,6 +77,20 @@ namespace DiagramDemo
             {
                 e.Graphics.DrawImage(Properties.Resources.objects_color_globe, 0, 0, 64, 64);
             }
+        }
+
+        private void InitializeComponent()
+        {
+            this.sankeyDiagramControl1 = new DevExpress.XtraCharts.Sankey.SankeyDiagramControl();
+            // 
+            // sankeyDiagramControl1
+            // 
+            this.sankeyDiagramControl1.Location = new System.Drawing.Point(0, 0);
+            this.sankeyDiagramControl1.Name = "sankeyDiagramControl1";
+            this.sankeyDiagramControl1.Size = new System.Drawing.Size(300, 300);
+            this.sankeyDiagramControl1.TabIndex = 0;
+            this.sankeyDiagramControl1.Text = "sankeyDiagramControl1";
+
         }
     }
 }

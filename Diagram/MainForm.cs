@@ -16,12 +16,12 @@ using DevExpress.XtraDiagram.Commands;
 
 namespace DiagramDemo
 {
-    public partial class Form1 : XtraForm
+    public partial class MainForm : XtraForm
     {
 
         DiagramHelper diagramHelper { get; set; }
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }

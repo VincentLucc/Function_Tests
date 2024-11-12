@@ -37,11 +37,11 @@ namespace Dev_Theme
             this.SaveAccordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.SaveAsAccordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.CloseAccordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.OperationAccordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.RunProjectAccordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +58,7 @@ namespace Dev_Theme
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Fluent;
             this.accordionControl1.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Always;
             this.accordionControl1.ShowItemExpandButtons = false;
-            this.accordionControl1.Size = new System.Drawing.Size(250, 343);
+            this.accordionControl1.Size = new System.Drawing.Size(250, 427);
             this.accordionControl1.TabIndex = 0;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             this.accordionControl1.Click += new System.EventHandler(this.accordionControl1_Click);
@@ -101,6 +101,12 @@ namespace Dev_Theme
             this.CloseAccordionControlElement.Name = "CloseAccordionControlElement";
             this.CloseAccordionControlElement.Text = "Close";
             // 
+            // accordionControlElement1
+            // 
+            this.accordionControlElement1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement1.ImageOptions.SvgImage")));
+            this.accordionControlElement1.Name = "accordionControlElement1";
+            this.accordionControlElement1.Text = "Test";
+            // 
             // OperationAccordionControlElement
             // 
             this.OperationAccordionControlElement.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
@@ -121,7 +127,7 @@ namespace Dev_Theme
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fluentDesignFormContainer1.Location = new System.Drawing.Point(250, 30);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(417, 343);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(490, 427);
             this.fluentDesignFormContainer1.TabIndex = 2;
             // 
             // fluentDesignFormControl1
@@ -129,21 +135,15 @@ namespace Dev_Theme
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(667, 30);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(740, 30);
             this.fluentDesignFormControl1.TabIndex = 3;
             this.fluentDesignFormControl1.TabStop = false;
-            // 
-            // accordionControlElement1
-            // 
-            this.accordionControlElement1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlElement1.ImageOptions.SvgImage")));
-            this.accordionControlElement1.Name = "accordionControlElement1";
-            this.accordionControlElement1.Text = "Test";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 373);
+            this.ClientSize = new System.Drawing.Size(740, 457);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
