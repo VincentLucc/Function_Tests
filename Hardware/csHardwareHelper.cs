@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Hardware
 {
-    static public class csHardware
+    static public class csHardwareHelper
     {
         private static ManagementObjectSearcher baseboardSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_BaseBoard");
         private static ManagementObjectSearcher motherboardSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_MotherboardDevice");
-        private static ManagementObjectSearcher psysicalMedia = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PhysicalMedia");
-        private static ManagementObjectSearcher diskDrive = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_DiskDrive");
-        private static ManagementObjectSearcher systemInfo = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_ComputerSystemProduct");
-
+        private static ManagementObjectSearcher psysicalMediaSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PhysicalMedia");
+        private static ManagementObjectSearcher diskDriveSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_DiskDrive");
+        private static ManagementObjectSearcher systemInfoSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_ComputerSystemProduct");
+        private static ManagementObjectSearcher diskSmartDataSearcher = new ManagementObjectSearcher(@"root\WMI", "Select * From MSStorageDriver_ATAPISmartData");
+        public static string Message;
 
         public static string UUID
         {
@@ -22,20 +24,43 @@ namespace Hardware
             {
                 try
                 {
-                    foreach (ManagementObject queryObj in systemInfo.Get())
+                    foreach (ManagementObject queryObj in systemInfoSearcher.Get())
                     {
                         string sUID = queryObj["UUID"].ToString();
                         return sUID;
                     }
-                    return "";
+                    return null;
                 }
                 catch (Exception e)
                 {
-                    return "";
+                    return null;
                 }
             }
         }
 
+        /// <summary>
+        /// Doesn't work on windows 10/T480
+        /// </summary>
+        /// <returns></returns>
+        public static string GetDiskTemps()
+        {
+            try
+            {
+                foreach (ManagementObject managedObject in diskSmartDataSearcher.Get())
+                {
+                    byte[] data = (byte[])managedObject.GetPropertyValue("VendorSpecific");
+                    string sDisplay = "硬盘温度：" + data[3] + " °C";
+                    return sDisplay;
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+                return null;
+            }
+        }
 
         /// <summary>
         /// Get the main harddrive ID
@@ -48,7 +73,7 @@ namespace Hardware
             {
                 try
                 {
-                    foreach (ManagementObject queryObj in diskDrive.Get())
+                    foreach (ManagementObject queryObj in diskDriveSearcher.Get())
                     {
                         string sID = queryObj["SerialNumber"].ToString();
                         if (string.IsNullOrWhiteSpace(sID)) return "";
@@ -80,7 +105,7 @@ namespace Hardware
             {
                 try
                 {
-                    foreach (ManagementObject queryObj in psysicalMedia.Get())
+                    foreach (ManagementObject queryObj in psysicalMediaSearcher.Get())
                     {
                         string sID = queryObj["SerialNumber"].ToString();
                         if (string.IsNullOrWhiteSpace(sID)) return "";
@@ -98,6 +123,29 @@ namespace Hardware
                     return "";
                 }
             }
+        }
+
+        /// <summary>
+        /// Get mac address info
+        /// </summary>
+        /// <returns></returns>
+        public static List<MacInfo> GetMacAddress()
+        {
+            List<MacInfo> sList = new List<MacInfo>();
+
+            foreach (NetworkInterface netInterface in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                // Only consider Ethernet network interfaces
+                if (netInterface.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
+                {
+                    string sName = netInterface.Name;
+                    byte[] bData = netInterface.GetPhysicalAddress().GetAddressBytes();
+                    string sMac = BitConverter.ToString(bData);
+                    sList.Add(new MacInfo(sName, sMac));
+                }
+            }
+
+            return sList;
         }
 
 
@@ -487,6 +535,18 @@ namespace Hardware
             convertedTime = date.ToString() + "/" + month.ToString() + "/" + year.ToString() + " " +
             hours.ToString() + ":" + minutes.ToString() + ":" + seconds.ToString() + " " + meridian;
             return convertedTime;
+        }
+    }
+
+    public class MacInfo
+    {
+        public string Name { get; set; }
+        public string Address { get; set; }
+
+        public MacInfo(string sName, string sAddress)
+        {
+            Name = sName;
+            Address = sAddress;
         }
     }
 }

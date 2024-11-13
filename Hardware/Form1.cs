@@ -59,14 +59,14 @@ namespace Hardware
         private void bMotherBoard_Click(object sender, EventArgs e)
         {
             //Works, some property name might not exist
-            string sBrand= csHardware.Manufacturer;
-            string serialNumber = csHardware.SerialNumber;
+            string sBrand= csHardwareHelper.Manufacturer;
+            string serialNumber = csHardwareHelper.SerialNumber;
             Debug.WriteLine($"Brand:{sBrand}, S/N:{serialNumber}");
         }
 
         private void bHardDrive_Click(object sender, EventArgs e)
         {
-            string sHDDID = csHardware.FirstHardDriveID;
+            string sHDDID = csHardwareHelper.FirstHardDriveID;
             Debug.WriteLine($"Disk:{sHDDID}");
         }
     }

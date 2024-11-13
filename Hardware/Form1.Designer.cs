@@ -139,9 +139,9 @@ namespace Hardware
             // ResultMemoEdit
             // 
             this.ResultMemoEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ResultMemoEdit.Location = new System.Drawing.Point(2, 23);
+            this.ResultMemoEdit.Location = new System.Drawing.Point(2, 27);
             this.ResultMemoEdit.Name = "ResultMemoEdit";
-            this.ResultMemoEdit.Size = new System.Drawing.Size(796, 93);
+            this.ResultMemoEdit.Size = new System.Drawing.Size(796, 89);
             this.ResultMemoEdit.TabIndex = 0;
             // 
             // Form1
