@@ -14,12 +14,12 @@ using DevExpress.XtraEditors.Mask;
 
 namespace Property_RegEditor_22._1
 {
-  public  class Student
+    public class Student
     {
         [Category("Test")]
         [DisplayName("sName"), Description("Description Method 1 Name of this student.")]
         //Directly use custom editor, Type and base type
-        [Editor(typeof(FilteredFileNameEditor),typeof(UITypeEditor))]
+        [Editor(typeof(FilteredFileNameEditor), typeof(UITypeEditor))]
         public string Name { get; set; }
 
         //User to address editor manually
@@ -40,7 +40,7 @@ namespace Property_RegEditor_22._1
         public string Text1Normal { get; set; }
 
         //Test text editor regex
-        [CustomEditor(_editorType.Text,true,MaskType.RegEx, @"[a-zA-Z]{1,2}[0-9]*")]
+        [CustomEditor(_editorType.Text, true, MaskType.RegEx, @"[a-zA-Z]{1,2}[0-9]*")]
         [Category("Test")]
         [DisplayName("Text2 Reg Mask"), Description("Text editor with regex mask")]
         public string Text2Reg { get; set; }
@@ -51,7 +51,7 @@ namespace Property_RegEditor_22._1
         [DisplayName("Text3 Numeric Mask"), Description("Text editor with Numeric Mask")]
         public string Text3Num { get; set; }
 
-        [CustomEditor(_editorType.Number,EditMasks.DigitalValue5)]
+        [CustomEditor(_editorType.Number, EditMasks.DigitalValue5)]
         [Category("Test")]
         [DisplayName("Text4 Numeric Mask"), Description("Text editor with Numeric Mask")]
         public string Text4Num { get; set; }
@@ -94,7 +94,7 @@ namespace Property_RegEditor_22._1
         [CustomEditor(_editorType.ToggleSwitchList)]
         [Category("Test"), DisplayName("List"), Description("List Test")]
         [ExpandableRowSettings(false)] //Hide class root editor
-    
+
         public bool[] List { get; set; }
 
         //Test text editor regex
@@ -122,7 +122,7 @@ namespace Property_RegEditor_22._1
         }
     }
 
-    public class Certificate: CertificateBase
+    public class Certificate : CertificateBase
     {
         [DisplayName("certID"), Description("Student Age1")]
         [CustomEditor(_editorType.Number)]
@@ -138,6 +138,15 @@ namespace Property_RegEditor_22._1
         public Student ButtonEditClass { get; set; }
 
         public bool IsOK { get; set; }
+
+        [ExpandableRowSettings(false)] //Hide class root editor
+        [TypeConverter(typeof(ExpandableObjectConverter))] //Show sub class properties
+        public csSubItem SubItem { get; set; }
+
+        public Certificate()
+        {
+            SubItem = new csSubItem();
+        }
     }
 
     public class CertificateBase
@@ -145,9 +154,50 @@ namespace Property_RegEditor_22._1
 
     }
 
-    
 
+    public class csSubItem
+    {
+        public string StringValue1 { get; set; }
+        public string StringValue2 { get; set; }
+
+        [CustomEditor(_editorType.ToggleSwitch, "csSubItem.BoolValue1")]
+        public bool BoolValue1 { get; set; }
+        [ExpandableRowSettings(false)] //Hide class root editor
+        [TypeConverter(typeof(ExpandableObjectConverter))] //Show sub class properties
+        public csSubItem2 SubLevel2 { get;set;}
  
+        public List<csSubItem2> SubLevel2List { get; set; }
+        public csSubItem()
+        {
+            StringValue1 = "123";
+            StringValue2 = "456";
+            BoolValue1 = true;
+
+            SubLevel2=new csSubItem2();
+            SubLevel2List=new List<csSubItem2>();
+            SubLevel2List.Add(SubLevel2);
+            SubLevel2List.Add(SubLevel2);
+        }
+    }
+
+    public class csSubItem2
+    {
+        [XtraSerializableProperty]
+        public string StringValue1 { get; set; }
+        [XtraSerializableProperty]
+        public string StringValue2 { get; set; }
+
+        [XtraSerializableProperty]
+        [CustomEditor(_editorType.ToggleSwitch, "csSubItem.BoolValue1")]
+        public bool BoolValue1 { get; set; }
+        public csSubItem2()
+        {
+            StringValue1 = "123";
+            StringValue2 = "456";
+            BoolValue1 = true;
+        }
+    }
+
 
     public class FilteredFileNameEditor : UITypeEditor
     {
@@ -156,7 +206,7 @@ namespace Property_RegEditor_22._1
         {
             return UITypeEditorEditStyle.Modal;
         }
-        public override object EditValue(ITypeDescriptorContext context,IServiceProvider provider,object value)
+        public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
             ofd.FileName = value.ToString();
             ofd.Filter = "Text File|*.txt|All Files|*.*";

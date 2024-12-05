@@ -96,7 +96,7 @@ namespace Property_RegEditor_22._1
             if (!IsRowValid(e.Row)) return;
             var editorInfo = GetEditorInfo(e.Row, propertyGrid.SelectedObject);
             if (editorInfo == null) goto FinishUp;
-   
+
             SetRowEditor(e, editorInfo);
 
             CustomSettingRowEditor?.Invoke(e, editorInfo);
@@ -128,6 +128,13 @@ namespace Property_RegEditor_22._1
         /// <param name="editor"></param>
         private void SetRowEditor(GetCustomRowCellEditEventArgs e, CustomEditorAttribute editorInfo)
         {
+            string sFieldName = e.Row.Properties.FieldName;
+
+            if (editorInfo.EditorType == _editorType.ToggleSwitch && editorInfo.MaskString == "csSubItem.BoolValue1")
+            {
+                var abc = sFieldName;
+            }
+
             //Set editor based on type
             switch (editorInfo.EditorType)
             {
@@ -340,7 +347,7 @@ namespace Property_RegEditor_22._1
         }
 
 
- 
+
         private void PropertyGrid_DataSourceChanged(object sender, EventArgs e)
         {
             ReloadAll();
@@ -371,7 +378,7 @@ namespace Property_RegEditor_22._1
         {
             //Cal row height
             int iHeight = 20;
-        
+
             foreach (var row in propertyGrid.Rows)
             {
                 iHeight += (propertyGrid.ViewInfo.GetVisibleRowHeight(row) + 1);
@@ -425,50 +432,8 @@ namespace Property_RegEditor_22._1
 
             try
             {
-                //Array or list
-                //sample format , TestList.[0]
-                if (sName.Contains(".["))
-                {
-                    //Match result
-                    string sPattern = @"\[([1-9]*[0-9])\]";
-                    var splitResult = Regex.Split(sName, sPattern);
-
-                    //Error in getting result
-                    if (splitResult.Length != 3) return null;
-
-                    //Get array name, editor, get ID
-                    string sArray = sName.Substring(0, sName.IndexOf('.'));
-
-                    //Get ID
-                    iIndex = Convert.ToInt32(splitResult[1]);
-
-                    propertyInfo = PropertyObject.GetType().GetProperty(sArray);
-                    IsSubProperty = true;
-
-                }
-                //Sub class
-                else if (sName.Contains("."))
-                {
-                    var sProperties = sName.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries);
-                    if (sProperties.Length != 2) return null;
-
-                    //Get parent info
-                    PropertyInfo pParent = PropertyObject.GetType().GetProperty(sProperties[0]);
-
-                    //Get property instance to retrive actual type such as inherit class
-                    var pInstance = pParent.GetValue(PropertyObject);
-
-                    //Get 2nd property info
-                    propertyInfo = pInstance.GetType().GetProperty(sProperties[1]);
-
-                    IsSubProperty = true;
-
-                }
-                else
-                {
-                    propertyInfo = PropertyObject.GetType().GetProperty(sName);
-                    IsSubProperty = false;
-                }
+                if (sName.Contains(".")) IsSubProperty = true;
+                propertyInfo = GetInstancePropertyInfo(PropertyObject, sName);
 
                 //No property set
                 if (propertyInfo == null) return null;
@@ -493,6 +458,46 @@ namespace Property_RegEditor_22._1
 
             //Nothing found
             return null;
+        }
+
+        private PropertyInfo GetInstancePropertyInfo(object instance, string sFieldName)
+        {
+            if (instance == null || sFieldName == null) return null;
+
+            var sPropertieNames = sFieldName.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries);
+            if (sPropertieNames.Length == 0) return null;
+            else if (sPropertieNames.Length == 1)
+            {//Contains only one level property
+             //Directly read instance property
+                string sLevel1Name = sPropertieNames[0];
+                var propertyInfo = instance.GetType().GetProperty(sPropertieNames[0]);
+                return propertyInfo;
+            }
+            else
+            {//Contains multiple level
+
+                //Check wether a collection or a normal sub item
+                string sLevel1Name = sPropertieNames[0];
+                string sLevel2Name = sPropertieNames[1];
+
+                //Check item is collection "sampleProperty.[3]"
+                //Ignore collection
+                if (sLevel2Name.StartsWith("[")) return null;
+                else
+                {//Item is normal sub item
+
+                    //Get sub property info
+                    PropertyInfo subProperty = instance.GetType().GetProperty(sLevel1Name);
+
+                    //Get sub property instance
+                    var subInstance = subProperty.GetValue(instance);
+
+                    //Remove the processed field
+                    var subFieldName = sFieldName.Remove(0, sLevel1Name.Length + 1);
+
+                    return GetInstancePropertyInfo(subInstance, subFieldName);
+                }
+            }
         }
 
 
