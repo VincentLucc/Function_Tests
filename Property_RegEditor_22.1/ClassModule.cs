@@ -17,7 +17,7 @@ namespace Property_RegEditor_22._1
     public class Student
     {
         [Category("Test")]
-        [DisplayName("sName"), Description("Description Method 1 Name of this student.")]
+        [DisplayName("sName"), Description("Description method 1 Name of this student.")]
         //Directly use custom editor, Type and base type
         [Editor(typeof(FilteredFileNameEditor), typeof(UITypeEditor))]
         public string Name { get; set; }
@@ -25,7 +25,7 @@ namespace Property_RegEditor_22._1
         //User to address editor manually
         [CustomEditor(_editorType.Number)]
         [Category("Test")]
-        [DisplayName("iAge"), Description("Description Method 2, manual address")]
+        [DisplayName("iAge"), Description("Description method 2, manual address")]
         public int Age { get; set; }
 
         [CustomEditor(_editorType.NumberSpin)]

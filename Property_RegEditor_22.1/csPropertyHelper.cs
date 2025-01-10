@@ -404,8 +404,6 @@ namespace Property_RegEditor_22._1
             {
                 row.Visible = student.CheckBox;
             }
-
-
         }
 
         /// <summary>
@@ -463,6 +461,13 @@ namespace Property_RegEditor_22._1
         private PropertyInfo GetInstancePropertyInfo(object instance, string sFieldName)
         {
             if (instance == null || sFieldName == null) return null;
+
+            //Devexpress Components
+            if (sFieldName.StartsWith("Options.Use"))
+            {
+                Trace.WriteLine("GetInstancePropertyInfo");
+                return null;
+            }
 
             var sPropertieNames = sFieldName.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries);
             if (sPropertieNames.Length == 0) return null;
