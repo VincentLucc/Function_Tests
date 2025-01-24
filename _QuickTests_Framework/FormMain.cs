@@ -1298,7 +1298,12 @@ namespace _QuickTests_Framework
             var value = s2.Name;
             s2 = null;
             var value2 = s1.Name;
+
+            s1.CleanUp();//Doesn;t work
+            csPublic.CleanUp(ref s1); //work
         }
+
+  
 
         private void bSubString_Click(object sender, EventArgs e)
         {

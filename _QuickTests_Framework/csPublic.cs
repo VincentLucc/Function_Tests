@@ -18,7 +18,7 @@ namespace _QuickTests_Framework
         /// <summary>
         /// Nano second, 10(-9)
         /// </summary>
-        public static long TimeNano=> DateTime.Now.Ticks * 100;
+        public static long TimeNano => DateTime.Now.Ticks * 100;
         public static long TimeMs => DateTime.Now.Ticks / 10000;
         public static string AppPath => Path.GetDirectoryName(Application.ExecutablePath);
         public static string AppPath2 => Application.StartupPath;
@@ -35,11 +35,11 @@ namespace _QuickTests_Framework
         {
             try
             {
-                if (Directory.Exists(path)) return true;              
+                if (Directory.Exists(path)) return true;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("IsValidPath:\r\n"+ex.Message);
+                Debug.WriteLine("IsValidPath:\r\n" + ex.Message);
             }
 
             //Fail to pass check
@@ -86,11 +86,11 @@ namespace _QuickTests_Framework
         /// <typeparam name="T"></typeparam>
         /// <param name="objOrigin"></param>
         /// <returns></returns>
-        public static T DeepCopyBySerialize<T>( this T objOrigin)
+        public static T DeepCopyBySerialize<T>(this T objOrigin)
         {
             object objNew;
 
-            using (MemoryStream ms=new MemoryStream())
+            using (MemoryStream ms = new MemoryStream())
             {
                 BinaryFormatter formatter = new BinaryFormatter();
                 formatter.Serialize(ms, objOrigin);
@@ -100,6 +100,24 @@ namespace _QuickTests_Framework
             }
 
             return (T)objNew;
+        }
+
+        /// <summary>
+        /// Work
+        /// </summary>
+        /// <param name="student"></param>
+        public static void CleanUp(ref Student student)
+        {
+            student=null;
+        }
+
+        /// <summary>
+        /// Dosn't work
+        /// </summary>
+        /// <param name="student"></param>
+        public static void CleanUp(this Student student)
+        {
+            student = null;
         }
     }
 }
