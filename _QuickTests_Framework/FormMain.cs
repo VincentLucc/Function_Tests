@@ -1666,6 +1666,12 @@ namespace _QuickTests_Framework
             csEmployee employee = null;
             double dValue = employee.CheckNull();
         }
+
+        private void RecordButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Only valid from .Net");
+ 
+        }
     }
 
 

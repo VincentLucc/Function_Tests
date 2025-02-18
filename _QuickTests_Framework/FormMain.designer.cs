@@ -46,6 +46,7 @@ namespace _QuickTests_Framework
             this.tabGeneral = new System.Windows.Forms.TabPage();
             this.bMethodRef = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.bSelfNullMethod = new System.Windows.Forms.Button();
             this.bVirtualMethod = new System.Windows.Forms.Button();
             this.bClassStatic = new System.Windows.Forms.Button();
             this.bReference = new System.Windows.Forms.Button();
@@ -126,7 +127,7 @@ namespace _QuickTests_Framework
             this.tbPlain = new System.Windows.Forms.RichTextBox();
             this.bEncryptionInit = new System.Windows.Forms.Button();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
-            this.bSelfNullMethod = new System.Windows.Forms.Button();
+            this.RecordButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -287,6 +288,7 @@ namespace _QuickTests_Framework
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.RecordButton);
             this.tabGeneral.Controls.Add(this.bMethodRef);
             this.tabGeneral.Controls.Add(this.groupBox8);
             this.tabGeneral.Controls.Add(this.bReference);
@@ -333,6 +335,16 @@ namespace _QuickTests_Framework
             this.groupBox8.TabIndex = 22;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Class";
+            // 
+            // bSelfNullMethod
+            // 
+            this.bSelfNullMethod.Location = new System.Drawing.Point(8, 74);
+            this.bSelfNullMethod.Name = "bSelfNullMethod";
+            this.bSelfNullMethod.Size = new System.Drawing.Size(115, 23);
+            this.bSelfNullMethod.TabIndex = 24;
+            this.bSelfNullMethod.Text = "Self Null Method";
+            this.bSelfNullMethod.UseVisualStyleBackColor = true;
+            this.bSelfNullMethod.Click += new System.EventHandler(this.bSelfNullMethod_Click);
             // 
             // bVirtualMethod
             // 
@@ -1167,15 +1179,15 @@ namespace _QuickTests_Framework
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick_1);
             // 
-            // bSelfNullMethod
+            // RecordButton
             // 
-            this.bSelfNullMethod.Location = new System.Drawing.Point(8, 74);
-            this.bSelfNullMethod.Name = "bSelfNullMethod";
-            this.bSelfNullMethod.Size = new System.Drawing.Size(115, 23);
-            this.bSelfNullMethod.TabIndex = 24;
-            this.bSelfNullMethod.Text = "Self Null Method";
-            this.bSelfNullMethod.UseVisualStyleBackColor = true;
-            this.bSelfNullMethod.Click += new System.EventHandler(this.bSelfNullMethod_Click);
+            this.RecordButton.Location = new System.Drawing.Point(18, 93);
+            this.RecordButton.Name = "RecordButton";
+            this.RecordButton.Size = new System.Drawing.Size(97, 23);
+            this.RecordButton.TabIndex = 24;
+            this.RecordButton.Text = "Record";
+            this.RecordButton.UseVisualStyleBackColor = true;
+            this.RecordButton.Click += new System.EventHandler(this.RecordButton_Click);
             // 
             // FormMain
             // 
@@ -1311,6 +1323,7 @@ namespace _QuickTests_Framework
         private System.Windows.Forms.Button bMethodRef;
         private System.Windows.Forms.Button bSortChar;
         private System.Windows.Forms.Button bSelfNullMethod;
+        private System.Windows.Forms.Button RecordButton;
     }
 }
 
