@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace TaskTests
 {
-    public partial class Form1 : Form
+    public partial class MainForm : csXtraFormEX
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -71,6 +71,36 @@ namespace TaskTests
             t1Token.Cancel();
             t1.Wait();//Wait and block main thread
             Debug.WriteLine($"Stop with flag:{stopwatch.ElapsedMilliseconds}");
+        }
+
+        private async void BlockingCollection1Button_Click(object sender, EventArgs e)
+        {
+            await csBlockingCollectionHelper.StartService(this);
+        }
+
+        private void AddBlockingItemButton_Click(object sender, EventArgs e)
+        {
+            csBlockingCollectionHelper.AddItem();
+        }
+
+        private async void StopBlockingServiceButton_Click(object sender, EventArgs e)
+        {
+            await csBlockingCollectionHelper.StopService();
+        }
+
+        private async void StartCompletionServiceButton_Click(object sender, EventArgs e)
+        {
+            await csTaskCompletionSourceHelper.StartService(this);
+        }
+
+        private async void SampleCommmandButton_Click(object sender, EventArgs e)
+        {
+            await csTaskCompletionSourceHelper.RequestSampleJob();
+        }
+
+        private async void StopCompletionService_Click(object sender, EventArgs e)
+        {
+            await csTaskCompletionSourceHelper.StopService();
         }
     }
 }
