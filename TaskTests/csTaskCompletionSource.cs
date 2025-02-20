@@ -60,13 +60,23 @@ namespace TaskTests
             Trace.WriteLine($"{csPublic.DebugTimeString} ProcessAction.End");
         }
 
-        public static async Task RequestSampleJob()
+        public static async Task RequestSampleJob(int iTimeoutMS)
         {
             // 注意此Object是一次性的！！！
             CompletionSource = new TaskCompletionSource<bool>();
             Trace.WriteLine($"{csPublic.DebugTimeString} RequestSampleJob.Start");
-            await CompletionSource.Task;
-            Trace.WriteLine($"{csPublic.DebugTimeString} RequestSampleJob.Complete:{Data}");
+            var taskAction = CompletionSource.Task;
+            var taskDelay = Task.Delay(iTimeoutMS);
+            var taskComplete = await Task.WhenAny(new Task[] { taskAction, taskDelay });
+            if (taskComplete == taskAction)
+            {//Finished without issue
+                Trace.WriteLine($"{csPublic.DebugTimeString} RequestSampleJob.Complete:{Data}");
+            }
+            else
+            {//Timeout
+                Trace.WriteLine($"{csPublic.DebugTimeString} RequestSampleJob.Timeout: {iTimeoutMS}ms");
+            }
+           
         }
     }
 }

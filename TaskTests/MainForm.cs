@@ -95,7 +95,7 @@ namespace TaskTests
 
         private async void SampleCommmandButton_Click(object sender, EventArgs e)
         {
-            await csTaskCompletionSourceHelper.RequestSampleJob();
+            await csTaskCompletionSourceHelper.RequestSampleJob(1000);
         }
 
         private async void StopCompletionService_Click(object sender, EventArgs e)
