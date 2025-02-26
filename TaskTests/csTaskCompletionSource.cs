@@ -54,7 +54,6 @@ namespace TaskTests
                 Thread.Sleep(2000);
                 Data = csPublic.DebugTimeString;
                 CompletionSource?.TrySetResult(true);
-
             }
 
             Trace.WriteLine($"{csPublic.DebugTimeString} ProcessAction.End");

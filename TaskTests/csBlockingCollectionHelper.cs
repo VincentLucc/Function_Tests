@@ -60,7 +60,7 @@ namespace TaskTests
                 //Protection
                 while (BlockingQueue.Count > 50)
                 {
-                    BlockingQueue.Take();
+                    BlockingQueue.Take();                  
                 }
             }
 

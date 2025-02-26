@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DateTimeProject
 {
-    public class csTimeFormat
+    class csPublic
     {
-        public static string Debug = "HH':'mm':'ss':'fff";
+        public static csLogging DebugLogger;
     }
 }

@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +17,17 @@ namespace DateTimeProject
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //Init Debug log
+            csPublic.DebugLogger = new csLogging(this);
+            csPublic.DebugLogger.Start().Wait();
+
+            //Add debug log
+            csDebugListener debugListener = new csDebugListener(csPublic.DebugLogger);
+            Debug.Listeners.Add(debugListener);
         }
 
         private void bTimeGap_Click(object sender, EventArgs e)
@@ -30,14 +42,15 @@ namespace DateTimeProject
 
             for (int i = 0; i < 1000; i++)
             {
-                string sTime = DateTime.Now.ToString(csTimeFormat.Debug);
+                string sTime = DateTime.Now.ToString(TimeFormats.HHmmssfff);
                 string sTimeTick = DateTime.Now.Ticks.ToString();
-                sList.Add(sTime + ":Ticks:" + sTimeTick);
+                sList.Add($"{sTime}: [Stopwatch:{csDateTimeHelper.TimeOnly_ffffff}], [Ticks:{sTimeTick}]");
+                Thread.SpinWait(1000);
             }
 
             foreach (var item in sList)
             {
-                Debug.WriteLine(item);
+                Trace.WriteLine(item);
             }
         }
 
@@ -53,8 +66,10 @@ namespace DateTimeProject
 
         private void TimeOperationButton_Click(object sender, EventArgs e)
         {
-            var timeSpan= DateTime.Now- DateTime.Now.AddHours(1);
-            var timeLeft=timeSpan.TotalSeconds;
+            var timeSpan = DateTime.Now - DateTime.Now.AddHours(1);
+            var timeLeft = timeSpan.TotalSeconds;
         }
+
+
     }
 }
