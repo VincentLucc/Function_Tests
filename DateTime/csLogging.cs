@@ -8,14 +8,15 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 public class csLogging
 {
     public List<OperationLog> LocalLogs { get; set; }
-    public object lockLocalLogs;
+    [XmlIgnore]
+    public object lockLocalLogs = new object();
 
     public string LogFolder { get; set; }
-    public int SizeLimit { get; set; }
     public Form ParentControl { get; set; }
 
     public string PreFix = "log_";
@@ -31,7 +32,7 @@ public class csLogging
     /// <summary>
     /// Check frequency in ms
     /// </summary>
-    public int WriteInterval { get; set; }
+    public int WriteInterval { get; set; } = 1000;
 
     public bool UIExit => ParentControl == null || ParentControl.IsDisposed || ParentControl.IsDisposed;
 
@@ -40,13 +41,8 @@ public class csLogging
     public csLogging(Form _parentForm)
     {
         LocalLogs = new List<OperationLog>();
-        lockLocalLogs = new object();
         ParentControl = _parentForm;
-        WriteInterval = 1000;
         LogFolder = Application.StartupPath + @"\Log\";
-        SizeLimit = 1024 * 1024 * 20; //Size limit 20 MB
-
-
     }
 
     public async Task Start()
@@ -75,6 +71,7 @@ public class csLogging
         //Init
         Stopwatch watch = new Stopwatch();
         watch.Start();
+        string sName = thread.Name != null ? thread.Name : string.Empty;
 
         try
         {//Wait to close
@@ -84,9 +81,9 @@ public class csLogging
 
                 if (watch.ElapsedMilliseconds > iTimeout)
                 {
-                    Trace.WriteLine($"Close thread: Timeout({watch.ElapsedMilliseconds}/{iTimeout})");
+                    Trace.WriteLine($"WaitThreadAsync.Timeout: {watch.ElapsedMilliseconds}/{iTimeout}");
                     thread.Abort();
-                    Trace.WriteLine($"Close thread: Thread aborted.");
+                    Trace.WriteLine($"WaitThreadAsync.Thread aborted: {sName}");
                     break;
                 }
             }
@@ -110,7 +107,7 @@ public class csLogging
 
         while (!UIExit && EnableWrite)
         {
-            Thread.Sleep(WriteInterval);
+
             try
             {
                 //Check log exitance
@@ -121,35 +118,24 @@ public class csLogging
                     if (unSavedLogs == null || unSavedLogs.Count < 1) continue;
                 }
 
+                //Always check the log folder
+                if (!Directory.Exists(LogFolder))
+                    Directory.CreateDirectory(LogFolder);
+
                 //Check if last log exist
                 sFileName = GetLastLogFileName(out string sDate);
                 sFilePath = LogFolder + sFileName;
 
-                //Can't find file, create new file 
-                if (string.IsNullOrWhiteSpace(sFileName))
-                {
-                    //Check folder
-                    if (!Directory.Exists(LogFolder)) Directory.CreateDirectory(LogFolder);
-
-                    //Create log file
+                //If the file doesn't exist, create a new file.
+                //If the file is not up-to-date, create a new file
+                if (string.IsNullOrWhiteSpace(sFileName) || 
+                    DateString != sDate)
+                { //Create log file
                     sFilePath = LogFolder + $"{PreFix}{DateString}.log";
                     var fs = File.Create(sFilePath);
                     fs.Close();
                 }
-
-                //Check log file size
-                var fileInfo = new FileInfo(sFilePath);
-                long length = fileInfo.Length; //Get file size in byte
-                if (length > SizeLimit)
-                {
-                    if (DateString != sDate)
-                    {
-                        sFilePath = LogFolder + $"{PreFix}{DateString}.log";
-                        var fs = File.Create(sFilePath);
-                        fs.Close();
-                    }
-                }
-
+ 
                 //Write to file
                 using (FileStream fs = new FileStream(sFilePath, FileMode.Append))
                 {
@@ -167,6 +153,10 @@ public class csLogging
             catch (Exception ex)
             {
                 Trace.WriteLine("csInkOperationLogHelper:\r\n" + ex.Message);
+            }
+            finally
+            {
+                Thread.Sleep(WriteInterval);
             }
         }
     }
@@ -187,9 +177,9 @@ public class csLogging
     {
         lock (lockLocalLogs)
         {
-            if (LocalLogs.Count > 6000)
+            if (LocalLogs.Count > 2500)
             {
-                LocalLogs.RemoveRange(0, 1000);
+                LocalLogs.RemoveRange(0, 500);
             }
             LocalLogs.Add(log);
         }
@@ -217,17 +207,12 @@ public class csLogging
         }
 
         //Get result
-        if (sNameList.Count == 0)
-        {
-            return null;
-        }
-        else
-        {
-            sNameList.Sort();
-            sDate = sNameList[sNameList.Count - 1];
-            string sValue = $"{PreFix}{sDate}{Suffix}";
-            return sValue;
-        }
+        if (sNameList.Count == 0) return null;
+        sNameList.Sort();
+        sDate = sNameList[sNameList.Count - 1];
+        string sValue = $"{PreFix}{sDate}{Suffix}";
+        return sValue;
+
     }
 
 
