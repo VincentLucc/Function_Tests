@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.35325.158
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "DevTestProject\TestProject.csproj", "{5FCC38DC-749D-443E-BB35-6558DAAD7571}"
 EndProject
@@ -260,6 +260,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI_Grok2", "AI_Grok2\AI_Grok2.csproj", "{62FEEE73-3904-4638-865F-78BDE1EA6E66}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginDialog", "LoginDialog\LoginDialog.csproj", "{9E84098B-41DE-487F-A859-C775D6B976B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorTests", "VectorTests\VectorTests.csproj", "{A7EF69CE-BE06-492B-B866-DEF461B93EF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -2318,6 +2320,22 @@ Global
 		{9E84098B-41DE-487F-A859-C775D6B976B7}.Release|x64.Build.0 = Release|Any CPU
 		{9E84098B-41DE-487F-A859-C775D6B976B7}.Release|x86.ActiveCfg = Release|Any CPU
 		{9E84098B-41DE-487F-A859-C775D6B976B7}.Release|x86.Build.0 = Release|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Debug|arm64.Build.0 = Debug|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Debug|x64.Build.0 = Debug|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Debug|x86.Build.0 = Debug|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Release|arm64.ActiveCfg = Release|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Release|arm64.Build.0 = Release|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Release|x64.ActiveCfg = Release|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Release|x64.Build.0 = Release|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Release|x86.ActiveCfg = Release|Any CPU
+		{A7EF69CE-BE06-492B-B866-DEF461B93EF7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
