@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="csDatetimeHelper.cs" />
     <Compile Include="csEncryption.cs" />
     <Compile Include="csEnumHelper.cs" />
     <Compile Include="csGeoInfo.cs" />
