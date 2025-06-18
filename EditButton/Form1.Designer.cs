@@ -35,43 +35,55 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.LongTextButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
+            this.LongTextToolTipController = new DevExpress.Utils.ToolTipController(this.components);
             this.spinEdit2 = new DevExpress.XtraEditors.SpinEdit();
             this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
-            this.csButtonEditEx1 = new EditButton.csButtonEditEx();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.splitterItem2 = new DevExpress.XtraLayout.SplitterItem();
-            this.LongTextButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.LongTextToolTipController = new DevExpress.Utils.ToolTipController(this.components);
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.memoExEdit1 = new DevExpress.XtraEditors.MemoExEdit();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.csButtonEditEx1 = new EditButton.csButtonEditEx();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LongTextButtonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.csButtonEditEx1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LongTextButtonEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoExEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.csButtonEditEx1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.memoExEdit1);
+            this.layoutControl1.Controls.Add(this.memoEdit1);
             this.layoutControl1.Controls.Add(this.LongTextButtonEdit);
             this.layoutControl1.Controls.Add(this.spinEdit2);
             this.layoutControl1.Controls.Add(this.buttonEdit1);
@@ -83,6 +95,18 @@
             this.layoutControl1.Size = new System.Drawing.Size(707, 454);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // LongTextButtonEdit
+            // 
+            this.LongTextButtonEdit.EditValue = "dfadfadfsadfdsafsadfsajkdfsadhfakshfksahfjksahfkdshfksadhfkdshkfdshkf";
+            this.LongTextButtonEdit.Location = new System.Drawing.Point(141, 93);
+            this.LongTextButtonEdit.Name = "LongTextButtonEdit";
+            this.LongTextButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.LongTextButtonEdit.Size = new System.Drawing.Size(172, 20);
+            this.LongTextButtonEdit.StyleController = this.layoutControl1;
+            this.LongTextButtonEdit.TabIndex = 8;
+            this.LongTextButtonEdit.ToolTipController = this.LongTextToolTipController;
             // 
             // spinEdit2
             // 
@@ -116,16 +140,6 @@
             this.buttonEdit1.StyleController = this.layoutControl1;
             this.buttonEdit1.TabIndex = 5;
             // 
-            // csButtonEditEx1
-            // 
-            this.csButtonEditEx1.Location = new System.Drawing.Point(141, 45);
-            this.csButtonEditEx1.Name = "csButtonEditEx1";
-            this.csButtonEditEx1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.csButtonEditEx1.Size = new System.Drawing.Size(172, 20);
-            this.csButtonEditEx1.StyleController = this.layoutControl1;
-            this.csButtonEditEx1.TabIndex = 4;
-            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -135,7 +149,8 @@
             this.layoutControlGroup2,
             this.layoutControlGroup1,
             this.emptySpaceItem2,
-            this.splitterItem2});
+            this.splitterItem2,
+            this.layoutControlGroup3});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(707, 454);
             this.Root.TextVisible = false;
@@ -143,9 +158,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 117);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 275);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(317, 317);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(317, 159);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlGroup2
@@ -159,15 +174,6 @@
             this.layoutControlGroup2.Size = new System.Drawing.Size(317, 117);
             this.layoutControlGroup2.Text = "Button Edit";
             // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.csButtonEditEx1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(293, 24);
-            this.layoutControlItem1.Text = "Customized Control";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(105, 13);
-            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.buttonEdit1;
@@ -176,6 +182,15 @@
             this.layoutControlItem2.Size = new System.Drawing.Size(293, 24);
             this.layoutControlItem2.Text = "ButtonEdit: Num.";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(105, 13);
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.LongTextButtonEdit;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(293, 24);
+            this.layoutControlItem3.Text = "Button Edit: LongText";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(105, 13);
             // 
             // layoutControlGroup1
             // 
@@ -219,26 +234,71 @@
             this.splitterItem2.Name = "splitterItem2";
             this.splitterItem2.Size = new System.Drawing.Size(10, 434);
             // 
-            // LongTextButtonEdit
+            // memoEdit1
             // 
-            this.LongTextButtonEdit.EditValue = "dfadfadfsadfdsafsadfsajkdfsadhfakshfksahfjksahfkdshfksadhfkdshkfdshkf";
-            this.LongTextButtonEdit.Location = new System.Drawing.Point(141, 93);
-            this.LongTextButtonEdit.Name = "LongTextButtonEdit";
-            this.LongTextButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.memoEdit1.Location = new System.Drawing.Point(141, 162);
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Size = new System.Drawing.Size(172, 85);
+            this.memoEdit1.StyleController = this.layoutControl1;
+            this.memoEdit1.TabIndex = 9;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.memoEdit1;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(293, 89);
+            this.layoutControlItem5.Text = "MemoEdit";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(105, 13);
+            // 
+            // memoExEdit1
+            // 
+            this.memoExEdit1.Location = new System.Drawing.Point(141, 251);
+            this.memoExEdit1.Name = "memoExEdit1";
+            this.memoExEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.memoExEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.memoExEdit1.Size = new System.Drawing.Size(172, 20);
+            this.memoExEdit1.StyleController = this.layoutControl1;
+            this.memoExEdit1.TabIndex = 10;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.memoExEdit1;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 89);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(293, 24);
+            this.layoutControlItem6.Text = "MemoEditEX";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(105, 13);
+            // 
+            // csButtonEditEx1
+            // 
+            this.csButtonEditEx1.Location = new System.Drawing.Point(141, 45);
+            this.csButtonEditEx1.Name = "csButtonEditEx1";
+            this.csButtonEditEx1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.LongTextButtonEdit.Size = new System.Drawing.Size(172, 20);
-            this.LongTextButtonEdit.StyleController = this.layoutControl1;
-            this.LongTextButtonEdit.TabIndex = 8;
-            this.LongTextButtonEdit.ToolTipController = this.LongTextToolTipController;
+            this.csButtonEditEx1.Size = new System.Drawing.Size(172, 20);
+            this.csButtonEditEx1.StyleController = this.layoutControl1;
+            this.csButtonEditEx1.TabIndex = 4;
             // 
-            // layoutControlItem3
+            // layoutControlItem1
             // 
-            this.layoutControlItem3.Control = this.LongTextButtonEdit;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 48);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(293, 24);
-            this.layoutControlItem3.Text = "Button Edit: LongText";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(105, 13);
+            this.layoutControlItem1.Control = this.csButtonEditEx1;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(293, 24);
+            this.layoutControlItem1.Text = "Customized Control";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(105, 13);
+            // 
+            // layoutControlGroup3
+            // 
+            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem5,
+            this.layoutControlItem6});
+            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 117);
+            this.layoutControlGroup3.Name = "layoutControlGroup3";
+            this.layoutControlGroup3.Size = new System.Drawing.Size(317, 158);
+            this.layoutControlGroup3.Text = "MemoEdit";
             // 
             // Form1
             // 
@@ -251,21 +311,26 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.LongTextButtonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.csButtonEditEx1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LongTextButtonEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoExEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.csButtonEditEx1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -289,6 +354,11 @@
         private DevExpress.XtraEditors.ButtonEdit LongTextButtonEdit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.Utils.ToolTipController LongTextToolTipController;
+        private DevExpress.XtraEditors.MemoEdit memoEdit1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraEditors.MemoExEdit memoExEdit1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
     }
 }
 

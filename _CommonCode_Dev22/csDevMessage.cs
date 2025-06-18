@@ -4,6 +4,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -183,6 +184,14 @@ public class csDevMessage
         });
     }
 
+    public void ForceCloseMessageBox()
+    {
+        ParentForm.Invoke(new MethodInvoker(() =>
+        {
+            Trace.WriteLine("Sending Keys: {ESC}");
+            SendKeys.Send("{ESC}");
+        }));
+    }
 
     public DialogResult InfoConfirmOK(string text, string caption = "Info")
     {
