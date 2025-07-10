@@ -33,14 +33,15 @@ namespace AI_DeepSeek
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.ConnectBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.bar1 = new DevExpress.XtraBars.Bar();
-            this.bar2 = new DevExpress.XtraBars.Bar();
-            this.bar3 = new DevExpress.XtraBars.Bar();
-            this.ConnectBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.RequestBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -49,10 +50,10 @@ namespace AI_DeepSeek
             // layoutControl1
             // 
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 43);
+            this.layoutControl1.Location = new System.Drawing.Point(0, 41);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(676, 374);
+            this.layoutControl1.Size = new System.Drawing.Size(676, 375);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -61,7 +62,7 @@ namespace AI_DeepSeek
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(676, 374);
+            this.Root.Size = new System.Drawing.Size(676, 375);
             this.Root.TextVisible = false;
             // 
             // barManager1
@@ -76,56 +77,35 @@ namespace AI_DeepSeek
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ConnectBarButtonItem});
+            this.ConnectBarButtonItem,
+            this.RequestBarButtonItem});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 1;
+            this.barManager1.MaxItemId = 2;
             this.barManager1.StatusBar = this.bar3;
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(676, 43);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 417);
-            this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(676, 19);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 43);
-            this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 374);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(676, 43);
-            this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 374);
             // 
             // bar1
             // 
             this.bar1.BarName = "Tools";
             this.bar1.DockCol = 0;
+            this.bar1.DockRow = 1;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.ConnectBarButtonItem)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.ConnectBarButtonItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RequestBarButtonItem)});
             this.bar1.Text = "Tools";
+            // 
+            // ConnectBarButtonItem
+            // 
+            this.ConnectBarButtonItem.Caption = "Connect";
+            this.ConnectBarButtonItem.Id = 0;
+            this.ConnectBarButtonItem.Name = "ConnectBarButtonItem";
+            this.ConnectBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ConnectBarButtonItem_ItemClick);
             // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
             this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -136,20 +116,53 @@ namespace AI_DeepSeek
             this.bar3.BarName = "Status bar";
             this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
             this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Status bar";
             // 
-            // ConnectBarButtonItem
+            // barDockControlTop
             // 
-            this.ConnectBarButtonItem.Caption = "Connect";
-            this.ConnectBarButtonItem.Id = 0;
-            this.ConnectBarButtonItem.Name = "ConnectBarButtonItem";
-            this.ConnectBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ConnectBarButtonItem_ItemClick);
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(676, 41);
             // 
-            // Form1
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 416);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(676, 20);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 41);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 375);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(676, 41);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 375);
+            // 
+            // RequestBarButtonItem
+            // 
+            this.RequestBarButtonItem.Caption = "Request";
+            this.RequestBarButtonItem.Id = 1;
+            this.RequestBarButtonItem.Name = "RequestBarButtonItem";
+            this.RequestBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RequestBarButtonItem_ItemClick);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -159,7 +172,7 @@ namespace AI_DeepSeek
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
@@ -182,6 +195,7 @@ namespace AI_DeepSeek
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.BarButtonItem RequestBarButtonItem;
     }
 }
 

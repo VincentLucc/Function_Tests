@@ -1,4 +1,5 @@
-﻿using OpenAI;
+﻿using _CommonCode_Framework;
+using OpenAI;
 using OpenAI.Chat;
 using System;
 using System.ClientModel;
@@ -16,37 +17,31 @@ namespace AI_DeepSeek
     public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
 
-        ChatClient deepSeekClient;
+        csDevMessage messageHelper;
 
         public MainForm()
         {
             InitializeComponent();
+            messageHelper = new csDevMessage(this);
         }
 
-        private async void ConnectBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void ConnectBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            csDeepSeekHelper.Init();
 
-            //Create connection
-            var credentail = new ApiKeyCredential("<abc123>");
-            var clientOptions = new OpenAIClientOptions()
-            {
-                Endpoint = new Uri("https://api.deepseek.com/v1"),
-            };
+        }
 
-            deepSeekClient = new ChatClient("MODEL_NAME", credentail, clientOptions);
-
-
-
+        private async void RequestBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
             //Send a request
-            var chatOptions = new ChatCompletionOptions()
+            var response = await csDeepSeekHelper.Request("Say 'this is a test.'", 2000);
+            if (response.chatCompletion == null)
             {
+                messageHelper.Info(response.sError);
+                return;
+            }
 
-            };
-            var chatMessage1 = ChatMessage.CreateUserMessage("Say 'this is a test.'");
-            var cancellationToken = new CancellationTokenSource();
-            ChatCompletion completion = await deepSeekClient.CompleteChatAsync(new ChatMessage[] { chatMessage1 }, null, cancellationToken.Token);
-
-
+            "HasResponse".TraceRecord();
         }
     }
 }

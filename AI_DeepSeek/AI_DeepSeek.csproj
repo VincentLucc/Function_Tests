@@ -100,6 +100,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="csDeepSeekHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +133,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\_CommonCode_Dev22\_CommonCode_Dev22.csproj">
+      <Project>{5bc822b8-4a92-4288-8234-d13e421829ad}</Project>
+      <Name>_CommonCode_Dev22</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\_CommonCode_Framework\_CommonCode_Framework.csproj">
+      <Project>{925b87b3-c48d-414a-9d9a-e74147a67868}</Project>
+      <Name>_CommonCode_Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
