@@ -61,7 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="csBlockingCollectionHelper.cs" />
-    <Compile Include="csDevMessage.cs" />
     <Compile Include="csFormEx.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +99,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\_CommonCode_Dev22\_CommonCode_Dev22.csproj">
+      <Project>{5bc822b8-4a92-4288-8234-d13e421829ad}</Project>
+      <Name>_CommonCode_Dev22</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\_CommonCode_Framework\_CommonCode_Framework.csproj">
+      <Project>{925b87b3-c48d-414a-9d9a-e74147a67868}</Project>
+      <Name>_CommonCode_Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

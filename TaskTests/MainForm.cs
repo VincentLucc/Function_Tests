@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _CommonCode_Framework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,32 +46,49 @@ namespace TaskTests
             Debug.WriteLine($"Stop with flag:{stopwatch.ElapsedMilliseconds}");
         }
 
-        private void CancelWIthTokenButton_Click(object sender, EventArgs e)
+        private async void CancelWIthTokenButton_Click(object sender, EventArgs e)
         {
+            //Global variable
             CancellationTokenSource t1Token = new CancellationTokenSource();
 
-            Task t1 = new Task(() =>
+            //Start the task
+            var Task1= Task.Run(async () =>
             {
-                t1Token.Token.ThrowIfCancellationRequested();
-
+                "CancelWithToken.TaskStarted".TraceRecord();
                 while (this.Visible && !t1Token.IsCancellationRequested)
                 {
-                    Thread.Sleep(2000);
-                    Debug.WriteLine("Looping");
+                    try
+                    {
+                        t1Token.Token.ThrowIfCancellationRequested();
+
+                        //Time consuming action
+                        await Task.Delay(1000, t1Token.Token);
+                    }
+                    catch (TaskCanceledException ex)
+                    {//Break the loop
+                        "CancelWithToken.TaskCancelled".TraceRecord();
+                        break;
+                    }
+                    catch (Exception ex)
+                    {//Allow other exception
+                        ex.TraceException("CancelWithToken.OtherException.Continue");
+                        continue;
+                    }
+                 
+                    "CancelWithToken.Looping".TraceRecord();
                 }
 
-                Debug.WriteLine("Task Complete");
+                "CancelWithToken.Complete".TraceRecord();
             });
-            t1.Start();
-          
+         
 
-            Thread.Sleep(50); //Make sure start started!!!
-
+            //Start control call
             Stopwatch stopwatch = Stopwatch.StartNew();
             stopwatch.Start();
-            t1Token.Cancel();
-            t1.Wait();//Wait and block main thread
-            Debug.WriteLine($"Stop with flag:{stopwatch.ElapsedMilliseconds}");
+            t1Token.CancelAfter(3000);
+            await Task1;
+            $"CancelWithToken.CallEnd:{stopwatch.ElapsedMilliseconds}ms".TraceRecord();
+
         }
 
         private async void BlockingCollection1Button_Click(object sender, EventArgs e)

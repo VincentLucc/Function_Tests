@@ -11,6 +11,7 @@ namespace _CommonCode_Framework
 {
     public class csGeoInfo
     {
+
     }
 
     /// <summary>

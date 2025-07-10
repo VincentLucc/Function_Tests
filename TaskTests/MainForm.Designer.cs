@@ -40,10 +40,7 @@
             this.SampleCommmandButton = new DevExpress.XtraEditors.SimpleButton();
             this.StopCompletionService = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -52,6 +49,9 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -59,10 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
@@ -71,6 +68,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -112,9 +112,9 @@
             // 
             // StopBlockingServiceButton
             // 
-            this.StopBlockingServiceButton.Location = new System.Drawing.Point(212, 71);
+            this.StopBlockingServiceButton.Location = new System.Drawing.Point(145, 45);
             this.StopBlockingServiceButton.Name = "StopBlockingServiceButton";
-            this.StopBlockingServiceButton.Size = new System.Drawing.Size(173, 22);
+            this.StopBlockingServiceButton.Size = new System.Drawing.Size(240, 22);
             this.StopBlockingServiceButton.StyleController = this.layoutControl1;
             this.StopBlockingServiceButton.TabIndex = 8;
             this.StopBlockingServiceButton.Text = "Stop Service";
@@ -122,9 +122,9 @@
             // 
             // AddBlockingItemButton
             // 
-            this.AddBlockingItemButton.Location = new System.Drawing.Point(24, 97);
+            this.AddBlockingItemButton.Location = new System.Drawing.Point(24, 71);
             this.AddBlockingItemButton.Name = "AddBlockingItemButton";
-            this.AddBlockingItemButton.Size = new System.Drawing.Size(184, 22);
+            this.AddBlockingItemButton.Size = new System.Drawing.Size(117, 22);
             this.AddBlockingItemButton.StyleController = this.layoutControl1;
             this.AddBlockingItemButton.TabIndex = 7;
             this.AddBlockingItemButton.Text = "AddItem";
@@ -132,9 +132,9 @@
             // 
             // BlockingCollection1Button
             // 
-            this.BlockingCollection1Button.Location = new System.Drawing.Point(24, 71);
+            this.BlockingCollection1Button.Location = new System.Drawing.Point(24, 45);
             this.BlockingCollection1Button.Name = "BlockingCollection1Button";
-            this.BlockingCollection1Button.Size = new System.Drawing.Size(184, 22);
+            this.BlockingCollection1Button.Size = new System.Drawing.Size(117, 22);
             this.BlockingCollection1Button.StyleController = this.layoutControl1;
             this.BlockingCollection1Button.TabIndex = 6;
             this.BlockingCollection1Button.Text = "Start Service";
@@ -142,19 +142,19 @@
             // 
             // CancelWIthTokenButton
             // 
-            this.CancelWIthTokenButton.Location = new System.Drawing.Point(206, 12);
+            this.CancelWIthTokenButton.Location = new System.Drawing.Point(198, 142);
             this.CancelWIthTokenButton.Name = "CancelWIthTokenButton";
-            this.CancelWIthTokenButton.Size = new System.Drawing.Size(191, 22);
+            this.CancelWIthTokenButton.Size = new System.Drawing.Size(171, 22);
             this.CancelWIthTokenButton.StyleController = this.layoutControl1;
             this.CancelWIthTokenButton.TabIndex = 5;
-            this.CancelWIthTokenButton.Text = "Cancel With Token";
+            this.CancelWIthTokenButton.Text = "CancellationTokenSource";
             this.CancelWIthTokenButton.Click += new System.EventHandler(this.CancelWIthTokenButton_Click);
             // 
             // CancelWithFlagButton
             // 
-            this.CancelWithFlagButton.Location = new System.Drawing.Point(12, 12);
+            this.CancelWithFlagButton.Location = new System.Drawing.Point(24, 142);
             this.CancelWithFlagButton.Name = "CancelWithFlagButton";
-            this.CancelWithFlagButton.Size = new System.Drawing.Size(190, 22);
+            this.CancelWithFlagButton.Size = new System.Drawing.Size(170, 22);
             this.CancelWithFlagButton.StyleController = this.layoutControl1;
             this.CancelWithFlagButton.TabIndex = 4;
             this.CancelWithFlagButton.Text = "Cancel With Flag";
@@ -162,9 +162,9 @@
             // 
             // StartCompletionServiceButton
             // 
-            this.StartCompletionServiceButton.Location = new System.Drawing.Point(413, 71);
+            this.StartCompletionServiceButton.Location = new System.Drawing.Point(413, 45);
             this.StartCompletionServiceButton.Name = "StartCompletionServiceButton";
-            this.StartCompletionServiceButton.Size = new System.Drawing.Size(184, 22);
+            this.StartCompletionServiceButton.Size = new System.Drawing.Size(251, 22);
             this.StartCompletionServiceButton.StyleController = this.layoutControl1;
             this.StartCompletionServiceButton.TabIndex = 6;
             this.StartCompletionServiceButton.Text = "Start Service";
@@ -172,9 +172,9 @@
             // 
             // SampleCommmandButton
             // 
-            this.SampleCommmandButton.Location = new System.Drawing.Point(413, 97);
+            this.SampleCommmandButton.Location = new System.Drawing.Point(413, 71);
             this.SampleCommmandButton.Name = "SampleCommmandButton";
-            this.SampleCommmandButton.Size = new System.Drawing.Size(184, 22);
+            this.SampleCommmandButton.Size = new System.Drawing.Size(251, 22);
             this.SampleCommmandButton.StyleController = this.layoutControl1;
             this.SampleCommmandButton.TabIndex = 7;
             this.SampleCommmandButton.Text = "Sample COmmand";
@@ -182,9 +182,9 @@
             // 
             // StopCompletionService
             // 
-            this.StopCompletionService.Location = new System.Drawing.Point(601, 71);
+            this.StopCompletionService.Location = new System.Drawing.Point(668, 45);
             this.StopCompletionService.Name = "StopCompletionService";
-            this.StopCompletionService.Size = new System.Drawing.Size(173, 22);
+            this.StopCompletionService.Size = new System.Drawing.Size(106, 22);
             this.StopCompletionService.StyleController = this.layoutControl1;
             this.StopCompletionService.TabIndex = 8;
             this.StopCompletionService.Text = "Stop Service";
@@ -195,49 +195,21 @@
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
             this.emptySpaceItem1,
-            this.emptySpaceItem2,
-            this.layoutControlItem2,
             this.layoutControlGroup1,
-            this.layoutControlGroup3});
+            this.layoutControlGroup3,
+            this.layoutControlGroup4});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(798, 425);
             this.Root.TextVisible = false;
             // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.CancelWithFlagButton;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(194, 26);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
-            // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 123);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(373, 97);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(778, 282);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(405, 308);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // emptySpaceItem2
-            // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(389, 0);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(389, 26);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.CancelWIthTokenButton;
-            this.layoutControlItem2.Location = new System.Drawing.Point(194, 0);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(195, 26);
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlGroup1
             // 
@@ -245,7 +217,7 @@
             this.layoutControlItem3,
             this.layoutControlItem5,
             this.layoutControlItem4});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(389, 97);
             this.layoutControlGroup1.Text = "Blocking Collection";
@@ -255,16 +227,16 @@
             this.layoutControlItem3.Control = this.BlockingCollection1Button;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(188, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(121, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.StopBlockingServiceButton;
-            this.layoutControlItem5.Location = new System.Drawing.Point(188, 0);
+            this.layoutControlItem5.Location = new System.Drawing.Point(121, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(177, 52);
+            this.layoutControlItem5.Size = new System.Drawing.Size(244, 52);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
@@ -273,7 +245,7 @@
             this.layoutControlItem4.Control = this.AddBlockingItemButton;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(188, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(121, 26);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -284,7 +256,7 @@
             this.layoutControlItem6,
             this.layoutControlItem8,
             this.layoutControlItem7});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(389, 26);
+            this.layoutControlGroup3.Location = new System.Drawing.Point(389, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.OptionsItemText.TextToControlDistance = 3;
             this.layoutControlGroup3.Size = new System.Drawing.Size(389, 97);
@@ -297,7 +269,7 @@
             this.layoutControlItem6.CustomizationFormText = "layoutControlItem3";
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(188, 26);
+            this.layoutControlItem6.Size = new System.Drawing.Size(255, 26);
             this.layoutControlItem6.Text = "layoutControlItem3";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
@@ -307,9 +279,9 @@
             this.layoutControlItem8.Control = this.StopCompletionService;
             this.layoutControlItem8.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem8.CustomizationFormText = "layoutControlItem5";
-            this.layoutControlItem8.Location = new System.Drawing.Point(188, 0);
+            this.layoutControlItem8.Location = new System.Drawing.Point(255, 0);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(177, 52);
+            this.layoutControlItem8.Size = new System.Drawing.Size(110, 52);
             this.layoutControlItem8.Text = "layoutControlItem5";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
@@ -321,10 +293,40 @@
             this.layoutControlItem7.CustomizationFormText = "layoutControlItem4";
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(188, 26);
+            this.layoutControlItem7.Size = new System.Drawing.Size(255, 26);
             this.layoutControlItem7.Text = "layoutControlItem4";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
+            // 
+            // layoutControlGroup4
+            // 
+            this.layoutControlGroup4.CustomizationFormText = "Blocking Collection";
+            this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2});
+            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 97);
+            this.layoutControlGroup4.Name = "layoutControlGroup4";
+            this.layoutControlGroup4.OptionsItemText.TextToControlDistance = 3;
+            this.layoutControlGroup4.Size = new System.Drawing.Size(373, 308);
+            this.layoutControlGroup4.Text = "Task Cancellation";
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.CancelWIthTokenButton;
+            this.layoutControlItem2.Location = new System.Drawing.Point(174, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(175, 263);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.CancelWithFlagButton;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(174, 263);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
             // 
             // xtraTabPage2
             // 
@@ -346,10 +348,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
@@ -358,6 +357,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -372,7 +374,6 @@
         private DevExpress.XtraEditors.SimpleButton CancelWithFlagButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraEditors.SimpleButton CancelWIthTokenButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraEditors.SimpleButton BlockingCollection1Button;
@@ -389,6 +390,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup4;
     }
 }
 
