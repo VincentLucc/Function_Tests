@@ -79,6 +79,9 @@ namespace Property_RegEditor_22._1
         public bool IsRefreshRequired(BaseRow editRow)
         {
             var propName = editRow.Properties.FieldName;
+ 
+            //Row editor is null
+            var rowEditor = editRow.Properties.RowEdit;
 
             //Type change, list change, visible properties which needs to be refreshed
             if (editRow is PGridEnumEditorRow ||
