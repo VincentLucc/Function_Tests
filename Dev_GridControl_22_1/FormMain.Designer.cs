@@ -53,6 +53,7 @@ namespace Dev_GridControl_22_1
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
             this.bCustomColumn = new DevExpress.XtraEditors.SimpleButton();
+            this.DataSourceCompatabilitySimpleButton = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -290,6 +291,7 @@ namespace Dev_GridControl_22_1
             // 
             // groupControl6
             // 
+            this.groupControl6.Controls.Add(this.DataSourceCompatabilitySimpleButton);
             this.groupControl6.Controls.Add(this.bCustomColumn);
             this.groupControl6.Location = new System.Drawing.Point(441, 227);
             this.groupControl6.Name = "groupControl6";
@@ -306,6 +308,16 @@ namespace Dev_GridControl_22_1
             this.bCustomColumn.Text = "Custom Column";
             this.bCustomColumn.ToolTip = "Web Style Row Display";
             this.bCustomColumn.Click += new System.EventHandler(this.bCustomColumn_Click);
+            // 
+            // DataSourceCompatabilitySimpleButton
+            // 
+            this.DataSourceCompatabilitySimpleButton.Location = new System.Drawing.Point(5, 55);
+            this.DataSourceCompatabilitySimpleButton.Name = "DataSourceCompatabilitySimpleButton";
+            this.DataSourceCompatabilitySimpleButton.Size = new System.Drawing.Size(141, 23);
+            this.DataSourceCompatabilitySimpleButton.TabIndex = 9;
+            this.DataSourceCompatabilitySimpleButton.Text = "Data Source Compatability";
+            this.DataSourceCompatabilitySimpleButton.ToolTip = "Web Style Row Display";
+            this.DataSourceCompatabilitySimpleButton.Click += new System.EventHandler(this.DataSourceCompatabilitySimpleButton_Click);
             // 
             // FormMain
             // 
@@ -364,6 +376,7 @@ namespace Dev_GridControl_22_1
         private System.Windows.Forms.Button bContextMenuStrip;
         private DevExpress.XtraEditors.GroupControl groupControl6;
         private DevExpress.XtraEditors.SimpleButton bCustomColumn;
+        private DevExpress.XtraEditors.SimpleButton DataSourceCompatabilitySimpleButton;
     }
 }
 

@@ -60,7 +60,6 @@ namespace TaskTests
                     try
                     {
                         t1Token.Token.ThrowIfCancellationRequested();
-
                         //Time consuming action
                         await Task.Delay(1000, t1Token.Token);
                     }
@@ -88,7 +87,6 @@ namespace TaskTests
             t1Token.CancelAfter(3000);
             await Task1;
             $"CancelWithToken.CallEnd:{stopwatch.ElapsedMilliseconds}ms".TraceRecord();
-
         }
 
         private async void BlockingCollection1Button_Click(object sender, EventArgs e)

@@ -227,6 +227,12 @@
     <Compile Include="Forms\ContextMenuStripForm.Designer.cs">
       <DependentUpon>ContextMenuStripForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SupportOfDataSource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SupportOfDataSource.Designer.cs">
+      <DependentUpon>SupportOfDataSource.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UpdateDataTableForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ContextMenuStripForm.resx">
       <DependentUpon>ContextMenuStripForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SupportOfDataSource.resx">
+      <DependentUpon>SupportOfDataSource.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UpdateDataTableForm.resx">
       <DependentUpon>UpdateDataTableForm.cs</DependentUpon>

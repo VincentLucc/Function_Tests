@@ -24,7 +24,7 @@ namespace Dev_GridControl_22_1
         private void Form1_Load(object sender, EventArgs e)
         {
 
-          
+
         }
 
 
@@ -41,7 +41,7 @@ namespace Dev_GridControl_22_1
             customEditor.StartPosition = FormStartPosition.CenterParent;
             customEditor.ShowDialog();
 
-            
+
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
@@ -75,7 +75,7 @@ namespace Dev_GridControl_22_1
             using (CollectionSourceForm collectionForm = new CollectionSourceForm())
             {
                 collectionForm.ShowDialog();
-            }  
+            }
         }
 
         private void bEditForm_Click(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace Dev_GridControl_22_1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var winCustomBindingEdit=new CustomBindingEditForm();
+            var winCustomBindingEdit = new CustomBindingEditForm();
             winCustomBindingEdit.ShowDialog();
         }
 
@@ -118,7 +118,7 @@ namespace Dev_GridControl_22_1
 
         private void bFilterButton_Click(object sender, EventArgs e)
         {
-            var winFIlter=new FIlterFunctionForm();
+            var winFIlter = new FIlterFunctionForm();
             winFIlter.ShowDialog();
         }
 
@@ -144,6 +144,14 @@ namespace Dev_GridControl_22_1
         {
             var form = new CustomColumns();
             form.ShowDialog();
+        }
+
+        private void DataSourceCompatabilitySimpleButton_Click(object sender, EventArgs e)
+        {
+            using (SupportOfDataSource form = new SupportOfDataSource())
+            {
+                form.ShowDialog();
+            }
         }
     }
 }
