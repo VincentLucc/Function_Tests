@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,20 @@ public class csConfigModel
     public string sValue1 => "Value won't be serialized";
 
     private string _sValue2;
+
+    [XmlIgnore]
+    public Color ColorTest
+    {
+        get => Color.FromArgb(ColorArgb);
+        set => ColorArgb = value.ToArgb();
+    }
+ 
+    public int ColorArgb
+    {
+        get => ColorTest.ToArgb();
+        set => ColorTest = Color.FromArgb(value);
+    }
+
     public string sValue2
     {
         get { return "Test01"; }
@@ -30,7 +45,7 @@ public class csConfigModel
     public types typeValue2 { get; set; }
     public types typeValue3 { get; set; }
 
- 
+
     public _type1 TestType1 { get; set; }
     public _type2 TestType2 { get; set; }
 
@@ -50,7 +65,7 @@ public class csConfigModel
         typeValue3 = types.type3;
 
         SubItem = new subClass();
-        ParentItem=new ParentClass();
+        ParentItem = new ParentClass();
     }
 }
 
@@ -62,8 +77,8 @@ public class subClass
 
     public subClass()
     {
-        StringA= "a";
-        StringB= "b";
+        StringA = "a";
+        StringB = "b";
     }
 }
 

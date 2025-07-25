@@ -95,5 +95,15 @@ namespace DevLayout_22_1
             });
             messageHelper.Info("Auto Close");
         }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void ColourPickBarEditItem_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
