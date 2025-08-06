@@ -183,7 +183,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlCSSControlForm", "DXApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log4Net", "Log4Net\Log4Net.csproj", "{9503B928-2E8F-4541-8326-7D4C1815187A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Property_Class Copy", "Class Copy\Property_Class Copy.csproj", "{BF7DE389-69B7-4F67-A8A3-97837A841B82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassCopy_2201", "Class Copy\ClassCopy_2201.csproj", "{BF7DE389-69B7-4F67-A8A3-97837A841B82}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Property_RegEditor_22.1", "Property_RegEditor_22.1\Property_RegEditor_22.1.csproj", "{1B00A091-938F-49E4-B112-1AE90BDD7D45}"
 EndProject

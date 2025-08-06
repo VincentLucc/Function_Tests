@@ -39,34 +39,34 @@ namespace Property_RegEditor_22._1
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.MainPropertyGridControl = new DevExpress.XtraVerticalGrid.PropertyGridControl();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.CustomPropertyGridControl = new DevExpress.XtraVerticalGrid.PropertyGridControl();
-            this.tab1 = new DevExpress.XtraVerticalGrid.Tab();
-            this.tab2 = new DevExpress.XtraVerticalGrid.Tab();
-            this.tab3 = new DevExpress.XtraVerticalGrid.Tab();
-            this.CustomContainPanelControl = new DevExpress.XtraEditors.PanelControl();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
             this.DefaultDockPanel = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.MainPropertyGridControl = new DevExpress.XtraVerticalGrid.PropertyGridControl();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.CustomPropertyGridControl = new DevExpress.XtraVerticalGrid.PropertyGridControl();
+            this.CustomPropertyGridGeneralTab = new DevExpress.XtraVerticalGrid.Tab();
+            this.AdvancedTab = new DevExpress.XtraVerticalGrid.Tab();
+            this.tab3 = new DevExpress.XtraVerticalGrid.Tab();
+            this.CustomContainPanelControl = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
+            this.dockPanel1.SuspendLayout();
+            this.dockPanel1_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
+            this.DefaultDockPanel.SuspendLayout();
+            this.dockPanel2_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainPropertyGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomPropertyGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomContainPanelControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
-            this.dockPanel1.SuspendLayout();
-            this.dockPanel1_Container.SuspendLayout();
-            this.DefaultDockPanel.SuspendLayout();
-            this.dockPanel2_Container.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -133,111 +133,31 @@ namespace Property_RegEditor_22._1
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(900, 44);
+            this.barDockControlTop.Size = new System.Drawing.Size(900, 57);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 552);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 545);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(900, 18);
+            this.barDockControlBottom.Size = new System.Drawing.Size(900, 25);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 44);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 57);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 508);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 488);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(900, 44);
+            this.barDockControlRight.Location = new System.Drawing.Point(900, 57);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 508);
-            // 
-            // MainPropertyGridControl
-            // 
-            this.MainPropertyGridControl.Cursor = System.Windows.Forms.Cursors.Default;
-            this.MainPropertyGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPropertyGridControl.Location = new System.Drawing.Point(0, 0);
-            this.MainPropertyGridControl.MenuManager = this.barManager1;
-            this.MainPropertyGridControl.Name = "MainPropertyGridControl";
-            this.MainPropertyGridControl.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.True;
-            this.MainPropertyGridControl.Size = new System.Drawing.Size(361, 475);
-            this.MainPropertyGridControl.TabIndex = 4;
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.groupControl1);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(200, 44);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(332, 508);
-            this.panelControl1.TabIndex = 5;
-            // 
-            // listBoxControl1
-            // 
-            this.listBoxControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxControl1.Location = new System.Drawing.Point(0, 0);
-            this.listBoxControl1.Name = "listBoxControl1";
-            this.listBoxControl1.Size = new System.Drawing.Size(193, 475);
-            this.listBoxControl1.TabIndex = 6;
-            this.listBoxControl1.SelectedIndexChanged += new System.EventHandler(this.listBoxControl1_SelectedIndexChanged);
-            // 
-            // groupControl1
-            // 
-            this.groupControl1.Controls.Add(this.CustomPropertyGridControl);
-            this.groupControl1.Controls.Add(this.CustomContainPanelControl);
-            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(2, 2);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(328, 504);
-            this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Customized Layout";
-            // 
-            // CustomPropertyGridControl
-            // 
-            this.CustomPropertyGridControl.ActiveViewType = DevExpress.XtraVerticalGrid.PropertyGridView.Office;
-            this.CustomPropertyGridControl.Cursor = System.Windows.Forms.Cursors.Default;
-            this.CustomPropertyGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CustomPropertyGridControl.Location = new System.Drawing.Point(2, 27);
-            this.CustomPropertyGridControl.MenuManager = this.barManager1;
-            this.CustomPropertyGridControl.Name = "CustomPropertyGridControl";
-            this.CustomPropertyGridControl.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.True;
-            this.CustomPropertyGridControl.SelectedTab = this.tab1;
-            this.CustomPropertyGridControl.Size = new System.Drawing.Size(324, 359);
-            this.CustomPropertyGridControl.TabIndex = 0;
-            this.CustomPropertyGridControl.Tabs.AddRange(new DevExpress.XtraVerticalGrid.Tab[] {
-            this.tab1,
-            this.tab2,
-            this.tab3});
-            // 
-            // tab1
-            // 
-            this.tab1.Caption = "General";
-            this.tab1.Name = "tab1";
-            // 
-            // tab2
-            // 
-            this.tab2.Caption = "Advanced";
-            this.tab2.Name = "tab2";
-            // 
-            // tab3
-            // 
-            this.tab3.Caption = "Tab 3";
-            this.tab3.Name = "tab3";
-            // 
-            // CustomContainPanelControl
-            // 
-            this.CustomContainPanelControl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.CustomContainPanelControl.Location = new System.Drawing.Point(2, 386);
-            this.CustomContainPanelControl.Name = "CustomContainPanelControl";
-            this.CustomContainPanelControl.Size = new System.Drawing.Size(324, 116);
-            this.CustomContainPanelControl.TabIndex = 1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 488);
             // 
             // dockManager1
             // 
@@ -265,40 +185,121 @@ namespace Property_RegEditor_22._1
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.ID = new System.Guid("2a055cc5-2984-4d4f-8899-48cb06054d7f");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 44);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 57);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(200, 508);
+            this.dockPanel1.Size = new System.Drawing.Size(200, 488);
             this.dockPanel1.Text = "Menu";
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.listBoxControl1);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 30);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 31);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(193, 475);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(193, 454);
             this.dockPanel1_Container.TabIndex = 0;
+            // 
+            // listBoxControl1
+            // 
+            this.listBoxControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxControl1.Location = new System.Drawing.Point(0, 0);
+            this.listBoxControl1.Name = "listBoxControl1";
+            this.listBoxControl1.Size = new System.Drawing.Size(193, 454);
+            this.listBoxControl1.TabIndex = 6;
+            this.listBoxControl1.SelectedIndexChanged += new System.EventHandler(this.listBoxControl1_SelectedIndexChanged);
             // 
             // DefaultDockPanel
             // 
             this.DefaultDockPanel.Controls.Add(this.dockPanel2_Container);
             this.DefaultDockPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.DefaultDockPanel.ID = new System.Guid("5665eb07-b129-4b6f-a8ad-30fca27ba9da");
-            this.DefaultDockPanel.Location = new System.Drawing.Point(532, 44);
+            this.DefaultDockPanel.Location = new System.Drawing.Point(532, 57);
             this.DefaultDockPanel.Name = "DefaultDockPanel";
             this.DefaultDockPanel.Options.ShowCloseButton = false;
             this.DefaultDockPanel.OriginalSize = new System.Drawing.Size(368, 200);
-            this.DefaultDockPanel.Size = new System.Drawing.Size(368, 508);
+            this.DefaultDockPanel.Size = new System.Drawing.Size(368, 488);
             this.DefaultDockPanel.Text = "Default Property Grid";
             // 
             // dockPanel2_Container
             // 
             this.dockPanel2_Container.Controls.Add(this.MainPropertyGridControl);
-            this.dockPanel2_Container.Location = new System.Drawing.Point(4, 30);
+            this.dockPanel2_Container.Location = new System.Drawing.Point(4, 31);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(361, 475);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(361, 454);
             this.dockPanel2_Container.TabIndex = 0;
+            // 
+            // MainPropertyGridControl
+            // 
+            this.MainPropertyGridControl.Cursor = System.Windows.Forms.Cursors.Default;
+            this.MainPropertyGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPropertyGridControl.Location = new System.Drawing.Point(0, 0);
+            this.MainPropertyGridControl.MenuManager = this.barManager1;
+            this.MainPropertyGridControl.Name = "MainPropertyGridControl";
+            this.MainPropertyGridControl.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.True;
+            this.MainPropertyGridControl.Size = new System.Drawing.Size(361, 454);
+            this.MainPropertyGridControl.TabIndex = 4;
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.groupControl1);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(200, 57);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(332, 488);
+            this.panelControl1.TabIndex = 5;
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.CustomPropertyGridControl);
+            this.groupControl1.Controls.Add(this.CustomContainPanelControl);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.GroupStyle = DevExpress.Utils.GroupStyle.Title;
+            this.groupControl1.Location = new System.Drawing.Point(2, 2);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(328, 484);
+            this.groupControl1.TabIndex = 0;
+            this.groupControl1.Text = "Customized Layout";
+            // 
+            // CustomPropertyGridControl
+            // 
+            this.CustomPropertyGridControl.ActiveViewType = DevExpress.XtraVerticalGrid.PropertyGridView.Office;
+            this.CustomPropertyGridControl.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CustomPropertyGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CustomPropertyGridControl.Location = new System.Drawing.Point(2, 22);
+            this.CustomPropertyGridControl.MenuManager = this.barManager1;
+            this.CustomPropertyGridControl.Name = "CustomPropertyGridControl";
+            this.CustomPropertyGridControl.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.True;
+            this.CustomPropertyGridControl.SelectedTab = this.CustomPropertyGridGeneralTab;
+            this.CustomPropertyGridControl.Size = new System.Drawing.Size(324, 344);
+            this.CustomPropertyGridControl.TabIndex = 0;
+            this.CustomPropertyGridControl.Tabs.AddRange(new DevExpress.XtraVerticalGrid.Tab[] {
+            this.CustomPropertyGridGeneralTab,
+            this.AdvancedTab,
+            this.tab3});
+            // 
+            // GeneralTab
+            // 
+            this.CustomPropertyGridGeneralTab.Caption = "General";
+            this.CustomPropertyGridGeneralTab.Name = "GeneralTab";
+            // 
+            // AdvancedTab
+            // 
+            this.AdvancedTab.Caption = "Advanced";
+            this.AdvancedTab.Name = "AdvancedTab";
+            // 
+            // tab3
+            // 
+            this.tab3.Caption = "Tab 3";
+            this.tab3.Name = "tab3";
+            // 
+            // CustomContainPanelControl
+            // 
+            this.CustomContainPanelControl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.CustomContainPanelControl.Location = new System.Drawing.Point(2, 366);
+            this.CustomContainPanelControl.Name = "CustomContainPanelControl";
+            this.CustomContainPanelControl.Size = new System.Drawing.Size(324, 116);
+            this.CustomContainPanelControl.TabIndex = 1;
             // 
             // FormMain
             // 
@@ -306,8 +307,8 @@ namespace Property_RegEditor_22._1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 570);
             this.Controls.Add(this.panelControl1);
-            this.Controls.Add(this.DefaultDockPanel);
             this.Controls.Add(this.dockPanel1);
+            this.Controls.Add(this.DefaultDockPanel);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -316,19 +317,19 @@ namespace Property_RegEditor_22._1
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
+            this.dockPanel1.ResumeLayout(false);
+            this.dockPanel1_Container.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
+            this.DefaultDockPanel.ResumeLayout(false);
+            this.dockPanel2_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MainPropertyGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CustomPropertyGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomContainPanelControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
-            this.dockPanel1.ResumeLayout(false);
-            this.dockPanel1_Container.ResumeLayout(false);
-            this.DefaultDockPanel.ResumeLayout(false);
-            this.dockPanel2_Container.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,8 +352,8 @@ namespace Property_RegEditor_22._1
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.PanelControl CustomContainPanelControl;
         private DevExpress.XtraVerticalGrid.PropertyGridControl CustomPropertyGridControl;
-        private DevExpress.XtraVerticalGrid.Tab tab1;
-        private DevExpress.XtraVerticalGrid.Tab tab2;
+        private DevExpress.XtraVerticalGrid.Tab CustomPropertyGridGeneralTab;
+        private DevExpress.XtraVerticalGrid.Tab AdvancedTab;
         private DevExpress.XtraVerticalGrid.Tab tab3;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraBars.Docking.DockPanel DefaultDockPanel;

@@ -11,12 +11,15 @@ using System.Windows.Forms;
 using Property_RegEditor_22._1.Forms;
 using System.Diagnostics;
 using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraEditors.Repository;
 
 namespace Property_RegEditor_22._1
 {
     public partial class FormMain : DevExpress.XtraEditors.XtraForm
     {
         CustomPropertyPanelForm customPropertyPanelForm;
+        RepositoryItemTextEdit readOnlyTextEdit;
+
 
         public FormMain()
         {
@@ -25,8 +28,15 @@ namespace Property_RegEditor_22._1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            InitControls();
+
             InitListBox();
             InitPropertyGrid();
+        }
+
+        private void InitControls()
+        {
+            readOnlyTextEdit = new RepositoryItemTextEdit() { ReadOnly = true };
         }
 
         private void InitPropertyGrid()
@@ -41,7 +51,8 @@ namespace Property_RegEditor_22._1
             CustomPropertyGridControl.TabIndexChanged += CustomPropertyGridControl_TabIndexChanged;//Doesn't trigger when tab changed
             CustomPropertyGridControl.TabStopChanged += CustomPropertyGridControl_TabStopChanged;//Doesn't trigger when tab changed
             CustomPropertyGridControl.SelectedTabChanged += CustomPropertyGridControl_SelectedTabChanged;
-            
+            customPropertyHelper.CustomSettingRowEditor += CustomPropertyHelper_CustomSettingRowEditor;
+
             //Init tabs 
             var generalTab = CustomPropertyGridControl.Tabs[0];
             generalTab.CategoryNames.Add("Test");
@@ -50,6 +61,22 @@ namespace Property_RegEditor_22._1
             miscTab.CategoryNames.Add("Cert");
 
         }
+
+        private void CustomPropertyHelper_CustomSettingRowEditor(DevExpress.XtraVerticalGrid.Events.GetCustomRowCellEditEventArgs eventArg, CustomEditorAttribute editorInfo)
+        {
+            if (CustomPropertyGridControl.SelectedTab != CustomPropertyGridGeneralTab)
+            {
+                CustomPropertyGridControl.OptionsBehavior.Editable = false;
+            }
+            else
+            {
+                CustomPropertyGridControl.OptionsBehavior.Editable = true;
+            }
+        }
+
+
+ 
+
 
         private void CustomPropertyGridControl_SelectedTabChanged(object sender, DevExpress.XtraVerticalGrid.Events.SelectedTabChangedEventArgs e)
         {
@@ -77,7 +104,7 @@ namespace Property_RegEditor_22._1
         {
             if (CustomPropertyGridControl.SelectedObject is Student)
             {
- 
+
                 var stu = CustomPropertyGridControl.SelectedObject as Student;
                 if (stu == null) return;
 

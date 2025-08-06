@@ -7,7 +7,17 @@ using System.Threading.Tasks;
 
 namespace _CommonCode_Framework
 {
+
+
+
     public static class csCommonExtension
+    {
+
+
+
+    }
+
+    public static class csBaseTypeExtension
     {
         public static double GetDoubleValue(this object oValue)
         {
@@ -44,7 +54,12 @@ namespace _CommonCode_Framework
             }
 
         }
+    }
 
+
+
+    public static class csTraceExtension
+    {
         public static void TraceRecord(this string sMessage)
         {
             Trace.WriteLine($"{csDateTimeHelper.TimeOnly_fff} {sMessage}");
