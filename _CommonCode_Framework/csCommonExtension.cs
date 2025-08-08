@@ -12,7 +12,24 @@ namespace _CommonCode_Framework
 
     public static class csCommonExtension
     {
+        /// <summary>
+        /// [PropertyType.IsClass] may contains string, datatype, List<T>...
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
+        public static bool IsUserDefinedClass(this Type type)
+        {
+            //Must be class
+            if (!type.IsClass) return false;
 
+            //Handle special type
+            if (type == typeof(string)) return false;
+
+            //Remove system items
+            if (type.Namespace != null && type.Namespace.StartsWith("System")) return false;
+
+            return true;
+        }
 
 
     }

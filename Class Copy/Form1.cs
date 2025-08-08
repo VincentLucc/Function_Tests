@@ -32,17 +32,17 @@ namespace Class_Copy
             Test1 instance1 = new Test1();
             Test2 instance2 = new Test2()
             {
-                Property01 = "123",
-                Property02 = "123",
-                Field01 = "123",
-                A04 = "123"
+                Property01 = "Property01",
+                Property02 = "Property02",
+                Field01 = "Field111",
+                Field02 = "Field222"
             };
             instance2.SubItem = new Sub2 { A03 = "a03", ABC = "abc" };
             instance2.ListString = new List<string>() { "a", "b", "c", "d" };
             instance2.Test01 = EnumTest.Level2;
             instance2.ListSubItem = new List<Sub2>() { new Sub2(), new Sub2() };
 
-            instance1.CopyInstanceValues(instance2);
+            instance1.CopyInstanceValues(instance2, _instanceCopyMode.InstanceData);
 
             Debug.WriteLine("Test");
         }

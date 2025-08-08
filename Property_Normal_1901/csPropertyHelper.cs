@@ -84,19 +84,23 @@ namespace Property_Normal_Dev191
 
                     //set row visibility
                     SetRowVisibility(row, editor);
-                }          
+                }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("PropertyHelper.ReloadAll:\r\n" + ex.Message);
             }
+            finally
+            {
+                propertyGrid.EndUpdate();
+            }
 
-           propertyGrid.EndUpdate();
+
         }
 
         private void SetRowVisibility(BaseRow row, CustomEditorAttribute editor)
         {
-            SetStudentVisibility(row);        
+            SetStudentVisibility(row);
         }
 
         private void SetStudentVisibility(BaseRow row)

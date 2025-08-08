@@ -13,6 +13,7 @@ namespace Class_Copy
 {
     public static class csInstanceCopyHelper
     {
+
         /// <summary>
         /// Copy values from another class
         /// Allow to copy and log value changes
@@ -22,13 +23,13 @@ namespace Class_Copy
         /// <param name="selfInstance"></param>
         /// <param name="copyInstance"></param>
         /// <returns></returns>
-        public static List<csInstanceCopyLog> CopyInstanceValues<tThis, tCopySource>(this tThis selfInstance, tCopySource copyInstance)
+        public static List<csInstanceCopyLog> CopyInstanceValues<tThis, tCopySource>(this tThis selfInstance, tCopySource copyInstance, _instanceCopyMode copyMode = _instanceCopyMode.None)
         {
-            List<csInstanceCopyLog> PropertyChanges = new List<csInstanceCopyLog>();
+            var copyingData = new csInstanceCopingData() { CopyMode = copyMode };
             "InstanceCopy.Start".TraceRecord();
-            bool isSuccess = selfInstance.CopyValues(copyInstance, ref PropertyChanges);
-            $"InstanceCopy.Complete:[Count:{PropertyChanges.Count}],[Success:{isSuccess}]".TraceRecord();
-            return PropertyChanges;
+            bool isSuccess = selfInstance.CopyValues(copyInstance, ref copyingData);
+            $"InstanceCopy.Complete:[Count:{copyingData.PropertyChanges.Count}],[Success:{isSuccess}]".TraceRecord();
+            return copyingData.PropertyChanges;
         }
 
         /// <summary>
@@ -39,14 +40,14 @@ namespace Class_Copy
         /// <typeparam name="tCopySource"></typeparam>
         /// <param name="selfInstance"></param>
         /// <param name="copyInstance"></param>
-        public static bool CopyValues<tThis, tCopySource>(this tThis selfInstance, tCopySource copyInstance, ref List<csInstanceCopyLog> propertyChanges)
+        public static bool CopyValues<tThis, tCopySource>(this tThis selfInstance, tCopySource copyInstance, ref csInstanceCopingData copingData)
         {
             if (selfInstance == null || copyInstance == null) return true;
 
             try
             {
-                CopyFields(selfInstance, copyInstance, ref propertyChanges);
-                CopyProperties(selfInstance, copyInstance, ref propertyChanges);
+                CopyFields(selfInstance, copyInstance, ref copingData);
+                CopyProperties(selfInstance, copyInstance, ref copingData);
             }
             catch (Exception ex)
             {
@@ -58,7 +59,7 @@ namespace Class_Copy
             return true;
         }
 
-        private static void CopyFields(object selfInstance, object copySourceInstance, ref List<csInstanceCopyLog> propertyChanges)
+        private static void CopyFields(object selfInstance, object copySourceInstance, ref csInstanceCopingData copingData)
         {
             try
             {
@@ -72,8 +73,15 @@ namespace Class_Copy
                     if (copyFieldInfo == null)
                     {
                         $"Property Copy.Field Missing:{thisFieldInfo.Name}".TraceRecord();
-                        propertyChanges.LogError(thisFieldInfo, "Field Missing");
+                        copingData.LogError(thisFieldInfo, "Field Missing");
                         continue;
+                    }
+
+                    //Verify attribute
+                    if (copingData.CopyMode == _instanceCopyMode.InstanceData)
+                    {
+                        var attributes = copyFieldInfo.GetCustomAttributes(false).FirstOrDefault(a => a is InstanceDataAttribute);
+                        if (attributes == null) continue;
                     }
 
                     // Read values
@@ -86,14 +94,14 @@ namespace Class_Copy
                         //Handle class
                         if (thisFieldInfo.FieldType.IsUserDefinedClass())
                         {
-                            valueThis.CopyValues(valueCopy, ref propertyChanges);
+                            valueThis.CopyValues(valueCopy, ref copingData);
                             continue;
                         }
 
                         //Other types, directly set
                         //Enum: same type, set direcly
                         thisFieldInfo.SetValue(selfInstance, valueCopy);
-                        propertyChanges.LogValueChange(thisFieldInfo, valueThis, valueCopy);
+                        copingData.LogValueChange(thisFieldInfo, valueThis, valueCopy);
                         continue;
                     }
 
@@ -106,22 +114,22 @@ namespace Class_Copy
                         if (Enum.IsDefined(thisFieldInfo.FieldType, iValue))
                         {
                             thisFieldInfo.SetValue(selfInstance, iValue);
-                            propertyChanges.LogValueChange(thisFieldInfo, valueThis, valueCopy);
+                            copingData.LogValueChange(thisFieldInfo, valueThis, valueCopy);
                             continue;
                         }
                         else
                         {
                             $"Property Copy.Enum Undefined:{thisFieldInfo.Name}({iValue})".TraceRecord();
-                            propertyChanges.LogError(thisFieldInfo, $"Enum Undefined({iValue})");
+                            copingData.LogError(thisFieldInfo, $"Enum Undefined({iValue})");
                         }
                     }
                     else if (thisFieldInfo.FieldType.IsGenericType)
                     {
-                        SetGenericField(selfInstance, copySourceInstance, thisFieldInfo, copyFieldInfo, ref propertyChanges);
+                        SetGenericField(selfInstance, copySourceInstance, thisFieldInfo, copyFieldInfo, ref copingData);
                     }
                     else
                     {
-                        valueThis.CopyValues(valueCopy, ref propertyChanges);
+                        valueThis.CopyValues(valueCopy, ref copingData);
                         continue;
                     }
                 }
@@ -133,9 +141,9 @@ namespace Class_Copy
 
         }
 
-        private static void SetGenericField(object selfInstance, object copyInstance, FieldInfo thisFieldInfo, FieldInfo copyFieldInfo, ref List<csInstanceCopyLog> propertyChanges)
+        private static void SetGenericField(object selfInstance, object copyInstance, FieldInfo thisFieldInfo, FieldInfo copyFieldInfo, ref csInstanceCopingData copingData)
         {
-            
+
             //Get value
             object valueThis = thisFieldInfo.GetValue(selfInstance);
             object valueCopy = copyFieldInfo.GetValue(copyInstance);
@@ -149,13 +157,13 @@ namespace Class_Copy
                 if (thisFieldInfo.FieldType == copyFieldInfo.FieldType)
                 {
                     thisFieldInfo.SetValue(selfInstance, valueCopy);
-                    propertyChanges.LogValueChange(thisFieldInfo, valueThis, valueCopy);
+                    copingData.LogValueChange(thisFieldInfo, valueThis, valueCopy);
                     return;
                 }
 
                 //Ignore collections
                 $"Field Copy.Generic Ignored:{thisFieldInfo.Name}".TraceRecord();
-                propertyChanges.LogError(thisFieldInfo, "Ignored");
+                copingData.LogError(thisFieldInfo, "Ignored");
                 return;
             }
 
@@ -168,17 +176,17 @@ namespace Class_Copy
             foreach (var item in copyList)
             {
                 var thisItem = Activator.CreateInstance(thisItemType);
-                thisItem.CopyValues(item, ref propertyChanges);
+                thisItem.CopyValues(item, ref copingData);
                 newList.Add(thisItem);
             }
 
 
             thisFieldInfo.SetValue(selfInstance, newList);
-            propertyChanges.LogValueChange(thisFieldInfo, valueThis, valueCopy);
+            copingData.LogValueChange(thisFieldInfo, valueThis, valueCopy);
         }
 
 
-        private static void CopyProperties(object selfInstance, object copyInstance, ref List<csInstanceCopyLog> propertyChanges)
+        private static void CopyProperties(object selfInstance, object copyInstance, ref csInstanceCopingData copingData)
         {
             try
             {
@@ -197,8 +205,15 @@ namespace Class_Copy
                     if (copyPropertyInfo == null)
                     {
                         $"Property Copy.Property Missing:{thisPropertyInfo.Name}".TraceRecord();
-                        propertyChanges.LogError(thisPropertyInfo, "Property Missing");
+                        copingData.LogError(thisPropertyInfo, "Property Missing");
                         continue;
+                    }
+
+                    //Verify attribute
+                    if (copingData.CopyMode == _instanceCopyMode.InstanceData)
+                    {
+                        var attributes = copyPropertyInfo.GetCustomAttributes(false).FirstOrDefault(a => a is InstanceDataAttribute);
+                        if (attributes == null) continue;
                     }
 
                     // Read values
@@ -211,14 +226,14 @@ namespace Class_Copy
                      //Handle class
                         if (thisPropertyInfo.PropertyType.IsUserDefinedClass())
                         {
-                            valueThis.CopyValues(valueCopy, ref propertyChanges);
+                            valueThis.CopyValues(valueCopy, ref copingData);
                             continue;
                         }
 
                         //Other types, directly set
                         //Enum: same type, set directly
                         thisPropertyInfo.SetValue(selfInstance, valueCopy, null);
-                        propertyChanges.LogValueChange(thisPropertyInfo, valueThis, valueCopy);
+                        copingData.LogValueChange(thisPropertyInfo, valueThis, valueCopy);
                         continue;
                     }
 
@@ -231,22 +246,22 @@ namespace Class_Copy
                         if (Enum.IsDefined(thisPropertyInfo.PropertyType, iValue))
                         {
                             thisPropertyInfo.SetValue(selfInstance, iValue, null);
-                            propertyChanges.LogValueChange(thisPropertyInfo, valueThis, valueCopy);
+                            copingData.LogValueChange(thisPropertyInfo, valueThis, valueCopy);
                             continue;
                         }
                         else
                         {
                             $"Property Copy.Enum Undefined:{thisPropertyInfo.Name}({iValue})".TraceRecord();
-                            propertyChanges.LogError(thisPropertyInfo, $"Enum Undefined({iValue})");
+                            copingData.LogError(thisPropertyInfo, $"Enum Undefined({iValue})");
                         }
                     }
                     else if (thisPropertyInfo.PropertyType.IsGenericType)
                     {
-                        SetGenericProperty(selfInstance, copyInstance, thisPropertyInfo, copyPropertyInfo, ref propertyChanges);
+                        SetGenericProperty(selfInstance, copyInstance, thisPropertyInfo, copyPropertyInfo, ref copingData);
                     }
                     else
                     {
-                        valueThis.CopyValues(valueCopy, ref propertyChanges);
+                        valueThis.CopyValues(valueCopy, ref copingData);
                         continue;
                     }
                 }
@@ -265,7 +280,7 @@ namespace Class_Copy
         /// </summary>
         /// <param name="thisPropertyInfo"></param>
         /// <param name="propertyChanges"></param>
-        private static void SetGenericProperty(object selfInstance, object copyInstance, PropertyInfo thisPropertyInfo, PropertyInfo copyPropertyInfo, ref List<csInstanceCopyLog> propertyChanges)
+        private static void SetGenericProperty(object selfInstance, object copyInstance, PropertyInfo thisPropertyInfo, PropertyInfo copyPropertyInfo, ref csInstanceCopingData copingData)
         {
             //Get value
             object valueThis = thisPropertyInfo.GetValue(selfInstance);
@@ -281,12 +296,12 @@ namespace Class_Copy
                 if (thisPropertyInfo.PropertyType == copyPropertyInfo.PropertyType)
                 {
                     thisPropertyInfo.SetValue(selfInstance, valueCopy);
-                    propertyChanges.LogValueChange(thisPropertyInfo, valueThis, valueCopy);
+                    copingData.LogValueChange(thisPropertyInfo, valueThis, valueCopy);
                     return;
                 }
 
                 $"Property Copy.Generic Ignored:{thisPropertyInfo.Name}".TraceRecord();
-                propertyChanges.LogError(thisPropertyInfo, "Ignored");
+                copingData.LogError(thisPropertyInfo, "Ignored");
                 return;
             }
 
@@ -300,13 +315,13 @@ namespace Class_Copy
             foreach (var item in copyList)
             {
                 var thisItem = Activator.CreateInstance(thisItemType);
-                thisItem.CopyValues(item, ref propertyChanges);
+                thisItem.CopyValues(item, ref copingData);
                 newList.Add(thisItem);
             }
 
 
             thisPropertyInfo.SetValue(selfInstance, newList, null);
-            propertyChanges.LogValueChange(thisPropertyInfo, valueThis, valueCopy);
+            copingData.LogValueChange(thisPropertyInfo, valueThis, valueCopy);
         }
     }
 }

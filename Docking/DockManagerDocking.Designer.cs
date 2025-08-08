@@ -140,7 +140,7 @@ namespace Docking
             this.dockPanel3.Name = "dockPanel3";
             this.dockPanel3.OriginalSize = new System.Drawing.Size(200, 200);
             this.dockPanel3.Size = new System.Drawing.Size(200, 250);
-            this.dockPanel3.Text = "dockPanel3";
+            this.dockPanel3.Text = "LeftDockPanel";
             // 
             // dockPanel3_Container
             // 
@@ -171,9 +171,9 @@ namespace Docking
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dockPanel3);
             this.Controls.Add(this.dockPanel2);
             this.Controls.Add(this.dpBottom);
+            this.Controls.Add(this.dockPanel3);
             this.Name = "DockManagerDocking";
             this.Text = "DockManager1";
             this.Load += new System.EventHandler(this.DockManagerDocking_Load);

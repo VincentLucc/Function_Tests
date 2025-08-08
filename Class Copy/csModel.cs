@@ -13,8 +13,13 @@ namespace Class_Copy
     public class Test1
     {
         public string Property01 { get; set; }
+        [InstanceData]
         public string Property02 { get; set; }
         public string Field01;
+
+
+        [InstanceData]
+        public string Field02 { get; set; }
         public Sub1 SubItem { get; set; }
 
         public List<string> ListString { get; set; } = new List<string>();
@@ -34,10 +39,13 @@ namespace Class_Copy
     public class Test2
     {
         public string Property01 { get; set; }
+        [InstanceData]
         public string Property02 { get; set; }
         public string Field01;
 
-        public string A04 { get; set; }
+
+        [InstanceData]
+        public string Field02 { get; set; }
 
         public Sub2 SubItem { get; set; }
 
