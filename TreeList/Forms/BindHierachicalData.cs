@@ -80,7 +80,7 @@ namespace TreeList
             //treeList1.Columns[nameof(csTreeItem.Icon)].Width = 50;
 
             //Show hide columns, don't use custom style event (Won't trigger)
-            treeList1.CustomColumnDisplayText += TreeList1_CustomColumnDisplayText; ;
+            treeList1.CustomColumnDisplayText += TreeList1_CustomColumnDisplayText;
 
             treeList1.GetSelectImage += TreeList1_GetSelectImage;
             treeList1.GetStateImage += TreeList1_GetStateImage;
@@ -250,7 +250,7 @@ namespace TreeList
     public class csTreeItem : INotifyPropertyChanged
     {
 
-
+        public bool? Enable { get; set; }
 
         private string _name;
         public string Name
@@ -265,6 +265,7 @@ namespace TreeList
                 }
             }
         }
+ 
 
         [Browsable(false)]
         public Image Icon { get; set; }
