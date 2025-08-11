@@ -97,6 +97,11 @@ namespace Class_Copy
                             valueThis.CopyValues(valueCopy, ref copingData);
                             continue;
                         }
+                        else if (thisFieldInfo.FieldType.IsGenericType)
+                        {
+                            SetGenericField(selfInstance, copySourceInstance, thisFieldInfo, copyFieldInfo, ref copingData);
+                            continue;
+                        }
 
                         //Other types, directly set
                         //Enum: same type, set direcly
@@ -150,7 +155,7 @@ namespace Class_Copy
 
             //Make sure value is generic
             var genericType = thisFieldInfo.FieldType.GetGenericTypeDefinition();
-            if (genericType != typeof(List<>) ||
+            if (genericType != typeof(List<>) &&
                 genericType != typeof(BindingList<>))
             {
                 //Directly copy
@@ -229,6 +234,11 @@ namespace Class_Copy
                             valueThis.CopyValues(valueCopy, ref copingData);
                             continue;
                         }
+                        else if (thisPropertyInfo.PropertyType.IsGenericType)
+                        {
+                            SetGenericProperty(selfInstance, copyInstance, thisPropertyInfo, copyPropertyInfo, ref copingData);
+                            continue;
+                        }
 
                         //Other types, directly set
                         //Enum: same type, set directly
@@ -288,7 +298,7 @@ namespace Class_Copy
 
             //Make sure value is generic
             var genericType = thisPropertyInfo.PropertyType.GetGenericTypeDefinition();
-            if (genericType != typeof(List<>) ||
+            if (genericType != typeof(List<>) &&
                 genericType != typeof(BindingList<>))
             {//Ignore collections
 
