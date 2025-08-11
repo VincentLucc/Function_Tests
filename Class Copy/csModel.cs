@@ -12,20 +12,25 @@ namespace Class_Copy
 
     public class Test1
     {
-        public string A01 { get; set; }
-        public string A02 { get; set; }
-        public string A03 { get; set; }
-        public Sub1 Sub1 { get; set; }
+        public string Property01 { get; set; }
+        [InstanceData]
+        public string Property02 { get; set; }
+        public string Field01;
 
-        public List<string> ListString { get; set; }
 
-        public List<Sub1> ListSub { get; set; }
+        [InstanceData]
+        public string Field02 { get; set; }
+        public Sub1 SubItem { get; set; }
+
+        public List<string> ListString { get; set; } = new List<string>();
+
+        public List<Sub1> ListSubItem { get; set; } = new List<Sub1>();
 
         public EnumTest Test01 { get; set; }
 
         public Test1()
         {
-            Sub1 = new Sub1();
+            SubItem = new Sub1();
             Test01 = EnumTest.Level3;
         }
 
@@ -33,17 +38,20 @@ namespace Class_Copy
 
     public class Test2
     {
-        public string A01 { get; set; }
-        public string A02 { get; set; }
-        public string A03 { get; set; }
+        public string Property01 { get; set; }
+        [InstanceData]
+        public string Property02 { get; set; }
+        public string Field01;
 
-        public string A04 { get; set; }
 
-        public Sub2 Sub1 { get; set; }
+        [InstanceData]
+        public string Field02 { get; set; }
 
-        public List<string> ListString { get; set; }
+        public Sub2 SubItem { get; set; }
 
-        public List<Sub2> ListSub { get; set; }
+        public List<string> ListString { get; set; } = new List<string>();
+
+        public List<Sub2> ListSubItem { get; set; } = new List<Sub2>();
 
         public EnumTest Test01 { get; set; }
     }

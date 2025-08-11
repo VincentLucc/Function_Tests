@@ -71,6 +71,11 @@ namespace Property_RegEditor_22._1
         [DisplayName("Button Edit Hide"), Description("Button Edit Hide")]
         public string ButtonEditHide { get; set; }
 
+        [CustomEditor(_editorType.NumberSpin)]
+        [Category("Cert")]
+        [DisplayName("CertNumber"), Description("CertNumber")]
+        public int CertNumble { get; set; }
+
         [TypeConverter(typeof(ExpandableObjectConverter))] //Show sub class properties
         [ExpandableRowSettings(false)] //Hide class root editor
         [Category("Cert")]

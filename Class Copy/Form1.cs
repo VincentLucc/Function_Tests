@@ -19,21 +19,30 @@ namespace Class_Copy
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Test1 abc = new Test1();
-            Test2 abc1 = new Test2()
-            {
-                A01 = "123",
-                A02 = "123",
-                A03 = "123",
-                A04 = "123"
-            };
-            abc1.Sub1 = new Sub2 { A03 = "a03", ABC = "abc" };
-            abc1.ListString = new List<string>() { "a", "b", "c", "d" };
-            abc1.Test01 = EnumTest.Level2;
-            abc1.ListSub = new List<Sub2>() { new Sub2(), new Sub2() };
 
-            abc.CopyValues(abc1);
-            abc.CopyValuesSpecial(abc1);
+        }
+
+        private void StartCopySimpleButton_Click(object sender, EventArgs e)
+        {
+            StartCopyAction();
+        }
+
+        private void StartCopyAction()
+        {
+            Test1 instance1 = new Test1();
+            Test2 instance2 = new Test2()
+            {
+                Property01 = "Property01",
+                Property02 = "Property02",
+                Field01 = "Field111",
+                Field02 = "Field222"
+            };
+            instance2.SubItem = new Sub2 { A03 = "a03", ABC = "abc" };
+            instance2.ListString = new List<string>() { "a", "b", "c", "d" };
+            instance2.Test01 = EnumTest.Level2;
+            instance2.ListSubItem = new List<Sub2>() { new Sub2(), new Sub2() };
+
+            instance1.CopyInstanceValues(instance2, _instanceCopyMode.InstanceData);
 
             Debug.WriteLine("Test");
         }
