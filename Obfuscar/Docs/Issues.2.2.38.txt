@@ -16,4 +16,4 @@ Must exclude xml file class and any subclass
 If not set, it will only rename the class name
 
 >>>Parent class
-¿ÉÒÔÖ»skip parent class È»ºó±£³Ö¼Ì³ĞClass±»¼ÓÃÜ
+ï¿½ï¿½ï¿½ï¿½Ö»skip parent class È»ï¿½ó±£³Ö¼Ì³ï¿½Classï¿½ï¿½ï¿½ï¿½ï¿½

@@ -11,6 +11,5 @@ https://docs.lextudio.com/obfuscar/getting-started/configuration
 Unzip and get the "Obfuscar.Console.exe" in tool folder
 
 
-
 >>>Create files
 Create input/output folder
