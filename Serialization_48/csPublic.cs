@@ -8,6 +8,11 @@ namespace Serialization_48
 {
     public class csPublic
     {
+        /// <summary>
+        /// Json.Net
+        /// </summary>
+        /// <param name="oItem"></param>
+        /// <returns></returns>
         public static string SerializeObjectIgnoreNull(object oItem)
         {
             var jsonSetting = new JsonSerializerSettings();
