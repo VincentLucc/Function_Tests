@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Serialization
+namespace Serialization_48
 {
     internal class csModel
     {

@@ -82,18 +82,26 @@
     <Compile Include="csDiagramHelper.cs" />
     <Compile Include="csFPSHelper.cs" />
     <Compile Include="csImages.cs" />
-    <Compile Include="csItem1.cs" />
-    <Compile Include="DirectXForm1.cs" />
+    <Compile Include="csItem1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DirectXForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DirectXForm1.Designer.cs">
       <DependentUpon>DirectXForm1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestForm.cs" />
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TestForm.Designer.cs">
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>

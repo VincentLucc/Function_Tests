@@ -75,7 +75,9 @@
     <Compile Include="csPGPHelper.cs" />
     <Compile Include="csPGPCertificate.cs" />
     <Compile Include="csPublic.cs" />
-    <Compile Include="FormMain.cs" />
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>

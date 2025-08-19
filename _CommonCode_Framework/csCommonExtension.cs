@@ -36,19 +36,19 @@ namespace _CommonCode_Framework
 
     public static class csBaseTypeExtension
     {
-        public static double GetDoubleValue(this object oValue)
+        public static double GetDoubleValue(this object oValue, double dDefault=-1)
         {
-            if (oValue == null) return -1;
-            if (!double.TryParse(oValue.ToString(), out double dValue)) return -1;
+            if (oValue == null) return dDefault;
+            if (!double.TryParse(oValue.ToString(), out double dValue)) return dDefault;
             return dValue;
         }
 
-        public static int GetIntValue(this object oValue)
+        public static int GetIntValue(this object oValue, int iDefault = -1)
         {
             if (oValue == null) return -1;
             //Int try-parse might get -1 for decimal values, use double instead
             string sValue = oValue.ToString();
-            if (!double.TryParse(sValue, out double dValue)) return -1;
+            if (!double.TryParse(sValue, out double dValue)) return iDefault;
             int iValue = (int)dValue;
             return iValue;
         }
