@@ -20,9 +20,26 @@ namespace Dev_WpfAppFramework
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<csAccordingItem> accordingItems = new List<csAccordingItem>();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            //Events
+            this.Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            ////Prepare data
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    var newItem = new csAccordingItem() { Name=$"Name_{i.ToString("d2")}"};
+            //    accordingItems.Add(newItem);
+            //}
+
+            //accordion01.ItemsSource = accordingItems;
         }
     }
 }

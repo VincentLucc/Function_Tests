@@ -1,0 +1,14 @@
+﻿MVVM简化:自动化内容
+
+[POCOViewModel]
+public class PersonViewModel {
+    public virtual string FirstName { get; set; }
+    public virtual string LastName { get; set; }
+    public virtual int Age { get; set; }
+
+    // 对应 SaveCommand
+    public virtual void Save() {
+        // 保存逻辑
+    }
+}
+
