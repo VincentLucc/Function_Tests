@@ -3,9 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                                   xmlns:dxa="http://schemas.devexpress.com/winfx/2008/xaml/accordion"
+        xmlns:dxa="http://schemas.devexpress.com/winfx/2008/xaml/accordion"
         xmlns:local="clr-namespace:Dev_WpfAppFramework"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        
         mc:Ignorable="d"
+        
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -14,18 +17,17 @@
         </Grid.ColumnDefinitions>
 
         <dxa:AccordionControl Grid.Column="0" 
-                              x:Name="accordion01" >
-            <dxa:AccordionItem Header="Item1"/>
-            <dxa:AccordionItem Header="Item2"/>
-            <dxa:AccordionItem Header="Item3"/>
-            <dxa:AccordionItem Header="Item4"/>
-
+                  x:Name="accordion01" SelectedItemChanged="accordion01_SelectedItemChanged">
+            <dxa:AccordionItem x:Name="item1AccordionItem" Header="Item1"/>
+            <dxa:AccordionItem x:Name="item2AccordionItem" Header="Item2"/>
+            <dxa:AccordionItem x:Name="item3AccordionItem" Header="Item3"/>
+            <dxa:AccordionItem x:Name="item4AccordionItem" Header="Item4"/>
         </dxa:AccordionControl>
 
-        
-        <ContentControl Grid.Column="1">
-            
-        </ContentControl>
+
+        <ContentControl x:Name="mainContentControl" Grid.Column="1"/>
+
+
 
     </Grid>
 </Window>

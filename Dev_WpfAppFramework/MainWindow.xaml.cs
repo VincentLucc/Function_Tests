@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _CommonCode_Framework;
+using Dev_WpfAppFramework.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,21 +27,27 @@ namespace Dev_WpfAppFramework
         public MainWindow()
         {
             InitializeComponent();
-
             //Events
             this.Loaded += MainWindow_Loaded;
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            ////Prepare data
-            //for (int i = 0; i < 3; i++)
-            //{
-            //    var newItem = new csAccordingItem() { Name=$"Name_{i.ToString("d2")}"};
-            //    accordingItems.Add(newItem);
-            //}
+            //Init controls
+            mainContentControl.Content = new QuickTest1UserControl();
+        }
 
-            //accordion01.ItemsSource = accordingItems;
+        private void accordion01_SelectedItemChanged(object sender, DevExpress.Xpf.Accordion.AccordionSelectedItemChangedEventArgs e)
+        {
+            "accordion01_SelectedItemChanged.CLicked".TraceRecord();
+            if (accordion01.SelectedItem == item1AccordionItem)
+            {
+                mainContentControl.Content = new QuickTest1UserControl();
+            }
+            else if (accordion01.SelectedItem == item2AccordionItem)
+            {
+                mainContentControl.Content = new Item2UserControl();
+            }
         }
     }
 }

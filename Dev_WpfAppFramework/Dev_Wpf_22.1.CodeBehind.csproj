@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+	<DXEnablePOCOGeneration>True</DXEnablePOCOGeneration>
+	<DXEnableModelCodeGeneration>True</DXEnableModelCodeGeneration>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -93,10 +95,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\QuickTestViewModel.cs" />
-    <Compile Include="Views\QuickTestPage.xaml.cs">
-      <DependentUpon>QuickTestPage.xaml</DependentUpon>
+    <Compile Include="Views\Item2UserControl.xaml.cs">
+      <DependentUpon>Item2UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QuickTest1UserControl.xaml.cs">
+      <DependentUpon>QuickTest1UserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -111,7 +114,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\QuickTestPage.xaml">
+    <Page Include="Views\Item2UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QuickTest1UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,6 +152,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Docs\DevExpress.MVVM.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\_CommonCode_Framework\_CommonCode_Framework.csproj">
+      <Project>{925b87b3-c48d-414a-9d9a-e74147a67868}</Project>
+      <Name>_CommonCode_Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

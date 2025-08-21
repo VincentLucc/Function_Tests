@@ -65,7 +65,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaitForm", "WaitForm\WaitFo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dev_WpfCore", "Dev_Wpf1\Dev_WpfCore.csproj", "{D2CF3BF7-02DB-44DA-92D1-075EA11A3FD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dev_Wpf_22.1", "Dev_WpfAppFramework\Dev_Wpf_22.1.csproj", "{4FFE80CC-C3D5-4669-A572-60C298EA45E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dev_Wpf_22.1.CodeBehind", "Dev_WpfAppFramework\Dev_Wpf_22.1.CodeBehind.csproj", "{4FFE80CC-C3D5-4669-A572-60C298EA45E4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AprintCode", "AprintCode\AprintCode.csproj", "{C74DBE8B-0972-4C7D-B7F5-192C43EE081B}"
 EndProject

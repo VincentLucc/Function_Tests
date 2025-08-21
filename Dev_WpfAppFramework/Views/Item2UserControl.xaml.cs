@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Dev_WpfAppFramework.Views
 {
     /// <summary>
-    /// Interaction logic for QuickTestPage.xaml
+    /// Interaction logic for Item2UserControl.xaml
     /// </summary>
-    public partial class QuickTestPage : Page
+    public partial class Item2UserControl : UserControl
     {
-        public QuickTestPage()
+        public Item2UserControl()
         {
             InitializeComponent();
         }
