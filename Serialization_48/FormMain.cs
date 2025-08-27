@@ -5,7 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Windows.Forms;
+using _CommonCode_Framework;
 
 namespace Serialization_48
 {
@@ -18,15 +21,25 @@ namespace Serialization_48
 
         private void SerializeButton_Click(object sender, EventArgs e)
         {
-            var testValue = new Test();
-            testValue.IntValue = 1;
-            testValue.StrValue = "abc";
-            for (int i = 0; i < 3; i++)
-            {
-                testValue.TagReasons.Add($"Reason_{i + 1}", i + 1);
-            }
-
+            var testValue = Test.CreateSmple();
+ 
             string sSerial = csPublic.SerializeObjectIgnoreNull(testValue);
+            sSerial.TraceRecord();
+        }
+
+        private void SystemJsonSerializeButton_Click(object sender, EventArgs e)
+        {
+            var testValue = Test.CreateSmple();
+
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = false, //Allow format
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull//Ignore null object
+            };
+
+            string json = JsonSerializer.Serialize(testValue, options);
+            json.TraceRecord();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35931.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "DevTestProject\TestProject.csproj", "{5FCC38DC-749D-443E-BB35-6558DAAD7571}"
 EndProject
@@ -65,7 +65,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaitForm", "WaitForm\WaitFo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dev_WpfCore", "Dev_Wpf1\Dev_WpfCore.csproj", "{D2CF3BF7-02DB-44DA-92D1-075EA11A3FD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dev_WpfAppFramework", "Dev_WpfAppFramework\Dev_WpfAppFramework.csproj", "{4FFE80CC-C3D5-4669-A572-60C298EA45E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dev_Wpf_22.1.CodeBehind", "Dev_WpfAppFramework\Dev_Wpf_22.1.CodeBehind.csproj", "{4FFE80CC-C3D5-4669-A572-60C298EA45E4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AprintCode", "AprintCode\AprintCode.csproj", "{C74DBE8B-0972-4C7D-B7F5-192C43EE081B}"
 EndProject

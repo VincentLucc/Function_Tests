@@ -14,10 +14,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using _CommonCode_Framework;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Running;
 using DevExpress.XtraScheduler;
 
 namespace _QuickTests_Framework
 {
+    [MemoryDiagnoser]//Must
     public partial class FormMain : Form
     {
         bool IsDebug { get; set; }
@@ -81,6 +84,9 @@ namespace _QuickTests_Framework
         {
             this.Visible = true;
 #if DEBUG
+
+            //Init 
+
             //Not working in custom controls, only in forms
             IsDebug = true;
 #endif
@@ -92,6 +98,9 @@ namespace _QuickTests_Framework
         {
             this.KeyPreview = true; //Must set to receive key down events
             csPublic.LED = new csLED(this, 1500, 4);
+
+            //Init benchmark
+            BenchmarkRunner.Run<FormMain>();
         }
 
 
@@ -1392,6 +1401,7 @@ namespace _QuickTests_Framework
             IsTimerLooping = false;
         }
 
+        [Benchmark]
         private void bPrepareReal_Click(object sender, EventArgs e)
         {
             int iStart = 10000;
