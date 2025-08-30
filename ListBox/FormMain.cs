@@ -20,6 +20,9 @@ namespace ListBox
         {
             DevListBoxAutoToolTip winListBox=new DevListBoxAutoToolTip();
             winListBox.ShowDialog(this);
+            
+            //This is a test
+     
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
