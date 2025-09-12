@@ -161,6 +161,7 @@ namespace PDF_Editor
             this.MoveUpFileButtonItem.ImageOptions.Image = global::PDF_Editor.Properties.Resources.moveup_16x16;
             this.MoveUpFileButtonItem.ImageOptions.LargeImage = global::PDF_Editor.Properties.Resources.moveup_32x32;
             this.MoveUpFileButtonItem.Name = "MoveUpFileButtonItem";
+            this.MoveUpFileButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MoveUpFileButtonItem_ItemClick);
             // 
             // MoveDownFileButtonItem
             // 
@@ -169,6 +170,7 @@ namespace PDF_Editor
             this.MoveDownFileButtonItem.ImageOptions.Image = global::PDF_Editor.Properties.Resources.movedown_16x16;
             this.MoveDownFileButtonItem.ImageOptions.LargeImage = global::PDF_Editor.Properties.Resources.movedown_32x32;
             this.MoveDownFileButtonItem.Name = "MoveDownFileButtonItem";
+            this.MoveDownFileButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MoveDownFileButtonItem_ItemClick);
             // 
             // CombineBarButtonItem
             // 

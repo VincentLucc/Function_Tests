@@ -17,5 +17,10 @@ namespace PDF_Editor
         [DisplayName("File Size")]
         internal int FileSize { get; set; }
 
+        public csPDFFile(string sFilePath)
+        {
+            Path = sFilePath;
+        }
+
     }
 }
