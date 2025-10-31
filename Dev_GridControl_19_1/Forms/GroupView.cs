@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -111,9 +112,21 @@ namespace Dev_GridControl_19_1
 
         private void GridView1_CustomDrawGroupRow(object sender, DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs e)
         {
-            GridGroupRowInfo groupInfo = e.Info as GridGroupRowInfo;
-            groupInfo.GroupText += ":Test Text TEst";
-            groupInfo.GroupText = groupInfo.GroupValueText;
+ 
+      
+
+            try
+            {
+                if (!(e.Info is GridGroupRowInfo groupInfo)) return;
+
+                groupInfo.GroupText = $"{groupInfo.GroupValueText}:Test Text TEst";
+      
+
+            }
+            catch (Exception exception)
+            {
+                Trace.WriteLine($"GridView1_CustomDrawGroupRow.Exception:{exception.Message}");
+            }
 
         }
 
