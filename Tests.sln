@@ -265,7 +265,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DllImportHelper", "DllImpor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDF Editor", "PDF Editor\PDF Editor.csproj", "{AF26CA92-F21D-4E22-8D97-213408DCE7C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoTax", "DemoTax\DemoTax.csproj", "{5DB03123-4AFC-41E6-8CF8-502C9A9A72DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoTax_22", "DemoTax\DemoTax_22.csproj", "{5DB03123-4AFC-41E6-8CF8-502C9A9A72DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

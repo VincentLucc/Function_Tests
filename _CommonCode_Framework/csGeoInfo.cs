@@ -41,15 +41,5 @@ namespace _CommonCode_Framework
         Saskatchewan = 90
     }
 
-    public class TaxBracket
-    {
-        public double Margin { get; set; }
-        public double Rate { get; set; }
 
-        public TaxBracket(double margin, double rate)
-        {
-            Margin=margin; 
-            Rate= rate;
-        }
-    }
 }

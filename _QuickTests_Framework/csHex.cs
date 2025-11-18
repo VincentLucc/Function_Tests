@@ -200,8 +200,8 @@ namespace _QuickTests_Framework
         #endregion
 
         /// <summary>
-        /// Convert Hex string as a utf8 encoding string
-        /// Caustion!!! Not a typical conversion!!! Try not mis-use this method.
+        /// Convert Hex string as an utf8 encoding string
+        /// Caution!!! Not a typical conversion!!! Try not mis-use this method.
         /// </summary>
         /// <param name="sInput"></param>
         /// <returns></returns>
