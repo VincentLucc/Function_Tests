@@ -40,18 +40,20 @@ namespace Property_Normal_Dev191
         private void Form1_Load(object sender, EventArgs e)
         {
             //Init helper
-            propertyHelper = new csPropertyHelper(pg1);
-            pg1.RowHeaderWidth = 30; //Manual set captain row width
+            propertyHelper = new csPropertyHelper(propertyGrid1);
+            propertyGrid1.RowHeaderWidth = 30; //Manual set captain row width
 
             //Init property grid events
-            pg1.ValidatingEditor += Pg1_ValidatingEditor;
-            pg1.CustomRecordCellEdit += PropertyGridControl1_CustomRecordCellEdit; //Constantly trigger!!!!, avoid
-            pg1.CellValueChanged += Pg1_CellValueChanged; //Happen before Pg1_ValidatingEditor!!!
-            pg1.EditorKeyDown += Pg1_EditorKeyDown;
-            pg1.CustomDrawRowHeaderCell += Pg1_CustomDrawRowHeaderCell;
+            propertyGrid1.ValidatingEditor += Pg1_ValidatingEditor;
+            propertyGrid1.CustomRecordCellEdit += PropertyGridControl1_CustomRecordCellEdit; //Constantly trigger!!!!, avoid
+            propertyGrid1.CellValueChanged += Pg1_CellValueChanged; //Happen before Pg1_ValidatingEditor!!!
+            propertyGrid1.EditorKeyDown += Pg1_EditorKeyDown;
+            propertyGrid1.CustomDrawRowHeaderCell += Pg1_CustomDrawRowHeaderCell;
+            propertyGrid1.OptionsBehavior.PropertySort = DevExpress.XtraVerticalGrid.PropertySort.NoSort; //Allow custom sorting
+            propertyGrid1.CustomPropertyDescriptors += PropertyGrid1_CustomPropertyDescriptors;
 
             //Set description display area
-            pd1.PropertyGrid = pg1;
+            pd1.PropertyGrid = propertyGrid1;
 
             //pg1.KeyPress += Pg1_KeyPress;
             sList = new List<Student>();
@@ -67,6 +69,33 @@ namespace Property_Normal_Dev191
             lb1.DataSource = sList.Select(x => x.Name).ToList();
         }
 
+        private void PropertyGrid1_CustomPropertyDescriptors(object sender, CustomPropertyDescriptorsEventArgs e)
+        {
+            if (e.Source is Student)
+            {
+                var propertyNames = new string[]
+                {
+                    nameof(Student.Cert2),
+                    nameof(Student.Cert),
+
+                    //Age
+                    nameof(Student.Age2),
+                    nameof(Student.Age),
+                };
+                
+                e.Properties = e.Properties.Sort(propertyNames);
+            }
+            else if (e.Source is Certificate)
+            {
+                var propertyNames = new string[]
+                {
+                    nameof(Certificate.IsOK),
+                    nameof(Certificate.Name),
+                };
+                
+                e.Properties = e.Properties.Sort(propertyNames);
+            }
+        }
 
         private void Pg1_CustomDrawRowHeaderCell(object sender, CustomDrawRowHeaderCellEventArgs e)
         {
@@ -92,7 +121,7 @@ namespace Property_Normal_Dev191
             Debug.WriteLine($"Cell Value changed.{e.Value}");
 
             //Init variables
-            string sFieldName = pg1.FocusedRow.Properties.FieldName;
+            string sFieldName = propertyGrid1.FocusedRow.Properties.FieldName;
 
             //if (sFieldName == nameof(Student.ToggleSwitch))
             //{
@@ -108,7 +137,7 @@ namespace Property_Normal_Dev191
             Debug.WriteLine("Validating Edit Trigger");
 
             //Init variables
-            string sFieldName = pg1.FocusedRow.Properties.FieldName;
+            string sFieldName = propertyGrid1.FocusedRow.Properties.FieldName;
 
             if (sFieldName == nameof(Student.Age))
             {
@@ -290,8 +319,10 @@ namespace Property_Normal_Dev191
 
             //Verify index
             if (lb1.SelectedIndex < 0) return;
-            pg1.SelectedObject = sList[lb1.SelectedIndex];
-            Debug.WriteLine(pg1.Rows.Count);
+            propertyGrid1.SelectedObject = sList[lb1.SelectedIndex];
+            propertyGrid1.RetrieveFields();
+            propertyGrid1.ExpandAllRows();
+            Debug.WriteLine(propertyGrid1.Rows.Count);
         }
 
 
@@ -312,9 +343,9 @@ namespace Property_Normal_Dev191
 
         private void DisplayValue()
         {
-            if (pg1.SelectedObject is Student)
+            if (propertyGrid1.SelectedObject is Student)
             {
-                Student s1 = (Student)pg1.SelectedObject;
+                Student s1 = (Student)propertyGrid1.SelectedObject;
                 Debug.WriteLine("DisplayValue:\r\n" + s1.TextFolder);
             }
         }
@@ -333,11 +364,11 @@ namespace Property_Normal_Dev191
         {
             //Not working while click this button when auto validation not started
             //Invalid value will be saved
-            if (pg1.SelectedObject != null)
+            if (propertyGrid1.SelectedObject != null)
             {
                 ValidateChildren(); //Force validate
-                pg1.HideEditor(); // Clear invalid values 
-                pg1.SelectedObject = null;
+                propertyGrid1.HideEditor(); // Clear invalid values 
+                propertyGrid1.SelectedObject = null;
             }
         }
     }

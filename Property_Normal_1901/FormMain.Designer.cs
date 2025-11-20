@@ -30,7 +30,7 @@ namespace Property_Normal_Dev191
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.pg1 = new DevExpress.XtraVerticalGrid.PropertyGridControl();
+            this.propertyGrid1 = new DevExpress.XtraVerticalGrid.PropertyGridControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pd1 = new DevExpress.XtraVerticalGrid.PropertyDescriptionControl();
             this.lb1 = new System.Windows.Forms.ListBox();
@@ -51,7 +51,7 @@ namespace Property_Normal_Dev191
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.pCenter = new DevExpress.XtraEditors.PanelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.pg1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.propertyGrid1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.te1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -69,26 +69,26 @@ namespace Property_Normal_Dev191
             this.pCenter.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pg1
+            // propertyGrid1
             // 
-            this.pg1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pg1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pg1.Location = new System.Drawing.Point(0, 0);
-            this.pg1.Name = "pg1";
-            this.pg1.OptionsBehavior.AutoPostEditorDelay = 1000;
-            this.pg1.OptionsCollectionEditor.AllowMultiSelect = false;
-            this.pg1.Size = new System.Drawing.Size(450, 317);
-            this.pg1.TabIndex = 0;
-            this.pg1.Click += new System.EventHandler(this.propertyGridControl1_Click);
+            this.propertyGrid1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGrid1.Location = new System.Drawing.Point(0, 0);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.OptionsBehavior.AutoPostEditorDelay = 1000;
+            this.propertyGrid1.OptionsCollectionEditor.AllowMultiSelect = false;
+            this.propertyGrid1.Size = new System.Drawing.Size(450, 322);
+            this.propertyGrid1.TabIndex = 0;
+            this.propertyGrid1.Click += new System.EventHandler(this.propertyGridControl1_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pg1);
+            this.panel1.Controls.Add(this.propertyGrid1);
             this.panel1.Controls.Add(this.pd1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(423, 146);
+            this.panel1.Location = new System.Drawing.Point(423, 141);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 397);
+            this.panel1.Size = new System.Drawing.Size(450, 402);
             this.panel1.TabIndex = 1;
             // 
             // pd1
@@ -97,7 +97,7 @@ namespace Property_Normal_Dev191
             this.pd1.Appearance.Panel.Options.UseBorderColor = true;
             this.pd1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
             this.pd1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pd1.Location = new System.Drawing.Point(0, 317);
+            this.pd1.Location = new System.Drawing.Point(0, 322);
             this.pd1.Name = "pd1";
             this.pd1.Size = new System.Drawing.Size(450, 80);
             this.pd1.TabIndex = 1;
@@ -107,9 +107,9 @@ namespace Property_Normal_Dev191
             // 
             this.lb1.Dock = System.Windows.Forms.DockStyle.Left;
             this.lb1.FormattingEnabled = true;
-            this.lb1.Location = new System.Drawing.Point(0, 146);
+            this.lb1.Location = new System.Drawing.Point(0, 141);
             this.lb1.Name = "lb1";
-            this.lb1.Size = new System.Drawing.Size(149, 397);
+            this.lb1.Size = new System.Drawing.Size(149, 402);
             this.lb1.TabIndex = 2;
             this.lb1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -132,14 +132,14 @@ namespace Property_Normal_Dev191
             this.layoutControl1.Location = new System.Drawing.Point(2, 2);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(270, 393);
+            this.layoutControl1.Size = new System.Drawing.Size(270, 398);
             this.layoutControl1.TabIndex = 6;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // textEdit1
             // 
             this.textEdit1.EditValue = "0";
-            this.textEdit1.Location = new System.Drawing.Point(128, 60);
+            this.textEdit1.Location = new System.Drawing.Point(128, 61);
             this.textEdit1.MenuManager = this.ribbonControl1;
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.Mask.EditMask = "####0";
@@ -160,7 +160,7 @@ namespace Property_Normal_Dev191
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbonControl1.Size = new System.Drawing.Size(873, 146);
+            this.ribbonControl1.Size = new System.Drawing.Size(873, 141);
             // 
             // bClearItem
             // 
@@ -188,7 +188,7 @@ namespace Property_Normal_Dev191
             // 
             this.bClear.Location = new System.Drawing.Point(137, 36);
             this.bClear.Name = "bClear";
-            this.bClear.Size = new System.Drawing.Size(121, 20);
+            this.bClear.Size = new System.Drawing.Size(121, 21);
             this.bClear.TabIndex = 5;
             this.bClear.Text = "Clear";
             this.bClear.UseVisualStyleBackColor = true;
@@ -216,7 +216,7 @@ namespace Property_Normal_Dev191
             this.emptySpaceItem2,
             this.layoutControlItem4});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(270, 393);
+            this.Root.Size = new System.Drawing.Size(270, 398);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -231,9 +231,9 @@ namespace Property_Normal_Dev191
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 72);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 73);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(250, 301);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(250, 305);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem2
@@ -250,7 +250,7 @@ namespace Property_Normal_Dev191
             this.layoutControlItem3.Control = this.bClear;
             this.layoutControlItem3.Location = new System.Drawing.Point(125, 24);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(125, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(125, 25);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -259,13 +259,13 @@ namespace Property_Normal_Dev191
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(0, 24);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(125, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(125, 25);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.textEdit1;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 49);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(250, 24);
             this.layoutControlItem4.Text = "Number Mask \"####0\"";
@@ -275,9 +275,9 @@ namespace Property_Normal_Dev191
             // 
             this.pCenter.Controls.Add(this.layoutControl1);
             this.pCenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pCenter.Location = new System.Drawing.Point(149, 146);
+            this.pCenter.Location = new System.Drawing.Point(149, 141);
             this.pCenter.Name = "pCenter";
-            this.pCenter.Size = new System.Drawing.Size(274, 397);
+            this.pCenter.Size = new System.Drawing.Size(274, 402);
             this.pCenter.TabIndex = 6;
             // 
             // FormMain
@@ -292,7 +292,7 @@ namespace Property_Normal_Dev191
             this.Name = "FormMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pg1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.propertyGrid1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.te1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
@@ -315,7 +315,7 @@ namespace Property_Normal_Dev191
 
         #endregion
 
-        private DevExpress.XtraVerticalGrid.PropertyGridControl pg1;
+        private DevExpress.XtraVerticalGrid.PropertyGridControl propertyGrid1;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraVerticalGrid.PropertyDescriptionControl pd1;
         private System.Windows.Forms.ListBox lb1;
