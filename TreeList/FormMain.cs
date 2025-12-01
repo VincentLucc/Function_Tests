@@ -105,5 +105,13 @@ namespace TreeList
                 form.ShowDialog();
             }
         }
+
+        private void PopupEditorSimpleButton_Click(object sender, EventArgs e)
+        {
+            using (PopupEditorForm form=new PopupEditorForm())
+            {
+                form.ShowDialog();
+            }
+        }
     }
 }

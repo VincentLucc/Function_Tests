@@ -11,10 +11,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using DevExpress.XtraVerticalGrid.Events;
 using DevExpress.XtraEditors.CustomEditor;
-using DevExpress.XtraVerticalGrid.Native;
-using static DevExpress.XtraBars.Customization.Helpers.DesignTimeManager.DesignTimeCreateItemMenu;
-using DevExpress.Utils;
-using System.IO.Ports;
+
 
 namespace Property_RegEditor_22._1
 {

@@ -67,9 +67,7 @@ namespace TreeList
             treeList1.OptionsView.ShowHorzLines = false;
             treeList1.OptionsView.ShowIndicator = false;
             treeList1.OptionsView.ShowColumns = false;
-
-
-
+       
         }
 
         private void InitEvnets()

@@ -8,28 +8,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraTreeList;
+using Property_RegEditor_22._1;
 
-namespace Property_RegEditor_22._1.Forms
+namespace TreeList
 {
-    public partial class CustomPropertyPanelForm : DevExpress.XtraEditors.XtraForm
+    public partial class PropertyEditorUserControl : EditFormUserControl
     {
         csPropertyHelper propertyHelper;
-        public CustomPropertyPanelForm()
+        public PropertyEditorUserControl()
         {
             InitializeComponent();
-            InitMainEvents();
-        }
 
-        private void InitMainEvents()
-        {
-            this.Load += CustomPropertyPanelForm_Load;
-        }
-
-        private void CustomPropertyPanelForm_Load(object sender, EventArgs e)
-        {
             //Init grid control
             propertyHelper = new csPropertyHelper(propertyGridControl1);
-            
+
+            //Init Events
+            this.Load += PropertyEditorUserControl_Load;
+        }
+
+        private void PropertyEditorUserControl_Load(object sender, EventArgs e)
+        {
+
         }
 
         public void UpdateSelection(object selection)

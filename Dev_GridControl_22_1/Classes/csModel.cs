@@ -19,11 +19,23 @@ namespace Dev_GridControl_22_1
 
         public string Name { get; set; }
         public string DescriptionInfo { get; set; }
-    
+
         public string Class { get; set; }
 
         public bool Enable { get; set; }
         public bool Enable2 { get; set; }
+    }
+
+    public class GroupOperation
+    {
+        public string GroupName { get; set; }
+        public _groupOperation Operation { get; set; }
+    }
+
+    public enum _groupOperation
+    {
+        And = 0,
+        Or = 1,
     }
 
     public class AlarmInfo

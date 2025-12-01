@@ -19,9 +19,11 @@ namespace Dev_GridControl_22_1.Forms
 
         List<viewItem> viewItems = new List<viewItem>();
 
+        private bool isFormLoad = false;
         public WinExplorerViewForm()
         {
             InitializeComponent();
+            
         }
 
         private void WinExplorerViewForm_Load(object sender, EventArgs e)
@@ -31,6 +33,10 @@ namespace Dev_GridControl_22_1.Forms
             viewItems.Add(new viewItem() { name = "item2", image = imageCollection1.Images[1] });
             viewItems.Add(new viewItem() { name = "item3", image = imageCollection1.Images[2] });
             viewItems.Add(new viewItem() { name = "item4", image = imageCollection1.Images[3] });
+            for (int i = 0; i < 10; i++)
+            {
+                viewItems.Add(new viewItem() { name = $"item{i+5}", image = imageCollection1.Images[3] });
+            }
 
             gridControl1.DataSource = viewItems;
 
@@ -45,17 +51,31 @@ namespace Dev_GridControl_22_1.Forms
 
             //Set context button
             winExplorerView1.ContextButtonClick += WinExplorerView1_ContextButtonClick;
- 
+
 
             //Adjust the button position by setting the used panel padding (Default:5)
             winExplorerView1.ContextButtonOptions.TopPanelPadding = new Padding(0);
 
 
+            //Init view style
+            var options = Enum.GetValues(typeof(WinExplorerViewStyle));
+            ViewModeLookUpEdit.Properties.DataSource = options;
+            ViewModeLookUpEdit.EditValueChanged += ViewModeLookUpEdit_EditValueChanged;
+            ViewModeLookUpEdit.EditValue = WinExplorerViewStyle.Default;
 
-
+            //Complete
+            isFormLoad = true;
         }
 
+        private void ViewModeLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!isFormLoad) return;
  
+            if (ViewModeLookUpEdit.EditValue is WinExplorerViewStyle viewStyle)
+            {
+                winExplorerView1.OptionsView.Style = viewStyle;
+            }
+        }
 
         private void WinExplorerView1_ContextButtonClick(object sender, ContextItemClickEventArgs e)
         {

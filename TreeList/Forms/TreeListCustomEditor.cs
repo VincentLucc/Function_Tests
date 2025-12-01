@@ -32,6 +32,9 @@ namespace TreeList.Forms
             treeList1.DataSource = sDataSource;
             treeList1.PopulateColumns();
 
+            //New item row [Default:TreeListNewItemRowPosition.None]
+            treeList1.OptionsView.NewItemRowPosition = TreeListNewItemRowPosition.Bottom;
+
 
             //Set column editors
             foreach (var col in treeList1.Columns)
