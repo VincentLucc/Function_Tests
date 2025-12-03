@@ -39,7 +39,7 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonApplication_3.7", "Py
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadingLock_2201", "Lock\ThreadingLock_2201.csproj", "{C8AC63CD-7E71-4707-A252-0D7BC28226C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hardware", "Hardware\Hardware.csproj", "{E0558469-4ED1-4525-88CA-1EF4D8A85BFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hardware_2201", "Hardware\Hardware_2201.csproj", "{E0558469-4ED1-4525-88CA-1EF4D8A85BFE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplitContainer", "SplitContainer\SplitContainer.csproj", "{D707AA47-65FD-45FA-9BB4-79CD65030B75}"
 EndProject
@@ -189,7 +189,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_QuickTests_Framework", "_Q
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptionPGP", "EncryptionPGP\EncryptionPGP.csproj", "{3BF147B0-6C34-4787-BC44-E22D39910E05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColumnSelectionTest", "ColumnSelectionTest\ColumnSelectionTest.csproj", "{BFD6EF80-2D59-4F13-985A-998D26D1D60C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColumnSelectionTest_19.1", "ColumnSelectionTest\ColumnSelectionTest_19.1.csproj", "{BFD6EF80-2D59-4F13-985A-998D26D1D60C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsageLog_22.1", "UsageLog\UsageLog_22.1.csproj", "{8FF22E49-FFE4-44C9-9C4A-C52230DBFA9B}"
 EndProject

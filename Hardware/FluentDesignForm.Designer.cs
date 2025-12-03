@@ -31,26 +31,77 @@ namespace Hardware
         {
             this.components = new System.ComponentModel.Container();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.propertyGridControl1 = new DevExpress.XtraVerticalGrid.PropertyGridControl();
+            this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
-            this.propertyGridControl1 = new DevExpress.XtraVerticalGrid.PropertyGridControl();
             this.fluentDesignFormContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
             // 
-            this.fluentDesignFormContainer1.Controls.Add(this.propertyGridControl1);
+            this.fluentDesignFormContainer1.Controls.Add(this.layoutControl1);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 30);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 33);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(433, 444);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(431, 440);
             this.fluentDesignFormContainer1.TabIndex = 0;
+            // 
+            // layoutControl1
+            // 
+            this.layoutControl1.Controls.Add(this.propertyGridControl1);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.Root = this.Root;
+            this.layoutControl1.Size = new System.Drawing.Size(431, 440);
+            this.layoutControl1.TabIndex = 1;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
+            // propertyGridControl1
+            // 
+            this.propertyGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.propertyGridControl1.Location = new System.Drawing.Point(16, 16);
+            this.propertyGridControl1.MenuManager = this.fluentFormDefaultManager1;
+            this.propertyGridControl1.Name = "propertyGridControl1";
+            this.propertyGridControl1.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.True;
+            this.propertyGridControl1.Size = new System.Drawing.Size(399, 408);
+            this.propertyGridControl1.TabIndex = 0;
+            // 
+            // fluentFormDefaultManager1
+            // 
+            this.fluentFormDefaultManager1.Form = this;
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(431, 440);
+            this.Root.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.propertyGridControl1;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(405, 414);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
             // 
             // accordionControl1
             // 
@@ -58,10 +109,10 @@ namespace Hardware
             this.accordionControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement1});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 30);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 33);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(260, 444);
+            this.accordionControl1.Size = new System.Drawing.Size(260, 440);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -76,29 +127,15 @@ namespace Hardware
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Manager = this.fluentFormDefaultManager1;
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(693, 30);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(691, 33);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
-            // 
-            // fluentFormDefaultManager1
-            // 
-            this.fluentFormDefaultManager1.Form = this;
-            // 
-            // propertyGridControl1
-            // 
-            this.propertyGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGridControl1.Location = new System.Drawing.Point(0, 0);
-            this.propertyGridControl1.MenuManager = this.fluentFormDefaultManager1;
-            this.propertyGridControl1.Name = "propertyGridControl1";
-            this.propertyGridControl1.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.True;
-            this.propertyGridControl1.Size = new System.Drawing.Size(433, 444);
-            this.propertyGridControl1.TabIndex = 0;
             // 
             // FluentDesignForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 474);
+            this.ClientSize = new System.Drawing.Size(691, 473);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl1);
@@ -108,10 +145,14 @@ namespace Hardware
             this.NavigationControl = this.accordionControl1;
             this.Text = "FluentDesignForm";
             this.fluentDesignFormContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -123,5 +164,8 @@ namespace Hardware
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement1;
         private DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager fluentFormDefaultManager1;
         private DevExpress.XtraVerticalGrid.PropertyGridControl propertyGridControl1;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Property_RegEditor_22._1;
 
 namespace Hardware
 {

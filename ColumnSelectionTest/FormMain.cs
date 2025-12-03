@@ -16,7 +16,7 @@ namespace Test001
     {
 
         public BindingList<InputField> ColumnDefinition { get; set; }
-        public bool IgnoreDataFileFieldGridViewRowSelectionChange { get; set; }
+
 
         UIOperation UserOperation = new UIOperation();
 
@@ -43,6 +43,11 @@ namespace Test001
             ColumnSelectorControlV3 v3COntrol = new ColumnSelectorControlV3();
             v3COntrol.Dock = DockStyle.Fill;
             pColumnSelector3.Controls.Add(v3COntrol);
+
+            //Show column selector v4
+            ColumnSelectorV4 v4COntrol = new ColumnSelectorV4();
+            v4COntrol.Dock = DockStyle.Fill;
+            panelColumnSelectorV4.Controls.Add(v4COntrol);
         }
 
         private void InitCustomizedFixedWidthControl()

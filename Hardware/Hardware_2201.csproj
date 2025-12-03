@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Hardware</RootNamespace>
     <AssemblyName>Hardware</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -41,6 +42,7 @@
     <Reference Include="DevExpress.Utils.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraVerticalGrid.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -64,11 +66,17 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CPUAffinitySettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CPUAffinitySettingsForm.Designer.cs">
+      <DependentUpon>CPUAffinitySettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="csCommonModel.cs" />
+    <Compile Include="csCPUHelper.cs" />
+    <Compile Include="csCPUSettings.cs" />
     <Compile Include="csCRC.cs" />
     <Compile Include="csHardwareHelper.cs" />
-    <Compile Include="csPropertyHelper.cs" />
-    <Compile Include="csPropertyModel.cs" />
     <Compile Include="csPublic.cs" />
     <Compile Include="FluentDesignForm.cs">
       <SubType>Form</SubType>
@@ -76,19 +84,13 @@
     <Compile Include="FluentDesignForm.Designer.cs">
       <DependentUpon>FluentDesignForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CPUAffinitySettingsForm.resx">
+      <DependentUpon>CPUAffinitySettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FluentDesignForm.resx">
       <DependentUpon>FluentDesignForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -99,6 +101,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -112,6 +115,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Property_RegEditor_22.1\Property_RegEditor_22.1.csproj">
+      <Project>{1b00a091-938f-49e4-b112-1ae90bdd7d45}</Project>
+      <Name>Property_RegEditor_22.1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\_CommonCode_Dev22\_CommonCode_Dev22.csproj">
+      <Project>{5bc822b8-4a92-4288-8234-d13e421829ad}</Project>
+      <Name>_CommonCode_Dev22</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\_CommonCode_Framework\_CommonCode_Framework.csproj">
+      <Project>{925b87b3-c48d-414a-9d9a-e74147a67868}</Project>
+      <Name>_CommonCode_Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -90,6 +90,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColumnSelectorV4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColumnSelectorV4.Designer.cs">
+      <DependentUpon>ColumnSelectorV4.cs</DependentUpon>
+    </Compile>
     <Compile Include="csPublic.cs" />
     <Compile Include="ColumnSelectorControlV3.cs">
       <SubType>UserControl</SubType>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ColumnSelectorControlV3.resx">
       <DependentUpon>ColumnSelectorControlV3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColumnSelectorV4.resx">
+      <DependentUpon>ColumnSelectorV4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

@@ -62,14 +62,19 @@ namespace Test001
             this.ColumnSelector2TabPage = new DevExpress.XtraTab.XtraTabPage();
             this.ColumnSelector3TabPage = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.Selector3ToggleSwitch = new DevExpress.XtraEditors.ToggleSwitch();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.pColumnSelector3 = new System.Windows.Forms.Panel();
+            this.Selector3ToggleSwitch = new DevExpress.XtraEditors.ToggleSwitch();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.panelColumnSelectorV4 = new DevExpress.XtraEditors.PanelControl();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.DataFileFieldGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataFileFieldGridView)).BeginInit();
             this.pTable.SuspendLayout();
@@ -85,12 +90,18 @@ namespace Test001
             this.ColumnSelector3TabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Selector3ToggleSwitch.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
+            this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelColumnSelectorV4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
             // 
             // DataFileFieldGridControl
@@ -99,7 +110,7 @@ namespace Test001
             this.DataFileFieldGridControl.Location = new System.Drawing.Point(0, 0);
             this.DataFileFieldGridControl.MainView = this.DataFileFieldGridView;
             this.DataFileFieldGridControl.Name = "DataFileFieldGridControl";
-            this.DataFileFieldGridControl.Size = new System.Drawing.Size(406, 204);
+            this.DataFileFieldGridControl.Size = new System.Drawing.Size(541, 204);
             this.DataFileFieldGridControl.TabIndex = 0;
             this.DataFileFieldGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DataFileFieldGridView});
@@ -140,7 +151,7 @@ namespace Test001
             this.FileColumnSelector.MaxAllowedColumns = 32;
             this.FileColumnSelector.Name = "FileColumnSelector";
             this.FileColumnSelector.Padding = new System.Windows.Forms.Padding(4);
-            this.FileColumnSelector.Size = new System.Drawing.Size(609, 246);
+            this.FileColumnSelector.Size = new System.Drawing.Size(744, 241);
             this.FileColumnSelector.TabIndex = 1;
             this.FileColumnSelector.MouseDown += new System.Windows.Forms.MouseEventHandler(this.columnSelectorControl1_MouseDown);
             this.FileColumnSelector.MouseUp += new System.Windows.Forms.MouseEventHandler(this.columnSelectorControl1_MouseUp);
@@ -160,7 +171,7 @@ namespace Test001
             this.pTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pTable.Location = new System.Drawing.Point(203, 0);
             this.pTable.Name = "pTable";
-            this.pTable.Size = new System.Drawing.Size(406, 204);
+            this.pTable.Size = new System.Drawing.Size(541, 204);
             this.pTable.TabIndex = 5;
             // 
             // pControls
@@ -285,9 +296,9 @@ namespace Test001
             this.pShow.Controls.Add(this.bTest);
             this.pShow.Controls.Add(this.bShow);
             this.pShow.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pShow.Location = new System.Drawing.Point(0, 450);
+            this.pShow.Location = new System.Drawing.Point(0, 445);
             this.pShow.Name = "pShow";
-            this.pShow.Size = new System.Drawing.Size(609, 36);
+            this.pShow.Size = new System.Drawing.Size(744, 36);
             this.pShow.TabIndex = 6;
             // 
             // simpleButton1
@@ -323,7 +334,7 @@ namespace Test001
             this.pSelection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pSelection.Location = new System.Drawing.Point(0, 0);
             this.pSelection.Name = "pSelection";
-            this.pSelection.Size = new System.Drawing.Size(609, 246);
+            this.pSelection.Size = new System.Drawing.Size(744, 241);
             this.pSelection.TabIndex = 7;
             // 
             // pBottom
@@ -331,9 +342,9 @@ namespace Test001
             this.pBottom.Controls.Add(this.pTable);
             this.pBottom.Controls.Add(this.pControls);
             this.pBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pBottom.Location = new System.Drawing.Point(0, 246);
+            this.pBottom.Location = new System.Drawing.Point(0, 241);
             this.pBottom.Name = "pBottom";
-            this.pBottom.Size = new System.Drawing.Size(609, 204);
+            this.pBottom.Size = new System.Drawing.Size(744, 204);
             this.pBottom.TabIndex = 2;
             this.pBottom.Visible = false;
             // 
@@ -395,7 +406,8 @@ namespace Test001
             this.xtraTabControl1.TabIndex = 2;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.ColumnSelector2TabPage,
-            this.ColumnSelector3TabPage});
+            this.ColumnSelector3TabPage,
+            this.xtraTabPage1});
             // 
             // ColumnSelector2TabPage
             // 
@@ -403,14 +415,14 @@ namespace Test001
             this.ColumnSelector2TabPage.Controls.Add(this.pBottom);
             this.ColumnSelector2TabPage.Controls.Add(this.pShow);
             this.ColumnSelector2TabPage.Name = "ColumnSelector2TabPage";
-            this.ColumnSelector2TabPage.Size = new System.Drawing.Size(609, 486);
+            this.ColumnSelector2TabPage.Size = new System.Drawing.Size(744, 481);
             this.ColumnSelector2TabPage.Text = "Column Selector V2";
             // 
             // ColumnSelector3TabPage
             // 
             this.ColumnSelector3TabPage.Controls.Add(this.layoutControl1);
             this.ColumnSelector3TabPage.Name = "ColumnSelector3TabPage";
-            this.ColumnSelector3TabPage.Size = new System.Drawing.Size(748, 486);
+            this.ColumnSelector3TabPage.Size = new System.Drawing.Size(744, 481);
             this.ColumnSelector3TabPage.Text = "Column Selector V3";
             // 
             // layoutControl1
@@ -422,9 +434,36 @@ namespace Test001
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(748, 486);
+            this.layoutControl1.Size = new System.Drawing.Size(744, 481);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // pColumnSelector3
+            // 
+            this.pColumnSelector3.Location = new System.Drawing.Point(153, 12);
+            this.pColumnSelector3.Name = "pColumnSelector3";
+            this.pColumnSelector3.Size = new System.Drawing.Size(579, 457);
+            this.pColumnSelector3.TabIndex = 6;
+            // 
+            // Selector3ToggleSwitch
+            // 
+            this.Selector3ToggleSwitch.Location = new System.Drawing.Point(47, 38);
+            this.Selector3ToggleSwitch.Name = "Selector3ToggleSwitch";
+            this.Selector3ToggleSwitch.Properties.OffText = "Off";
+            this.Selector3ToggleSwitch.Properties.OnText = "On";
+            this.Selector3ToggleSwitch.Size = new System.Drawing.Size(102, 24);
+            this.Selector3ToggleSwitch.StyleController = this.layoutControl1;
+            this.Selector3ToggleSwitch.TabIndex = 5;
+            this.Selector3ToggleSwitch.Toggled += new System.EventHandler(this.Selector3ToggleSwitch_Toggled);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(12, 12);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(137, 22);
+            this.simpleButton2.StyleController = this.layoutControl1;
+            this.simpleButton2.TabIndex = 4;
+            this.simpleButton2.Text = "simpleButton2";
             // 
             // Root
             // 
@@ -436,70 +475,87 @@ namespace Test001
             this.layoutControlItem1,
             this.layoutControlItem2});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(748, 486);
+            this.Root.Size = new System.Drawing.Size(744, 481);
             this.Root.Text = "Enable";
             // 
-            // simpleButton2
+            // emptySpaceItem1
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(12, 12);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(138, 22);
-            this.simpleButton2.StyleController = this.layoutControl1;
-            this.simpleButton2.TabIndex = 4;
-            this.simpleButton2.Text = "simpleButton2";
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 54);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(141, 407);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.pColumnSelector3;
+            this.layoutControlItem3.Location = new System.Drawing.Point(141, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(583, 461);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.simpleButton2;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(142, 26);
+            this.layoutControlItem1.Size = new System.Drawing.Size(141, 26);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 48);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(142, 418);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // Selector3ToggleSwitch
-            // 
-            this.Selector3ToggleSwitch.Location = new System.Drawing.Point(56, 38);
-            this.Selector3ToggleSwitch.Name = "Selector3ToggleSwitch";
-            this.Selector3ToggleSwitch.Properties.OffText = "Off";
-            this.Selector3ToggleSwitch.Properties.OnText = "On";
-            this.Selector3ToggleSwitch.Size = new System.Drawing.Size(94, 18);
-            this.Selector3ToggleSwitch.StyleController = this.layoutControl1;
-            this.Selector3ToggleSwitch.TabIndex = 5;
-            this.Selector3ToggleSwitch.Toggled += new System.EventHandler(this.Selector3ToggleSwitch_Toggled);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.Selector3ToggleSwitch;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(142, 22);
+            this.layoutControlItem2.Size = new System.Drawing.Size(141, 28);
             this.layoutControlItem2.Text = "Enable";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(32, 13);
             // 
-            // pColumnSelector3
+            // xtraTabPage1
             // 
-            this.pColumnSelector3.Location = new System.Drawing.Point(154, 12);
-            this.pColumnSelector3.Name = "pColumnSelector3";
-            this.pColumnSelector3.Size = new System.Drawing.Size(582, 462);
-            this.pColumnSelector3.TabIndex = 6;
+            this.xtraTabPage1.Controls.Add(this.layoutControl2);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(744, 481);
+            this.xtraTabPage1.Text = "Column Selector V4";
             // 
-            // layoutControlItem3
+            // layoutControl2
             // 
-            this.layoutControlItem3.Control = this.pColumnSelector3;
-            this.layoutControlItem3.Location = new System.Drawing.Point(142, 0);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(586, 466);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
+            this.layoutControl2.Controls.Add(this.panelColumnSelectorV4);
+            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl2.Name = "layoutControl2";
+            this.layoutControl2.Root = this.layoutControlGroup1;
+            this.layoutControl2.Size = new System.Drawing.Size(744, 481);
+            this.layoutControl2.TabIndex = 0;
+            this.layoutControl2.Text = "layoutControl2";
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem4});
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(744, 481);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // panelColumnSelectorV4
+            // 
+            this.panelColumnSelectorV4.Location = new System.Drawing.Point(12, 12);
+            this.panelColumnSelectorV4.Name = "panelColumnSelectorV4";
+            this.panelColumnSelectorV4.Size = new System.Drawing.Size(720, 457);
+            this.panelColumnSelectorV4.TabIndex = 4;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.panelColumnSelectorV4;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(724, 461);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
             // 
             // FormMain
             // 
@@ -525,12 +581,18 @@ namespace Test001
             this.ColumnSelector3TabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Selector3ToggleSwitch.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
+            this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelColumnSelectorV4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -577,6 +639,11 @@ namespace Test001
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private DevExpress.XtraLayout.LayoutControl layoutControl2;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraEditors.PanelControl panelColumnSelectorV4;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
     }
 }
 

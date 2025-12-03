@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using _CommonCode_Framework;
 using DevExpress.XtraVerticalGrid.Events;
 using DevExpress.XtraEditors.CustomEditor;
 
@@ -92,18 +93,36 @@ namespace Property_RegEditor_22._1
 
         private void PropertyGrid_CustomRecordCellEdit(object sender, GetCustomRowCellEditEventArgs e)
         {
-            //Get current editor info
-            if (!IsRowValid(e.Row)) return;
-            var editorInfo = GetEditorInfo(e.Row, propertyGrid.SelectedObject);
-            if (editorInfo == null) goto FinishUp;
+            //Validation
+            if (propertyGrid == null || propertyGrid.Disposing || propertyGrid.IsDisposed) return;
+            CustomEditorAttribute editorInfo = null;
 
-            SetRowEditor(e, editorInfo);
+            try
+            {
+                //Get current editor info
+                if (!IsRowValid(e.Row)) return;
 
-            CustomSettingRowEditor?.Invoke(e, editorInfo);
+                //Remove devexpress specific row
+                string sRowName = e.Row.Properties.FieldName;
+                if (sRowName == "Appearance.Options") return;
 
-            //Update view
-            FinishUp:
-            SetRowLayout(e.Row, editorInfo);
+                editorInfo = GetEditorInfo(e.Row, propertyGrid.SelectedObject);
+                if (editorInfo == null) return;
+
+                //Set row editor
+                SetRowEditor(e, editorInfo);
+
+            }
+            catch (Exception ex)
+            {
+                ex.TraceException("PropertyGrid_CustomRecordCellEdit");
+            }
+            finally
+            {
+                CustomSettingRowEditor?.Invoke(e, editorInfo);
+                //Always allow to set the row visibility
+                SetRowLayout(e.Row, editorInfo);
+            }
         }
 
         private bool IsRowValid(BaseRow row)

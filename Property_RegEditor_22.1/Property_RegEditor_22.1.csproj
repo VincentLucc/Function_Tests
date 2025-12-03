@@ -112,6 +112,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\_CommonCode_Framework\_CommonCode_Framework.csproj">
+      <Project>{925b87b3-c48d-414a-9d9a-e74147a67868}</Project>
+      <Name>_CommonCode_Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

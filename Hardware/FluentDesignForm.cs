@@ -10,12 +10,17 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using _CommonCode_Framework;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraEditors.Repository;
+using Property_RegEditor_22._1;
 
 namespace Hardware
 {
     public partial class FluentDesignForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         object targetObject;
+        private csPropertyHelper propertyHelper;
 
         public FluentDesignForm()
         {
@@ -65,8 +70,46 @@ namespace Hardware
 
         private void InitPropertyGrid()
         {
-            var propertyHelper = new csPropertyHelper(propertyGridControl1);
+            propertyHelper = new csPropertyHelper(propertyGridControl1);
             propertyGridControl1.OptionsView.ShowRootCategories = false;
+            propertyHelper.CustomSettingRowEditor += PropertyHelper_CustomSettingRowEditor;
+        }
+
+        private void PropertyHelper_CustomSettingRowEditor(DevExpress.XtraVerticalGrid.Events.GetCustomRowCellEditEventArgs eventArg, CustomEditorAttribute editorInfo)
+        {
+            switch (propertyGridControl1.SelectedObject)
+            {
+                case csCPUSettings cpuSettings:
+                    SetCPUEditor(cpuSettings,eventArg);
+                    break;
+            }
+        }
+
+        private void SetCPUEditor(csCPUSettings cpuSettings, DevExpress.XtraVerticalGrid.Events.GetCustomRowCellEditEventArgs eventArg)
+        {
+            string sName = eventArg.Row.Properties.FieldName;
+            $"SetCPUEditor[{sName}]".TraceRecord();
+            switch (eventArg.Row.Properties.FieldName)
+            {
+                case nameof(csCPUSettings.CPUCoresEnableView):
+                    {
+                        RepositoryItemButtonEdit buttonEdit = new RepositoryItemButtonEdit();
+                        buttonEdit.TextEditStyle = TextEditStyles.DisableTextEditor;
+                        buttonEdit.Click += ButtonEdit_Click;
+                        eventArg.RepositoryItem = buttonEdit;
+                    }
+                    break;
+            }
+        }
+
+        private void ButtonEdit_Click(object sender, EventArgs e)
+        {
+            //Get current settings
+            var coreSettings = csCPUHelper.CoreSettings;
+            using (CPUAffinitySettingsForm cpuAffinitySettingsForm = new CPUAffinitySettingsForm(coreSettings))
+            {
+                cpuAffinitySettingsForm.ShowDialog();
+            }
         }
 
         private void InitMenu()
@@ -97,25 +140,35 @@ namespace Hardware
             settingMenu.Text = "Settings";
             accordionControl1.Elements.Add(settingMenu);
 
+            //Add disk
+            var CPUSettings = new AccordionControlElement(ElementStyle.Item);
+            CPUSettings.Tag = new csCPUSettings();
+            CPUSettings.Text = "CPU Settings";
+            settingMenu.Elements.Add(CPUSettings);
+
+            accordionControl1.ExpandAll();
             accordionControl1.SelectedElementChanged += AccordionControl1_SelectedElementChanged;
         }
 
         private void AccordionControl1_SelectedElementChanged(object sender, SelectedElementChangedEventArgs e)
         {
             Trace.WriteLine("AccordionControl1_SelectedElementChanged.Selection Changed");
-            var selectedObject = e.Element.Tag;
-            if (selectedObject is csMotherBoard motherBoard)
+            switch ( e.Element.Tag)
             {
-                propertyGridControl1.SelectedObject = motherBoard;
+                case csMotherBoard motherBoard:
+                    propertyGridControl1.SelectedObject = motherBoard;
+                    break;
+                case csDisk disk:
+                    propertyGridControl1.SelectedObject = disk;
+                    break;
+                case csCPUSettings cpuSettings:
+                    propertyGridControl1.SelectedObject = cpuSettings;
+                    break;
+                default:
+                    propertyGridControl1.SelectedObject = null;
+                    break;
             }
-            else if (selectedObject is csDisk disk)
-            {
-                propertyGridControl1.SelectedObject = disk;
-            }
-            else
-            {
-                propertyGridControl1.SelectedObject = null;
-            }
+ 
 
             targetObject = propertyGridControl1.SelectedObject;
         }
