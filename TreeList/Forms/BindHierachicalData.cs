@@ -272,12 +272,12 @@ namespace TreeList
         /// </summary>
         public object Tag { get; set; }
 
-        public BindingList<csTreeItem> SubItems { get; set; }
+        public List<csTreeItem> SubItems { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public csTreeItem()
         {
-            SubItems = new BindingList<csTreeItem>();
+            SubItems = new List<csTreeItem>();
         }
 
         //This method is called by the Set accessor of each property.

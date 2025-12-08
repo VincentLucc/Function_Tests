@@ -8,41 +8,94 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _CommonCode_Framework;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
+using _CommonCode_Dev22;
 
 namespace TreeList.Forms
 {
-    public partial class PopupEditorForm : DevExpress.XtraEditors.XtraForm
+    public partial class PopupEditorForm : XtraFormEx
     {
-        public List<csTreeItem> TreeItems = new List<csTreeItem>();
+        public BindingList<csTreeItem> TreeItems = new BindingList<csTreeItem>();
 
         public PopupEditorForm()
         {
             InitializeComponent();
 
             //Add some sample
-            //for (int i = 0; i < 3; i++)
-            //{
-            //    var sItem = new csTreeItem();
-            //    sItem.Name = $"Main_{i}";
+            for (int i = 0; i < 3; i++)
+            {
+                var sItem = new csTreeItem();
+                sItem.Name = $"Main_{i}";
 
-            //    for (int j = 0; j < 3; j++)
-            //    {
-            //        var subItem = new csTreeItem()
-            //        {
-            //            Name = $"Sub_{i}",
-            //        };
+                for (int j = 0; j < 3; j++)
+                {
+                    var subItem = new csTreeItem()
+                    {
+                        Name = $"Sub_{i}",
+                    };
 
-            //        sItem.SubItems.Add(subItem);
-            //    }
+                    sItem.SubItems.Add(subItem);
+                }
 
-            //    TreeItems.Add(sItem);
-            //}
+                TreeItems.Add(sItem);
+            }
 
             //Init events
             treeList1.EditFormShowing += TreeList1_EditFormShowing; //Trigger before [EditFormPrepared]
             treeList1.EditFormPrepared += TreeList1_EditFormPrepared; //Trigger after [EditFormShowing]
+
+
+            //Value update
+            timer1.Interval = 100;
+            timer1.Tick += Timer1_Tick;
+            timer1.Start();
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            //Auto exit
+            if (UIExit) return;
+
+            try
+            {
+                //Overflow protection
+                timer1.Enabled = false;
+
+                TreeItems.Clear();
+                var ranDom = new Random();
+                int iRandom = ranDom.Next(4,5);
+                for (int i = 0; i < 5; i++)
+                {
+                    var sItem = new csTreeItem();
+                    sItem.Name = $"Main_{i}";
+
+                    for (int j = 0; j < iRandom; j++)
+                    {
+                        var subItem = new csTreeItem()
+                        {
+                            Name = $"Sub_{i}",
+                        };
+
+                        sItem.SubItems.Add(subItem);
+                    }
+
+                    TreeItems.Add(sItem);
+                }
+
+                //Process logic
+                //treeList1.ExpandAll();
+                treeList1.RefreshDataSource();
+            }
+            catch (Exception exception)
+            {
+                exception.TraceException("PopupEditorForm.Timer1_Tick");
+            }
+            finally
+            {//Always resume
+                timer1.Enabled = true;
+            }
         }
 
         private void TreeList1_EditFormPrepared(object sender, EditFormPreparedEventArgs e)
@@ -60,10 +113,10 @@ namespace TreeList.Forms
 
             //Enable edit
             treeList1.PopulateColumns();
-            foreach (var treeCOlumn in treeList1.Columns)
+            foreach (var treeColumn in treeList1.Columns)
             {
-                treeCOlumn.OptionsColumn.AllowEdit = true;
-                treeCOlumn.OptionsColumn.ReadOnly = false;
+                treeColumn.OptionsColumn.AllowEdit = true;
+                treeColumn.OptionsColumn.ReadOnly = false;
             }
 
 
@@ -113,6 +166,16 @@ namespace TreeList.Forms
                 TreeItems.Add(new csTreeItem());
             }
 
+        }
+
+        private void EnableTimerButton_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+        }
+
+        private void DisableTimerButton_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
         }
     }
 }
