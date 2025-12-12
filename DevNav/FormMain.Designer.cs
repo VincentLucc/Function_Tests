@@ -1564,9 +1564,9 @@ partial class FormMain
             // 
             this.panelControl1.Controls.Add(this.layoutControl10);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(300, 0);
+            this.panelControl1.Location = new System.Drawing.Point(132, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(475, 446);
+            this.panelControl1.Size = new System.Drawing.Size(643, 446);
             this.panelControl1.TabIndex = 1;
             // 
             // layoutControl10
@@ -1577,7 +1577,7 @@ partial class FormMain
             this.layoutControl10.Location = new System.Drawing.Point(2, 2);
             this.layoutControl10.Name = "layoutControl10";
             this.layoutControl10.Root = this.layoutControlGroup9;
-            this.layoutControl10.Size = new System.Drawing.Size(471, 442);
+            this.layoutControl10.Size = new System.Drawing.Size(639, 442);
             this.layoutControl10.TabIndex = 0;
             this.layoutControl10.Text = "layoutControl10";
             // 
@@ -1585,7 +1585,7 @@ partial class FormMain
             // 
             this.simpleButton7.Location = new System.Drawing.Point(16, 50);
             this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(216, 28);
+            this.simpleButton7.Size = new System.Drawing.Size(300, 28);
             this.simpleButton7.StyleController = this.layoutControl10;
             this.simpleButton7.TabIndex = 5;
             this.simpleButton7.Text = "simpleButton7";
@@ -1594,7 +1594,7 @@ partial class FormMain
             // 
             this.simpleButton6.Location = new System.Drawing.Point(16, 16);
             this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(216, 28);
+            this.simpleButton6.Size = new System.Drawing.Size(300, 28);
             this.simpleButton6.StyleController = this.layoutControl10;
             this.simpleButton6.TabIndex = 4;
             this.simpleButton6.Text = "simpleButton6";
@@ -1610,7 +1610,7 @@ partial class FormMain
             this.emptySpaceItem9,
             this.emptySpaceItem10});
             this.layoutControlGroup9.Name = "layoutControlGroup9";
-            this.layoutControlGroup9.Size = new System.Drawing.Size(471, 442);
+            this.layoutControlGroup9.Size = new System.Drawing.Size(639, 442);
             this.layoutControlGroup9.TextVisible = false;
             // 
             // layoutControlItem19
@@ -1618,7 +1618,7 @@ partial class FormMain
             this.layoutControlItem19.Control = this.simpleButton6;
             this.layoutControlItem19.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(222, 34);
+            this.layoutControlItem19.Size = new System.Drawing.Size(306, 34);
             this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem19.TextVisible = false;
             // 
@@ -1627,7 +1627,7 @@ partial class FormMain
             this.emptySpaceItem8.AllowHotTrack = false;
             this.emptySpaceItem8.Location = new System.Drawing.Point(0, 68);
             this.emptySpaceItem8.Name = "emptySpaceItem8";
-            this.emptySpaceItem8.Size = new System.Drawing.Size(445, 348);
+            this.emptySpaceItem8.Size = new System.Drawing.Size(613, 348);
             this.emptySpaceItem8.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem20
@@ -1635,24 +1635,24 @@ partial class FormMain
             this.layoutControlItem20.Control = this.simpleButton7;
             this.layoutControlItem20.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem20.Name = "layoutControlItem20";
-            this.layoutControlItem20.Size = new System.Drawing.Size(222, 34);
+            this.layoutControlItem20.Size = new System.Drawing.Size(306, 34);
             this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem20.TextVisible = false;
             // 
             // emptySpaceItem9
             // 
             this.emptySpaceItem9.AllowHotTrack = false;
-            this.emptySpaceItem9.Location = new System.Drawing.Point(222, 0);
+            this.emptySpaceItem9.Location = new System.Drawing.Point(306, 0);
             this.emptySpaceItem9.Name = "emptySpaceItem9";
-            this.emptySpaceItem9.Size = new System.Drawing.Size(223, 34);
+            this.emptySpaceItem9.Size = new System.Drawing.Size(307, 34);
             this.emptySpaceItem9.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem10
             // 
             this.emptySpaceItem10.AllowHotTrack = false;
-            this.emptySpaceItem10.Location = new System.Drawing.Point(222, 34);
+            this.emptySpaceItem10.Location = new System.Drawing.Point(306, 34);
             this.emptySpaceItem10.Name = "emptySpaceItem10";
-            this.emptySpaceItem10.Size = new System.Drawing.Size(223, 34);
+            this.emptySpaceItem10.Size = new System.Drawing.Size(307, 34);
             this.emptySpaceItem10.TextSize = new System.Drawing.Size(0, 0);
             // 
             // navigationPane1
@@ -1667,7 +1667,8 @@ partial class FormMain
             this.navigationPage2});
             this.navigationPane1.RegularSize = new System.Drawing.Size(300, 446);
             this.navigationPane1.SelectedPage = this.navigationPage1;
-            this.navigationPane1.Size = new System.Drawing.Size(300, 446);
+            this.navigationPane1.Size = new System.Drawing.Size(132, 446);
+            this.navigationPane1.State = DevExpress.XtraBars.Navigation.NavigationPaneState.Collapsed;
             this.navigationPane1.TabIndex = 0;
             this.navigationPane1.Text = "navigationPane1";
             // 
@@ -1681,7 +1682,7 @@ partial class FormMain
             // 
             this.navigationPage2.Caption = "navigationPage2";
             this.navigationPage2.Name = "navigationPage2";
-            this.navigationPage2.Size = new System.Drawing.Size(132, 23);
+            this.navigationPage2.Size = new System.Drawing.Size(134, 375);
             // 
             // Root
             // 

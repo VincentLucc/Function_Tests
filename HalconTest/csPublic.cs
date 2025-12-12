@@ -9,5 +9,8 @@ namespace HalconTest
     public class csPublic
     {
         public static double HalconDegree45 = 0.7853981634; //45 degree in rad
+        public static bool IsDebug;
+
+        public static csHalconWindow HalconWindow;
     }
 }

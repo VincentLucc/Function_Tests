@@ -44,11 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="csCommonExtension.cs" />
+    <Compile Include="csCopyModel.cs" />
     <Compile Include="csDatetimeHelper.cs" />
     <Compile Include="csEncryption.cs" />
     <Compile Include="csEnumHelper.cs" />
     <Compile Include="csGeoInfo.cs" />
     <Compile Include="csHex.cs" />
+    <Compile Include="csCopyHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

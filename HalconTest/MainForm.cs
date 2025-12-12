@@ -20,13 +20,15 @@ namespace HalconTest
             InitializeComponent();
         }
 
-
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //Init window
+            csPublic.HalconWindow = new csHalconWindow();
+            csPublic.HalconWindow.LinkWindow(hWindowControl1);
+        }
    
 
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
 
         private void HTuple1Button_Click(object sender, EventArgs e)
         {
@@ -60,9 +62,16 @@ namespace HalconTest
             Debug.WriteLine("Htuple convert use:" + watch.ElapsedMilliseconds);
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
 
+
+        private void EnableDrawButton_Click(object sender, EventArgs e)
+        {
+            csPublic.HalconWindow.DrawData.IsDrawing = true;
+        }
+
+        private void DrawDisableButton_Click(object sender, EventArgs e)
+        {
+            csPublic.HalconWindow.DrawData.IsDrawing = false;
         }
     }
 }

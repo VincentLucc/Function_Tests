@@ -93,7 +93,7 @@ namespace _CommonCode_Framework
             Trace.WriteLine(sOutput);
         }
 
-        internal static string GetMessageDetail(this Exception exception)
+        public static string GetMessageDetail(this Exception exception)
         {
             if (exception == null) return string.Empty;
             string msg = exception.Message;
