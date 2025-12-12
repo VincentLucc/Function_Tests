@@ -9,17 +9,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _CommonCode_Dev22;
 
 namespace HalconTest
 {
-    public partial class Form1 : Form
+    public partial class MainForm : XtraFormEx
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+   
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HTuple1Button_Click(object sender, EventArgs e)
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
@@ -33,7 +42,7 @@ namespace HalconTest
             Debug.WriteLine("Htuple Direct use:" + watch.ElapsedMilliseconds);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void HtupleValueButton_Click(object sender, EventArgs e)
         {
             Stopwatch watch = new Stopwatch();
             watch.Start();
@@ -51,7 +60,7 @@ namespace HalconTest
             Debug.WriteLine("Htuple convert use:" + watch.ElapsedMilliseconds);
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
         }

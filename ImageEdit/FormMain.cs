@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace ImageEdit
 {
-    public partial class FormMain : DevExpress.XtraEditors.XtraForm
+    public partial class FormMain : XtraForm
     {
 
         MagickImage magickImage;
@@ -45,14 +45,14 @@ namespace ImageEdit
             magicKFOrmatlookUpEdit.Properties.DataSource = Enum.GetValues(typeof(MagickFormat));
             magicKFOrmatlookUpEdit.EditValue = MagickFormat.Bmp;
             magicKFOrmatlookUpEdit.Properties.ShowFooter = false;
-            magicKFOrmatlookUpEdit.CustomDisplayText += MagicKFOrmatlookUpEdit_CustomDisplayText;
-            magicKFOrmatlookUpEdit.EditValueChanged += MagicKFOrmatlookUpEdit_EditValueChanged;
+            magicKFOrmatlookUpEdit.CustomDisplayText += MagicKFormatlookUpEdit_CustomDisplayText;
+            magicKFOrmatlookUpEdit.EditValueChanged += MagicKFormatlookUpEdit_EditValueChanged;
             buttonEdit1.Click += ButtonEdit1_Click;
 
             LoadImages();
         }
 
-        private void MagicKFOrmatlookUpEdit_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
+        private void MagicKFormatlookUpEdit_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
         {
             if (e.Value is MagickFormat)
             {
@@ -61,11 +61,11 @@ namespace ImageEdit
             }
         }
 
-        private void MagicKFOrmatlookUpEdit_EditValueChanged(object sender, EventArgs e)
+        private void MagicKFormatlookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (magicKFOrmatlookUpEdit.EditValue is MagickFormat)
+            if (magicKFOrmatlookUpEdit.EditValue is MagickFormat magickFormat)
             {
-                saveFormat = (MagickFormat)magicKFOrmatlookUpEdit.EditValue;
+                saveFormat = magickFormat;
             }
         }
 
