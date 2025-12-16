@@ -6,10 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using _CommonCode_Dev22;
+using DevExpress.XtraReports.UI;
 
 namespace PDF_Editor
 {
-    public partial class FormMain : DevExpress.XtraEditors.XtraForm
+    public partial class FormMain : XtraFormEx
     {
 
         private List<csPDFFile> PDFFiles = new List<csPDFFile>();
@@ -66,6 +68,37 @@ namespace PDF_Editor
         private void MoveDownFileButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
+        }
+
+        private void SimpleButton_Click(object sender, EventArgs e)
+        {
+            csPublic.report = new csSimpleReport();
+            documentViewer1.DocumentSource = csPublic.report;
+        }
+
+        private void OpenDialogButton_Click(object sender, EventArgs e)
+        {
+
+            if (csPublic.report==null)
+            {
+                csPublic.report = new csSimpleReport();
+            }
+
+            ReportDesignTool designTool = new ReportDesignTool(csPublic.report);
+            //designTool.ShowDesignerDialog(); //Old ribbon style
+            
+            designTool.ShowRibbonDesignerDialog(); //Modern view
+
+            csPublic.report = designTool.Report;
+        }
+
+        private void DisplayButton_Click(object sender, EventArgs e)
+        {
+            if (csPublic.report==null)
+            {
+                messageHelper.Info("Please open or create a report file.");
+                return;
+            }
         }
     }
 }

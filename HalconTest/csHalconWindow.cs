@@ -217,6 +217,12 @@ namespace HalconTest
         }
 
 
+        private void HandleDrawEvents()
+        {
+
+        }
+
+
 
         private void WindowControl_MouseWheel(object sender, MouseEventArgs e)
         {

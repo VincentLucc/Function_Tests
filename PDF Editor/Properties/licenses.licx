@@ -1,4 +1,9 @@
-DevExpress.XtraLayout.LayoutControl, DevExpress.XtraLayout.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraLayout.LayoutControl, DevExpress.XtraLayout.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraPdfViewer.PdfViewer, DevExpress.XtraPdfViewer.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraReports.UserDesigner.XRDesignDockManager, DevExpress.XtraReports.v22.1.Extensions, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraReports.UserDesigner.XRDesignBarManager, DevExpress.XtraReports.v22.1.Extensions, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraPrinting.Preview.DocumentViewer, DevExpress.XtraPrinting.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraBars.Ribbon.RibbonControl, DevExpress.XtraBars.v22.1, Version=22.1.13.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
