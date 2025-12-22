@@ -277,6 +277,13 @@ namespace TreeList_Tests
                     originItems[i] = newItem;
                 }
             }
+
+            //Add extra items
+            if (newItems.Count > originItems.Count)
+            {
+                var range = newItems.GetRange(originItems.Count, newItems.Count - originItems.Count);
+                originItems.AddRange(range);
+            }
         }
     }
 
@@ -329,7 +336,7 @@ namespace TreeList_Tests
         public static List<csTreeItem> CreateSampleData()
         {
             var ranDom = new Random();
-            int iRandom = ranDom.Next(3, 5);
+            int iRandom = ranDom.Next(3, 7);
 
             List<csTreeItem> items = new List<csTreeItem>();
             for (int i = 0; i < iRandom; i++)
