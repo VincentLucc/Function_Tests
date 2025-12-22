@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TreeList.Forms
+namespace TreeList_Tests.Forms
 {
     public partial class TreeListDesigner : DevExpress.XtraEditors.XtraForm
     {

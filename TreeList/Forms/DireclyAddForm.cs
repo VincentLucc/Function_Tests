@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TreeList
+namespace TreeList_Tests
 {
     public partial class DireclyAddForm : DevExpress.XtraEditors.XtraForm
     {

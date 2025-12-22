@@ -1,4 +1,4 @@
-﻿namespace TreeList.Forms
+﻿namespace TreeList_Tests.Forms
 {
     partial class UnBoundForm
     {

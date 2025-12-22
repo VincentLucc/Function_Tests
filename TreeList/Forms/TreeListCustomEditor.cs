@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TreeList.Forms
+namespace TreeList_Tests.Forms
 {
     public partial class TreeListCustomEditor : DevExpress.XtraEditors.XtraForm
     {

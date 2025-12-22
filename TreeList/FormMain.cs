@@ -9,9 +9,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using TreeList.Forms;
+using TreeList_Tests.Forms;
 
-namespace TreeList
+namespace TreeList_Tests
 {
     public partial class FormMain : DevExpress.XtraEditors.XtraForm
     {

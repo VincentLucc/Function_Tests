@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using DevExpress.XtraTreeList;
 using Property_RegEditor_22._1;
 
-namespace TreeList
+namespace TreeList_Tests
 {
     public partial class PropertyEditorUserControl : EditFormUserControl
     {

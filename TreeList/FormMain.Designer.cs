@@ -1,6 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 
-namespace TreeList
+namespace TreeList_Tests
 {
     partial class FormMain
     {

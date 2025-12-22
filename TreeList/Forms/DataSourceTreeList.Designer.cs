@@ -1,4 +1,4 @@
-﻿namespace TreeList
+﻿namespace TreeList_Tests
 {
     partial class DataSourceTreeList
     {

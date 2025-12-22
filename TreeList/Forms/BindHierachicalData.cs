@@ -11,8 +11,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _CommonCode_Framework;
 
-namespace TreeList
+namespace TreeList_Tests
 {
     public partial class BindHierachicalData : DevExpress.XtraEditors.XtraForm
     {
@@ -67,7 +68,7 @@ namespace TreeList
             treeList1.OptionsView.ShowHorzLines = false;
             treeList1.OptionsView.ShowIndicator = false;
             treeList1.OptionsView.ShowColumns = false;
-       
+
         }
 
         private void InitEvnets()
@@ -103,7 +104,7 @@ namespace TreeList
         /// <param name="e"></param>
         private void TreeList1_GetSelectImage(object sender, GetSelectImageEventArgs e)
         {
-           e.Node.SelectImageIndex = -1;
+            e.Node.SelectImageIndex = -1;
         }
 
         /// <summary>
@@ -116,7 +117,7 @@ namespace TreeList
             var imgObject = e.Node.GetValue(nameof(csTreeItem.Icon));
             var nodeImage = imgObject as Image;
             if (nodeImage == null) return;
- 
+
             var brush = e.Cache.GetSolidBrush(Color.Orange);
             //State image area
             e.Cache.DrawImage(nodeImage, e.SelectRect);
@@ -242,13 +243,50 @@ namespace TreeList
     }
 
 
+    public static class csTreeItemExtension
+    {
+
+
+        /// <summary>
+        /// Allow to remain items within the first level
+        /// </summary>
+        /// <param name="originItems"></param>
+        /// <param name="newItems"></param>
+        public static void LoadNewRecord(this List<csTreeItem> originItems, List<csTreeItem> newItems)
+        {
+        LoopStart:
+            for (int i = 0; i < originItems.Count; i++)
+            {
+                var originItem = originItems[i];
+
+                //Item removed
+                if (newItems.Count <= i)
+                {
+                    originItems.RemoveAt(i);
+                    goto LoopStart;
+                }
+
+                //Check value match
+                var newItem = newItems[i];
+                if (originItem.Name == newItem.Name)
+                {
+                    originItem.CopyInstanceValues(newItem);
+                }
+                else
+                {//Replace with new Item
+                    originItems[i] = newItem;
+                }
+            }
+        }
+    }
+
     /// <summary>
     /// Must define a class like this to directly show the structure
     /// </summary>
     public class csTreeItem : INotifyPropertyChanged
     {
-
         public bool? Enable { get; set; }
+
 
         private string _name;
         public string Name
@@ -263,7 +301,7 @@ namespace TreeList
                 }
             }
         }
- 
+
 
         [Browsable(false)]
         public Image Icon { get; set; }
@@ -286,6 +324,33 @@ namespace TreeList
         public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public static List<csTreeItem> CreateSampleData()
+        {
+            var ranDom = new Random();
+            int iRandom = ranDom.Next(3, 5);
+
+            List<csTreeItem> items = new List<csTreeItem>();
+            for (int i = 0; i < iRandom; i++)
+            {
+                var sItem = new csTreeItem();
+                sItem.Name = $"Main_{i}";
+
+                for (int j = 0; j < iRandom; j++)
+                {
+                    var subItem = new csTreeItem()
+                    {
+                        Name = $"Sub_{i}",
+                    };
+
+                    sItem.SubItems.Add(subItem);
+                }
+
+                items.Add(sItem);
+            }
+
+            return items;
         }
     }
 }

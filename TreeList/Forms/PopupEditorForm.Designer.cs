@@ -1,5 +1,5 @@
 ﻿
-namespace TreeList.Forms
+namespace TreeList_Tests
 {
     partial class PopupEditorForm
     {
