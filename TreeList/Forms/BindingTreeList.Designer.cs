@@ -39,7 +39,7 @@
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.Location = new System.Drawing.Point(0, 0);
             this.treeList1.Name = "treeList1";
-            this.treeList1.Size = new System.Drawing.Size(386, 357);
+            this.treeList1.Size = new System.Drawing.Size(392, 374);
             this.treeList1.TabIndex = 0;
             // 
             // timer1
@@ -50,7 +50,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 357);
+            this.ClientSize = new System.Drawing.Size(392, 374);
             this.Controls.Add(this.treeList1);
             this.Name = "BindingTreeList";
             this.Text = "BindingTreeList";

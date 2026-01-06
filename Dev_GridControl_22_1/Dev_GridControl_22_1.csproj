@@ -172,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\csPublic.cs" />
+    <Compile Include="Classes\csStringDataSource.cs" />
     <Compile Include="Controls\ucEditForm.cs">
       <SubType>UserControl</SubType>
     </Compile>

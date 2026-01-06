@@ -336,10 +336,10 @@ namespace TreeList_Tests
         public static List<csTreeItem> CreateSampleData()
         {
             var ranDom = new Random();
-            int iRandom = ranDom.Next(3, 7);
+            int iRandom = ranDom.Next(5, 7);
 
             List<csTreeItem> items = new List<csTreeItem>();
-            for (int i = 0; i < iRandom; i++)
+            for (int i = 0; i < 5; i++)
             {
                 var sItem = new csTreeItem();
                 sItem.Name = $"Main_{i}";

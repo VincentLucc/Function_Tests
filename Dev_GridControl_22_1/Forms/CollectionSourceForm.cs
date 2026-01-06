@@ -19,6 +19,7 @@ namespace Dev_GridControl_22_1.Forms
         public CollectionSourceForm()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterParent;
         }
 
         private void CollectionSourceForm_Load(object sender, EventArgs e)
@@ -37,45 +38,64 @@ namespace Dev_GridControl_22_1.Forms
             this.bLoadSamples.Click -= new System.EventHandler(this.bLoadSamples_Click);
 
             //dt1?.Dispose();
-            if (dt1!=null) //Only manual clear works
+            if (dt1 != null) //Only manual clear works
             {
                 dt1.Rows.Clear();
                 dt1.Columns.Clear();
                 dt1.Dispose();
             }
-       
+
             gridControl1?.Dispose();
             GC.Collect();
         }
 
+        List<List<string>> stringListRows = new List<List<string>>();
+        List<string> stringHeaders = new List<string>();
         private void bLoadSamples_Click(object sender, EventArgs e)
         {
+            //Clean up
+            stringListRows.Clear();
+            stringHeaders.Clear();
+            gridControl1.DataSource = null;
+  
+            //Create header
+            for (int i = 0; i < 32; i++)
+            {
+                stringHeaders.Add($"Column{i.ToString("d2")}");
+            }
+
             //Create list data 
-            List<List<string>> listSource = new List<List<string>>();
             for (int i = 0; i < 100000; i++)
             {
                 List<string> LineFields = new List<string>();
-                for (int j = 0; j < 64; j++)
+                for (int j = 1; j <= 32; j++)
                 {
-                    // LineFields[j]=($"Line:{i},Field:{j}");
-                    LineFields.Add($"Line:{i},Field:{j}");
+                    LineFields.Add($"Line:{i.ToString("d8")},Field:{j.ToString("d2")}");
                 }
 
-                listSource.Add(LineFields);
+                stringListRows.Add(LineFields);
             }
+
+            csDataGridStringDataSource stringDataSource = new csDataGridStringDataSource(stringListRows, stringHeaders);
+            gridControl1.DataSource = stringDataSource;
+            gridView1.PopulateColumns();
         }
 
-        public DataTable dt1;
+        public DataTable dt1 = new DataTable();
 
         private void bDataTableSource_Click(object sender, EventArgs e)
         {
-            dt1 = new DataTable();
-            for (int i = 0; i < 32; i++)
+            //Clean up
+            dt1.Clear();
+            dt1.Columns.Clear();
+            gridControl1.DataSource = null;
+
+            for (int i = 1; i <= 32; i++)
             {
-                dt1.Columns.Add("Column"+i);
+                dt1.Columns.Add($"Column{i.ToString("d2")}");
             }
 
-            for (int i = 0; i < 1000000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 var dataRow = dt1.NewRow();
                 for (int j = 0; j < 32; j++)
@@ -86,14 +106,15 @@ namespace Dev_GridControl_22_1.Forms
                 dt1.Rows.Add(dataRow);
             }
 
-             int iCount= dt1.Rows.Count;
-
+            int iCount = dt1.Rows.Count;
+            
             gridControl1.DataSource = dt1;
+            gridView1.PopulateColumns();
         }
 
         private void bSearch_Click(object sender, EventArgs e)
         {
-            
+
         }
 
 
