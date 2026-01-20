@@ -44,6 +44,7 @@ namespace _QuickTests_Framework
             this.bEventsInit = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.RecordButton = new System.Windows.Forms.Button();
             this.bMethodRef = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.bSelfNullMethod = new System.Windows.Forms.Button();
@@ -127,7 +128,11 @@ namespace _QuickTests_Framework
             this.tbPlain = new System.Windows.Forms.RichTextBox();
             this.bEncryptionInit = new System.Windows.Forms.Button();
             this.LoopEventTimer = new System.Windows.Forms.Timer(this.components);
-            this.RecordButton = new System.Windows.Forms.Button();
+            this.IDTabPage = new System.Windows.Forms.TabPage();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.GuidSimpleButton = new System.Windows.Forms.Button();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.CreateTickIDsButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -148,6 +153,9 @@ namespace _QuickTests_Framework
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.IDTabPage.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // bThreadSleep
@@ -279,6 +287,7 @@ namespace _QuickTests_Framework
             this.tabControl1.Controls.Add(this.tabPageBitConvert);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.IDTabPage);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -313,6 +322,16 @@ namespace _QuickTests_Framework
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // RecordButton
+            // 
+            this.RecordButton.Location = new System.Drawing.Point(18, 93);
+            this.RecordButton.Name = "RecordButton";
+            this.RecordButton.Size = new System.Drawing.Size(97, 23);
+            this.RecordButton.TabIndex = 24;
+            this.RecordButton.Text = "Record";
+            this.RecordButton.UseVisualStyleBackColor = true;
+            this.RecordButton.Click += new System.EventHandler(this.RecordButton_Click);
             // 
             // bMethodRef
             // 
@@ -1179,15 +1198,57 @@ namespace _QuickTests_Framework
             this.LoopEventTimer.Interval = 1000;
             this.LoopEventTimer.Tick += new System.EventHandler(this.LoopEventTimer_Tick_1);
             // 
-            // RecordButton
+            // IDTabPage
             // 
-            this.RecordButton.Location = new System.Drawing.Point(18, 93);
-            this.RecordButton.Name = "RecordButton";
-            this.RecordButton.Size = new System.Drawing.Size(97, 23);
-            this.RecordButton.TabIndex = 24;
-            this.RecordButton.Text = "Record";
-            this.RecordButton.UseVisualStyleBackColor = true;
-            this.RecordButton.Click += new System.EventHandler(this.RecordButton_Click);
+            this.IDTabPage.Controls.Add(this.groupBox12);
+            this.IDTabPage.Controls.Add(this.groupBox11);
+            this.IDTabPage.Location = new System.Drawing.Point(4, 22);
+            this.IDTabPage.Name = "IDTabPage";
+            this.IDTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.IDTabPage.Size = new System.Drawing.Size(678, 364);
+            this.IDTabPage.TabIndex = 7;
+            this.IDTabPage.Text = "Identification";
+            this.IDTabPage.UseVisualStyleBackColor = true;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.GuidSimpleButton);
+            this.groupBox11.Location = new System.Drawing.Point(8, 6);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(200, 100);
+            this.groupBox11.TabIndex = 0;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "GUID";
+            // 
+            // GuidSimpleButton
+            // 
+            this.GuidSimpleButton.Location = new System.Drawing.Point(6, 19);
+            this.GuidSimpleButton.Name = "GuidSimpleButton";
+            this.GuidSimpleButton.Size = new System.Drawing.Size(83, 20);
+            this.GuidSimpleButton.TabIndex = 2;
+            this.GuidSimpleButton.Text = "Simple";
+            this.GuidSimpleButton.UseVisualStyleBackColor = true;
+            this.GuidSimpleButton.Click += new System.EventHandler(this.GuidSimpleButton_Click);
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.CreateTickIDsButton);
+            this.groupBox12.Location = new System.Drawing.Point(214, 6);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(200, 100);
+            this.groupBox12.TabIndex = 1;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Date Time";
+            // 
+            // CreateTickIDsButton
+            // 
+            this.CreateTickIDsButton.Location = new System.Drawing.Point(6, 19);
+            this.CreateTickIDsButton.Name = "CreateTickIDsButton";
+            this.CreateTickIDsButton.Size = new System.Drawing.Size(103, 20);
+            this.CreateTickIDsButton.TabIndex = 2;
+            this.CreateTickIDsButton.Text = "Create Tick IDs";
+            this.CreateTickIDsButton.UseVisualStyleBackColor = true;
+            this.CreateTickIDsButton.Click += new System.EventHandler(this.CreateTickIDsButton_Click);
             // 
             // FormMain
             // 
@@ -1220,6 +1281,9 @@ namespace _QuickTests_Framework
             this.groupBox10.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.IDTabPage.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1324,6 +1388,11 @@ namespace _QuickTests_Framework
         private System.Windows.Forms.Button bSortChar;
         private System.Windows.Forms.Button bSelfNullMethod;
         private System.Windows.Forms.Button RecordButton;
+        private System.Windows.Forms.TabPage IDTabPage;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.Button GuidSimpleButton;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Button CreateTickIDsButton;
     }
 }
 

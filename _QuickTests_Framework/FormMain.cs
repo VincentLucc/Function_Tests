@@ -1682,6 +1682,39 @@ namespace _QuickTests_Framework
             MessageBox.Show("Only valid from .Net");
  
         }
+
+        private void GuidSimpleButton_Click(object sender, EventArgs e)
+        {
+            List<Guid> ids = new List<Guid>();
+            for (int i = 0; i < 100; i++)
+            {
+               var newID= Guid.NewGuid();
+               ids.Add(newID);
+            }
+
+            //Display
+            foreach (var id in ids)
+            {
+                id.ToString().TraceRecord();
+            }
+        }
+
+        private void CreateTickIDsButton_Click(object sender, EventArgs e)
+        {
+            List<long> ids = new List<long>();
+            for (int i = 0; i < 100; i++)
+            {
+                var newID= csDateTimeHelper.CreateID64();
+                ids.Add(newID);
+            }
+
+            //Display
+            foreach (var id in ids)
+            {
+                string sTime = csDateTimeHelper.GetFromID64(id).ToString(TimeFormats.HHmmssfff);
+                $"[{sTime}, {id}]".TraceRecord();
+            }
+        }
     }
 
 

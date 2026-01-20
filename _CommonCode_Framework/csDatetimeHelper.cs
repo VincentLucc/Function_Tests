@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 
@@ -34,6 +35,37 @@ public class csDateTimeHelper
     public static string DateTime_fff => CurrentTime.ToString(TimeFormats.yyyyMMdd_HHmmss_fff);
 
     public static string Date_MMddyyyy => CurrentTime.ToString(TimeFormats.MMddyyyy);
+
+    /// <summary>
+    /// Internal ID ending
+    /// </summary>
+    private static int sequenceOrder = 0;
+    /// <summary>
+    /// Create a 64bits ID
+    /// Keep long data type
+    /// </summary>
+    /// <returns></returns>
+    public static long CreateID64()
+    {
+        long timestamp = CurrentTime.Ticks;
+        var timeBytes = BitConverter.GetBytes(timestamp);
+
+        //Get order to avoid conflict within 0.1ms
+        var newOrder = (byte)Interlocked.Increment(ref sequenceOrder);
+
+        //Copy last 2 bytes
+        timeBytes[0] = newOrder;
+        return BitConverter.ToInt64(timeBytes, 0);
+    }
+
+    public static DateTime GetFromID64(long lID)
+    {
+        var timeBytes = BitConverter.GetBytes(lID);
+        timeBytes[0] = 0;//Clean last byte
+        var tick = BitConverter.ToInt64(timeBytes, 0);
+
+        return DateTime.FromBinary(tick);
+    }
 }
 
 public class TimeFormats
