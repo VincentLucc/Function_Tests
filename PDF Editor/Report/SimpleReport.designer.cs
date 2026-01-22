@@ -28,7 +28,6 @@ namespace PDF_Editor {
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(csSimpleReport));
             DevExpress.DataAccess.ObjectBinding.ObjectConstructorInfo objectConstructorInfo1 = new DevExpress.DataAccess.ObjectBinding.ObjectConstructorInfo();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrPanel2 = new DevExpress.XtraReports.UI.XRPanel();
@@ -45,6 +44,9 @@ namespace PDF_Editor {
             this.columnLayoutParameter = new DevExpress.XtraReports.Parameters.Parameter();
             this.isGroupedParameter = new DevExpress.XtraReports.Parameters.Parameter();
             this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
+            this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.TimeLabel = new DevExpress.XtraReports.UI.XRLabel();
+            this.TitleLabel = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -144,12 +146,12 @@ namespace PDF_Editor {
             // 
             // xrPictureBox1
             // 
-            this.xrPictureBox1.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource("svg", resources.GetString("xrPictureBox1.ImageSource"));
+            this.xrPictureBox1.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource(global::PDF_Editor.Properties.Resources.PS_Logo, true);
             this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(254F, 13F);
             this.xrPictureBox1.Name = "xrPictureBox1";
-            this.xrPictureBox1.NavigateUrl = "http://www.devexpress.com/Products/NET/Reporting/";
+            this.xrPictureBox1.NavigateUrl = "https://packsmartinc.com/";
             this.xrPictureBox1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(165.625F, 30.20833F);
+            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(160.4167F, 55.20833F);
             this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.AutoSize;
             this.xrPictureBox1.UseImageResolution = false;
             // 
@@ -203,17 +205,43 @@ namespace PDF_Editor {
             // 
             this.objectDataSource1.Constructor = objectConstructorInfo1;
             this.objectDataSource1.DataMember = "GetData";
-            this.objectDataSource1.DataSource = null;
+            this.objectDataSource1.DataSourceType = null;
             this.objectDataSource1.Name = "objectDataSource1";
             // 
-            // Report
+            // ReportHeader
+            // 
+            this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.TitleLabel,
+            this.TimeLabel});
+            this.ReportHeader.Name = "ReportHeader";
+            // 
+            // TimeLabel
+            // 
+            this.TimeLabel.LocationFloat = new DevExpress.Utils.PointFloat(17.29169F, 48.25001F);
+            this.TimeLabel.Multiline = true;
+            this.TimeLabel.Name = "TimeLabel";
+            this.TimeLabel.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.TimeLabel.SizeF = new System.Drawing.SizeF(190.625F, 23F);
+            this.TimeLabel.Text = "Time: N/A";
+            // 
+            // TitleLabel
+            // 
+            this.TitleLabel.LocationFloat = new DevExpress.Utils.PointFloat(17.29169F, 10.00001F);
+            this.TitleLabel.Multiline = true;
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.TitleLabel.SizeF = new System.Drawing.SizeF(190.625F, 23F);
+            this.TitleLabel.Text = "Title: N/A";
+            // 
+            // csSimpleReport
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,
             this.TopMargin,
             this.BottomMargin,
             this.GroupHeader1,
-            this.GroupFooter1});
+            this.GroupFooter1,
+            this.ReportHeader});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.objectDataSource1});
             this.DataSource = this.objectDataSource1;
@@ -222,7 +250,7 @@ namespace PDF_Editor {
             this.columnLayoutParameter,
             this.isGroupedParameter});
             this.RequestParameters = false;
-            this.Version = "21.2";
+            this.Version = "22.1";
             this.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.Report_BeforePrint);
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
@@ -246,6 +274,8 @@ namespace PDF_Editor {
         private DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
         private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox1;
         private DevExpress.XtraReports.UI.XRPanel xrPanel2;
-
+        private DevExpress.XtraReports.UI.ReportHeaderBand ReportHeader;
+        private DevExpress.XtraReports.UI.XRLabel TitleLabel;
+        private DevExpress.XtraReports.UI.XRLabel TimeLabel;
     }
 }
