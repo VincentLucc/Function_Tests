@@ -18,19 +18,8 @@ namespace PDF_Editor
             InitializeComponent();
             Name = "Test Name";
             DisplayName = "Test Display Name";
-            var repostData = new csReportModel();
-            repostData.InitRecords();
-            this.DataSource = repostData.Items;
         }
 
-        void Report_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
-            XtraReport report = sender as XtraReport;
-            DetailBand detailBand = report.Bands[BandKind.Detail] as DetailBand;
-
-            detailBand.MultiColumn.Layout = (bool)columnLayoutParameter.Value
-                ? ColumnLayout.AcrossThenDown
-                : ColumnLayout.DownThenAcross;
-        }
+ 
     }
 }

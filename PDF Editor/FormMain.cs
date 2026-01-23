@@ -145,15 +145,39 @@ namespace PDF_Editor
         {
             try
             {
+                //Init
+                this.Enabled = false;
+
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
                     openFileDialog.Filter = "Report File(*.repx)|*.repx|All File(*.*)|*.*";
                     if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+ 
+                    //Create data
+                    messageHelper.ShowMainLoading();
                     csReportHelper.report = XtraReport.FromFile(openFileDialog.FileName);
                     csReportHelper.InitDataSource();
+
+                    //Add to display
                     csReportHelper.report.CreateDocument();
                     documentViewer1.DocumentSource = null;
                     documentViewer1.DocumentSource = csReportHelper.report;
+
+                    //Show in editor
+                    using (ReportDesignTool designTool = new ReportDesignTool(csReportHelper.report))
+                    {
+                        //Allow auto close loading form
+                        EventHandler closeLoadingDelegate = null;
+                        closeLoadingDelegate = (o,idleEvent) =>
+                        {
+                            Application.Idle -= closeLoadingDelegate;
+                            messageHelper.CloseForm();
+                        };
+                        Application.Idle += closeLoadingDelegate;
+                     
+                        designTool.ShowRibbonDesignerDialog(); //Modern view
+                        csReportHelper.report = designTool.Report; //In case a new template was loaded
+                    }
                 }
             }
             catch (Exception exception)
@@ -161,14 +185,54 @@ namespace PDF_Editor
                 exception.TraceException("OpenTemplateButton_Click");
                 messageHelper.Error(exception.Message);
             }
+            finally
+            {
+                messageHelper.CloseForm();
+                this.Enabled = true;
+            }
 
         }
 
-        private void CreateNewFomBaseButton_Click(object sender, EventArgs e)
+        private void CreateNewAndOpenFomBaseButton_Click(object sender, EventArgs e)
         {
-            csReportHelper.report = new csSimpleReport();
-            csReportHelper.report.CreateDocument();
-            documentViewer1.DocumentSource = csReportHelper.report;
+            try
+            {
+                //Init
+                this.Enabled = false;
+                messageHelper.ShowMainLoading();
+                csReportHelper.report = new csSimpleReport();
+                csReportHelper.InitDataSource();
+
+                //Show sample data
+                csReportHelper.report.CreateDocument();
+                documentViewer1.DocumentSource = csReportHelper.report;
+
+                //Show in editor
+                using (ReportDesignTool designTool = new ReportDesignTool(csReportHelper.report))
+                {
+                    //Allow auto close loading form
+                    EventHandler closeLoadingDelegate = null;
+                    closeLoadingDelegate = (o,idleEvent) =>
+                    {
+                        Application.Idle -= closeLoadingDelegate;
+                        messageHelper.CloseForm();
+                    };
+                    Application.Idle += closeLoadingDelegate;
+
+                    designTool.ShowRibbonDesignerDialog(); //Modern view
+                    csReportHelper.report = designTool.Report; //In case a new template was loaded
+                }
+            }
+            catch (Exception exception)
+            {
+                exception.TraceException("CreateNewAndOpenFomBaseButton_Click");
+            }
+            finally
+            {
+                this.Enabled = true;
+            }
+
+
         }
     }
 }

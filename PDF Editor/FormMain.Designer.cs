@@ -45,6 +45,7 @@ namespace PDF_Editor
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.PdfViewerPage = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.pdfViewer1 = new DevExpress.XtraPdfViewer.PdfViewer();
@@ -57,17 +58,22 @@ namespace PDF_Editor
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.PDFGenerationPage = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.documentViewer1 = new DevExpress.XtraPrinting.Preview.DocumentViewer();
+            this.OpenTemplateButton = new DevExpress.XtraEditors.SimpleButton();
             this.simplePDFButton = new DevExpress.XtraEditors.SimpleButton();
             this.DisplayButton = new DevExpress.XtraEditors.SimpleButton();
-            this.EditInDesignerButton = new DevExpress.XtraEditors.SimpleButton();
             this.CreateNewFomBaseButton = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.panelContainer3 = new DevExpress.XtraBars.Docking.DockPanel();
             this.propertyGridDockPanel1 = new DevExpress.XtraReports.UserDesigner.PropertyGridDockPanel();
             this.reportGalleryDockPanel1 = new DevExpress.XtraReports.UserDesigner.ReportGalleryDockPanel();
@@ -82,14 +88,6 @@ namespace PDF_Editor
             this.errorListDockPanel1_Container = new DevExpress.XtraReports.UserDesigner.DesignControlContainer();
             this.groupAndSortDockPanel1 = new DevExpress.XtraReports.UserDesigner.GroupAndSortDockPanel();
             this.groupAndSortDockPanel1_Container = new DevExpress.XtraReports.UserDesigner.DesignControlContainer();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.OpenTemplateButton = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.documentViewer1 = new DevExpress.XtraPrinting.Preview.DocumentViewer();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
@@ -107,16 +105,15 @@ namespace PDF_Editor
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // CombineStandaloneBarDockControl
@@ -125,7 +122,7 @@ namespace PDF_Editor
             this.CombineStandaloneBarDockControl.Location = new System.Drawing.Point(12, 12);
             this.CombineStandaloneBarDockControl.Manager = this.barManager1;
             this.CombineStandaloneBarDockControl.Name = "CombineStandaloneBarDockControl";
-            this.CombineStandaloneBarDockControl.Size = new System.Drawing.Size(180, 24);
+            this.CombineStandaloneBarDockControl.Size = new System.Drawing.Size(984, 1);
             this.CombineStandaloneBarDockControl.Text = "standaloneBarDockControl1";
             // 
             // barManager1
@@ -272,6 +269,12 @@ namespace PDF_Editor
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 510);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 6;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // tabPane1
             // 
             this.tabPane1.Controls.Add(this.PdfViewerPage);
@@ -327,11 +330,11 @@ namespace PDF_Editor
             // 
             // CombineGridControl
             // 
-            this.CombineGridControl.Location = new System.Drawing.Point(12, 40);
+            this.CombineGridControl.Location = new System.Drawing.Point(12, 17);
             this.CombineGridControl.MainView = this.CombineGridView;
             this.CombineGridControl.MenuManager = this.barManager1;
             this.CombineGridControl.Name = "CombineGridControl";
-            this.CombineGridControl.Size = new System.Drawing.Size(984, 458);
+            this.CombineGridControl.Size = new System.Drawing.Size(984, 481);
             this.CombineGridControl.TabIndex = 4;
             this.CombineGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.CombineGridView});
@@ -355,9 +358,9 @@ namespace PDF_Editor
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.CombineGridControl;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 28);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 5);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(988, 462);
+            this.layoutControlItem1.Size = new System.Drawing.Size(988, 485);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -366,13 +369,13 @@ namespace PDF_Editor
             this.layoutControlItem2.Control = this.CombineStandaloneBarDockControl;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(988, 28);
+            this.layoutControlItem2.Size = new System.Drawing.Size(988, 5);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // PDFGenerationPage
             // 
-            this.PDFGenerationPage.Caption = "PDF Generation";
+            this.PDFGenerationPage.Caption = "Report PDF Generation";
             this.PDFGenerationPage.Controls.Add(this.layoutControl2);
             this.PDFGenerationPage.Name = "PDFGenerationPage";
             this.PDFGenerationPage.Size = new System.Drawing.Size(1008, 477);
@@ -383,7 +386,6 @@ namespace PDF_Editor
             this.layoutControl2.Controls.Add(this.OpenTemplateButton);
             this.layoutControl2.Controls.Add(this.simplePDFButton);
             this.layoutControl2.Controls.Add(this.DisplayButton);
-            this.layoutControl2.Controls.Add(this.EditInDesignerButton);
             this.layoutControl2.Controls.Add(this.CreateNewFomBaseButton);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.Location = new System.Drawing.Point(0, 0);
@@ -392,6 +394,24 @@ namespace PDF_Editor
             this.layoutControl2.Size = new System.Drawing.Size(1008, 477);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
+            // 
+            // documentViewer1
+            // 
+            this.documentViewer1.IsMetric = false;
+            this.documentViewer1.Location = new System.Drawing.Point(443, 28);
+            this.documentViewer1.Name = "documentViewer1";
+            this.documentViewer1.Size = new System.Drawing.Size(553, 437);
+            this.documentViewer1.TabIndex = 11;
+            // 
+            // OpenTemplateButton
+            // 
+            this.OpenTemplateButton.Location = new System.Drawing.Point(24, 71);
+            this.OpenTemplateButton.Name = "OpenTemplateButton";
+            this.OpenTemplateButton.Size = new System.Drawing.Size(195, 22);
+            this.OpenTemplateButton.StyleController = this.layoutControl2;
+            this.OpenTemplateButton.TabIndex = 10;
+            this.OpenTemplateButton.Text = "Open From Template File";
+            this.OpenTemplateButton.Click += new System.EventHandler(this.OpenTemplateButton_Click);
             // 
             // simplePDFButton
             // 
@@ -407,7 +427,7 @@ namespace PDF_Editor
             // 
             // DisplayButton
             // 
-            this.DisplayButton.Location = new System.Drawing.Point(24, 123);
+            this.DisplayButton.Location = new System.Drawing.Point(24, 97);
             this.DisplayButton.MaximumSize = new System.Drawing.Size(90, 0);
             this.DisplayButton.MinimumSize = new System.Drawing.Size(80, 0);
             this.DisplayButton.Name = "DisplayButton";
@@ -417,29 +437,16 @@ namespace PDF_Editor
             this.DisplayButton.Text = "Disp Report";
             this.DisplayButton.Click += new System.EventHandler(this.DisplayButton_Click);
             // 
-            // EditInDesignerButton
-            // 
-            this.EditInDesignerButton.Location = new System.Drawing.Point(24, 97);
-            this.EditInDesignerButton.MaximumSize = new System.Drawing.Size(120, 0);
-            this.EditInDesignerButton.MinimumSize = new System.Drawing.Size(100, 0);
-            this.EditInDesignerButton.Name = "EditInDesignerButton";
-            this.EditInDesignerButton.Size = new System.Drawing.Size(120, 22);
-            this.EditInDesignerButton.StyleController = this.layoutControl2;
-            this.EditInDesignerButton.TabIndex = 6;
-            this.EditInDesignerButton.Text = "Edit In Designer Dialog";
-            this.EditInDesignerButton.Click += new System.EventHandler(this.EditInDesignerButton_Click);
-            // 
             // CreateNewFomBaseButton
             // 
             this.CreateNewFomBaseButton.Location = new System.Drawing.Point(24, 45);
-            this.CreateNewFomBaseButton.MaximumSize = new System.Drawing.Size(90, 0);
             this.CreateNewFomBaseButton.MinimumSize = new System.Drawing.Size(160, 0);
             this.CreateNewFomBaseButton.Name = "CreateNewFomBaseButton";
-            this.CreateNewFomBaseButton.Size = new System.Drawing.Size(160, 22);
+            this.CreateNewFomBaseButton.Size = new System.Drawing.Size(195, 22);
             this.CreateNewFomBaseButton.StyleController = this.layoutControl2;
             this.CreateNewFomBaseButton.TabIndex = 4;
-            this.CreateNewFomBaseButton.Text = "Create new from base model";
-            this.CreateNewFomBaseButton.Click += new System.EventHandler(this.CreateNewFomBaseButton_Click);
+            this.CreateNewFomBaseButton.Text = "Create new and Open from base model";
+            this.CreateNewFomBaseButton.Click += new System.EventHandler(this.CreateNewAndOpenFomBaseButton_Click);
             // 
             // layoutControlGroup1
             // 
@@ -457,7 +464,6 @@ namespace PDF_Editor
             // 
             this.layoutControlGroup3.GroupStyle = DevExpress.Utils.GroupStyle.Light;
             this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem5,
             this.emptySpaceItem3,
             this.layoutControlItem4,
             this.emptySpaceItem2,
@@ -468,32 +474,48 @@ namespace PDF_Editor
             this.layoutControlGroup3.Size = new System.Drawing.Size(248, 457);
             this.layoutControlGroup3.Text = "Report File Generation";
             // 
+            // emptySpaceItem3
+            // 
+            this.emptySpaceItem3.AllowHotTrack = false;
+            this.emptySpaceItem3.Location = new System.Drawing.Point(199, 0);
+            this.emptySpaceItem3.Name = "emptySpaceItem3";
+            this.emptySpaceItem3.Size = new System.Drawing.Size(25, 412);
+            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.OpenTemplateButton;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(199, 26);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 78);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(199, 334);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.DisplayButton;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 52);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(199, 26);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
+            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.CreateNewFomBaseButton;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(164, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(199, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.EditInDesignerButton;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 52);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(164, 26);
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem5.TextVisible = false;
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.DisplayButton;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 78);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(164, 26);
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextVisible = false;
             // 
             // layoutControlGroup2
             // 
@@ -514,6 +536,24 @@ namespace PDF_Editor
             this.layoutControlItem8.Size = new System.Drawing.Size(84, 412);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(84, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(75, 412);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.documentViewer1;
+            this.layoutControlItem7.Location = new System.Drawing.Point(431, 0);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(557, 457);
+            this.layoutControlItem7.Text = "Document Viewer";
+            this.layoutControlItem7.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(83, 13);
             // 
             // panelContainer3
             // 
@@ -641,73 +681,6 @@ namespace PDF_Editor
             this.groupAndSortDockPanel1_Container.Size = new System.Drawing.Size(758, 149);
             this.groupAndSortDockPanel1_Container.TabIndex = 0;
             // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(84, 0);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(75, 412);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.Id = 6;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // emptySpaceItem3
-            // 
-            this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(164, 0);
-            this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(60, 412);
-            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // OpenTemplateButton
-            // 
-            this.OpenTemplateButton.Location = new System.Drawing.Point(24, 71);
-            this.OpenTemplateButton.Name = "OpenTemplateButton";
-            this.OpenTemplateButton.Size = new System.Drawing.Size(160, 22);
-            this.OpenTemplateButton.StyleController = this.layoutControl2;
-            this.OpenTemplateButton.TabIndex = 10;
-            this.OpenTemplateButton.Text = "Open From Template File";
-            this.OpenTemplateButton.Click += new System.EventHandler(this.OpenTemplateButton_Click);
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.OpenTemplateButton;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 26);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(164, 26);
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextVisible = false;
-            // 
-            // documentViewer1
-            // 
-            this.documentViewer1.IsMetric = false;
-            this.documentViewer1.Location = new System.Drawing.Point(443, 28);
-            this.documentViewer1.Name = "documentViewer1";
-            this.documentViewer1.Size = new System.Drawing.Size(553, 437);
-            this.documentViewer1.TabIndex = 11;
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.documentViewer1;
-            this.layoutControlItem7.Location = new System.Drawing.Point(431, 0);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(557, 457);
-            this.layoutControlItem7.Text = "Document Viewer";
-            this.layoutControlItem7.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(83, 13);
-            // 
-            // emptySpaceItem2
-            // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 104);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(164, 308);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -737,16 +710,15 @@ namespace PDF_Editor
             this.layoutControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -798,8 +770,6 @@ namespace PDF_Editor
         private DevExpress.XtraReports.UserDesigner.DesignControlContainer errorListDockPanel1_Container;
         private DevExpress.XtraReports.UserDesigner.GroupAndSortDockPanel groupAndSortDockPanel1;
         private DevExpress.XtraReports.UserDesigner.DesignControlContainer groupAndSortDockPanel1_Container;
-        private DevExpress.XtraEditors.SimpleButton EditInDesignerButton;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraEditors.SimpleButton DisplayButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraEditors.SimpleButton simplePDFButton;

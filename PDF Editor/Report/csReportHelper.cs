@@ -16,7 +16,7 @@ namespace PDF_Editor
  
             var repostData = new csReportModel();
             repostData.InitRecords();
-            //包装成一个Ienumerable后才不会报错！！！
+            //Must within in an IEnumerable 
             report.DataSource = new csReportModel[] { repostData}; 
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,17 +13,19 @@ namespace PDF_Editor
         public csJobInfo JobInfo { get; set; } = new csJobInfo();
  
         public List<csNamedInt> JobStatistics { get; set; } = new List<csNamedInt>();
-        public List<csReportItem> Items { get; set; } = new List<csReportItem>();
+        public List<csInspectionReportItem> Items { get; set; } = new List<csInspectionReportItem>();
 
         public void InitRecords()
         {
             Items.Clear();
             for (int i = 0; i < 100; i++)
             {
-                var item = new csReportItem()
+                var item = new csInspectionReportItem()
                 {
-                    ID = i+1,
-                    Name = $"Item_{i.ToString("d3")}",
+                    CaptureOrder = i+1,
+                    CaptureTime=DateTime.Now,
+                    DefectReason = $"Reason_{i.ToString("d3")}",
+                    DefectImage=null,
                 };
                 Items.Add(item);
             }
@@ -39,10 +42,13 @@ namespace PDF_Editor
 
     }
 
-    public class csReportItem
+    public class csInspectionReportItem
     {
-        public string Name { get; set; }
-        public int ID { get; set; }
+        public int CaptureOrder { get; set; }
+
+        public DateTime CaptureTime { get; set; }
+        public string DefectReason { get; set; }
+        public Image DefectImage { get; set; }
     }
 
 
