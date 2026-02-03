@@ -35,37 +35,37 @@ namespace PDF_Editor {
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
+            this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
-            this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
-            this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
-            this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
-            this.DetailReport = new DevExpress.XtraReports.UI.DetailReportBand();
-            this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.panel1 = new DevExpress.XtraReports.UI.XRPanel();
-            this.pageBreak1 = new DevExpress.XtraReports.UI.XRPageBreak();
             this.chart1 = new DevExpress.XtraReports.UI.XRChart();
             this.table1 = new DevExpress.XtraReports.UI.XRTable();
             this.tableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.tableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.tableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
             this.tableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.tableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
             this.tableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.tableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
             this.tableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.pictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
+            this.pageBreak1 = new DevExpress.XtraReports.UI.XRPageBreak();
+            this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
             this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.label1 = new DevExpress.XtraReports.UI.XRLabel();
             this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
+            this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
+            this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             this.pageInfo3 = new DevExpress.XtraReports.UI.XRPageInfo();
+            this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
+            this.DetailReport = new DevExpress.XtraReports.UI.DetailReportBand();
             this.Detail1 = new DevExpress.XtraReports.UI.DetailBand();
             this.panel2 = new DevExpress.XtraReports.UI.XRPanel();
             this.panel3 = new DevExpress.XtraReports.UI.XRPanel();
             this.label3 = new DevExpress.XtraReports.UI.XRLabel();
             this.label4 = new DevExpress.XtraReports.UI.XRLabel();
-            this.pictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
-            this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).BeginInit();
@@ -108,6 +108,18 @@ namespace PDF_Editor {
             this.GroupHeader1.HeightF = 53.0303F;
             this.GroupHeader1.Name = "GroupHeader1";
             // 
+            // xrLabel4
+            // 
+            this.xrLabel4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.xrLabel4.ForeColor = System.Drawing.Color.Gray;
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(9.999983F, 26.90532F);
+            this.xrLabel4.Name = "xrLabel4";
+            this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel4.SizeF = new System.Drawing.SizeF(196.9328F, 26.12498F);
+            this.xrLabel4.StylePriority.UseFont = false;
+            this.xrLabel4.StylePriority.UseForeColor = false;
+            this.xrLabel4.Text = "FLOOR [Floor]";
+            // 
             // GroupFooter1
             // 
             this.GroupFooter1.Expanded = false;
@@ -125,47 +137,6 @@ namespace PDF_Editor {
             this.ReportHeader.HeightF = 796.4583F;
             this.ReportHeader.Name = "ReportHeader";
             // 
-            // PageFooter
-            // 
-            this.PageFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.pageInfo2,
-            this.label1,
-            this.pageInfo1});
-            this.PageFooter.HeightF = 60.77665F;
-            this.PageFooter.Name = "PageFooter";
-            // 
-            // PageHeader
-            // 
-            this.PageHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrPictureBox1,
-            this.pageInfo3});
-            this.PageHeader.HeightF = 57.29167F;
-            this.PageHeader.Name = "PageHeader";
-            // 
-            // ReportFooter
-            // 
-            this.ReportFooter.Name = "ReportFooter";
-            // 
-            // DetailReport
-            // 
-            this.DetailReport.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
-            this.Detail1});
-            this.DetailReport.DataMember = "Items";
-            this.DetailReport.Level = 0;
-            this.DetailReport.Name = "DetailReport";
-            // 
-            // xrLabel4
-            // 
-            this.xrLabel4.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.xrLabel4.ForeColor = System.Drawing.Color.Gray;
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(9.999983F, 26.90532F);
-            this.xrLabel4.Name = "xrLabel4";
-            this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel4.SizeF = new System.Drawing.SizeF(196.9328F, 26.12498F);
-            this.xrLabel4.StylePriority.UseFont = false;
-            this.xrLabel4.StylePriority.UseForeColor = false;
-            this.xrLabel4.Text = "FLOOR [Floor]";
-            // 
             // panel1
             // 
             this.panel1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
@@ -175,11 +146,6 @@ namespace PDF_Editor {
             this.panel1.LocationFloat = new DevExpress.Utils.PointFloat(101.0417F, 156.7813F);
             this.panel1.Name = "panel1";
             this.panel1.SizeF = new System.Drawing.SizeF(446.875F, 478.9374F);
-            // 
-            // pageBreak1
-            // 
-            this.pageBreak1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 682.5833F);
-            this.pageBreak1.Name = "pageBreak1";
             // 
             // chart1
             // 
@@ -227,22 +193,6 @@ namespace PDF_Editor {
             this.tableRow1.Name = "tableRow1";
             this.tableRow1.Weight = 1D;
             // 
-            // tableRow2
-            // 
-            this.tableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.tableCell3,
-            this.tableCell4});
-            this.tableRow2.Name = "tableRow2";
-            this.tableRow2.Weight = 1D;
-            // 
-            // tableRow3
-            // 
-            this.tableRow3.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.tableCell5,
-            this.tableCell6});
-            this.tableRow3.Name = "tableRow3";
-            this.tableRow3.Weight = 1D;
-            // 
             // tableCell1
             // 
             this.tableCell1.Multiline = true;
@@ -259,6 +209,14 @@ namespace PDF_Editor {
             this.tableCell2.Text = "tableCell2";
             this.tableCell2.Weight = 2D;
             // 
+            // tableRow2
+            // 
+            this.tableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.tableCell3,
+            this.tableCell4});
+            this.tableRow2.Name = "tableRow2";
+            this.tableRow2.Weight = 1D;
+            // 
             // tableCell3
             // 
             this.tableCell3.Multiline = true;
@@ -273,6 +231,14 @@ namespace PDF_Editor {
             this.tableCell4.Multiline = true;
             this.tableCell4.Name = "tableCell4";
             this.tableCell4.Weight = 2D;
+            // 
+            // tableRow3
+            // 
+            this.tableRow3.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.tableCell5,
+            this.tableCell6});
+            this.tableRow3.Name = "tableRow3";
+            this.tableRow3.Weight = 1D;
             // 
             // tableCell5
             // 
@@ -289,6 +255,31 @@ namespace PDF_Editor {
             this.tableCell6.Name = "tableCell6";
             this.tableCell6.Text = "tableCell6";
             this.tableCell6.Weight = 2D;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("pictureBox1.ImageSource"));
+            this.pictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(143.2292F, 5.583317F);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.NavigateUrl = "https://packsmartinc.com/";
+            this.pictureBox1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.pictureBox1.SizeF = new System.Drawing.SizeF(160.4167F, 55.20833F);
+            this.pictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.AutoSize;
+            this.pictureBox1.UseImageResolution = false;
+            // 
+            // pageBreak1
+            // 
+            this.pageBreak1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 682.5833F);
+            this.pageBreak1.Name = "pageBreak1";
+            // 
+            // PageFooter
+            // 
+            this.PageFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.pageInfo2,
+            this.label1,
+            this.pageInfo1});
+            this.PageFooter.HeightF = 60.77665F;
+            this.PageFooter.Name = "PageFooter";
             // 
             // pageInfo2
             // 
@@ -315,6 +306,25 @@ namespace PDF_Editor {
             this.pageInfo1.SizeF = new System.Drawing.SizeF(100F, 23F);
             this.pageInfo1.TextFormatString = "Page: {0}/{1}";
             // 
+            // PageHeader
+            // 
+            this.PageHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrPictureBox1,
+            this.pageInfo3});
+            this.PageHeader.HeightF = 57.29167F;
+            this.PageHeader.Name = "PageHeader";
+            // 
+            // xrPictureBox1
+            // 
+            this.xrPictureBox1.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("xrPictureBox1.ImageSource"));
+            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 0F);
+            this.xrPictureBox1.Name = "xrPictureBox1";
+            this.xrPictureBox1.NavigateUrl = "https://packsmartinc.com/";
+            this.xrPictureBox1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(160.4167F, 55.20833F);
+            this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.AutoSize;
+            this.xrPictureBox1.UseImageResolution = false;
+            // 
             // pageInfo3
             // 
             this.pageInfo3.LocationFloat = new DevExpress.Utils.PointFloat(527.0001F, 0F);
@@ -322,6 +332,18 @@ namespace PDF_Editor {
             this.pageInfo3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.pageInfo3.SizeF = new System.Drawing.SizeF(100F, 23F);
             this.pageInfo3.TextFormatString = "Page: {0}/{1}";
+            // 
+            // ReportFooter
+            // 
+            this.ReportFooter.Name = "ReportFooter";
+            // 
+            // DetailReport
+            // 
+            this.DetailReport.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
+            this.Detail1});
+            this.DetailReport.DataMember = "Items";
+            this.DetailReport.Level = 0;
+            this.DetailReport.Name = "DetailReport";
             // 
             // Detail1
             // 
@@ -386,28 +408,6 @@ namespace PDF_Editor {
             this.label4.StylePriority.UseBorders = false;
             this.label4.StylePriority.UseFont = false;
             this.label4.TextFormatString = "Name: {0}";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("pictureBox1.ImageSource"));
-            this.pictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(143.2292F, 5.583317F);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.NavigateUrl = "https://packsmartinc.com/";
-            this.pictureBox1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.pictureBox1.SizeF = new System.Drawing.SizeF(160.4167F, 55.20833F);
-            this.pictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.AutoSize;
-            this.pictureBox1.UseImageResolution = false;
-            // 
-            // xrPictureBox1
-            // 
-            this.xrPictureBox1.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("xrPictureBox1.ImageSource"));
-            this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(9.999974F, 0F);
-            this.xrPictureBox1.Name = "xrPictureBox1";
-            this.xrPictureBox1.NavigateUrl = "https://packsmartinc.com/";
-            this.xrPictureBox1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(160.4167F, 55.20833F);
-            this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.AutoSize;
-            this.xrPictureBox1.UseImageResolution = false;
             // 
             // csSimpleReport
             // 

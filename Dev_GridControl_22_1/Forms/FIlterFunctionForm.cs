@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _CommonCode_Dev22;
 
 namespace Dev_GridControl_22_1.Forms
 {
@@ -41,6 +42,16 @@ namespace Dev_GridControl_22_1.Forms
             //gridView1.OptionsFind.FindMode = FindMode.FindClick;
             //gridView1.OptionsFind.FindMode = FindMode.Always;
 
+        }
+
+        private void gridControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ForceVisibleButton_Click(object sender, EventArgs e)
+        {
+            gridView1.ForceVisible((int)TargetIndexSpinEdit.Value);
         }
     }
 }
